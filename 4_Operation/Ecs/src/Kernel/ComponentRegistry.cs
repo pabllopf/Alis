@@ -262,12 +262,11 @@ namespace Alis.Core.Ecs.Kernel
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
-                KeyValuePair<Type, ComponentId>[] entries = _existingComponentIDs.ToArray();
                 NoneComponentRunnerTable.Clear();
 
-                for (int i = 0; i < entries.Length; i++)
+                foreach (KeyValuePair<Type, ComponentId> entry in _existingComponentIDs)
                 {
-                    Type type = entries[i].Key;
+                    Type type = entry.Key;
                     if (type == typeof(void))
                     {
                         continue;

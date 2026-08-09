@@ -471,7 +471,7 @@ namespace Alis.Core.Ecs.Collections
                 newcapacity = capacity;
             }
 
-            Array.Resize(ref _array, newcapacity);
+            FastestArrayPool<T>.ResizeArrayFromPool(ref _array, newcapacity);
         }
 
         /// <summary>

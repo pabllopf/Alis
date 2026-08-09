@@ -329,44 +329,45 @@ namespace Alis.Core.Graphic.Platforms.Osx
         }
 
         /// <summary>
+        ///     The special key map
+        /// </summary>
+        private static readonly Dictionary<int, ConsoleKey> SpecialKeyMap = new Dictionary<int, ConsoleKey>
+        {
+            { 123, ConsoleKey.LeftArrow },
+            { 124, ConsoleKey.RightArrow },
+            { 125, ConsoleKey.DownArrow },
+            { 126, ConsoleKey.UpArrow },
+            { 115, ConsoleKey.Home },
+            { 119, ConsoleKey.End },
+            { 116, ConsoleKey.PageUp },
+            { 121, ConsoleKey.PageDown },
+            { 51, ConsoleKey.Backspace },
+            { 117, ConsoleKey.Delete },
+            { 36, ConsoleKey.Enter },
+            { 48, ConsoleKey.Tab },
+            { 53, ConsoleKey.Escape },
+            { 122, ConsoleKey.F1 },
+            { 120, ConsoleKey.F2 },
+            { 99, ConsoleKey.F3 },
+            { 118, ConsoleKey.F4 },
+            { 96, ConsoleKey.F5 },
+            { 97, ConsoleKey.F6 },
+            { 98, ConsoleKey.F7 },
+            { 100, ConsoleKey.F8 },
+            { 101, ConsoleKey.F9 },
+            { 109, ConsoleKey.F10 },
+            { 103, ConsoleKey.F11 },
+            { 111, ConsoleKey.F12 },
+            { 55, ConsoleKey.LeftWindows }
+        };
+
+        /// <summary>
         ///     Maps a macOS virtual key code to a ConsoleKey value.
         /// </summary>
         /// <param name="keyCode">The macOS key code.</param>
         /// <param name="mappedKey">The mapped ConsoleKey.</param>
         /// <returns>true if the key was mapped; otherwise, false.</returns>
-        private static bool TryMapSpecialKey(int keyCode, out ConsoleKey mappedKey)
-        {
-            switch (keyCode)
-            {
-                case 123: mappedKey = ConsoleKey.LeftArrow; return true;
-                case 124: mappedKey = ConsoleKey.RightArrow; return true;
-                case 125: mappedKey = ConsoleKey.DownArrow; return true;
-                case 126: mappedKey = ConsoleKey.UpArrow; return true;
-                case 115: mappedKey = ConsoleKey.Home; return true;
-                case 119: mappedKey = ConsoleKey.End; return true;
-                case 116: mappedKey = ConsoleKey.PageUp; return true;
-                case 121: mappedKey = ConsoleKey.PageDown; return true;
-                case 51: mappedKey = ConsoleKey.Backspace; return true;
-                case 117: mappedKey = ConsoleKey.Delete; return true;
-                case 36: mappedKey = ConsoleKey.Enter; return true;
-                case 48: mappedKey = ConsoleKey.Tab; return true;
-                case 53: mappedKey = ConsoleKey.Escape; return true;
-                case 122: mappedKey = ConsoleKey.F1; return true;
-                case 120: mappedKey = ConsoleKey.F2; return true;
-                case 99: mappedKey = ConsoleKey.F3; return true;
-                case 118: mappedKey = ConsoleKey.F4; return true;
-                case 96: mappedKey = ConsoleKey.F5; return true;
-                case 97: mappedKey = ConsoleKey.F6; return true;
-                case 98: mappedKey = ConsoleKey.F7; return true;
-                case 100: mappedKey = ConsoleKey.F8; return true;
-                case 101: mappedKey = ConsoleKey.F9; return true;
-                case 109: mappedKey = ConsoleKey.F10; return true;
-                case 103: mappedKey = ConsoleKey.F11; return true;
-                case 111: mappedKey = ConsoleKey.F12; return true;
-                case 55: mappedKey = ConsoleKey.LeftWindows; return true;
-                default: mappedKey = default; return false;
-            }
-        }
+        private static bool TryMapSpecialKey(int keyCode, out ConsoleKey mappedKey) => SpecialKeyMap.TryGetValue(keyCode, out mappedKey);
 
         /// <summary>
         ///     Maps a character key event to a ConsoleKey and updates the pressed keys state.
