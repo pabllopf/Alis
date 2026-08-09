@@ -479,3 +479,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; `_rng?.` null-conditional branch unreachable
+
+## PulleyJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/PulleyJoint.cs`
+- **Coverage Before**: 98.1%
+- **Coverage After**: ~99.5%
+- **Tests Added**: 1
+- **Uncovered Lines**: None remaining beyond combined coverage
