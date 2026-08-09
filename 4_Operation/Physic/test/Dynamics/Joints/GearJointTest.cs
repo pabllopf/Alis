@@ -274,6 +274,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.Gear, gearJoint.JointType);
         }
 
+        
         /// <summary>
         /// Tests that gear joint constructor with both prismatic joints initializes correctly
         /// </summary>
