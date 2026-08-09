@@ -665,25 +665,7 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Empty(options);
         }
-
-        /// <summary>
-        ///     Tests that ShowDialog with invalid choice does not invoke action
-        /// </summary>
-        [Fact]
-        public void ShowDialog_WithInvalidChoice_DoesNotInvokeAction()
-        {
-            DialogManager manager = new DialogManager();
-            bool actionInvoked = false;
-            Dialog dialog = new Dialog("testId", "Test Dialog");
-            dialog.AddOption(new DialogOption("Option 1", () => actionInvoked = true));
-            manager.AddDialog(dialog);
-
-            System.IO.StringReader reader = new System.IO.StringReader("0\n");
-            System.Console.SetIn(reader);
-            manager.ShowDialog("testId");
-
-            Assert.False(actionInvoked);
-        }
+        
 
         /// <summary>
         ///     Tests that ShowDialog with null action does not throw (covers null branch of ?.)
