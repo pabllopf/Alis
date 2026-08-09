@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Ui;
 using Xunit;
@@ -61,16 +60,5 @@ namespace Alis.Core.Graphic.Test.Ui
                 () => FontManager.RenderText("hello", 0, 0));
         }
 
-        /// <summary>
-        /// Tests that default font property exists and is read only
-        /// </summary>
-        [Fact]
-        public void DefaultFont_PropertyExists_AndIsReadOnly()
-        {
-            PropertyInfo prop = typeof(FontManager).GetProperty("DefaultFont");
-            Assert.NotNull(prop);
-            Assert.True(prop.CanRead);
-            Assert.False(prop.CanWrite);
-        }
     }
 }

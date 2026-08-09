@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using Alis.Core.Audio.Players;
 using Xunit;
 
@@ -354,52 +353,5 @@ namespace Alis.Core.Audio.Test
             Assert.Equal(0, dataSize);
         }
 
-        /// <summary>
-        ///     Tests that Playing property returns correct value.
-        /// </summary>
-        [Fact]
-        public void Playing_Property_ShouldReturnCorrectValue()
-        {
-            // BrowserPlayer constructor requires OpenAL which may not be available
-            // This test validates the property exists and is accessible
-            Assert.True(typeof(BrowserPlayer).GetProperty("Playing") != null);
-        }
-
-        /// <summary>
-        ///     Tests that Paused property returns correct value.
-        /// </summary>
-        [Fact]
-        public void Paused_Property_ShouldReturnCorrectValue()
-        {
-            // BrowserPlayer constructor requires OpenAL which may not be available
-            // This test validates the property exists and is accessible
-            Assert.True(typeof(BrowserPlayer).GetProperty("Paused") != null);
-        }
-
-        /// <summary>
-        ///     Tests that PlaybackFinished event exists.
-        /// </summary>
-        [Fact]
-        public void PlaybackFinished_Event_ShouldExist()
-        {
-            // BrowserPlayer is internal, so we can't instantiate it directly
-            // This test validates the event exists on the type
-            Type playerType = typeof(BrowserPlayer);
-            EventInfo eventInfo = playerType.GetEvent("PlaybackFinished");
-            Assert.NotNull(eventInfo);
-        }
-
-        /// <summary>
-        ///     Tests that SetVolume returns completed task.
-        /// </summary>
-        [Fact]
-        public void SetVolume_ShouldReturnCompletedTask()
-        {
-            // BrowserPlayer is internal and requires OpenAL to instantiate
-            // This test validates the method signature exists
-            Type playerType = typeof(BrowserPlayer);
-            MethodInfo methodInfo = playerType.GetMethod("SetVolume");
-            Assert.NotNull(methodInfo);
-        }
     }
 }

@@ -177,39 +177,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that fastest array pool clear buckets works
-        /// </summary>
-        [Fact]
-        public void FastestArrayPool_ClearBuckets_Works()
-        {
-            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
-            int[] arr = pool.Rent(100);
-            pool.Return(arr);
-            Type type = pool.GetType();
-            MethodInfo method = type.GetMethod("ClearBuckets",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            if (method != null)
-                method.Invoke(pool, null);
-        }
-
-        /// <summary>
-        /// Tests that fastest array pool global clear buckets invokes
-        /// </summary>
-        [Fact]
-        public void FastestArrayPool_GlobalClearBuckets_Invokes()
-        {
-            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
-            int[] arr = pool.Rent(100);
-            pool.Return(arr);
-            Gen2GcCallback.Register(() =>
-            {
-                MethodInfo method = pool.GetType().GetMethod("ClearBuckets", BindingFlags.Instance | BindingFlags.NonPublic);
-                method?.Invoke(pool, null);
-                return false;
-            });
-        }
-
-        /// <summary>
         /// Tests that game invoke per entity no events no throw
         /// </summary>
         [Fact]

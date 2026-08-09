@@ -426,4 +426,3 @@ namespace Alis.Core.Physic.Test.Collisions
         }
     }
 }
-

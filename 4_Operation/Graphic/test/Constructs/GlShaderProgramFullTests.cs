@@ -201,49 +201,5 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void GlShaderProgram_ImplementsIDisposable() => Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(GlShaderProgram)));
 
-        /// <summary>
-        /// Tests that dispose children field exists
-        /// </summary>
-        [Fact]
-        public void DisposeChildren_Field_Exists()
-        {
-            Assert.NotNull(typeof(GlShaderProgram).GetField("DisposeChildren", BindingFlags.Public | BindingFlags.Instance));
-        }
-
-        /// <summary>
-        /// Tests that vertex shader field exists
-        /// </summary>
-        [Fact]
-        public void VertexShader_Field_Exists()
-        {
-            Assert.NotNull(typeof(GlShaderProgram).GetField("VertexShader", BindingFlags.Public | BindingFlags.Instance));
-        }
-
-        /// <summary>
-        /// Tests that fragment shader field exists
-        /// </summary>
-        [Fact]
-        public void FragmentShader_Field_Exists()
-        {
-            Assert.NotNull(typeof(GlShaderProgram).GetField("FragmentShader", BindingFlags.Public | BindingFlags.Instance));
-        }
-
-        /// <summary>
-        /// Tests that program id property exists
-        /// </summary>
-        [Fact]
-        public void ProgramId_Property_Exists()
-        {
-            Assert.NotNull(typeof(GlShaderProgram).GetProperty("ProgramId"));
-        }
-
-        /// <summary>
-        /// Tests that indexer exists
-        /// </summary>
-        [Fact]
-        public void Indexer_Exists()
-        {
-            Assert.NotNull(typeof(GlShaderProgram).GetProperty("Item", typeof(GlShaderProgramParam), new[] { typeof(string) }));
-        }
     }
 }

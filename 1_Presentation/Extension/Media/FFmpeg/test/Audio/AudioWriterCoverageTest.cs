@@ -162,11 +162,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Null(exception);
         }
 
-
-
         #endregion
-
-
 
         #region Stream Mode Coverage Tests
 
@@ -382,7 +378,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
         #endregion
         
-
         #region Helper class for testing
 
         /// <summary>

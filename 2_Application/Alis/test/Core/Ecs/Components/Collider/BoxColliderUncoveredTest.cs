@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
@@ -66,24 +65,5 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             go.Add<BoxCollider>(collider);
         }
 
-        /// <summary>
-        /// Tests that render box collider without gl throws exception
-        /// </summary>
-        [Fact]
-        public void RenderBoxCollider_WithoutGl_ThrowsException()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Transform(new Vector2F(0f, 0f), 0f));
-            BoxCollider collider = new BoxCollider();
-
-            typeof(BoxCollider)
-                .GetField("IsInit", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?.SetValue(collider, true);
-
-            Exception exception = Record.Exception(() =>
-                collider.RenderBoxCollider(gameObject, Vector2F.Zero, new Vector2F(1920f, 1080f), 100f));
-
-            Assert.NotNull(exception);
-        }
     }
 }

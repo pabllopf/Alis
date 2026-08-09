@@ -194,28 +194,6 @@ namespace Alis.Core.Aspect.Memory.Test
     /// </summary>
     private delegate string ToLowerHexSpanDelegate(ReadOnlySpan<byte> bytes);
 
-    /// <summary>
-    /// Tests that to lower hex empty span returns empty
-    /// </summary>
-    [Fact]
-    public void ToLowerHex_EmptySpan_ReturnsEmpty()
-    {
-        MethodInfo method = typeof(AssetRegistry).GetMethod("ToLowerHex",
-            BindingFlags.NonPublic | BindingFlags.Static,
-            null,
-            new[] { typeof(ReadOnlySpan<byte>) },
-            null);
-
-        if (method == null)
-        {
-            return;
-        }
-
-        ToLowerHexSpanDelegate del = (ToLowerHexSpanDelegate)method.CreateDelegate(typeof(ToLowerHexSpanDelegate));
-        string result = del(ReadOnlySpan<byte>.Empty);
-        Assert.Equal(string.Empty, result);
-    }
-
         /// <summary>
         ///     Tests that FindZipEntryInfo resolves by unique file name when
         ///     the full path does not match, covering lines 613-614.

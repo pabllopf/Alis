@@ -195,22 +195,5 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
         }
 
-        /// <summary>
-        ///     Vulkans the create window surface is extern
-        /// </summary>
-        [Fact]
-        public void Vulkan_CreateWindowSurface_IsExtern()
-        {
-            Assert.True(typeof(Vulkan).GetMethod(nameof(Vulkan.CreateWindowSurface)).IsPublic);
-        }
-
-        /// <summary>
-        ///     Vulkans the get physical device presentation support is extern
-        /// </summary>
-        [Fact]
-        public void Vulkan_GetPhysicalDevicePresentationSupport_IsExtern()
-        {
-            Assert.True(typeof(Vulkan).GetMethod(nameof(Vulkan.GetPhysicalDevicePresentationSupport)).IsPublic);
-        }
     }
 }

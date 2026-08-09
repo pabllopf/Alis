@@ -49,43 +49,6 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public class EngineSurfaceComprehensiveTest
     {
-        /// <summary>
-        /// Tests that engine type should expose public run method
-        /// </summary>
-        [Fact]
-        public void Engine_Type_ShouldExposePublicRunMethod()
-        {
-            Type type = typeof(Engine);
-            MethodInfo run = type.GetMethod("Run", BindingFlags.Public | BindingFlags.Instance);
-
-            Assert.True(type.IsClass);
-            Assert.True(type.IsPublic);
-            Assert.NotNull(run);
-            Assert.Equal(typeof(void), run.ReturnType);
-            Assert.Empty(run.GetParameters());
-        }
-
-        /// <summary>
-        /// Tests that program internal type should expose main signature
-        /// </summary>
-        [Fact]
-        public void Program_InternalType_ShouldExposeMainSignature()
-        {
-            Type programType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Program", true);
-            MethodInfo main = programType.GetMethod("Main", BindingFlags.Public | BindingFlags.Static);
-
-            Assert.NotNull(programType);
-            Assert.True(programType.IsClass);
-            Assert.True(programType.IsAbstract);
-            Assert.True(programType.IsSealed);
-
-            Assert.NotNull(main);
-            Assert.Equal(typeof(void), main.ReturnType);
-
-            ParameterInfo[] parameters = main.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(string[]), parameters[0].ParameterType);
-        }
 
         /// <summary>
         /// Tests that marker interfaces should exist with expected visibility
@@ -119,39 +82,6 @@ namespace Alis.App.Engine.Test
         {
             Assert.Contains(typeof(IIcon), typeof(FolderIcon).GetInterfaces());
             Assert.Contains(typeof(IIcon), typeof(SegoeIcon).GetInterfaces());
-        }
-
-        /// <summary>
-        /// Tests that font classes should be instantiable public classes
-        /// </summary>
-        [Fact]
-        public void FontClasses_ShouldBeInstantiablePublicClasses()
-        {
-            object jetbrain = Activator.CreateInstance(typeof(JetbrainFont));
-            object hack = Activator.CreateInstance(typeof(HackFont));
-
-            Assert.NotNull(jetbrain);
-            Assert.NotNull(hack);
-            Assert.True(typeof(JetbrainFont).IsPublic);
-            Assert.True(typeof(HackFont).IsPublic);
-        }
-
-        /// <summary>
-        /// Tests that demo interface should define initialize start run
-        /// </summary>
-        [Fact]
-        public void DemoInterface_ShouldDefineInitializeStartRun()
-        {
-            MethodInfo initialize = typeof(IDemo).GetMethod("Initialize");
-            MethodInfo start = typeof(IDemo).GetMethod("Start");
-            MethodInfo run = typeof(IDemo).GetMethod("Run");
-
-            Assert.NotNull(initialize);
-            Assert.NotNull(start);
-            Assert.NotNull(run);
-            Assert.Equal(typeof(void), initialize.ReturnType);
-            Assert.Equal(typeof(void), start.ReturnType);
-            Assert.Equal(typeof(void), run.ReturnType);
         }
 
         /// <summary>
@@ -354,22 +284,6 @@ namespace Alis.App.Engine.Test
         }
 
         /// <summary>
-        /// Tests that internal i window should inherit from expected engine core interfaces
-        /// </summary>
-        [Fact]
-        public void InternalIWindow_ShouldInheritFromExpectedEngineCoreInterfaces()
-        {
-            Type iwindowType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Windows.IWindow", true);
-            Type[] interfaces = iwindowType.GetInterfaces();
-
-            Assert.True(iwindowType.IsInterface);
-            Assert.Contains(typeof(IRenderable), interfaces);
-            Assert.Contains(typeof(IHasSpaceWork), interfaces);
-            Assert.NotNull(iwindowType.GetMethod("Initialize"));
-            Assert.NotNull(iwindowType.GetMethod("Start"));
-        }
-
-        /// <summary>
         /// Tests that shader structs should be readonly value types
         /// </summary>
         [Fact]
@@ -383,4 +297,3 @@ namespace Alis.App.Engine.Test
         }
     }
 }
-

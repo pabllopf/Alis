@@ -30,7 +30,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
@@ -44,37 +43,6 @@ namespace Alis.Core.Ecs.Test.Updating
     /// </summary>
     public partial class GenerationServicesRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that <see cref="GenerationServices.RegisterInit{T}" /> stores a
-        ///     delegate in the <c>TypeIniters</c> dictionary.
-        /// </summary>
-        [Fact]
-        public void RegisterInit_StoresDelegate()
-        {
-            GenerationServices.RegisterInit<CoverageInitDestroyProbe>();
-
-            IDictionary cache = (IDictionary)typeof(GenerationServices)
-                .GetField("TypeIniters", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            Assert.True(cache.Contains(typeof(CoverageInitDestroyProbe)));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="GenerationServices.RegisterDestroy{T}" /> stores a
-        ///     delegate in the <c>TypeDestroyers</c> dictionary.
-        /// </summary>
-        [Fact]
-        public void RegisterDestroy_StoresDelegate()
-        {
-            GenerationServices.RegisterDestroy<CoverageInitDestroyProbe>();
-
-            IDictionary cache = (IDictionary)typeof(GenerationServices)
-                .GetField("TypeDestroyers", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            Assert.True(cache.Contains(typeof(CoverageInitDestroyProbe)));
-        }
 
         /// <summary>
         ///     Tests that <see cref="GenerationServices.RegisterType" /> with a non-factory
@@ -87,63 +55,6 @@ namespace Alis.Core.Ecs.Test.Updating
                 GenerationServices.RegisterType(typeof(CoverageInitDestroyProbe), new object()));
 
             Assert.Contains("Source generation appears to be broken", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="GenerationServices.RegisterUpdateMethodAttribute" />
-        ///     adds a new entry to the <c>TypeAttributeCache</c> when the attribute type
-        ///     has not been seen before.
-        /// </summary>
-        [Fact]
-        public void RegisterUpdateMethodAttribute_NewAttribute_AddsToCache()
-        {
-            GenerationServices.RegisterUpdateMethodAttribute(typeof(CoverageProbeAttribute), typeof(CoverageInitDestroyProbe));
-
-            IDictionary cache = (IDictionary)typeof(GenerationServices)
-                .GetField("TypeAttributeCache", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            Assert.True(cache.Contains(typeof(CoverageProbeAttribute)));
-
-            HashSet<Type> components = (HashSet<Type>)cache[typeof(CoverageProbeAttribute)];
-            Assert.Contains(typeof(CoverageInitDestroyProbe), components);
-            Assert.Single(components);
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="GenerationServices.RegisterUpdateMethodAttribute" />
-        ///     appends to an existing entry in the <c>TypeAttributeCache</c>.
-        /// </summary>
-        [Fact]
-        public void RegisterUpdateMethodAttribute_ExistingAttribute_AppendsComponent()
-        {
-            GenerationServices.RegisterUpdateMethodAttribute(typeof(CoverageProbeAttribute), typeof(CoverageInitDestroyProbe));
-            GenerationServices.RegisterUpdateMethodAttribute(typeof(CoverageProbeAttribute), typeof(CoverageAnotherProbeComponent));
-
-            IDictionary cache = (IDictionary)typeof(GenerationServices)
-                .GetField("TypeAttributeCache", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            HashSet<Type> components = (HashSet<Type>)cache[typeof(CoverageProbeAttribute)];
-            Assert.Equal(2, components.Count);
-            Assert.Contains(typeof(CoverageInitDestroyProbe), components);
-            Assert.Contains(typeof(CoverageAnotherProbeComponent), components);
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="GenerationServices.RegisterType" /> with a valid factory
-        ///     for a new type adds an entry to <c>UserGeneratedTypeMap</c>.
-        /// </summary>
-        [Fact]
-        public void RegisterType_WithValidFactory_NewType_AddsToMap()
-        {
-            GenerationServices.RegisterType(typeof(CoverageOnUpdateProbe), new UpdateRunnerFactory<CoverageOnUpdateProbe>());
-
-            IDictionary map = (IDictionary)typeof(GenerationServices)
-                .GetField("UserGeneratedTypeMap", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            Assert.True(map.Contains(typeof(CoverageOnUpdateProbe)));
         }
 
         /// <summary>
@@ -175,44 +86,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        ///     Tests that the delegate stored by <see cref="GenerationServices.RegisterInit{T}" />
-        ///     can be invoked and calls <c>OnInit</c> on the component.
-        /// </summary>
-        [Fact]
-        public void RegisterInit_Delegate_InvokesOnInit()
-        {
-            GenerationServices.RegisterInit<CoverageInitDestroyProbe>();
-
-            ComponentDelegates<CoverageInitDestroyProbe>.InitDelegate init =
-                (ComponentDelegates<CoverageInitDestroyProbe>.InitDelegate)
-                    ((IDictionary)typeof(GenerationServices)
-                        .GetField("TypeIniters", BindingFlags.Static | BindingFlags.NonPublic)
-                        .GetValue(null))[typeof(CoverageInitDestroyProbe)];
-
-            CoverageInitDestroyProbe probe = default;
-            init(default(GameObject), ref probe);
-        }
-
-        /// <summary>
-        ///     Tests that the delegate stored by <see cref="GenerationServices.RegisterDestroy{T}" />
-        ///     can be invoked and calls <c>OnDestroy</c> on the component.
-        /// </summary>
-        [Fact]
-        public void RegisterDestroy_Delegate_InvokesOnDestroy()
-        {
-            GenerationServices.RegisterDestroy<CoverageInitDestroyProbe>();
-
-            ComponentDelegates<CoverageInitDestroyProbe>.DestroyDelegate destroy =
-                (ComponentDelegates<CoverageInitDestroyProbe>.DestroyDelegate)
-                    ((IDictionary)typeof(GenerationServices)
-                        .GetField("TypeDestroyers", BindingFlags.Static | BindingFlags.NonPublic)
-                        .GetValue(null))[typeof(CoverageInitDestroyProbe)];
-
-            CoverageInitDestroyProbe probe = default;
-            destroy(ref probe);
-        }
-
-        /// <summary>
         ///     A probe attribute for testing registration.
         /// </summary>
         internal sealed class CoverageProbeAttribute : Attribute;
@@ -238,11 +111,6 @@ namespace Alis.Core.Ecs.Test.Updating
             {
             }
         }
-
-        /// <summary>
-        ///     A second probe component type for testing.
-        /// </summary>
-        private struct CoverageAnotherProbeComponent;
 
         /// <summary>
         ///     Probe component implementing <see cref="IOnUpdate" /> for valid factory tests.

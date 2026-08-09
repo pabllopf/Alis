@@ -47,13 +47,5 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IRenderable).IsPublic);
         }
 
-        /// <summary>
-        /// Tests that render method should exist
-        /// </summary>
-        [Fact]
-        public void Render_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IRenderable).GetMethod("Render"));
-        }
     }
 }

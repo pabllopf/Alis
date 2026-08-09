@@ -814,7 +814,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(600, winH);
         }
         
-
         /// <summary>
         /// Tests that web assembly platform get mouse state returns cloned array
         /// </summary>
@@ -845,7 +844,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(buttons[4]);
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code maps correctly using the specified key code
         /// </summary>

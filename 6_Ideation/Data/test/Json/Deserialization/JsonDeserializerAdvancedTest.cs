@@ -58,7 +58,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             _deserializer = new JsonDeserializer(parser);
         }
 
-
         /// <summary>
         ///     Tests that deserialize boolean value parses correctly
         /// </summary>
@@ -74,7 +73,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected, obj.Flag);
         }
 
-
         /// <summary>
         ///     Tests that deserialize double value parses correctly
         /// </summary>
@@ -89,7 +87,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             Assert.Equal(expected, obj.Number, 0.001);
         }
-
 
         /// <summary>
         ///     Tests that deserialize integer value parses correctly
@@ -119,7 +116,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(42, obj.Value);
         }
 
-
         /// <summary>
         ///     Tests that deserialize string value parses correctly
         /// </summary>
@@ -146,7 +142,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             Assert.Equal("こんにちは", obj.Text);
         }
-
 
         /// <summary>
         ///     Tests that deserialize date time value parses correctly
@@ -177,7 +172,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             Assert.Equal(expected, obj.Id);
         }
-
 
         /// <summary>
         ///     Tests that deserialize missing int property uses default value
@@ -218,7 +212,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.False(obj.Flag);
         }
 
-
         /// <summary>
         ///     Tests that deserialize invalid integer value uses default value
         /// </summary>
@@ -258,7 +251,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(Guid.Empty, obj.Id);
         }
 
-
         /// <summary>
         ///     Tests that deserialize with extra properties ignores extra
         /// </summary>
@@ -284,7 +276,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             Assert.Equal(42, obj.Value);
         }
-
 
         /// <summary>
         ///     The test int object class

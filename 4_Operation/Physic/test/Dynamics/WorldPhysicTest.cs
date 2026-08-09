@@ -2032,6 +2032,5 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
-     
     }
 }

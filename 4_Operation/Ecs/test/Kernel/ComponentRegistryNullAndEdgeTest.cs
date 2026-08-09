@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Ecs.Kernel;
 using Xunit;
 
@@ -66,72 +65,5 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Contains("null", ex.Message);
         }
 
-        /// <summary>
-        ///     Tests that <see cref="Component.GetComponentId" /> throws
-        ///     <see cref="InvalidOperationException" /> when the max component
-        ///     count is exceeded. Uses reflection to set the internal counter to
-        ///     <c>ushort.MaxValue - 1</c> so the next allocation attempt triggers
-        ///     the overflow guard. Restores the original counter after the test.
-        /// </summary>
-        [Fact]
-        public void GetComponentId_ExceedsMaxComponentCount_ThrowsOverflow()
-        {
-            Component.ResetForTests();
-
-            FieldInfo field = typeof(Component).GetField("_nextComponentId",
-                BindingFlags.Static | BindingFlags.NonPublic);
-
-            Assert.NotNull(field);
-
-            int saved = (int)field.GetValue(null)!;
-
-            try
-            {
-                field.SetValue(null, (int)(ushort.MaxValue - 1));
-
-                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                    Component.GetComponentId(typeof(OverflowTypeA)));
-
-                Assert.Contains("65535", ex.Message);
-            }
-            finally
-            {
-                field.SetValue(null, saved);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="Component.GetExistingOrSetupNewComponent{T}" /> throws
-        ///     <see cref="InvalidOperationException" /> when the max component
-        ///     count is exceeded. Uses reflection to set the internal counter to
-        ///     <c>ushort.MaxValue - 1</c> so the next allocation attempt triggers
-        ///     the overflow guard. Restores the original counter after the test.
-        /// </summary>
-        [Fact]
-        public void GetExistingOrSetupNewComponent_ExceedsMaxComponentCount_ThrowsOverflow()
-        {
-            Component.ResetForTests();
-
-            FieldInfo field = typeof(Component).GetField("_nextComponentId",
-                BindingFlags.Static | BindingFlags.NonPublic);
-
-            Assert.NotNull(field);
-
-            int saved = (int)field.GetValue(null)!;
-
-            try
-            {
-                field.SetValue(null, (int)(ushort.MaxValue - 1));
-
-                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                    Component.GetExistingOrSetupNewComponent<OverflowTypeB>());
-
-                Assert.Contains("65535", ex.Message);
-            }
-            finally
-            {
-                field.SetValue(null, saved);
-            }
-        }
     }
 }

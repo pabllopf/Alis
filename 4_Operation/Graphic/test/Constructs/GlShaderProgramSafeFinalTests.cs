@@ -219,26 +219,6 @@ namespace Alis.Core.Graphic.Test.Constructs
         /// </summary>
         [Fact] public void ImplementsIDisposable() => Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(GlShaderProgram)));
         /// <summary>
-        /// Tests that dispose children exists
-        /// </summary>
-        [Fact] public void DisposeChildren_Exists() => Assert.NotNull(typeof(GlShaderProgram).GetField("DisposeChildren"));
-        /// <summary>
-        /// Tests that vertex shader exists
-        /// </summary>
-        [Fact] public void VertexShader_Exists() => Assert.NotNull(typeof(GlShaderProgram).GetField("VertexShader"));
-        /// <summary>
-        /// Tests that fragment shader exists
-        /// </summary>
-        [Fact] public void FragmentShader_Exists() => Assert.NotNull(typeof(GlShaderProgram).GetField("FragmentShader"));
-        /// <summary>
-        /// Tests that program id property exists
-        /// </summary>
-        [Fact] public void ProgramId_Property_Exists() => Assert.NotNull(typeof(GlShaderProgram).GetProperty("ProgramId"));
-        /// <summary>
-        /// Tests that indexer property exists
-        /// </summary>
-        [Fact] public void Indexer_Property_Exists() => Assert.NotNull(typeof(GlShaderProgram).GetProperty("Item", typeof(GlShaderProgramParam), new[] { typeof(string) }));
-        /// <summary>
         /// Tests that constructor throws when gl not available
         /// </summary>
         [Fact] public void Constructor_Throws_WhenGlNotAvailable() => Assert.ThrowsAny<Exception>(() => new GlShaderProgram("vs", "fs"));

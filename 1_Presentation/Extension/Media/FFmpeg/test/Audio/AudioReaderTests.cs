@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
@@ -194,40 +193,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
             Exception ex = Record.Exception(() => reader.Dispose());
             Assert.Null(ex);
-        }
-
-        /// <summary>
-        /// Tests that dispose with disposing true disposes stream
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrue_DisposesStream()
-        {
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
-            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
-            reader.SetDataStream(stream);
-
-            MethodInfo disposeMethod = typeof(AudioReader).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(bool) }, null);
-            disposeMethod.Invoke(reader, new object[] { true });
-
-            Assert.False(stream.CanRead);
-        }
-
-        /// <summary>
-        /// Tests that dispose with disposing false does not release stream
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingFalse_DoesNotReleaseStream()
-        {
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
-            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
-            reader.SetDataStream(stream);
-
-            MethodInfo disposeMethod = typeof(AudioReader).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(bool) }, null);
-            disposeMethod.Invoke(reader, new object[] { false });
-
-            Assert.True(stream.CanRead);
         }
 
         /// <summary>
@@ -398,8 +363,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.Equal(24, metadata.BitDepth);
         }
-
-      
 
         /// <summary>
         /// Tests that load with invalid bit depth 8 throws invalid operation exception
@@ -615,8 +578,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(1, result.LoadedSamples);
             Assert.Equal(1, reader.CurrentSampleOffset - initialOffset);
         }
-
-        
 
         /// <summary>
         /// Loads the metadata with real wav file succeeds

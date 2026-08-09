@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Moq;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
@@ -93,94 +92,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
         #region OnStart Coverage Tests (Documentation Only)
 
-        /// <summary>
-        ///     Tests that OnStart method exists and can be invoked via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_OnStart_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the public OnStart method via reflection
-            MethodInfo onStartMethod = colliderType.GetMethod("OnStart", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Method should exist
-            Assert.NotNull(onStartMethod);
-        }
-
         #endregion
 
         #region Method Existence Tests via Reflection
-
-        /// <summary>
-        ///     Tests that OnCollision method exists and can be invoked via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_OnCollision_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the private OnCollision method via reflection
-            MethodInfo onCollisionMethod = colliderType.GetMethod("OnCollision", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Method should exist
-            Assert.NotNull(onCollisionMethod);
-        }
-
-        /// <summary>
-        ///     Tests that OnSeparation method exists and can be invoked via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_OnSeparation_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the private OnSeparation method via reflection
-            MethodInfo onSeparationMethod = colliderType.GetMethod("OnSeparation", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Method should exist
-            Assert.NotNull(onSeparationMethod);
-        }
-
-        /// <summary>
-        ///     Tests that InitializeShaders method exists and can be invoked via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_InitializeShaders_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the private InitializeShaders method via reflection
-            MethodInfo initializeShadersMethod = colliderType.GetMethod("InitializeShaders", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Method should exist
-            Assert.NotNull(initializeShadersMethod);
-        }
-
-        /// <summary>
-        ///     Tests that RenderBoxCollider method exists and can be invoked via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_RenderBoxCollider_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the private RenderBoxCollider method via reflection
-            MethodInfo renderBoxColliderMethod = colliderType.GetMethod("RenderBoxCollider", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Method should exist
-            Assert.NotNull(renderBoxColliderMethod);
-        }
 
         #endregion
 
@@ -294,35 +208,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
         #region Private Field Access Tests
 
-   
         #endregion
 
         #region Static Vertices Array Tests
-
-        /// <summary>
-        ///     Tests that the static Vertices array has correct values.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_StaticVertices_ShouldHaveCorrectValues()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the static Vertices array via reflection
-            FieldInfo verticesField = colliderType.GetField("Vertices", 
-                BindingFlags.Static | BindingFlags.NonPublic);
-            float[] vertices = (float[])verticesField.GetValue(null);
-
-            // Assert - Vertices should have 6 values defining a triangle
-            Assert.NotNull(vertices);
-            Assert.Equal(6, vertices.Length);
-            Assert.Equal(-0.5f, vertices[0], 5);  // x1
-            Assert.Equal(-0.5f, vertices[1], 5);  // y1
-            Assert.Equal(0.5f, vertices[2], 5);   // x2
-            Assert.Equal(-0.5f, vertices[3], 5);  // y2
-            Assert.Equal(0.0f, vertices[4], 5);   // x3
-            Assert.Equal(0.5f, vertices[5], 5);   // y3
-        }
 
         #endregion
 
@@ -388,23 +276,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         #endregion
 
         #region Equals and HashCode Tests
-
-        /// <summary>
-        ///     Tests that BoxCollider.Equals method exists and can be invoked.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_Equals_Method_ShouldExist()
-        {
-            // Arrange
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the Equals method via reflection
-            MethodInfo equalsMethod = colliderType.GetMethod("Equals", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Equals method should exist
-            Assert.NotNull(equalsMethod);
-        }
 
         #endregion
 

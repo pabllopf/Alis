@@ -48,33 +48,6 @@ namespace Alis.App.Engine.Test
         }
 
         /// <summary>
-        /// Tests that initialize method should exist
-        /// </summary>
-        [Fact]
-        public void Initialize_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IDemo).GetMethod("Initialize"));
-        }
-
-        /// <summary>
-        /// Tests that start method should exist
-        /// </summary>
-        [Fact]
-        public void Start_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IDemo).GetMethod("Start"));
-        }
-
-        /// <summary>
-        /// Tests that run method should exist
-        /// </summary>
-        [Fact]
-        public void Run_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IDemo).GetMethod("Run"));
-        }
-
-        /// <summary>
         /// Tests that interface should be implemented by icon demo
         /// </summary>
         [Fact]

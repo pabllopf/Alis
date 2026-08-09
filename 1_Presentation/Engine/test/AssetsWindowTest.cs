@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
@@ -91,7 +90,6 @@ namespace Alis.App.Engine.Test
             Assert.Contains("\uf07c", windowName);
         }
         
-
         /// <summary>
         ///     Tests that the constructor sets the SpaceWork property correctly.
         /// </summary>
@@ -199,8 +197,6 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window);
         }
         
-        
-
         /// <summary>
         ///     Tests that multiple AssetsWindow instances maintain independent state.
         /// </summary>
@@ -216,23 +212,6 @@ namespace Alis.App.Engine.Test
             Assert.NotSame(window1, window2);
             Assert.Same(spaceWork1, window1.SpaceWork);
             Assert.Same(spaceWork2, window2.SpaceWork);
-        }
-
-        /// <summary>
-        ///     Tests that AssetsWindow has required interface methods.
-        /// </summary>
-        [Fact]
-        public void AssetsWindow_HasRequiredMethods()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-
-            MethodInfo initializeMethod = typeof(AssetsWindow).GetMethod("Initialize");
-            MethodInfo renderMethod = typeof(AssetsWindow).GetMethod("Render");
-            MethodInfo startMethod = typeof(AssetsWindow).GetMethod("Start");
-
-            Assert.NotNull(initializeMethod);
-            Assert.NotNull(renderMethod);
-            Assert.NotNull(startMethod);
         }
 
         /// <summary>

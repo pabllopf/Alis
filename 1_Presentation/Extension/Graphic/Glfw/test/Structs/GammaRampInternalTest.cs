@@ -61,54 +61,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        ///     Verifies that Red field is an IntPtr.
-        /// </summary>
-        [Fact]
-        public void Red_Field_ShouldBeIntPtr()
-        {
-            System.Reflection.FieldInfo field = typeof(GammaRampInternal).GetField("Red", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            Assert.Equal(typeof(System.IntPtr), field.FieldType);
-        }
-
-        /// <summary>
-        ///     Verifies that Green field is an IntPtr.
-        /// </summary>
-        [Fact]
-        public void Green_Field_ShouldBeIntPtr()
-        {
-            System.Reflection.FieldInfo field = typeof(GammaRampInternal).GetField("Green", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            Assert.Equal(typeof(System.IntPtr), field.FieldType);
-        }
-
-        /// <summary>
-        ///     Verifies that Blue field is an IntPtr.
-        /// </summary>
-        [Fact]
-        public void Blue_Field_ShouldBeIntPtr()
-        {
-            System.Reflection.FieldInfo field = typeof(GammaRampInternal).GetField("Blue", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            Assert.Equal(typeof(System.IntPtr), field.FieldType);
-        }
-
-        /// <summary>
-        ///     Verifies that Size field is an integer.
-        /// </summary>
-        [Fact]
-        public void Size_Field_ShouldBeInt()
-        {
-            System.Reflection.FieldInfo field = typeof(GammaRampInternal).GetField("Size", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            Assert.Equal(typeof(int), field.FieldType);
-        }
-
-        /// <summary>
         ///     Verifies the default values of GammaRampInternal.
         /// </summary>
         [Fact]

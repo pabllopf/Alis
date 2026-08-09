@@ -76,7 +76,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
 
-
                 string result = CallPtrToStringUTF8(ptr);
 
                 // Assert
@@ -116,7 +115,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 Marshal.WriteByte(ptr, 0, 0); // Null terminator at position 0
 
-
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
 
@@ -145,7 +143,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
 
-
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
 
@@ -173,7 +170,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
-
 
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
@@ -207,7 +203,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
 
-
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
 
@@ -235,7 +230,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
-
 
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
@@ -280,7 +274,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
 
-
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
 
@@ -309,7 +302,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
 
-
                 // Act
                 string result = CallPtrToStringUTF8(ptr);
 
@@ -337,7 +329,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 Marshal.Copy(bytes, 0, ptr, bytes.Length);
                 Marshal.WriteByte(ptr, bytes.Length, 0); // Null terminator
-
 
                 // Act
                 string result = CallPtrToStringUTF8(ptr);

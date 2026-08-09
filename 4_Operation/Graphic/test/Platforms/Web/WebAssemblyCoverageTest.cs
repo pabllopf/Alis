@@ -97,8 +97,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-      
-
         /// <summary>
         /// Tests that web assembly platform initialize already initialized returns true
         /// </summary>
@@ -158,7 +156,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code number keys using the specified key code
         /// </summary>
@@ -181,7 +178,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code function keys using the specified key code
         /// </summary>
@@ -206,7 +202,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code numpad keys using the specified key code
         /// </summary>
@@ -229,7 +224,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code numpad operators using the specified key code
         /// </summary>
@@ -247,7 +241,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        
         /// <summary>
         /// Webs the assembly platform convert key code modifier keys using the specified key code
         /// </summary>
@@ -474,8 +467,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-
-      
 
         /// <summary>
         /// Tests that quick start log platform info does not throw

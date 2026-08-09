@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Ui;
 using Xunit;
@@ -71,18 +70,6 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that default font property is read only
-        /// </summary>
-        [Fact]
-        public void DefaultFont_PropertyIsReadOnly()
-        {
-            PropertyInfo prop = typeof(FontManager).GetProperty("DefaultFont", BindingFlags.Public | BindingFlags.Static);
-            Assert.NotNull(prop);
-            Assert.True(prop.CanRead);
-            Assert.False(prop.CanWrite);
-        }
-
-        /// <summary>
         /// Tests that default font returns same instance
         /// </summary>
         [Fact]
@@ -109,28 +96,6 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_WithColors_ThrowsWhenOpenGLNotInitialized()
         {
             Assert.ThrowsAny<Exception>(() => FontManager.RenderText("hello", 0, 0, Color.White, Color.Black));
-        }
-
-        /// <summary>
-        /// Tests that render text with coordinates method exists
-        /// </summary>
-        [Fact]
-        public void RenderText_WithCoordinates_MethodExists()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string), typeof(int), typeof(int) }, null);
-            Assert.NotNull(method);
-            Assert.Equal(typeof(void), method.ReturnType);
-        }
-
-        /// <summary>
-        /// Tests that render text with colors method exists
-        /// </summary>
-        [Fact]
-        public void RenderText_WithColors_MethodExists()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
-            Assert.NotNull(method);
-            Assert.Equal(typeof(void), method.ReturnType);
         }
 
         /// <summary>

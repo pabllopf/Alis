@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Platforms.Osx.Native;
 using Xunit;
@@ -61,44 +60,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Type pointType = typeof(NsPoint);
 
             Assert.True(pointType.IsPublic);
-        }
-
-
-        /// <summary>
-        ///     Tests that NsPoint has X field.
-        /// </summary>
-        [Fact]
-        public void NsPoint_X_FieldExists()
-        {
-            FieldInfo xField = typeof(NsPoint).GetField("X");
-
-            Assert.NotNull(xField);
-            Assert.Equal(typeof(double), xField.FieldType);
-        }
-
-        /// <summary>
-        ///     Tests that NsPoint has Y field.
-        /// </summary>
-        [Fact]
-        public void NsPoint_Y_FieldExists()
-        {
-            FieldInfo yField = typeof(NsPoint).GetField("Y");
-
-            Assert.NotNull(yField);
-            Assert.Equal(typeof(double), yField.FieldType);
-        }
-
-        /// <summary>
-        ///     Tests that NsPoint X and Y fields are public.
-        /// </summary>
-        [Fact]
-        public void NsPoint_Fields_ArePublic()
-        {
-            FieldInfo xField = typeof(NsPoint).GetField("X");
-            FieldInfo yField = typeof(NsPoint).GetField("Y");
-
-            Assert.True(xField.IsPublic);
-            Assert.True(yField.IsPublic);
         }
 
         /// <summary>

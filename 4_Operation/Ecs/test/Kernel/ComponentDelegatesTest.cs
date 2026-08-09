@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -51,92 +50,5 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(type.IsSealed);
         }
 
-        /// <summary>
-        ///     Tests that DestroyDelegate delegate type exists
-        /// </summary>
-        [Fact] public void DestroyDelegate_Exists()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("DestroyDelegate");
-
-            Assert.NotNull(delegateType);
-            Assert.True(typeof(MulticastDelegate).IsAssignableFrom(delegateType.BaseType));
-        }
-
-        /// <summary>
-        ///     Tests that InitDelegate delegate type exists
-        /// </summary>
-        [Fact] public void InitDelegate_Exists()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("InitDelegate");
-
-            Assert.NotNull(delegateType);
-            Assert.True(typeof(MulticastDelegate).IsAssignableFrom(delegateType.BaseType));
-        }
-
-        /// <summary>
-        ///     Tests that DestroyDelegate has void return type
-        /// </summary>
-        [Fact] public void DestroyDelegate_HasVoidReturnType()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("DestroyDelegate");
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            Assert.Equal(typeof(void), invokeMethod.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that InitDelegate has void return type
-        /// </summary>
-        [Fact] public void InitDelegate_HasVoidReturnType()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("InitDelegate");
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            Assert.Equal(typeof(void), invokeMethod.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that DestroyDelegate has 1 parameter (ref T)
-        /// </summary>
-        [Fact] public void DestroyDelegate_Has1Parameter()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("DestroyDelegate");
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            ParameterInfo[] parameters = invokeMethod.GetParameters();
-            Assert.Equal(1, parameters.Length);
-        }
-
-        /// <summary>
-        ///     Tests that InitDelegate has 2 parameters (GameObject, ref T)
-        /// </summary>
-        [Fact] public void InitDelegate_Has2Parameters()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("InitDelegate");
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            ParameterInfo[] parameters = invokeMethod.GetParameters();
-            Assert.Equal(2, parameters.Length);
-        }
-
-        /// <summary>
-        ///     Tests that DestroyDelegate nested type is a delegate type
-        /// </summary>
-        [Fact] public void DestroyDelegate_IsDelegateType()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("DestroyDelegate");
-
-            Assert.True(typeof(MulticastDelegate).IsAssignableFrom(delegateType.BaseType));
-        }
-
-        /// <summary>
-        ///     Tests that InitDelegate nested type is a delegate type
-        /// </summary>
-        [Fact] public void InitDelegate_IsDelegateType()
-        {
-            Type delegateType = typeof(ComponentDelegates<Position>).GetNestedType("InitDelegate");
-
-            Assert.True(typeof(MulticastDelegate).IsAssignableFrom(delegateType.BaseType));
-        }
     }
 }

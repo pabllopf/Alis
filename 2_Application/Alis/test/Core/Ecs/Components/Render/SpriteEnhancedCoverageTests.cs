@@ -450,6 +450,5 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotEqual(sprite1.GetHashCode(), sprite2.GetHashCode());
         }
 
-      
     }
 }

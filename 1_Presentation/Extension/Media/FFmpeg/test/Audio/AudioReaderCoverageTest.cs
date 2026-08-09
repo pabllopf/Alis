@@ -351,7 +351,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
         #region LoadMetadataAsync Coverage Tests
         
-
         /// <summary>
         ///     Tests that LoadMetadataAsync with ignoreStreamErrors=true catches stream parsing errors.
         /// </summary>
@@ -440,7 +439,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("metadata", exception.Message);
         }
 
-      
         #endregion
 
         /// <summary>
@@ -524,8 +522,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.IsType<InvalidOperationException>(exception);
             Assert.Contains("load the audio", exception.Message);
         }
-
-        
 
         #region Property Coverage Tests
 

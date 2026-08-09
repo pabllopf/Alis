@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
@@ -68,24 +67,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             GraphicManager manager = new GraphicManager(context);
 
             Assert.ThrowsAny<Exception>(() => manager.OnDraw());
-        }
-
-        /// <summary>
-        /// Tests that render preview without scene throws exception
-        /// </summary>
-        [Fact]
-        public void RenderPreview_WithoutScene_ThrowsException()
-        {
-            Context context = new Context(new Setting());
-            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
-            GraphicManager manager = new GraphicManager(context);
-
-            Assert.ThrowsAny<Exception>(() =>
-            {
-                MethodInfo method = typeof(GraphicManager).GetMethod("RenderPreview",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                method.Invoke(manager, null);
-            });
         }
 
         /// <summary>

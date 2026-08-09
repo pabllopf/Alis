@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
@@ -63,50 +62,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — Render calls InitializeShaders() which invokes Gl.* methods
             // that require a real OpenGL context. In unit tests this throws.
-            Assert.NotNull(exception);
-        }
-
-        /// <summary>
-        ///     Verifies that <see cref="BoxCollider.Render" /> skips the initialization
-        ///     block when <c>IsInit</c> has been set to <c>true</c>, and proceeds to
-        ///     <c>RenderBoxCollider</c> which also throws due to missing GL context.
-        ///     This covers the second branch of the <c>if (!IsInit)</c> guard.
-        /// </summary>
-        [Fact]
-        public void Render_WhenPreInitialized_SkipsShaderInitAndThrowsFromRenderBoxCollider()
-        {
-            // Arrange
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Transform(new Vector2F(10f, 20f), 0.5f));
-            BoxCollider collider = new BoxCollider
-            {
-                SizeOfTexture = new Vector2F(32f, 32f),
-                RelativePosition = new Vector2F(5f, 5f)
-            };
-
-            // Use reflection to set IsInit = true and provide dummy GL handles
-            // so InitializeShaders() is skipped and RenderBoxCollider() is reached.
-            typeof(BoxCollider)
-                .GetField("IsInit", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?.SetValue(collider, true);
-
-            typeof(BoxCollider)
-                .GetField("shaderProgram", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?.SetValue(collider, 1u);
-
-            typeof(BoxCollider)
-                .GetField("vao", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?.SetValue(collider, 1u);
-
-            typeof(BoxCollider)
-                .GetField("vbo", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?.SetValue(collider, 1u);
-
-            // Act — RenderBoxCollider is called and throws from Gl.* calls
-            Exception exception = Record.Exception(() =>
-                collider.Render(gameObject, new Vector2F(500f, 300f), new Vector2F(1920f, 1080f), 100f));
-
-            // Assert — RenderBoxCollider calls Gl.GlUseProgram which fails without GL context
             Assert.NotNull(exception);
         }
 

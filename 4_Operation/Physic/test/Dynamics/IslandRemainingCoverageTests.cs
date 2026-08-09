@@ -93,8 +93,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
-
-
         /// <summary>
         /// Tests that integrate velocities with damping applies correctly
         /// </summary>
@@ -204,7 +202,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
         
-
         /// <summary>
         /// Tests that record joint update time with diagnostics enabled records non-zero time
         /// </summary>
@@ -456,8 +453,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => island.Dispose());
             Assert.Null(ex);
         }
-
-   
 
         // ========================================================================
         // SolveToi — velocity clamping via direct internal call (lines 604-616)

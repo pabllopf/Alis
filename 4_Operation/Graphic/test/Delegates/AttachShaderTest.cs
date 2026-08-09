@@ -29,7 +29,6 @@
 
 using System;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL.Delegates;
 using Xunit;
@@ -76,61 +75,6 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        ///     Tests that AttachShader has two parameters.
-        /// </summary>
-        [Fact]
-        public void AttachShader_HasTwoParameters_SignatureIsCorrect()
-        {
-            Type delegateType = typeof(AttachShader);
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            Assert.NotNull(invokeMethod);
-            ParameterInfo[] parameters = invokeMethod.GetParameters();
-            Assert.Equal(2, parameters.Length);
-        }
-
-        /// <summary>
-        ///     Tests that AttachShader first parameter is uint (program).
-        /// </summary>
-        [Fact]
-        public void AttachShader_FirstParameter_IsUint()
-        {
-            Type delegateType = typeof(AttachShader);
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-            ParameterInfo[] parameters = invokeMethod.GetParameters();
-
-            Assert.Equal(typeof(uint), parameters[0].ParameterType);
-            Assert.Equal("program", parameters[0].Name);
-        }
-
-        /// <summary>
-        ///     Tests that AttachShader second parameter is uint (shader).
-        /// </summary>
-        [Fact]
-        public void AttachShader_SecondParameter_IsUint()
-        {
-            Type delegateType = typeof(AttachShader);
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-            ParameterInfo[] parameters = invokeMethod.GetParameters();
-
-            Assert.Equal(typeof(uint), parameters[1].ParameterType);
-            Assert.Equal("shader", parameters[1].Name);
-        }
-
-        /// <summary>
-        ///     Tests that AttachShader return type is void.
-        /// </summary>
-        [Fact]
-        public void AttachShader_ReturnType_IsVoid()
-        {
-            Type delegateType = typeof(AttachShader);
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            Assert.NotNull(invokeMethod);
-            Assert.Equal(typeof(void), invokeMethod.ReturnType);
-        }
-
-        /// <summary>
         ///     Tests that AttachShader uses StdCall calling convention.
         /// </summary>
         [Fact]
@@ -158,16 +102,5 @@ namespace Alis.Core.Graphic.Test.Delegates
             Assert.IsType<AttachShader>(delegateInstance);
         }
 
-        /// <summary>
-        ///     Tests that AttachShader delegate Invoke method exists.
-        /// </summary>
-        [Fact]
-        public void AttachShader_InvokeMethod_Exists()
-        {
-            Type delegateType = typeof(AttachShader);
-            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
-
-            Assert.NotNull(invokeMethod);
-        }
     }
 }

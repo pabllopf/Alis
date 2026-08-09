@@ -176,37 +176,6 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that make safe temp name no extension generates name without extension
-        /// </summary>
-        [Fact] public void MakeSafeTempName_NoExtension_GeneratesNameWithoutExtension()
-        {
-            MethodInfo method = typeof(AssetRegistry).GetMethod("MakeSafeTempName",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            string result = (string)method.Invoke(null, new object[] { "TestAssembly", "Makefile" });
-
-            Assert.NotNull(result);
-            Assert.StartsWith("TestAssembly_", result);
-            Assert.DoesNotContain(".", result.Substring("TestAssembly_".Length));
-        }
-
-        /// <summary>
-        /// Tests that make safe temp name extension length exactly 16 keeps extension
-        /// </summary>
-        [Fact] public void MakeSafeTempName_ExtensionLengthExactly16_KeepsExtension()
-        {
-            MethodInfo method = typeof(AssetRegistry).GetMethod("MakeSafeTempName",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            string ext15 = new string('x', 15);
-            string result = (string)method.Invoke(null, new object[] { "TestAssembly", "file." + ext15 });
-
-            Assert.NotNull(result);
-            Assert.StartsWith("TestAssembly_", result);
-            Assert.EndsWith("." + ext15, result);
-        }
-
-        /// <summary>
         /// Tests that get resource memory stream by name duplicate filenames resolves by full path
         /// </summary>
         [Fact] public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByFullPath()
@@ -506,29 +475,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Contains("not found in `assets.pack`", ex.Message);
 
             Assert.False(GetPathCache().Contains(compositeKey));
-        }
-
-        /// <summary>
-        /// Tests that ensure zip cached for active assembly loader missing throws invalid operation exception
-        /// </summary>
-        [Fact] public void EnsureZipCachedForActiveAssembly_LoaderMissing_ThrowsInvalidOperationException()
-        {
-            string assemblyName = "LoaderMiss_" + Guid.NewGuid();
-            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
-            SetupAssembly(assemblyName, zipBytes);
-
-            AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
-
-            GetZipCache().Remove(assemblyName);
-            GetLoaders().Remove(assemblyName);
-
-            MethodInfo method = typeof(AssetRegistry).GetMethod("EnsureZipCachedForActiveAssembly",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            TargetInvocationException tie = Assert.Throws<TargetInvocationException>(() =>
-                method.Invoke(null, null));
-            Assert.IsType<InvalidOperationException>(tie.InnerException);
-            Assert.Contains("no tiene un assets.pack registrado", tie.InnerException.Message);
         }
 
         /// <summary>

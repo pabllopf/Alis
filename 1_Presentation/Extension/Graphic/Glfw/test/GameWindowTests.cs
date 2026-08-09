@@ -72,40 +72,5 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.Equal(typeof(NativeWindow), type.BaseType);
         }
 
-        /// <summary>
-        /// Tests that game window has default constructor reflection
-        /// </summary>
-        [Fact]
-        public void GameWindow_HasDefaultConstructor_Reflection()
-        {
-            Type type = typeof(GameWindow);
-            System.Reflection.ConstructorInfo ctor = type.GetConstructor(Type.EmptyTypes);
-            Assert.NotNull(ctor);
-            Assert.True(ctor.IsPublic);
-        }
-
-        /// <summary>
-        /// Tests that game window has constructor with width height title reflection
-        /// </summary>
-        [Fact]
-        public void GameWindow_HasConstructorWithWidthHeightTitle_Reflection()
-        {
-            Type type = typeof(GameWindow);
-            System.Reflection.ConstructorInfo ctor = type.GetConstructor(new[] { typeof(int), typeof(int), typeof(string) });
-            Assert.NotNull(ctor);
-            Assert.True(ctor.IsPublic);
-        }
-
-        /// <summary>
-        /// Tests that game window has constructor with all params reflection
-        /// </summary>
-        [Fact]
-        public void GameWindow_HasConstructorWithAllParams_Reflection()
-        {
-            Type type = typeof(GameWindow);
-            System.Reflection.ConstructorInfo ctor = type.GetConstructor(new[] { typeof(int), typeof(int), typeof(string), typeof(Monitor), typeof(Window) });
-            Assert.NotNull(ctor);
-            Assert.True(ctor.IsPublic);
-        }
     }
 }

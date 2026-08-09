@@ -177,8 +177,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
         #region OpenWrite Guard Tests
 
-      
-
         #endregion
 
         #region CloseWrite Coverage Tests
@@ -457,15 +455,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(cscField.GetValue(writer));
         }
 
-       
-
-     
-
         #endregion
 
         #region Stream Mode Coverage Tests
 
-      
         /// <summary>
         ///     Tests that stream mode sets UseFilename to false.
         /// </summary>
@@ -484,7 +477,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.UseFilename);
         }
 
-        
         #endregion
 
         #region EncoderOptions Coverage Tests

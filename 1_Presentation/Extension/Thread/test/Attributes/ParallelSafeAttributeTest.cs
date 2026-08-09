@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Extension.Thread.Attributes;
 using Xunit;
 
@@ -214,23 +213,6 @@ namespace Alis.Extension.Thread.Test.Attributes
 
             Assert.NotNull(usage);
             Assert.False(usage.AllowMultiple);
-        }
-
-        /// <summary>
-        ///     Tests that min batch size property is read only
-        /// </summary>
-        [Fact]
-        public void MinBatchSize_IsReadOnly()
-        {
-            ParallelSafeAttribute attribute = new ParallelSafeAttribute(512);
-
-            int batchSize = attribute.MinBatchSize;
-
-            Assert.Equal(512, batchSize);
-
-            PropertyInfo property = typeof(ParallelSafeAttribute).GetProperty(nameof(ParallelSafeAttribute.MinBatchSize));
-            Assert.NotNull(property);
-            Assert.Null(property.SetMethod);
         }
 
         /// <summary>

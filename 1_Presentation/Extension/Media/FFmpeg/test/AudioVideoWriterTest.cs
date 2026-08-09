@@ -223,8 +223,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
                 _testFile, 640, 480, 30.0, 2, 44100, 20, videoOptions, audioOptions));
         }
 
-
-
         #endregion
 
         #region Valid Constructor Tests
@@ -466,7 +464,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Assert.False(writer.OpenedForWriting);
         }
         
-
         /// <summary>
         ///     Tests that CloseWrite() throws InvalidOperationException when not opened.
         /// </summary>

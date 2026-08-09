@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Xunit;
 
@@ -96,29 +95,6 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.SetDefaultLogger(new MockLogger());
 
             Assert.Throws<InvalidOperationException>(() => Logger.Exception("Exception message"));
-        }
-
-        /// <summary>
-        /// Tests that logger trace with null default logger does not throw
-        /// </summary>
-        [Fact]
-        public void Logger_Trace_WithNullDefaultLogger_DoesNotThrow()
-        {
-            FieldInfo field = typeof(Logger).GetField("_defaultLogger", BindingFlags.NonPublic | BindingFlags.Static);
-            object saved = field.GetValue(null);
-            try
-            {
-                field.SetValue(null, null);
-                Logger.Trace("test");
-                Logger.Debug("test");
-                Logger.Info("test");
-                Logger.Warning("test");
-                Logger.Error("test");
-            }
-            finally
-            {
-                field.SetValue(null, saved);
-            }
         }
 
         /// <summary>

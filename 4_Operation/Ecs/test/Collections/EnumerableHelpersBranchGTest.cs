@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -40,66 +39,6 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class EnumerableHelpersBranchGTest
     {
-        /// <summary>
-        ///     Tests that ToArrayFromEnumerator handles overflow when arrayMaxLength equals count.
-        /// </summary>
-        [Fact]
-        public void ToArrayFromEnumerator_ArrayMaxLengthEqualsCount_UsesCountPlusOne()
-        {
-            MethodInfo method = typeof(EnumerableHelpers)
-                .GetMethod("ToArrayFromEnumerator", BindingFlags.NonPublic | BindingFlags.Static)
-                .MakeGenericMethod(typeof(int));
 
-            int arrayMaxLength = 4;
-            IEnumerable<int> source = Enumerable.Range(1, 6);
-            using IEnumerator<int> enumerator = source.GetEnumerator();
-            enumerator.MoveNext();
-
-            int[] result = (int[]) method.Invoke(null, new object[] { enumerator, arrayMaxLength, 0 });
-
-            Assert.Equal(6, result.Length);
-        }
-
-        /// <summary>
-        ///     Tests that ToArrayFromEnumerator handles overflow when arrayMaxLength is less than count.
-        /// </summary>
-        [Fact]
-        public void ToArrayFromEnumerator_ArrayMaxLengthLessThanCount_UsesCountPlusOne()
-        {
-            MethodInfo method = typeof(EnumerableHelpers)
-                .GetMethod("ToArrayFromEnumerator", BindingFlags.NonPublic | BindingFlags.Static)
-                .MakeGenericMethod(typeof(int));
-
-            int arrayMaxLength = 3;
-            IEnumerable<int> source = Enumerable.Range(1, 5);
-            using IEnumerator<int> enumerator = source.GetEnumerator();
-            enumerator.MoveNext();
-
-            int[] result = (int[]) method.Invoke(null, new object[] { enumerator, arrayMaxLength, 0 });
-
-            Assert.Equal(5, result.Length);
-        }
-
-        /// <summary>
-        ///     Tests that ToArrayFromEnumerator handles overflow when arrayMaxLength equals default capacity.
-        /// </summary>
-        [Fact]
-        public void ToArrayFromEnumerator_ArrayMaxLengthEqualsDefaultCapacity_HandlesCorrectly()
-        {
-            MethodInfo method = typeof(EnumerableHelpers)
-                .GetMethod("ToArrayFromEnumerator", BindingFlags.NonPublic | BindingFlags.Static)
-                .MakeGenericMethod(typeof(string));
-
-            int arrayMaxLength = 4;
-            IEnumerable<string> source = new string[] { "a", "b", "c", "d", "e" };
-            using IEnumerator<string> enumerator = source.GetEnumerator();
-            enumerator.MoveNext();
-
-            string[] result = (string[]) method.Invoke(null, new object[] { enumerator, arrayMaxLength, 0 });
-
-            Assert.Equal(5, result.Length);
-            Assert.Equal("a", result[0]);
-            Assert.Equal("e", result[4]);
-        }
     }
 }

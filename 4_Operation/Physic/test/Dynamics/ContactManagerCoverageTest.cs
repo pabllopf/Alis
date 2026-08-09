@@ -39,7 +39,6 @@ namespace Alis.Core.Physic.Test.Dynamics
     public class ContactManagerCoverageTest
     {
         
-
         /// <summary>
         ///     Tests that both static bodies do not create contacts.
         ///     This exercises Body.ShouldCollide returning false in PassesCollisionFilters.

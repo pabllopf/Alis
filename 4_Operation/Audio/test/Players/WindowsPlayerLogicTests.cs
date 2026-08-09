@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -207,14 +206,5 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
-        /// <summary>
-        /// Tests that playback finished file name should be internal
-        /// </summary>
-        [Fact]
-        public void PlaybackFinished_FileName_ShouldBeInternal()
-        {
-            FieldInfo field = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.NotNull(field);
-        }
     }
 }

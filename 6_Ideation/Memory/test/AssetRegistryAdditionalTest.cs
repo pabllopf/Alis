@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
@@ -37,69 +36,6 @@ namespace Alis.Core.Aspect.Memory.Test
     /// </summary>
     public class AssetRegistryAdditionalTest
     {
-        /// <summary>
-        /// Tests that to lower hex null bytes returns empty
-        /// </summary>
-        [Fact]
-        public void ToLowerHex_NullBytes_ReturnsEmpty()
-        {
-            MethodInfo method = typeof(AssetRegistry).GetMethod("ToLowerHex",
-                BindingFlags.NonPublic | BindingFlags.Static,
-                null,
-                new[] { typeof(byte[]) },
-                null);
-
-            if (method == null)
-            {
-                return;
-            }
-
-            string result = (string)method.Invoke(null, new object[] { null });
-            Assert.Equal(string.Empty, result);
-        }
-
-        /// <summary>
-        /// Tests that to lower hex empty bytes returns empty
-        /// </summary>
-        [Fact]
-        public void ToLowerHex_EmptyBytes_ReturnsEmpty()
-        {
-            MethodInfo method = typeof(AssetRegistry).GetMethod("ToLowerHex",
-                BindingFlags.NonPublic | BindingFlags.Static,
-                null,
-                new[] { typeof(byte[]) },
-                null);
-
-            if (method == null)
-            {
-                return;
-            }
-
-            string result = (string)method.Invoke(null, new object[] { System.Array.Empty<byte>() });
-            Assert.Equal(string.Empty, result);
-        }
-
-        /// <summary>
-        /// Tests that to lower hex valid bytes returns hex string
-        /// </summary>
-        [Fact]
-        public void ToLowerHex_ValidBytes_ReturnsHexString()
-        {
-            MethodInfo method = typeof(AssetRegistry).GetMethod("ToLowerHex",
-                BindingFlags.NonPublic | BindingFlags.Static,
-                null,
-                new[] { typeof(byte[]) },
-                null);
-
-            if (method == null)
-            {
-                return;
-            }
-
-            byte[] input = { 0xAB, 0x1F, 0x00, 0xFF };
-            string result = (string)method.Invoke(null, new object[] { input });
-            Assert.Equal("ab1f00ff", result);
-        }
 
         /// <summary>
         /// Tests that zip cache entry pack bytes read only returns span

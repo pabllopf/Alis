@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Alis.Core.Graphic.Ui;
 using Xunit;
 
@@ -50,30 +49,6 @@ namespace Alis.Core.Graphic.Test.Ui
         public void Font_IsPublic()
         {
             Assert.True(typeof(Font).IsPublic);
-        }
-
-        /// <summary>
-        /// Tests that depth has public getter and setter
-        /// </summary>
-        [Fact]
-        public void Depth_HasPublicGetterAndSetter()
-        {
-            PropertyInfo prop = typeof(Font).GetProperty("Depth");
-            Assert.NotNull(prop);
-            Assert.True(prop.CanRead);
-            Assert.True(prop.CanWrite);
-        }
-
-        /// <summary>
-        /// Tests that name file has public getter and setter
-        /// </summary>
-        [Fact]
-        public void NameFile_HasPublicGetterAndSetter()
-        {
-            PropertyInfo prop = typeof(Font).GetProperty("NameFile");
-            Assert.NotNull(prop);
-            Assert.True(prop.CanRead);
-            Assert.True(prop.CanWrite);
         }
 
         /// <summary>

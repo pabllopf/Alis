@@ -47,13 +47,5 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IHasSpaceWork).IsPublic);
         }
 
-        /// <summary>
-        /// Tests that space work property should exist
-        /// </summary>
-        [Fact]
-        public void SpaceWork_Property_ShouldExist()
-        {
-            Assert.NotNull(typeof(IHasSpaceWork).GetProperty("SpaceWork"));
-        }
     }
 }

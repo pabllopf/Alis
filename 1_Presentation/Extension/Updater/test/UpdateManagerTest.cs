@@ -475,7 +475,6 @@ namespace Alis.Extension.Updater.Test
             }
         }
         
-
         /// <summary>
         ///     Creates the manager using the specified version to install
         /// </summary>
@@ -609,7 +608,6 @@ namespace Alis.Extension.Updater.Test
             /// </summary>
             internal readonly Task _worker;
             
-
             /// <summary>
             ///     Gets the value of the uri
             /// </summary>

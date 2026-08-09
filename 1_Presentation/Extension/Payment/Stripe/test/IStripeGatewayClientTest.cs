@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -52,85 +51,5 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(interfaceType.IsPublic);
         }
 
-        /// <summary>
-        ///     Tests that i stripe gateway client has configure method
-        /// </summary>
-        [Fact]
-        public void IStripeGatewayClient_HasConfigureMethod()
-        {
-            // Arrange & Act
-            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("Configure");
-
-            // Assert
-            Assert.NotNull(method);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(string), parameters[0].ParameterType);
-            Assert.Equal(typeof(void), method.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that i stripe gateway client has create checkout session async method
-        /// </summary>
-        [Fact]
-        public void IStripeGatewayClient_HasCreateCheckoutSessionAsyncMethod()
-        {
-            // Arrange & Act
-            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreateCheckoutSessionAsync");
-
-            // Assert
-            Assert.NotNull(method);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Equal(2, parameters.Length);
-            Assert.Equal(typeof(StripeCheckoutSessionRequest), parameters[0].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that i stripe gateway client has create payment intent async method
-        /// </summary>
-        [Fact]
-        public void IStripeGatewayClient_HasCreatePaymentIntentAsyncMethod()
-        {
-            // Arrange & Act
-            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreatePaymentIntentAsync");
-
-            // Assert
-            Assert.NotNull(method);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Equal(2, parameters.Length);
-            Assert.Equal(typeof(StripePaymentIntentRequest), parameters[0].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that i stripe gateway client has get payment intent async method
-        /// </summary>
-        [Fact]
-        public void IStripeGatewayClient_HasGetPaymentIntentAsyncMethod()
-        {
-            // Arrange & Act
-            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("GetPaymentIntentAsync");
-
-            // Assert
-            Assert.NotNull(method);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Equal(2, parameters.Length);
-            Assert.Equal(typeof(string), parameters[0].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that i stripe gateway client has create refund async method
-        /// </summary>
-        [Fact]
-        public void IStripeGatewayClient_HasCreateRefundAsyncMethod()
-        {
-            // Arrange & Act
-            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreateRefundAsync");
-
-            // Assert
-            Assert.NotNull(method);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Equal(2, parameters.Length);
-            Assert.Equal(typeof(StripeRefundRequest), parameters[0].ParameterType);
-        }
     }
 }

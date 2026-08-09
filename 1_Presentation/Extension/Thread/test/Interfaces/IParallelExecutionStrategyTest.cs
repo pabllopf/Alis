@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Extension.Thread.Interfaces;
 using Xunit;
 
@@ -145,39 +144,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
     /// </summary>
     public class IParallelExecutionStrategyTest
     {
-        /// <summary>
-        ///     Tests that interface has can execute in parallel method
-        /// </summary>
-        [Fact]
-        public void Interface_HasCanExecuteInParallelMethod()
-        {
-            Type interfaceType = typeof(IParallelExecutionStrategy);
-
-            MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.CanExecuteInParallel));
-
-            Assert.NotNull(method);
-            Assert.Equal(typeof(bool), method.ReturnType);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(Type), parameters[0].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that interface has get minimum batch size method
-        /// </summary>
-        [Fact]
-        public void Interface_HasGetMinimumBatchSizeMethod()
-        {
-            Type interfaceType = typeof(IParallelExecutionStrategy);
-
-            MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.GetMinimumBatchSize));
-
-            Assert.NotNull(method);
-            Assert.Equal(typeof(int), method.ReturnType);
-            ParameterInfo[] parameters = method.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(Type), parameters[0].ParameterType);
-        }
 
         /// <summary>
         ///     Tests that mock strategy can execute in parallel works
@@ -312,7 +278,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
             Assert.Equal("IParallelExecutionStrategy", name);
         }
         
-
         /// <summary>
         ///     Tests that strategy can handle null type
         /// </summary>

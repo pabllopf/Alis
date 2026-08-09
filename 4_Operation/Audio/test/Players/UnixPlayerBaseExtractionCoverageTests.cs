@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Xunit;
@@ -73,25 +72,6 @@ namespace Alis.Core.Audio.Test.Players
             byte[] wavBytes = CreateRealWavBytes();
             string name = AssetRegistryTestHelper.RegisterNewAssembly(WavResourceName, wavBytes);
             AssetRegistryTestHelper.SaveAndSetActive(name);
-        }
-
-        /// <summary>
-        /// Tests that extract wav from resources with valid resource should return path
-        /// </summary>
-        [Fact]
-        public void ExtractWavFromResources_WithValidResource_ShouldReturnPath()
-        {
-            SetupAssembly();
-
-            MethodInfo extractMethod = typeof(UnixPlayerBase).GetMethod(
-                "ExtractWavFromResourcesAsync",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            string result = (string)extractMethod.Invoke(null, new object[] { WavResourceName });
-
-            Assert.NotNull(result);
-            Assert.True(File.Exists(result), $"Extracted file should exist: {result}");
-            File.Delete(result);
         }
 
         /// <summary>

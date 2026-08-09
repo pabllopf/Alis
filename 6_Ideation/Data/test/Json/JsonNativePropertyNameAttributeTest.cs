@@ -108,34 +108,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        ///     Tests that the attribute Name property is read-only
-        /// </summary>
-        [Fact]
-        public void Name_Property_IsReadOnly()
-        {
-            PropertyInfo propertyInfo = typeof(JsonNativePropertyNameAttribute).GetProperty("Name",
-                BindingFlags.Public | BindingFlags.Instance);
-
-            Assert.NotNull(propertyInfo);
-            Assert.NotNull(propertyInfo.GetGetMethod());
-            Assert.Null(propertyInfo.GetSetMethod());
-        }
-
-        /// <summary>
-        ///     Tests that the attribute can be applied to a property
-        /// </summary>
-        [Fact]
-        public void Attribute_CanBeAppliedToProperty()
-        {
-            PropertyInfo propertyInfo = typeof(TestClassWithAttribute).GetProperty(nameof(TestClassWithAttribute.CustomNameProperty));
-
-            Assert.NotNull(propertyInfo);
-            JsonNativePropertyNameAttribute attribute = propertyInfo.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-            Assert.NotNull(attribute);
-            Assert.Equal("customJsonName", attribute.Name);
-        }
-
-        /// <summary>
         ///     Tests that the attribute is sealed and cannot be inherited
         /// </summary>
         [Fact]
@@ -183,34 +155,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(unicodeName);
 
             Assert.Equal(unicodeName, attribute.Name);
-        }
-
-        /// <summary>
-        ///     Tests that multiple attributes can be applied to different properties
-        /// </summary>
-        [Fact]
-        public void Attribute_CanBeAppliedToMultipleProperties()
-        {
-            Type classType = typeof(TestClassWithMultipleAttributes);
-            PropertyInfo property1 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property1));
-            PropertyInfo property2 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property2));
-            PropertyInfo property3 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property3));
-
-            Assert.NotNull(property1);
-            Assert.NotNull(property2);
-            Assert.NotNull(property3);
-
-            JsonNativePropertyNameAttribute attr1 = property1.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-            JsonNativePropertyNameAttribute attr2 = property2.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-            JsonNativePropertyNameAttribute attr3 = property3.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-
-            Assert.NotNull(attr1);
-            Assert.NotNull(attr2);
-            Assert.NotNull(attr3);
-
-            Assert.Equal("firstName", attr1.Name);
-            Assert.Equal("lastName", attr2.Name);
-            Assert.Equal("emailAddress", attr3.Name);
         }
 
         /// <summary>

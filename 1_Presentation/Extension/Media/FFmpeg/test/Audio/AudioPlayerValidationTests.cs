@@ -326,7 +326,6 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
 
         #region CloseWrite Body Tests (via Reflection State Setup)
 
-   
         /// <summary>
         ///     Tests that Dispose else block runs safely when ffplayp is non-null but has exited.
         ///     This covers the <c>else</c> branch of dispose (OpenedForWriting=false, ffplayp non-null).

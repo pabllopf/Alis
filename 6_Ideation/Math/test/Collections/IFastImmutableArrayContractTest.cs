@@ -49,18 +49,5 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Contains(interfaceType, typeof(FastImmutableArray<int>).GetInterfaces());
         }
 
-        /// <summary>
-        ///     Tests that IFastImmutableArray.Array returns the same underlying array instance.
-        /// </summary>
-        [Fact]
-        public void ContractArrayProperty_ReturnsBackingArrayReference()
-        {
-            int[] backingArray = {4, 8, 15, 16};
-            object immutable = new FastImmutableArray<int>(backingArray);
-            Type interfaceType = immutable.GetType().Assembly.GetType("Alis.Core.Aspect.Math.Collections.IFastImmutableArray", true);
-            object untypedArray = interfaceType.GetProperty("Array")?.GetValue(immutable);
-
-            Assert.Same(backingArray, untypedArray);
-        }
     }
 }

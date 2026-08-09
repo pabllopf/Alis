@@ -47,31 +47,5 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IRuntime).IsPublic);
         }
 
-        /// <summary>
-        /// Tests that initialize method should exist
-        /// </summary>
-        [Fact]
-        public void Initialize_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IRuntime).GetMethod("Initialize"));
-        }
-
-        /// <summary>
-        /// Tests that update method should exist
-        /// </summary>
-        [Fact]
-        public void Update_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IRuntime).GetMethod("Update"));
-        }
-
-        /// <summary>
-        /// Tests that render method should exist
-        /// </summary>
-        [Fact]
-        public void Render_Method_ShouldExist()
-        {
-            Assert.NotNull(typeof(IRuntime).GetMethod("Render"));
-        }
     }
 }

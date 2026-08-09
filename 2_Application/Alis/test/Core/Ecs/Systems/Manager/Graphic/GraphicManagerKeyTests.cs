@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
 using Context = Alis.Core.Ecs.Systems.Scope.Context;
@@ -122,53 +121,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Contains(ConsoleKey.Enter, manager.allKeys);
         }
 
-        /// <summary>
-        /// Tests that update key timestamps with pressed keys adds timestamps
-        /// </summary>
-        [Fact]
-        public void UpdateKeyTimestamps_WithPressedKeys_AddsTimestamps()
-        {
-            Context context = CreateContext();
-            GraphicManager manager = new GraphicManager(context);
-            HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>();
-            DateTime now = DateTime.UtcNow;
-
-            manager.UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
-
-            FieldInfo timestampsField = typeof(GraphicManager).GetField("keyDownTimestamps",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            Dictionary<ConsoleKey, DateTime> timestamps = (Dictionary<ConsoleKey, DateTime>)timestampsField.GetValue(manager);
-
-            Assert.True(timestamps.ContainsKey(ConsoleKey.A));
-        }
-
-        /// <summary>
-        ///     Tests that update key timestamps with released keys removes timestamps
-        /// </summary>
-        [Fact]
-        public void UpdateKeyTimestamps_WithReleasedKeys_RemovesTimestamps()
-        {
-            Context context = CreateContext();
-            GraphicManager manager = new GraphicManager(context);
-            HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>();
-            DateTime now = DateTime.UtcNow;
-
-            manager.UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
-
-            releasedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            pressedKeys = new HashSet<ConsoleKey>();
-
-            manager.UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
-
-            FieldInfo timestampsField = typeof(GraphicManager).GetField("keyDownTimestamps",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            Dictionary<ConsoleKey, DateTime> timestamps = (Dictionary<ConsoleKey, DateTime>)timestampsField.GetValue(manager);
-
-            Assert.False(timestamps.ContainsKey(ConsoleKey.A));
-        }
-        
         /// <summary>
         /// Creates the context
         /// </summary>

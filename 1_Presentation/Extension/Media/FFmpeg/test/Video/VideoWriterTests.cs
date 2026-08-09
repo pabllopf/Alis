@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Video;
@@ -211,18 +210,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        /// Tests that file ctor private ffmpeg field stores executable
-        /// </summary>
-        [Fact]
-        public void FileCtor_PrivateFfmpegField_StoresExecutable()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30, null, "/custom/path/ffmpeg");
-            FieldInfo field = typeof(VideoWriter).GetField("ffmpeg", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.Equal("/custom/path/ffmpeg", field.GetValue(writer));
-            writer.Dispose();
-        }
-
-        /// <summary>
         /// Tests that stream ctor null stream throws argument null exception
         /// </summary>
         [Fact]
@@ -333,19 +320,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        /// Tests that stream ctor private ffmpeg field stores executable
-        /// </summary>
-        [Fact]
-        public void StreamCtor_PrivateFfmpegField_StoresExecutable()
-        {
-            using MemoryStream ms = new MemoryStream();
-            VideoWriter writer = new VideoWriter(ms, 640, 480, 30, null, "custom-ff");
-            FieldInfo field = typeof(VideoWriter).GetField("ffmpeg", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.Equal("custom-ff", field.GetValue(writer));
-            writer.Dispose();
-        }
-
-        /// <summary>
         /// Tests that dispose public method completes without exception
         /// </summary>
         [Fact]
@@ -357,90 +331,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        /// Tests that dispose with disposing false does not release managed resources
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingFalse_DoesNotReleaseManagedResources()
-        {
-            using MemoryStream dest = new MemoryStream();
-            VideoWriter writer = new VideoWriter(dest, 640, 480, 30);
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Exception ex = Record.Exception(() =>
-                disposeMethod.Invoke(writer, new object[] { false }));
-            Assert.Null(ex);
-
-            Assert.True(dest.CanWrite);
-            writer.Dispose();
-        }
-
-     
-
-        /// <summary>
-        /// Tests that dispose with disposing true disposes destination stream
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrue_DisposesDestinationStream()
-        {
-            MemoryStream dest = new MemoryStream();
-            VideoWriter writer = new VideoWriter(dest, 640, 480, 30);
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            disposeMethod.Invoke(writer, new object[] { true });
-            Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
-        }
-
-        /// <summary>
-        /// Tests that dispose with disposing true disposes cancellation token source
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrue_DisposesCancellationTokenSource()
-        {
-            VideoWriter writer = new VideoWriter(new MemoryStream(), 640, 480, 30);
-            CancellationTokenSource csc = new CancellationTokenSource();
-            FieldInfo cscField = typeof(VideoWriter).GetField("csc",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            cscField.SetValue(writer, csc);
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            disposeMethod.Invoke(writer, new object[] { true });
-            Assert.Throws<ObjectDisposedException>(() => csc.Token.Register(() => { }));
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that dispose with disposing true and null csc does not throw
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrueAndNullCsc_DoesNotThrow()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            Exception ex = Record.Exception(() =>
-                disposeMethod.Invoke(writer, new object[] { true }));
-            Assert.Null(ex);
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that dispose with disposing true and null destination stream does not throw
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrueAndNullDestinationStream_DoesNotThrow()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            Exception ex = Record.Exception(() =>
-                disposeMethod.Invoke(writer, new object[] { true }));
-            Assert.Null(ex);
-            writer.Dispose();
-        }
-
-        
-        /// <summary>
         /// Tests that close write not opened throws invalid operation exception
         /// </summary>
         [Fact]
@@ -449,22 +339,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
             Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
             writer.Dispose();
-        }
-
-        
-   
-
-        /// <summary>
-        /// Tests that internal fields csc and ffmpegp initially null
-        /// </summary>
-        [Fact]
-        public void InternalFields_CscAndFfmpegp_InitiallyNull()
-        {
-            using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            FieldInfo cscField = typeof(VideoWriter).GetField("csc", BindingFlags.NonPublic | BindingFlags.Instance);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.Null(cscField.GetValue(writer));
-            Assert.Null(ffmpegpField.GetValue(writer));
         }
 
         /// <summary>

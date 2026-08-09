@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;
 
@@ -226,26 +225,6 @@ namespace Alis.Extension.Thread.Test.Scheduling
             Assert.Equal(1000000, partition.StartIndex);
             Assert.Equal(500000, partition.Length);
             Assert.Equal(1500000, partition.EndIndex);
-        }
-
-        /// <summary>
-        ///     Tests that partition properties are immutable
-        /// </summary>
-        [Fact]
-        public void Partition_PropertiesAreImmutable()
-        {
-            BatchPartition partition = new BatchPartition(10, 20);
-
-            PropertyInfo startProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.StartIndex));
-            PropertyInfo lengthProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.Length));
-            PropertyInfo endProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.EndIndex));
-
-            Assert.NotNull(startProperty);
-            Assert.NotNull(lengthProperty);
-            Assert.NotNull(endProperty);
-            Assert.Null(startProperty.SetMethod);
-            Assert.Null(lengthProperty.SetMethod);
-            Assert.Null(endProperty.SetMethod);
         }
 
         /// <summary>

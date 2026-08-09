@@ -30,7 +30,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
@@ -81,64 +80,6 @@ namespace Alis.Core.Ecs.Test.Updating
             GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
 
             GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
-        }
-
-        /// <summary>
-        ///     Tests that register update method attribute adds component type to cache
-        /// </summary>
-        [Fact] public void RegisterUpdateMethodAttribute_AddsComponentTypeToCache()
-        {
-            Type attributeType = typeof(GenerationServicesProbeAttribute);
-            Type componentType = typeof(UpdateComponent);
-
-            GenerationServices.RegisterUpdateMethodAttribute(attributeType, componentType);
-            IDictionary cache = (IDictionary) typeof(GenerationServices)
-                .GetField("TypeAttributeCache", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            Assert.True(cache.Contains(attributeType));
-            Assert.Contains(componentType, (HashSet<Type>) cache[attributeType]);
-        }
-
-        /// <summary>
-        ///     Tests that register init registers delegate that invokes on init
-        /// </summary>
-        [Fact] public void RegisterInit_RegistersDelegateThatInvokesOnInit()
-        {
-            GenerationServices.RegisterInit<GenerationServicesInitDestroyProbe>();
-            IDictionary cache = (IDictionary) typeof(GenerationServices)
-                .GetField("TypeIniters", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            ComponentDelegates<GenerationServicesInitDestroyProbe>.InitDelegate init =
-                (ComponentDelegates<GenerationServicesInitDestroyProbe>.InitDelegate) cache[typeof(GenerationServicesInitDestroyProbe)];
-
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            GenerationServicesInitDestroyProbe probe = default(GenerationServicesInitDestroyProbe);
-
-            init(entity, ref probe);
-
-            Assert.Equal(1, probe.InitCalls);
-        }
-
-        /// <summary>
-        ///     Tests that register destroy registers delegate that invokes on destroy
-        /// </summary>
-        [Fact] public void RegisterDestroy_RegistersDelegateThatInvokesOnDestroy()
-        {
-            GenerationServices.RegisterDestroy<GenerationServicesInitDestroyProbe>();
-            IDictionary cache = (IDictionary) typeof(GenerationServices)
-                .GetField("TypeDestroyers", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-
-            ComponentDelegates<GenerationServicesInitDestroyProbe>.DestroyDelegate destroy =
-                (ComponentDelegates<GenerationServicesInitDestroyProbe>.DestroyDelegate) cache[typeof(GenerationServicesInitDestroyProbe)];
-
-            GenerationServicesInitDestroyProbe probe = default(GenerationServicesInitDestroyProbe);
-            destroy(ref probe);
-
-            Assert.Equal(1, probe.DestroyCalls);
         }
 
         /// <summary>

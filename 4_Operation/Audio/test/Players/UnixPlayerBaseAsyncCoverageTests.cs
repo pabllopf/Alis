@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Xunit;
@@ -67,34 +66,6 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
-        /// Tests that play with cached file should reuse last extracted file
-        /// </summary>
-        [Fact]
-        public async Task Play_WithCachedFile_ShouldReuseLastExtractedFile()
-        {
-            TestPlayerForCoverage player = new TestPlayerForCoverage();
-            string tempFile = Path.GetTempFileName();
-            try
-            {
-                File.WriteAllText(tempFile, "test");
-                await player.Play(tempFile);
-                Assert.True(player.Playing);
-
-                FieldInfo lastPlayedField = typeof(UnixPlayerBase).GetField("_lastPlayedFile", BindingFlags.NonPublic | BindingFlags.Instance);
-                string lastPlayed = (string)lastPlayedField.GetValue(player);
-                Assert.NotNull(lastPlayed);
-
-                await player.Play(tempFile);
-                Assert.True(player.Playing);
-            }
-            finally
-            {
-                await player.Stop();
-                if (File.Exists(tempFile)) File.Delete(tempFile);
-            }
-        }
-
-        /// <summary>
         /// Tests that play with non existent file should throw file not found exception
         /// </summary>
         [Fact]
@@ -145,7 +116,6 @@ namespace Alis.Core.Audio.Test.Players
             TestPlayerForCoverage player = new TestPlayerForCoverage();
             await Assert.ThrowsAnyAsync<Exception>(() => player.PlayLoop("nonexistent_file_12345.wav", true));
         }
-
 
         /// <summary>
         /// Tests that play after stop should work

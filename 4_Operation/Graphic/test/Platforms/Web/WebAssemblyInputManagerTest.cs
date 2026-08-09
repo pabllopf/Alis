@@ -674,7 +674,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        
         /// <summary>
         /// Webs the assembly input manager get key name returns correct name using the specified key
         /// </summary>

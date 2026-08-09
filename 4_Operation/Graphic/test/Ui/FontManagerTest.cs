@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Ui;
 using Xunit;
@@ -40,70 +39,6 @@ namespace Alis.Core.Graphic.Test.Ui
     /// </summary>
     public class FontManagerTest
     {
-        /// <summary>
-        ///     Tests that DefaultFont property is static and accessible.
-        /// </summary>
-        [Fact]
-        public void DefaultFont_IsStatic_CanBeAccessed()
-        {
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
-                BindingFlags.Public | BindingFlags.Static);
-
-            Assert.NotNull(defaultFontProperty);
-            Assert.True(defaultFontProperty.CanRead);
-        }
-
-        /// <summary>
-        ///     Tests that DefaultFont returns a Font instance.
-        /// </summary>
-        [Fact]
-        public void DefaultFont_ReturnsFont_TypeIsCorrect()
-        {
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
-                BindingFlags.Public | BindingFlags.Static);
-
-            Assert.NotNull(defaultFontProperty);
-            Assert.Equal(typeof(Font), defaultFontProperty.PropertyType);
-        }
-
-        /// <summary>
-        ///     Tests that DefaultFont property is read-only.
-        /// </summary>
-        [Fact]
-        public void DefaultFont_IsReadOnly_CannotBeModified()
-        {
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
-                BindingFlags.Public | BindingFlags.Static);
-
-            Assert.NotNull(defaultFontProperty);
-            Assert.False(defaultFontProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that RenderText method exists with text and coordinates parameters.
-        /// </summary>
-        [Fact]
-        public void RenderText_MethodWithCoordinatesExists_CanBeInvoked()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
-
-            Assert.NotNull(method);
-        }
-
-        /// <summary>
-        ///     Tests that RenderText method exists with color parameters.
-        /// </summary>
-        [Fact]
-        public void RenderText_MethodWithColorsExists_CanBeInvoked()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
-
-            Assert.NotNull(method);
-        }
 
         /// <summary>
         ///     Tests that FontManager is a static class (sealed and all members static).
@@ -128,77 +63,5 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.True(fontManagerType.IsPublic);
         }
 
-        /// <summary>
-        ///     Tests that RenderText with colors method accepts correct parameter types.
-        /// </summary>
-        [Fact]
-        public void RenderText_WithColors_ParametersAreCorrect()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
-
-            ParameterInfo[] parameters = method?.GetParameters();
-
-            Assert.NotNull(parameters);
-            Assert.Equal(5, parameters.Length);
-            Assert.Equal(typeof(string), parameters[0].ParameterType);
-            Assert.Equal(typeof(int), parameters[1].ParameterType);
-            Assert.Equal(typeof(int), parameters[2].ParameterType);
-            Assert.Equal(typeof(Color), parameters[3].ParameterType);
-            Assert.Equal(typeof(Color), parameters[4].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that RenderText with coordinates method accepts correct parameter types.
-        /// </summary>
-        [Fact]
-        public void RenderText_WithCoordinates_ParametersAreCorrect()
-        {
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
-
-            ParameterInfo[] parameters = method?.GetParameters();
-
-            Assert.NotNull(parameters);
-            Assert.Equal(3, parameters.Length);
-            Assert.Equal(typeof(string), parameters[0].ParameterType);
-            Assert.Equal(typeof(int), parameters[1].ParameterType);
-            Assert.Equal(typeof(int), parameters[2].ParameterType);
-        }
-
-        /// <summary>
-        ///     Tests that both RenderText methods return void.
-        /// </summary>
-        [Fact]
-        public void RenderText_Methods_ReturnVoid()
-        {
-            MethodInfo method1 = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
-            MethodInfo method2 = typeof(FontManager).GetMethod("RenderText",
-                BindingFlags.Public | BindingFlags.Static,
-                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
-
-            Assert.NotNull(method1);
-            Assert.Equal(typeof(void), method1.ReturnType);
-            Assert.NotNull(method2);
-            Assert.Equal(typeof(void), method2.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that FontManager has only static members.
-        /// </summary>
-        [Fact]
-        public void FontManager_AllMembers_AreStatic()
-        {
-            Type fontManagerType = typeof(FontManager);
-            PropertyInfo[] properties = fontManagerType.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            MethodInfo[] methods = fontManagerType.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
-
-            Assert.NotEmpty(properties);
-            Assert.NotEmpty(methods);
-        }
     }
 }

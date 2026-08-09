@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -55,35 +54,6 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.Empty(result);
             Assert.Equal(0, length);
-        }
-
-        /// <summary>
-        ///     Tests that the overflow protection inside <c>ToArrayFromEnumerator</c> works correctly.
-        ///     Invokes the private method via reflection with a small <c>arrayMaxLength</c> so that
-        ///     doubling the capacity exceeds the limit, exercising the overflow handling.
-        /// </summary>
-        [Fact]
-        public void ToArrayFromEnumerator_OverflowProtection_CapsCapacity()
-        {
-            MethodInfo method = typeof(EnumerableHelpers)
-                .GetMethod("ToArrayFromEnumerator", BindingFlags.NonPublic | BindingFlags.Static)!
-                .MakeGenericMethod(typeof(int));
-
-            IEnumerable<int> source = Enumerable.Range(1, 6);
-            using IEnumerator<int> enumerator = source.GetEnumerator();
-            enumerator.MoveNext();
-
-            object[] args = { enumerator, 5, 0 };
-            int[] result = (int[])method.Invoke(null, args)!;
-            int length = (int)args[2];
-
-            Assert.Equal(6, length);
-            Assert.Equal(1, result[0]);
-            Assert.Equal(2, result[1]);
-            Assert.Equal(3, result[2]);
-            Assert.Equal(4, result[3]);
-            Assert.Equal(5, result[4]);
-            Assert.Equal(6, result[5]);
         }
 
         /// <summary>

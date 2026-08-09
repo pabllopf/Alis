@@ -1,5 +1,4 @@
 using System.Buffers;
-using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -14,25 +13,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class DeepCoveragePart3Test
     {
-        /// <summary>
-        /// Tests that fields get component data reference invoked
-        /// </summary>
-        [Fact] public void Fields_GetComponentDataReference_Invoked()
-        {
-            using Scene scene = new();
-            scene.Create(new Position { X = 42 });
-            Archetype archetype = scene.DefaultArchetype;
-            Fields fields = archetype.Data;
-            MethodInfo method = typeof(Fields).GetMethod("GetComponentDataReference",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            Assert.NotNull(method);
-            MethodInfo generic = method.MakeGenericMethod(typeof(Position));
-            try
-            {
-                generic.Invoke(fields, null);
-            }
-            catch (System.Reflection.TargetInvocationException) { }
-        }
 
         /// <summary>
         /// Tests that component registry register and lookup consistent

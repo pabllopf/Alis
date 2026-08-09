@@ -47,7 +47,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         /// </summary>
         internal readonly IJsonSerializer _serializer = new JsonSerializer();
 
-
         /// <summary>
         ///     Tests that serialize large object completes in reasonable time
         /// </summary>
@@ -64,7 +63,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             Assert.True(stopwatch.ElapsedMilliseconds < 1000);
         }
 
-
         /// <summary>
         ///     Tests that serialize null object throws argument null exception
         /// </summary>
@@ -73,7 +71,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         {
             Assert.Throws<ArgumentNullException>(() => _serializer.Serialize<TestStringObject>(null));
         }
-
 
         /// <summary>
         ///     Tests that serialize integer property serializes correctly
@@ -118,7 +115,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             Assert.Contains("{", json);
         }
 
-
         /// <summary>
         ///     Tests that serialize string property serializes correctly
         /// </summary>
@@ -158,7 +154,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
 
             Assert.Contains("\"\"", json);
         }
-
 
         /// <summary>
         ///     Tests that serialize date time property serializes correctly
@@ -201,7 +196,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             Assert.Contains("00000000-0000-0000-0000-000000000000", json);
         }
 
-
         /// <summary>
         ///     Tests that serialize multiple properties includes all properties
         /// </summary>
@@ -237,7 +231,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             Assert.StartsWith("{", json);
             Assert.EndsWith("}", json);
         }
-
 
         /// <summary>
         ///     Tests that serialize valid object starts with open brace
@@ -284,7 +277,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             Assert.True(commaCount >= 2);
         }
 
-
         /// <summary>
         ///     Tests that serialize max int value serializes correctly
         /// </summary>
@@ -310,7 +302,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
 
             Assert.Contains(int.MinValue.ToString(), json);
         }
-
 
         /// <summary>
         ///     The test int object class

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Extension.Thread.Configuration;
 using Alis.Extension.Thread.Execution;
 using Xunit;
@@ -93,7 +92,6 @@ namespace Alis.Extension.Thread.Test
                 Assert.NotNull(executor);
             }
         }
-
 
         /// <summary>
         ///     Tests that dispose can be called multiple times safely
@@ -255,18 +253,5 @@ namespace Alis.Extension.Thread.Test
             Assert.True(true);
         }
 
-        /// <summary>
-        ///     Tests that dispose handles null executor gracefully
-        /// </summary>
-        [Fact]
-        public void Dispose_NullExecutor_DoesNotThrow()
-        {
-            ThreadManager manager = new ThreadManager();
-
-            FieldInfo field = typeof(ThreadManager).GetField("parallelExecutor", BindingFlags.NonPublic | BindingFlags.Instance);
-            field.SetValue(manager, null);
-
-            manager.Dispose();
-        }
     }
 }

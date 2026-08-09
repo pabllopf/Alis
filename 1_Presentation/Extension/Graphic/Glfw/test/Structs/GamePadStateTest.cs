@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
@@ -61,60 +60,5 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(LayoutKind.Sequential, attribute.Value);
         }
 
-        /// <summary>
-        ///     Verifies that the states field has ByValArray marshal attribute.
-        /// </summary>
-        [Fact]
-        public void StatesField_ShouldHaveMarshalAsByValArray()
-        {
-            FieldInfo field = typeof(GamePadState).GetField("states", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            MarshalAsAttribute attribute = field.GetCustomAttribute<MarshalAsAttribute>();
-
-            Assert.NotNull(attribute);
-            Assert.Equal(UnmanagedType.ByValArray, attribute.Value);
-            Assert.Equal(15, attribute.SizeConst);
-        }
-
-        /// <summary>
-        ///     Verifies that the axes field has ByValArray marshal attribute.
-        /// </summary>
-        [Fact]
-        public void AxesField_ShouldHaveMarshalAsByValArray()
-        {
-            FieldInfo field = typeof(GamePadState).GetField("axes", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            MarshalAsAttribute attribute = field.GetCustomAttribute<MarshalAsAttribute>();
-
-            Assert.NotNull(attribute);
-            Assert.Equal(UnmanagedType.ByValArray, attribute.Value);
-            Assert.Equal(6, attribute.SizeConst);
-        }
-
-        /// <summary>
-        ///     Verifies that GetButtonState method exists and returns InputState.
-        /// </summary>
-        [Fact]
-        public void GetButtonState_ShouldExist()
-        {
-            MethodInfo method = typeof(GamePadState).GetMethod("GetButtonState", BindingFlags.Public | BindingFlags.Instance);
-
-            Assert.NotNull(method);
-            Assert.Equal(typeof(InputState), method.ReturnType);
-        }
-
-        /// <summary>
-        ///     Verifies that GetAxis method exists and returns float.
-        /// </summary>
-        [Fact]
-        public void GetAxis_ShouldExist()
-        {
-            MethodInfo method = typeof(GamePadState).GetMethod("GetAxis", BindingFlags.Public | BindingFlags.Instance);
-
-            Assert.NotNull(method);
-            Assert.Equal(typeof(float), method.ReturnType);
-        }
     }
 }

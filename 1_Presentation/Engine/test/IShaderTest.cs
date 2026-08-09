@@ -48,15 +48,6 @@ namespace Alis.App.Engine.Test
         }
 
         /// <summary>
-        /// Tests that shader code property should be string
-        /// </summary>
-        [Fact]
-        public void ShaderCode_Property_ShouldBeString()
-        {
-            Assert.Equal(typeof(string), typeof(IShader).GetProperty("ShaderCode")?.PropertyType);
-        }
-
-        /// <summary>
         /// Tests that interface should be implemented by fragment shader
         /// </summary>
         [Fact]

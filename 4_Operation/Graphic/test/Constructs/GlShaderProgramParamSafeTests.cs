@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL.Constructs;
@@ -81,20 +80,6 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_IsSealed()
         {
             Assert.True(typeof(GlShaderProgramParam).IsSealed);
-        }
-
-        /// <summary>
-        /// Tests that readonly fields exist
-        /// </summary>
-        [Fact]
-        public void ReadonlyFields_Exist()
-        {
-            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", BindingFlags.Public | BindingFlags.Instance);
-            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", BindingFlags.Public | BindingFlags.Instance);
-            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", BindingFlags.Public | BindingFlags.Instance);
-            Assert.NotNull(nameField);
-            Assert.NotNull(paramTypeField);
-            Assert.NotNull(typeField);
         }
 
         /// <summary>

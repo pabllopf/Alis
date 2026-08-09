@@ -237,8 +237,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
         #endregion
 
-       
-
         /// <summary>
         ///     Tests that Dispose() completes without exception.
         /// </summary>
@@ -309,10 +307,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(exception);
             writer.Dispose();
         }
-
-      
-
-      
 
         #region Internal Field Coverage
 

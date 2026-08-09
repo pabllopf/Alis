@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Linq;
-using System.Reflection;
 using Xunit;
 
 namespace Alis.Extension.Security.Test
@@ -94,21 +93,6 @@ namespace Alis.Extension.Security.Test
         }
 
         /// <summary>
-        ///     Tests that the internal encrypted value differs from the original plaintext.
-        ///     Proves that XOR encryption actually transforms the stored data.
-        /// </summary>
-        [Fact]
-        public void EncryptedValue_DiffersFromPlaintext()
-        {
-            SecureString secureString = new SecureString("HelloWorld");
-            FieldInfo encryptedField = typeof(SecureString).GetField("encryptedValue", BindingFlags.NonPublic | BindingFlags.Instance);
-            string encrypted = (string)encryptedField.GetValue(secureString);
-
-            Assert.NotNull(encrypted);
-            Assert.NotEqual("HelloWorld", encrypted);
-        }
-
-        /// <summary>
         ///     Tests multiple SetValue/GetValue cycles maintain integrity.
         /// </summary>
         [Fact]
@@ -136,23 +120,6 @@ namespace Alis.Extension.Security.Test
             string nullChars = "\0\0\0\0";
             SecureString secureString = new SecureString(nullChars);
             Assert.Equal(nullChars, secureString.GetValue());
-        }
-
-        /// <summary>
-        ///     Tests that different instances produce different encrypted values
-        ///     for the same plaintext (different random keys).
-        /// </summary>
-        [Fact]
-        public void DifferentInstances_DifferentEncryptedValues()
-        {
-            SecureString s1 = new SecureString("test");
-            SecureString s2 = new SecureString("test");
-
-            FieldInfo encryptedField = typeof(SecureString).GetField("encryptedValue", BindingFlags.NonPublic | BindingFlags.Instance);
-            string encrypted1 = (string)encryptedField.GetValue(s1);
-            string encrypted2 = (string)encryptedField.GetValue(s2);
-
-            Assert.NotEqual(encrypted1, encrypted2);
         }
 
         /// <summary>

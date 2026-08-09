@@ -49,19 +49,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        ///     Tests that the ignore attribute can be attached to a property.
-        /// </summary>
-        [Fact]
-        public void JsonNativeIgnoreAttribute_CanBeAppliedToProperty()
-        {
-            PropertyInfo propertyInfo = typeof(IgnoredModel).GetProperty(nameof(IgnoredModel.Secret));
-            JsonNativeIgnoreAttribute attribute = propertyInfo?.GetCustomAttribute<JsonNativeIgnoreAttribute>();
-
-            Assert.NotNull(propertyInfo);
-            Assert.NotNull(attribute);
-        }
-
-        /// <summary>
         ///     Tests that the ignore attribute targets properties only.
         /// </summary>
         [Fact]

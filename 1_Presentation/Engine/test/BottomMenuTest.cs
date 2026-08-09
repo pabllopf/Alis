@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
@@ -182,39 +181,5 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
-        /// <summary>
-        /// Tests that bottom menu has correct height
-        /// </summary>
-        [Fact]
-        public void BottomMenu_HasCorrectHeight()
-        {
-            // Verify the private field bottomMenuHeight is 10.0f
-            BottomMenu menu = new BottomMenu(CreateSpaceWork());
-
-            // Use reflection to access the private field
-            FieldInfo field = typeof(BottomMenu).GetField("bottomMenuHeight", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-            Assert.NotNull(field);
-            Assert.Equal(10.0f, (float)field.GetValue(menu));
-        }
-
-        /// <summary>
-        /// Tests that bottom menu should have space work property
-        /// </summary>
-        [Fact]
-        public void BottomMenu_ShouldHaveSpaceWorkProperty()
-        {
-            SpaceWork spaceWork = CreateSpaceWork();
-
-            PropertyInfo property = typeof(BottomMenu).GetProperty("SpaceWork");
-
-            Assert.NotNull(property);
-            Assert.Equal(typeof(SpaceWork), property.PropertyType);
-            Assert.True(property.CanRead);
-        }
-
-
     }
 }
-

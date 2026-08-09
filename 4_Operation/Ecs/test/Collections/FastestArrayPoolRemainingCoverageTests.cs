@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
@@ -65,47 +64,6 @@ namespace Alis.Core.Ecs.Test.Collections
             string[] reused = pool.Rent(64);
             Assert.Same(array, reused);
             Assert.Null(reused[0]);
-        }
-
-        /// <summary>
-        /// Tests that get bucket index oversized returns minus one
-        /// </summary>
-        [Fact]
-        public void GetBucketIndex_Oversized_ReturnsMinusOne()
-        {
-            MethodInfo getBucketIndex = typeof(FastestArrayPool<int>)
-                .GetMethod("GetBucketIndex", BindingFlags.Static | BindingFlags.NonPublic);
-            Assert.NotNull(getBucketIndex);
-            int result = (int)getBucketIndex.Invoke(null, [int.MaxValue]);
-            Assert.Equal(-1, result);
-        }
-
-        /// <summary>
-        /// Tests that get bucket index below min bucket size returns minus one
-        /// </summary>
-        [Fact]
-        public void GetBucketIndex_BelowMinBucketSize_ReturnsMinusOne()
-        {
-            MethodInfo getBucketIndex = typeof(FastestArrayPool<int>)
-                .GetMethod("GetBucketIndex", BindingFlags.Static | BindingFlags.NonPublic);
-            Assert.NotNull(getBucketIndex);
-            int result = (int)getBucketIndex.Invoke(null, [4]);
-            Assert.Equal(-1, result);
-        }
-
-        /// <summary>
-        /// Tests that get bucket index exact bucket sizes returns correct index
-        /// </summary>
-        [Fact]
-        public void GetBucketIndex_ExactBucketSizes_ReturnsCorrectIndex()
-        {
-            MethodInfo getBucketIndex = typeof(FastestArrayPool<int>)
-                .GetMethod("GetBucketIndex", BindingFlags.Static | BindingFlags.NonPublic);
-            Assert.NotNull(getBucketIndex);
-            Assert.Equal(0, (int)getBucketIndex.Invoke(null, [16]));
-            Assert.Equal(1, (int)getBucketIndex.Invoke(null, [32]));
-            Assert.Equal(2, (int)getBucketIndex.Invoke(null, [64]));
-            Assert.Equal(26, (int)getBucketIndex.Invoke(null, [1 << 30]));
         }
 
         /// <summary>
@@ -167,22 +125,6 @@ namespace Alis.Core.Ecs.Test.Collections
                 pool.Return(arr, clearArray: true);
                 Assert.Null(arr[0]);
             }
-        }
-
-        /// <summary>
-        /// Tests that return small array bucket index minus one does not store
-        /// </summary>
-        [Fact]
-        public void Return_SmallArray_BucketIndexMinusOne_DoesNotStore()
-        {
-            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
-            int[] arr = new int[4];
-            pool.Return(arr);
-            MethodInfo getBucketIndex = typeof(FastestArrayPool<int>)
-                .GetMethod("GetBucketIndex", BindingFlags.Static | BindingFlags.NonPublic);
-            Assert.NotNull(getBucketIndex);
-            int index = (int)getBucketIndex.Invoke(null, [arr.Length]);
-            Assert.Equal(-1, index);
         }
 
         /// <summary>

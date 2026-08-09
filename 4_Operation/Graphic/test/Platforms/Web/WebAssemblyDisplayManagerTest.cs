@@ -146,7 +146,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        
         /// <summary>
         /// Fullscreens the event args can set is fullscreen using the specified value
         /// </summary>
@@ -391,7 +390,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        
         /// <summary>
         /// Displays the manager get rendering scale correct value using the specified quality
         /// </summary>

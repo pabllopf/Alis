@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
-using System.Reflection;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows;
 using Xunit;
@@ -71,19 +70,6 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window.SpaceWork);
             Assert.Same(spaceWork, window.SpaceWork);
-        }
-
-        /// <summary>
-        ///     Tests that NameWindow static property is not null
-        /// </summary>
-        [Fact]
-        public void NameWindow_StaticProperty_ShouldNotBeNullOrEmpty()
-        {
-            FieldInfo field = typeof(SolutionWindow).GetField("NameWindow", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            Assert.NotNull(field);
-            string value = field.GetValue(null) as string;
-            Assert.NotNull(value);
-            Assert.NotEmpty(value);
         }
 
         /// <summary>

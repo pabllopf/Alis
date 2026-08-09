@@ -119,7 +119,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(velocityObj);
         }
         
-
         /// <summary>
         ///     Tests that game object add as by type adds component as specified type
         /// </summary>
@@ -180,8 +179,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, action.Calls);
             Assert.Contains(typeof(Health), action.SeenTypes);
         }
-
-      
 
         /// <summary>
         ///     Tests that game object enumerate components invokes action for each component

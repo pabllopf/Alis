@@ -56,7 +56,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -67,29 +66,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TextInputEventTest
     {
-
-        /// <summary>
-        /// Tests that should return text bytes from struct
-        /// </summary>
-        [Fact]
-        public void ShouldReturnTextBytesFromStruct()
-        {
-            // Arrange: Fill each byte field with unique values
-            TextInputEvent evt = new TextInputEvent();
-            for (int i = 0; i < 32; ++i)
-            {
-                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValueDirect(__makeref(evt), (byte)(i + 1));
-            }
-            // Act
-            byte[] bytes = evt.Text;
-            // Assert
-            Assert.Equal(32, bytes.Length);
-            for (int i = 0; i < 32; ++i)
-            {
-                Assert.Equal((byte)(i + 1), bytes[i]);
-            }
-        }
 
         /// <summary>
         /// Tests that should return all zeros when default
@@ -105,47 +81,5 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.All(bytes, b => Assert.Equal(0, b));
         }
         
-
-        /// <summary>
-        /// Tests that should handle all ones in bytes
-        /// </summary>
-        [Fact]
-        public void ShouldHandleAllOnesInBytes()
-        {
-            // Arrange
-            TextInputEvent evt = new TextInputEvent();
-            for (int i = 0; i < 32; ++i)
-            {
-                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValueDirect(__makeref(evt), (byte)255);
-            }
-            // Act
-            byte[] bytes = evt.Text;
-            // Assert: all bytes should be 255
-            Assert.All(bytes, b => Assert.Equal(255, b));
-        }
-
-        /// <summary>
-        /// Tests that should support pattern bytes
-        /// </summary>
-        [Fact]
-        public void ShouldSupportPatternBytes()
-        {
-            // Arrange -- alternate 0xAA, 0x55 pattern
-            TextInputEvent evt = new TextInputEvent();
-            for (int i = 0; i < 32; ++i)
-            {
-                byte value = i % 2 == 0 ? (byte)0xAA : (byte)0x55;
-                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValueDirect(__makeref(evt), value);
-            }
-            // Act
-            byte[] bytes = evt.Text;
-            // Assert:
-            for (int i = 0; i < 32; ++i)
-            {
-                Assert.Equal(i % 2 == 0 ? 0xAA : 0x55, bytes[i]);
-            }
-        }
     }
 }

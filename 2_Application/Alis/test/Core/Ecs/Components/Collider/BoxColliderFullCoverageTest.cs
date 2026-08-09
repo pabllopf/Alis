@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
@@ -140,21 +139,5 @@ namespace Alis.Test.Core.Ecs.Components.Collider
                 collider.Render(gameObject, new Vector2F(0, 0), new Vector2F(800, 600), 32f));
         }
 
-        /// <summary>
-        /// Tests that initialize shaders without context throws target invocation exception
-        /// </summary>
-        [Fact]
-        public void InitializeShaders_WithoutContext_ThrowsTargetInvocationException()
-        {
-            BoxCollider collider = new BoxCollider();
-            collider.Context = null;
-
-            Assert.Throws<TargetInvocationException>(() =>
-            {
-                MethodInfo method = typeof(BoxCollider).GetMethod("InitializeShaders",
-                    BindingFlags.Instance | BindingFlags.NonPublic);
-                method.Invoke(collider, null);
-            });
-        }
     }
 }

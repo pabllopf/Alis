@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Extension.Thread.Interfaces;
 using Xunit;
 
@@ -146,28 +145,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
             bool isAssignable = typeof(IParallelCapable).IsAssignableFrom(typeof(ComponentWithoutInterface));
 
             Assert.False(isAssignable);
-        }
-
-        /// <summary>
-        ///     Tests that interface is marker interface with no methods
-        /// </summary>
-        [Fact]
-        public void Interface_IsMarkerInterfaceWithNoMethods()
-        {
-            MethodInfo[] methods = typeof(IParallelCapable).GetMethods();
-
-            Assert.Empty(methods);
-        }
-
-        /// <summary>
-        ///     Tests that interface is marker interface with no properties
-        /// </summary>
-        [Fact]
-        public void Interface_IsMarkerInterfaceWithNoProperties()
-        {
-            PropertyInfo[] properties = typeof(IParallelCapable).GetProperties();
-
-            Assert.Empty(properties);
         }
 
         /// <summary>

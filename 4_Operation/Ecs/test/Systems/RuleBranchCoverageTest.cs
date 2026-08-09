@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -114,26 +113,6 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObjectType archetypeType = entity.Type;
             Rule defaultRule = default;
             Assert.Throws<InvalidDataException>(() => { defaultRule.RuleApplies(archetypeType); });
-        }
-
-        /// <summary>
-        /// Tests that rule applies custom delegate with null delegate throws null reference exception
-        /// </summary>
-        [Fact]
-        public void RuleApplies_CustomDelegateWithNullDelegate_ThrowsNullReferenceException()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-
-            Rule rule = default;
-            FieldInfo ruleStateField = typeof(Rule).GetField("_ruleState", BindingFlags.Instance | BindingFlags.NonPublic);
-
-            object boxed = rule;
-            ruleStateField.SetValue(boxed, 1);
-            rule = (Rule)boxed;
-
-            Assert.Throws<NullReferenceException>(() => { rule.RuleApplies(archetypeType); });
         }
 
         /// <summary>

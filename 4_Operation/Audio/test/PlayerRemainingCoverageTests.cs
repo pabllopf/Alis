@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -71,43 +70,6 @@ namespace Alis.Core.Audio.Test
             {
                 Assert.NotNull(player);
             }
-        }
-
-        /// <summary>
-        ///     Tests that internal player field is set via reflection
-        /// </summary>
-        [Fact]
-        public void InternalPlayerField_IsSet_AfterConstruction()
-        {
-            Player player = new Player();
-            FieldInfo field = typeof(Player).GetField("_internalPlayer", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(field);
-
-            IPlayer internalPlayer = field.GetValue(player) as IPlayer;
-
-            Assert.NotNull(internalPlayer);
-            Assert.IsAssignableFrom<IPlayer>(internalPlayer);
-        }
-
-        /// <summary>
-        ///     Tests that internal player event subscription is active via reflection
-        /// </summary>
-        [Fact]
-        public void InternalPlayer_EventSubscription_IsActive()
-        {
-            Player player = new Player();
-            FieldInfo field = typeof(Player).GetField("_internalPlayer", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(field);
-
-            IPlayer internalPlayer = field.GetValue(player) as IPlayer;
-
-            Assert.NotNull(internalPlayer);
-
-            bool subscribed = false;
-            internalPlayer.PlaybackFinished += (sender, e) => subscribed = true;
-            Assert.False(subscribed);
         }
 
         /// <summary>

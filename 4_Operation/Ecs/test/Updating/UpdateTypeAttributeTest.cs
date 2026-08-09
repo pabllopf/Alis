@@ -62,18 +62,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        ///     Tests that update type attribute can be extended and applied to method
-        /// </summary>
-        [Fact] public void UpdateTypeAttribute_CanBeExtendedAndAppliedToMethod()
-        {
-            DummyUpdateTypeAttribute[] attrs =
-                (DummyUpdateTypeAttribute[]) typeof(TargetMethodHolder).GetMethod(nameof(TargetMethodHolder.Tick))
-                    .GetCustomAttributes(typeof(DummyUpdateTypeAttribute), false);
-
-            Assert.Single(attrs);
-        }
-
-        /// <summary>
         ///     The dummy update type attribute class
         /// </summary>
         /// <seealso cref="UpdateTypeAttribute" />

@@ -265,7 +265,6 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             body.CreateFixture(new CircleShape(1.0f, 1.0f));
 
-
             bool result = filter.IsActiveOn(body);
 
             Assert.True(result);

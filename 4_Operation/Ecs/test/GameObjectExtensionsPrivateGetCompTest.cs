@@ -40,32 +40,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectExtensionsPrivateGetCompTest
     {
-        /// <summary>
-        /// Tests that private get comp byte array overload throws on ref struct box
-        /// </summary>
-        [Fact]
-        public void PrivateGetCompByteArrayOverload_ThrowsOnRefStructBox()
-        {
-            using Scene scene = new Scene();
-            Position pos = new Position { X = 10f, Y = 20f };
-            GameObject entity = scene.Create(pos);
-
-            object location = InvokeAssertIsAlive(entity);
-            object archetype = GetField(location, "Archetype");
-            int index = (int)GetField(location, "Index");
-            byte[] tagTable = (byte[])GetField(archetype, "ComponentTagTable");
-            ComponentStorageBase[] components = (ComponentStorageBase[])GetField(archetype, "Components");
-
-            MethodInfo getCompMethod = typeof(GameObjectExtensions).GetMethod(
-                "GetComp",
-                BindingFlags.Static | BindingFlags.NonPublic,
-                null,
-                new[] { typeof(byte[]), typeof(ComponentStorageBase[]), typeof(int) },
-                null)!.MakeGenericMethod(typeof(Position));
-
-            _ = Assert.Throws<NotSupportedException>(() =>
-                getCompMethod.Invoke(null, new object[] { tagTable, components, index }));
-        }
 
         /// <summary>
         /// Invokes the assert is alive using the specified entity

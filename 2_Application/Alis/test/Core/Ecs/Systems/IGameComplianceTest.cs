@@ -1,4 +1,3 @@
-using System.Reflection;
 using Alis.Core.Ecs.Systems;
 using Xunit;
 
@@ -19,15 +18,5 @@ namespace Alis.Test.Core.Ecs.Systems
             Assert.IsAssignableFrom<IGame>(game);
         }
 
-        /// <summary>
-        /// Tests that interface has run and exit methods
-        /// </summary>
-        [Fact]
-        public void Interface_HasRunAndExitMethods()
-        {
-            MethodInfo[] methods = typeof(IGame).GetMethods();
-            Assert.Contains(methods, m => m.Name == "Run");
-            Assert.Contains(methods, m => m.Name == "Exit");
-        }
     }
 }

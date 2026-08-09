@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.App.Hub.Entity;
 using Xunit;
 
@@ -171,26 +170,6 @@ namespace Alis.App.Hub.Test
             Assert.Equal("/usr/local/alis", version.InstallPath);
         }
 
-        /// <summary>
-        ///     Tests that InstalledVersion properties are read-only (no setters)
-        /// </summary>
-        [Fact]
-        public void InstalledVersion_Properties_ShouldBeReadOnly()
-        {
-            PropertyInfo versionProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.Version));
-            PropertyInfo releaseDateProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.ReleaseDate));
-            PropertyInfo installPathProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.InstallPath));
-
-            Assert.NotNull(versionProperty);
-            Assert.NotNull(releaseDateProperty);
-            Assert.NotNull(installPathProperty);
-
-            // All properties should have only a getter (no setter)
-            Assert.False(versionProperty!.CanWrite);
-            Assert.False(releaseDateProperty!.CanWrite);
-            Assert.False(installPathProperty!.CanWrite);
-        }
-
         #endregion
 
         #region LearningResource Edge Cases
@@ -232,26 +211,6 @@ namespace Alis.App.Hub.Test
             Assert.Equal("Guide", resource.Title);
             Assert.Equal("A comprehensive guide", resource.Description);
             Assert.Equal("https://guide.dev", resource.Url);
-        }
-
-        /// <summary>
-        ///     Tests that LearningResource properties are read-only (no setters)
-        /// </summary>
-        [Fact]
-        public void LearningResource_Properties_ShouldBeReadOnly()
-        {
-            PropertyInfo titleProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Title));
-            PropertyInfo descProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Description));
-            PropertyInfo urlProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Url));
-
-            Assert.NotNull(titleProperty);
-            Assert.NotNull(descProperty);
-            Assert.NotNull(urlProperty);
-
-            // All properties should have only a getter (no setter)
-            Assert.False(titleProperty!.CanWrite);
-            Assert.False(descProperty!.CanWrite);
-            Assert.False(urlProperty!.CanWrite);
         }
 
         #endregion

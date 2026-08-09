@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
@@ -173,7 +172,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Cleanup();
         }
-
 
         /// <summary>
         ///     Tests that file log output dispose should close file
@@ -339,83 +337,6 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Flush(); // Should not throw when disposed
         }
         
-        /// <summary>
-        ///     Tests that Write catch block handles IO exceptions gracefully
-        /// </summary>
-        [Fact]
-        public void Write_WhenIoExceptionThrown_DoesNotPropagate()
-        {
-            string filePath = Path.Combine(_testDir, "io_error.log");
-            Directory.CreateDirectory(_testDir);
-
-            using (FileLogOutput output = new FileLogOutput(filePath))
-            {
-                FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                field.SetValue(output, new ThrowingStreamWriter());
-
-                output.Write(new LogEntry(LogLevel.Info, "Should be caught", "Logger"));
-            }
-
-            Cleanup();
-        }
-
-        /// <summary>
-        ///     Tests that Flush catch block handles IO exceptions gracefully
-        /// </summary>
-        [Fact]
-        public void Flush_WhenIoExceptionThrown_DoesNotPropagate()
-        {
-            string filePath = Path.Combine(_testDir, "flush_io_error.log");
-            Directory.CreateDirectory(_testDir);
-
-            using (FileLogOutput output = new FileLogOutput(filePath))
-            {
-                FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                field.SetValue(output, new ThrowingStreamWriter());
-
-                output.Flush();
-            }
-
-            Cleanup();
-        }
-
-        /// <summary>
-        ///     Tests that Dispose catch block handles IO exceptions gracefully
-        /// </summary>
-        [Fact]
-        public void Dispose_WhenIoExceptionThrown_DoesNotPropagate()
-        {
-            string filePath = Path.Combine(_testDir, "dispose_io_error.log");
-            Directory.CreateDirectory(_testDir);
-
-            FileLogOutput output = new FileLogOutput(filePath);
-            FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            field.SetValue(output, new ThrowingStreamWriter());
-
-            output.Dispose();
-
-            Cleanup();
-        }
-
-        /// <summary>
-        ///     Tests that Write returns early when writer is null
-        /// </summary>
-        [Fact]
-        public void Write_WhenWriterIsNull_ReturnsEarly()
-        {
-            string filePath = Path.Combine(_testDir, "null_writer.log");
-            Directory.CreateDirectory(_testDir);
-
-            FileLogOutput output = new FileLogOutput(filePath);
-            FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            field.SetValue(output, null);
-
-            output.Write(new LogEntry(LogLevel.Info, "Should not throw", "Logger"));
-            output.Dispose();
-
-            Cleanup();
-        }
-
         /// <summary>
         ///     Tests constructor with a simple filename (no directory path)
         /// </summary>

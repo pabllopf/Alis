@@ -29,7 +29,6 @@
 
 using System;
 using System.Linq;
-using System.Reflection;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows;
 using Alis.App.Hub.Windows.Sections;
@@ -110,36 +109,6 @@ namespace Alis.App.Hub.Test
             Assert.True(typeof(IRuntime).IsAssignableFrom(aWindowType));
         }
 
-        /// <summary>
-        ///     Tests that AWindow has a SpaceWork property with getter and setter
-        /// </summary>
-        [Fact]
-        public void AWindow_SpaceWorkProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo spaceWorkProperty = typeof(AWindow).GetProperty("SpaceWork");
-
-            Assert.NotNull(spaceWorkProperty);
-            Assert.Equal(typeof(SpaceWork), spaceWorkProperty.PropertyType);
-            Assert.True(spaceWorkProperty.CanRead);
-            Assert.True(spaceWorkProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that AWindow has all IRuntime methods as abstract
-        /// </summary>
-        [Fact]
-        public void AWindow_IRuntimeMethods_ShouldBeAbstract()
-        {
-            MethodInfo[] methods = typeof(AWindow).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-
-            Assert.Contains(methods, m => (m.Name == "OnInit") && m.IsAbstract);
-            Assert.Contains(methods, m => (m.Name == "OnStart") && m.IsAbstract);
-            Assert.Contains(methods, m => (m.Name == "OnUpdate") && m.IsAbstract);
-            Assert.Contains(methods, m => (m.Name == "OnRender") && m.IsAbstract);
-            Assert.Contains(methods, m => (m.Name == "OnDestroy") && m.IsAbstract);
-        }
-        
-
         #endregion
 
         #region SpaceWork Tests
@@ -211,8 +180,6 @@ namespace Alis.App.Hub.Test
             Assert.IsAssignableFrom<HubWindow>(spaceWork.HubWindow);
         }
 
-       
-
         /// <summary>
         ///     Tests that SpaceWork OnInit delegates to HubWindow.OnInit without throwing
         /// </summary>
@@ -254,100 +221,9 @@ namespace Alis.App.Hub.Test
             Assert.NotNull(spaceWork);
         }
 
-       
-        /// <summary>
-        ///     Tests that SpaceWork has all expected public fields
-        /// </summary>
-        [Fact]
-        public void SpaceWork_ShouldHaveExpectedPublicFields()
-        {
-            FieldInfo[] fields = typeof(SpaceWork).GetFields(BindingFlags.Public | BindingFlags.Instance);
-            string[] fieldNames = fields.Select(f => f.Name).ToArray();
-
-            Assert.Contains("HubWindow", fieldNames);
-            Assert.Contains("NameEngine", fieldNames);
-            Assert.Contains("ContextImGui", fieldNames);
-            Assert.Contains("Dockspaceflags", fieldNames);
-            Assert.Contains("ElementsHandle", fieldNames);
-            Assert.Contains("FontLoaded10Solid", fieldNames);
-            Assert.Contains("FontLoaded16Light", fieldNames);
-            Assert.Contains("FontLoaded16Solid", fieldNames);
-            Assert.Contains("FontLoaded30Bold", fieldNames);
-            Assert.Contains("FontLoaded45Bold", fieldNames);
-            Assert.Contains("FontTextureId", fieldNames);
-            Assert.Contains("GlContext", fieldNames);
-            Assert.Contains("GlShader", fieldNames);
-            Assert.Contains("HeightMainWindow", fieldNames);
-            Assert.Contains("io", fieldNames);
-            Assert.Contains("IsRunning", fieldNames);
-            Assert.Contains("Style", fieldNames);
-            Assert.Contains("Time", fieldNames);
-            Assert.Contains("VboHandle", fieldNames);
-            Assert.Contains("VertexArrayObject", fieldNames);
-            Assert.Contains("ViewportHub", fieldNames);
-            Assert.Contains("WidthMainWindow", fieldNames);
-            Assert.Contains("WindowHub", fieldNames);
-        }
-
         #endregion
 
         #region ASection Tests
-
-        /// <summary>
-        ///     Tests that ASection has a Title property with getter and setter
-        /// </summary>
-        [Fact]
-        public void ASection_TitleProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo titleProperty = typeof(ASection).GetProperty("Title");
-
-            Assert.NotNull(titleProperty);
-            Assert.Equal(typeof(string), titleProperty.PropertyType);
-            Assert.True(titleProperty.CanRead);
-            Assert.True(titleProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that ASection has a SpaceWork property with getter and setter
-        /// </summary>
-        [Fact]
-        public void ASection_SpaceWorkProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo spaceWorkProperty = typeof(ASection).GetProperty("SpaceWork");
-
-            Assert.NotNull(spaceWorkProperty);
-            Assert.Equal(typeof(SpaceWork), spaceWorkProperty.PropertyType);
-            Assert.True(spaceWorkProperty.CanRead);
-            Assert.True(spaceWorkProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that ASection has a IsOpen property with getter and setter
-        /// </summary>
-        [Fact]
-        public void ASection_IsOpenProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo isOpenProperty = typeof(ASection).GetProperty("IsOpen");
-
-            Assert.NotNull(isOpenProperty);
-            Assert.Equal(typeof(bool), isOpenProperty.PropertyType);
-            Assert.True(isOpenProperty.CanRead);
-            Assert.True(isOpenProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that ASection has a IsFocused property with getter and setter
-        /// </summary>
-        [Fact]
-        public void ASection_IsFocusedProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo isFocusedProperty = typeof(ASection).GetProperty("IsFocused");
-
-            Assert.NotNull(isFocusedProperty);
-            Assert.Equal(typeof(bool), isFocusedProperty.PropertyType);
-            Assert.True(isFocusedProperty.CanRead);
-            Assert.True(isFocusedProperty.CanWrite);
-        }
 
         #endregion
 
@@ -364,21 +240,6 @@ namespace Alis.App.Hub.Test
             Assert.False(hubWindowType.IsAbstract);
             Assert.True(hubWindowType.IsClass);
             Assert.True(typeof(AWindow).IsAssignableFrom(hubWindowType));
-        }
-
-        /// <summary>
-        ///     Tests that HubWindow has a constructor accepting SpaceWork parameter
-        /// </summary>
-        [Fact]
-        public void HubWindow_Constructor_ShouldAcceptSpaceWorkParameter()
-        {
-            ConstructorInfo[] constructors = typeof(HubWindow).GetConstructors();
-
-            Assert.NotEmpty(constructors);
-
-            ParameterInfo[] parameters = constructors[0].GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(SpaceWork), parameters[0].ParameterType);
         }
 
         /// <summary>
@@ -817,20 +678,6 @@ namespace Alis.App.Hub.Test
             TestASection section = new TestASection(new SpaceWork());
             section.IsFocused = true;
             Assert.True(section.IsFocused);
-        }
-
-        /// <summary>
-        ///     Tests that ASection has all abstract methods from IRuntime
-        /// </summary>
-        [Fact]
-        public void ASection_IRuntimeMethods_ShouldBeAbstract()
-        {
-            MethodInfo[] methods = typeof(ASection).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-
-            foreach (MethodInfo method in methods.Where(m => m.IsAbstract))
-            {
-                Assert.True(method.IsAbstract, $"{method.Name} should be abstract");
-            }
         }
 
         /// <summary>

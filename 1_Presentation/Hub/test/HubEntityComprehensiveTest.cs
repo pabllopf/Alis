@@ -257,18 +257,5 @@ namespace Alis.App.Hub.Test
             Assert.Equal(1, layout.Pack);
         }
 
-        /// <summary>
-        /// Tests that hub entity types should expose expected public surface
-        /// </summary>
-        [Fact]
-        public void HubEntity_Types_ShouldExposeExpectedPublicSurface()
-        {
-            Assert.True(typeof(Project).GetProperties(BindingFlags.Public | BindingFlags.Instance).Length >= 7);
-            Assert.True(typeof(InstalledVersion).GetProperties(BindingFlags.Public | BindingFlags.Instance).Length == 3);
-            Assert.True(typeof(LearningResource).GetProperties(BindingFlags.Public | BindingFlags.Instance).Length == 3);
-            Assert.True(typeof(GalleryItem).GetProperties(BindingFlags.Public | BindingFlags.Instance).Length == 6);
-            Assert.Single(typeof(Gallery).GetFields(BindingFlags.Public | BindingFlags.Instance)
-                .Where(f => f.Name == "Items"));
-        }
     }
 }

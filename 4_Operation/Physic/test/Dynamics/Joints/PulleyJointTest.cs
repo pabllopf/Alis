@@ -634,6 +634,5 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
-       
     }
 }

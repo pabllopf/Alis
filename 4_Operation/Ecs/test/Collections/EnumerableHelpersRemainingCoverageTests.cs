@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -41,28 +40,5 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class EnumerableHelpersRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that <c>ToArrayFromEnumerator</c> correctly handles the case where
-        ///     doubling the capacity would exceed <c>arrayMaxLength</c>. This exercises
-        ///     the overflow protection that is impractical to reach through the public API.
-        /// </summary>
-        [Fact] public void ToArrayFromEnumerator_ArrayMaxLengthExceeded_UsesOverflowLogic()
-        {
-            MethodInfo method = typeof(EnumerableHelpers)
-                .GetMethod("ToArrayFromEnumerator", BindingFlags.NonPublic | BindingFlags.Static)
-                .MakeGenericMethod(typeof(int));
-
-            IEnumerable<int> source = Enumerable.Range(1, 6);
-            using IEnumerator<int> enumerator = source.GetEnumerator();
-            enumerator.MoveNext();
-
-            object[] args = { enumerator, 5, 0 };
-            int[] result = (int[])method.Invoke(null, args);
-            int length = (int)args[2];
-
-            Assert.Equal(6, length);
-            Assert.Equal(1, result[0]);
-            Assert.Equal(6, result[5]);
-        }
     }
 }

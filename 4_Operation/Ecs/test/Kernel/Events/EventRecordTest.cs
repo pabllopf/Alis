@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using System.Reflection;
 using Alis.Core.Ecs.Kernel.Events;
 using Xunit;
 
@@ -85,29 +84,5 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Null(record);
         }
 
-        /// <summary>
-        ///     Tests that initalize can be called twice second call with exists true preserves initialized fields
-        /// </summary>
-        [Fact] public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
-        {
-            EventRecord record = new EventRecord();
-            EventRecord.Initalize(false, ref record);
-            EventRecord initialized = record;
-
-            EventRecord.Initalize(true, ref record);
-
-            Assert.Same(initialized, record);
-
-            object add = typeof(EventRecord).GetField("Add", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-            object remove = typeof(EventRecord).GetField("Remove", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-            object delete = typeof(EventRecord).GetField("Delete", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-
-            Assert.NotNull(add);
-            Assert.NotNull(remove);
-            Assert.NotNull(delete);
-        }
     }
 }

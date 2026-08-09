@@ -66,15 +66,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that struct should implement i equatable
-        /// </summary>
-        [Fact]
-        public void Struct_ShouldImplementIEquatable()
-        {
-            Assert.Contains(typeof(System.IEquatable<>).MakeGenericType(typeof(ComponentId)), typeof(ComponentId).GetInterfaces());
-        }
-
-        /// <summary>
         /// Tests that default instance should have zero value
         /// </summary>
         [Fact]

@@ -73,7 +73,6 @@ namespace Alis.App.Installer.Test
             catch (TargetInvocationException) { }
         }
         
-
         // ========================
         // CalculateDeltaTime (pure math)
         // ========================
@@ -180,7 +179,6 @@ namespace Alis.App.Installer.Test
             Assert.NotNull(result);
         }
         
-
         // ========================
         // InitializeOpenGL (throws NullRef - safe)
         // ========================

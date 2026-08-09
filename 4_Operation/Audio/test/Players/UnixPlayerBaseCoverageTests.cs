@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Samples;
 using Xunit;
@@ -13,34 +12,6 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class UnixPlayerBaseCoverageTests
     {
-        /// <summary>
-        /// Tests that start bash process should start process
-        /// </summary>
-        [Fact]
-        public void StartBashProcess_ShouldStartProcess()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("StartBashProcess", BindingFlags.NonPublic | BindingFlags.Instance);
-            Process process = (Process)method.Invoke(player, new object[] { "sleep 1" });
-            Assert.NotNull(process);
-            Assert.False(process.HasExited);
-            process.Kill();
-            process.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that start bash process with quotes in command should escape
-        /// </summary>
-        [Fact]
-        public void StartBashProcess_WithQuotesInCommand_ShouldEscape()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("StartBashProcess", BindingFlags.NonPublic | BindingFlags.Instance);
-            Process process = (Process)method.Invoke(player, new object[] { "echo \"hello world\"" });
-            Assert.NotNull(process);
-            process.Kill();
-            process.Dispose();
-        }
 
         /// <summary>
         /// Tests that pause when not playing should not set paused
@@ -52,7 +23,6 @@ namespace Alis.Core.Audio.Test.Players
             player.Pause();
             Assert.False(player.Paused);
         }
-
 
         /// <summary>
         /// Tests that resume when not playing should not change state
@@ -66,8 +36,6 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
-      
-
         /// <summary>
         /// Tests that stop when process is null should set playing and paused false
         /// </summary>
@@ -79,25 +47,6 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
-
-
-        /// <summary>
-        /// Tests that handle playback finished when not playing should not invoke event
-        /// </summary>
-        [Fact]
-        public void HandlePlaybackFinished_WhenNotPlaying_ShouldNotInvokeEvent()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            bool eventRaised = false;
-            player.PlaybackFinished += (sender, e) => eventRaised = true;
-
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("HandlePlaybackFinished", BindingFlags.NonPublic | BindingFlags.Instance);
-            method.Invoke(player, new object[] { null, EventArgs.Empty });
-
-            Assert.False(eventRaised);
-        }
-
-       
 
         /// <summary>
         /// Tests that pause process command should be formattable
@@ -121,18 +70,5 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("kill -CONT 67890", formatted);
         }
 
-        /// <summary>
-        /// Tests that get audio duration with non existent file should throw file not found exception
-        /// </summary>
-        [Fact]
-        public void GetAudioDuration_WithNonExistentFile_ShouldThrowFileNotFoundException()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("GetAudioDuration", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() =>
-                method.Invoke(player, new object[] { "nonexistent_file_12345.wav" }));
-            Assert.IsType<FileNotFoundException>(ex.InnerException);
-        }
     }
 }

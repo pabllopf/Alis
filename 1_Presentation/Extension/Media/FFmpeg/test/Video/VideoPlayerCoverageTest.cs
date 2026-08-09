@@ -92,7 +92,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
-      
         /// <summary>
         /// Tests that play with filename uses ffplay
         /// </summary>
@@ -116,8 +115,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
             player.Dispose();
         }
-
-       
 
         /// <summary>
         /// Tests that play in background with filename returns process
@@ -158,8 +155,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(process);
             player.Dispose();
         }
-
-   
 
         /// <summary>
         /// Tests that open write with fake ffplay throws win 32 exception
@@ -202,7 +197,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-  
         /// <summary>
         /// Tests that get stream for writing with fake ffplay throws win 32 exception
         /// </summary>
@@ -230,6 +224,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-     
     }
 }
