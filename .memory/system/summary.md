@@ -439,3 +439,11 @@
 - **Coverage After**: ~98.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: `Skipping corrupt poly` branch requiring specific collinear geometry
+
+## FilePickerExecutor.cs
+
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs`
+- **Coverage Before**: 97.0% (Line 100.0%)
+- **Coverage After**: ~98.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: None; Windows-only branches unreachable on macOS CI
