@@ -431,3 +431,11 @@
 - **Coverage After**: ~99.5%
 - **Tests Added**: 3
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## SimpleCombiner.cs
+
+- **File**: `4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs`
+- **Coverage Before**: 96.6%
+- **Coverage After**: ~98.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: `Skipping corrupt poly` branch requiring specific collinear geometry
