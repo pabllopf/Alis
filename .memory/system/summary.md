@@ -23,3 +23,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 1
 - **Uncovered Lines**: None (line 282 `}` is non-executable closing brace)
+
+## Mouse.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 55.0%
+- **Tests Added**: 6
+- **Uncovered Lines**: Native P/Invoke paths (`IsButtonPressed`, `GetPosition()`, `SetPosition(Vector2F)`, null-window branches) require csfml native libs absent on SonarCloud CI; existing `RequireCSfmlSystemFact` tests are skipped there
