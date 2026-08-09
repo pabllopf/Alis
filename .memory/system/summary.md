@@ -583,3 +583,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 2
 - **Uncovered Lines**: None
+
+## DynamicTree.cs
+
+- **File**: `4_Operation/Physic/src/Collisions/DynamicTree.cs`
+- **Coverage Before**: 99.8% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; deep tree-rotation branch variants
