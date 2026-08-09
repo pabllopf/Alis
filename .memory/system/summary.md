@@ -455,3 +455,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; 2 short-circuit branches unreachable (post-clamp radius in bounds)
+
+## GitHubApiService.cs
+
+- **File**: `1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs`
+- **Coverage Before**: 97.1% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; `Dispose(false)` branch unreachable (no finalizer)
