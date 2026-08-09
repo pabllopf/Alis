@@ -471,3 +471,11 @@
 - **Coverage After**: ~99.5%
 - **Tests Added**: 2
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## CryptoRandomNumberGenerator.cs
+
+- **File**: `1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CryptoRandomNumberGenerator.cs`
+- **Coverage Before**: 97.8% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; `_rng?.` null-conditional branch unreachable
