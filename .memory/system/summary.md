@@ -343,3 +343,11 @@
 - **Coverage After**: ~94.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: Root-find bisection bounds edge cases
+
+## Logger.cs
+
+- **File**: `6_Ideation/Logging/src/Logger.cs`
+- **Coverage Before**: 90.6% (Line 100.0%)
+- **Coverage After**: ~95.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: None
