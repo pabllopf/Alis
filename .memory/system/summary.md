@@ -239,3 +239,35 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 3
 - **Uncovered Lines**: None
+
+## Bvec4.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: None
+
+## Bvec3.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec3.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: None
+
+## Ivec3.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec3.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: None
+
+## Bvec2.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec2.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: None
