@@ -33,7 +33,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -108,10 +107,14 @@ namespace Alis.Core.Aspect.Memory
             {
                 RegisteredAssetLoaders[assemblyName] = assetLoader;
                 _zipCache.TryRemove(assemblyName, out _);
-                _extractedPathCache.Keys
-                    .Where(k => k.StartsWith(assemblyName.ToLowerInvariant() + "|"))
-                    .ToList()
-                    .ForEach(k => _extractedPathCache.TryRemove(k, out _));
+                string prefix = assemblyName.ToLowerInvariant() + "|";
+                foreach (string key in _extractedPathCache.Keys)
+                {
+                    if (key.StartsWith(prefix, StringComparison.Ordinal))
+                    {
+                        _extractedPathCache.TryRemove(key, out _);
+                    }
+                }
                 if (ActiveAssemblyName == null)
                 {
                     ActiveAssemblyName = assemblyName;
@@ -429,13 +432,13 @@ namespace Alis.Core.Aspect.Memory
         private static string MakeSafeTempName(string assemblyName, string normalizedResourceKey)
         {
             string extension = Path.GetExtension(normalizedResourceKey) ?? string.Empty;
-            if (extension.Length > 16 || extension.Contains('/') || extension.Contains('\\'))
+            if (extension.Length > 16 || extension.IndexOf('/') >= 0 || extension.IndexOf('\\') >= 0)
             {
                 extension = string.Empty;
             }
 
             string hash;
-#if NET6_0_OR_GREATER
+#if NET5_0_OR_GREATER
             int maxByteCount = Encoding.UTF8.GetMaxByteCount(normalizedResourceKey.Length);
             byte[] rentedBuffer = maxByteCount > 256 ? ArrayPool<byte>.Shared.Rent(maxByteCount) : null;
             Span<byte> keyBytes = maxByteCount <= 256
@@ -614,13 +617,19 @@ namespace Alis.Core.Aspect.Memory
                 return list[0];
             }
 
-            ZipEntryInfo match = cacheEntry.EntriesByFullNameLower
-                .Values
-                .FirstOrDefault(e => e.FullName.Replace('\\', '/').EndsWith(resourceName, StringComparison.OrdinalIgnoreCase) ||
-                                     e.FullName.Replace('\\', '/').EndsWith("/" + resourceName, StringComparison.OrdinalIgnoreCase) ||
-                                     e.FullName.Replace('\\', '/').IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) >= 0);
+            string slashResourceName = "/" + resourceName;
+            foreach (ZipEntryInfo entry in cacheEntry.EntriesByFullNameLower.Values)
+            {
+                string fullName = entry.FullName.Replace('\\', '/');
+                if (fullName.EndsWith(resourceName, StringComparison.OrdinalIgnoreCase) ||
+                    fullName.EndsWith(slashResourceName, StringComparison.OrdinalIgnoreCase) ||
+                    fullName.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return entry;
+                }
+            }
 
-            return match;
+            return null;
         }
 
         /// <summary>
