@@ -63,3 +63,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 26
 - **Uncovered Lines**: None
+
+## StreamAdaptor.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 93.6%
+- **Tests Added**: 10
+- **Uncovered Lines**: Lines 108-110 (`catch` in `~StreamAdaptor` — `Dispose(false)` never throws for valid pointers)
