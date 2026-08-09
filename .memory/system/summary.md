@@ -327,3 +327,11 @@
 - **Coverage After**: ~88.0%
 - **Tests Added**: 14
 - **Uncovered Lines**: Edge/Chain Evaluate cases, body-level separation handlers
+
+## Fixture.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Fixture.cs`
+- **Coverage Before**: 84.7%
+- **Coverage After**: ~90.0%
+- **Tests Added**: 10
+- **Uncovered Lines**: Broadphase proxy internals (`TouchProxies`, `Synchronize`, `DestroyProxies`)
