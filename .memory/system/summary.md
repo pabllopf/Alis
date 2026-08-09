@@ -503,3 +503,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; `SelectedPaths?.` null-conditional branch unreachable
+
+## FastestStack.cs
+
+- **File**: `4_Operation/Ecs/src/Collections/FastestStack.cs`
+- **Coverage Before**: 98.6%
+- **Coverage After**: ~99.5%
+- **Tests Added**: 4
+- **Uncovered Lines**: Defensive enumerator version-mismatch throws (untriggerable, struct boxing)
