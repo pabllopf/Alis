@@ -359,3 +359,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 7
 - **Uncovered Lines**: None
+
+## YuPengClipper.cs
+
+- **File**: `4_Operation/Physic/src/Common/PolygonManipulation/YuPengClipper.cs`
+- **Coverage Before**: 91.1%
+- **Coverage After**: ~94.0%
+- **Tests Added**: 6
+- **Uncovered Lines**: Degenerate error paths and private `Edge` internals
