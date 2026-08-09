@@ -180,16 +180,21 @@ Requirements:
 * xUnit
 * net8.0 tests
 * compatible with netstandard2.0 production assemblies
+* AOT compatible — no dynamic code and no runtime reflection, tests must run under Native AOT without trimming or reflection fallbacks
 * Arrange Act Assert
 * observable behaviour only
 * real implementations preferred
-* Moq only for interfaces or external dependencies
+* Moq only for interfaces or external dependencies (and never to bypass internal visibility)
 * InternalsVisibleTo already exists
 * You can't generate cobertura files (like cobertura.xml, .trx files, etc) 
 
-Forbidden:
+Forbidden (AOT compatibility):
 
-* reflection
+* reflection — `System.Reflection`, `Type.GetMethod/GetProperty/GetField`, `MemberInfo`, `MethodInfo.Invoke`, `PropertyInfo.GetValue/SetValue`, `FieldInfo`
+* runtime type discovery — `Assembly.GetTypes()`, `Type.GetType()`, `Assembly.Load`, `AppDomain.CurrentDomain`
+* runtime instantiation — `Activator.CreateInstance(Type)`, unconstrained generic instantiation via reflection
+* runtime code generation — `System.Reflection.Emit`, runtime IL emit, dynamic method generation, `Expression<T>.Compile()`, `dynamic` keyword
+* dynamic proxies — `DispatchProxy`, runtime-generated mocks (hand-written fakes only)
 * private method testing
 * Thread.Sleep
 * randomness
