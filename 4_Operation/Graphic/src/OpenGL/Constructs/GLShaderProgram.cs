@@ -228,6 +228,72 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
+        ///     The uniform type map
+        /// </summary>
+        private static readonly Dictionary<ActiveUniformType, Type> UniformTypeMap = new Dictionary<ActiveUniformType, Type>
+        {
+            { ActiveUniformType.Int, typeof(int) },
+            { ActiveUniformType.Float, typeof(float) },
+            { ActiveUniformType.FloatVec2, typeof(Vector2F) },
+            { ActiveUniformType.FloatVec3, typeof(Vector3F) },
+            { ActiveUniformType.FloatVec4, typeof(Vector4F) },
+            { ActiveUniformType.IntVec2, typeof(int[]) },
+            { ActiveUniformType.IntVec3, typeof(int[]) },
+            { ActiveUniformType.IntVec4, typeof(int[]) },
+            { ActiveUniformType.Bool, typeof(bool) },
+            { ActiveUniformType.BoolVec2, typeof(bool[]) },
+            { ActiveUniformType.BoolVec3, typeof(bool[]) },
+            { ActiveUniformType.BoolVec4, typeof(bool[]) },
+            { ActiveUniformType.FloatMat2, typeof(float[]) },
+            { ActiveUniformType.FloatMat4, typeof(Matrix4X4) },
+            { ActiveUniformType.Sampler1D, typeof(int) },
+            { ActiveUniformType.Sampler2D, typeof(int) },
+            { ActiveUniformType.Sampler3D, typeof(int) },
+            { ActiveUniformType.SamplerCube, typeof(int) },
+            { ActiveUniformType.Sampler1DShadow, typeof(int) },
+            { ActiveUniformType.Sampler2DShadow, typeof(int) },
+            { ActiveUniformType.Sampler2DRect, typeof(int) },
+            { ActiveUniformType.Sampler2DRectShadow, typeof(int) },
+            { ActiveUniformType.FloatMat2X3, typeof(float[]) },
+            { ActiveUniformType.FloatMat2X4, typeof(float[]) },
+            { ActiveUniformType.FloatMat3X2, typeof(float[]) },
+            { ActiveUniformType.FloatMat3X4, typeof(float[]) },
+            { ActiveUniformType.FloatMat4X2, typeof(float[]) },
+            { ActiveUniformType.FloatMat4X3, typeof(float[]) },
+            { ActiveUniformType.Sampler1DArray, typeof(int) },
+            { ActiveUniformType.Sampler2DArray, typeof(int) },
+            { ActiveUniformType.SamplerBuffer, typeof(int) },
+            { ActiveUniformType.Sampler1DArrayShadow, typeof(int) },
+            { ActiveUniformType.Sampler2DArrayShadow, typeof(int) },
+            { ActiveUniformType.SamplerCubeShadow, typeof(int) },
+            { ActiveUniformType.UnsignedIntVec2, typeof(uint[]) },
+            { ActiveUniformType.UnsignedIntVec3, typeof(uint[]) },
+            { ActiveUniformType.UnsignedIntVec4, typeof(uint[]) },
+            { ActiveUniformType.IntSampler1D, typeof(int) },
+            { ActiveUniformType.IntSampler2D, typeof(int) },
+            { ActiveUniformType.IntSampler3D, typeof(int) },
+            { ActiveUniformType.IntSamplerCube, typeof(int) },
+            { ActiveUniformType.IntSampler2DRect, typeof(int) },
+            { ActiveUniformType.IntSampler1DArray, typeof(int) },
+            { ActiveUniformType.IntSampler2DArray, typeof(int) },
+            { ActiveUniformType.IntSamplerBuffer, typeof(int) },
+            { ActiveUniformType.UnsignedIntSampler1D, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSampler2D, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSampler3D, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSamplerCube, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSampler2DRect, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSampler1DArray, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSampler2DArray, typeof(uint) },
+            { ActiveUniformType.UnsignedIntSamplerBuffer, typeof(uint) },
+            { ActiveUniformType.Sampler2DMultisample, typeof(int) },
+            { ActiveUniformType.IntSampler2DMultisample, typeof(int) },
+            { ActiveUniformType.UnsignedIntSampler2DMultisample, typeof(uint) },
+            { ActiveUniformType.Sampler2DMultisampleArray, typeof(int) },
+            { ActiveUniformType.IntSampler2DMultisampleArray, typeof(int) },
+            { ActiveUniformType.UnsignedIntSampler2DMultisampleArray, typeof(uint) }
+        };
+
+        /// <summary>
         ///     Types the from uniform type using the specified type
         /// </summary>
         /// <param name="type">The type</param>
@@ -235,70 +301,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <returns>The type</returns>
         private static Type TypeFromUniformType(ActiveUniformType type)
         {
-            switch (type)
+            if (type == ActiveUniformType.FloatMat3)
             {
-                case ActiveUniformType.Int: return typeof(int);
-                case ActiveUniformType.Float: return typeof(float);
-                case ActiveUniformType.FloatVec2: return typeof(Vector2F);
-                case ActiveUniformType.FloatVec3: return typeof(Vector3F);
-                case ActiveUniformType.FloatVec4: return typeof(Vector4F);
-                case ActiveUniformType.IntVec2: return typeof(int[]);
-                case ActiveUniformType.IntVec3: return typeof(int[]);
-                case ActiveUniformType.IntVec4: return typeof(int[]);
-                case ActiveUniformType.Bool: return typeof(bool);
-                case ActiveUniformType.BoolVec2: return typeof(bool[]);
-                case ActiveUniformType.BoolVec3: return typeof(bool[]);
-                case ActiveUniformType.BoolVec4: return typeof(bool[]);
-                case ActiveUniformType.FloatMat2: return typeof(float[]);
-                case ActiveUniformType.FloatMat3: throw new InvalidOperationException($"ActiveUniformType {type} is not supported.");
-                case ActiveUniformType.FloatMat4: return typeof(Matrix4X4);
-                case ActiveUniformType.Sampler1D:
-                case ActiveUniformType.Sampler2D:
-                case ActiveUniformType.Sampler3D:
-                case ActiveUniformType.SamplerCube:
-                case ActiveUniformType.Sampler1DShadow:
-                case ActiveUniformType.Sampler2DShadow:
-                case ActiveUniformType.Sampler2DRect:
-                case ActiveUniformType.Sampler2DRectShadow: return typeof(int);
-                case ActiveUniformType.FloatMat2X3:
-                case ActiveUniformType.FloatMat2X4:
-                case ActiveUniformType.FloatMat3X2:
-                case ActiveUniformType.FloatMat3X4:
-                case ActiveUniformType.FloatMat4X2:
-                case ActiveUniformType.FloatMat4X3: return typeof(float[]);
-                case ActiveUniformType.Sampler1DArray:
-                case ActiveUniformType.Sampler2DArray:
-                case ActiveUniformType.SamplerBuffer:
-                case ActiveUniformType.Sampler1DArrayShadow:
-                case ActiveUniformType.Sampler2DArrayShadow:
-                case ActiveUniformType.SamplerCubeShadow: return typeof(int);
-                case ActiveUniformType.UnsignedIntVec2: return typeof(uint[]);
-                case ActiveUniformType.UnsignedIntVec3: return typeof(uint[]);
-                case ActiveUniformType.UnsignedIntVec4: return typeof(uint[]);
-                case ActiveUniformType.IntSampler1D:
-                case ActiveUniformType.IntSampler2D:
-                case ActiveUniformType.IntSampler3D:
-                case ActiveUniformType.IntSamplerCube:
-                case ActiveUniformType.IntSampler2DRect:
-                case ActiveUniformType.IntSampler1DArray:
-                case ActiveUniformType.IntSampler2DArray:
-                case ActiveUniformType.IntSamplerBuffer: return typeof(int);
-                case ActiveUniformType.UnsignedIntSampler1D:
-                case ActiveUniformType.UnsignedIntSampler2D:
-                case ActiveUniformType.UnsignedIntSampler3D:
-                case ActiveUniformType.UnsignedIntSamplerCube:
-                case ActiveUniformType.UnsignedIntSampler2DRect:
-                case ActiveUniformType.UnsignedIntSampler1DArray:
-                case ActiveUniformType.UnsignedIntSampler2DArray:
-                case ActiveUniformType.UnsignedIntSamplerBuffer: return typeof(uint);
-                case ActiveUniformType.Sampler2DMultisample: return typeof(int);
-                case ActiveUniformType.IntSampler2DMultisample: return typeof(int);
-                case ActiveUniformType.UnsignedIntSampler2DMultisample: return typeof(uint);
-                case ActiveUniformType.Sampler2DMultisampleArray: return typeof(int);
-                case ActiveUniformType.IntSampler2DMultisampleArray: return typeof(int);
-                case ActiveUniformType.UnsignedIntSampler2DMultisampleArray: return typeof(uint);
-                default: return typeof(object);
+                throw new InvalidOperationException($"ActiveUniformType {type} is not supported.");
             }
+
+            return UniformTypeMap.TryGetValue(type, out Type result) ? result : typeof(object);
         }
 
         /// <summary>
