@@ -1,8 +1,8 @@
 {
   "project": "pabllopf-official_alis",
-  "total": 12,
-  "fetched": 12,
-  "fetchedAt": "2026-07-13T10:45:48Z",
+  "total": 8,
+  "fetched": 8,
+  "fetchedAt": "2026-08-09T18:49:07Z",
   "issues": [
     {
       "key": "AZ9WLQoab3Yg5Wvlzs06",
@@ -10,8 +10,7 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
       "project": "pabllopf-official_alis",
-      "line": 257,
-      "hash": "ea80884f2cf37ce898cefce3bec5fe73",
+      "hash": "e16e6ab95b6b8b3fbe9db8723cec44a0",
       "textRange": {
         "startLine": 257,
         "endLine": 257,
@@ -26,14 +25,15 @@
               "textRange": {
                 "startLine": 257,
                 "endLine": 271,
-                "startOffset": 44,
+                "startOffset": 46,
                 "endOffset": 45
               }
             }
           ]
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
       "effort": "15min",
       "debt": "15min",
@@ -47,7 +47,8 @@
         "unused"
       ],
       "creationDate": "2026-07-10T07:52:27+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-08-09T18:37:09+0000",
+      "closeDate": "2026-08-09T18:37:09+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -58,10 +59,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "a41c51fb-a96d-4278-94e7-f49009732ea7",
+      "lastChangeAnalysisUuid": "76ec2548-fb8b-431b-adcf-33fab89e17b5",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -126,195 +127,11 @@
       "lastChangeSource": "ANALYSIS"
     },
     {
-      "key": "AZ7Wga6T8Znd_eTQxpai",
-      "rule": "csharpsquid:S2583",
-      "severity": "MAJOR",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "project": "pabllopf-official_alis",
-      "hash": "ea80884f2cf37ce898cefce3bec5fe73",
-      "textRange": {
-        "startLine": 262,
-        "endLine": 262,
-        "startOffset": 28,
-        "endOffset": 42
-      },
-      "flows": [
-        {
-          "locations": [
-            {
-              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-              "textRange": {
-                "startLine": 262,
-                "endLine": 275,
-                "startOffset": 44,
-                "endOffset": 35
-              }
-            }
-          ]
-        }
-      ],
-      "resolution": "FIXED",
-      "status": "CLOSED",
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
-      "effort": "15min",
-      "debt": "15min",
-      "assignee": "pabllopf-fj3X7@github",
-      "author": "pabloperdomofalcon@gmail.com",
-      "tags": [
-        "cwe",
-        "pitfall",
-        "suspicious",
-        "symbolic-execution",
-        "unused"
-      ],
-      "creationDate": "2026-06-17T16:53:17+0000",
-      "updateDate": "2026-06-19T08:53:02+0000",
-      "closeDate": "2026-06-19T08:53:02+0000",
-      "type": "BUG",
-      "organization": "pabllopf-official",
-      "cleanCodeAttribute": "LOGICAL",
-      "cleanCodeAttributeCategory": "INTENTIONAL",
-      "impacts": [
-        {
-          "softwareQuality": "RELIABILITY",
-          "severity": "MEDIUM"
-        }
-      ],
-      "issueStatus": "FIXED",
-      "projectName": "Alis",
-      "internalTags": [],
-      "lastChangeAnalysisUuid": "f8294cdf-c9fd-4d64-8623-3982513bf484",
-      "lastChangeSource": "ANALYSIS"
-    },
-    {
-      "key": "AZ7SNQ04GxvN3xmv4SmI",
-      "rule": "csharpsquid:S2583",
-      "severity": "MAJOR",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "project": "pabllopf-official_alis",
-      "hash": "bff29a820fd8d8db58e4116d881bdef9",
-      "textRange": {
-        "startLine": 257,
-        "endLine": 257,
-        "startOffset": 28,
-        "endOffset": 42
-      },
-      "flows": [
-        {
-          "locations": [
-            {
-              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-              "textRange": {
-                "startLine": 257,
-                "endLine": 276,
-                "startOffset": 44,
-                "endOffset": 30
-              }
-            }
-          ]
-        }
-      ],
-      "resolution": "FIXED",
-      "status": "CLOSED",
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
-      "effort": "15min",
-      "debt": "15min",
-      "assignee": "pabllopf-fj3X7@github",
-      "author": "pabloperdomofalcon@gmail.com",
-      "tags": [
-        "cwe",
-        "pitfall",
-        "suspicious",
-        "symbolic-execution",
-        "unused"
-      ],
-      "creationDate": "2026-06-16T20:51:01+0000",
-      "updateDate": "2026-06-17T16:53:17+0000",
-      "closeDate": "2026-06-17T16:53:17+0000",
-      "type": "BUG",
-      "organization": "pabllopf-official",
-      "cleanCodeAttribute": "LOGICAL",
-      "cleanCodeAttributeCategory": "INTENTIONAL",
-      "impacts": [
-        {
-          "softwareQuality": "RELIABILITY",
-          "severity": "MEDIUM"
-        }
-      ],
-      "issueStatus": "FIXED",
-      "projectName": "Alis",
-      "internalTags": [],
-      "lastChangeAnalysisUuid": "eaedac56-eddf-45db-8a8d-1e7b9acf3c63",
-      "lastChangeSource": "ANALYSIS"
-    },
-    {
-      "key": "AZ6mihJTkNcRXyPBxty3",
-      "rule": "csharpsquid:S2583",
-      "severity": "MAJOR",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "project": "pabllopf-official_alis",
-      "hash": "3b391caf0bf5ea2615a0eac7af3a0158",
-      "textRange": {
-        "startLine": 258,
-        "endLine": 258,
-        "startOffset": 19,
-        "endOffset": 33
-      },
-      "flows": [
-        {
-          "locations": [
-            {
-              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-              "textRange": {
-                "startLine": 260,
-                "endLine": 276,
-                "startOffset": 21,
-                "endOffset": 26
-              }
-            }
-          ]
-        }
-      ],
-      "resolution": "FIXED",
-      "status": "CLOSED",
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
-      "effort": "15min",
-      "debt": "15min",
-      "assignee": "pabllopf-fj3X7@github",
-      "author": "pabloperdomofalcon@gmail.com",
-      "tags": [
-        "cwe",
-        "pitfall",
-        "suspicious",
-        "symbolic-execution",
-        "unused"
-      ],
-      "creationDate": "2026-06-08T09:20:47+0000",
-      "updateDate": "2026-06-16T20:51:01+0000",
-      "closeDate": "2026-06-16T20:51:01+0000",
-      "type": "BUG",
-      "organization": "pabllopf-official",
-      "cleanCodeAttribute": "LOGICAL",
-      "cleanCodeAttributeCategory": "INTENTIONAL",
-      "impacts": [
-        {
-          "softwareQuality": "RELIABILITY",
-          "severity": "MEDIUM"
-        }
-      ],
-      "issueStatus": "FIXED",
-      "projectName": "Alis",
-      "internalTags": [],
-      "lastChangeAnalysisUuid": "43fa2326-a7d8-4cf4-8702-b64a71bc6c54",
-      "lastChangeSource": "ANALYSIS"
-    },
-    {
       "key": "AZ9WLQkSb3Yg5Wvlzs02",
       "rule": "csharpsquid:S2259",
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 67,
       "hash": "cfdb2758d60403d748d45cb591fb44ce",
       "textRange": {
         "startLine": 67,
@@ -350,7 +167,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -360,7 +178,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -371,10 +190,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -383,7 +202,6 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 92,
       "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
       "textRange": {
         "startLine": 92,
@@ -419,7 +237,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -429,7 +248,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -440,10 +260,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -452,7 +272,6 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 57,
       "hash": "cfdb2758d60403d748d45cb591fb44ce",
       "textRange": {
         "startLine": 57,
@@ -488,7 +307,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -498,7 +318,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -509,10 +330,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -521,7 +342,6 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 84,
       "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
       "textRange": {
         "startLine": 84,
@@ -557,7 +377,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -567,7 +388,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -578,10 +400,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -590,7 +412,6 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 85,
       "hash": "cfdb2758d60403d748d45cb591fb44ce",
       "textRange": {
         "startLine": 85,
@@ -626,7 +447,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -636,7 +458,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -647,10 +470,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -659,7 +482,6 @@
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
       "project": "pabllopf-official_alis",
-      "line": 112,
       "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
       "textRange": {
         "startLine": 112,
@@ -695,7 +517,8 @@
           "type": "EXECUTION"
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "'options' is null on at least one execution path.",
       "effort": "10min",
       "debt": "10min",
@@ -705,7 +528,8 @@
         "symbolic-execution"
       ],
       "creationDate": "2026-02-20T00:00:00+0000",
-      "updateDate": "2026-07-12T11:51:39+0000",
+      "updateDate": "2026-07-20T22:11:20+0000",
+      "closeDate": "2026-07-20T22:11:20+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -716,50 +540,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
-      "projectName": "Alis",
-      "internalTags": [],
-      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
-      "lastChangeSource": "ANALYSIS"
-    },
-    {
-      "key": "AZ7KU79QgfB4D_M8MD1M",
-      "rule": "csharpsquid:S3887",
-      "severity": "MINOR",
-      "component": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
-      "project": "pabllopf-official_alis",
-      "hash": "c21ed3bdb2f394060349afe44ee7fb31",
-      "textRange": {
-        "startLine": 47,
-        "endLine": 47,
-        "startOffset": 24,
-        "endOffset": 27
-      },
-      "flows": [],
-      "resolution": "FIXED",
-      "status": "CLOSED",
-      "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'.",
-      "effort": "15min",
-      "debt": "15min",
-      "author": "rvr.99@hotmail.com",
-      "tags": [],
-      "creationDate": "2025-05-13T23:00:00+0000",
-      "updateDate": "2026-06-16T20:51:01+0000",
-      "closeDate": "2026-06-16T20:51:01+0000",
-      "type": "BUG",
-      "organization": "pabllopf-official",
-      "cleanCodeAttribute": "CLEAR",
-      "cleanCodeAttributeCategory": "INTENTIONAL",
-      "impacts": [
-        {
-          "softwareQuality": "RELIABILITY",
-          "severity": "LOW"
-        }
-      ],
       "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "43fa2326-a7d8-4cf4-8702-b64a71bc6c54",
+      "lastChangeAnalysisUuid": "8b76a40e-f580-471f-9d7a-55dfe88321c4",
       "lastChangeSource": "ANALYSIS"
     }
   ]

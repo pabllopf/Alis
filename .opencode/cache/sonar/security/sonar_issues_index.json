@@ -1,16 +1,1 @@
-{
-  "AZ1dvNH3MbZ4NfML32sy": {
-    "index": 0,
-    "key": "AZ1dvNH3MbZ4NfML32sy",
-    "rule": "csharpsquid:S5766",
-    "component": "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
-    "severity": "MAJOR",
-    "type": "SECURITY_HOTSPOT",
-    "message": "Validate data in this deserialization constructor.",
-    "line": 75,
-    "status": "completed",
-    "assignedWorker": null,
-    "attemptCount": 0,
-    "lastError": null
-  }
-}
+{}

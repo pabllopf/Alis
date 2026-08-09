@@ -1,10 +1,10 @@
 {
   "status": "completed",
-  "totalIssues": 12,
-  "processedCount": 12,
+  "totalIssues": 8,
+  "processedCount": 0,
   "failedCount": 0,
   "skippedCount": 0,
-  "lastProcessedKey": "AZ9WLQjFb3Yg5Wvlzs00",
-  "startedAt": "2026-07-13T10:45:48Z",
-  "completedAt": "2026-07-13T10:51:45Z"
+  "lastProcessedKey": null,
+  "startedAt": "2026-08-09T18:49:07Z",
+  "completedAt": "2026-08-09T18:49:26Z"
 }

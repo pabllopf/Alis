@@ -1,15 +1,12 @@
-# Issues Index
+# issues-index
 
-Total: 7
-Generated: 2026-07-23
+| sonar_id | file | rule | severity | status | commit |
 
-| # | Key | Rule | File | Line | Severity | Status |
-|---|-----|------|------|------|----------|--------|
-| 1 | AZ-OwbIdDLnBipD5IA_M | csharpsquid:S2486 | Collision.cs | 1098 | MINOR | FIXED |
-| 2 | AZ-OwbIdDLnBipD5IA_N | csharpsquid:S108 | Collision.cs | 1099 | MAJOR | AUTO-RESOLVED |
-| 3 | AZ-OwbQ-DLnBipD5IA_P | csharpsquid:S1121 | AssetRegistry.cs | 443 | MAJOR | FIXED |
-| 4 | AZ-OwbQ-DLnBipD5IA_O | csharpsquid:S1144 | AssetRegistry.cs | 510 | MAJOR | FIXED |
-| 5 | AZ-BlpcYiLjI1diOPXKO | csharpsquid:S1905 | SceneManager.cs | 83 | MINOR | FIXED |
-| 6 | AZ-Blp3oiLjI1diOPXKQ | csharpsquid:S3776 | FlipcodeDecomposer.cs | 55 | CRITICAL | FIXED |
-| 6 | AZ-Blp3oiLjI1diOPXKQ | csharpsquid:S3776 | FlipcodeDecomposer.cs | 55 | CRITICAL | OPEN |
-| 7 | AZ-Blp1iiLjI1diOPXKP | csharpsquid:S2223 | Contact.cs | 48 | CRITICAL | FIXED |
+## ingestion snapshot (2026-08-09T19:49Z)
+
+- project: pabllopf-official_alis, branch: master
+- unresolved CODE_SMELL: 0
+- resolved CODE_SMELL (history): 16
+- unresolved issues of any type: 0
+- last analysis: 2026-08-09T18:37:09+0000
+- verdict: NO DELTA — all issues resolved upstream; expectation (~182) not met because no unresolved issues exist.
