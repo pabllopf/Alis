@@ -33,6 +33,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Outputs;
+using Alis.Core.Aspect.Logging.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test.Outputs
@@ -73,14 +74,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         ///     and the finally restore, both catch blocks are exercised.
         ///     Closes STDOUT fd to force all Interop.Write calls to STDOUT to fail.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void Write_WhenStdoutClosed_BothCatchBlocksExecute()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return;
-            }
-
             TextWriter originalOut = Console.Out;
             int savedStdout = dup(1);
 

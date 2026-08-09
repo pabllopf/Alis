@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test
@@ -64,19 +64,6 @@ namespace Alis.Core.Audio.Test
             Player player = new Player();
 
             Assert.NotNull(player);
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Assert.NotNull(player);
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Assert.NotNull(player);
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Assert.NotNull(player);
-            }
         }
 
         /// <summary>
@@ -108,71 +95,56 @@ namespace Alis.Core.Audio.Test
         /// <summary>
         ///     Tests that check os should return windows player on windows
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void CheckOs_ShouldReturnWindowsPlayer_OnWindows()
         {
             IPlayer player = Player.CheckOs();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Assert.IsType<WindowsPlayer>(player);
-            }
+            Assert.IsType<WindowsPlayer>(player);
         }
 
         /// <summary>
         ///     Tests that check os should return linux player on linux
         /// </summary>
-        [Fact]
+        [LinuxOnly]
         public void CheckOs_ShouldReturnLinuxPlayer_OnLinux()
         {
             IPlayer player = Player.CheckOs();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Assert.IsType<LinuxPlayer>(player);
-            }
+            Assert.IsType<LinuxPlayer>(player);
         }
 
         /// <summary>
         ///     Tests that check os should return mac player on mac
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void CheckOs_ShouldReturnMacPlayer_OnMac()
         {
             IPlayer player = Player.CheckOs();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Assert.IsType<MacPlayer>(player);
-            }
+            Assert.IsType<MacPlayer>(player);
         }
 
         /// <summary>
         ///     Tests that check os should return browser player on webassembly
         /// </summary>
-        [Fact]
+        [BrowserOnly]
         public void CheckOs_ShouldReturnBrowserPlayer_OnWebAssembly()
         {
             IPlayer player = Player.CheckOs();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")))
-            {
-                Assert.IsType<BrowserPlayer>(player);
-            }
+            Assert.IsType<BrowserPlayer>(player);
         }
 
         /// <summary>
         ///     Tests that check os should return browser player on browser
         /// </summary>
-        [Fact]
+        [BrowserOnly]
         public void CheckOs_ShouldReturnBrowserPlayer_OnBrowser()
         {
             IPlayer player = Player.CheckOs();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
-            {
-                Assert.IsType<BrowserPlayer>(player);
-            }
+            Assert.IsType<BrowserPlayer>(player);
         }
 
         /// <summary>

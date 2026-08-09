@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -47,7 +48,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play with existing file should set playing true
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task Play_WithExistingFile_ShouldSetPlayingTrue()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -68,7 +69,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play with non existent file should throw file not found exception
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task Play_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -79,7 +80,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop without loop with existing file should set playing true
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithoutLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -100,7 +101,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop without loop with non existent file should throw
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithoutLoop_WithNonExistentFile_ShouldThrow()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -110,7 +111,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop with loop with non existent file should throw
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithLoop_WithNonExistentFile_ShouldThrow()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -120,7 +121,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play after stop should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task Play_AfterStop_ShouldWork()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -147,7 +148,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop with loop true should start background task
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithLoopTrue_ShouldStartBackgroundTask()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -172,7 +173,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop with loop true then cached file should use cache
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithLoopTrue_ThenCachedFile_ShouldUseCache()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();

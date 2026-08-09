@@ -29,9 +29,9 @@
 
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
+using Alis.Core.Aspect.Logging.Test.Attributes;
 using Alis.Core.Aspect.Logging.Outputs;
 using Xunit;
 
@@ -46,14 +46,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os application support directory
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FileLogOutput_MacOS_ApplicationSupportDirectory()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return;
-            }
-
             string supportDir = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "Alis",
@@ -83,14 +78,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os unix line endings
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FileLogOutput_MacOS_UnixLineEndings()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return;
-            }
-
             string tempDir = Path.Combine(Path.GetTempPath(), $"macos_{Guid.NewGuid()}");
             string filePath = Path.Combine(tempDir, "test.log");
             Directory.CreateDirectory(tempDir);
@@ -111,14 +101,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os case sensitive file system
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FileLogOutput_MacOS_CaseSensitiveFileSystem()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return;
-            }
-
             string tempDir = Path.Combine(Path.GetTempPath(), $"macos_case_{Guid.NewGuid()}");
             Directory.CreateDirectory(tempDir);
 

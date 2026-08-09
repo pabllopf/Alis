@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -77,7 +78,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play with resource extraction should succeed
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task Play_WithResourceExtraction_ShouldSucceed()
         {
             SetupAssembly();
@@ -93,7 +94,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play loop with resource extraction should succeed
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
             SetupAssembly();
@@ -109,7 +110,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play with cached extraction should reuse cached file
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task Play_WithCachedExtraction_ShouldReuseCachedFile()
         {
             SetupAssembly();

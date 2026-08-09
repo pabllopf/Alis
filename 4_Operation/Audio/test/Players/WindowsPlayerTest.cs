@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -45,14 +45,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that windows player constructor should initialize properly
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void WindowsPlayer_Constructor_ShouldInitializeProperly()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             Assert.NotNull(player);
@@ -63,14 +58,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that playing property should return false initially
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Playing_Property_ShouldReturnFalseInitially()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             bool playing = player.Playing;
@@ -81,14 +71,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that paused property should return false initially
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Paused_Property_ShouldReturnFalseInitially()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             bool paused = player.Paused;
@@ -99,14 +84,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play should throw file not found exception when file does not exist
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_ShouldThrowFileNotFoundException_WhenFileDoesNotExist()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
 
@@ -116,14 +96,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that pause should not throw when not playing
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Pause_ShouldNotThrow_WhenNotPlaying()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Pause();
@@ -134,14 +109,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that resume should not throw when not playing
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Resume_ShouldNotThrow_WhenNotPlaying()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Resume();
@@ -153,14 +123,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that stop should set playing and paused to false
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Stop_ShouldSetPlayingAndPausedToFalse()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Stop();
@@ -172,14 +137,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume should accept byte parameter
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_ShouldAcceptByteParameter()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 50;
 
@@ -191,14 +151,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume with zero should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithZero_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 0;
 
@@ -210,14 +165,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume with max value should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithMaxValue_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 100;
 
@@ -229,14 +179,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that multiple pause calls should be safe
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Pause_MultipleCalls_ShouldBeSafe()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Pause();
@@ -249,14 +194,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that multiple stop calls should be safe
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Stop_MultipleCalls_ShouldBeSafe()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Stop();
@@ -270,14 +210,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that playback finished event should be available
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void PlaybackFinished_Event_ShouldBeAvailable()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             bool eventAttached = false;
 
@@ -289,14 +224,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that dispose should not throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Dispose_ShouldNotThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             player.Dispose();
@@ -307,14 +237,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that multiple dispose calls should be safe
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Dispose_MultipleCalls_ShouldBeSafe()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             player.Dispose();
@@ -327,14 +252,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop should throw file not found exception when file does not exist
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_ShouldThrowFileNotFoundException_WhenFileDoesNotExist()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
             bool loop = true;
@@ -345,14 +265,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop without loop should work like normal play
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithoutLoop_ShouldWorkLikeNormalPlay()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
             bool loop = false;
@@ -363,14 +278,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume with mid range values should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithMidRangeValues_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.SetVolume(25);
@@ -383,14 +293,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that resume without pause should not throw
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Resume_WithoutPause_ShouldNotThrow()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Resume();
@@ -402,14 +307,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that windows player implements i player interface
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void WindowsPlayer_ShouldImplementIPlayerInterface()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             Assert.IsAssignableFrom<IPlayer>(player);
@@ -418,14 +318,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that windows player implements i disposable interface
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void WindowsPlayer_ShouldImplementIDisposableInterface()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             Assert.IsAssignableFrom<IDisposable>(player);
@@ -434,14 +329,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume over 100 should still work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_Over100_ShouldStillWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 255; // Max byte value
 
@@ -453,14 +343,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with null file name should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithNullFileName_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(null));
@@ -469,14 +354,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop with null file name should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithNullFileName_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(null, true));
@@ -485,14 +365,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with empty file name should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithEmptyFileName_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(string.Empty));
@@ -501,14 +376,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that stop after dispose should not throw
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Stop_AfterDispose_ShouldNotThrow()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
@@ -520,14 +390,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that dispose with using statement should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Dispose_WithUsingStatement_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             using (WindowsPlayer player = new WindowsPlayer())
             {
                 Assert.NotNull(player);
@@ -539,14 +404,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop with loop false should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithLoopFalse_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent.wav";
 
@@ -556,14 +416,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume after dispose should not throw
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_AfterDispose_ShouldNotThrow()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
@@ -575,14 +430,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that pause after dispose should not throw
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Pause_AfterDispose_ShouldNotThrow()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
@@ -594,14 +444,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that resume after dispose should not throw
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Resume_AfterDispose_ShouldNotThrow()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
@@ -613,14 +458,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that playback finished event should be raiseable
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void PlaybackFinished_Event_ShouldBeRaiseable()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             bool eventRaised = false;
             player.PlaybackFinished += (sender, e) => eventRaised = true;
@@ -633,14 +473,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that playback finished event can be unsubscribed
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void PlaybackFinished_Event_CanBeUnsubscribed()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             EventHandler handler = (sender, e) => { };
 
@@ -653,14 +488,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that playback finished event with multiple handlers should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void PlaybackFinished_Event_WithMultipleHandlers_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             int count1 = 0;
             int count2 = 0;
@@ -674,14 +504,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume with all valid values should work
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithAllValidValues_ShouldWork()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             for (byte i = 0; i <= 100; i += 10)
@@ -695,14 +520,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that pause stop sequence should reset state
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Pause_Stop_Sequence_ShouldResetState()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Pause();
@@ -715,14 +535,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that resume stop sequence should reset state
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Resume_Stop_Sequence_ShouldResetState()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await player.Resume();
@@ -735,14 +550,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that dispose should be idempotent
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void Dispose_ShouldBeIdempotent()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             player.Dispose();
@@ -755,14 +565,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with whitespace file name should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithWhitespaceFileName_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play("   "));
@@ -771,14 +576,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop with whitespace file name should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithWhitespaceFileName_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
 
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop("   ", true));
@@ -787,14 +587,9 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with invalid path characters should throw exception
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithInvalidPathCharacters_ShouldThrowException()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return;
-            }
-
             WindowsPlayer player = new WindowsPlayer();
             string invalidPath = "invalid<>path.wav";
 

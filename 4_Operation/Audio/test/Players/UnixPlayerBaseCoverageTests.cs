@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Alis.Core.Audio.Test.Players.Samples;
 using Xunit;
 
@@ -16,7 +17,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that pause when not playing should not set paused
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void Pause_WhenNotPlaying_ShouldNotSetPaused()
         {
             TestUnixPlayer player = new TestUnixPlayer();
@@ -27,7 +28,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that resume when not playing should not change state
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void Resume_WhenNotPlaying_ShouldNotChangeState()
         {
             TestUnixPlayer player = new TestUnixPlayer();
@@ -39,7 +40,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that stop when process is null should set playing and paused false
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void Stop_WhenProcessIsNull_ShouldSetPlayingAndPausedFalse()
         {
             TestUnixPlayer player = new TestUnixPlayer();
@@ -51,7 +52,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that pause process command should be formattable
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void PauseProcessCommand_ShouldBeFormattable()
         {
             string command = UnixPlayerBase.PauseProcessCommand;
@@ -62,7 +63,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that resume process command should be formattable
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void ResumeProcessCommand_ShouldBeFormattable()
         {
             string command = UnixPlayerBase.ResumeProcessCommand;
