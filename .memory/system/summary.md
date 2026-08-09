@@ -527,3 +527,11 @@
 - **Coverage After**: ~99.7%
 - **Tests Added**: 2
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## FilePickerValidator.cs
+
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs`
+- **Coverage Before**: 99.0% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; defensive short-circuit branches unreachable
