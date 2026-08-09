@@ -311,3 +311,11 @@
 - **Coverage After**: ~82.0%
 - **Tests Added**: 31
 - **Uncovered Lines**: Deep polygon-merge internals requiring specific concave polygon shapes
+
+## AngleJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs`
+- **Coverage Before**: 62.8%
+- **Coverage After**: 100.0%
+- **Tests Added**: 13
+- **Uncovered Lines**: None
