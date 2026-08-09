@@ -399,3 +399,11 @@
 - **Coverage After**: ~99.0%
 - **Tests Added**: 5
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## Body.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Body.cs`
+- **Coverage Before**: 92.1%
+- **Coverage After**: ~96.0%
+- **Tests Added**: 10
+- **Uncovered Lines**: World-locked exception paths
