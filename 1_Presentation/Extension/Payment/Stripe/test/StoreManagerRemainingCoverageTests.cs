@@ -336,5 +336,44 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentException>(() =>
                 manager.CreateCheckoutSessionAsync("  "));
         }
+
+        /// <summary>
+        /// Tests that constructor with null gateway throws argument null exception
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullGateway_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new StoreManager("id", "name", "tag", true, CreateContext(), null));
+        }
+
+        /// <summary>
+        /// Tests that refund payment without amount delegates to gateway
+        /// </summary>
+        [Fact]
+        public void RefundPayment_WithoutAmount_DelegatesToGateway()
+        {
+            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
+            gateway.Setup(g => g.CreateRefundAsync(It.IsAny<StripeRefundRequest>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new StripeRefundResponse { Status = "succeeded" });
+            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
+            manager.InitializeAsync(CreateValidConfiguration()).GetAwaiter().GetResult();
+
+            RefundResult result = manager.RefundPaymentAsync("pi_123", null).GetAwaiter().GetResult();
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that refund payment with zero amount throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public void RefundPayment_WithZeroAmount_ThrowsArgumentOutOfRangeException()
+        {
+            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
+            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
+            manager.InitializeAsync(CreateValidConfiguration()).GetAwaiter().GetResult();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => manager.RefundPaymentAsync("pi_123", 0).GetAwaiter().GetResult());
+        }
     }
 }
