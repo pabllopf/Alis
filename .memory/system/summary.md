@@ -375,3 +375,11 @@
 - **Coverage After**: ~98.0%
 - **Tests Added**: 11
 - **Uncovered Lines**: Reaction force/torque non-zero edge paths
+
+## DistanceJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs`
+- **Coverage Before**: 93.3%
+- **Coverage After**: ~98.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: None remaining beyond combined coverage
