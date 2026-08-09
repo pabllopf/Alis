@@ -367,3 +367,11 @@
 - **Coverage After**: ~94.0%
 - **Tests Added**: 6
 - **Uncovered Lines**: Degenerate error paths and private `Edge` internals
+
+## FrictionJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs`
+- **Coverage Before**: 92.1%
+- **Coverage After**: ~98.0%
+- **Tests Added**: 11
+- **Uncovered Lines**: Reaction force/torque non-zero edge paths

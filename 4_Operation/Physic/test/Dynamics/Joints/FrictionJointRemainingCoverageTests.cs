@@ -269,7 +269,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
-    }
 
         /// <summary>
         ///     Tests that init velocity constraints with zero inertia guards angular mass
@@ -324,6 +323,38 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(1.0f, joint.LocalAnchorA.X, 5);
             Assert.Equal(-2.0f, joint.LocalAnchorB.X, 5);
+        }
+
+        /// <summary>
+        ///     Tests that world anchor a getter returns world point
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Getter_ReturnsWorldPoint()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyA.Position = new Vector2F(2, 0);
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, new Vector2F(1, 0));
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.Equal(3.0f, anchor.X, 5);
+        }
+
+        /// <summary>
+        ///     Tests that world anchor b getter returns world point
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Getter_ReturnsWorldPoint()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyB.Position = new Vector2F(2, 0);
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, new Vector2F(1, 0));
+
+            Vector2F anchor = joint.WorldAnchorB;
+
+            Assert.Equal(3.0f, anchor.X, 5);
         }
     }
 }
