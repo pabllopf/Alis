@@ -495,3 +495,11 @@
 - **Coverage After**: ~99.5%
 - **Tests Added**: 1
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## FilePickerResult.cs
+
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs`
+- **Coverage Before**: 98.3% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; `SelectedPaths?.` null-conditional branch unreachable
