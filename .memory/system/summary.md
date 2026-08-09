@@ -463,3 +463,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; `Dispose(false)` branch unreachable (no finalizer)
+
+## RopeJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/RopeJoint.cs`
+- **Coverage Before**: 97.4%
+- **Coverage After**: ~99.5%
+- **Tests Added**: 2
+- **Uncovered Lines**: None remaining beyond combined coverage
