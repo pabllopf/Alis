@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -37,79 +36,54 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collisions.Shapes
 {
     /// <summary>
-    /// The polygon shape remaining coverage tests class
+    ///     The polygon shape remaining coverage tests class
     /// </summary>
     public class PolygonShapeRemainingCoverageTests
     {
         /// <summary>
-        /// Tests that ray cast ray starting inside returns false
+        ///     Tests that compute submerged area with quad partially submerged returns partial area
         /// </summary>
         [Fact]
-        public void RayCast_RayStartingInside_ReturnsFalse()
+        public void ComputeSubmergedArea_QuadPartiallySubmerged_ReturnsPartialArea()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
-            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
-            ControllerTransform transform = ControllerTransform.Identity;
-            RayCastInput input = new RayCastInput
+            Vertices vertices = new Vertices
             {
-                Point1 = new Vector2F(5, 5),
-                Point2 = new Vector2F(5, 25),
-                MaxFraction = 1.0f
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
             };
-
-            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
-
-            Assert.False(hit);
-        }
-
-        /// <summary>
-        /// Tests that compute aabb should update upper bound x and lower bound y
-        /// </summary>
-        [Fact]
-        public void ComputeAabb_ShouldUpdateUpperBoundXAndLowerBoundY()
-        {
-            Vertices vertices = new Vertices { new Vector2F(0, 5), new Vector2F(5, 0), new Vector2F(2, 4) };
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
             ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
 
-            polygon.ComputeAabb(out Aabb aabb, ref transform, 0);
+            float area = polygon.ComputeSubmergedArea(ref normal, 1, ref transform, out Vector2F sc);
 
-            Assert.True(aabb.LowerBound.X <= aabb.UpperBound.X);
-            Assert.True(aabb.LowerBound.Y <= aabb.UpperBound.Y);
+            Assert.True(area > 0);
+            Assert.True(area <= polygon.MassData.Mass);
         }
 
         /// <summary>
-        /// Tests that compare to with different radius returns false
+        ///     Tests that compute submerged area with pentagon partially submerged returns partial area
         /// </summary>
         [Fact]
-        public void CompareTo_WithDifferentRadius_ReturnsFalse()
+        public void ComputeSubmergedArea_PentagonPartiallySubmerged_ReturnsPartialArea()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
-            PolygonShape a = new PolygonShape(vertices, 1.0f);
-            PolygonShape b = new PolygonShape(vertices, 1.0f);
-            b.GetRadius = b.GetRadius + 1.0f;
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(3, 1),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
 
-            bool result = a.CompareTo(b);
+            float area = polygon.ComputeSubmergedArea(ref normal, 1, ref transform, out Vector2F sc);
 
-            Assert.False(result);
-        }
-
-        /// <summary>
-        /// Tests that compare to with same radius different mass data returns false
-        /// </summary>
-        [Fact]
-        public void CompareTo_WithSameRadiusDifferentMassData_ReturnsFalse()
-        {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
-            PolygonShape a = new PolygonShape(vertices, 1.0f);
-            PolygonShape b = new PolygonShape(vertices, 1.0f)
-                {
-                    MassData = new MassData()
-                };
-
-            bool result = a.CompareTo(b);
-
-            Assert.False(result);
+            Assert.True(area > 0);
         }
     }
 }

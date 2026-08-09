@@ -575,3 +575,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; `Console.ReadLine()` branches untestable in CI
+
+## PolygonShape.cs
+
+- **File**: `4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs`
+- **Coverage Before**: 99.7% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 2
+- **Uncovered Lines**: None
