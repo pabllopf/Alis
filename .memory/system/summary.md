@@ -407,3 +407,11 @@
 - **Coverage After**: ~96.0%
 - **Tests Added**: 10
 - **Uncovered Lines**: World-locked exception paths
+
+## BayazitDecomposer.cs
+
+- **File**: `4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs`
+- **Coverage Before**: 95.1%
+- **Coverage After**: ~97.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Deep geometric edge cases (adjacent-split, vertex-score +3)

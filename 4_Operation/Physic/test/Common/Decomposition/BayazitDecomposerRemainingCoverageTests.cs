@@ -209,5 +209,49 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
                 Assert.True(part.Count >= 3);
             }
         }
+
+        /// <summary>
+        /// Tests that triangulate polygon with zigzag polygon should hit adjacent split branch
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithZigzagPolygon_ShouldNotThrow()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(4f, 0f),
+                new Vector2F(3f, 2f),
+                new Vector2F(5f, 4f),
+                new Vector2F(1f, 4f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = BayazitDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that triangulate polygon with star shaped polygon should not throw
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithStarShapedPolygon_ShouldNotThrow()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(5f, 1f),
+                new Vector2F(6f, 6f),
+                new Vector2F(1f, 5f),
+                new Vector2F(2f, 3f),
+                new Vector2F(0f, 4f)
+            });
+
+            List<Vertices> result = BayazitDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
     }
 }
