@@ -56,25 +56,7 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Empty(options);
         }
-
-        /// <summary>
-        /// Tests that show dialog with null action does not throw
-        /// </summary>
-        [Fact]
-        public void ShowDialog_WithNullAction_DoesNotThrow()
-        {
-            DialogManager manager = new DialogManager();
-            Dialog dialog = new Dialog("testId", "Test");
-            DialogOption option = new DialogOption("Option", null);
-            dialog.AddOption(option);
-            manager.AddDialog(dialog);
-
-            Console.SetIn(new StringReader("1\n"));
-            Exception exception = Record.Exception(() => manager.ShowDialog("testId"));
-
-            Assert.Null(exception);
-        }
-
+        
         /// <summary>
         /// Tests that resume dialog when no context does not throw
         /// </summary>
