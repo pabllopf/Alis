@@ -519,3 +519,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 4
 - **Uncovered Lines**: None
+
+## PrismaticJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/PrismaticJoint.cs`
+- **Coverage Before**: 98.9%
+- **Coverage After**: ~99.7%
+- **Tests Added**: 2
+- **Uncovered Lines**: None remaining beyond combined coverage
