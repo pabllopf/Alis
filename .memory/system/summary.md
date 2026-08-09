@@ -303,3 +303,11 @@
 - **Coverage After**: ~72.0%
 - **Tests Added**: 10
 - **Uncovered Lines**: Multithreaded collision paths gated by readonly `CollideMultithreadThreshold = int.MaxValue` — unreachable without production changes
+
+## MarchingSquares.cs
+
+- **File**: `4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs`
+- **Coverage Before**: 61.9%
+- **Coverage After**: ~82.0%
+- **Tests Added**: 31
+- **Uncovered Lines**: Deep polygon-merge internals requiring specific concave polygon shapes
