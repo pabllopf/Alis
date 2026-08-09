@@ -53,14 +53,9 @@ jobs:
             /d:sonar.verbose=false \
             /d:sonar.exclusions="**/obj/**,**/sample/**,**/test/**,**/docs/**,**/*.generated.cs,**/*.jpg,**/*.md,**/*.jpeg,**/*.png,**/*.gif,**/*.pdf,**/*.docx,**/*.xlsx,**/*.zip,**/*.ico" \
             /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
-      
-          dotnet test \
-            --verbosity minimal \
-            -f net8.0 \
-            -c Debug \
-            ./alis_design.slnx \
-            --collect "XPlat Code Coverage;Format=opencover" \
-            --results-directory ./.test
+
+          dotnet build -c Debug --verbosity quiet -f net8.0 ./alis_design.slnx
+          dotnet test --no-build -m:4 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
       
           dotnet sonarscanner end \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
