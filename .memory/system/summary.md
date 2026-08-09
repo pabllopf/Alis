@@ -295,3 +295,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 18
 - **Uncovered Lines**: None
+
+## ContactManager.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/ContactManager.cs`
+- **Coverage Before**: 59.3%
+- **Coverage After**: ~72.0%
+- **Tests Added**: 10
+- **Uncovered Lines**: Multithreaded collision paths gated by readonly `CollideMultithreadThreshold = int.MaxValue` — unreachable without production changes
