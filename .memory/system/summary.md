@@ -799,3 +799,11 @@
 - **Coverage After**: ~90.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: Zip-extraction paths requiring embedded assets.pack
+
+## Events.cs
+
+- **File**: `1_Presentation/Extension/Network/src/Internal/Events.cs`
+- **Coverage Before**: 89.1%
+- **Coverage After**: ~95.0%
+- **Tests Added**: 18
+- **Uncovered Lines**: Coverlet artifact on `EventSource.WriteEvent` bodies
