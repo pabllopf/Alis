@@ -823,3 +823,11 @@
 - **Coverage After**: ~91.5%
 - **Tests Added**: 1
 - **Uncovered Lines**: Deep archetype-edge resolution internals
+
+## EnumerableHelpers.cs
+
+- **File**: `4_Operation/Ecs/src/Collections/EnumerableHelpers.cs`
+- **Coverage Before**: 92.2%
+- **Coverage After**: ~94.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: Reset enumerator path

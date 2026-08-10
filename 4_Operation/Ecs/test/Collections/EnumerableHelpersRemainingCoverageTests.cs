@@ -28,17 +28,43 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
-    ///     Covers the remaining uncovered branches in <see cref="EnumerableHelpers" />,
-    ///     specifically the overflow protection in <see cref="EnumerableHelpers.ToArray{T}" />.
+    ///     The enumerable helpers remaining coverage tests class
     /// </summary>
     public class EnumerableHelpersRemainingCoverageTests
     {
+        /// <summary>
+        ///     Tests that to array with more than four elements grows buffer
+        /// </summary>
+        [Fact]
+        public void ToArray_WithMoreThanFourElements_GrowsBuffer()
+        {
+            IEnumerable<int> source = YieldFiveElements();
+
+            int[] result = EnumerableHelpers.ToArray(source, out int length);
+
+            Assert.Equal(5, length);
+            Assert.True(result.Length >= 5);
+            Assert.Equal(1, result[0]);
+            Assert.Equal(5, result[4]);
+        }
+
+        /// <summary>
+        ///     Yields the five elements
+        /// </summary>
+        /// <returns>The enumerable</returns>
+        private static IEnumerable<int> YieldFiveElements()
+        {
+            yield return 1;
+            yield return 2;
+            yield return 3;
+            yield return 4;
+            yield return 5;
+        }
     }
 }
