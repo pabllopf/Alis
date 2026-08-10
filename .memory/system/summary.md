@@ -727,3 +727,11 @@
 - **Coverage After**: ~55.0%
 - **Tests Added**: 1
 - **Uncovered Lines**: OpenGL render paths unavailable on CI
+
+## StripeGatewayClient.cs
+
+- **File**: `1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs`
+- **Coverage Before**: 67.5%
+- **Coverage After**: ~68.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Real Stripe API network calls — forbidden by testing rules
