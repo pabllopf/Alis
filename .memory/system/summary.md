@@ -591,3 +591,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; deep tree-rotation branch variants
+
+## Fields.cs
+
+- **File**: `4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs`
+- **Coverage Before**: 70.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: None
