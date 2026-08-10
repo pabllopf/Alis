@@ -703,3 +703,11 @@
 - **Coverage After**: ~40.0%
 - **Tests Added**: 5
 - **Uncovered Lines**: OpenGL-bound paths requiring GL context unavailable on CI
+
+## GraphicManager.cs
+
+- **File**: `2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs`
+- **Coverage Before**: 39.6%
+- **Coverage After**: ~50.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: OpenGL/platform-bound paths unavailable on CI
