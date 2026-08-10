@@ -695,3 +695,11 @@
 - **Coverage After**: ~85.0%
 - **Tests Added**: 3
 - **Uncovered Lines**: Deep block-solver branches requiring specific manifolds
+
+## Sprite.cs
+
+- **File**: `2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs`
+- **Coverage Before**: 31.6%
+- **Coverage After**: ~40.0%
+- **Tests Added**: 5
+- **Uncovered Lines**: OpenGL-bound paths requiring GL context unavailable on CI
