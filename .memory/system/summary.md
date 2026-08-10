@@ -951,3 +951,11 @@
 - **Coverage After**: ~55.0%
 - **Tests Added**: 3
 - **Uncovered Lines**: Native platform-creation methods requiring JS interop
+
+## WebAssemblyInputManager.cs
+
+- **File**: `4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs`
+- **Coverage Before**: 30.9%
+- **Coverage After**: ~40.0%
+- **Tests Added**: 9
+- **Uncovered Lines**: Gamepad/mouse native polling requiring JS interop
