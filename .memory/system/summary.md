@@ -615,3 +615,11 @@
 - **Coverage After**: ~97.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Defensive null-guards unreachable (fields never null)
+
+## VideoGameBuilder.cs
+
+- **File**: `2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs`
+- **Coverage Before**: 93.8%
+- **Coverage After**: ~97.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: `Run()` — blocking game loop, untestable in CI
