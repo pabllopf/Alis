@@ -157,5 +157,30 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.4f, config.TriggerDeadzone, 5);
             Assert.True(config.DebugMode);
         }
+
+        /// <summary>
+        ///     Tests that builder with invalid multisample count throws
+        /// </summary>
+        [Fact]
+        public void Builder_WithInvalidMultisampleCount_Throws()
+        {
+            WebAssemblyConfigurationBuilder builder = new WebAssemblyConfigurationBuilder();
+
+            Assert.Throws<System.ArgumentException>(() => builder.WithMultisampleCount(3));
+        }
+
+        /// <summary>
+        ///     Tests that builder with valid multisample counts passes
+        /// </summary>
+        [Fact]
+        public void Builder_WithValidMultisampleCounts_Passes()
+        {
+            WebAssemblyConfigurationBuilder builder = new WebAssemblyConfigurationBuilder();
+
+            Assert.NotNull(builder.WithMultisampleCount(2));
+            Assert.NotNull(builder.WithMultisampleCount(4));
+            Assert.NotNull(builder.WithMultisampleCount(8));
+            Assert.NotNull(builder.WithMultisampleCount(16));
+        }
     }
 }
