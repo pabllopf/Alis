@@ -1031,3 +1031,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 0
 - **Uncovered Lines**: None
+
+## AudioReader.cs
+
+- **File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs`
+- **Coverage Before**: 65.9%
+- **Coverage After**: ~66.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: ffprobe-output parsing requiring ffmpeg process execution
