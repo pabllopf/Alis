@@ -991,3 +991,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: None
+
+## WebAssemblyGameExamples.cs
+
+- **File**: `4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs`
+- **Coverage Before**: 6.3%
+- **Coverage After**: ~15.0%
+- **Tests Added**: 6
+- **Uncovered Lines**: Demo methods requiring JS interop
