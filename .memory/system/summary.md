@@ -903,3 +903,11 @@
 - **Coverage After**: ~98.0%
 - **Tests Added**: 3
 - **Uncovered Lines**: Deep entity-creation/archetype-swap paths
+
+## Collision.cs
+
+- **File**: `4_Operation/Physic/src/Collisions/Collision.cs`
+- **Coverage Before**: 97.9%
+- **Coverage After**: ~98.2% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Deep EPA/edge-separation branches
