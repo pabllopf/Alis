@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -188,7 +189,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that ExecuteMsiCommand is accessible and throws DllNotFoundException on non-Windows.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void ExecuteMsiCommand_OnNonWindows_ThrowsDllNotFoundException()
         {
             WindowsPlayer player = new WindowsPlayer();
@@ -198,7 +199,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that ExecuteMsiCommand throws with empty command.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void ExecuteMsiCommand_WithEmptyCommand_Throws()
         {
             WindowsPlayer player = new WindowsPlayer();
@@ -288,7 +289,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that SetVolume on non-Windows throws DllNotFoundException.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task SetVolume_OnNonWindows_ThrowsDllNotFoundException()
         {
             WindowsPlayer player = new WindowsPlayer();
@@ -370,23 +371,76 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
+        ///     Creates a temporary valid wav file that the Windows MCI device can open.
+        /// </summary>
+        /// <returns>The file path</returns>
+        private static string CreateTempWavFile()
+        {
+            int sampleRate = 44100;
+            short channels = 1;
+            short bitsPerSample = 16;
+            int dataSize = 88200;
+            int blockAlign = channels * bitsPerSample / 8;
+            int byteRate = sampleRate * blockAlign;
+
+            string filePath = Path.GetTempFileName() + ".wav";
+            using (FileStream stream = File.Create(filePath))
+            {
+                stream.Write(Encoding.ASCII.GetBytes("RIFF"), 0, 4);
+                stream.Write(BitConverter.GetBytes(36 + dataSize), 0, 4);
+                stream.Write(Encoding.ASCII.GetBytes("WAVE"), 0, 4);
+                stream.Write(Encoding.ASCII.GetBytes("fmt "), 0, 4);
+                stream.Write(BitConverter.GetBytes(16), 0, 4);
+                stream.Write(BitConverter.GetBytes((short)1), 0, 2);
+                stream.Write(BitConverter.GetBytes(channels), 0, 2);
+                stream.Write(BitConverter.GetBytes(sampleRate), 0, 4);
+                stream.Write(BitConverter.GetBytes(byteRate), 0, 4);
+                stream.Write(BitConverter.GetBytes((short)blockAlign), 0, 2);
+                stream.Write(BitConverter.GetBytes(bitsPerSample), 0, 2);
+                stream.Write(Encoding.ASCII.GetBytes("data"), 0, 4);
+                stream.Write(BitConverter.GetBytes(dataSize), 0, 4);
+                stream.Write(new byte[dataSize], 0, dataSize);
+            }
+            return filePath;
+        }
+
+        /// <summary>
+        ///     Deletes the file with retries to account for the mci device releasing the file asynchronously
+        /// </summary>
+        /// <param name="path">The path</param>
+        private static void DeleteWithRetry(string path)
+        {
+            for (int attempt = 0; attempt < 20; attempt++)
+            {
+                try
+                {
+                    if (File.Exists(path)) File.Delete(path);
+                    return;
+                }
+                catch (IOException)
+                {
+                    System.Threading.Thread.Sleep(25);
+                }
+            }
+        }
+
+        /// <summary>
         ///     Tests that Play on Windows with existing file starts playback (Windows only).
         /// </summary>
         [WindowsOnly]
         public async Task Play_OnWindows_WithExistingFile_StartsPlayback()
         {
-            string tempFile = Path.GetTempFileName();
+            string tempFile = CreateTempWavFile();
             try
             {
-                File.WriteAllText(tempFile, "dummy");
-                WindowsPlayer player = new WindowsPlayer();
+                using WindowsPlayer player = new WindowsPlayer();
                 await player.Play(tempFile);
                 Assert.True(player.Playing);
                 Assert.False(player.Paused);
             }
             finally
             {
-                if (File.Exists(tempFile)) File.Delete(tempFile);
+                DeleteWithRetry(tempFile);
             }
         }
 
@@ -396,18 +450,17 @@ namespace Alis.Core.Audio.Test.Players
         [WindowsOnly]
         public async Task PlayLoop_OnWindows_WithExistingFile_StartsPlayback()
         {
-            string tempFile = Path.GetTempFileName();
+            string tempFile = CreateTempWavFile();
             try
             {
-                File.WriteAllText(tempFile, "dummy");
-                WindowsPlayer player = new WindowsPlayer();
+                using WindowsPlayer player = new WindowsPlayer();
                 await player.PlayLoop(tempFile, false);
                 Assert.True(player.Playing);
                 Assert.False(player.Paused);
             }
             finally
             {
-                if (File.Exists(tempFile)) File.Delete(tempFile);
+                DeleteWithRetry(tempFile);
             }
         }
     }

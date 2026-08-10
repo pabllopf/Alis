@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -86,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor default should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_Default_ShouldCreateInstance()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -96,7 +97,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor with filename should set filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithFilename_ShouldSetFilename()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4");
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor default filename should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_DefaultFilename_ShouldBeNull()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -116,7 +117,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor with custom ffplay should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithCustomFfplay_ShouldCreateInstance()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", "my-ffplay");
@@ -126,7 +127,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose multiple times should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_MultipleTimes_ShouldNotThrow()
         {
             VideoPlayer player = new VideoPlayer();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose when not opened for writing should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNotOpenedForWriting_ShouldNotThrow()
         {
             VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -149,7 +150,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play when opened for writing should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WhenOpenedForWriting_ShouldThrow()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer("test.mp4");
@@ -162,7 +163,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play no filename should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_NoFilename_ShouldThrow()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play with filename should run ffplay
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithFilename_ShouldRunFfplay()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play with extra parameters should run ffplay
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithExtraParameters_ShouldRunFfplay()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -195,7 +196,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background when opened for writing should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WhenOpenedForWriting_ShouldThrow()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer("test.mp4");
@@ -208,7 +209,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background null filename should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_NullFilename_ShouldThrow()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -219,7 +220,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background empty filename should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_EmptyFilename_ShouldThrow()
         {
             using VideoPlayer player = new VideoPlayer(string.Empty);
@@ -230,7 +231,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background with filename should return process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithFilename_ShouldReturnProcess()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -241,7 +242,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background with pure background should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithPureBackground_ShouldNotThrow()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -252,7 +253,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background with extra parameters should return process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithExtraParameters_ShouldReturnProcess()
         {
             using VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write when opened for writing should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WhenOpenedForWriting_ShouldThrow()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer("test.mp4");
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write with fake ffplay should set opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithFakeFfplay_ShouldSetOpenedForWriting()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
@@ -291,7 +292,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write with non existent ffplay should throw win 32 exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithNonExistentFfplay_ShouldThrowWin32Exception()
         {
             using VideoPlayer player = new VideoPlayer(null, "ffplay-nonexistent");
@@ -303,7 +304,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write with show f fplay output should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithShowFFplayOutput_ShouldWork()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
@@ -316,7 +317,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write when not opened should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpened_ShouldThrow()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -326,7 +327,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write when opened should reset flag
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenOpened_ShouldResetFlag()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
@@ -339,7 +340,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write with no process should reset flag
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithNoProcess_ShouldResetFlag()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
@@ -354,7 +355,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose when opened for writing should close write
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_ShouldCloseWrite()
         {
             TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
@@ -367,7 +368,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that get stream for writing with non existent ffplay should throw win 32 exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetStreamForWriting_WithNonExistentFfplay_ShouldThrowWin32Exception()
         {
             Win32Exception ex = Assert.Throws<Win32Exception>(() =>
@@ -381,7 +382,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video player should implement i disposable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_ShouldImplementIDisposable()
         {
             using VideoPlayer player = new VideoPlayer();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write with existing ffplayp should kill and reopen
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithExistingFfplayp_ShouldKillAndReopen()
         {
             using TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);

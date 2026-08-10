@@ -1,4 +1,5 @@
 using System;
+using Alis.Extension.Io.FileDialog.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
@@ -184,7 +185,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// <summary>
         /// Tests that execute apple script with simple script returns output
         /// </summary>
-        [Fact]
+        [OSXOnly]
         public void ExecuteAppleScript_WithSimpleScript_ReturnsOutput()
         {
             string script = "on run\n  return \"hello\"\nend run";

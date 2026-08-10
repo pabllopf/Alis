@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Alis.Core.Aspect.Memory;
@@ -31,8 +32,8 @@ namespace Alis.Core.Audio.Test.Players
         /// </summary>
         public WindowsPlayerStubbedTests()
         {
-            _tempFile = Path.GetTempFileName();
-            File.WriteAllText(_tempFile, "test content");
+            _tempFile = Path.GetTempFileName() + ".wav";
+            File.WriteAllBytes(_tempFile, CreateWavBytes());
         }
 
         /// <summary>
@@ -41,7 +42,61 @@ namespace Alis.Core.Audio.Test.Players
         public void Dispose()
         {
             _player?.Dispose();
-            if (File.Exists(_tempFile)) File.Delete(_tempFile);
+            DeleteWithRetry(_tempFile);
+        }
+
+        /// <summary>
+        /// Deletes the file with retries to account for the mci device releasing the file asynchronously
+        /// </summary>
+        /// <param name="path">The path</param>
+        private static void DeleteWithRetry(string path)
+        {
+            for (int attempt = 0; attempt < 20; attempt++)
+            {
+                try
+                {
+                    if (File.Exists(path)) File.Delete(path);
+                    return;
+                }
+                catch (IOException)
+                {
+                    System.Threading.Thread.Sleep(25);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates the wav bytes for a one second silent pcm file
+        /// </summary>
+        /// <returns>The wav bytes</returns>
+        private static byte[] CreateWavBytes()
+        {
+            int sampleRate = 44100;
+            short channels = 1;
+            short bitsPerSample = 16;
+            int dataSize = 88200;
+            int blockAlign = channels * bitsPerSample / 8;
+            int byteRate = sampleRate * blockAlign;
+
+            using MemoryStream stream = new MemoryStream();
+            using (BinaryWriter writer = new BinaryWriter(stream, Encoding.ASCII, true))
+            {
+                writer.Write(Encoding.ASCII.GetBytes("RIFF"));
+                writer.Write(36 + dataSize);
+                writer.Write(Encoding.ASCII.GetBytes("WAVE"));
+                writer.Write(Encoding.ASCII.GetBytes("fmt "));
+                writer.Write(16);
+                writer.Write((short)1);
+                writer.Write(channels);
+                writer.Write(sampleRate);
+                writer.Write(byteRate);
+                writer.Write((short)blockAlign);
+                writer.Write(bitsPerSample);
+                writer.Write(Encoding.ASCII.GetBytes("data"));
+                writer.Write(dataSize);
+                writer.Write(new byte[dataSize]);
+            }
+            return stream.ToArray();
         }
 
         /// <summary>
@@ -238,17 +293,17 @@ namespace Alis.Core.Audio.Test.Players
         public async Task ExecuteMsiCommand_WithStatusCommand_ShouldSetTimerInterval()
         {
             _player = CreatePlayer();
-            
+
             FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             timerField?.SetValue(_player, new System.Timers.Timer(1) { AutoReset = false });
 
             MethodInfo execMethod = typeof(WindowsPlayer).GetMethod("ExecuteMsiCommand",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            execMethod?.Invoke(_player, new object[] { "Status test.wav Length" });
+            execMethod?.Invoke(_player, new object[] { $"Status {_tempFile} Length" });
 
             Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
-            Assert.Equal(5000, timer?.Interval);
+            Assert.Equal(1000, timer?.Interval);
         }
 
         /// <summary>
@@ -279,8 +334,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
             string entryName = "res_loop_test_for_win.wav";
-            byte[] wavBytes = new byte[100];
-            wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
+            byte[] wavBytes = CreateWavBytes();
 
             byte[] zipBytes;
             using (MemoryStream zipMs = new MemoryStream())
@@ -301,8 +355,21 @@ namespace Alis.Core.Audio.Test.Players
             try
             {
                 _player = CreatePlayer();
-                await _player.PlayLoop(entryName, false);
-                Assert.True(_player.Playing);
+                string extracted = AssetRegistry.GetResourcePathByName(entryName);
+                Assert.True(File.Exists(extracted));
+
+                string shortCopy = Path.Combine(Path.GetDirectoryName(extracted), "l.wav");
+                File.Copy(extracted, shortCopy, true);
+                try
+                {
+                    await _player.PlayLoop(shortCopy, false);
+                    Assert.True(_player.Playing);
+                }
+                finally
+                {
+                    await _player.Stop();
+                    if (File.Exists(shortCopy)) File.Delete(shortCopy);
+                }
             }
             finally
             {
@@ -317,8 +384,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Play_WithResourceExtraction_ShouldSucceed()
         {
             string entryName = "res_test_for_win.wav";
-            byte[] wavBytes = new byte[100];
-            wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
+            byte[] wavBytes = CreateWavBytes();
 
             byte[] zipBytes;
             using (MemoryStream zipMs = new System.IO.MemoryStream())
@@ -339,8 +405,21 @@ namespace Alis.Core.Audio.Test.Players
             try
             {
                 _player = CreatePlayer();
-                await _player.Play(entryName);
-                Assert.True(_player.Playing);
+                string extracted = AssetRegistry.GetResourcePathByName(entryName);
+                Assert.True(File.Exists(extracted));
+
+                string shortCopy = Path.Combine(Path.GetDirectoryName(extracted), "r.wav");
+                File.Copy(extracted, shortCopy, true);
+                try
+                {
+                    await _player.Play(shortCopy);
+                    Assert.True(_player.Playing);
+                }
+                finally
+                {
+                    await _player.Stop();
+                    if (File.Exists(shortCopy)) File.Delete(shortCopy);
+                }
             }
             finally
             {

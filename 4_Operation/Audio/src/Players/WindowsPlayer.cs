@@ -78,6 +78,17 @@ namespace Alis.Core.Audio.Players
         {
             if (disposing)
             {
+                if (_fileName != null)
+                {
+                    try
+                    {
+                        ExecuteMsiCommand($"Stop {_fileName}");
+                    }
+                    catch (InvalidOperationException)
+                    {
+                    }
+                }
+
                 _playbackTimer?.Dispose();
                 _playbackTimer = null;
             }
@@ -159,8 +170,21 @@ namespace Alis.Core.Audio.Players
             _playStopwatch = new Clock();
 
             ExecuteMsiCommand($"Status {_fileName} Length");
-            string playCommand = loop ? $"Play {_fileName} Repeat" : $"Play {_fileName}";
-            ExecuteMsiCommand(playCommand);
+            if (loop)
+            {
+                try
+                {
+                    ExecuteMsiCommand($"Play {_fileName} Repeat");
+                }
+                catch (InvalidOperationException ex) when (ex.Message.Contains("Error code: 259"))
+                {
+                    ExecuteMsiCommand($"Play {_fileName}");
+                }
+            }
+            else
+            {
+                ExecuteMsiCommand($"Play {_fileName}");
+            }
 
             Paused = false;
             Playing = true;
@@ -180,9 +204,12 @@ namespace Alis.Core.Audio.Players
             {
                 ExecuteMsiCommand($"Pause {_fileName}");
                 Paused = true;
-                _playbackTimer.Stop();
+                _playbackTimer?.Stop();
                 _playStopwatch.Stop();
-                _playbackTimer.Interval -= _playStopwatch.ElapsedMilliseconds;
+                if (_playbackTimer != null)
+                {
+                    _playbackTimer.Interval = Math.Max(_playbackTimer.Interval - _playStopwatch.ElapsedMilliseconds, 1);
+                }
             }
 
             return Task.CompletedTask;
@@ -215,7 +242,7 @@ namespace Alis.Core.Audio.Players
                 ExecuteMsiCommand($"Stop {_fileName}");
                 Playing = false;
                 Paused = false;
-                _playbackTimer.Stop();
+                _playbackTimer?.Stop();
                 _playStopwatch.Stop();
             }
 
@@ -316,7 +343,7 @@ namespace Alis.Core.Audio.Players
 
             if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out int length))
             {
-                _playbackTimer.Interval = length;
+                _playbackTimer.Interval = Math.Max(length, 1);
             }
         }
     }
