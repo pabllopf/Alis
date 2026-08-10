@@ -775,3 +775,11 @@
 - **Coverage After**: ~77.0% (ceiling on CI)
 - **Tests Added**: 0
 - **Uncovered Lines**: OpenAL native calls unavailable on CI
+
+## WebSocketNetworkTransport.cs
+
+- **File**: `1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs`
+- **Coverage Before**: 80.1%
+- **Coverage After**: ~82.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Client-handshake receive paths requiring real loopback connections
