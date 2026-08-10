@@ -895,3 +895,11 @@
 - **Coverage After**: ~98.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Init-failure catch requiring real Google OAuth failure
+
+## Scene.cs
+
+- **File**: `4_Operation/Ecs/src/Scene.cs`
+- **Coverage Before**: 97.8%
+- **Coverage After**: ~98.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: Deep entity-creation/archetype-swap paths
