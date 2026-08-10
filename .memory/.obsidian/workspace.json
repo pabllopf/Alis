@@ -203,6 +203,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260810_120343.json",
     "sonar/state/locks.md",
     "sonar/state/issues-index.md",
     "sonar/state/issue-progress.md",
@@ -230,7 +231,6 @@
     "system/results/QueryRemainingCoverageTests.md",
     "system/results/MemoryHelpersRemainingCoverageTests.md",
     "system/results/ArchetypeNeighborCacheRemainingCoverageTests.md",
-    "system/results/ComponentHandleRemainingCoverageTests.md",
     "system/reports",
     "coverage/state/uncovered-files.json",
     "coverage/decisions",
