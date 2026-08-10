@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         /// Creates the context should return non null
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void CreateContext_ShouldReturnNonNull()
         {
             ImNodesContext ctx = ImNodes.CreateContext();
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         /// Editors the context create should return non null
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextCreate_ShouldReturnNonNull()
         {
             ImNodesEditorContext editorCtx = ImNodes.EditorContextCreate();
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         /// Sets the current context should not throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetCurrentContext_ShouldNotThrow()
         {
             ImNodesContext ctx = new ImNodesContext();
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         /// Sets the im gui context should not throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetImGuiContext_ShouldNotThrow()
         {
             IntPtr ctx = IntPtr.Zero;
@@ -142,76 +142,76 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         /// Gets the style should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void GetStyle_ShouldThrow()
         {
-            Assert.Throws<TypeLoadException>(() => ImNodes.GetStyle());
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.GetStyle());
         }
 
         /// <summary>
         /// Gets the io should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void GetIo_ShouldThrow()
         {
-            Assert.Throws<TypeLoadException>(() => ImNodes.GetIo());
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.GetIo());
         }
 
         /// <summary>
         /// Styles the colors classic no arg should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsClassic_NoArg_ShouldThrow()
         {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic());
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsClassic());
         }
 
         /// <summary>
         /// Styles the colors classic with dest should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsClassic_WithDest_ShouldThrow()
         {
             ImNodesStyle dest = new ImNodesStyle();
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic(dest));
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsClassic(dest));
         }
 
         /// <summary>
         /// Styles the colors dark no arg should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsDark_NoArg_ShouldThrow()
         {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark());
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsDark());
         }
 
         /// <summary>
         /// Styles the colors dark with dest should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsDark_WithDest_ShouldThrow()
         {
             ImNodesStyle dest = new ImNodesStyle();
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark(dest));
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsDark(dest));
         }
 
         /// <summary>
         /// Styles the colors light no arg should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsLight_NoArg_ShouldThrow()
         {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight());
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsLight());
         }
 
         /// <summary>
         /// Styles the colors light with dest should throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact(false)]
         public void StyleColorsLight_WithDest_ShouldThrow()
         {
             ImNodesStyle dest = new ImNodesStyle();
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight(dest));
+            Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsLight(dest));
         }
     }
 }

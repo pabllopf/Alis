@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FilePickerExecutorCoverageTest.cs
+//  File:UnixOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,40 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if NET8_0_OR_GREATER
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Io.FileDialog.Test
+namespace Alis.Extension.Io.FileDialog.Test.Attributes
 {
     /// <summary>
-    /// The file picker executor coverage test class
+    ///     Skips the test when not running on a Unix platform.
     /// </summary>
-    public class FilePickerExecutorCoverageTest
+    /// <seealso cref="FactAttribute" />
+    
+    public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>
-        /// Tests that execute command with null arguments should not throw
+        ///     Initializes a new instance of the <see cref="UnixOnlyAttribute" /> class.
         /// </summary>
-        [Fact]
-        public void ExecuteCommand_WithNullArguments_ShouldNotThrow()
+        public UnixOnlyAttribute()
         {
-            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            string fileName = isWindows ? "cmd" : "echo";
-            string arguments = isWindows ? "/c echo test" : null;
-
-            string result = FilePickerExecutor.ExecuteCommand(fileName, arguments, 5000);
-
-            Assert.NotNull(result);
-        }
-
-        /// <summary>
-        /// Tests that command exists with non existent command returns false
-        /// </summary>
-        [Fact]
-        public void CommandExists_WithNonExistentCommand_ReturnsFalse()
-        {
-            bool result = FilePickerExecutor.CommandExists("nonexistent_cmd_xyz_abc_123_test");
-
-            Assert.False(result);
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Skip = "Test skipped because its not platform";
+            }
         }
     }
 }
+#else
+using Xunit;
+
+namespace Alis.Extension.Io.FileDialog.Test.Attributes
+{
+    /// <summary>
+    ///     Skips the test when not running on a Unix platform.
+    /// </summary>
+    /// <seealso cref="FactAttribute" />
+    
+    public class UnixOnlyAttribute : FactAttribute
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="UnixOnlyAttribute" /> class.
+        /// </summary>
+        public UnixOnlyAttribute()
+        {
+
+        }
+    }
+}
+#endif

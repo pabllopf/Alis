@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor null filename throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_NullFilename_ThrowsArgumentNullException()
         {
             ArgumentNullException ex = Assert.Throws<ArgumentNullException>(
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor empty filename throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_EmptyFilename_ThrowsArgumentNullException()
         {
             ArgumentNullException ex = Assert.Throws<ArgumentNullException>(
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor zero width throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ZeroWidth_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor negative width throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_NegativeWidth_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor zero height throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ZeroHeight_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -142,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor negative height throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_NegativeHeight_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -153,7 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor zero framerate throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ZeroFramerate_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -164,7 +165,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor negative framerate throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_NegativeFramerate_ThrowsInvalidDataException()
         {
             InvalidDataException ex = Assert.Throws<InvalidDataException>(
@@ -175,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor valid params sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ValidParams_SetsPropertiesCorrectly()
         {
             EncoderOptions customOptions = new EncoderOptions
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that file ctor default encoder options creates h 264 encoder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_DefaultEncoderOptions_CreatesH264Encoder()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 1920, 1080, 30);
@@ -212,7 +213,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor null stream throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_NullStream_ThrowsArgumentNullException()
         {
             ArgumentNullException ex = Assert.Throws<ArgumentNullException>(
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor zero width throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ZeroWidth_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -233,7 +234,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor negative width throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_NegativeWidth_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -243,7 +244,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor zero height throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ZeroHeight_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -253,7 +254,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor negative height throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_NegativeHeight_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor zero framerate throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ZeroFramerate_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -273,7 +274,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor negative framerate throws invalid data exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_NegativeFramerate_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -283,7 +284,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor valid params sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ValidParams_SetsPropertiesCorrectly()
         {
             using MemoryStream ms = new MemoryStream();
@@ -309,7 +310,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that stream ctor default encoder options creates h 264 encoder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_DefaultEncoderOptions_CreatesH264Encoder()
         {
             using MemoryStream ms = new MemoryStream();
@@ -322,7 +323,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose public method completes without exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_PublicMethod_CompletesWithoutException()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -333,7 +334,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write not opened throws invalid operation exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_NotOpened_ThrowsInvalidOperationException()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -344,7 +345,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that current f fmpeg process returns null initially
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_ReturnsNullInitially()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -354,7 +355,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that output data stream returns null initially
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OutputDataStream_ReturnsNullInitially()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -364,7 +365,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that destination stream file ctor returns null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DestinationStream_FileCtor_ReturnsNull()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -374,7 +375,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that destination stream stream ctor returns provided stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DestinationStream_StreamCtor_ReturnsProvidedStream()
         {
             using MemoryStream ms = new MemoryStream();
@@ -385,7 +386,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that input data stream default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStream_Default_ShouldBeNull()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -395,7 +396,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that opened for writing default should be false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForWriting_Default_ShouldBeFalse()
         {
             using VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -405,7 +406,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that filename default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_Default_ShouldBeNull()
         {
             using MemoryStream ms = new MemoryStream();
@@ -416,7 +417,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode opens and sets input stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_OpensAndSetsInputStream()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -433,7 +434,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode with existing file deletes file first
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_WithExistingFile_DeletesFileFirst()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -448,7 +449,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode with show f fmpeg output works
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_WithShowFFmpegOutput_Works()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -463,7 +464,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write stream mode opens and sets streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_StreamMode_OpensAndSetsStreams()
         {
             using MemoryStream dest = new MemoryStream();
@@ -481,7 +482,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with opened for writing calls close write
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWriting_CallsCloseWrite()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");

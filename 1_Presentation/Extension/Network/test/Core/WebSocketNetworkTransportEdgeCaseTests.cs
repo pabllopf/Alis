@@ -87,7 +87,7 @@ namespace Alis.Extension.Network.Test.Core
             using WebSocketNetworkTransport transport2 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18892"));
             await transport1.StartAsync();
             System.Net.Sockets.SocketException ex = await Assert.ThrowsAsync<System.Net.Sockets.SocketException>(() => transport2.StartAsync());
-            Assert.Contains("already in use", ex.Message, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal(System.Net.Sockets.SocketError.AddressAlreadyInUse, ex.SocketErrorCode);
         }
 
         /// <summary>

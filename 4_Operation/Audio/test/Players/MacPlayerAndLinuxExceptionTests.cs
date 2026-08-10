@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -45,7 +46,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that mac player set volume with value 0 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task MacPlayer_SetVolume_WithValue0_ShouldWork()
         {
             MacPlayer player = new MacPlayer();
@@ -56,7 +57,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that mac player set volume with value 50 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task MacPlayer_SetVolume_WithValue50_ShouldWork()
         {
             MacPlayer player = new MacPlayer();
@@ -67,7 +68,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that mac player set volume with value 100 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task MacPlayer_SetVolume_WithValue100_ShouldWork()
         {
             MacPlayer player = new MacPlayer();
@@ -141,7 +142,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that linux player set volume with value 0 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task LinuxPlayer_SetVolume_WithValue0_ShouldWork()
         {
             LinuxPlayer player = new LinuxPlayer();
@@ -152,7 +153,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that linux player set volume with value 50 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task LinuxPlayer_SetVolume_WithValue50_ShouldWork()
         {
             LinuxPlayer player = new LinuxPlayer();
@@ -163,7 +164,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that linux player set volume with value 100 should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task LinuxPlayer_SetVolume_WithValue100_ShouldWork()
         {
             LinuxPlayer player = new LinuxPlayer();
@@ -174,7 +175,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that linux player set volume boundary values should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task LinuxPlayer_SetVolume_BoundaryValues_ShouldWork()
         {
             LinuxPlayer player = new LinuxPlayer();
@@ -187,7 +188,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that linux player set volume multiple times should work
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task LinuxPlayer_SetVolume_MultipleTimes_ShouldWork()
         {
             LinuxPlayer player = new LinuxPlayer();

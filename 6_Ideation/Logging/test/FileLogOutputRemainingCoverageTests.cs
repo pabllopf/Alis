@@ -68,16 +68,16 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Write_WithThrowingFormatter_SwallowsException()
         {
             string path = Path.Combine(Path.GetTempPath(), $"flog_{Guid.NewGuid():N}.log");
+            FileLogOutput output = new FileLogOutput(path, new ThrowingFormatter());
             try
             {
-                FileLogOutput output = new FileLogOutput(path, new ThrowingFormatter());
-
                 output.Write(new LogEntry(LogLevel.Info, "test", "logger"));
 
                 Assert.True(output.IsEnabled);
             }
             finally
             {
+                output.Dispose();
                 if (File.Exists(path))
                 {
                     File.Delete(path);
@@ -92,13 +92,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Write_WithNullEntry_DoesNotThrow()
         {
             string path = Path.Combine(Path.GetTempPath(), $"flog_{Guid.NewGuid():N}.log");
+            FileLogOutput output = new FileLogOutput(path);
             try
             {
-                FileLogOutput output = new FileLogOutput(path);
                 output.Write(null);
             }
             finally
             {
+                output.Dispose();
                 if (File.Exists(path))
                 {
                     File.Delete(path);

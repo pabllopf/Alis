@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -433,7 +434,7 @@ namespace Alis.Extension.Updater
         {
             List<FileInfo> backupFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "Backup_*.zip")
                 .Select(file => new FileInfo(file))
-                .OrderByDescending(fi => fi.CreationTime)
+                .OrderByDescending(GetBackupTimestamp)
                 .ToList();
 
             if (backupFiles.Count <= 2)
@@ -449,6 +450,32 @@ namespace Alis.Extension.Updater
                 OnUpdateProgressChanged(0.8f, $"Deleted old backup: {file.Name}");
                 WaitForContinue();
             }
+        }
+
+        /// <summary>
+        ///     Gets the backup timestamp from the backup file name, falling back to the file
+        ///     creation time when the name does not follow the Backup_yyyyMMddHHmmss format.
+        /// </summary>
+        /// <param name="file">The backup file</param>
+        /// <returns>The backup timestamp</returns>
+        private static DateTime GetBackupTimestamp(FileInfo file)
+        {
+            string name = Path.GetFileNameWithoutExtension(file.Name);
+            string suffix = name.StartsWith("Backup_", StringComparison.Ordinal)
+                ? name.Substring("Backup_".Length)
+                : string.Empty;
+
+            if (suffix.Length == 14 && DateTime.TryParseExact(
+                    suffix,
+                    "yyyyMMddHHmmss",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out DateTime timestamp))
+            {
+                return timestamp;
+            }
+
+            return file.CreationTime;
         }
 
         /// <summary>

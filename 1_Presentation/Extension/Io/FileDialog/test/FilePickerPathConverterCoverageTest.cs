@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Io.FileDialog.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
@@ -106,7 +107,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// <summary>
         /// Tests that convert path separators with forward slashes on unix should convert
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void ConvertPathSeparators_WithForwardSlashesOnUnix_ShouldConvert()
         {
             string result = FilePickerPathConverter.ConvertPathSeparators("/path/to/file.txt");

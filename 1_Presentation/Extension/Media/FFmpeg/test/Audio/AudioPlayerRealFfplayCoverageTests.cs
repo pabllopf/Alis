@@ -34,7 +34,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with valid executable returns process
         /// </summary>
-        [WindowsOnly]
+        [UnixOnly]
         public void PlayInBackground_WithValidExecutable_ReturnsProcess()
         {
             _player = new AudioPlayer("input.wav", StubFfplay);
@@ -49,7 +49,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with run pure background returns null field
         /// </summary>
-        [WindowsOnly]
+        [UnixOnly]
         public void PlayInBackground_WithRunPureBackground_ReturnsNullField()
         {
             _player = new AudioPlayer("input.wav", StubFfplay);
@@ -61,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with show window and extra params works
         /// </summary>
-        [WindowsOnly]
+        [UnixOnly]
         public void PlayInBackground_WithShowWindowAndExtraParams_Works()
         {
             _player = new AudioPlayer("input.wav", StubFfplay);
@@ -76,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write after play in background kills previous process
         /// </summary>
-        [WindowsOnly]
+        [UnixOnly]
         public void OpenWrite_AfterPlayInBackground_KillsPreviousProcess()
         {
             AudioPlayer stubPlayer = new AudioPlayer("input.wav", StubFfplay);
@@ -98,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that close write when not opened throws invalid operation exception
         /// </summary>
-        [WindowsOnly]
+        [UnixOnly]
         public void CloseWrite_WhenNotOpened_ThrowsInvalidOperationException()
         {
             _player = new AudioPlayer("input.wav", StubFfplay);

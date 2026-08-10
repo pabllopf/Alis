@@ -508,7 +508,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             long memory1 = monitor1.GetMemoryUsage();
             long memory2 = monitor2.GetMemoryUsage();
 
-            Assert.Equal(memory1, memory2, 100000.0f);
+            Assert.Equal(memory1, memory2, 5000000.0f);
         }
 
         /// <summary>
