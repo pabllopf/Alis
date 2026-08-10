@@ -807,3 +807,11 @@
 - **Coverage After**: ~95.0%
 - **Tests Added**: 18
 - **Uncovered Lines**: Coverlet artifact on `EventSource.WriteEvent` bodies
+
+## WorldPhysic.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/WorldPhysic.cs`
+- **Coverage Before**: 90.3%
+- **Coverage After**: ~91.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: TOI/bullet CCD solver internals
