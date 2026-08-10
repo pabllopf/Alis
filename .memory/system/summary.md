@@ -919,3 +919,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 0
 - **Uncovered Lines**: None
+
+## SimplePriorityQueue.cs
+
+- **File**: `1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs`
+- **Coverage Before**: 98.6%
+- **Coverage After**: 100.0%
+- **Tests Added**: 0
+- **Uncovered Lines**: None
