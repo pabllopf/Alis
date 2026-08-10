@@ -1047,3 +1047,11 @@
 - **Coverage After**: ~34.0% / 100.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: ImColor.SetHsv native call
+
+## VideoFrame.cs
+
+- **File**: `1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs`
+- **Coverage Before**: 78.3%
+- **Coverage After**: 100.0%
+- **Tests Added**: 0
+- **Uncovered Lines**: None
