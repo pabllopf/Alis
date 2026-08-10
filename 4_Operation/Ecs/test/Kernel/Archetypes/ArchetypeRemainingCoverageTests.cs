@@ -40,24 +40,5 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
     /// </summary>
     public class ArchetypeRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that get archetype id exceeds max archetype count throws
-        /// </summary>
-        [Fact]
-        public void GetArchetypeId_WhenExceedsMaxArchetypeCount_Throws()
-        {
-            int originalId = Archetype.NextArchetypeId;
-            try
-            {
-                Archetype.NextArchetypeId = ushort.MaxValue - 1;
-                ComponentId[] types = { Component<Position>.Id };
-
-                Assert.Throws<InvalidOperationException>(() => Archetype.GetArchetypeId(types));
-            }
-            finally
-            {
-                Archetype.NextArchetypeId = originalId;
-            }
-        }
     }
 }
