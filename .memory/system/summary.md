@@ -623,3 +623,11 @@
 - **Coverage After**: ~97.0%
 - **Tests Added**: 3
 - **Uncovered Lines**: `Run()` — blocking game loop, untestable in CI
+
+## ThreadManager.cs
+
+- **File**: `1_Presentation/Extension/Thread/src/ThreadManager.cs`
+- **Coverage Before**: 95.8% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; null-conditional branch unreachable
