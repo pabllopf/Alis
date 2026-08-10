@@ -1136,3 +1136,171 @@
 - **Coverage After**: ~50.0%
 - **Tests Added**: 6
 - **Uncovered Lines**: Native `IsKeyPressed` requiring csfml on CI
+
+## Chunk.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## CircleShape.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Clipboard.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Clock.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## ConvexShape.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## CSFML.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Cursor.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## EventType.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Font.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Glyph.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## IDrawable.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Image.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## InputStream.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## IRenderTarget.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Listener.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Music.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## PrimitiveType.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## RectangleShape.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## RenderTexture.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## RenderWindow.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SfmlTime.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Sound.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SoundBuffer.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SoundBufferRecorder.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SoundRecorder.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SoundStatus.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## SoundStream.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
+
+## Styles.cs
+
+- **File**: Sfml (csfml-bound)
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally; CI-skipped
