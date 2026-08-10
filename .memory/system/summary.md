@@ -999,3 +999,11 @@
 - **Coverage After**: ~15.0%
 - **Tests Added**: 6
 - **Uncovered Lines**: Demo methods requiring JS interop
+
+## Monitor.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs`
+- **Coverage Before**: 60.0%
+- **Coverage After**: ~75.0%
+- **Tests Added**: 7
+- **Uncovered Lines**: Native glfw getters requiring glfw library
