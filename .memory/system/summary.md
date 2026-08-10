@@ -1015,3 +1015,11 @@
 - **Coverage After**: ~18.2% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Native P/Invoke calls requiring Vulkan runtime
+
+## MacNativePlatform.cs
+
+- **File**: `4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs`
+- **Coverage Before**: 14.2%
+- **Coverage After**: ~14.2% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Objective-C interop paths
