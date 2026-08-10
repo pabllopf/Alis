@@ -791,3 +791,11 @@
 - **Coverage After**: ~87.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: Download/install flow requiring HTTP server + filesystem
+
+## AssetRegistry.cs
+
+- **File**: `6_Ideation/Memory/src/AssetRegistry.cs`
+- **Coverage Before**: 88.6%
+- **Coverage After**: ~90.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Zip-extraction paths requiring embedded assets.pack
