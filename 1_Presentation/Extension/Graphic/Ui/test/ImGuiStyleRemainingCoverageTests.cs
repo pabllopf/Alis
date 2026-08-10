@@ -735,5 +735,41 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(2.5f, style.CurveTessellationTol, 5);
             Assert.Equal(0.5f, style.CircleTessellationMaxError, 5);
         }
+
+        /// <summary>
+        /// Tests that indexer set index 51 should set colors 51
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_Index51_ShouldSetColors51()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F value = new Vector4F(0.1f, 0.2f, 0.3f, 0.4f);
+            style[51] = value;
+            Assert.Equal(value, style.Colors51);
+        }
+
+        /// <summary>
+        /// Tests that indexer set index 52 should set colors 52
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_Index52_ShouldSetColors52()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F value = new Vector4F(0.2f, 0.3f, 0.4f, 0.5f);
+            style[52] = value;
+            Assert.Equal(value, style.Colors52);
+        }
+
+        /// <summary>
+        /// Tests that indexer set index 53 should set colors 53
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_Index53_ShouldSetColors53()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F value = new Vector4F(0.3f, 0.4f, 0.5f, 0.6f);
+            style[53] = value;
+            Assert.Equal(value, style.Colors53);
+        }
     }
 }
