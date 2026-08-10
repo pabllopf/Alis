@@ -56,8 +56,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 
 
         /// <summary>
-      
-        /// <summary>
         /// Tests that edge event catch block catches point on edge exception via integration
         /// </summary>
         [Fact]
