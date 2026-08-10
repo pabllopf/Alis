@@ -607,3 +607,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: None
+
+## DungeonData.cs
+
+- **File**: `1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs`
+- **Coverage Before**: 92.2%
+- **Coverage After**: ~97.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Defensive null-guards unreachable (fields never null)
