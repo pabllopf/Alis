@@ -911,3 +911,11 @@
 - **Coverage After**: ~98.2% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Deep EPA/edge-separation branches
+
+## WindowsFilePicker.cs
+
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs`
+- **Coverage Before**: 98.1%
+- **Coverage After**: 100.0%
+- **Tests Added**: 0
+- **Uncovered Lines**: None
