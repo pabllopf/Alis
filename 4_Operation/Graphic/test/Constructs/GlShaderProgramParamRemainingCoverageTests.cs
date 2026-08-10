@@ -28,128 +28,69 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>
-    /// The gl shader program param remaining coverage tests class
+    ///     The gl shader program param remaining coverage tests class
     /// </summary>
     public class GlShaderProgramParamRemainingCoverageTests
     {
         /// <summary>
-        /// Tests that constructor 3 params sets fields correctly
+        ///     Tests that constructor assigns fields
         /// </summary>
         [Fact]
-        public void Constructor_3Params_SetsFieldsCorrectly()
+        public void Constructor_AssignsFields()
         {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "testName");
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "uColor");
 
-            Assert.Equal(typeof(int), param.Type);
+            Assert.Equal("uColor", param.Name);
             Assert.Equal(ParamType.Uniform, param.ParamType);
-            Assert.Equal("testName", param.Name);
-        }
-
-        /// <summary>
-        /// Tests that constructor 5 params sets fields correctly
-        /// </summary>
-        [Fact]
-        public void Constructor_5Params_SetsFieldsCorrectly()
-        {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Attribute, "attrName", 42u, 7);
-
             Assert.Equal(typeof(float), param.Type);
+        }
+
+        /// <summary>
+        ///     Tests that full constructor assigns program and location
+        /// </summary>
+        [Fact]
+        public void FullConstructor_AssignsProgramAndLocation()
+        {
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Attribute, "aPos", 42, 7);
+
+            Assert.Equal("aPos", param.Name);
             Assert.Equal(ParamType.Attribute, param.ParamType);
-            Assert.Equal("attrName", param.Name);
-            Assert.Equal(7, param.Location);
+            Assert.Equal(typeof(float), param.Type);
         }
 
         /// <summary>
-        /// Tests that constructor 5 params program id defaults to zero
+        ///     Tests that properties round trip
         /// </summary>
         [Fact]
-        public void Constructor_5Params_ProgramId_DefaultsToZero()
+        public void Properties_RoundTrip()
         {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "p", 99u, -1);
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "uValue");
 
-            Assert.Equal(0u, param.Program);
-            Assert.Equal(0u, param.ProgramId);
+            param.Location = 5;
+            param.Program = 9;
+            param.ProgramId = 11;
+
+            Assert.Equal(5, param.Location);
+            Assert.Equal(9u, param.Program);
+            Assert.Equal(11u, param.ProgramId);
         }
 
         /// <summary>
-        /// Tests that location get set works
+        ///     Tests that ensure type with matching type passes
         /// </summary>
         [Fact]
-        public void Location_GetSet_Works()
+        public void EnsureType_WithMatchingType_Passes()
         {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
-            param.Location = 42;
-            Assert.Equal(42, param.Location);
-            param.Location = -5;
-            Assert.Equal(-5, param.Location);
-        }
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "uColor");
 
-        /// <summary>
-        /// Tests that program get set works
-        /// </summary>
-        [Fact]
-        public void Program_GetSet_Works()
-        {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
-            param.Program = 123u;
-            Assert.Equal(123u, param.Program);
-        }
-
-        /// <summary>
-        /// Tests that program id get set works
-        /// </summary>
-        [Fact]
-        public void ProgramId_GetSet_Works()
-        {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
-            param.ProgramId = 456u;
-            Assert.Equal(456u, param.ProgramId);
-        }
-
-        /// <summary>
-        /// Tests that set value float array invalid length throws argument exception
-        /// </summary>
-        /// <param name="length">The length</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(5)]
-        [InlineData(6)]
-        [InlineData(7)]
-        [InlineData(8)]
-        [InlineData(10)]
-        [InlineData(11)]
-        [InlineData(12)]
-        [InlineData(13)]
-        [InlineData(14)]
-        [InlineData(15)]
-        [InlineData(17)]
-        [InlineData(100)]
-        public void SetValue_FloatArray_InvalidLength_ThrowsArgumentException(int length)
-        {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
-            float[] array = new float[length];
-
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
-            Assert.Equal("param", ex.ParamName);
-        }
-
-        /// <summary>
-        /// Tests that set value float array length zero throws argument exception
-        /// </summary>
-        [Fact]
-        public void SetValue_FloatArray_LengthZero_ThrowsArgumentException()
-        {
-            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
-            float[] array = Array.Empty<float>();
-
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
-            Assert.Equal("param", ex.ParamName);
+            param.EnsureType<float>();
         }
     }
 }

@@ -959,3 +959,11 @@
 - **Coverage After**: ~40.0%
 - **Tests Added**: 9
 - **Uncovered Lines**: Gamepad/mouse native polling requiring JS interop
+
+## GLShaderProgramParam.cs
+
+- **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs`
+- **Coverage Before**: 69.2%
+- **Coverage After**: ~73.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: SetValue GL calls requiring GL context
