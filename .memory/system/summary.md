@@ -1007,3 +1007,11 @@
 - **Coverage After**: ~75.0%
 - **Tests Added**: 7
 - **Uncovered Lines**: Native glfw getters requiring glfw library
+
+## Vulkan.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs`
+- **Coverage Before**: 18.2%
+- **Coverage After**: ~18.2% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Native P/Invoke calls requiring Vulkan runtime
