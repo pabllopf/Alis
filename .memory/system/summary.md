@@ -1320,3 +1320,11 @@
 - **Coverage After**: 100.0% (ImPlotRange/ImPlotRect/ImGuiTableSortSpecs); 53.8% (ImGuiPayload)
 - **Tests Added**: 8
 - **Uncovered Lines**: None (ImGuiPayload native cimgui calls)
+
+## ImFontPtr.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs`
+- **Coverage Before**: 4.7%
+- **Coverage After**: ~10.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: Marshal-based property getters
