@@ -312,6 +312,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFile_WithValidOptions_ReturnsError()
         {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
             WindowsFilePicker picker = new WindowsFilePicker();
             FilePickerOptions options = new FilePickerOptions("Test File");
 
@@ -327,6 +329,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFiles_WithValidOptions_ReturnsError()
         {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
             WindowsFilePicker picker = new WindowsFilePicker();
             FilePickerOptions options = new FilePickerOptions("Test Files");
 
@@ -342,6 +346,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFolder_WithValidOptions_ReturnsError()
         {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
             WindowsFilePicker picker = new WindowsFilePicker();
             FilePickerOptions options = new FilePickerOptions("Test Folder");
 
