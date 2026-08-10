@@ -1128,3 +1128,11 @@
 - **Coverage Before**: 0.0%
 - **Coverage After**: verified locally with csfml
 - **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## Keyboard.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~50.0%
+- **Tests Added**: 6
+- **Uncovered Lines**: Native `IsKeyPressed` requiring csfml on CI
