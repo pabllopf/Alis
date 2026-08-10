@@ -1312,3 +1312,11 @@
 - **Coverage After**: ~12.7% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Coverlet auto-property attribution limit
+
+## ImPlotRange.cs / ImPlotRect.cs / ImGuiPayload.cs / ImGuiTableSortSpecs.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotRange.cs`, `ImPlotRect.cs`, `ImGuiPayload.cs`, `ImGuiTableSortSpecs.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0% (ImPlotRange/ImPlotRect/ImGuiTableSortSpecs); 53.8% (ImGuiPayload)
+- **Tests Added**: 8
+- **Uncovered Lines**: None (ImGuiPayload native cimgui calls)
