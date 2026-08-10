@@ -975,3 +975,11 @@
 - **Coverage After**: ~56.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Constructor/Release GL calls requiring GL context
+
+## GLShaderProgram.cs
+
+- **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs`
+- **Coverage Before**: 52.5%
+- **Coverage After**: ~52.5% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: All paths call GL functions requiring GL context
