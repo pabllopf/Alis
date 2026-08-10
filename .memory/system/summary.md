@@ -679,3 +679,11 @@
 - **Coverage After**: ~97.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: Deep pinch-split wraparound internals
+
+## Island.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Island.cs`
+- **Coverage Before**: 96.6%
+- **Coverage After**: ~98.5%
+- **Tests Added**: 3
+- **Uncovered Lines**: Array-pool return paths and deep sleep-state branches
