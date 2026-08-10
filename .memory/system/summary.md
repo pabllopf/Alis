@@ -735,3 +735,11 @@
 - **Coverage After**: ~68.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Real Stripe API network calls — forbidden by testing rules
+
+## WindowsPlayer.cs
+
+- **File**: `4_Operation/Audio/src/Players/WindowsPlayer.cs`
+- **Coverage Before**: 44.7%
+- **Coverage After**: ~45.0% (ceiling on macOS CI)
+- **Tests Added**: 0
+- **Uncovered Lines**: Windows-only `mciSendString` execution paths
