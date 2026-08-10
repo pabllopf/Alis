@@ -1071,3 +1071,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 0
 - **Uncovered Lines**: None
+
+## VideoMode.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 0
+- **Uncovered Lines**: None
