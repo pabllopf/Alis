@@ -983,3 +983,11 @@
 - **Coverage After**: ~52.5% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: All paths call GL functions requiring GL context
+
+## KeyCodes.cs / SdlInputConst.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs`, `SdlInputConst.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: None
