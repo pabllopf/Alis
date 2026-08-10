@@ -839,3 +839,11 @@
 - **Coverage After**: ~94.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Unreachable after-throw returns; 65535-max guards
+
+## GameObjectExtensions.cs
+
+- **File**: `4_Operation/Ecs/src/GameObjectExtensions.cs`
+- **Coverage Before**: 94.1%
+- **Coverage After**: ~95.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: Multi-component Deconstruct overloads
