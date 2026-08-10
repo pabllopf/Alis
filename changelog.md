@@ -5,6 +5,544 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.0] - 2026-08-10
+### :sparkles: New Features
+- [`dbd736c`](https://github.com/pabllopf/Alis/commit/dbd736c7f7a79813ad4ada9f8a9892be113bd709) - achieve 100% branch coverage on JsonParser *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`edb44c2`](https://github.com/pabllopf/Alis/commit/edb44c2c10ae4d690bc3ff92fb6fc367e71aedff) - WebOnlyAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a004fb`](https://github.com/pabllopf/Alis/commit/2a004fb897e6e66145403bfdd121d17cc5cfdf83) - new commands to opencode *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`662d5dc`](https://github.com/pabllopf/Alis/commit/662d5dcfc43d2f5439e5ef42221de8ed16d3a7e9) - sonarAZ9WLQoab3Yg5Wvlzs06 DynamicTreeBroadPhase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0b035c6`](https://github.com/pabllopf/Alis/commit/0b035c61e8469e643eed27f8bdd86fcf8fb523ea) - sonarAZ9WLQkSb3Yg5Wvlzs02 LinuxFilePicker.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ab1fe9`](https://github.com/pabllopf/Alis/commit/6ab1fe968c1367045176c5a002a16a6ba842eb4e) - sonarAZ9WLQkob3Yg5Wvlzs05 MacFilePicker.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ea51ea`](https://github.com/pabllopf/Alis/commit/0ea51ea4abd24b96b277d13e54722c6cc4479c2e) - **file-dialog**: resolve sonar BUG csharpsquid-S2259 null dereference in WindowsFilePicker *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aaacdb2`](https://github.com/pabllopf/Alis/commit/aaacdb22dda57fe7f744b8240497256a303ad66e) - sonarAZ9WLQjFb3Yg5Wvlzs01 WindowsFilePicker.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a460d2d`](https://github.com/pabllopf/Alis/commit/a460d2d49259fb979a003fe0fe077d7734c9f488) - compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d48aeb`](https://github.com/pabllopf/Alis/commit/7d48aeb333b66a1fd424d39ba68b632e1b80ff59) - events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2c5e13`](https://github.com/pabllopf/Alis/commit/d2c5e1305031ced161672d852e72fbab0b3b1738) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`088f0e1`](https://github.com/pabllopf/Alis/commit/088f0e1f33e1abc418cb4d0b2b034f3c14bbe389) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8fc99a6`](https://github.com/pabllopf/Alis/commit/8fc99a60664ab5bc32d927c2fd806c1866ce65fa) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05b1347`](https://github.com/pabllopf/Alis/commit/05b13477a918c3611116910e3c7298f9a8db3574) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f679c52`](https://github.com/pabllopf/Alis/commit/f679c52300ef3ce2660faac53af3e48c1fe53dba) - Skip = "Test skipped because its not platform"; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d415de6`](https://github.com/pabllopf/Alis/commit/d415de602e0e70fa77293b8ccac974eb0497f9d1) - IFastImmutableArray *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1dbb5f`](https://github.com/pabllopf/Alis/commit/f1dbb5fa27bb5dc4db7bc753590784f2f9c60aaa) - compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8fc6d82`](https://github.com/pabllopf/Alis/commit/8fc6d828ec98439c9f626cc04e56bfed05817f87) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2be4f5`](https://github.com/pabllopf/Alis/commit/d2be4f5600d52a2abc2fc6e723e4dcdf950b49e8) - all unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b8dd4dc`](https://github.com/pabllopf/Alis/commit/b8dd4dc0251ba7144ed95f1aa4b982a705683202) - uni tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a776b7c`](https://github.com/pabllopf/Alis/commit/a776b7c38ffaa3b5a5d0115f8d9985ea8f91662d) - ecs on span mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`314457a`](https://github.com/pabllopf/Alis/commit/314457ac9491e3e2105b35c87fee23b83259fbeb) - the values of structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`25d9301`](https://github.com/pabllopf/Alis/commit/25d9301d5560365f2e93e8ae084742d4cf69c9ac) - span methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1db4a98`](https://github.com/pabllopf/Alis/commit/1db4a98a89fdd8757a4a678998e115723e03436d) - IsEar_WithNegativeIndex_ShouldReturnFalse *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cf9ee98`](https://github.com/pabllopf/Alis/commit/cf9ee980a53c48ffc06b524d9d984caa5bedf37c) - IsEar_WithNegativeIndex_ShouldReturnFalse *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`920747c`](https://github.com/pabllopf/Alis/commit/920747c65a7a53d93f6500764420598b1344ef5b) - GetResourcePathByName_ResourceNotFound_ShouldThrowFileNotFoundException *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`21d10d4`](https://github.com/pabllopf/Alis/commit/21d10d4e7a91ee6a2c4785217ec8f499ba2f7d47) - the facts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`85842aa`](https://github.com/pabllopf/Alis/commit/85842aad7386c3277af9f507a8c10ffc8f8cd713) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a5522c`](https://github.com/pabllopf/Alis/commit/5a5522cf64eff22f9b9d062ce5a8eb8b76eff585) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`24c1a64`](https://github.com/pabllopf/Alis/commit/24c1a645f62114b952de06c00402ad5a0ea248fe) - ProcessContactMultiCore_WithBothBodiesInactive_SkipsContact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4322e27`](https://github.com/pabllopf/Alis/commit/4322e278f19d609eea5dea131e8dbeaf4e613a85) - theory tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1b0c20`](https://github.com/pabllopf/Alis/commit/e1b0c205bce02758e072032e4893a2127b77d2c8) - bulks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09eb5be`](https://github.com/pabllopf/Alis/commit/09eb5becfff19162832111c1ce7f0416fa6c8650) - ecs tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c508506`](https://github.com/pabllopf/Alis/commit/c50850642bf5a41447fb79c1af3b29de5a0f4909) - info add *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bc4730b`](https://github.com/pabllopf/Alis/commit/bc4730be3a0472c20ceed7666ba33d66b070f0e3) - iterations *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2830b98`](https://github.com/pabllopf/Alis/commit/2830b982dc3e3d977d3d11b0729db7bedc4e3b8f) - iterations *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d6d157e`](https://github.com/pabllopf/Alis/commit/d6d157ef15957744817b15877db634150eaad146) - sonarAZ-OwbIdDLnBipD5IA_M Collision.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bba4aba`](https://github.com/pabllopf/Alis/commit/bba4aba41085180608fef1d34ddc22b8eedaeb0f) - sonarAZ-OwbQ-DLnBipD5IA_P AssetRegistry.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e64c6d7`](https://github.com/pabllopf/Alis/commit/e64c6d786f5ebc6e03ddc2482458a6d081d8aaea) - sonarAZ-OwbQ-DLnBipD5IA_O AssetRegistry.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b225aee`](https://github.com/pabllopf/Alis/commit/b225aeefe0032534efa8541ae1e75e33152768fa) - sonarAZ-BlpcYiLjI1diOPXKO SceneManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58d429e`](https://github.com/pabllopf/Alis/commit/58d429ece448d273a1a3f77fa506129a403f3c36) - sonarAZ-Blp3oiLjI1diOPXKQ FlipcodeDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dcae75f`](https://github.com/pabllopf/Alis/commit/dcae75f541c9668679dd30b1f01ded6c12384d82) - sonarAZ-Blp1iiLjI1diOPXKP Contact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`624a832`](https://github.com/pabllopf/Alis/commit/624a8322c576203fc9c79d3903e8e3a4f965327b) - update cache *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae64752`](https://github.com/pabllopf/Alis/commit/ae647523198db648448dc5ce7165cf2d800f4133) - restore processed.json after worker data loss *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84f7186`](https://github.com/pabllopf/Alis/commit/84f7186dfede9f90ec24d62c6b9a378bee08074f) - restore processed.json after worker corruption *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1f86d8`](https://github.com/pabllopf/Alis/commit/e1f86d84abd22610858d2a05ae4f13530773c55e) - rebuild processed.json from git history (78 files) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1559f5`](https://github.com/pabllopf/Alis/commit/e1559f5aac0feda975dabbf92996ae7914ca6d3d) - unit test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f39a943`](https://github.com/pabllopf/Alis/commit/f39a94368c49544f9977ea140d91538ee8aeac1a) - process *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07c18fe`](https://github.com/pabllopf/Alis/commit/07c18fe1abfffda8a5ba9c4a5c16298daeb1d4e4) - all unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ef2504`](https://github.com/pabllopf/Alis/commit/6ef25040e01c1b047886edc3fa3abdc97e4c9c21) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`598a54c`](https://github.com/pabllopf/Alis/commit/598a54c1f06f8fb1a346b3c414a5f39ef31ccdae) - new tets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eadc506`](https://github.com/pabllopf/Alis/commit/eadc5062d8e867e27074dea4518899c3a432de3d) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3ae4c6`](https://github.com/pabllopf/Alis/commit/c3ae4c65b16678774f4ad3e9b8b6e050b9a9c157) - drobbox *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8bead00`](https://github.com/pabllopf/Alis/commit/8bead00d9712eba7c59bd5169e9fdb1a04add5a6) - xmls position *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a318d56`](https://github.com/pabllopf/Alis/commit/a318d56ec7f436f8b0fcab2cf5349c3c199e0e54) - || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ad248c`](https://github.com/pabllopf/Alis/commit/6ad248c20ceb893b4557684e0b11c768eea5a1e8) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4152d19`](https://github.com/pabllopf/Alis/commit/4152d19bad2502bf77d954b3506dbfffb8d6955c) - dispose *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`17d333b`](https://github.com/pabllopf/Alis/commit/17d333b26eaec7827348ab4972aa0fbc9b55aa7c) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cf1994`](https://github.com/pabllopf/Alis/commit/0cf19947f1c0fde244603668f309d7a0cff4d2d4) - the custom tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`57b6f7d`](https://github.com/pabllopf/Alis/commit/57b6f7d5f4c5512c60ff437281c01e8edd4c5e65) - RequireCSfmlSystemFact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0522d9a`](https://github.com/pabllopf/Alis/commit/0522d9a8a6b7adf9d74e345f81d25f4dbd2f0065) - jsons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`413b4cb`](https://github.com/pabllopf/Alis/commit/413b4cb3049624842daf0821fb209c3c7713a5d9) - json parsers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`28c9c99`](https://github.com/pabllopf/Alis/commit/28c9c997e2aff81214316104144a750db373f0c4) - actions/setup-dotnet@v6 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f79a66`](https://github.com/pabllopf/Alis/commit/0f79a66045ac6077f4712e35ccd2e317cdf65ebd) - QuickStart_RunMinimalGame_Throws *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48a6c63`](https://github.com/pabllopf/Alis/commit/48a6c6394419505e2b10a3bf908b80158022dbeb) - RequireCSfmlSystemFact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c115e37`](https://github.com/pabllopf/Alis/commit/c115e370d343f31bc47ede31cfc1a001f573a94e) - delete unless test CursorTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4d35633`](https://github.com/pabllopf/Alis/commit/4d3563327ad1142674f978b0cec473b4e4731950) - CS0219 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5e2c82`](https://github.com/pabllopf/Alis/commit/f5e2c829faee3407356715f70500bb27426bc9c6) - CS0168; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2c5ce69`](https://github.com/pabllopf/Alis/commit/2c5ce699c2d1ba082c6123a72eeaf18563efd1b2) - warnings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3cace1c`](https://github.com/pabllopf/Alis/commit/3cace1c26fbfbdc00e898bdb7e5c2adbdaf141d7) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8ad4e1b`](https://github.com/pabllopf/Alis/commit/8ad4e1b64ae887ef7a05fd923ea2310d2ff6d1c8) - Alis.Extension.Security.Test.SecureFloatCoverageTest.NegativeValues_Arithmetic_Correct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3afaa78`](https://github.com/pabllopf/Alis/commit/3afaa780e63c5d3d125a4bc44f5f3eda1a74ee2c) - add tolerance *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45b6187`](https://github.com/pabllopf/Alis/commit/45b6187e72af92513a66650825a8a478b02edfa8) - unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc9636b`](https://github.com/pabllopf/Alis/commit/cc9636b874be9b1dd02a18b216c0108d70c3f916) - delete dinamycs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09e9594`](https://github.com/pabllopf/Alis/commit/09e95948e32a31ee6e960e5e3759f1ad3f5e9a33) - delete -m:4 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`51a1021`](https://github.com/pabllopf/Alis/commit/51a10211a123d5940169412c3580a0df8e50bb9e) - warnings on compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aebc18f`](https://github.com/pabllopf/Alis/commit/aebc18f1ba112fbc2470f0c6a5f3e2d8feac9ecc) - BrowserPlayerPlayTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3c1dc9`](https://github.com/pabllopf/Alis/commit/b3c1dc9f1af6f9198ed7a29efbd819ab47651e1c) - sintaxis code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84d0c74`](https://github.com/pabllopf/Alis/commit/84d0c7407c33b2517991006d695da2632514a82a) - delete BrowserPlayerPlayErrorCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c582bc5`](https://github.com/pabllopf/Alis/commit/c582bc50b7ec340332a581096414ad337a686a14) - delete dinamyc tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e68ee2d`](https://github.com/pabllopf/Alis/commit/e68ee2deb543ede81687e9aa62f94ee9ea9d5bf3) - minimal *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`492b78c`](https://github.com/pabllopf/Alis/commit/492b78c0016ab9f5ff80b920dd0ea1119b524627) - delete dinamics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`57ddddc`](https://github.com/pabllopf/Alis/commit/57ddddc304e60039915a5edca41817a94b6aea34) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61d6003`](https://github.com/pabllopf/Alis/commit/61d6003aedc3b091173ddf2bd74164a8a47a39e7) - unlesss tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3608c7`](https://github.com/pabllopf/Alis/commit/c3608c74678a6e1209b3996f84b9a0ebdc93b055) - unless test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`246dadd`](https://github.com/pabllopf/Alis/commit/246dadd3c1709a1ccfde34e9d94b95a1aceadeb0) - LoggerBranchCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2649000`](https://github.com/pabllopf/Alis/commit/26490002d941714c0b2bf4ca3a3b14c15ee54d6c) - compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b33f220`](https://github.com/pabllopf/Alis/commit/b33f22009476fc55ff6177456352295d60884e3e) - delete WindowsPlayerTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`beb7d3b`](https://github.com/pabllopf/Alis/commit/beb7d3b07c5ef2f24e899cf600f40d27eccd585d) - S5766 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a448da5`](https://github.com/pabllopf/Alis/commit/a448da51b21ee954f755fa20f8ffb30b2b4bd3ac) - Update SonarScanner command to include file exclusions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`21224c1`](https://github.com/pabllopf/Alis/commit/21224c11e69164812798bfac538ecc2838f65ef4) - Refactor SonarQube scan commands for clarity *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3bfb72`](https://github.com/pabllopf/Alis/commit/b3bfb72a6d75b99c6c416437ff08456e828fc4e2) - Update SonarCloud exclusions in workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`839d0db`](https://github.com/pabllopf/Alis/commit/839d0dbc3b922adc69a5728d3478167b21252d58) - **/obj/** Update sonar exclusions in workflow configuration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`38ab2d0`](https://github.com/pabllopf/Alis/commit/38ab2d0287d635009ebe6fc68780177a69d2dd88) - Refactor SonarCloud workflow to streamline dotnet test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6174569`](https://github.com/pabllopf/Alis/commit/617456947c18bbb8853c6d6a92a3fbfef400ea53) - ShowDialog_WithInvalidChoice_DoesNotInvokeAction *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b8aa7df`](https://github.com/pabllopf/Alis/commit/b8aa7df381d17dc7af7c8ddb997eb5a841ffbd07) - delete unless assserts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61fe747`](https://github.com/pabllopf/Alis/commit/61fe747a368af8b6b90dd6b9d3ce880e1f5f810e) - S5766 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac5e3c1`](https://github.com/pabllopf/Alis/commit/ac5e3c145aac410b5210771b8e21233cb85773d1) - Remaining unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fd9914e`](https://github.com/pabllopf/Alis/commit/fd9914ef283e889480d2704c3d9705045219d2c9) - delete LoggerBranchCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`63d21bf`](https://github.com/pabllopf/Alis/commit/63d21bf2f61c01e5369e6e72fe608c726f3a594c) - deletetion code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f727a1`](https://github.com/pabllopf/Alis/commit/0f727a13d4db4b5e2a82aac6a46ee4b2e861e251) - delete reflection of unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2f0999`](https://github.com/pabllopf/Alis/commit/d2f0999a9e4e9e66331032b83538b07d6f85f755) - unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`faa4b38`](https://github.com/pabllopf/Alis/commit/faa4b3836f5971172396ab22a67d5d6b2b9b2dbd) - mark Mouse.cs task completed *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce9e092`](https://github.com/pabllopf/Alis/commit/ce9e092da82f406d6855bf627c8329e2860a83bd) - custom integration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0626f82`](https://github.com/pabllopf/Alis/commit/0626f82cdfd68dd625a991e11d1bdc3db93a8664) - delete ShowDialog_WithNullAction_DoesNotThrow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eb12329`](https://github.com/pabllopf/Alis/commit/eb12329f77140a98f1696d1926ad59439a09e011) - linux run *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`851cea9`](https://github.com/pabllopf/Alis/commit/851cea935c35835a70cf81a7e8e6f917f5f40d93) - coverage queue exhausted *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :recycle: Refactors
+- [`24836d2`](https://github.com/pabllopf/Alis/commit/24836d23abd74e17894ad343dabb075a3c384d01) - **graphic**: reduce method complexity safely *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`84ff486`](https://github.com/pabllopf/Alis/commit/84ff4862da6aa29fec503e832fa7a4815af3db23) - ECS coverage batch (GameObjectIdOnly, Location, Marshal, Event) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91a1c9b`](https://github.com/pabllopf/Alis/commit/91a1c9bd171e5cf2e8bd1a0abf2c4fa6d0d8d084) - EntityUpdate.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e04988e`](https://github.com/pabllopf/Alis/commit/e04988e8b05a69ff62e4d7e3433d1a62e3ebad8d) - FastestTable + GameObjectType coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`117de1e`](https://github.com/pabllopf/Alis/commit/117de1ea72ccec9be99f5151f26fe5ac4dd3fc09) - Vp9Encoder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1fef46`](https://github.com/pabllopf/Alis/commit/d1fef468557044688a37a4217c9083c573e369bd) - Ui structs batch coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0be7fec`](https://github.com/pabllopf/Alis/commit/0be7fec8c31d36ad6b4d0797e54c62fe6b28387d) - H264Encoder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f677a0e`](https://github.com/pabllopf/Alis/commit/f677a0e96cca827057a3df34b3132a8dbdaa4c74) - Ui structs batch 2 coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18c5861`](https://github.com/pabllopf/Alis/commit/18c586148cd77e430aa14f0feb9a3a487c7a301e) - IDTable + GenerationServices coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc3f307`](https://github.com/pabllopf/Alis/commit/dc3f307f3b815c6f0c2f7e2f8ab2bace89782216) - OpusEncoder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e5edcd9`](https://github.com/pabllopf/Alis/commit/e5edcd91d5061c6f8378ac1c46e8e937c23326f5) - ImGuiPlatformIOPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9349754`](https://github.com/pabllopf/Alis/commit/9349754d436789d39ed0285ae96c51baa7d3297c) - GameObjectOnlyEvent + GenericEvent coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d25d11d`](https://github.com/pabllopf/Alis/commit/d25d11d5b55c894786161c119283b2a4d84f0bc0) - VideoFormat.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f8edf69`](https://github.com/pabllopf/Alis/commit/f8edf69a2a60b6ed767d092bb71f467f9054b987) - VorbisEncoder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b6930d`](https://github.com/pabllopf/Alis/commit/6b6930d9d02f9f1abcf542cc8a2779122fc58bc4) - VideoFormatTags.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`613dc07`](https://github.com/pabllopf/Alis/commit/613dc0702b6759d7640365a75790b354bfc98d27) - StreamTags.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b021971`](https://github.com/pabllopf/Alis/commit/b021971e09c49fffcbcf4f290ee8f32195fac88b) - UpdateOrderAttribute.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`60806e4`](https://github.com/pabllopf/Alis/commit/60806e496ef405f7f3a443dbdee741edb8de4ea5) - Tags.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`633c87d`](https://github.com/pabllopf/Alis/commit/633c87dfeb999fcb3363f493cd512337485bc582) - GameObjectEnumerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`653c69d`](https://github.com/pabllopf/Alis/commit/653c69deda22245505d69dd2e5b9f8c756291cc8) - GameObjectEnumerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`40d05ce`](https://github.com/pabllopf/Alis/commit/40d05ce43dad92411ef2ebae247b5b68e5854fde) - ImGuiViewportPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1c949b`](https://github.com/pabllopf/Alis/commit/d1c949be957f4659ec12f5c68264ffed4e3e9e43) - ImGuiViewport.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a48e3e0`](https://github.com/pabllopf/Alis/commit/a48e3e0403a03b29aa0cc2173210361eb2e0fe2f) - UpdateRunnerFactory.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2baeeaa`](https://github.com/pabllopf/Alis/commit/2baeeaad0d8eda0bb79381de1c04646aa81ff9d2) - ComponentStorageBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3eb6664`](https://github.com/pabllopf/Alis/commit/3eb6664f6e8411c8e7b4c01496b4fee701b1102c) - ShortSparseSet.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`940cb19`](https://github.com/pabllopf/Alis/commit/940cb19ba2b07bc65ae0cfeda8a4b5fae5518b46) - MemoryHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc4f034`](https://github.com/pabllopf/Alis/commit/fc4f034f61d1be5396876a39f28081164e1d0e59) - coverage ArchetypeNeighborCache.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f374343`](https://github.com/pabllopf/Alis/commit/f374343c92c5b50ccfd3087ddd9ba6c8b8380d6f) - coverage ShortSparseSet.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94120e7`](https://github.com/pabllopf/Alis/commit/94120e76e8ca4060853d06a8822a02597d2049ad) - coverage ComponentHandle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`87beeb4`](https://github.com/pabllopf/Alis/commit/87beeb47cea291f02ba6b360f0561f61949d2c98) - coverage ArchetypeNeighborCache.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a39f981`](https://github.com/pabllopf/Alis/commit/a39f9815ab74f1a4d4276ff1e7f962ee5f36ce10) - coverage MemoryHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1cc73cb`](https://github.com/pabllopf/Alis/commit/1cc73cba2e8fb45ba8b588f22172c2056645e77a) - coverage ComponentHandle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc8cb1a`](https://github.com/pabllopf/Alis/commit/fc8cb1a09309c0fd16dc5e2484420779c6892aec) - coverage Query.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f4929fc`](https://github.com/pabllopf/Alis/commit/f4929fc6c24facd2fe0c6dcc996db2c254b8e87e) - coverage SceneQueryExtensions.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c0327ef`](https://github.com/pabllopf/Alis/commit/c0327efb485476ef47e732ed13d65e85ffbd55b5) - coverage EnumerableHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa19100`](https://github.com/pabllopf/Alis/commit/aa19100ac6a344cad71c21969d23256b095ec41b) - coverage RefTuple.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1c8222`](https://github.com/pabllopf/Alis/commit/b1c822259611edfe3ee72c8fe52b7669fb88e1c0) - coverage GameObjectRefTuple.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae0b8e4`](https://github.com/pabllopf/Alis/commit/ae0b8e42a893edcdfd96a2a726810297d27d449c) - coverage Quaternion.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c6b6f7`](https://github.com/pabllopf/Alis/commit/0c6b6f77312de83cf243f93b12def4deab921c49) - final coverage batch — processed all 325 SonarCloud targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8a431a`](https://github.com/pabllopf/Alis/commit/e8a431a2d7d299dac6e424a1716b2ae8ceff22c6) - coverage Gen2GcCallback.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5173ff9`](https://github.com/pabllopf/Alis/commit/5173ff96466e8b3cc6b946cdc6cd9c9c1c8e5510) - coverage ComponentStorageBase.cs — added 7 edge-case GetComponentSize tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6e48af`](https://github.com/pabllopf/Alis/commit/e6e48afbf5167520b3481edcb244437a026f20d5) - **ecs**: add GenericEvent branch coverage tests for uncovered Remove/Invoke/operator+ paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`241642d`](https://github.com/pabllopf/Alis/commit/241642d3a710230237fdacc0efd393e51526fc76) - add remaining coverage tests for GameObjectType (Types, HasComponent, Archetype) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebb4004`](https://github.com/pabllopf/Alis/commit/ebb400402de80d97abd70e0830cf39bcbc59c87b) - remove Skip from NoneUpdateRunnerTest — all 8 tests pass *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2c67332`](https://github.com/pabllopf/Alis/commit/2c673323a519fd2969eb1538b11c1d072bb89214) - add edge case tests for Gen2GcCallback Register methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`64c9ea9`](https://github.com/pabllopf/Alis/commit/64c9ea92319e56ebe10b324e2bb56d4a6d714606) - add QueryHash coverage tests — 11 tests for New/AddRule/ToHashCode/Default edge cases *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fdcef2c`](https://github.com/pabllopf/Alis/commit/fdcef2c39f74cb3f9c3e2c65953703e168351a95) - add NoneUpdate Run method coverage tests — 3 new tests, 11 total passing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c89c09c`](https://github.com/pabllopf/Alis/commit/c89c09cbac3bde8dce91a600b0efc91fee3686fa) - add GameObjectLocation remaining coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97c669c`](https://github.com/pabllopf/Alis/commit/97c669c8df7e3906ca878bef71e40548860c150d) - add FastestTableCoverageTests for UnsafeIndexNoResize first/last, EnsureCapacity no-op/resize, Empty, indexer preserve after resize, AsSpan full buffer, ctor with zero *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`691e5b9`](https://github.com/pabllopf/Alis/commit/691e5b977d0007087579692977414b82c0349f63) - add coverage tests for AssetRegistry cache-miss race condition paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b18d947`](https://github.com/pabllopf/Alis/commit/b18d947e31078f223388e48d2a9f32237d912a8d) - add FastImmutableArray coverage tests for Span overloads, null-array guard, CreateBuilder, IFastImmutableArray interface *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`89eea3a`](https://github.com/pabllopf/Alis/commit/89eea3ae14285a88f275a5e16e9953235981e3cc) - coverage GameObjectOnlyEvent.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44b5314`](https://github.com/pabllopf/Alis/commit/44b5314dafa7467e2c411ba6104b73b6ba2b0330) - cover remaining GenerationServices lines (RegisterType valid factory paths + delegate invocation) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8182880`](https://github.com/pabllopf/Alis/commit/818288098c479a73e3846f151f0339467cfcdf9d) - coverage Ref.cs - ToString branches, Span/ComponentStorage constructors, implicit operator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0495184`](https://github.com/pabllopf/Alis/commit/0495184ffec2ebc53ba8505991c1a620798e5e9d) - add 22 coverage tests for ComponentRegistry (94.2% line coverage) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bc68acb`](https://github.com/pabllopf/Alis/commit/bc68acb5f764c02feba7e0597e2100a21f705520) - add coverage tests for ComponentHandle.Create<T>, CreateFromBoxed, ParentTable, InvokeComponentEventAndConsume *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e8bbeb`](https://github.com/pabllopf/Alis/commit/6e8bbeb7c879cea8de64ab0e9d73ae318934d8ee) - add coverage tests for Rule equality, hashing, and operators *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`151caf5`](https://github.com/pabllopf/Alis/commit/151caf542eee2b6d848e1ee52ad0ba66c8158c8b) - add coverage tests for FrugalStack reference type cleanup and buffer doubling *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c86f9a3`](https://github.com/pabllopf/Alis/commit/c86f9a3211f70975b6d0902cec548556a4bb0d1d) - coverage Animator.cs - null clock guard branch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`82172d4`](https://github.com/pabllopf/Alis/commit/82172d4ad4ed6a9a18f7c5188ce8d7bfddfabbfa) - un-skip SparseSet tests - all 134 SparseSet tests pass (was incorrectly skipped with bug reason) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9039ad7`](https://github.com/pabllopf/Alis/commit/9039ad7860f5ffe79be65a897a066093fea92736) - cover FastLookup cold path (lines 95-97) in FindAdjacentArchetypeId *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c5a6f85`](https://github.com/pabllopf/Alis/commit/c5a6f85857a1d67aaca1bb82581607def4efcc73) - add tests for FastestArrayPool remaining uncovered lines (Rent < MinBucketSize and ResizeArrayFromPool) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d978ab7`](https://github.com/pabllopf/Alis/commit/d978ab7b9f33cb2b7e80e792661421bdbc5be1c2) - add coverage tests for GameObjectIdOnly.ToEntity *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`afadc66`](https://github.com/pabllopf/Alis/commit/afadc6605b622d14f58de3785ab94fdc53fd5c54) - add test covering Fields.GetComponentDataReference line 66 (GetComponentStorageDataReference) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df5cb6b`](https://github.com/pabllopf/Alis/commit/df5cb6bb5b4457d1fc9707fcd832b97a669e3df4) - coverage GameObjectExtensions.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1ac951a`](https://github.com/pabllopf/Alis/commit/1ac951a8e7b1e68e87b343d4a4ba1d51b5e0f824) - add missing RefTuple arity 3 coverage tests for get/set properties and Deconstruct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`712ba99`](https://github.com/pabllopf/Alis/commit/712ba99414f35af0a12842edaf3a251e9b5d1c95) - add tests for uncovered lines in EnumerableHelpers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f85725c`](https://github.com/pabllopf/Alis/commit/f85725cee48c6bcaab764ea1d6e6ba0089a9e868) - cover remaining Query.cs lines - ArchetypeSatisfiesQuery false path + all Enumerate overloads (2-8 arities) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cc4bfc`](https://github.com/pabllopf/Alis/commit/9cc4bfc4ec006308ba00804a9febfb03af35317b) - add tests for FastestStack Grow overflow path and throw paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1edd50c`](https://github.com/pabllopf/Alis/commit/1edd50c52c18b368f9f875ec973e795ba5f3ef7a) - add coverage for ComponentId.Type and DebuggerDisplayString properties *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`931689e`](https://github.com/pabllopf/Alis/commit/931689e5d9ab852d3bb5045293c91faddb7ee755) - add cache-hit tests for SceneQueryExtensions arities 2-8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9923e88`](https://github.com/pabllopf/Alis/commit/9923e888cb52892b546e526d07b7772730490080) - add explicit Deconstruct and FieldAssignment tests for GameObjectRefTuple arities 3-8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`107d9e4`](https://github.com/pabllopf/Alis/commit/107d9e4304fc0f9c9a361b2a86474f2586e7e102) - add tests for GameObjectQueryEnumerator.1.cs MoveNext quick-return path and multi-archetype skip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`362dc07`](https://github.com/pabllopf/Alis/commit/362dc07cd68eaed7dbfb64ea1248af1b8ed9df83) - add InitVelocityConstraints WarmStarting=false branch coverage for MotorJoint *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`42479de`](https://github.com/pabllopf/Alis/commit/42479deed6ac482741ce3a6774246de341e9fb76) - cover PulleyJoint.InitVelocityConstraints else branch for WarmStarting=false *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc44df7`](https://github.com/pabllopf/Alis/commit/fc44df7bc43261452cda63d14e54ea28969c48d9) - cover RopeJoint.InitVelocityConstraints else branch for WarmStarting=false *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b05f762`](https://github.com/pabllopf/Alis/commit/b05f76221f3c7dd6e44436a4af6013e3e5a5258f) - cover remaining 8 unc lines in TimeOfImpact (L164-167 max iter, L246-249 inner touching) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3885e88`](https://github.com/pabllopf/Alis/commit/3885e8846eb31ab12b02a38ff72645d44c3da191) - cover 8 unc lines in WheelJoint (InitVelocityConstraints WarmStarting=false, SolvePositionConstraints zero-mass else) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a46e70`](https://github.com/pabllopf/Alis/commit/2a46e705d913636bfc35ffee70e41ddd2a21aa23) - **core**: cover AddPair null-guard lines 180-181 in ContactManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a796d3c`](https://github.com/pabllopf/Alis/commit/a796d3c3537962774de6f12f18302e6c83c8a15d) - add collision coverage tests for ResolveBarycentricContact early returns (lines 224-235) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1d40bfe`](https://github.com/pabllopf/Alis/commit/1d40bfe55fb0f34bb199f08004f828497bfa2eb4) - contract tests for ImGuiPlatformIO, ImNodesIO, GammaRampInternal *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02a91cf`](https://github.com/pabllopf/Alis/commit/02a91cfb8295014d2f7920ad7f6fb613a0c57d21) - add 8 edge-case tests for AABB (Contains exact/touching bounds, TestOverlap Y-touching, Combine smaller, IsValid zero-width, RayCast MaxFraction/tmin and non-parallel miss) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08f04f6`](https://github.com/pabllopf/Alis/commit/08f04f608f1bc9f6c2da69f75670a5a3192d7806) - batch-block 989 coverage files (P/Invoke, interfaces, enums, data structs, delegates) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`82b616e`](https://github.com/pabllopf/Alis/commit/82b616ee112332a7ddc36bcd2c5b126204d19fdd) - batch-block remaining platform/P/Invoke/complexity-zero files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7a06642`](https://github.com/pabllopf/Alis/commit/7a06642faf7857dc4df2e80c3747299ea1779668) - batch-block 43 network/platform/dependency files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e28c37`](https://github.com/pabllopf/Alis/commit/1e28c372459d8d84b42d3497e726480dd41ce68b) - batch-block 20 OpenGL/FileIO/Async dependency files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae36165`](https://github.com/pabllopf/Alis/commit/ae361659a1bbf9dfb4047543f9e8684f6c921e23) - add SceneManager lifecycle tests with entity iteration coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`512d199`](https://github.com/pabllopf/Alis/commit/512d1999652b20455ea163f4bb1f89d0336322b9) - add coverage for Update arities 6-8 range-run and zero-length paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a3a6b7`](https://github.com/pabllopf/Alis/commit/5a3a6b7d862f21d4846244c931fb6451d3f54685) - add comprehensive QueryEnumerator tests for arities 2-5 and 8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c80bda`](https://github.com/pabllopf/Alis/commit/0c80bdab575cd0d1b389c1d9a31b9f3bc3e90a2b) - add ComponentRegistry edge-case tests for null type and overflow paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2921379`](https://github.com/pabllopf/Alis/commit/29213799a8bed879bf6e2af8d1cc7072e70e1fae) - add ArchetypeFinalCoverageTest targeting remaining uncovered paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a161a3`](https://github.com/pabllopf/Alis/commit/0a161a3cd8db535077d63e3d11237beec1752245) - batch-block 43 more files + add worker results *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`034b95e`](https://github.com/pabllopf/Alis/commit/034b95e98da5e72ef4f00303a16102181417150e) - add Logger branch coverage tests for Debug/Warning null paths and double-checked locking race *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3adb79c`](https://github.com/pabllopf/Alis/commit/3adb79c8838ce42e9f7e0208bc029098d28cdb2d) - add coverage tests for FastImmutableArray uncovered paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6c55bde`](https://github.com/pabllopf/Alis/commit/6c55bde0223cdf7fdf0a9378a35e275dc4c2dd4f) - increase DTSweep coverage from 94.4% to 96.5% (14 additional lines covered) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c024297`](https://github.com/pabllopf/Alis/commit/c02429731bc084c1af2c8d0fb73e1ea8461dada5) - DTSweep(+4), Logger(+3), FastImmutableArray(+17), ConsoleLogOutput BLOCKED *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3868fef`](https://github.com/pabllopf/Alis/commit/3868fefb649d5e70799a0c3a900264124d2e96d7) - add tests for ComponentStorage uncovered paths (empty buffer throw, PullComponentFromAndClear ref-type branch) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`01afaad`](https://github.com/pabllopf/Alis/commit/01afaad3c6a4edfc50356182030fcfae22a2eb25) - add CommandBuffer coverage tests for 6 uncovered paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc5d9c5`](https://github.com/pabllopf/Alis/commit/fc5d9c57e0b7fc34de9d3fbca700326942bb83ea) - improve Island coverage to 97.47% (clamp translation/rotation via SolveToi test) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77aadb3`](https://github.com/pabllopf/Alis/commit/77aadb3e8f42e5327f7211a8159b4d32c2bb5d49) - add Collision coverage tests (separationB > totalRadius, EpCollider first clip underflow) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e18ba7e`](https://github.com/pabllopf/Alis/commit/e18ba7ebe47f16ad1c53212e21029cfcc05d891c) - Collision(+9), Island, CommandBuffer(+6), ComponentStorage(+2) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c877d5e`](https://github.com/pabllopf/Alis/commit/c877d5e4451935a397370627f905c0992bab1aa2) - add RotateCw coverage for DelaunayTriangle *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1597ab0`](https://github.com/pabllopf/Alis/commit/1597ab07fee211f443505352b1beacb532f3a5f4) - cover WorldPhysic remaining paths (ShouldProcessBody awake/disabled, ProcessContactEdges disabled/notTouching, CalculateContactAlpha differentAlpha0) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5f64d21`](https://github.com/pabllopf/Alis/commit/5f64d2154d0636964e1c835d335990a9925868f6) - cover remaining branches in DialogManager (null action, null context) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73a4d35`](https://github.com/pabllopf/Alis/commit/73a4d354f63cdf7a0ee118fce4893f55816ea2a4) - cover Animator DrawAnimation true branch, fix 1 uncovered line (98.9% -> 100%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d9a712`](https://github.com/pabllopf/Alis/commit/6d9a712a373cac518a2af1b1943c3a5730b33f26) - WorldPhysic(+5), DelaunayTriangle(+1), Animator(+1), DialogManager(+2) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c750bcc`](https://github.com/pabllopf/Alis/commit/c750bcc486cb34654074d0d92f10b7bb0001f446) - DebuggerDisplayString ParentTable InvokeComponentEventAndConsume ComponentHandle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0fe9794`](https://github.com/pabllopf/Alis/commit/0fe979440bc6270aa5c20141eff15513e7438f2b) - cover SceneUpdateFilter _allComponents buffer growth path (96.2% -> 100%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b02d23b`](https://github.com/pabllopf/Alis/commit/b02d23b52673ac57375a09872503067577617a07) - coverage FastestArrayPool.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d84b6a6`](https://github.com/pabllopf/Alis/commit/d84b6a6aaa9514fb735edf405c8d57f478e2d066) - add Activate_WithBodyInsideAabbButOutsideRadius test for 100% SimpleExplosion branch coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0fb8a50`](https://github.com/pabllopf/Alis/commit/0fb8a50aa12f1b67d4fcdf1f2667913fb6c1c1e4) - ComponentHandle(+3), SceneUpdateFilter(+1), FastestArrayPool(+1), SimpleExplosion(+1) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`50fba78`](https://github.com/pabllopf/Alis/commit/50fba78dd5784eed2f25381852fd7c9a7aa6a292) - JsonParser(+1), FlipcodeDecomposer(+3), FastestStack *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c5b0b3b`](https://github.com/pabllopf/Alis/commit/c5b0b3b9896d30316ce8b3080a63a1feb6be9865) - add InitVelocityConstraints zero mass branch coverage for RopeJoint *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b44ee7`](https://github.com/pabllopf/Alis/commit/3b44ee7338021ab378a4d8dfcd80dbfb1cf1061e) - add Solve3 edge12 branch coverage for d231/d232 non-positive *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0d5fb7f`](https://github.com/pabllopf/Alis/commit/0d5fb7fcc3466a8e71e4bd74ca3afd3161a32e91) - Simplex(+2), RopeJoint(+1), Body(+12), WeldJoint BLOCKED *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44811a5`](https://github.com/pabllopf/Alis/commit/44811a5bf4edc14d61a0ef10a306c35aa601c6e6) - mark 312 already-100% files as completed *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1bfa64f`](https://github.com/pabllopf/Alis/commit/1bfa64f67ef6484568a599bfb41d52ea2b3ede8a) - add Destroy_WithFixtureBSensorOnly test for Contact.cs coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d46c8ce`](https://github.com/pabllopf/Alis/commit/d46c8ce38c44c15ed16026acd466ef19e43d0ad9) - add Ylerp right recursion and CxFastList empty Size tests for MarchingSquares *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9c36eda`](https://github.com/pabllopf/Alis/commit/9c36eda34bdfd2dc30e1c14480f208f77eb3993e) - add 5 CorridorData tests for 100% branch coverage (Height diff, Direction diff, boxed Equals, != false) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d57202d`](https://github.com/pabllopf/Alis/commit/d57202d50de8ca3166b47821f4f8e44cb094b52a) - add DynamicTree coverage tests for FindBestSibling break condition and Balance rotation sub-cases *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff590d7`](https://github.com/pabllopf/Alis/commit/ff590d7784180af24211eb5c5731efa3aedfca95) - add 4 missing coverage tests for DungeonData validation branches *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`68d4570`](https://github.com/pabllopf/Alis/commit/68d45705bb9ea4c6473de7066b494fe4fd00bfd4) - DynamicTree(+7), SimplePriorityQueue(+4), CorridorData(+5), DungeonData(+4), GravityController BLOCKED *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cd64c8`](https://github.com/pabllopf/Alis/commit/9cd64c86639b615be92aa1f400873da7a8531d11) - add SimplePriorityQueue edge coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61763fd`](https://github.com/pabllopf/Alis/commit/61763fd28ac21a5273a0bb914fe29a74de16ee37) - coverage EnumerableHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d2b8cd`](https://github.com/pabllopf/Alis/commit/7d2b8cd34152ece5aadfa963fa15255abc714c0c) - coverage FastImmutableArray.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f1aa88`](https://github.com/pabllopf/Alis/commit/0f1aa887e3c73f077443aa05979c31b7293c0991) - ImPlot.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`452e4b5`](https://github.com/pabllopf/Alis/commit/452e4b54f710253d864547648acb06a8d778f4fe) - ImPlotP2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`11cc3d3`](https://github.com/pabllopf/Alis/commit/11cc3d34da91bddf43d9caa37c48288d16ff5a5f) - ImGuiP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c4e2ca`](https://github.com/pabllopf/Alis/commit/8c4e2ca0a45fb93f8afcdd46b572a5dcd3f7408f) - ImGuiP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`abef156`](https://github.com/pabllopf/Alis/commit/abef156f58bb870482e83b51a0b761cf34f25091) - ImGuiP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f7ff535`](https://github.com/pabllopf/Alis/commit/f7ff53554bb55b1f9be87cccc0ed9e82702de112) - NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7fcf75b`](https://github.com/pabllopf/Alis/commit/7fcf75b27569e675440ec721ac2e389d4eba6f09) - ImDrawListPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93cf1ce`](https://github.com/pabllopf/Alis/commit/93cf1ce645ece6c6b409da2d27abb2fe454b2a94) - ImPlotP10.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`960f2f9`](https://github.com/pabllopf/Alis/commit/960f2f92cb52749a838e993b0cf42172125445a6) - ImPlotP1.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a28d8b1`](https://github.com/pabllopf/Alis/commit/a28d8b17cd9ae4f843aaf67e537ee7f06a8849a8) - ImPlotP15.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eae0a10`](https://github.com/pabllopf/Alis/commit/eae0a10fcb44830f0a28db1afa950d53adc7f956) - ImPlotP9.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6d30c7`](https://github.com/pabllopf/Alis/commit/e6d30c7ae62eb625cdf6c9d79aba95ba420e64cc) - ImPlotP11.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`19b5e20`](https://github.com/pabllopf/Alis/commit/19b5e206d61f3d98f552ff1e18a8819acacb4002) - ImGuiP4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5332820`](https://github.com/pabllopf/Alis/commit/5332820de19b1f78bd757a241509c4fdbba5a21c) - ImPlotP14.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9eec9df`](https://github.com/pabllopf/Alis/commit/9eec9dfe2cdf87dbbc17b88389c6051c74271850) - ImPlotP12.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7a15a12`](https://github.com/pabllopf/Alis/commit/7a15a12f8ec5f786305c6f5410750ca9488d6c63) - ImGui.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c190634`](https://github.com/pabllopf/Alis/commit/c190634685a20557918abf5dae3191848b54d422) - Shader.cs (BLOCKED) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7ee6873`](https://github.com/pabllopf/Alis/commit/7ee687329835087b4cc761f57e1237e5de68228c) - ImFontAtlasPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c0d83d`](https://github.com/pabllopf/Alis/commit/8c0d83d98c1516731dee8c9a6221db3157e6e767) - SdlTtf.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ed489a`](https://github.com/pabllopf/Alis/commit/2ed489a5dd392e517f48753a8b6f4082794d47e2) - AudioVideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b7dea7`](https://github.com/pabllopf/Alis/commit/6b7dea7ce5035113e1e9bc232e61dce5fca475ba) - FFMpegWrapper.cs (BLOCKED) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f9618d2`](https://github.com/pabllopf/Alis/commit/f9618d25b6715c8a0164acc850005b096a9b79a0) - Window.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f14143e`](https://github.com/pabllopf/Alis/commit/f14143eef28ceb7dc01bae08eedff59e3007df59) - KeyCodes.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`544d7b8`](https://github.com/pabllopf/Alis/commit/544d7b83484967330619833ec8b81f80d12eec94) - ImPlotP22.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ed7a64`](https://github.com/pabllopf/Alis/commit/9ed7a64e9f916d8061c2d196f428c0307af77272) - ImPlotP19.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`506dffb`](https://github.com/pabllopf/Alis/commit/506dffbe41a588effe8b8b5cd1d9a0bfb33dd99a) - ImPlotP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c0c20e5`](https://github.com/pabllopf/Alis/commit/c0c20e50bdaefc080b9d507e7ade0ed2c22a1bb3) - ImPlotP7.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eebbb73`](https://github.com/pabllopf/Alis/commit/eebbb7378467f718e768843f54e09ec7b4f892e7) - RenderWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf429c3`](https://github.com/pabllopf/Alis/commit/bf429c35fa275acc0da1d20b5efdc5e80279ab86) - RenderWindow.cs [update summary] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ab837df`](https://github.com/pabllopf/Alis/commit/ab837df394fd5564928c6397fb3f22db2213166e) - ImGuiP2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6297b5d`](https://github.com/pabllopf/Alis/commit/6297b5dc9553503e75c32bced1f6a760945f7929) - ImPlotP13.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a60a978`](https://github.com/pabllopf/Alis/commit/a60a978b7b85173d1d4ef2d775362d02161a733e) - ImPlotP17.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a38151a`](https://github.com/pabllopf/Alis/commit/a38151a0595ece6fb0bf9e1616fe2c3a84b3080d) - ImPlotP8.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3241c69`](https://github.com/pabllopf/Alis/commit/3241c696c527771d489280df2612cb9488f59921) - ImPlotP16.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`927708a`](https://github.com/pabllopf/Alis/commit/927708a02367d93727c2bfce904d782659b6aeca) - ImPlotP21.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8911a0`](https://github.com/pabllopf/Alis/commit/a8911a0a1de733dc26badfaef44dee8ff84b357a) - ImGuizMo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fcbd177`](https://github.com/pabllopf/Alis/commit/fcbd1778abbbe26c208f778ec333ab98d50ee48a) - ImPlotP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d31d07`](https://github.com/pabllopf/Alis/commit/9d31d076d48c6064e60d486a39e6a96f39ced056) - GlfwNative.cs (BLOCKED) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1713b83`](https://github.com/pabllopf/Alis/commit/1713b8320f2c6924700e4118618e1e719dbae7bf) - Texture.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`066c6d6`](https://github.com/pabllopf/Alis/commit/066c6d6667754b39607a6ad4086f44dfa7191458) - ImPlotP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a04665f`](https://github.com/pabllopf/Alis/commit/a04665fa8c2fd19f655e3b1301b883b5fa716a10) - ImGuiP8.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`80e9737`](https://github.com/pabllopf/Alis/commit/80e9737bf0ffcf6f7486f7411fc4a11277fe34ed) - VideoReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b75e69`](https://github.com/pabllopf/Alis/commit/2b75e69af79af9c066830a974c0a12ac028f7f3a) - AudioPlayer.cs (BLOCKED) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8557a87`](https://github.com/pabllopf/Alis/commit/8557a87404f35dd3cd6ee75b277e5654e46e7af9) - VideoPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9074325`](https://github.com/pabllopf/Alis/commit/90743256246b61455bd79b349e1986e7c5961647) - RenderTexture.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb86bab`](https://github.com/pabllopf/Alis/commit/bb86bab409cb1842a17a6edb3a7b1ee17465496f) - Image.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54e1cf1`](https://github.com/pabllopf/Alis/commit/54e1cf138177ec4aab710fcf3a41b0e8d406471e) - ImPlotP20.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac7d45d`](https://github.com/pabllopf/Alis/commit/ac7d45d2f9b71ec67bf762df09714d73454f5d48) - SfmlText.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`687689a`](https://github.com/pabllopf/Alis/commit/687689ac25f9be283a53118732dcdd8cd2592b97) - Music.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`937e5e6`](https://github.com/pabllopf/Alis/commit/937e5e682beca03de03160af9d8b8d8ee7805627) - Transformable.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`68efb87`](https://github.com/pabllopf/Alis/commit/68efb878eb2bb058c6371f6c8389c0a94c006fbc) - SoundStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`775ab7b`](https://github.com/pabllopf/Alis/commit/775ab7b562640191e2257066517937746c346a2c) - VideoFrame.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e46535`](https://github.com/pabllopf/Alis/commit/6e46535f413f82622f8976586b6f892e93491cda) - SoundBuffer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a46ee7a`](https://github.com/pabllopf/Alis/commit/a46ee7a1599b24f98674742f4588ca86cb035d01) - ImFontPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3435d9b`](https://github.com/pabllopf/Alis/commit/3435d9bd08034585d7ffd26b334cabc37b02f1e0) - Shape.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`beddc18`](https://github.com/pabllopf/Alis/commit/beddc18c8037573640e593780950e73614fddaa5) - Font.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44866be`](https://github.com/pabllopf/Alis/commit/44866be8a636c43b299edfd3267f6d61f98fe5a0) - Sound.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18125f0`](https://github.com/pabllopf/Alis/commit/18125f078bb600711c803818cc6aaf149dd1ede5) - ImPlotStyle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2393250`](https://github.com/pabllopf/Alis/commit/23932509f8fdd7ecfcd152086c9c1968d6c35ef3) - SoundRecorder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b2f7ee8`](https://github.com/pabllopf/Alis/commit/b2f7ee821b835770bb91d416431c7ec5dd1b3a78) - View.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f9d50e5`](https://github.com/pabllopf/Alis/commit/f9d50e5227f9a7273ac6d472c0b36e3cbf30838d) - MacWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bccdcfe`](https://github.com/pabllopf/Alis/commit/bccdcfeea8d1814229037ddfe5ea60b2373ca859) - ImFontConfigPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a381e0`](https://github.com/pabllopf/Alis/commit/0a381e0391d204e78808459b16e242527ee792dd) - VertexArray.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce3d0b6`](https://github.com/pabllopf/Alis/commit/ce3d0b69cf1e163c57bcce029fc0586a697342a5) - Sprite.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2eb21f`](https://github.com/pabllopf/Alis/commit/c2eb21f9b570b4dae1c9bbf2fa15f479b1c32e78) - VertexBuffer.cs coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3fb0cc7`](https://github.com/pabllopf/Alis/commit/3fb0cc715861168b57734c0a854c182812eaa568) - add RenderStates coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7bf65f`](https://github.com/pabllopf/Alis/commit/c7bf65f846ff9e7ca03786d532bced7b187a13e9) - add VideoMetadata coverage tests (37 tests, 100% line coverage) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b162344`](https://github.com/pabllopf/Alis/commit/b162344fb1a7eab1745c9b2ac9009d12371403a9) - CircleShape.cs coverage (39 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3f24f21`](https://github.com/pabllopf/Alis/commit/3f24f21225759ef7f6f08cd36a0c7beeda060046) - pro - add H264Encoder tests covering all branches *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18db8fb`](https://github.com/pabllopf/Alis/commit/18db8fb861814a91d2a7d3386fef31feda573278) - MediaWriter.cs coverage (10 tests, 100% line coverage) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8739086`](https://github.com/pabllopf/Alis/commit/8739086acd4b41da2d827b4221af467d0e010fdf) - add SfmlTimeRemainingCoverageTests covering FromMilliseconds, AsMilliseconds, Equals(object) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`958751c`](https://github.com/pabllopf/Alis/commit/958751c8accb00bc8b6a5cae677e959958a6960c) - ConvexShape.cs coverage (17 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf847eb`](https://github.com/pabllopf/Alis/commit/bf847eb9d880ef44919859d5d6627df021121ed8) - MediaReader.cs coverage (100% line, 11 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`127b4d8`](https://github.com/pabllopf/Alis/commit/127b4d86530a8095d72424fe12c6ce7aa238f0b1) - add xUnit tests for Clipboard.cs achieving 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4de0712`](https://github.com/pabllopf/Alis/commit/4de0712195321d67143bade0a541c22b3370eaa0) - Mouse.cs coverage (70% line, 11 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`63ac518`](https://github.com/pabllopf/Alis/commit/63ac5189d5e1a8293c5c26ccfb0c214160e58371) - add ImDrawDataTests achieving 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d3144de`](https://github.com/pabllopf/Alis/commit/d3144de4453de2dc96a00b0ce371fe4169380f68) - add RectangleShapeTests covering all 19 uncovered lines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e051ece`](https://github.com/pabllopf/Alis/commit/e051ece80ca8d6fb0ac8562a5baebeca61467066) - pro - Cursor coverage 38.89% (7/18 lines) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`69d3cf8`](https://github.com/pabllopf/Alis/commit/69d3cf807c6297ffcf3e73f86650d1cea6985c81) - coverage ImNodesStyle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c381c6d`](https://github.com/pabllopf/Alis/commit/c381c6da5d0a342e6a05637980b1ba2d84a71925) - AudioReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`15d983a`](https://github.com/pabllopf/Alis/commit/15d983a5d7b7ebea340de5e55ad6a2cb46c44465) - VideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`be9807a`](https://github.com/pabllopf/Alis/commit/be9807a5be258be82b403c367de593dda798e6a9) - add AudioWriter coverage final tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2154dc`](https://github.com/pabllopf/Alis/commit/d2154dc753b668e52a298421606fd5a6b9ed6b41) - pro - add ImPlotP4Tests for PlotHeatmap overloads (81 tests, 100% coverage) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2521c0`](https://github.com/pabllopf/Alis/commit/d2521c06c1e846ab43b6f55f9ce5ccabf9b525d7) - add ImPlotP18Tests covering PlotHistogram2D, PlotImage, PlotInfLines (59 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bfaa9c7`](https://github.com/pabllopf/Alis/commit/bfaa9c7475df0e057d4cfbb96069c3a4d4fc397c) - add ImDrawCmdTests covering all non-native methods (29 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5ceb3e`](https://github.com/pabllopf/Alis/commit/f5ceb3ed425979c2703e26ae5e0c5f089e6bb348) - add SoundBufferRecorder tests (18 passing, OnStop blocked by CSFML 3 API) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f662ce2`](https://github.com/pabllopf/Alis/commit/f662ce279fc5702a178141522d00a7cb74ed13eb) - cover Style struct — replace RequireCImguiSystemFact with Fact for pure C# struct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`57e7c57`](https://github.com/pabllopf/Alis/commit/57e7c570145f5a5bc7883018991595c440319cf6) - add Vulkan tests - 50.0% coverage (8/16 lines), 8 tests added *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02fffd0`](https://github.com/pabllopf/Alis/commit/02fffd0bf98aa8c43e88cdd072100150565adc79) - update processed.json for Vulkan coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af08313`](https://github.com/pabllopf/Alis/commit/af08313dd13b7ad58ea9d18d43ef25bf73cf89e8) - add 6 tests for Context.cs covering constructor, Settings, SetActive, ToString, and finalizer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1ad8900`](https://github.com/pabllopf/Alis/commit/1ad89004d3736ceaf45f1c9985203149c626da2a) - pro - add remaining coverage tests for ImFontGlyphRangesBuilder (BLOCKED_BY_PRODUCTION_CODE) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4248019`](https://github.com/pabllopf/Alis/commit/4248019d2d305ead374c56b8502532f897aa3c14) - add explicit operator coverage for GammaRampInternal *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d901db0`](https://github.com/pabllopf/Alis/commit/d901db0e8b131589b2dd5472341b8d21767a3739) - add ImGuiPayloadTests covering all 13 lines of ImGuiPayload *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`940b51f`](https://github.com/pabllopf/Alis/commit/940b51f2d078eaf974210cd47a25642531b1ed4b) - update processed.json coverage result for ImGuiPayload *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee2ec0f`](https://github.com/pabllopf/Alis/commit/ee2ec0f9250bc0c85b3cd8b7f2823cb2542f8461) - add ImPlotInputMapTests covering all 12 auto-properties *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`946a640`](https://github.com/pabllopf/Alis/commit/946a6400f58045c82fde111b37b6102572b09238) - GameWindow coverage - fix RequiresDisplayAttribute macOS detection, add reflection tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0aba593`](https://github.com/pabllopf/Alis/commit/0aba593544c87954851ede37511337677172c449) - pro add ClockTests with full coverage for Sfml Clock *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`95d2d75`](https://github.com/pabllopf/Alis/commit/95d2d757a85afcd090b9c53820dae3c4d3d8dfa3) - add ImGuiWindowClass coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffa170a`](https://github.com/pabllopf/Alis/commit/ffa170aaf0d2765f47785fe74f8da29c98ee9fb2) - add Listener coverage tests with assertions for all 8 property accessors *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a276e7`](https://github.com/pabllopf/Alis/commit/3a276e728201f99527bb3be03acc1c488ce6c021) - document Touch.cs as BLOCKED_BY_PRODUCTION_CODE (all paths depend on native CSFML) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d448dda`](https://github.com/pabllopf/Alis/commit/d448dda24768a7cd249121a03f8f8711b496e867) - pro - add StbTexteditRow coverage tests (100%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f11e0e6`](https://github.com/pabllopf/Alis/commit/f11e0e687fdd4309648ca5d26cc557a10374e4c9) - coverage Constant.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`477324b`](https://github.com/pabllopf/Alis/commit/477324bcc7129a43966647b1c90157dec6a12eea) - add ImGuiPlatformMonitorTests for 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b37d94`](https://github.com/pabllopf/Alis/commit/5b37d94b09e54416188ba0b8c1f348e336337ddb) - add SensorTests covering 5 uncovered lines in Sensor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`195129e`](https://github.com/pabllopf/Alis/commit/195129ec360d52c69550c29caca77b6603946f9f) - cover ImGuiSizeCallbackData struct with [Fact] instead of [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e509e0`](https://github.com/pabllopf/Alis/commit/9e509e02936e71491b4c5ee129273a8692a87e09) - cover ImGuiTableColumnSortSpecs struct with [Fact] instead of [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1761385`](https://github.com/pabllopf/Alis/commit/1761385bbb542a88f33037c0f248c436dbf43b1d) - cover ImGuiTextFilter struct with [Fact] instead of [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`648ea74`](https://github.com/pabllopf/Alis/commit/648ea7460f0510b7755a58d3eb864920b21f92d7) - KeyboardTests covering IsKeyPressed and SetVirtualKeyboardVisible Keyboard.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d80fc7`](https://github.com/pabllopf/Alis/commit/8d80fc784eb32f484ee4fa533d481384c7a89a0c) - ImColor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e3cdc51`](https://github.com/pabllopf/Alis/commit/e3cdc517a6eadd57e85fc2ddc4fc72d445728629) - ImGuiTableSortSpecs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b5e368f`](https://github.com/pabllopf/Alis/commit/b5e368fbf522c47f6a8910a6bb86b75f6b56e12b) - cover JetBrains font constants with [Fact] instead of [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db41a65`](https://github.com/pabllopf/Alis/commit/db41a6547f89dad431e7317c4953c29a177f0084) - pro - Physic Constant coverage blocked by production code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de77161`](https://github.com/pabllopf/Alis/commit/de77161adacec63fb3f5e49666d91eb8dc1d4b99) - **glfw**: add GamePadState tests achieving 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3b6fc4`](https://github.com/pabllopf/Alis/commit/c3b6fc46b98a83f2cf8c7ac5f12946e05d37b436) - cover ImGuiStoragePair.cs with 13 tests achieving 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`895eaa1`](https://github.com/pabllopf/Alis/commit/895eaa1c476421f3bb4c269223982df7f62f3654) - update processed.json for ImGuiStoragePair.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f2f8e4`](https://github.com/pabllopf/Alis/commit/1f2f8e40f8ed20c4c735d3f01fac22490a06a3d5) - pro - ImGuiTextRange 100% coverage (13 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f82dcf`](https://github.com/pabllopf/Alis/commit/0f82dcfb4436f9881c4a0ec89256914469e565e1) - ImPlotPoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4c82109`](https://github.com/pabllopf/Alis/commit/4c82109d82c5142ca2eaa708a251e2a096aef3a8) - ImPlotRange.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73a7fe6`](https://github.com/pabllopf/Alis/commit/73a7fe67ee353b87f90afa7c0fce71762e035b67) - cover ImPlotRect.cs with 11 tests achieving 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`32e7b93`](https://github.com/pabllopf/Alis/commit/32e7b935872aa99d7859f2669d5bd8db3f4f355a) - Add individual value tests for all 31 ControllerCategories ControllerCategoriesTest.cs Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9786311`](https://github.com/pabllopf/Alis/commit/9786311ec67410b76f0d8d4aad60ae81b6fb279a) - add ImGuiTextBuffer unit tests covering default values, mutability, and property assignment *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4588b69`](https://github.com/pabllopf/Alis/commit/4588b69b46280f4b269d9cc3ba2a3242f198bbb1) - add MultipleSelectModifierTests for 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3d65b99`](https://github.com/pabllopf/Alis/commit/3d65b99339ea9ef0d97404978cc50c36a1ac96af) - pro - add missing haptic constant assertions in SdlInputConstTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`22c6298`](https://github.com/pabllopf/Alis/commit/22c62983f35bcedc917d081669d11d30c1c1178c) - add ImGuiIOPtrTests covering 15 IO methods (KeysData/MouseClickedPos/MouseDragMaxDistanceAbs blocked by production code) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07c0b0f`](https://github.com/pabllopf/Alis/commit/07c0b0fb0cf4ac197214215d467bd139789ceab1) - add ImNodes coverage for 16 testable methods, 80 blocked by production code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e52217`](https://github.com/pabllopf/Alis/commit/5e52217d373b200f092c33349307ba3b5f1f473e) - pro - add ImGuiP1 coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f901872`](https://github.com/pabllopf/Alis/commit/f9018727afa10dc2088da5d0b71f067f46c9a7e0) - pro - ImGuiP7 coverage completed (all 80 methods covered, native cimgui.dylib blocks execution) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`251d768`](https://github.com/pabllopf/Alis/commit/251d76895b25795ac71d0e1a3f7ec49cfc7b7d16) - add SdlImage coverage tests (18/21 methods = 85.71%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6085205`](https://github.com/pabllopf/Alis/commit/6085205fbe0ef23c157407aaf9a88e484ff375c3) - pro — add MediaStreamTests.cs covering JSON serialization and edge cases *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a9a235`](https://github.com/pabllopf/Alis/commit/2a9a2353f7058659cd1df21f81328e0c6db1692c) - add SdlTests covering error, hint, init/quit, audio, timer, pixel utility, event, and keyboard/scancode methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e71033`](https://github.com/pabllopf/Alis/commit/3e71033d9d4f9a1c1f6a83302b1330e76ff69c53) - add ImGuiIO remaining coverage tests (647 KeysData, 35 auto-props/arrays) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f446cd`](https://github.com/pabllopf/Alis/commit/4f446cd3f5009a16eaac37076085347a5cd6faab) - coverage for Joystick.cs - add invocation tests covering all 19 uncovered lines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bdb5eb`](https://github.com/pabllopf/Alis/commit/5bdb5ebff6767ca57f8702f7ee14cc3067511871) - pro ImGuiPlatformIOPtr — 25 property accessor tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6a47bb4`](https://github.com/pabllopf/Alis/commit/6a47bb46a9a7e47cde657e1cda939a98427a2841) - add StbUndoState remaining coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5fd06f5`](https://github.com/pabllopf/Alis/commit/5fd06f5ec4208c3aad1cc54dbf2b1badc2dc0660) - pro - add FontTests.cs (79.3% coverage, 23 tests, InitializeShaders GL-blocked) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55bd351`](https://github.com/pabllopf/Alis/commit/55bd351351615d02f4815aa31c56201fe42b417a) - pro - add SpriteEnhancedCoverageTests.cs (OnExit catch, LoadTexture paths, IsSpriteVisible edge cases, record struct members) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f19f301`](https://github.com/pabllopf/Alis/commit/f19f301f84f37b70225637c60e37313c2e3d82a3) - pro - add NullTerminatedStringTests.cs coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa28afd`](https://github.com/pabllopf/Alis/commit/aa28afd1269a8550b89f6a8211d920b4d4f1f114) - add coverage for ObjectiveCInterop (NSViewGetFrame, GetWindowFrame, NsString) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`12d988c`](https://github.com/pabllopf/Alis/commit/12d988cf943fe1bbb6a4327240bb90503a443598) - pro - add WebAssemblyPlatformIntegrationCoverageTests.cs (13 tests, blocked remaining MultiplatformGameEngine/InputManager/DisplayManager by WASM runtime requirement) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3511701`](https://github.com/pabllopf/Alis/commit/3511701120881534f37d475c0affd17df037dfb3) - add remaining TexUvLines coverage tests for ImFontAtlas (56 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffe9e1c`](https://github.com/pabllopf/Alis/commit/ffe9e1c1fb4693613a986e660752e14d73c1e11b) - pro - GraphicManager coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bff8dd3`](https://github.com/pabllopf/Alis/commit/bff8dd399dc40d6882d1dea5a1ee8759ac56e387) - pro - add GLShader coverage tests (5 tests, 62.96% coverage, remaining 10 lines blocked by OpenGL context requirement) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29bdcbc`](https://github.com/pabllopf/Alis/commit/29bdcbc89d084e01865524d03ae302bccf6a9bb6) - add ImVector Ref<T> and Address<T> coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`524f5e7`](https://github.com/pabllopf/Alis/commit/524f5e76b557653a178188699d0dc5fa082660d6) - StbTexteditState - 14 tests, 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fa20458`](https://github.com/pabllopf/Alis/commit/fa20458c57ce5b595c60f8c060e0447fba0d8523) - pro - Events.cs coverage 0% -> 83.7% (100% branch) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4255473`](https://github.com/pabllopf/Alis/commit/4255473d0d56e0bbd966b7690b00b8b93cb13c20) - Constructor_WithWidthAndHeight_SetsDefaults VideoModeTests.cs VideoMode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db909a3`](https://github.com/pabllopf/Alis/commit/db909a3eee292bf40cf7719b15582d56bb34d938) - add WebAssemblyGameContextTest coverage for constructors, Create methods, and static methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b90605b`](https://github.com/pabllopf/Alis/commit/b90605b6c7f0934a736ce0812b08b664563237ad) - pro - WindowsPlayer 45.3% -> 54.09% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`85f8b94`](https://github.com/pabllopf/Alis/commit/85f8b9409ab3a539241f3a749e8ab3816d9419d0) - add MacNativePlatform final coverage tests (+24, cover 56.9% line rate) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebb6507`](https://github.com/pabllopf/Alis/commit/ebb65078d72e1187fe46079d6caa489694c13fe9) - cover Transform.cs to 100% - add 9 tests for native wrapper methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55da093`](https://github.com/pabllopf/Alis/commit/55da09319ae7e7cb29e759573424d03cdf17e344) - pro - Gen2GcCallback coverage to 100% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b03a33d`](https://github.com/pabllopf/Alis/commit/b03a33d1417681a67a8be5e5c0822abfb66ff873) - cover ImVectorG.cs to 100% - add 8 tests for constructors and indexer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`383dd83`](https://github.com/pabllopf/Alis/commit/383dd83c0c263cdfa505903331c843451d20fedf) - add 18 coverage tests for NetworkClientManager (50.7% → 71.5%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d218904`](https://github.com/pabllopf/Alis/commit/d21890414db3fd7c9a06b9ca616167b1865b0f27) - add WebSocketNetworkTransport integration tests covering private methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26e61a1`](https://github.com/pabllopf/Alis/commit/26e61a1bae97d987608d33403722bee922dc3d83) - Indexer_ShouldReturnCorrectValue RangePtrAccessorRemainingCoverageTests.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58691f3`](https://github.com/pabllopf/Alis/commit/58691f351b64ca74736de73080bae618e534a06e) - pro - coverage worker for GoogleDriveCloudManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dfe84f1`](https://github.com/pabllopf/Alis/commit/dfe84f197898e31c4bf8a2bf883a85c4b612c3e9) - add BoxCollider coverage for OnStart, OnUpdate(Body path), OnCollision, OnSeparation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e3b8ed2`](https://github.com/pabllopf/Alis/commit/e3b8ed2f77a81479e35570a0990730ac30861b7c) - add GlCovTests for Gl.cs — 54.7% → 100% coverage, 33 new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6adf06d`](https://github.com/pabllopf/Alis/commit/6adf06dad1c6ec937d251e7f78e76178e9ab37f3) - add ContextHandler coverage for Run() loop body and LoadAndRun() full path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6377b89`](https://github.com/pabllopf/Alis/commit/6377b89ec27ca29641281bd237afc867deb846f1) - add GlShaderProgram coverage tests (26 tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a07341c`](https://github.com/pabllopf/Alis/commit/a07341cda334d6c99004c1dcd6ef41417060611d) - pro - BrowserPlayer coverage completion tests (13 new tests, 61%->target) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7090e5c`](https://github.com/pabllopf/Alis/commit/7090e5c6fc858eb2ae4cc36dbaccbf176d92d20c) - coverage worker for DropBoxCloudManager - add 10 tests, improve from 63.9% to 84.7% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`37aa3cd`](https://github.com/pabllopf/Alis/commit/37aa3cdcb54776e2b82e76b5b2ee27d76cf1eb82) - pro - WebAssemblyPlatform coverage to 75% (71 new tests) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1be03a5`](https://github.com/pabllopf/Alis/commit/1be03a5819928b8143f8bcce4e87fc4858f182f7) - GlShaderProgramParam coverage 69.2%→100% GLShaderProgramParamTests.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02e7072`](https://github.com/pabllopf/Alis/commit/02e707256cff2dfb5cd17b952282c46c56f5e9a0) - add StripeGatewayClient coverage tests for validation paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cbe5cbf`](https://github.com/pabllopf/Alis/commit/cbe5cbf60bc92af55faaef4a9efa9362f2b03a3f) - add FontManager coverage tests (BLOCKED_BY_PRODUCTION_CODE) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6f23c18`](https://github.com/pabllopf/Alis/commit/6f23c187ecd639414ed26d58b03f5a875a38895d) - add ImGuiStyleTests for remaining 74 uncovered lines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f1fad4`](https://github.com/pabllopf/Alis/commit/4f1fad4079d712e353f6cf2d49fee683f2f06fc5) - add MacOpenGLContextTests for coverage improvement *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cfccf98`](https://github.com/pabllopf/Alis/commit/cfccf98e1fdbb5277bd69e42fcca11be825f1916) - add UpdateManagerCoverageTest for 73.2%->95.48% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f2de2f`](https://github.com/pabllopf/Alis/commit/1f2de2f048287bd99b3d36dee536c850df1ecdf4) - add missing GetKeyName test cases for WebAssemblyInputManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`78a5c28`](https://github.com/pabllopf/Alis/commit/78a5c28dc99833030270e320a98aee951b4313f3) - **web**: add EmscriptenWebTests covering all fallback paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f73a64`](https://github.com/pabllopf/Alis/commit/0f73a64a663fd8f749bba19553c2e3343f9a5031) - coverage EnumerableHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6bc7fbe`](https://github.com/pabllopf/Alis/commit/6bc7fbe07b597bdbb2ce309545d299159209d462) - add WebSocketClientFactoryTests covering URI overloads, GetStream, TlsAuthenticateAsClient *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`64365a9`](https://github.com/pabllopf/Alis/commit/64365a9791949bbb861a36b7c2395e860c4186d7) - add ClipRect_ShouldBeSettable test for Surface struct coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`abb784b`](https://github.com/pabllopf/Alis/commit/abb784b171374d750547af068cd8e6110e1bf03b) - cover GetRenderingScale switch arms WebAssemblyDisplayManager.cs Graphic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ad7af4`](https://github.com/pabllopf/Alis/commit/2ad7af4e9df4f897cfe7955fb90051fdc51eca17) - cover WebSocketImplementation remaining branches (HandleWebSocketOpCodes, HandleBinaryFrame, HandlePong event, Dispose/CloseOutputAutoTimeoutAsync exception paths, ReceiveAsync success path) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55a0df0`](https://github.com/pabllopf/Alis/commit/55a0df06849d95dbb0830743a1465ffbd2520830) - pro - GameObjectTests: 37 xUnit tests, coverage 85.9% -> 99.9% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf2dcdf`](https://github.com/pabllopf/Alis/commit/bf2dcdf40e4147ce71bf35b7b4ce8f7e03c07e4b) - fix missing [Theory] attributes on 6 parameterized test methods in WebAssemblyConfigurationTest.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f07d7ed`](https://github.com/pabllopf/Alis/commit/f07d7ede416beccf6a4ecee3e13821ae44e44396) - cover Update.cs arity 8 range Run (87.6% -> ~92.5%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6436632`](https://github.com/pabllopf/Alis/commit/6436632d080c3134217af50895498888631feb5f) - pro - Image.cs 88.1%->100% coverage (15 tests added, 6 dead lines removed) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05f1d85`](https://github.com/pabllopf/Alis/commit/05f1d8575fcc09af2868f32d71a0d78178dcd606) - add NetworkServerManager coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ffa752`](https://github.com/pabllopf/Alis/commit/2ffa7528470c7ebb203f40f1e98fe0bb612c26b6) - add Opacity getter/setter tests for Glfw Window struct (blocked by native GLFW display requirement) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`13e7495`](https://github.com/pabllopf/Alis/commit/13e7495f6d0f49e76e139e6ef5845fa394596dba) - update processed.json with Glfw Window coverage entry *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`49520ec`](https://github.com/pabllopf/Alis/commit/49520ec475e5c49c1e82caf8e531d6f92d17ba71) - coverage Archetype.cs Kernel/Archetypes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3300d0c`](https://github.com/pabllopf/Alis/commit/3300d0c4e87e3532570324fc48770886db414f58) - add null options tests for WindowsFilePicker to reach 100% line coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b6867e`](https://github.com/pabllopf/Alis/commit/7b6867e604179dd846cd627d9c8bada430f44c18) - add null-options coverage tests for MacFilePicker (92.7%→100%) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79fad00`](https://github.com/pabllopf/Alis/commit/79fad0029d72dc95912bdbc998263cd9a1d55c43) - push QueryEnumerator coverage to 100% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6078ded`](https://github.com/pabllopf/Alis/commit/6078ded28d8bc1b9737ef7535504e60630f77b5a) - push GameObjectExtensions coverage to 100% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29d0e58`](https://github.com/pabllopf/Alis/commit/29d0e58787b15502d281c4c56158244fd1f98ecd) - add ConsoleLogOutput final coverage tests (3 lines BLOCKED on macOS - platform-dead inner catch in finally block) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff93d45`](https://github.com/pabllopf/Alis/commit/ff93d45296a1ddee61a6038167eeb2e5e020e95a) - pro - LinuxFilePicker 100% coverage (5 new tests for null options and null filters branches) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6222cc`](https://github.com/pabllopf/Alis/commit/e6222cc257df56d2516f36bdec2178320b8b8979) - add missing coverage tests for AssetRegistry (100% line coverage) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f657ed`](https://github.com/pabllopf/Alis/commit/2f657ed21846c733f3f9901d29c370fd02407c2c) - improve ContactSolver coverage from 95.6% to 96.88% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a2b5fa`](https://github.com/pabllopf/Alis/commit/2a2b5fa76e5d1c7dccf3db90b87f24fb9c86071e) - WebSocketFrameReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9924875`](https://github.com/pabllopf/Alis/commit/9924875f215bcd9e5aded7f46e00f2b317bf1cf1) - improve DTSweep coverage 96.5% to 96.66%, add FillRightConvexEdgeEvent recursion test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d0dc328`](https://github.com/pabllopf/Alis/commit/d0dc328ce814706756a00977adbf677aa2768402) - add PingForever cancellation during delay test for 100% coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8add9cf`](https://github.com/pabllopf/Alis/commit/8add9cf50170ab0a87825ead2a189476b281b51a) - TryFirst_TryDequeue_WhenQueueEmptiedBetweenChecks SimplePriorityQueueRemainingCoverageTests.cs HighSpeedPriorityQueue *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5eb2aa8`](https://github.com/pabllopf/Alis/commit/5eb2aa8087fb2efe7c02743058e14615e3d80da5) - add ComponentRegistryFinalCoverageTest covering ResetForTests factory recreation path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8996bb`](https://github.com/pabllopf/Alis/commit/e8996bbb185699a4086a3d054bfae61d744bb3c4) - add FastImmutableArrayTests covering RemoveAtRange empty path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f36fc7`](https://github.com/pabllopf/Alis/commit/4f36fc75e48070d88091a1ab903859e3c870c75d) - push Island coverage to 99.5% (clamp translation/rotation via SolveToi direct invoke) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02150de`](https://github.com/pabllopf/Alis/commit/02150de179c26598ff49dfa5b05d712bf6596312) - add CollisionTests.cs for EpCollider clip underflow and LocalSearch coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ef4acf`](https://github.com/pabllopf/Alis/commit/2ef4acf5bf80388b984c9d1d95bb8dfbd1fc0108) - add SceneTests.cs covering edge cases in Dispose false path, per-entity events, multi-arity create, and archetype query edge paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3771b7b`](https://github.com/pabllopf/Alis/commit/3771b7b0f9db97afa9c81942a7d233c1635db109) - add IsEar coverage for out-of-bounds and vertex-inside-triangle paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`28a7295`](https://github.com/pabllopf/Alis/commit/28a72951def3a2dbf3f3c8563705c691d3e0aed2) - coverage UnixPlayerBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`12b7a9b`](https://github.com/pabllopf/Alis/commit/12b7a9b2c283613ae24c9022bbb2dad62fbdb3ae) - coverage SceneManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5981ec0`](https://github.com/pabllopf/Alis/commit/5981ec07c185703af01bbfd863da8c8ce0ad68ca) - Mouse.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77418d7`](https://github.com/pabllopf/Alis/commit/77418d73de3f69743d1b5799a867795b06edb664) - BreakableBody.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9853b1c`](https://github.com/pabllopf/Alis/commit/9853b1ce917b513260d491f09a8f880599ca70ea) - FloatRect.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9dd6fa1`](https://github.com/pabllopf/Alis/commit/9dd6fa1898115c80d8a719b0f889750a4170edc9) - IntRect.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f8e36a4`](https://github.com/pabllopf/Alis/commit/f8e36a401c4590e34ce6b9cdd0714d0848cb4619) - Color.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4e2b34b`](https://github.com/pabllopf/Alis/commit/4e2b34be8a51fe0b4484913dbf5f77f3299b8256) - StreamAdaptor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`111b47b`](https://github.com/pabllopf/Alis/commit/111b47b0d85a151d052ef344cb95b4966ffeecb2) - BlendMode.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4e01864`](https://github.com/pabllopf/Alis/commit/4e018648334416dffd4a55e8b2da44528386feb5) - ObjectBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d0948b`](https://github.com/pabllopf/Alis/commit/8d0948b675190314efcbcb9592991f6a63483bab) - ContextSettings.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f47b6c6`](https://github.com/pabllopf/Alis/commit/f47b6c63f7290ba8fe456926c56cb893e2c3329f) - KeyEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9836331`](https://github.com/pabllopf/Alis/commit/98363319e7587189845a5a598cba489f9b888ee1) - Vertex.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4917b77`](https://github.com/pabllopf/Alis/commit/4917b77441438aa1b8cdec14fdd84a6673130f98) - MouseWheelScrollEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4fef92f`](https://github.com/pabllopf/Alis/commit/4fef92f24f0ebb7149c79480cf2adfdff50d77cc) - SensorEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dc1f7e`](https://github.com/pabllopf/Alis/commit/4dc1f7edfbe5efeaa58456f2e32839b5c58860be) - LoadingFailedException.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ef2a9ca`](https://github.com/pabllopf/Alis/commit/ef2a9ca3d1c9520b4c981e4acc6e2ecc1d792122) - LoadingFailedException.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a2e307`](https://github.com/pabllopf/Alis/commit/5a2e307c791b0abd4f08a67b5c3599a30e90b39a) - JoystickMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e45d78`](https://github.com/pabllopf/Alis/commit/1e45d78dc1df211d06807167243ba91359df8e38) - MouseButtonEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1669be`](https://github.com/pabllopf/Alis/commit/b1669be84706e4d8b54b0e6c53bffc941cca33b4) - MouseWheelEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e6cb6f`](https://github.com/pabllopf/Alis/commit/6e6cb6f8454e31326d64b6f0127fa51bcab6dd30) - TouchEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bdbdad9`](https://github.com/pabllopf/Alis/commit/bdbdad9aa4219457d207c9ed5e909ca1b6a73dad) - Ivec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a9da89`](https://github.com/pabllopf/Alis/commit/8a9da893560ca1c6ae134069396e3be534eb2b9e) - Vec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0e6a15f`](https://github.com/pabllopf/Alis/commit/0e6a15fa0057744bf968cd945980be35ced0f9b7) - Vec3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb88372`](https://github.com/pabllopf/Alis/commit/bb88372aefae1e707ec9e3a9e4346d729ec1828e) - JoystickButtonEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bed3052`](https://github.com/pabllopf/Alis/commit/bed3052ea080906051040f73056d230aaf19cf26) - MouseMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a2d7aa5`](https://github.com/pabllopf/Alis/commit/a2d7aa56fb147c7fc5e63946a121ee436db47b89) - SizeEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac142da`](https://github.com/pabllopf/Alis/commit/ac142dae23a6f6840e9cc326b983f0b87c19df6a) - Ivec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`66783ec`](https://github.com/pabllopf/Alis/commit/66783ec2122883b94af8958cc4bc3a1d007d9981) - Vec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a2a25fa`](https://github.com/pabllopf/Alis/commit/a2a25fae23fa959832de0f38537981512d450c7a) - Bvec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7816923`](https://github.com/pabllopf/Alis/commit/78169233495292dc8431f0573beedc6bd442d111) - JoystickConnectEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3cafc04`](https://github.com/pabllopf/Alis/commit/3cafc041ecadc8f1734ee49aeba412d3b6575329) - TextEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`840d74a`](https://github.com/pabllopf/Alis/commit/840d74a88e16142866c0ac9cdf63a4b5864c8fed) - WeldJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc601ca`](https://github.com/pabllopf/Alis/commit/cc601caaa3b35d6e3ea8b2b636ab0efc3e96611d) - ContactManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c279d6f`](https://github.com/pabllopf/Alis/commit/c279d6fa8c6b6ce4703e115fdd812fea784ec298) - MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`21b13e2`](https://github.com/pabllopf/Alis/commit/21b13e2ee84c6d5aaf2134bc34637003b64a691c) - AngleJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7dcdc14`](https://github.com/pabllopf/Alis/commit/7dcdc14bd0dd442db455ef77359869f2a98ee1ed) - Contact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d3b9bb6`](https://github.com/pabllopf/Alis/commit/d3b9bb661b7d9b9ac7df03c341e166ce1b2af0f1) - Fixture.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b52a49e`](https://github.com/pabllopf/Alis/commit/b52a49eac7e64ef00484fabd2e8364eedbf7a27a) - TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b67dcb2`](https://github.com/pabllopf/Alis/commit/b67dcb2b57be3edb523cb551699e671c7d5f0517) - Logger.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9c7e56b`](https://github.com/pabllopf/Alis/commit/9c7e56ba57a63437b12749c183f83f29d22a84e9) - FixedMouseJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b620420`](https://github.com/pabllopf/Alis/commit/b620420c26314904b79a2847e16eb6dd34e5c581) - YuPengClipper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06f23d9`](https://github.com/pabllopf/Alis/commit/06f23d9886d7cb9d831e6d1d87d10086ccb94675) - FrictionJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae11f26`](https://github.com/pabllopf/Alis/commit/ae11f26c4a09dec243ec8d0432074823a5433141) - DistanceJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7df1df6`](https://github.com/pabllopf/Alis/commit/7df1df602ac297b73dc191606fdb8e6a108720d2) - BufferPool.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca61555`](https://github.com/pabllopf/Alis/commit/ca61555245fbcabd199adf24accd30ce1e4feaa6) - RevoluteJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26bdbb9`](https://github.com/pabllopf/Alis/commit/26bdbb9836e85c56222c8c3368514ddb5f013762) - Body.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad7be1c`](https://github.com/pabllopf/Alis/commit/ad7be1c12c5380a630b56053766e2b5072d1523b) - BayazitDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`96a7599`](https://github.com/pabllopf/Alis/commit/96a75991a14d70f0b44d99014a36da014de20dbe) - SeparationFunction.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e848b7`](https://github.com/pabllopf/Alis/commit/1e848b753489e41499e34d05c55058f1c730489e) - WheelJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c75f87b`](https://github.com/pabllopf/Alis/commit/c75f87b70e16bc7c2de97fae1e607b8c4f95a3bd) - SimpleCombiner.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e95acd9`](https://github.com/pabllopf/Alis/commit/e95acd9bf1a8834f710c5235c66384a59768125e) - FilePickerExecutor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2af1376`](https://github.com/pabllopf/Alis/commit/2af1376ed42718aa633326f6cb5f8bbb6c43a512) - PolygonGenerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8df97f3`](https://github.com/pabllopf/Alis/commit/8df97f3f5f9ef794ef69d57033fe12eee43bdbec) - GitHubApiService.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2800437`](https://github.com/pabllopf/Alis/commit/2800437065c64c73e98441876873feecf1e908b1) - RopeJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7e4bc90`](https://github.com/pabllopf/Alis/commit/7e4bc9038f3048bcd047fa59e25759576407e480) - CryptoRandomNumberGenerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3da8a94`](https://github.com/pabllopf/Alis/commit/3da8a94d1d86c0120d727882c0775ab5844b742e) - PulleyJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`85b4c74`](https://github.com/pabllopf/Alis/commit/85b4c746659663402904bfdc26bba47632e1e925) - GearJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e97e6c`](https://github.com/pabllopf/Alis/commit/8e97e6cbf6444a4c3f93c0c16826e75852eee939) - FilePickerResult.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6c6035d`](https://github.com/pabllopf/Alis/commit/6c6035d9ca8c1711065c6be08fe9ad69b01bc2de) - FastestStack.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f73072`](https://github.com/pabllopf/Alis/commit/0f73072f79ea00cd0a0e24de46640848876ad1ad) - DelaunayTriangle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea642b1`](https://github.com/pabllopf/Alis/commit/ea642b1fa776b37942eec82fc8ba7ac996aa9861) - PrismaticJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16502ca`](https://github.com/pabllopf/Alis/commit/16502ca505a861aa868c0a108bd3bcabbddbfa28) - FilePickerValidator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1b48e8`](https://github.com/pabllopf/Alis/commit/f1b48e8bdef68f15a04b1660dcb86b5017cde06b) - GravityController.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a3ddc9`](https://github.com/pabllopf/Alis/commit/8a3ddc9f86e62357c98f94a23bf98659091d0996) - StoreManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac00585`](https://github.com/pabllopf/Alis/commit/ac00585adb898d0fd21a2a739b10129d08233cd6) - Vertices.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9efc7ed`](https://github.com/pabllopf/Alis/commit/9efc7ed3610cb123ecd676110a793095ee7dae6a) - CommandBuffer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`130a182`](https://github.com/pabllopf/Alis/commit/130a1821293158e5298b7593ff89a18e4a8f647a) - DialogManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0d2a25`](https://github.com/pabllopf/Alis/commit/b0d2a250756bd79884a518cadf04d68f299d4262) - PolygonShape.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1fccf07`](https://github.com/pabllopf/Alis/commit/1fccf0732725c90da0baf669de10ad17d7835b1d) - DynamicTree.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`4d8152f`](https://github.com/pabllopf/Alis/commit/4d8152f9d93b8ebc100e61e0cf716d481782bd4d) - WebSocketImplementation.cs add XML documentation for Pong event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffb51ab`](https://github.com/pabllopf/Alis/commit/ffb51abce431f1b17e2b173cedabe98b23090590) - NetworkServerManager.cs add XML documentation for events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6388bc3`](https://github.com/pabllopf/Alis/commit/6388bc36029806062eb0b006ad33af1d1e872b29) - INetworkClientManagerTest.cs add XML documentation for events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0895173`](https://github.com/pabllopf/Alis/commit/08951730e1d927968038aa75d33b667385324c5b) - INetworkManagerTest.cs add XML documentation for events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d7a505c`](https://github.com/pabllopf/Alis/commit/d7a505c390aa7e7779fbbfe3ecd09c9e61c4581e) - INetworkServerManagerTest.cs add XML documentation for events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de3d68b`](https://github.com/pabllopf/Alis/commit/de3d68be77a06eb76b4557df366cd8394d81352a) - IPingPongManagerTest.cs add XML documentation for event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`80791f8`](https://github.com/pabllopf/Alis/commit/80791f81ecffe51a438a2645c5cdc2ccf8497e5c) - UpdateManager.cs add XML documentation for event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4c2c121`](https://github.com/pabllopf/Alis/commit/4c2c1211111120604d0bd4c56f9d64bef22a8bd1) - BrowserPlayer.cs add XML documentation for event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`600b5cf`](https://github.com/pabllopf/Alis/commit/600b5cf9c325dafa6e3af22db19a9ec1d4d06b5d) - WindowsPlayer.cs add XML documentation for event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6737be8`](https://github.com/pabllopf/Alis/commit/6737be81a23d44fc1a25fc1fe7aa3993105c0d22) - RuntimeHelpers.cs add XML documentation for class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`982bcbe`](https://github.com/pabllopf/Alis/commit/982bcbe1fe7f3d6711664dbaab7160b2749631bd) - ObjectiveCInterop.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a9b5c46`](https://github.com/pabllopf/Alis/commit/a9b5c46ea4bd93accaef1c28f72fb8e9ad83d2f4) - MacNativePlatform.cs add XML documentation for fields and methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fcab445`](https://github.com/pabllopf/Alis/commit/fcab44534e2c54d2d57f70306acfb80bf1fba2dd) - WinNativePlatform.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d0208b`](https://github.com/pabllopf/Alis/commit/6d0208b3c099e843444bf6dc7355e342fa89ba76) - GeomPolyVal.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0268d8b`](https://github.com/pabllopf/Alis/commit/0268d8b8afa93b6a8f0982e5463d2175a9eb3ede) - MacNativeWindowContextTests.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`213bfb1`](https://github.com/pabllopf/Alis/commit/213bfb155421f8df35b53a70b68c5bb1e243d032) - CombinatorialTests.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8b39af6`](https://github.com/pabllopf/Alis/commit/8b39af6d651eb3a8d0cf83b1f411fd0b00e50b3d) - UltraComprehensiveTests.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aba096d`](https://github.com/pabllopf/Alis/commit/aba096d714381f4c607d1766449a75b956d6ddf6) - EntityUpdateCoverageTest.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf61e57`](https://github.com/pabllopf/Alis/commit/bf61e5751c518d6f172027111a8ff51c0c7565b4) - MacNativePlatformRemainingCoverageTests.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b4f6fec`](https://github.com/pabllopf/Alis/commit/b4f6fec856a994521fd2256dd66d3588617e1cf3) - MacNativePlatformTest.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9b8196`](https://github.com/pabllopf/Alis/commit/c9b8196194ed87c3dbd6d8484f25e2f4a9ea6958) - ObjectiveCInteropTest.cs add XML documentation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6edd1be`](https://github.com/pabllopf/Alis/commit/6edd1be99fbf21c85a185f2012e5e634215c8eca) - xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.9] - 2026-07-13
 ### :sparkles: New Features
 - [`157f810`](https://github.com/pabllopf/Alis/commit/157f810e566871ad5c5bf9ff082d7032688cac81) - no alocation math module *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -8738,3 +9276,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.7]: https://github.com/pabllopf/Alis/compare/v1.0.6...v1.0.7
 [v1.0.8]: https://github.com/pabllopf/Alis/compare/v1.0.7...v1.0.8
 [v1.0.9]: https://github.com/pabllopf/Alis/compare/v1.0.8...v1.0.9
+[v1.1.0]: https://github.com/pabllopf/Alis/compare/v1.0.9...v1.1.0
