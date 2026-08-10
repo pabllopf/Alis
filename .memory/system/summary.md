@@ -847,3 +847,11 @@
 - **Coverage After**: ~95.0%
 - **Tests Added**: 1
 - **Uncovered Lines**: Multi-component Deconstruct overloads
+
+## ConsoleLogOutput.cs
+
+- **File**: `6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs`
+- **Coverage Before**: 94.7%
+- **Coverage After**: ~96.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: Color-restore catch (coverlet artifact)
