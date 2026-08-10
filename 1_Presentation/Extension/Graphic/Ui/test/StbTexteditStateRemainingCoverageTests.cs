@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -37,119 +38,67 @@ namespace Alis.Extension.Graphic.Ui.Test
     public class StbTexteditStateRemainingCoverageTests
     {
         /// <summary>
-        ///     Tests that default cursor should be zero
+        ///     Tests that properties round trip
         /// </summary>
         [Fact]
-        public void DefaultCursor_ShouldBeZero()
+        public void Properties_RoundTrip()
         {
-            StbTexteditState state = default;
+            StbTexteditState state = new StbTexteditState
+            {
+                Cursor = 3,
+                SelectStart = 1,
+                SelectEnd = 5,
+                InsertMode = 1,
+                RowCountPerPage = 10,
+                CursorAtEndOfLine = 1,
+                Initialized = 1,
+                HasPreferredX = 1,
+                SingleLine = 1,
+                Padding1 = 1,
+                Padding2 = 1,
+                Padding3 = 1,
+                PreferredX = 0.5f,
+                UndoState = new StbUndoState()
+            };
+
+            Assert.Equal(3, state.Cursor);
+            Assert.Equal(1, state.SelectStart);
+            Assert.Equal(5, state.SelectEnd);
+            Assert.Equal(1, state.InsertMode);
+            Assert.Equal(10, state.RowCountPerPage);
+            Assert.Equal(1, state.CursorAtEndOfLine);
+            Assert.Equal(1, state.Initialized);
+            Assert.Equal(1, state.HasPreferredX);
+            Assert.Equal(1, state.SingleLine);
+            Assert.Equal(1, state.Padding1);
+            Assert.Equal(1, state.Padding2);
+            Assert.Equal(1, state.Padding3);
+            Assert.Equal(0.5f, state.PreferredX, 5);
+            Assert.NotNull(state.UndoState);
+        }
+
+        /// <summary>
+        ///     Tests that defaults are zero
+        /// </summary>
+        [Fact]
+        public void Defaults_AreZero()
+        {
+            StbTexteditState state = new StbTexteditState();
+
             Assert.Equal(0, state.Cursor);
-        }
-
-        /// <summary>
-        ///     Tests that default select start should be zero
-        /// </summary>
-        [Fact]
-        public void DefaultSelectStart_ShouldBeZero()
-        {
-            StbTexteditState state = default;
             Assert.Equal(0, state.SelectStart);
-        }
-
-        /// <summary>
-        ///     Tests that default select end should be zero
-        /// </summary>
-        [Fact]
-        public void DefaultSelectEnd_ShouldBeZero()
-        {
-            StbTexteditState state = default;
             Assert.Equal(0, state.SelectEnd);
-        }
-
-        /// <summary>
-        ///     Tests that default insert mode should be zero
-        /// </summary>
-        [Fact]
-        public void DefaultInsertMode_ShouldBeZero()
-        {
-            StbTexteditState state = default;
-            Assert.Equal((byte)0, state.InsertMode);
-        }
-
-        /// <summary>
-        ///     Tests that default row count per page should be zero
-        /// </summary>
-        [Fact]
-        public void DefaultRowCountPerPage_ShouldBeZero()
-        {
-            StbTexteditState state = default;
+            Assert.Equal(0, state.InsertMode);
             Assert.Equal(0, state.RowCountPerPage);
-        }
-
-        /// <summary>
-        ///     Tests that cursor set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void Cursor_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.Cursor = 5;
-            Assert.Equal(5, state.Cursor);
-        }
-
-        /// <summary>
-        ///     Tests that select start set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void SelectStart_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.SelectStart = 10;
-            Assert.Equal(10, state.SelectStart);
-        }
-
-        /// <summary>
-        ///     Tests that select end set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void SelectEnd_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.SelectEnd = 15;
-            Assert.Equal(15, state.SelectEnd);
-        }
-
-        /// <summary>
-        ///     Tests that insert mode set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void InsertMode_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.InsertMode = 1;
-            Assert.Equal((byte)1, state.InsertMode);
-        }
-
-        /// <summary>
-        ///     Tests that row count per page set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void RowCountPerPage_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.RowCountPerPage = 20;
-            Assert.Equal(20, state.RowCountPerPage);
-        }
-
-        /// <summary>
-        ///     Tests that preferred x set and get returns correct value
-        /// </summary>
-        [Fact]
-        public void PreferredX_SetAndGet_ReturnsCorrectValue()
-        {
-            StbTexteditState state = default;
-            state.PreferredX = 1.5f;
-            Assert.Equal(1.5f, state.PreferredX, 5);
+            Assert.Equal(0, state.CursorAtEndOfLine);
+            Assert.Equal(0, state.Initialized);
+            Assert.Equal(0, state.HasPreferredX);
+            Assert.Equal(0, state.SingleLine);
+            Assert.Equal(0, state.Padding1);
+            Assert.Equal(0, state.Padding2);
+            Assert.Equal(0, state.Padding3);
+            Assert.Equal(0f, state.PreferredX, 5);
+            Assert.NotNull(state.UndoState);
         }
     }
 }

@@ -1039,3 +1039,11 @@
 - **Coverage After**: ~66.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: ffprobe-output parsing requiring ffmpeg process execution
+
+## ImColor.cs / StbTexteditState.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImColor.cs`, `StbTexteditState.cs`
+- **Coverage Before**: 33.3% / 42.9%
+- **Coverage After**: ~34.0% / 100.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: ImColor.SetHsv native call
