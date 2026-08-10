@@ -1079,3 +1079,52 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 0
 - **Uncovered Lines**: None
+
+## RenderStates.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## Transformable.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## SfmlText.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## VertexArray.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## VertexBuffer.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## View.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
+
+## Transform.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: verified locally with csfml
+- **Tests Added**: 0 (existing tests cover; CI-skipped)
