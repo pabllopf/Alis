@@ -783,3 +783,11 @@
 - **Coverage After**: ~82.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: Client-handshake receive paths requiring real loopback connections
+
+## UpdateManager.cs
+
+- **File**: `1_Presentation/Extension/Updater/src/UpdateManager.cs`
+- **Coverage Before**: 86.5%
+- **Coverage After**: ~87.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Download/install flow requiring HTTP server + filesystem
