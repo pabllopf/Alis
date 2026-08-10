@@ -53,10 +53,8 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             context.SceneManager.LoadedScenes.Add(scene);
             context.SceneManager.CurrentWorld = scene;
 
-            GameObject boxA = scene.CreateGameObject("boxA");
-            GameObject boxB = scene.CreateGameObject("boxB");
-            boxA.Add<Transform>(new Transform { Position = new Vector2F(0, 0), Scale = new Vector2F(1, 1) });
-            boxB.Add<Transform>(new Transform { Position = new Vector2F(0.6f, 0), Scale = new Vector2F(1, 1) });
+            GameObject boxA = scene.Create<Transform>(new Transform { Position = new Vector2F(0, 0), Scale = new Vector2F(1, 1) });
+            GameObject boxB = scene.Create<Transform>(new Transform { Position = new Vector2F(0.6f, 0), Scale = new Vector2F(1, 1) });
 
             BoxCollider colliderA = new BoxCollider { Context = context, SizeOfTexture = new Vector2F(1, 1), BodyType = Alis.Core.Physic.Dynamics.BodyType.Dynamic };
             BoxCollider colliderB = new BoxCollider { Context = context, SizeOfTexture = new Vector2F(1, 1), BodyType = Alis.Core.Physic.Dynamics.BodyType.Dynamic };

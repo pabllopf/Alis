@@ -719,3 +719,11 @@
 - **Coverage After**: ~55.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: Finalizer paths unreachable — strong refs in static list prevent collection
+
+## BoxCollider.cs
+
+- **File**: `2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs`
+- **Coverage Before**: 44.8%
+- **Coverage After**: ~55.0%
+- **Tests Added**: 1
+- **Uncovered Lines**: OpenGL render paths unavailable on CI
