@@ -1304,3 +1304,11 @@
 - **File**: Sfml (csfml-bound)
 - **Coverage Before**: 0.0%
 - **Coverage After**: verified locally; CI-skipped
+
+## ImGuiIO.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs`
+- **Coverage Before**: 12.7%
+- **Coverage After**: ~12.7% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Coverlet auto-property attribution limit
