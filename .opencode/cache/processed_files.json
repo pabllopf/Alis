@@ -38198,5 +38198,2665 @@
     "xml_updated": 0,
     "comments_removed": 0,
     "commit": null
+  },
+  "./1_Presentation/Engine/test/Menus/TopMenuActionCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Engine/test/TopMenuActionAdditionalTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Cloud/GoogleDrive/test/GoogleDriveCloudManagerAdditionalTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Cloud/GoogleDrive/test/GoogleDriveCloudManagerGeneratedTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Glfw/test/Structs/GamePadStateTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Glfw/test/Structs/GamePadStateTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Glfw/test/Structs/GammaRampInternalTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Glfw/test/Structs/MonitorAdditionalRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sdl2/test/Attributes/RequireSdl2ImageFactAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sdl2/test/Mapping/Sdl2MappingRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sdl2/test/SdlTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/BlendModeRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec2RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec3RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec4RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/ColorRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/ConvexShapeTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/FloatRectRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/IntRectRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec2RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec3RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec4RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/RectangleShapeTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/RenderWindowTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/SfmlTextTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/ShapeTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/SpriteTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/TextureTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/TransformableTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Vec2RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Vec3RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/Vec4RemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Render/VertexRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/StreamAdaptorRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Systems/ClockTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Systems/ObjectBaseRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Systems/SfmlTimeRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Systems/SystemsLoadingFailedExceptionRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/ContextSettingsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickButtonEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickConnectEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickMoveEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/KeyEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/KeyboardContractTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/KeyboardRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/LoadingFailedExceptionRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseButtonEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseMoveEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelScrollEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/SensorEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/SensorTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/SizeEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/TextEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/TouchEventArgsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Sfml/test/Windows/VideoModeTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Attributes/RequireImNodesSystemFactAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/GuizMo/ImGuizMoRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Node/ImNodesStyleRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Node/ImguiIoRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Node/MultipleSelectModifierTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotContractTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotInputMapTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP10Test.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP11Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP12Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP13Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP14Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP15Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP16Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP17Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP18Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP19Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP1Test.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP20Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP21Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP22Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP2Test.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP3Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP4Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP5Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP6Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP7Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP8Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotRangeRectRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImColorRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawChannelRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawCmdHeaderRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawCmdTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawDataTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawListPtrRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawListRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawListSplitterRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImDrawVertRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontAtlasCustomRectRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontAtlasPtrRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontConfigPtrCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontGlyphRangesBuilderRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontGlyphRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontPtrTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImFontRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiIOPtrTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiInputTextCallbackDataRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiKeyDataRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiListClipperRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiOnceUponAFrameRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiP4Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiP6Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiP8SliderTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiP8Tests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiPayloadTableSortRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiPayloadTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiPlatformIOPtrTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiPlatformImeDataRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiPlatformMonitorTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiStorageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiStyleTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiTableColumnSortSpecsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiTextBufferTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiTextFilterTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiViewportPtrRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiViewportRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImGuiWindowClassTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImVectorGRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImVectorGTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/ImVectorRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/NullTerminatedStringRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/NullTerminatedStringTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/RangePtrAccessorRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/StbTexteditRowRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/StbTexteditStateRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Graphic/Ui/test/StbTexteditStateTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Io/FileDialog/test/Attributes/UnixOnlyAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Io/FileDialog/test/FilePickerExecutorAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioReaderTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioWriterCoverageFinalTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Audio/Models/TagsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaStreamTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaWriterTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Encoding/Builders/H264EncoderTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Video/Models/VideoMetadataCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Video/VideoFrameCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Video/VideoPlayerFullCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Video/VideoReaderTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Media/FFmpeg/test/Video/VideoWriterTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/BufferPoolRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Client/NetworkClientManagerAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Core/WebSocketNetworkTransportAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Core/WebSocketNetworkTransportTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Internal/EventsAdditionalCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Internal/EventsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/Server/NetworkServerManagerTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/WebSocketClientFactoryAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Network/test/WebSocketClientFactoryTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Payment/Stripe/test/StripeInternalMethodsTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Updater/test/FileServiceAdditionalTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Updater/test/UpdateManagerAdditionalCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Updater/test/UpdateManagerCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Updater/test/UpdateManagerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Hub/test/HubEntitiesTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderCollisionCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderUncoveredTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Render/AnimatorEdgeCaseTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Render/AnimatorNullClockTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Render/SpriteAdditionalCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Render/SpriteEnhancedCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Components/Render/SpriteRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Systems/Manager/Graphic/GraphicManagerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Systems/Manager/Graphic/GraphicManagerTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/Core/Ecs/Systems/Scope/ContextHandlerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./2_Application/Alis/test/SceneManagerEntityTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Audio/test/Players/BrowserPlayerCoverageCompletionTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/ArchetypeNeighborCacheRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/EnumerableHelpersBranchGTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/EnumerableHelpersDirectCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/EnumerableHelpersTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/EnumerableHelpersToSpanTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/EnumerableHelpersUncoveredLinesTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/FastestStackAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/FastestTableCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/FastestTableRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/IDTableRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/ShortSparseSetCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/ShortSparseSetRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Collections/SparseSetCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/GameObjectExtensionsPrivateGetCompTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/GameObjectExtensionsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/GameObjectLocationRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/GameObjectRefTupleRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/GameObjectTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Archetypes/ArchetypeFinalCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Archetypes/FieldsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/CommandBufferRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentHandleCreateCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentHandleRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentHandleRetrieveErrorPathTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentRegistryCoveragePushTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentRegistryFinalCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/ComponentRegistryNullAndEdgeTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Events/EventRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Events/GameObjectOnlyEventRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Events/GenericEventBranchCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/Events/GenericEventRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/GameObjectIdOnlyRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Kernel/GameObjectTypeRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Marshalling/GameObjectMarshalRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Redifinition/Gen2GcCallbackDirectTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Redifinition/Gen2GcCallbackRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Redifinition/MemoryHelpersRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/SceneQueryExtensionsRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/SceneTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Systems/QueryHashCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Systems/QueryRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Systems/RefTupleRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Updating/ComponentStorageBaseTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Updating/GenerationServicesRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Updating/Runners/UpdateArities6To8CoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Updating/Runners/UpdateTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Attributes/WebOnlyAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/ImageAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/EmscriptenWebTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/WebAssemblyDisplayManagerCoverageFinalTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/WebAssemblyGameExamplesRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/WebAssemblyGameExamplesTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/WebAssemblyPlatformFinalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Web/WebAssemblyPlatformIntegrationCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Ui/FontManagerTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Ui/FontTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Collisions/CollisionTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Collisions/TimeOfImpactRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/ConstantRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepTargetedCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": true,
+    "xml_added": 0,
+    "xml_updated": 1,
+    "comments_removed": 0,
+    "commit": "docs: DTSweepTargetedCoverageTests.cs remove malformed XML documentation summary block"
+  },
+  "./4_Operation/Physic/test/Common/Decomposition/EarclipDecomposerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/Logic/BreakableBodyRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/PolygonManipulation/SimpleCombinerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Common/TextureTools/MarchingSquaresRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/BodyCoverage009Test.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/BodyRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/CategoriesRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Contacts/ContactSolverAdditionalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/FixtureRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/AngleJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/FixedMouseJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/PrismaticJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/PulleyJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/RevoluteJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/RopeJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/Joints/WheelJointRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Physic/test/Dynamics/WorldPhysicRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Logging/test/ConsoleLogOutputRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Logging/test/FileLogOutputRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Logging/test/LoggerRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Logging/test/Outputs/ConsoleLogOutputComprehensiveCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Logging/test/Outputs/ConsoleLogOutputFinalCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Math/test/Collections/FastImmutableArrayTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Math/test/Util/ConstantRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Math/test/Util/ConstantTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Math/test/Util/QuaternionRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Memory/test/AssetRegistryAdditionalTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Memory/test/AssetRegistryExtendedCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Memory/test/AssetRegistryMissingCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./6_Ideation/Memory/test/AssetRegistryRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-08-10T14:33:12.047056Z",
+    "last_processed_at": "2026-08-10T14:33:12.047056Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
   }
 }
