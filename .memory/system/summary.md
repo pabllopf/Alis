@@ -887,3 +887,11 @@
 - **Coverage After**: ~97.5%
 - **Tests Added**: 1
 - **Uncovered Lines**: Keep-alive expiry deep paths
+
+## GoogleDriveCloudManager.cs
+
+- **File**: `1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs`
+- **Coverage Before**: 96.8%
+- **Coverage After**: ~98.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Init-failure catch requiring real Google OAuth failure
