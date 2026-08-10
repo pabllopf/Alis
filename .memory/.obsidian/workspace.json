@@ -203,6 +203,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260810_141717.json",
     "system/cache/sonarcloud_cache_20260810_120343.json",
     "sonar/state/locks.md",
     "sonar/state/issues-index.md",
@@ -238,7 +239,6 @@
     "coverage/tests",
     "coverage/tasks",
     "coverage/state/priority-targets.json",
-    "coverage/state/coverage-delta.json",
     "Sin título.canvas"
   ]
 }
