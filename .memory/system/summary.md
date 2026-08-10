@@ -831,3 +831,11 @@
 - **Coverage After**: ~94.0%
 - **Tests Added**: 1
 - **Uncovered Lines**: Reset enumerator path
+
+## ComponentRegistry.cs
+
+- **File**: `4_Operation/Ecs/src/Kernel/ComponentRegistry.cs`
+- **Coverage Before**: 92.8%
+- **Coverage After**: ~94.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Unreachable after-throw returns; 65535-max guards
