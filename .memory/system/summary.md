@@ -631,3 +631,11 @@
 - **Coverage After**: 100.0% lines (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: None; null-conditional branch unreachable
+
+## Categories.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Categories.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: None
