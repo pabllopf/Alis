@@ -671,3 +671,11 @@
 - **Coverage After**: ~68.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: Deep flip/edge-event geometry requiring pathological configurations
+
+## EarclipDecomposer.cs
+
+- **File**: `4_Operation/Physic/src/Common/Decomposition/EarclipDecomposer.cs`
+- **Coverage Before**: 94.6%
+- **Coverage After**: ~97.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: Deep pinch-split wraparound internals

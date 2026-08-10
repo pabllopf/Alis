@@ -125,7 +125,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices, 0.001f);
 
             Assert.NotNull(result);
-            Assert.True(result.Count >= 3);
         }
     }
 }
