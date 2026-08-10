@@ -943,3 +943,11 @@
 - **Coverage After**: ~99.0% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Dispose catch requiring transport StopAsync failure
+
+## WebAssemblyConfiguration.cs
+
+- **File**: `4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs`
+- **Coverage Before**: 25.6%
+- **Coverage After**: ~55.0%
+- **Tests Added**: 3
+- **Uncovered Lines**: Native platform-creation methods requiring JS interop
