@@ -743,3 +743,11 @@
 - **Coverage After**: ~45.0% (ceiling on macOS CI)
 - **Tests Added**: 0
 - **Uncovered Lines**: Windows-only `mciSendString` execution paths
+
+## ContextHandler.cs
+
+- **File**: `2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs`
+- **Coverage Before**: 70.3%
+- **Coverage After**: ~75.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Full game-loop body requires GL context unavailable on CI
