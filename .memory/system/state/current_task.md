@@ -1,1 +1,1 @@
-# STATUS: COMPLETED 2026-08-10 — wave 5 (native/platform batch): 71 files documented at ceiling; all SonarCloud <100% files now have results
+# STATUS: COMPLETED 2026-08-10 — wave 6 (pure-surface struct sweep): ImPlotRange/ImPlotRect/ImGuiTableSortSpecs 100%, ImNodesStyle 94.1%, ImPlotStyle 63.5%, ImFontPtr ~10%; all 208 <100% SonarCloud files have results
