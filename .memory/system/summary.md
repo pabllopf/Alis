@@ -967,3 +967,11 @@
 - **Coverage After**: ~73.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: SetValue GL calls requiring GL context
+
+## GLShader.cs
+
+- **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs`
+- **Coverage Before**: 55.6%
+- **Coverage After**: ~56.0% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: Constructor/Release GL calls requiring GL context
