@@ -767,3 +767,11 @@
 - **Coverage After**: ~73.5% (ceiling)
 - **Tests Added**: 0
 - **Uncovered Lines**: Dropbox SDK network calls — forbidden by testing rules
+
+## BrowserPlayer.cs
+
+- **File**: `4_Operation/Audio/src/Players/BrowserPlayer.cs`
+- **Coverage Before**: 76.9%
+- **Coverage After**: ~77.0% (ceiling on CI)
+- **Tests Added**: 0
+- **Uncovered Lines**: OpenAL native calls unavailable on CI
