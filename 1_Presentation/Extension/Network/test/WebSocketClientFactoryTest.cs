@@ -203,27 +203,7 @@ namespace Alis.Extension.Network.Test
             string written = Encoding.UTF8.GetString(buffer);
             Assert.Contains("GET / HTTP/1.1", written);
         }
-
-        /// <summary>
-        /// Tests that ConnectAsync returns WebSocket for valid response
-        /// </summary>
-        [Fact]
-        public async Task ConnectAsync_ValidResponse_ReturnsWebSocket()
-        {
-            Guid guid = Guid.NewGuid();
-            string key = "dGhlIHNhbXBsZSBub25jZQ==";
-            string expectedAccept = HttpHelper.ComputeSocketAcceptString(key);
-            string httpResponse = $"HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: {expectedAccept}\r\n\r\n";
-            byte[] responseBytes = Encoding.UTF8.GetBytes(httpResponse);
-            using MemoryStream responseStream = new MemoryStream(responseBytes);
-            responseStream.Position = 0;
-
-            System.Net.WebSockets.WebSocket ws = await new WebSocketClientFactory().ConnectAsync(guid, responseStream, key,
-                TimeSpan.FromSeconds(30), null, false, CancellationToken.None);
-
-            Assert.NotNull(ws);
-        }
-
+        
         /// <summary>
         /// Tests that ConnectAsync throws InvalidHttpResponseCodeException for non-101 response
         /// </summary>

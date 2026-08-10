@@ -1,5 +1,5 @@
 
-[INFO] Found 241 coverage targets. Outputting AI-ready tasks:
+[INFO] Found 208 coverage targets. Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
@@ -1017,50 +1017,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    169
-
-    ### Uncovered Branches
-    32
-
-    ### Method
-    Window
-
-    ### Complexity / LOC
-    68 / 334 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/WindowTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Window.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
 
     ### Language
@@ -1941,50 +1897,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    99
-
-    ### Uncovered Branches
-    28
-
-    ### Method
-    BreakableBody
-
-    ### Complexity / LOC
-    26 / 121 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/Logic/BreakableBodyTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BreakableBody.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs
 
     ### Language
@@ -2337,50 +2249,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/FloatRect.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    63
-
-    ### Uncovered Branches
-    18
-
-    ### Method
-    FloatRect
-
-    ### Complexity / LOC
-    20 / 82 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/FloatRectTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/FloatRect.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FloatRect.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs
 
     ### Language
@@ -2506,50 +2374,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Font.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/IntRect.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    59
-
-    ### Uncovered Branches
-    18
-
-    ### Method
-    IntRect
-
-    ### Complexity / LOC
-    20 / 78 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/IntRectTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/IntRect.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage IntRect.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -2733,50 +2557,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Color.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    48
-
-    ### Uncovered Branches
-    8
-
-    ### Method
-    Color
-
-    ### Complexity / LOC
-    18 / 64 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/ColorTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Color.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Color.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs
 
     ### Language
@@ -2814,50 +2594,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage MacWindow.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    47
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    StreamAdaptor
-
-    ### Complexity / LOC
-    10 / 64 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/StreamAdaptorTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage StreamAdaptor.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -3034,50 +2770,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage RenderStates.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/BlendMode.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    35
-
-    ### Uncovered Branches
-    12
-
-    ### Method
-    BlendMode
-
-    ### Complexity / LOC
-    14 / 72 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/BlendModeTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/BlendMode.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BlendMode.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -3305,50 +2997,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    23
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    ObjectBase
-
-    ### Complexity / LOC
-    7 / 38 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/ObjectBaseTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ObjectBase.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs
 
     ### Language
@@ -3386,50 +3034,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Joystick.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/ContextSettings.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    22
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    ContextSettings
-
-    ### Complexity / LOC
-    4 / 48 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/ContextSettingsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/ContextSettings.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ContextSettings.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -3481,50 +3085,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
-
-    ### Uncovered Lines
-    20
-
-    ### Uncovered Branches
-    4
-
-    ### Method
-    Mouse
-
-    ### Complexity / LOC
-    7 / 57 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Mouse.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs
 
     ### Language
@@ -3569,50 +3129,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    19
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    KeyEventArgs
-
-    ### Complexity / LOC
-    12 / 26 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/KeyEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage KeyEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs
 
     ### Language
@@ -3650,50 +3166,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage RectangleShape.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vertex.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    18
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Vertex
-
-    ### Complexity / LOC
-    5 / 34 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/VertexTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vertex.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vertex.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -3789,94 +3261,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    16
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    MouseWheelScrollEventArgs
-
-    ### Complexity / LOC
-    10 / 23 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelScrollEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MouseWheelScrollEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    16
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    SensorEventArgs
-
-    ### Complexity / LOC
-    10 / 23 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/SensorEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage SensorEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs
 
     ### Language
@@ -3914,94 +3298,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage SoundBufferRecorder.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    15
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    LoadingFailedException
-
-    ### Complexity / LOC
-    5 / 28 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/LoadingFailedExceptionTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage LoadingFailedException.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/LoadingFailedException.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    15
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    LoadingFailedException
-
-    ### Complexity / LOC
-    5 / 25 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/LoadingFailedExceptionTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/LoadingFailedException.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage LoadingFailedException.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -4097,446 +3393,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    13
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    JoystickMoveEventArgs
-
-    ### Complexity / LOC
-    8 / 20 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickMoveEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage JoystickMoveEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    13
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    MouseButtonEventArgs
-
-    ### Complexity / LOC
-    8 / 20 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseButtonEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MouseButtonEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    13
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    MouseWheelEventArgs
-
-    ### Complexity / LOC
-    8 / 20 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MouseWheelEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    13
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    TouchEventArgs
-
-    ### Complexity / LOC
-    8 / 20 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/TouchEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage TouchEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    12
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Ivec4
-
-    ### Complexity / LOC
-    2 / 26 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec4Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Ivec4.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    12
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Vec4
-
-    ### Complexity / LOC
-    2 / 26 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec4Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vec4.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    11
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Vec3
-
-    ### Complexity / LOC
-    2 / 25 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec3Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vec3.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    10
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    JoystickButtonEventArgs
-
-    ### Complexity / LOC
-    6 / 17 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickButtonEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage JoystickButtonEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    10
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    MouseMoveEventArgs
-
-    ### Complexity / LOC
-    6 / 17 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseMoveEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MouseMoveEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    10
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    SizeEventArgs
-
-    ### Complexity / LOC
-    6 / 17 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/SizeEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage SizeEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs
 
     ### Language
@@ -4618,94 +3474,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Clock.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    9
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Ivec2
-
-    ### Complexity / LOC
-    2 / 22 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec2Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Ivec2.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    9
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Vec2
-
-    ### Complexity / LOC
-    2 / 22 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec2Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vec2.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -4801,50 +3569,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    6
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Bvec4
-
-    ### Complexity / LOC
-    1 / 19 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec4Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Bvec4.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs
 
     ### Language
@@ -4882,94 +3606,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Sensor.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec3.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    5
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Bvec3
-
-    ### Complexity / LOC
-    1 / 17 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec3Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec3.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Bvec3.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec3.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    5
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Ivec3
-
-    ### Complexity / LOC
-    1 / 17 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Ivec3Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec3.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Ivec3.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -5021,94 +3657,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    4
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    JoystickConnectEventArgs
-
-    ### Complexity / LOC
-    4 / 11 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/JoystickConnectEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage JoystickConnectEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    4
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    TextEventArgs
-
-    ### Complexity / LOC
-    4 / 11 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/TextEventArgsTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage TextEventArgs.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs
 
     ### Language
@@ -5146,50 +3694,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Keyboard.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec2.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
-
-    ### Uncovered Lines
-    4
-
-    ### Uncovered Branches
-    0
-
-    ### Method
-    Bvec2
-
-    ### Complexity / LOC
-    1 / 15 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Bvec2Tests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec2.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Bvec2.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -5681,6 +4185,50 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    1.5% (Line: 1.8%, Branch: 0.0%)
+
+    ### Uncovered Lines
+    166
+
+    ### Uncovered Branches
+    32
+
+    ### Method
+    Window
+
+    ### Complexity / LOC
+    68 / 334 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/WindowTests.cs
+
+    Priority
+    CRITICAL (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage Window.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs
 
     ### Language
@@ -5989,50 +4537,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    9.5% (Line: 10.0%, Branch: 4.5%)
-
-    ### Uncovered Lines
-    180
-
-    ### Uncovered Branches
-    21
-
-    ### Method
-    WeldJoint
-
-    ### Complexity / LOC
-    32 / 241 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WeldJointTests.cs
-
-    Priority
-    CRITICAL (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage WeldJoint.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
 
     ### Language
@@ -6070,6 +4574,50 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage ImGuiIO.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    14.2% (Line: 15.7%, Branch: 9.8%)
+
+    ### Uncovered Lines
+    295
+
+    ### Uncovered Branches
+    111
+
+    ### Method
+    MacNativePlatform
+
+    ### Complexity / LOC
+    101 / 424 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformTests.cs
+
+    Priority
+    CRITICAL (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage MacNativePlatform.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -6561,25 +5109,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+    pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs
 
     ### Language
     cs
 
     ### Coverage
-    47.2% (Line: 39.7%, Branch: 62.9%)
+    44.7% (Line: 45.1%, Branch: 42.9%)
 
     ### Uncovered Lines
-    211
+    67
 
     ### Uncovered Branches
-    62
+    16
 
     ### Method
-    MacNativePlatform
+    WindowsPlayer
 
     ### Complexity / LOC
-    127 / 427 lines
+    29 / 163 lines
 
     ### Source Code
     ```csharp
@@ -6587,17 +5135,61 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformTests.cs
+    pabllopf-official_alis:4_Operation/Audio/test/Players/WindowsPlayerTests.cs
 
     Priority
     HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MacNativePlatform.cs
+    Commit format: test: coverage WindowsPlayer.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    44.8% (Line: 48.9%, Branch: 20.8%)
+
+    ### Uncovered Lines
+    142
+
+    ### Uncovered Branches
+    38
+
+    ### Method
+    BoxCollider
+
+    ### Complexity / LOC
+    72 / 314 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderTests.cs
+
+    Priority
+    HIGH (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage BoxCollider.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -6693,6 +5285,50 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    52.5% (Line: 53.6%, Branch: 46.9%)
+
+    ### Uncovered Lines
+    77
+
+    ### Uncovered Branches
+    17
+
+    ### Method
+    GLShaderProgram
+
+    ### Complexity / LOC
+    32 / 197 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Graphic/test/OpenGL/Constructs/GLShaderProgramTests.cs
+
+    Priority
+    MEDIUM (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage GLShaderProgram.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs
 
     ### Language
@@ -6730,50 +5366,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage ImDrawData.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    53.3% (Line: 54.1%, Branch: 50.0%)
-
-    ### Uncovered Lines
-    56
-
-    ### Uncovered Branches
-    14
-
-    ### Method
-    WindowsPlayer
-
-    ### Complexity / LOC
-    29 / 163 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Audio/test/Players/WindowsPlayerTests.cs
-
-    Priority
-    MEDIUM (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage WindowsPlayer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -6825,25 +5417,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
 
     ### Language
     cs
 
     ### Coverage
-    54.6% (Line: 60.4%, Branch: 20.8%)
+    54.2% (Line: 55.0%, Branch: 50.0%)
 
     ### Uncovered Lines
-    110
+    9
 
     ### Uncovered Branches
-    38
+    2
 
     ### Method
-    BoxCollider
+    Mouse
 
     ### Complexity / LOC
-    72 / 314 lines
+    7 / 57 lines
 
     ### Source Code
     ```csharp
@@ -6851,17 +5443,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BoxCollider.cs
+    Commit format: test: coverage Mouse.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -6957,94 +5549,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    58.4% (Line: 41.2%, Branch: 82.1%)
-
-    ### Uncovered Lines
-    77
-
-    ### Uncovered Branches
-    17
-
-    ### Method
-    GLShaderProgram
-
-    ### Complexity / LOC
-    90 / 194 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Graphic/test/OpenGL/Constructs/GLShaderProgramTests.cs
-
-    Priority
-    MEDIUM (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage GLShaderProgram.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    59.3% (Line: 62.0%, Branch: 52.9%)
-
-    ### Uncovered Lines
-    130
-
-    ### Uncovered Branches
-    66
-
-    ### Method
-    ContactManager
-
-    ### Complexity / LOC
-    94 / 412 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/ContactManagerTests.cs
-
-    Priority
-    MEDIUM (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ContactManager.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs
 
     ### Language
@@ -7082,50 +5586,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Monitor.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    61.9% (Line: 63.6%, Branch: 57.2%)
-
-    ### Uncovered Lines
-    181
-
-    ### Uncovered Branches
-    77
-
-    ### Method
-    MarchingSquares
-
-    ### Complexity / LOC
-    137 / 603 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/TextureTools/MarchingSquaresTests.cs
-
-    Priority
-    MEDIUM (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MarchingSquares.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -7177,25 +5637,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    62.8% (Line: 61.0%, Branch: 100.0%)
+    63.7% (Line: 66.1%, Branch: 57.9%)
 
     ### Uncovered Lines
-    16
+    116
 
     ### Uncovered Branches
-    0
+    59
 
     ### Method
-    AngleJoint
+    ContactManager
 
     ### Complexity / LOC
-    20 / 66 lines
+    94 / 412 lines
 
     ### Source Code
     ```csharp
@@ -7203,17 +5663,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/AngleJointTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/ContactManagerTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AngleJoint.cs
+    Commit format: test: coverage ContactManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -7353,6 +5813,50 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    67.5% (Line: 61.9%, Branch: 85.4%)
+
+    ### Uncovered Lines
+    59
+
+    ### Uncovered Branches
+    7
+
+    ### Method
+    StripeGatewayClient
+
+    ### Complexity / LOC
+    33 / 197 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/test/StripeGatewayClientTests.cs
+
+    Priority
+    MEDIUM (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage StripeGatewayClient.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs
 
     ### Language
@@ -7397,25 +5901,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs
 
     ### Language
     cs
 
     ### Coverage
-    69.5% (Line: 62.6%, Branch: 91.7%)
+    70.0% (Line: 75.0%, Branch: 50.0%)
 
     ### Uncovered Lines
-    58
+    2
 
     ### Uncovered Branches
-    4
+    1
 
     ### Method
-    StripeGatewayClient
+    Fields
 
     ### Complexity / LOC
-    33 / 197 lines
+    2 / 24 lines
 
     ### Source Code
     ```csharp
@@ -7423,17 +5927,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/test/StripeGatewayClientTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/Archetypes/FieldsTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage StripeGatewayClient.cs
+    Commit format: test: coverage Fields.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -7617,25 +6121,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs
+    pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
 
     ### Language
     cs
 
     ### Coverage
-    74.9% (Line: 77.8%, Branch: 64.1%)
+    76.9% (Line: 74.0%, Branch: 85.3%)
 
     ### Uncovered Lines
-    65
+    51
 
     ### Uncovered Branches
-    28
+    10
 
     ### Method
-    Contact
+    BrowserPlayer
 
     ### Complexity / LOC
-    88 / 347 lines
+    47 / 248 lines
 
     ### Source Code
     ```csharp
@@ -7643,17 +6147,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Contacts/ContactTests.cs
+    pabllopf-official_alis:4_Operation/Audio/test/Players/BrowserPlayerTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Contact.cs
+    Commit format: test: coverage BrowserPlayer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -7705,50 +6209,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    77.3% (Line: 74.5%, Branch: 85.3%)
-
-    ### Uncovered Lines
-    50
-
-    ### Uncovered Branches
-    10
-
-    ### Method
-    BrowserPlayer
-
-    ### Complexity / LOC
-    47 / 248 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Audio/test/Players/BrowserPlayerTests.cs
-
-    Priority
-    MEDIUM (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BrowserPlayer.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
 
     ### Language
@@ -7786,6 +6246,50 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage VideoFrame.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    79.9% (Line: 81.5%, Branch: 75.6%)
+
+    ### Uncovered Lines
+    92
+
+    ### Uncovered Branches
+    44
+
+    ### Method
+    MarchingSquares
+
+    ### Complexity / LOC
+    137 / 603 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Physic/test/Common/TextureTools/MarchingSquaresTests.cs
+
+    Priority
+    MEDIUM (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage MarchingSquares.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -7881,50 +6385,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    84.7% (Line: 87.0%, Branch: 73.1%)
-
-    ### Uncovered Lines
-    17
-
-    ### Uncovered Branches
-    7
-
-    ### Method
-    Fixture
-
-    ### Complexity / LOC
-    43 / 179 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/FixtureTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Fixture.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
 
     ### Language
@@ -7962,6 +6422,50 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage UpdateManager.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    86.6% (Line: 89.3%, Branch: 73.1%)
+
+    ### Uncovered Lines
+    14
+
+    ### Uncovered Branches
+    7
+
+    ### Method
+    Fixture
+
+    ### Complexity / LOC
+    43 / 179 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/FixtureTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage Fixture.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -8101,6 +6605,138 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    88.6% (Line: 90.6%, Branch: 83.3%)
+
+    ### Uncovered Lines
+    25
+
+    ### Uncovered Branches
+    17
+
+    ### Method
+    AssetRegistry
+
+    ### Complexity / LOC
+    66 / 334 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:6_Ideation/Memory/test/AssetRegistryTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage AssetRegistry.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    88.8% (Line: 91.3%, Branch: 80.4%)
+
+    ### Uncovered Lines
+    13
+
+    ### Uncovered Branches
+    9
+
+    ### Method
+    UnixPlayerBase
+
+    ### Complexity / LOC
+    36 / 188 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Audio/test/Players/UnixPlayerBaseTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage UnixPlayerBase.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    88.9% (Line: 90.8%, Branch: 82.1%)
+
+    ### Uncovered Lines
+    27
+
+    ### Uncovered Branches
+    14
+
+    ### Method
+    Contact
+
+    ### Complexity / LOC
+    88 / 347 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Contacts/ContactTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage Contact.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
 
     ### Language
@@ -8233,50 +6869,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    90.3% (Line: 92.7%, Branch: 82.6%)
-
-    ### Uncovered Lines
-    11
-
-    ### Uncovered Branches
-    8
-
-    ### Method
-    UnixPlayerBase
-
-    ### Complexity / LOC
-    36 / 188 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Audio/test/Players/UnixPlayerBaseTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage UnixPlayerBase.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs
 
     ### Language
@@ -8321,50 +6913,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    90.7% (Line: 92.5%, Branch: 66.7%)
-
-    ### Uncovered Lines
-    6
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    FixedMouseJoint
-
-    ### Complexity / LOC
-    21 / 104 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/FixedMouseJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FixedMouseJoint.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
 
     ### Language
@@ -8402,6 +6950,50 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Archetype.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    91.0% (Line: 87.8%, Branch: 100.0%)
+
+    ### Uncovered Lines
+    9
+
+    ### Uncovered Branches
+    0
+
+    ### Method
+    FileLogOutput
+
+    ### Complexity / LOC
+    20 / 100 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:6_Ideation/Logging/test/Outputs/FileLogOutputTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage FileLogOutput.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -8497,19 +7089,151 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    92.2% (Line: 91.3%, Branch: 93.5%)
+
+    ### Uncovered Lines
+    6
+
+    ### Uncovered Branches
+    3
+
+    ### Method
+    DungeonData
+
+    ### Complexity / LOC
+    37 / 108 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/test/Models/DungeonDataTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage DungeonData.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Ecs/src/Collections/EnumerableHelpers.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    92.2% (Line: 94.9%, Branch: 83.3%)
+
+    ### Uncovered Lines
+    3
+
+    ### Uncovered Branches
+    3
+
+    ### Method
+    EnumerableHelpers
+
+    ### Complexity / LOC
+    15 / 79 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Ecs/test/Collections/EnumerableHelpersTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Collections/EnumerableHelpers.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage EnumerableHelpers.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    92.8% (Line: 94.1%, Branch: 89.6%)
+
+    ### Uncovered Lines
+    7
+
+    ### Uncovered Branches
+    5
+
+    ### Method
+    ComponentRegistry
+
+    ### Complexity / LOC
+    32 / 158 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/ComponentRegistryTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage ComponentRegistry.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
 
     ### Language
     cs
 
     ### Coverage
-    92.1% (Line: 92.7%, Branch: 90.2%)
+    92.9% (Line: 93.5%, Branch: 90.8%)
 
     ### Uncovered Lines
-    42
+    37
 
     ### Uncovered Branches
-    18
+    17
 
     ### Method
     Body
@@ -8534,94 +7258,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage Body.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    92.1% (Line: 93.2%, Branch: 75.0%)
-
-    ### Uncovered Lines
-    8
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    FrictionJoint
-
-    ### Complexity / LOC
-    25 / 151 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/FrictionJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FrictionJoint.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    93.3% (Line: 95.9%, Branch: 68.8%)
-
-    ### Uncovered Lines
-    6
-
-    ### Uncovered Branches
-    5
-
-    ### Method
-    DistanceJoint
-
-    ### Complexity / LOC
-    29 / 187 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/DistanceJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DistanceJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -8666,50 +7302,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage BufferPool.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    93.4% (Line: 93.0%, Branch: 95.3%)
-
-    ### Uncovered Lines
-    24
-
-    ### Uncovered Branches
-    3
-
-    ### Method
-    RevoluteJoint
-
-    ### Complexity / LOC
-    77 / 441 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/RevoluteJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage RevoluteJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -8798,6 +7390,94 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage ImDrawCmd.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    93.8% (Line: 93.8%, Branch: None%)
+
+    ### Uncovered Lines
+    1
+
+    ### Uncovered Branches
+    0
+
+    ### Method
+    VideoGameBuilder
+
+    ### Complexity / LOC
+    4 / 35 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:2_Application/Alis/test/Builder/Core/Ecs/System/VideoGameBuilderTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage VideoGameBuilder.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    93.9% (Line: 93.6%, Branch: 100.0%)
+
+    ### Uncovered Lines
+    3
+
+    ### Uncovered Branches
+    0
+
+    ### Method
+    StreamAdaptor
+
+    ### Complexity / LOC
+    10 / 64 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/StreamAdaptorTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage StreamAdaptor.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -9069,6 +7749,50 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    95.8% (Line: 100.0%, Branch: 83.3%)
+
+    ### Uncovered Lines
+    0
+
+    ### Uncovered Branches
+    1
+
+    ### Method
+    ThreadManager
+
+    ### Complexity / LOC
+    7 / 32 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Thread/test/ThreadManagerTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage ThreadManager.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs
 
     ### Language
@@ -9106,50 +7830,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage WebSocketFrameReader.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    96.3% (Line: 96.8%, Branch: 90.0%)
-
-    ### Uncovered Lines
-    8
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    WheelJoint
-
-    ### Complexity / LOC
-    46 / 332 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WheelJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage WheelJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -9333,6 +8013,50 @@
     ## COVERAGE TASK
 
     ### File
+    pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    96.7% (Line: 97.4%, Branch: 94.4%)
+
+    ### Uncovered Lines
+    7
+
+    ### Uncovered Branches
+    5
+
+    ### Method
+    FastestStack
+
+    ### Complexity / LOC
+    87 / 361 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Ecs/test/Collections/FastestStackTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage FastestStack.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
     pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs
 
     ### Language
@@ -9414,50 +8138,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage GameObject.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    97.0% (Line: 97.5%, Branch: 95.8%)
-
-    ### Uncovered Lines
-    3
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    ComponentRegistry
-
-    ### Complexity / LOC
-    32 / 159 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/ComponentRegistryTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ComponentRegistry.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -9597,50 +8277,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/RopeJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    97.4% (Line: 97.9%, Branch: 91.7%)
-
-    ### Uncovered Lines
-    3
-
-    ### Uncovered Branches
-    1
-
-    ### Method
-    RopeJoint
-
-    ### Complexity / LOC
-    25 / 176 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/RopeJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/RopeJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage RopeJoint.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:4_Operation/Ecs/src/Scene.cs
 
     ### Language
@@ -9773,50 +8409,6 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/PulleyJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    98.1% (Line: 98.4%, Branch: 93.8%)
-
-    ### Uncovered Lines
-    3
-
-    ### Uncovered Branches
-    1
-
-    ### Method
-    PulleyJoint
-
-    ### Complexity / LOC
-    33 / 231 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/PulleyJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/PulleyJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage PulleyJoint.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
     pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs
 
     ### Language
@@ -9854,50 +8446,6 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage WindowsFilePicker.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    98.3% (Line: 98.9%, Branch: 88.9%)
-
-    ### Uncovered Lines
-    3
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    GearJoint
-
-    ### Complexity / LOC
-    23 / 335 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/GearJointTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage GearJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -9949,25 +8497,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    98.6% (Line: 98.9%, Branch: 97.8%)
+    98.5% (Line: 98.8%, Branch: 95.0%)
 
     ### Uncovered Lines
     3
 
     ### Uncovered Branches
-    2
+    1
 
     ### Method
-    FastestStack
+    WheelJoint
 
     ### Complexity / LOC
-    87 / 361 lines
+    46 / 332 lines
 
     ### Source Code
     ```csharp
@@ -9975,61 +8523,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Collections/FastestStackTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WheelJointTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FastestStack.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    98.6% (Line: 98.8%, Branch: 97.9%)
-
-    ### Uncovered Lines
-    3
-
-    ### Uncovered Branches
-    2
-
-    ### Method
-    AssetRegistry
-
-    ### Complexity / LOC
-    62 / 325 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:6_Ideation/Memory/test/AssetRegistryTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AssetRegistry.cs
+    Commit format: test: coverage WheelJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -10169,25 +8673,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/PrismaticJoint.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    98.9% (Line: 99.0%, Branch: 98.3%)
+    98.8% (Line: 100.0%, Branch: 87.5%)
 
     ### Uncovered Lines
-    4
+    0
 
     ### Uncovered Branches
-    1
+    2
 
     ### Method
-    PrismaticJoint
+    DistanceJoint
 
     ### Complexity / LOC
-    73 / 492 lines
+    29 / 187 lines
 
     ### Source Code
     ```csharp
@@ -10195,17 +8699,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/PrismaticJointTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/DistanceJointTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/PrismaticJoint.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage PrismaticJoint.cs
+    Commit format: test: coverage DistanceJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -10250,6 +8754,50 @@
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
     Commit format: test: coverage NetworkServerManager.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    99.0% (Line: 100.0%, Branch: 97.1%)
+
+    ### Uncovered Lines
+    0
+
+    ### Uncovered Branches
+    2
+
+    ### Method
+    DialogManager
+
+    ### Complexity / LOC
+    51 / 170 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/test/DialogManagerTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage DialogManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -10345,13 +8893,13 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StoreManager.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    99.3% (Line: 100.0%, Branch: 97.7%)
+    99.1% (Line: 100.0%, Branch: 90.9%)
 
     ### Uncovered Lines
     0
@@ -10360,10 +8908,10 @@
     2
 
     ### Method
-    StoreManager
+    WeldJoint
 
     ### Complexity / LOC
-    54 / 290 lines
+    32 / 241 lines
 
     ### Source Code
     ```csharp
@@ -10371,17 +8919,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/test/StoreManagerTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WeldJointTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StoreManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage StoreManager.cs
+    Commit format: test: coverage WeldJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -10389,25 +8937,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Vertices.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs
 
     ### Language
     cs
 
     ### Coverage
-    99.5% (Line: 99.3%, Branch: 100.0%)
+    99.2% (Line: 100.0%, Branch: 96.4%)
 
     ### Uncovered Lines
-    2
-
-    ### Uncovered Branches
     0
 
+    ### Uncovered Branches
+    1
+
     ### Method
-    Vertices
+    BreakableBody
 
     ### Complexity / LOC
-    99 / 349 lines
+    26 / 121 lines
 
     ### Source Code
     ```csharp
@@ -10415,17 +8963,61 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/VerticesTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/Logic/BreakableBodyTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Vertices.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vertices.cs
+    Commit format: test: coverage BreakableBody.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================
+
+    ## COVERAGE TASK
+
+    ### File
+    pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
+
+    ### Language
+    cs
+
+    ### Coverage
+    99.4% (Line: 100.0%, Branch: 97.4%)
+
+    ### Uncovered Lines
+    0
+
+    ### Uncovered Branches
+    2
+
+    ### Method
+    PolygonShape
+
+    ### Complexity / LOC
+    61 / 312 lines
+
+    ### Source Code
+    ```csharp
+    // [Source code omitted. Use --fetch-source to extract.]
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Physic/test/Collisions/Shapes/PolygonShapeTests.cs
+
+    Priority
+    LOW (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage PolygonShape.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
@@ -10477,13 +9069,13 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    99.5% (Line: 100.0%, Branch: 98.5%)
+    99.7% (Line: 100.0%, Branch: 94.4%)
 
     ### Uncovered Lines
     0
@@ -10492,10 +9084,10 @@
     1
 
     ### Method
-    DialogManager
+    GearJoint
 
     ### Complexity / LOC
-    51 / 170 lines
+    23 / 335 lines
 
     ### Source Code
     ```csharp
@@ -10503,61 +9095,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/test/DialogManagerTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/GearJointTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DialogManager.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
-
-    ## COVERAGE TASK
-
-    ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
-
-    ### Language
-    cs
-
-    ### Coverage
-    99.7% (Line: 100.0%, Branch: 98.7%)
-
-    ### Uncovered Lines
-    0
-
-    ### Uncovered Branches
-    1
-
-    ### Method
-    PolygonShape
-
-    ### Complexity / LOC
-    61 / 312 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Collisions/Shapes/PolygonShapeTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage PolygonShape.cs
+    Commit format: test: coverage GearJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
