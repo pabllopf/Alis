@@ -114,5 +114,22 @@ namespace Alis.Extension.Network.Test
 
             Assert.Null(ex);
         }
+
+        /// <summary>
+        /// Tests that ping forever with cancelled token swallows cancellation
+        /// </summary>
+        [Fact]
+        public async Task PingForever_WithCancelledToken_SwallowsCancellation()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            using CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.FromSeconds(30), cts.Token);
+
+            cts.Cancel();
+
+            await manager.PingForever();
+        }
     }
 }

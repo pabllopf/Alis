@@ -879,3 +879,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 0
 - **Uncovered Lines**: None
+
+## PingPongManager.cs
+
+- **File**: `1_Presentation/Extension/Network/src/PingPongManager.cs`
+- **Coverage Before**: 96.6%
+- **Coverage After**: ~97.5%
+- **Tests Added**: 1
+- **Uncovered Lines**: Keep-alive expiry deep paths
