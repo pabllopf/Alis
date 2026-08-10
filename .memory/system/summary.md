@@ -711,3 +711,11 @@
 - **Coverage After**: ~50.0%
 - **Tests Added**: 4
 - **Uncovered Lines**: OpenGL/platform-bound paths unavailable on CI
+
+## Gen2GcCallback.cs
+
+- **File**: `4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs`
+- **Coverage Before**: 43.8%
+- **Coverage After**: ~55.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: Finalizer paths unreachable — strong refs in static list prevent collection
