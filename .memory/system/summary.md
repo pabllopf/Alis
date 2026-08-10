@@ -663,3 +663,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 10
 - **Uncovered Lines**: None
+
+## DTSweep.cs
+
+- **File**: `4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs`
+- **Coverage Before**: 62.0%
+- **Coverage After**: ~68.0%
+- **Tests Added**: 4
+- **Uncovered Lines**: Deep flip/edge-event geometry requiring pathological configurations
