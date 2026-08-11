@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Glfw.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
@@ -50,6 +52,44 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             window?.Dispose();
         }
 
-     
+        /// <summary>
+        /// Gets the bootstrapped window handle
+        /// </summary>
+        private static Window SharedWindow
+        {
+            get
+            {
+                GlfwTestBootstrap.EnsureReady();
+                return GlfwTestBootstrap.Window;
+            }
+        }
+
+        /// <summary>
+        /// Tests that opacity getter returns a value in range
+        /// </summary>
+        [Fact]
+        public void Opacity_Getter_ReturnsValueInRange()
+        {
+            Window sharedWindow = SharedWindow;
+
+            float opacity = sharedWindow.Opacity;
+
+            Assert.True((opacity >= 0.0f) && (opacity <= 1.0f));
+        }
+
+        /// <summary>
+        /// Tests that opacity setter clamps and sets the value
+        /// </summary>
+        [Fact]
+        public void Opacity_Setter_SetsValue()
+        {
+            Window sharedWindow = SharedWindow;
+
+            sharedWindow.Opacity = 0.5f;
+
+            float opacity = sharedWindow.Opacity;
+
+            Assert.True(Math.Abs(opacity - 0.5f) < 0.1f);
+        }
     }
 }

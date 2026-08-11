@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
 
@@ -39,6 +40,18 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class MonitorRemainingCoverageTests
     {
         /// <summary>
+        /// Gets the bootstrapped primary monitor
+        /// </summary>
+        private static Monitor PrimaryMonitor
+        {
+            get
+            {
+                GlfwTestBootstrap.EnsureReady();
+                return GlfwTestBootstrap.PrimaryMonitor;
+            }
+        }
+
+        /// <summary>
         /// Tests that to string returns handle string
         /// </summary>
         [Fact]
@@ -47,6 +60,49 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Monitor monitor = Monitor.None;
             string result = monitor.ToString();
             Assert.Equal(IntPtr.Zero.ToString(), result);
+        }
+
+        /// <summary>
+        /// Tests that work area returns a non empty rectangle
+        /// </summary>
+        [Fact]
+        public void WorkArea_ReturnsNonEmptyRectangle()
+        {
+            Monitor monitor = PrimaryMonitor;
+
+            Rectangle area = monitor.WorkArea;
+
+            Assert.True(area.Width > 0);
+            Assert.True(area.Height > 0);
+        }
+
+        /// <summary>
+        /// Tests that content scale returns positive values
+        /// </summary>
+        [Fact]
+        public void ContentScale_ReturnsPositiveValues()
+        {
+            Monitor monitor = PrimaryMonitor;
+
+            PointF scale = monitor.ContentScale;
+
+            Assert.True(scale.X > 0.0f);
+            Assert.True(scale.Y > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that user pointer round trips a value
+        /// </summary>
+        [Fact]
+        public void UserPointer_RoundTripsValue()
+        {
+            Monitor monitor = PrimaryMonitor;
+            IntPtr expected = new IntPtr(999);
+
+            monitor.UserPointer = expected;
+            IntPtr actual = monitor.UserPointer;
+
+            Assert.Equal(expected, actual);
         }
     }
 }
