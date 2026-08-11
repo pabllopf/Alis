@@ -1352,3 +1352,18 @@
 - **Coverage After**: 76.3% line (max testable; remaining 81 lines unreachable: multithread thresholds int.MaxValue, private null-override hook, disabled-body guard)
 - **Tests Added**: 13
 - **Status**: DONE
+
+## Gen2GcCallback.cs
+
+- **File**: `4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs`
+- **Coverage Before**: 43.8%
+- **Coverage After**: 52.0% (max testable)
+- **Tests Added**: 0 (existing 17 tests cover all reachable paths)
+- **Status**: BLOCKED_BY_PRODUCTION_CODE (finalizer + static ctor lambda unreachable: instances permanently rooted in `_registeredCallbacks`)
+
+## Ecs batch (Scene, UpdateLoop, CommandBuffer, ComponentRegistry, EnumerableHelpers, FastestStack, GameObject, GameObjectExtensions, Archetype)
+
+- **Coverage Before**: 70.5% overall
+- **Coverage After**: Ecs ~99.6% (remaining lines unreachable: dead code, overflow guards, struct-copy enumerator version checks)
+- **Tests Added**: 27 (Scene 16, UpdateLoop 7, remaining 5)
+- **Status**: DONE
