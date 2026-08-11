@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics.Tracing;
 using System.Net.Security;
+using System.Net.WebSockets;
 using Alis.Extension.Network.Internal;
 using Xunit;
 
@@ -262,6 +263,258 @@ namespace Alis.Extension.Network.Test.Internal
         {
             _listener.EnableEvents(_events, EventLevel.Informational);
             _events.UsePerMessageDeflate(Guid.NewGuid());
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that no message compression writes event
+        /// </summary>
+        [Fact]
+        public void NoMessageCompression_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.NoMessageCompression(Guid.NewGuid());
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that keep alive interval zero writes event
+        /// </summary>
+        [Fact]
+        public void KeepAliveIntervalZero_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.KeepAliveIntervalZero(Guid.NewGuid());
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that ping pong manager started writes event
+        /// </summary>
+        [Fact]
+        public void PingPongManagerStarted_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.PingPongManagerStarted(Guid.NewGuid(), 10);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that ping pong manager ended writes event
+        /// </summary>
+        [Fact]
+        public void PingPongManagerEnded_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.PingPongManagerEnded(Guid.NewGuid());
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that keep alive interval expired writes event
+        /// </summary>
+        [Fact]
+        public void KeepAliveIntervalExpired_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.KeepAliveIntervalExpired(Guid.NewGuid(), 10);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close output auto timeout writes event
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeout_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "bye", "err");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close output auto timeout cancelled writes event
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeoutCancelled_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 10, WebSocketCloseStatus.NormalClosure, "bye", "err");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close output auto timeout error writes event
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeoutError_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseOutputAutoTimeoutError(Guid.NewGuid(), "error", WebSocketCloseStatus.NormalClosure, "bye", "err");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that try get buffer not supported writes event
+        /// </summary>
+        [Fact]
+        public void TryGetBufferNotSupported_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.TryGetBufferNotSupported(Guid.NewGuid(), "stream");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that sending frame writes event
+        /// </summary>
+        [Fact]
+        public void SendingFrame_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Verbose);
+            _events.SendingFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 10, false);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that received frame writes event
+        /// </summary>
+        [Fact]
+        public void ReceivedFrame_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Verbose);
+            _events.ReceivedFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 10);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close output no handshake writes event
+        /// </summary>
+        [Fact]
+        public void CloseOutputNoHandshake_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "bye");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close handshake started writes event
+        /// </summary>
+        [Fact]
+        public void CloseHandshakeStarted_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "bye");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close handshake respond writes event
+        /// </summary>
+        [Fact]
+        public void CloseHandshakeRespond_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "bye");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close handshake complete writes event
+        /// </summary>
+        [Fact]
+        public void CloseHandshakeComplete_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseHandshakeComplete(Guid.NewGuid());
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that close frame received in unexpected state writes event
+        /// </summary>
+        [Fact]
+        public void CloseFrameReceivedInUnexpectedState_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, "bye");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that web socket dispose writes event
+        /// </summary>
+        [Fact]
+        public void WebSocketDispose_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.WebSocketDispose(Guid.NewGuid(), WebSocketState.Open);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that web socket dispose close timeout writes event
+        /// </summary>
+        [Fact]
+        public void WebSocketDisposeCloseTimeout_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.WebSocketDisposeCloseTimeout(Guid.NewGuid(), WebSocketState.Open);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that web socket dispose error writes event
+        /// </summary>
+        [Fact]
+        public void WebSocketDisposeError_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, "error");
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that invalid state before close writes event
+        /// </summary>
+        [Fact]
+        public void InvalidStateBeforeClose_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.InvalidStateBeforeClose(Guid.NewGuid(), WebSocketState.Open);
+
+            Assert.True(_listener.EventCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that invalid state before close output writes event
+        /// </summary>
+        [Fact]
+        public void InvalidStateBeforeCloseOutput_WritesEvent()
+        {
+            _listener.EnableEvents(_events, EventLevel.Informational);
+            _events.InvalidStateBeforeCloseOutput(Guid.NewGuid(), WebSocketState.Open);
 
             Assert.True(_listener.EventCount > 0);
         }
