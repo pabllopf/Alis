@@ -1413,3 +1413,10 @@
 - **Coverage After**: branch 100% (line ~100%)
 - **Tests Added**: 17 (GameObjectIniterNullBranchCoverageTest.cs)
 - **Status**: COMPLETED
+
+## Network batch (NetworkClientManager, WebSocketNetworkTransport, Events, PingPongManager, BufferPool, FrameReader, ClientFactory, ServerManager, WebSocketImplementation)
+
+- **Coverage Before**: ~89%
+- **Coverage After**: 94.4% (remaining: real-TLS handshake paths + coverlet event-sequence mis-mapping)
+- **Tests Added**: 50 (3 transport integration, 39 events, 4 pingpong, 4 misc)
+- **Status**: DONE
