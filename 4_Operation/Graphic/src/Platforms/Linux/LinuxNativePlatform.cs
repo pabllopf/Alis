@@ -1648,6 +1648,54 @@ namespace Alis.Core.Graphic.Platforms.Linux
         }
 
         /// <summary>
+        ///     The keysym to console key map
+        /// </summary>
+        private static readonly Dictionary<ulong, ConsoleKey> KeySymToConsoleKeyMap = new Dictionary<ulong, ConsoleKey>
+        {
+            [XkEscape] = ConsoleKey.Escape,
+            [XkBackSpace] = ConsoleKey.Backspace,
+            [XkTab] = ConsoleKey.Tab,
+            [XkReturn] = ConsoleKey.Enter,
+            [XkDelete] = ConsoleKey.Delete,
+            [XkHome] = ConsoleKey.Home,
+            [XkEnd] = ConsoleKey.End,
+            [XkPageUp] = ConsoleKey.PageUp,
+            [XkPageDown] = ConsoleKey.PageDown,
+            [XkLeft] = ConsoleKey.LeftArrow,
+            [XkRight] = ConsoleKey.RightArrow,
+            [XkUp] = ConsoleKey.UpArrow,
+            [XkDown] = ConsoleKey.DownArrow,
+            [XkInsert] = ConsoleKey.Insert,
+            [XkSuperL] = ConsoleKey.LeftWindows,
+            [XkSuperR] = ConsoleKey.RightWindows,
+            [0x0020] = ConsoleKey.Spacebar,
+            [0xFFAA] = ConsoleKey.Multiply,
+            [0xFFAB] = ConsoleKey.Add,
+            [0xFFAD] = ConsoleKey.Subtract,
+            [0xFFAE] = ConsoleKey.Decimal,
+            [0xFFAF] = ConsoleKey.Divide,
+            [0xFF8D] = ConsoleKey.Enter
+        };
+
+        /// <summary>
+        ///     The printable character to console key map
+        /// </summary>
+        private static readonly Dictionary<char, ConsoleKey> PrintableCharacterToConsoleKeyMap = new Dictionary<char, ConsoleKey>
+        {
+            [' '] = ConsoleKey.Spacebar,
+            [','] = ConsoleKey.OemComma,
+            ['.'] = ConsoleKey.OemPeriod,
+            ['/'] = ConsoleKey.Oem2,
+            [';'] = ConsoleKey.Oem1,
+            ['\\'] = ConsoleKey.Oem5,
+            ['['] = ConsoleKey.Oem4,
+            [']'] = ConsoleKey.Oem6,
+            ['-'] = ConsoleKey.OemMinus,
+            ['+'] = ConsoleKey.OemPlus,
+            ['`'] = ConsoleKey.Oem3
+        };
+
+        /// <summary>
         /// Maps an X11 keysym or translated character to a <see cref="ConsoleKey"/> value.
         /// </summary>
         /// <param name="keySym">The X11 keysym value.</param>
@@ -1674,62 +1722,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 return (ConsoleKey) ((int) ConsoleKey.NumPad0 + (int) (keySym - 0xFFB0));
             }
 
-            switch (keySym)
+            if (KeySymToConsoleKeyMap.TryGetValue(keySym, out ConsoleKey mappedKey))
             {
-                case XkEscape:
-                    return ConsoleKey.Escape;
-                case XkBackSpace:
-                    return ConsoleKey.Backspace;
-                case XkTab:
-                    return ConsoleKey.Tab;
-                case XkReturn:
-                    return ConsoleKey.Enter;
-                case XkDelete:
-                    return ConsoleKey.Delete;
-                case XkHome:
-                    return ConsoleKey.Home;
-                case XkEnd:
-                    return ConsoleKey.End;
-                case XkPageUp:
-                    return ConsoleKey.PageUp;
-                case XkPageDown:
-                    return ConsoleKey.PageDown;
-                case XkLeft:
-                    return ConsoleKey.LeftArrow;
-                case XkRight:
-                    return ConsoleKey.RightArrow;
-                case XkUp:
-                    return ConsoleKey.UpArrow;
-                case XkDown:
-                    return ConsoleKey.DownArrow;
-                case XkInsert:
-                    return ConsoleKey.Insert;
-                case XkSuperL:
-                    return ConsoleKey.LeftWindows;
-                case XkSuperR:
-                    return ConsoleKey.RightWindows;
-                case XkMenu:
-                case XkShiftL:
-                case XkShiftR:
-                case XkControlL:
-                case XkControlR:
-                case XkAltL:
-                case XkAltR:
-                    return null;
-                case 0x0020:
-                    return ConsoleKey.Spacebar;
-                case 0xFFAA:
-                    return ConsoleKey.Multiply;
-                case 0xFFAB:
-                    return ConsoleKey.Add;
-                case 0xFFAD:
-                    return ConsoleKey.Subtract;
-                case 0xFFAE:
-                    return ConsoleKey.Decimal;
-                case 0xFFAF:
-                    return ConsoleKey.Divide;
-                case 0xFF8D:
-                    return ConsoleKey.Enter;
+                return mappedKey;
             }
 
             return null;
@@ -1757,30 +1752,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 return (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
             }
 
-            switch (c)
+            if (PrintableCharacterToConsoleKeyMap.TryGetValue(c, out ConsoleKey mappedKey))
             {
-                case ' ':
-                    return ConsoleKey.Spacebar;
-                case ',':
-                    return ConsoleKey.OemComma;
-                case '.':
-                    return ConsoleKey.OemPeriod;
-                case '/':
-                    return ConsoleKey.Oem2;
-                case ';':
-                    return ConsoleKey.Oem1;
-                case '\\':
-                    return ConsoleKey.Oem5;
-                case '[':
-                    return ConsoleKey.Oem4;
-                case ']':
-                    return ConsoleKey.Oem6;
-                case '-':
-                    return ConsoleKey.OemMinus;
-                case '+':
-                    return ConsoleKey.OemPlus;
-                case '`':
-                    return ConsoleKey.Oem3;
+                return mappedKey;
             }
 
             return null;
