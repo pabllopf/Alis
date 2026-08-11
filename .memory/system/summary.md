@@ -1583,3 +1583,33 @@
 - **Glfw**: total 33.7%→79.8% (NativeWindow 64.3%, GlfwNative 89.3%, Monitor/Window 100%) — 120 tests via main-thread startup hook
 - **Sfml**: total 60.5%→74.2% (Image 95.6%, Texture 87.4%, Shader 86.2%, SoundBuffer 77.8%) — 106 tests
 - **Status**: DONE (remaining lines blocked: window creation/AppKit main-thread crashes, Vulkan loader, joystick devices, missing csfml entry points)
+
+## COVERAGE CAMPAIGN — FINAL (2026-08-11)
+
+Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 15 test suites green.
+
+### Project totals (line coverage, local net8.0 measure)
+| Project | Before | After |
+|---|---|---|
+| 4_Operation/Ecs | ~70% | ~99.6% |
+| 4_Operation/Physic | ~90% | 96.9% |
+| 4_Operation/Graphic (Web/GL/Font) | 0-71% per file | InputManager 100%, DisplayManager 89%, Sdl2 98-100% |
+| 1_Presentation/Extension/Network | ~89% | 94.4% |
+| 1_Presentation/Extension/Media/FFmpeg | 38-87% | 81-100% per file (3 files at 100%) |
+| 1_Presentation/Extension/Graphic/Ui | ~34% | ImFontPtr 95%, ImFontAtlasPtr 68%, IO 96.5% |
+| 1_Presentation/Extension/Graphic/Glfw | 33.7% | 79.8% |
+| 1_Presentation/Extension/Graphic/Sfml | 60.5% | 74.2% |
+| 2_Application/Alis | ~70% | BoxCollider 85%+ |
+| 6_Ideation (Logging/Memory/Data) | ~90-95% | 98.8% / 92.3% / 100% |
+| 4_Operation/Audio | 76-90% | UnixPlayerBase ~97% |
+
+### Tests added: ~500+ across 60+ new test files
+### Key blockers (unreachable without production changes or real hardware):
+- Multithread physics paths (thresholds = int.MaxValue)
+- Native window creation / AppKit main-thread (Glfw/Sfml window ctors)
+- Frame-dependent ImGui widgets (native assert on headless)
+- OpenGL context-dependent shader/render code
+- Real Stripe/GitHub/Drive/DropBox API network calls
+- AOT JSON generator cannot deserialize MediaStream arrays (production generator fix required)
+- Vulkan loader / joystick devices / audio capture devices
+- Gen2GcCallback finalizer (instances permanently rooted)
