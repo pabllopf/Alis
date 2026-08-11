@@ -149,12 +149,17 @@ namespace Alis.Extension.Network.Test
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
                 TimeSpan.FromSeconds(30), null, false, true, null);
             using CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.FromSeconds(30), cts.Token);
+
+            Task pingForeverTask = manager.PingForever();
 
             await Task.Delay(100);
 
             cts.Cancel();
 
-            await Task.Delay(1000);
+            Exception ex = await Record.ExceptionAsync(() => pingForeverTask);
+
+            Assert.Null(ex);
         }
     }
 }
