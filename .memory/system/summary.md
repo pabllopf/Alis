@@ -1497,3 +1497,10 @@
 - **Status**: DONE (Resume inner branch blocked: macOS runtime deadlocks Process.Start after SIGSTOP; GetAudioDuration fallback needs afinfo control)
 
 - **BrowserPlayer/WindowsPlayer**: BLOCKED_BY_PRODUCTION_CODE (native OpenAL device + Windows-only APIs)
+
+## Graphic batch (WebAssemblyInputManager, WebAssemblyDisplayManager, Font, FontManager, GLShaderProgram, GLShaderProgramParam, GLShader, WebAssemblyConfiguration + platform/GL blocked files)
+
+- **Coverage Before**: 0-71% per file
+- **Coverage After**: WebAssemblyInputManager 100%, WebAssemblyDisplayManager 89.2%, Font 59.2%, GLShaderProgram 69.9%, GLShaderProgramParam 77.0%, GLShader 75.0%
+- **Tests Added**: ~98
+- **Status**: DONE (remaining lines blocked: real GL context, real browser, dead catch blocks)
