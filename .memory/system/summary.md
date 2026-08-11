@@ -1504,3 +1504,33 @@
 - **Coverage After**: WebAssemblyInputManager 100%, WebAssemblyDisplayManager 89.2%, Font 59.2%, GLShaderProgram 69.9%, GLShaderProgramParam 77.0%, GLShader 75.0%
 - **Tests Added**: ~98
 - **Status**: DONE (remaining lines blocked: real GL context, real browser, dead catch blocks)
+
+## Core Modules Batch 2026-08-11 (local coverage verified)
+
+### GraphicManager.cs
+- **Coverage Before**: 42.4% | **After**: 56.2%
+- **Tests Added**: 5 (GraphicManagerRemainingPathsTest: ProcessKeyEventComponents scene paths, RenderSprites invisible-sprite paths, RenderBoxColliders Debug=false)
+- **Commit**: 692296e0a
+- **Status**: DONE (remaining: platform/GL-bound OnInit/OnDraw/RenderPreview/BuildNewKeys)
+
+### BoxCollider.cs
+- **Coverage Before**: 78.1% | **After**: 79.1%
+- **Tests Added**: 2 (BoxColliderShaderCoverageTest: PreviewMode/core shader version branches) + committed leftover BoxColliderCollisionHandlerTest
+- **Commit**: 99c36ffb6
+- **Status**: DONE (remaining: GL-bound InitializeShaders body/Render)
+
+### WebAssemblyConfiguration.cs
+- **Coverage Before**: 53.6% | **After**: 92.2%
+- **Tests Added**: 8 (WebAssemblyPlatformFactoryTests: CreateDefault/Create null checks/Create configure path + factory methods) + 2 frame-rate validations
+- **Commit**: 8c503aa6a, 743d366e4, ce5391d33
+- **Status**: DONE (remaining: Emscripten-bound fullscreen/pointer-lock after successful init)
+
+### WebAssemblyInputManager.cs
+- **Coverage**: 100.0% (verified with fresh scoped run)
+- **Status**: DONE
+
+### Sprite.cs / Font.cs / ContextHandler.cs / WindowsPlayer.cs / BrowserPlayer.cs / MacNativePlatform.cs / FontManager.cs
+- **Status**: BLOCKED_BY_PRODUCTION_CODE (remaining lines are GL-context / winmm.dll / OpenAL / NSApplication / Emscripten platform-bound, unreachable on macOS CI)
+
+### Verification (2026-08-11)
+- Full `alis_design.slnx` Debug net8.0 + XPlat opencover: **27,169 tests, 26,309 passed, 0 failed** (was 27,013 before batch; +156 new)
