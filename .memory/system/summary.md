@@ -1367,3 +1367,10 @@
 - **Coverage After**: Ecs ~99.6% (remaining lines unreachable: dead code, overflow guards, struct-copy enumerator version checks)
 - **Tests Added**: 27 (Scene 16, UpdateLoop 7, remaining 5)
 - **Status**: DONE
+
+## Physic batch 2 (DTSweep, MarchingSquares, ContactSolver, Contact, Island, Body, Fixture, WheelJoint, TimeOfImpact, Collision, YuPengClipper, SimpleCombiner, Bayazit, Earclip, WorldPhysic)
+
+- **Coverage Before**: Physic total ~90%
+- **Coverage After**: Physic total 96.9%
+- **Tests Added**: ~110 (worker-generated + WorldPhysicFullCoverageTests 10)
+- **Status**: DONE (remaining lines unreachable: multithread thresholds, dead code, TOI geometric-infeasible paths)
