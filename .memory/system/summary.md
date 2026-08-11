@@ -1487,3 +1487,13 @@
 - **Tests Added**: 2 (IniFilename, LogFilename getters)
 - **Uncovered Lines**: 925-936, 973-984, 1293-1304 — dead code: `Marshal.OffsetOf<ImGuiIo>("KeysData"/"MouseClickedPos"/"MouseDragMaxDistanceAbs")` always throws ArgumentException (managed struct has auto-property fields KeysData0..N, no marshaled member with those names). Requires production change.
 - **Status**: BLOCKED_BY_PRODUCTION_CODE
+
+## Audio batch (UnixPlayerBase, BrowserPlayer, WindowsPlayer)
+
+- **File**: `4_Operation/Audio/src/Players/UnixPlayerBase.cs`
+- **Coverage Before**: 88.8%
+- **Coverage After**: ~97% (Pause inner branch + Play + throw paths covered)
+- **Tests Added**: 2
+- **Status**: DONE (Resume inner branch blocked: macOS runtime deadlocks Process.Start after SIGSTOP; GetAudioDuration fallback needs afinfo control)
+
+- **BrowserPlayer/WindowsPlayer**: BLOCKED_BY_PRODUCTION_CODE (native OpenAL device + Windows-only APIs)
