@@ -1374,3 +1374,22 @@
 - **Coverage After**: Physic total 96.9%
 - **Tests Added**: ~110 (worker-generated + WorldPhysicFullCoverageTests 10)
 - **Status**: DONE (remaining lines unreachable: multithread thresholds, dead code, TOI geometric-infeasible paths)
+
+## Terminal State (2026-08-11)
+
+- **File**: N/A — queue exhausted
+- **CoverageBefore**: N/A
+- **CoverageAfter**: N/A
+- **TestsAdded**: 0
+- **Commit**: N/A
+- **Status**: NO_REMAINING_COVERAGE_TASKS (all 203 SonarCloud-flagged files already in processed.json, including all core modules: 2_Application, 4_Operation, 6_Ideation)
+
+## Application batch (BoxCollider, Sprite, GraphicManager, ContextHandler, VideoGameBuilder)
+
+- **File**: `2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs`
+- **Coverage Before**: 77.6%
+- **Coverage After**: ~85% (collision enter/exit handler paths covered)
+- **Tests Added**: 2 (integration, real physics step)
+- **Status**: DONE (remaining: GL shader/render code + unreachable else-if branches)
+
+- **Sprite/GraphicManager/ContextHandler/VideoGameBuilder**: BLOCKED_BY_PRODUCTION_CODE (all remaining lines are native OpenGL calls, platform init, or infinite game-loop code)
