@@ -1576,3 +1576,10 @@
 - **Coverage After**: ImFontPtr 95%, ImFontAtlasPtr 68.1%, ImGuiP3 29%, ImGuiP6 39%, ImGuizMo 40.9%, ImGuiP7 20.6%, ImGuiIOPtr 96.5% + others
 - **Tests Added**: ~113 (native context lifecycle, IO/style/atlas/font accessors)
 - **Status**: DONE (remaining lines blocked: frame/window-dependent widgets crash native assert, segfault paths, defective entry points)
+
+## Sdl2/Glfw/Sfml native batches
+
+- **Sdl2**: Sdl.cs 19.3%→98.1%, SdlTtf 2.2%→100%, SdlImage 4.8%→100% (43 tests)
+- **Glfw**: total 33.7%→79.8% (NativeWindow 64.3%, GlfwNative 89.3%, Monitor/Window 100%) — 120 tests via main-thread startup hook
+- **Sfml**: total 60.5%→74.2% (Image 95.6%, Texture 87.4%, Shader 86.2%, SoundBuffer 77.8%) — 106 tests
+- **Status**: DONE (remaining lines blocked: window creation/AppKit main-thread crashes, Vulkan loader, joystick devices, missing csfml entry points)
