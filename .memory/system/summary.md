@@ -1569,3 +1569,10 @@
 - **File**: `4_Operation/Physic/src/Dynamics/ContactManager.cs` — multicore path threshold locked at int.MaxValue, disabled-body guards pre-filtered — BLOCKED_BY_PRODUCTION_CODE
 - **File**: `4_Operation/Physic/src/Collisions/TimeOfImpact.cs` — non-convergence numeric edges — BLOCKED_BY_PRODUCTION_CODE
 - **File**: `4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs` — generic-class dead duplicates + defensive guards — BLOCKED_BY_PRODUCTION_CODE
+
+## Ui native batch (ImGui/ImPlot/ImNodes/ImGuizMo wrappers)
+
+- **Coverage Before**: ~34% total (mostly reflection-only tests)
+- **Coverage After**: ImFontPtr 95%, ImFontAtlasPtr 68.1%, ImGuiP3 29%, ImGuiP6 39%, ImGuizMo 40.9%, ImGuiP7 20.6%, ImGuiIOPtr 96.5% + others
+- **Tests Added**: ~113 (native context lifecycle, IO/style/atlas/font accessors)
+- **Status**: DONE (remaining lines blocked: frame/window-dependent widgets crash native assert, segfault paths, defective entry points)
