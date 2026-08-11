@@ -79,6 +79,23 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
+        ///     Tests that create with configure action applies the action before failing to initialize
+        /// </summary>
+        [Fact]
+        public void Create_WithConfigureAction_AppliesConfiguration()
+        {
+            bool configured = false;
+
+            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.Create(builder =>
+            {
+                builder.WithSize(1024, 768).WithTitle("Configured");
+                configured = true;
+            }));
+
+            Assert.True(configured);
+        }
+
+        /// <summary>
         ///     Tests that create for game development throws when platform cannot initialize
         /// </summary>
         [Fact]
