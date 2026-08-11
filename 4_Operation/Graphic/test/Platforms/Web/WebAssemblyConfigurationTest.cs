@@ -653,5 +653,25 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.Medium, config.DisplayQuality);
             Assert.True(config.TouchInputEnabled);
         }
+
+        /// <summary>
+        /// Tests that config builder with zero frame rate throws on any platform
+        /// </summary>
+        [Fact]
+        public void ConfigBuilder_WithZeroFrameRate_ThrowsOnAnyPlatform()
+        {
+            Assert.Throws<ArgumentException>(() =>
+                new WebAssemblyConfigurationBuilder().WithTargetFrameRate(0));
+        }
+
+        /// <summary>
+        /// Tests that config builder with negative frame rate throws on any platform
+        /// </summary>
+        [Fact]
+        public void ConfigBuilder_WithNegativeFrameRate_ThrowsOnAnyPlatform()
+        {
+            Assert.Throws<ArgumentException>(() =>
+                new WebAssemblyConfigurationBuilder().WithTargetFrameRate(-5));
+        }
     }
 }
