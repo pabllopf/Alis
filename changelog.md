@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.2] - 2026-08-11
+### :bug: Bug Fixes
+- [`8aef332`](https://github.com/pabllopf/Alis/commit/8aef332aedafb4698301c4f5f4faab032294df6c) - covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4746cb4`](https://github.com/pabllopf/Alis/commit/4746cb4066050e85219ebaf147f248d49c137a7b) - runtimes Update sonar exclusions in workflow configuration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`059dce3`](https://github.com/pabllopf/Alis/commit/059dce33dd101764e04e974d6cb60bed8483cf65) - physices unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :recycle: Refactors
+- [`9bfaea7`](https://github.com/pabllopf/Alis/commit/9bfaea721b5e3ae5efacfd0d5e5554ba9318a860) - **graphic**: reduce method complexity safely *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`f7c8de4`](https://github.com/pabllopf/Alis/commit/f7c8de4e27e738267eaf6dac69a388302b345f78) - ContactManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e63b049`](https://github.com/pabllopf/Alis/commit/e63b049dacd5ef74610b3508018c20743a9bd678) - Ecs full coverage batch (Scene, UpdateLoop, CommandBuffer, ComponentRegistry) *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`9853038`](https://github.com/pabllopf/Alis/commit/98530387df1d5c5fdc2e0fbf447765450048a237) - update processed files cache with Ecs batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.1] - 2026-08-10
 ### :bug: Bug Fixes
 - [`55cdd5c`](https://github.com/pabllopf/Alis/commit/55cdd5c25e8085b443a708c2e3a41c7173117441) - coverage queue exhausted (wave 2) *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -9368,3 +9385,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.9]: https://github.com/pabllopf/Alis/compare/v1.0.8...v1.0.9
 [v1.1.0]: https://github.com/pabllopf/Alis/compare/v1.0.9...v1.1.0
 [v1.1.1]: https://github.com/pabllopf/Alis/compare/v1.1.0...v1.1.1
+[v1.1.2]: https://github.com/pabllopf/Alis/compare/v1.1.1...v1.1.2
