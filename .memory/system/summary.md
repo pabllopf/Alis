@@ -1420,3 +1420,9 @@
 - **Coverage After**: 94.4% (remaining: real-TLS handshake paths + coverlet event-sequence mis-mapping)
 - **Tests Added**: 50 (3 transport integration, 39 events, 4 pingpong, 4 misc)
 - **Status**: DONE
+
+## Updater + Stripe + Cloud batch
+
+- **Updater (UpdateManager 86.5%)**: BLOCKED_BY_PRODUCTION_CODE (remaining lines: GitHub API network calls, 1GB threshold paths, dmg extraction, platform branches)
+- **Stripe (StripeGatewayClient 67.5%)**: BLOCKED_BY_PRODUCTION_CODE (remaining lines: real Stripe SDK network calls)
+- **Cloud DropBox 73.2% / GoogleDrive 96.8%**: BLOCKED_BY_PRODUCTION_CODE (API network calls)
