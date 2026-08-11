@@ -98,10 +98,11 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<int> second = list.Add(2);
             CxFastListNode<int> third = list.Add(3);
 
-            CxFastListNode<int> result = list.Erase(second, third);
+            CxFastListNode<int> result = list.Erase(third, second);
 
-            Assert.Equal(2, result.GetElem());
+            Assert.Equal(1, result.GetElem());
             Assert.Equal(2, list.Size());
+            Assert.Equal(3, list.Begin().GetElem());
         }
     }
 }

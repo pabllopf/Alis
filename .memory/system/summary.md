@@ -1534,3 +1534,22 @@
 
 ### Verification (2026-08-11)
 - Full `alis_design.slnx` Debug net8.0 + XPlat opencover: **27,169 tests, 26,309 passed, 0 failed** (was 27,013 before batch; +156 new)
+
+
+## Font / CxFastList batch
+
+- **File**: `4_Operation/Graphic/src/Ui/Font.cs`
+- **Coverage Before**: 46.5%
+- **Coverage After**: ~57% (GL-init prefix paths: InitializeShaders/LoadTexture/SetupBuffers throw points, RenderText init block)
+- **Tests Added**: 5 (FontRemainingBranchCoverageTests.cs)
+- **Status**: COMPLETED (remaining lines need live GL context)
+
+- **File**: `4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs`
+- **Coverage Before**: 81.5%
+- **Coverage After**: ~81.6% (CxFastList edge cases covered)
+- **Tests Added**: 5 (CxFastListEdgeCaseTests.cs)
+- **Status**: BLOCKED_BY_PRODUCTION_CODE (scan-line merge loop reads never-populated Ps cells — dead code)
+
+- **File**: `4_Operation/Audio/src/Player.cs`
+- **Coverage**: verified 100% locally (438 tests) — SonarCloud delta was stale
+- **Status**: COMPLETED
