@@ -1,8 +1,7 @@
 # Archetype.cs
 
 - **File**: `4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs`
-- **Coverage Before**: 91.0%
-- **Coverage After**: ~91.5% (combined with existing tests)
-- **Tests Added**: 1
-- **Uncovered Lines**: Deep archetype-edge resolution and buffer-resize internals requiring specific component-type configurations
-- **Status**: COMPLETED
+- **Coverage**: 91.3% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: generic-class duplicates of CreateOrGetExistingArchetype/GetAdjacentArchetypeLookup (no callers), GetComponentSpan defensive throw, empty-archetype Update guard (no public API creates a deferred empty archetype), 65535-archetype and hash-collision limits
+- **Status**: BLOCKED_BY_PRODUCTION_CODE

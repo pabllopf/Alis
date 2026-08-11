@@ -1,8 +1,7 @@
 # Gen2GcCallback.cs
 
 - **File**: `4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs`
-- **Coverage Before**: 43.8%
-- **Coverage After**: ~55.0% (combined with existing tests; ceiling)
-- **Tests Added**: 4
-- **Uncovered Lines**: Finalizer paths unreachable in tests — static `_registeredCallbacks` holds strong references so instances never collect (by class design)
-- **Status**: COMPLETED
+- **Coverage**: 52% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: finalizer (165-201) + static-ctor callback lambda (105-112) — instances are held forever by `_registeredCallbacks` (no removal API), so the finalizer can never run
+- **Status**: BLOCKED_BY_PRODUCTION_CODE (dead finalizer path)

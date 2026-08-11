@@ -1,8 +1,7 @@
 # TimeOfImpact.cs
 
 - **File**: `4_Operation/Physic/src/Collisions/TimeOfImpact.cs`
-- **Coverage Before**: 86.9%
-- **Coverage After**: ~94.0% (combined with existing tests; +82.3% new coverage overlap-adjusted)
-- **Tests Added**: 2
-- **Uncovered Lines**: Root-find bisection bounds edge cases (`UpdateBisectionBounds` branches, iteration-limit fail states)
-- **Status**: COMPLETED
+- **Coverage**: 90.5% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: non-convergent sweep edge cases (max-iteration Failed states, root-find limits) — require exact numeric geometries; prior sessions attempted
+- **Status**: BLOCKED_BY_PRODUCTION_CODE

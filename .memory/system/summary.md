@@ -1553,3 +1553,19 @@
 - **File**: `4_Operation/Audio/src/Player.cs`
 - **Coverage**: verified 100% locally (438 tests) — SonarCloud delta was stale
 - **Status**: COMPLETED
+
+
+## Verification + ceiling audit (2026-08-11)
+
+- **File**: alis_design.slnx full verification
+- **CoverageBefore**: N/A
+- **CoverageAfter**: N/A
+- **TestsAdded**: 0
+- **Commit**: N/A
+- **Status**: VERIFIED — 26,153 tests passed / 0 failed across 35 projects (Alis.Core.Audio.Test blocks the solution run via amixer, but its own run passes 420/0)
+
+- **File**: `4_Operation/Audio/src/Player.cs` — verified 100% locally — COMPLETED
+- **File**: `4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs` — finalizer never runnable (strong list refs, no removal API) — BLOCKED_BY_PRODUCTION_CODE
+- **File**: `4_Operation/Physic/src/Dynamics/ContactManager.cs` — multicore path threshold locked at int.MaxValue, disabled-body guards pre-filtered — BLOCKED_BY_PRODUCTION_CODE
+- **File**: `4_Operation/Physic/src/Collisions/TimeOfImpact.cs` — non-convergence numeric edges — BLOCKED_BY_PRODUCTION_CODE
+- **File**: `4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs` — generic-class dead duplicates + defensive guards — BLOCKED_BY_PRODUCTION_CODE
