@@ -1409,4 +1409,7 @@
 - **Status**: COMPLETED
 
 - **File**: `4_Operation/Ecs/src/GameObject.cs`
-- **Status**: PENDING
+- **Coverage Before**: 96.9% (branch 84.7%)
+- **Coverage After**: branch 100% (line ~100%)
+- **Tests Added**: 17 (GameObjectIniterNullBranchCoverageTest.cs)
+- **Status**: COMPLETED
