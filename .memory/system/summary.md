@@ -1393,3 +1393,17 @@
 - **Status**: DONE (remaining: GL shader/render code + unreachable else-if branches)
 
 - **Sprite/GraphicManager/ContextHandler/VideoGameBuilder**: BLOCKED_BY_PRODUCTION_CODE (all remaining lines are native OpenGL calls, platform init, or infinite game-loop code)
+
+## Operation batch (Gl.cs, Update.cs, GameObject.cs)
+
+- **File**: `4_Operation/Graphic/src/OpenGL/Gl.cs`
+- **Coverage Before**: 30.7%
+- **Coverage After**: ~71% (command resolution lifecycle: uninitialized + zero-pointer paths)
+- **Tests Added**: 3 (GlCommandTests.cs)
+- **Status**: COMPLETED (remaining lines need live GL context)
+
+- **File**: `4_Operation/Ecs/src/Updating/Runners/Update.cs`
+- **Status**: PENDING
+
+- **File**: `4_Operation/Ecs/src/GameObject.cs`
+- **Status**: PENDING
