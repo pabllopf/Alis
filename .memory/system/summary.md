@@ -1426,3 +1426,10 @@
 - **Updater (UpdateManager 86.5%)**: BLOCKED_BY_PRODUCTION_CODE (remaining lines: GitHub API network calls, 1GB threshold paths, dmg extraction, platform branches)
 - **Stripe (StripeGatewayClient 67.5%)**: BLOCKED_BY_PRODUCTION_CODE (remaining lines: real Stripe SDK network calls)
 - **Cloud DropBox 73.2% / GoogleDrive 96.8%**: BLOCKED_BY_PRODUCTION_CODE (API network calls)
+
+## FFmpeg batch (AudioVideoWriter, VideoReader, AudioReader, VideoWriter, VideoPlayer, AudioPlayer, AudioWriter, FFMpegWrapper)
+
+- **Coverage Before**: 38-87% per file
+- **Coverage After**: FFMpegWrapper 100%, VideoPlayer 100%, AudioPlayer 100%, AudioVideoWriter 98.3%, VideoWriter 97.3%, AudioWriter 97.3%, AudioReader 84.9%, VideoReader 81.0%
+- **Tests Added**: 25
+- **Status**: DONE (remaining: AOT JSON generator cannot deserialize Streams array — needs production generator fix; sub-millisecond Process.Kill race)
