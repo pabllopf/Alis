@@ -117,6 +117,73 @@ namespace Alis.Extension.Network.Test.Internal
         }
 
         /// <summary>
+        ///     Tests that read from cursor async with a masked frame unmasked the payload
+        /// </summary>
+        [Fact]
+        public async Task ReadFromCursorAsync_WithMaskedFrame_TogglesMaskOnPayload()
+        {
+            byte[] payload = { 0x01, 0x02, 0x03, 0x04, 0x05 };
+            byte[] maskKey = { 0x10, 0x20, 0x30, 0x40 };
+            MemoryStream stream = new MemoryStream(payload);
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+            CancellationToken cancellationToken = new CancellationToken();
+            WebSocketReadCursor readCursor = new WebSocketReadCursor(
+                new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, payload.Length, new ArraySegment<byte>(maskKey)), 0,
+                payload.Length);
+
+            WebSocketReadCursor result =
+                await WebSocketFrameReader.ReadFromCursorAsync(stream, buffer, readCursor, cancellationToken);
+
+            Assert.Equal(payload.Length, result.NumBytesRead);
+            Assert.Equal(0, result.NumBytesLeftToRead);
+            Assert.Equal(payload[0] ^ maskKey[0], buffer.Array[buffer.Offset]);
+        }
+
+        /// <summary>
+        ///     Tests that read from cursor async with a masked frame and a larger stream reads the exact frame bytes
+        /// </summary>
+        [Fact]
+        public async Task ReadFromCursorAsync_WithMaskedFrame_AndMoreBytesThanNeeded_ReadsExactFrame()
+        {
+            byte[] payload = { 0xFF, 0x00, 0xAA };
+            byte[] maskKey = { 0x01, 0x02, 0x03, 0x04 };
+            byte[] streamBytes = { 0xFF, 0x00, 0xAA, 0xBB, 0xCC };
+            MemoryStream stream = new MemoryStream(streamBytes);
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+            CancellationToken cancellationToken = new CancellationToken();
+            WebSocketReadCursor readCursor = new WebSocketReadCursor(
+                new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, payload.Length, new ArraySegment<byte>(maskKey)), 0,
+                payload.Length);
+
+            WebSocketReadCursor result =
+                await WebSocketFrameReader.ReadFromCursorAsync(stream, buffer, readCursor, cancellationToken);
+
+            Assert.Equal(payload.Length, result.NumBytesRead);
+            Assert.Equal(payload[0] ^ maskKey[0], buffer.Array[buffer.Offset]);
+        }
+
+        /// <summary>
+        ///     Tests that read from cursor async with a masked frame and a small buffer aligns the read to four bytes
+        /// </summary>
+        [Fact]
+        public async Task ReadFromCursorAsync_WithMaskedFrame_AndSmallBuffer_AlignsReadToFourBytes()
+        {
+            byte[] streamBytes = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A };
+            byte[] maskKey = { 0x10, 0x20, 0x30, 0x40 };
+            MemoryStream stream = new MemoryStream(streamBytes);
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[10]);
+            CancellationToken cancellationToken = new CancellationToken();
+            WebSocketReadCursor readCursor = new WebSocketReadCursor(
+                new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, 7, new ArraySegment<byte>(maskKey)), 0, 7);
+
+            WebSocketReadCursor result =
+                await WebSocketFrameReader.ReadFromCursorAsync(stream, buffer, readCursor, cancellationToken);
+
+            Assert.Equal(7, result.NumBytesRead);
+            Assert.Equal(0, result.NumBytesLeftToRead);
+        }
+
+        /// <summary>
         ///     Tests that decode close frame should decode correctly when count is greater than or equal to two
         /// </summary>
         [Fact]

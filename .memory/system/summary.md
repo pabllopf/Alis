@@ -1433,3 +1433,57 @@
 - **Coverage After**: FFMpegWrapper 100%, VideoPlayer 100%, AudioPlayer 100%, AudioVideoWriter 98.3%, VideoWriter 97.3%, AudioWriter 97.3%, AudioReader 84.9%, VideoReader 81.0%
 - **Tests Added**: 25
 - **Status**: DONE (remaining: AOT JSON generator cannot deserialize Streams array — needs production generator fix; sub-millisecond Process.Kill race)
+
+## AssetRegistry.cs
+
+- **File**: `6_Ideation/Memory/src/AssetRegistry.cs`
+- **Coverage Before**: 92.1%
+- **Coverage After**: 98.5%
+- **Tests Added**: 6
+- **Uncovered Lines**: 500-501 (ToLowerHex empty span — SHA256 always produces 32 bytes), 541-542 (defensive loader check shadowed by earlier validation)
+- **Status**: COMPLETED
+
+## FileLogOutput.cs
+
+- **File**: `6_Ideation/Logging/src/Outputs/FileLogOutput.cs`
+- **Coverage Before**: 91.9%
+- **Coverage After**: 91.9%
+- **Tests Added**: 0
+- **Uncovered Lines**: 168/170/174, 200/202/206 (exception-handler paths requiring failing writer)
+- **Status**: BLOCKED_BY_PRODUCTION_CODE
+
+## ConsoleLogOutput.cs
+
+- **File**: `6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs`
+- **Coverage Before**: 92.9%
+- **Coverage After**: 92.9%
+- **Tests Added**: 0
+- **Uncovered Lines**: 119/121/125 (finally catch unreachable under redirected stdout)
+- **Status**: BLOCKED_BY_PRODUCTION_CODE
+
+## WebSocketFrameReader.cs (Network)
+
+- **File**: `1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs`
+- **Coverage Before**: 91.2% (local)
+- **Coverage After**: 95.6% (local, max testable)
+- **Tests Added**: 3 (masked-payload ReadFromCursorAsync paths: masked toggle, exact-frame read, buffer alignment)
+- **Uncovered Lines**: 131-135 InternalBufferOverflowException catch — unreachable (minCount ≤ buffer guaranteed)
+- **Status**: COMPLETED
+
+## PingPongManager.cs (Network)
+
+- **File**: `1_Presentation/Extension/Network/src/PingPongManager.cs`
+- **Coverage Before**: 95.9% (local)
+- **Coverage After**: 100.0% (local)
+- **Tests Added**: 1 (fixed no-op test to actually run PingForever and cancel during delay, exercising the OperationCanceledException catch)
+- **Uncovered Lines**: None
+- **Status**: COMPLETED
+
+## ImGuiIOPtr.cs (Ui)
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs`
+- **Coverage Before**: 95.4% (local; SonarCloud 0.0% — native cimgui absent on CI)
+- **Coverage After**: 95.7% (local)
+- **Tests Added**: 2 (IniFilename, LogFilename getters)
+- **Uncovered Lines**: 925-936, 973-984, 1293-1304 — dead code: `Marshal.OffsetOf<ImGuiIo>("KeysData"/"MouseClickedPos"/"MouseDragMaxDistanceAbs")` always throws ArgumentException (managed struct has auto-property fields KeysData0..N, no marshaled member with those names). Requires production change.
+- **Status**: BLOCKED_BY_PRODUCTION_CODE
