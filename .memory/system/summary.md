@@ -1403,7 +1403,10 @@
 - **Status**: COMPLETED (remaining lines need live GL context)
 
 - **File**: `4_Operation/Ecs/src/Updating/Runners/Update.cs`
-- **Status**: PENDING
+- **Coverage Before**: 93.6% (stale analysis)
+- **Coverage After**: 100% / 100% branches (verified locally)
+- **Tests Added**: 0 (existing committed tests already cover)
+- **Status**: COMPLETED
 
 - **File**: `4_Operation/Ecs/src/GameObject.cs`
 - **Status**: PENDING
