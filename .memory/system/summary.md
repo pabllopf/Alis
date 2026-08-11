@@ -1344,3 +1344,11 @@
 - **Coverage After**: 63.5%
 - **Tests Added**: 5
 - **Uncovered Lines**: Colors1-19 (existing tests cover)
+
+## ContactManager.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/ContactManager.cs`
+- **Coverage Before**: 63.7%
+- **Coverage After**: 76.3% line (max testable; remaining 81 lines unreachable: multithread thresholds int.MaxValue, private null-override hook, disabled-body guard)
+- **Tests Added**: 13
+- **Status**: DONE

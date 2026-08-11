@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -130,6 +131,24 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
+        ///     Tests that the second fixture before collision handler can reject a contact
+        /// </summary>
+        [Fact]
+        public void SecondBeforeCollisionHandler_RejectsContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            bodyA.FixtureList.List[0].BeforeCollision += (sender, other) => true;
+            bodyB.FixtureList.List[0].BeforeCollision += (sender, other) => false;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        /// <summary>
         ///     Tests that disabling a body skips its contact processing
         /// </summary>
         [Fact]
@@ -209,6 +228,94 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        /// <summary>
+        ///     Tests that the contact filter delegate alone can destroy an existing contact
+        /// </summary>
+        [Fact]
+        public void ContactFilterDelegate_Only_DestroysContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            world.ContactManager.ContactFilter = (fixtureA, fixtureB) => false;
+            bodyA.FixtureList.List[0].GetCollisionGroup = 5;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        /// <summary>
+        ///     Tests that refiltering a single fixture removes only its contact and preserves the other
+        /// </summary>
+        [Fact]
+        public void RefilterSingleFixture_RemovesOnlyItsContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 1);
+
+            bodyA.FixtureList.List[0].GetCollidesWith = Categories.None;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(1, world.ContactManager.ContactCount);
+        }
+
+        /// <summary>
+        ///     Tests that a body with contacts to two bodies keeps the unrelated contact when one is filtered
+        /// </summary>
+        [Fact]
+        public void FilteredContact_KeepsUnrelatedContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(1.1f, 0.0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(2.2f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 1);
+
+            bodyA.FixtureList.List[0].GetCollidesWith = Categories.None;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that a circle polygon pair with swapped fixtures is recognized as existing
+        /// </summary>
+        [Fact]
+        public void CirclePolygonSwappedPair_RecognizedAsExisting()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0.0f, -10.0f));
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(-1.0f, -1.0f),
+                new Vector2F(1.0f, -1.0f),
+                new Vector2F(1.0f, 1.0f),
+                new Vector2F(-1.0f, 1.0f)
+            };
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreatePolygon(vertices, 1.0f, new Vector2F(0.5f, 0.0f), 0, BodyType.Dynamic);
+
+            for (int i = 0; i < 30; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.True(world.ContactManager.ContactCount > 0);
         }
 
         /// <summary>
