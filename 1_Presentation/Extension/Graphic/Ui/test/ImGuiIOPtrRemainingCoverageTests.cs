@@ -886,5 +886,25 @@ namespace Alis.Extension.Graphic.Ui.Test
                 Assert.Equal(i, result[i]);
             }
         }
+
+        /// <summary>
+        /// Tests that ini filename get should not throw
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void IniFilename_Get_ShouldNotThrow()
+        {
+            NullTerminatedString result = _ioPtr.IniFilename;
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that log filename get should not throw
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void LogFilename_Get_ShouldNotThrow()
+        {
+            NullTerminatedString result = _ioPtr.LogFilename;
+            Assert.NotNull(result);
+        }
     }
 }
