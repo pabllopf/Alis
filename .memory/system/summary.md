@@ -1664,3 +1664,11 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **Coverage After**: managed-only members covered; native wrappers untestable on CI
 - **Tests Added**: 6
 - **Status**: COMPLETED
+
+## Transform.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: managed surface covered; native wrappers untestable on CI
+- **Tests Added**: 6
+- **Status**: COMPLETED
