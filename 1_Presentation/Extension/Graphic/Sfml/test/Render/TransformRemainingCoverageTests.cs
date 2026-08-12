@@ -301,5 +301,88 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1f, t.m11, 5);
             Assert.Equal(1f, t.m22, 5);
         }
+
+        /// <summary>
+        ///     Tests that constructor assigns every matrix element.
+        /// </summary>
+        [Fact]
+        public void Constructor_AssignsEveryMatrixElement()
+        {
+            Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+            Assert.Equal(1f, t.m00, 5);
+            Assert.Equal(2f, t.m01, 5);
+            Assert.Equal(3f, t.m02, 5);
+            Assert.Equal(4f, t.m10, 5);
+            Assert.Equal(5f, t.m11, 5);
+            Assert.Equal(6f, t.m12, 5);
+            Assert.Equal(7f, t.m20, 5);
+            Assert.Equal(8f, t.m21, 5);
+            Assert.Equal(9f, t.m22, 5);
+        }
+
+        /// <summary>
+        ///     Tests that identity transform has unit diagonal and zero offsets.
+        /// </summary>
+        [Fact]
+        public void Identity_HasUnitDiagonal()
+        {
+            Transform t = Transform.Identity;
+
+            Assert.Equal(1f, t.m00, 5);
+            Assert.Equal(0f, t.m01, 5);
+            Assert.Equal(0f, t.m02, 5);
+            Assert.Equal(0f, t.m10, 5);
+            Assert.Equal(1f, t.m11, 5);
+            Assert.Equal(0f, t.m12, 5);
+            Assert.Equal(0f, t.m20, 5);
+            Assert.Equal(0f, t.m21, 5);
+            Assert.Equal(1f, t.m22, 5);
+        }
+
+        /// <summary>
+        ///     Tests that get hash code is stable for equal transforms.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_IsStableForEqualTransforms()
+        {
+            Transform first = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            Transform second = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+            Assert.Equal(first.GetHashCode(), second.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that to string contains every matrix element.
+        /// </summary>
+        [Fact]
+        public void ToString_ContainsEveryMatrixElement()
+        {
+            Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            string str = t.ToString();
+
+            Assert.Contains("1", str);
+            Assert.Contains("2", str);
+            Assert.Contains("3", str);
+            Assert.Contains("4", str);
+            Assert.Contains("5", str);
+            Assert.Contains("6", str);
+            Assert.Contains("7", str);
+            Assert.Contains("8", str);
+            Assert.Contains("9", str);
+        }
+
+        /// <summary>
+        ///     Tests that to string contains the transform label.
+        /// </summary>
+        [Fact]
+        public void ToString_ContainsTransformLabel()
+        {
+            Transform t = Transform.Identity;
+            string str = t.ToString();
+
+            Assert.Contains("[Transform]", str);
+            Assert.Contains("Matrix", str);
+        }
     }
 }
