@@ -1656,3 +1656,11 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **Tests Added**: 6
 - **Commit**: 5f42a65f (next)
 - **Status**: COMPLETED
+
+## SfmlTime.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: managed-only members covered; native wrappers untestable on CI
+- **Tests Added**: 6
+- **Status**: COMPLETED
