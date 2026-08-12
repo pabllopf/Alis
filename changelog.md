@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.3] - 2026-08-12
+### :white_check_mark: Tests
+- [`8394c8d`](https://github.com/pabllopf/Alis/commit/8394c8defd5327b4ca3042e6d81e4152a8ef7b31) - BoxCollider.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebba43f`](https://github.com/pabllopf/Alis/commit/ebba43f7ff414f08d8675cf54e67c73d17bfdd38) - Gl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`22a2b0c`](https://github.com/pabllopf/Alis/commit/22a2b0ca428e848d2c6d051fd9cc468982762558) - Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d863ad4`](https://github.com/pabllopf/Alis/commit/d863ad45ca0fcc0af0358329cfb195927ffa1627) - GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd85650`](https://github.com/pabllopf/Alis/commit/cd8565076d37cc06d3f4e99f5a7834688fceb999) - Network full coverage batch (transport, events, pingpong, buffer pool, frame reader) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`78fc944`](https://github.com/pabllopf/Alis/commit/78fc944df1c8e8530a685c7ec705231fe19b1ba6) - FFmpeg full coverage batch (VideoReader, AudioReader, AudioVideoWriter, VideoWriter, Players, FFMpegWrapper) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8ac486`](https://github.com/pabllopf/Alis/commit/d8ac48670b0b4159cc92a739a946a944c7bf5aff) - AssetRegistry.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebca759`](https://github.com/pabllopf/Alis/commit/ebca7596739f6cee4a4245861b9d92589f9aa1b9) - WebSocketFrameReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91d33ac`](https://github.com/pabllopf/Alis/commit/91d33acb4ec16f9663e2203085e6321f51f66f3f) - PingPongManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1cf2f90`](https://github.com/pabllopf/Alis/commit/1cf2f9031802ccfc803e639bead20a306937e62a) - ImGuiIOPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4093ff6`](https://github.com/pabllopf/Alis/commit/4093ff66b71c9444387b6e7e3208743c480b555b) - UnixPlayerBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`692296e`](https://github.com/pabllopf/Alis/commit/692296e0af551853e96eff72bde996736293ac2f) - GraphicManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`99c36ff`](https://github.com/pabllopf/Alis/commit/99c36ffb6538622a68e7f9ae6dcc34ba027b0a0a) - BoxCollider.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c503aa`](https://github.com/pabllopf/Alis/commit/8c503aa6a796f9baa9c573998f6ad7d1d03b4181) - WebAssemblyConfiguration.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`743d366`](https://github.com/pabllopf/Alis/commit/743d366e4a684ee7301d6fa3dc19e12ecc86bd14) - WebAssemblyPlatformFactory.Create configure path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce5391d`](https://github.com/pabllopf/Alis/commit/ce5391d339ed90695be1354e5e2ce75ba360fa17) - WebAssemblyConfiguration frame-rate validations and GLShaderProgramParam coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f27c5ce`](https://github.com/pabllopf/Alis/commit/f27c5ce4f5829126a8b190d5058261a4b15362f6) - Graphic batch (WebAssembly managers, Font, GL constructs) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3c6031`](https://github.com/pabllopf/Alis/commit/c3c603156f806890748f78e77bc0f516ae1c2dcc) - Font.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9464ba1`](https://github.com/pabllopf/Alis/commit/9464ba138c3347adf3eeb85654813c96b444a6e8) - Ui native batch (context/IO/style/atlas/font + ImPlot/ImNodes/ImGuizMo safe APIs) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c6fccd4`](https://github.com/pabllopf/Alis/commit/c6fccd496fb6fbe3b727a182ee1498f661f58073) - Sdl2/Glfw/Sfml native batches *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7e27a1`](https://github.com/pabllopf/Alis/commit/e7e27a13c6e67e80fc3bed478a35c550ae89edf0) - FontManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`5da2afb`](https://github.com/pabllopf/Alis/commit/5da2afb7b6af4e2aba36d98a3ee0a2cc4d8d7a79) - update processed files cache with Physic batch 2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3ee653`](https://github.com/pabllopf/Alis/commit/b3ee653fbf77daee34fcdfdd1a7e4504ed9d0bbc) - update processed files cache with Application batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`85693ae`](https://github.com/pabllopf/Alis/commit/85693ae4d8eff4b3579fbdfd4688719e297bcf08) - update processed files cache with Network batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c21ba20`](https://github.com/pabllopf/Alis/commit/c21ba2043251e872c339866ee6d703dda8f64e69) - update processed files cache with Updater/Stripe/Cloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2193458`](https://github.com/pabllopf/Alis/commit/21934586241af47eefa337b92a6ef39728c9bbfa) - update processed files cache with FFmpeg batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1342bc8`](https://github.com/pabllopf/Alis/commit/1342bc8cb3b0990e99bbf435dfc16766b04cab72) - update processed files cache with Audio batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4799c56`](https://github.com/pabllopf/Alis/commit/4799c56fcafec843346daeb8ca4f5dea9db9f02f) - update processed files cache with Graphic batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1dd8e9e`](https://github.com/pabllopf/Alis/commit/1dd8e9ea04fd84f51c613989dc32b1fe95ac64df) - update processed files cache with core batch 2026-08-11 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`803ba0d`](https://github.com/pabllopf/Alis/commit/803ba0d3f7d0655bcd1a301877bb9a082580d5ac) - coverage session results (Font, Player, ceilings) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04c3412`](https://github.com/pabllopf/Alis/commit/04c3412412619f1e299308b99f8dda7fa59c7b5f) - update processed files cache with Ui batch *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9fade5b`](https://github.com/pabllopf/Alis/commit/9fade5b036cc8672e5755d1db6ee3c324e624ab4) - update processed files cache with Sdl2/Glfw/Sfml batches *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c50f123`](https://github.com/pabllopf/Alis/commit/c50f1238bbbd4e0147ff767124d134f58e6a2cf2) - final coverage campaign summary *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e84313f`](https://github.com/pabllopf/Alis/commit/e84313f827a894779cb47bba583644c68cf03220) - session 2026-08-12 coverage results *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.2] - 2026-08-11
 ### :bug: Bug Fixes
 - [`8aef332`](https://github.com/pabllopf/Alis/commit/8aef332aedafb4698301c4f5f4faab032294df6c) - covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -9386,3 +9426,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.0]: https://github.com/pabllopf/Alis/compare/v1.0.9...v1.1.0
 [v1.1.1]: https://github.com/pabllopf/Alis/compare/v1.1.0...v1.1.1
 [v1.1.2]: https://github.com/pabllopf/Alis/compare/v1.1.1...v1.1.2
+[v1.1.3]: https://github.com/pabllopf/Alis/compare/v1.1.2...v1.1.3
