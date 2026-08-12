@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -186,6 +187,65 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Clipboard.Contents = expected;
             string actual = Clipboard.Contents;
             Assert.Equal(expected, actual);
+        }
+
+        /// <summary>
+        ///     Tests that contents getter throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Contents_Getter_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Clipboard.Contents);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that contents setter throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Contents_Setter_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Clipboard.Contents = "test");
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether the csfml window native library can be loaded
+        /// </summary>
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadWindowLibrary()
+        {
+            if (NativeLibrary.TryLoad("csfml-window", out _))
+            {
+                return true;
+            }
+
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(Alis.Extension.Graphic.Sfml.Test.Attributes.RequireCSfmlWindowsFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
+
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "csfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window.dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -369,6 +370,125 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
             Assert.NotNull(method);
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
+        }
+
+        /// <summary>
+        /// Tests that is connected throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void IsConnected_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.IsConnected(0));
+            }
+        }
+
+        /// <summary>
+        /// Tests that get button count throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void GetButtonCount_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.GetButtonCount(0));
+            }
+        }
+
+        /// <summary>
+        /// Tests that has axis throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void HasAxis_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.HasAxis(0, Joystick.Axis.X));
+            }
+        }
+
+        /// <summary>
+        /// Tests that is button pressed throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void IsButtonPressed_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.IsButtonPressed(0, 0));
+            }
+        }
+
+        /// <summary>
+        /// Tests that get axis position throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void GetAxisPosition_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.GetAxisPosition(0, Joystick.Axis.X));
+            }
+        }
+
+        /// <summary>
+        /// Tests that update throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Update_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.Update());
+            }
+        }
+
+        /// <summary>
+        /// Tests that get identification throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void GetIdentification_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => Joystick.GetIdentification(0));
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the csfml window native library can be loaded
+        /// </summary>
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadWindowLibrary()
+        {
+            if (NativeLibrary.TryLoad("csfml-window", out _))
+            {
+                return true;
+            }
+
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(Alis.Extension.Graphic.Sfml.Test.Attributes.RequireCSfmlWindowsFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
+
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "csfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window.dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
