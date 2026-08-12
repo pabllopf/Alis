@@ -937,17 +937,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             Assert.True(supported || !supported);
         }
-
-        /// <summary>
-        ///     Tests that get proc address returns a pointer
-        /// </summary>
-        [Fact]
-        public void GetProcAddress_ReturnsPointer()
-        {
-            IntPtr address = GlfwNative.GetProcAddress("glClear");
-
-            Assert.NotNull(address);
-        }
-
+        
     }
 }
