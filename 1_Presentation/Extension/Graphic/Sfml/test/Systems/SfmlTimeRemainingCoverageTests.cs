@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
@@ -179,6 +181,168 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime first = default;
             SfmlTime second = default;
             Assert.Equal(first.GetHashCode(), second.GetHashCode());
+        }
+
+        /// <summary>
+        /// Tests that from seconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void FromSeconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => SfmlTime.FromSeconds(1.0f));
+            }
+        }
+
+        /// <summary>
+        /// Tests that from milliseconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void FromMilliseconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => SfmlTime.FromMilliseconds(100));
+            }
+        }
+
+        /// <summary>
+        /// Tests that from microseconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void FromMicroseconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => SfmlTime.FromMicroseconds(1000));
+            }
+        }
+
+        /// <summary>
+        /// Tests that as seconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void AsSeconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                SfmlTime time = default;
+                Assert.Throws<DllNotFoundException>(() => time.AsSeconds());
+            }
+        }
+
+        /// <summary>
+        /// Tests that as milliseconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void AsMilliseconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                SfmlTime time = default;
+                Assert.Throws<DllNotFoundException>(() => time.AsMilliseconds());
+            }
+        }
+
+        /// <summary>
+        /// Tests that as microseconds throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void AsMicroseconds_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                SfmlTime time = default;
+                Assert.Throws<DllNotFoundException>(() => time.AsMicroseconds());
+            }
+        }
+
+        /// <summary>
+        /// Tests that comparison operators throw when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void ComparisonOperators_WithoutNativeLibrary_Throw()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                SfmlTime first = default;
+                SfmlTime second = default;
+                Assert.Throws<DllNotFoundException>(() => first < second);
+                Assert.Throws<DllNotFoundException>(() => first <= second);
+                Assert.Throws<DllNotFoundException>(() => first > second);
+                Assert.Throws<DllNotFoundException>(() => first >= second);
+            }
+        }
+
+        /// <summary>
+        /// Tests that arithmetic operators throw when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void ArithmeticOperators_WithoutNativeLibrary_Throw()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                SfmlTime first = default;
+                SfmlTime second = default;
+                Assert.Throws<DllNotFoundException>(() => first - second);
+                Assert.Throws<DllNotFoundException>(() => first + second);
+                Assert.Throws<DllNotFoundException>(() => first * 2.0f);
+                Assert.Throws<DllNotFoundException>(() => first * 2L);
+                Assert.Throws<DllNotFoundException>(() => 2.0f * first);
+                Assert.Throws<DllNotFoundException>(() => 2L * first);
+                Assert.Throws<DllNotFoundException>(() => first / second);
+                Assert.Throws<DllNotFoundException>(() => first / 2.0f);
+                Assert.Throws<DllNotFoundException>(() => first / 2L);
+                Assert.Throws<DllNotFoundException>(() => first % second);
+            }
+        }
+
+        /// <summary>
+        /// Tests that zero access throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Zero_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadSystemLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => SfmlTime.Zero);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the csfml system native library can be loaded
+        /// </summary>
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadSystemLibrary()
+        {
+            if (NativeLibrary.TryLoad("csfml-system", out _))
+            {
+                return true;
+            }
+
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(Alis.Extension.Graphic.Sfml.Test.Attributes.RequireCSfmlSystemFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
+
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "csfml-system"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-system"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-system.dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
