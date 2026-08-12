@@ -1629,3 +1629,12 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **File**: `4_Operation/Audio/src/Players/UnixPlayerBase.cs` — 90.5%, remaining 4 lines process-bound — BLOCKED_BY_PRODUCTION_CODE
 - **File**: `4_Operation/Audio/src/Players/BrowserPlayer.cs` — remaining lines OpenAL-native-bound — BLOCKED_BY_PRODUCTION_CODE
 - **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GlShader.cs` / `GlShaderProgramParam.cs` — GL-bound + brace artifacts — BLOCKED_BY_PRODUCTION_CODE
+
+## ImFontGlyphRangesBuilder.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: property lines covered; native bodies untestable (host crash)
+- **Tests Added**: 3
+- **Commit**: de363d43d
+- **Status**: COMPLETED
