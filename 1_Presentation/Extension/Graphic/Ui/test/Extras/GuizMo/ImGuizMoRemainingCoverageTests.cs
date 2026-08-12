@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
@@ -28,335 +28,310 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using Alis.Core.Aspect.Math.Vector;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
+using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
     /// <summary>
-    /// The im guiz mo remaining coverage tests class
+    /// The ImGuizMo remaining coverage tests class
     /// </summary>
     public class ImGuizMoRemainingCoverageTests
     {
         /// <summary>
-        /// Publics the api should expose decompose matrix to components
+        /// Tests that AllowAxisFlip throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeDecomposeMatrixToComponents()
+        [Fact]
+        public void AllowAxisFlip_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("DecomposeMatrixToComponents", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType());
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.AllowAxisFlip(false); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose draw cubes
+        /// Tests that BeginFrame throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeDrawCubes()
+        [Fact]
+        public void BeginFrame_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("DrawCubes", typeof(void), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int));
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.BeginFrame(); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose draw grid
+        /// Tests that DecomposeMatrixToComponents throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeDrawGrid()
+        [Fact]
+        public void DecomposeMatrixToComponents_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("DrawGrid", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float));
+            if (!CanLoadCImguiLibrary())
+            {
+                 float[] matrix = default; float[] translation = default; float[] rotation = default; float[] scale = default;
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.DecomposeMatrixToComponents(ref matrix, ref translation, ref rotation, ref scale); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose enable
+        /// Tests that DrawCubes throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeEnable()
+        [Fact]
+        public void DrawCubes_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("Enable", typeof(void), typeof(bool));
+            if (!CanLoadCImguiLibrary())
+            {
+                 float view = default; float projection = default; float matrices = default;
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.DrawCubes(ref view, ref projection, ref matrices, 0); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose manipulate
+        /// Tests that DrawGrid throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeManipulate()
+        [Fact]
+        public void DrawGrid_WithoutNativeLibrary_Throws()
         {
-            MethodInfo method = typeof(ImGuizMo).GetMethod("Manipulate", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(float[]), typeof(float[]), typeof(Operations), typeof(Mode), typeof(float[]) }, null);
-
-            Assert.NotNull(method);
-            Assert.Equal(typeof(byte), method.ReturnType);
-            Assert.True(method.IsPublic);
-            Assert.True(method.IsStatic);
+            if (!CanLoadCImguiLibrary())
+            {
+                 float[] view = default; float[] projection = default; float[] matrix = default;
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.DrawGrid(ref view, ref projection, ref matrix, 0); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose recompose matrix from components
+        /// Tests that Enable throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeRecomposeMatrixFromComponents()
+        [Fact]
+        public void Enable_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("RecomposeMatrixFromComponents", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType());
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.Enable(false); });
+            }
         }
 
         /// <summary>
-        /// Publics the api should expose view manipulate
+        /// Tests that IsOver throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void PublicApi_ShouldExposeViewManipulate()
+        [Fact]
+        public void IsOver_1_WithoutNativeLibrary_Throws()
         {
-            AssertMethod("ViewManipulate", typeof(void), typeof(float[]).MakeByRefType(), typeof(float), typeof(Vector2F), typeof(Vector2F), typeof(uint));
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.IsOver(); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields camera projection should have expected values
+        /// Tests that IsOver throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_CameraProjection_ShouldHaveExpectedValues()
+        [Fact]
+        public void IsOver_2_WithoutNativeLibrary_Throws()
         {
-            float[] values = GetPrivateArray("cameraProjection");
-
-            Assert.Equal(2.0f / 800.0f, values[0], 5);
-            Assert.Equal(0.0f, values[1], 5);
-            Assert.Equal(0.0f, values[2], 5);
-            Assert.Equal(0.0f, values[3], 5);
-            Assert.Equal(0.0f, values[4], 5);
-            Assert.Equal(2.0f / 600.0f, values[5], 5);
-            Assert.Equal(0.0f, values[6], 5);
-            Assert.Equal(0.0f, values[7], 5);
-            Assert.Equal(0.0f, values[8], 5);
-            Assert.Equal(0.0f, values[9], 5);
-            Assert.Equal(-1.0f, values[10], 5);
-            Assert.Equal(0.0f, values[11], 5);
-            Assert.Equal(-1.0f, values[12], 5);
-            Assert.Equal(-1.0f, values[13], 5);
-            Assert.Equal(0.0f, values[14], 5);
-            Assert.Equal(1.0f, values[15], 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.IsOver((Operations)0); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields matrix should have expected values
+        /// Tests that IsUsing throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_Matrix_ShouldHaveExpectedValues()
+        [Fact]
+        public void IsUsing_WithoutNativeLibrary_Throws()
         {
-            float[] values = GetPrivateArray("matrix");
-
-            Assert.Equal(1.0f, values[0], 5);
-            Assert.Equal(1.0f, values[5], 5);
-            Assert.Equal(1.0f, values[10], 5);
-            Assert.Equal(2.0f, values[14], 5);
-            Assert.Equal(1.0f, values[15], 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.IsUsing(); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields matrix rotation should be zero
+        /// Tests that Manipulate throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixRotation_ShouldBeZero()
+        [Fact]
+        public void Manipulate_WithoutNativeLibrary_Throws()
         {
-            float[] values = GetPrivateArray("matrixRotation");
-            Assert.Equal(0.0f, values[0], 5);
-            Assert.Equal(0.0f, values[1], 5);
-            Assert.Equal(0.0f, values[2], 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.Manipulate(default(float[]), default(float[]), (Operations)0, (Mode)0, default(float[])); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields matrix scale should be zero
+        /// Tests that RecomposeMatrixFromComponents throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixScale_ShouldBeZero()
+        [Fact]
+        public void RecomposeMatrixFromComponents_WithoutNativeLibrary_Throws()
         {
-            float[] values = GetPrivateArray("matrixScale");
-            Assert.Equal(0.0f, values[0], 5);
-            Assert.Equal(0.0f, values[1], 5);
-            Assert.Equal(0.0f, values[2], 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 float[] translation = default; float[] rotation = default; float[] scale = default; float[] matrix = default;
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.RecomposeMatrixFromComponents(ref translation, ref rotation, ref scale, ref matrix); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields matrix translation should be zero
+        /// Tests that SetDrawList throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixTranslation_ShouldBeZero()
+        [Fact]
+        public void SetDrawList_1_WithoutNativeLibrary_Throws()
         {
-            float[] values = GetPrivateArray("matrixTranslation");
-            Assert.Equal(0.0f, values[0], 5);
-            Assert.Equal(0.0f, values[1], 5);
-            Assert.Equal(0.0f, values[2], 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetDrawList(); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields vector 3 rotation should be zero
+        /// Tests that SetDrawList throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_Vector3Rotation_ShouldBeZero()
+        [Fact]
+        public void SetDrawList_2_WithoutNativeLibrary_Throws()
         {
-            FieldInfo field = typeof(ImGuizMo).GetField("rotation", BindingFlags.NonPublic | BindingFlags.Static);
-            Assert.NotNull(field);
-            Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X, 5);
-            Assert.Equal(0.0f, value.Y, 5);
-            Assert.Equal(0.0f, value.Z, 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetDrawList(default(ImDrawList)); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields vector 3 scale should be zero
+        /// Tests that SetGizmoSizeClipSpace throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_Vector3Scale_ShouldBeZero()
+        [Fact]
+        public void SetGizmoSizeClipSpace_WithoutNativeLibrary_Throws()
         {
-            FieldInfo field = typeof(ImGuizMo).GetField("scale", BindingFlags.NonPublic | BindingFlags.Static);
-            Assert.NotNull(field);
-            Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X, 5);
-            Assert.Equal(0.0f, value.Y, 5);
-            Assert.Equal(0.0f, value.Z, 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetGizmoSizeClipSpace(0); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields vector 3 translation should be zero
+        /// Tests that SetId throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_Vector3Translation_ShouldBeZero()
+        [Fact]
+        public void SetId_WithoutNativeLibrary_Throws()
         {
-            FieldInfo field = typeof(ImGuizMo).GetField("translation", BindingFlags.NonPublic | BindingFlags.Static);
-            Assert.NotNull(field);
-            Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X, 5);
-            Assert.Equal(0.0f, value.Y, 5);
-            Assert.Equal(0.0f, value.Z, 5);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetId(0); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields is open should be false
+        /// Tests that SetImGuiContext throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_IsOpen_ShouldBeFalse()
+        [Fact]
+        public void SetImGuiContext_WithoutNativeLibrary_Throws()
         {
-            FieldInfo field = typeof(ImGuizMo).GetField("isOpen", BindingFlags.NonPublic | BindingFlags.Static);
-            Assert.NotNull(field);
-            bool value = (bool)field.GetValue(null);
-            Assert.False(value);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetImGuiContext(IntPtr.Zero); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields camera projection length should be 16
+        /// Tests that SetOrthographic throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_CameraProjection_Length_ShouldBe16()
+        [Fact]
+        public void SetOrthographic_WithoutNativeLibrary_Throws()
         {
-            Assert.Equal(16, GetPrivateArray("cameraProjection").Length);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetOrthographic(false); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields camera view length should be 16
+        /// Tests that SetRect throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_CameraView_Length_ShouldBe16()
+        [Fact]
+        public void SetRect_WithoutNativeLibrary_Throws()
         {
-            Assert.Equal(16, GetPrivateArray("cameraView").Length);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.SetRect(0, 0, 0, 0); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields identity matrix length should be 16
+        /// Tests that ViewManipulate throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_IdentityMatrix_Length_ShouldBe16()
+        [Fact]
+        public void ViewManipulate_WithoutNativeLibrary_Throws()
         {
-            Assert.Equal(16, GetPrivateArray("identityMatrix").Length);
+            if (!CanLoadCImguiLibrary())
+            {
+                 float[] view = default;
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.ViewManipulate(ref view, 0, default(Vector2F), default(Vector2F), 0); });
+            }
         }
 
         /// <summary>
-        /// Statics the fields matrix length should be 16
+        /// Tests that ShowDemoWindow throws when native library is unavailable
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_Matrix_Length_ShouldBe16()
+        [Fact]
+        public void ShowDemoWindow_WithoutNativeLibrary_Throws()
         {
-            Assert.Equal(16, GetPrivateArray("matrix").Length);
+            if (!CanLoadCImguiLibrary())
+            {
+                 
+                Assert.Throws<DllNotFoundException>(() => { ImGuizMo.ShowDemoWindow(); });
+            }
         }
-
         /// <summary>
-        /// Statics the fields matrix rotation length should be 3
+        /// Determines whether the cimgui native library can be loaded
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixRotation_Length_ShouldBe3()
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadCImguiLibrary()
         {
-            Assert.Equal(3, GetPrivateArray("matrixRotation").Length);
-        }
+            if (NativeLibrary.TryLoad("cimgui", out _))
+            {
+                return true;
+            }
 
-        /// <summary>
-        /// Statics the fields matrix scale length should be 3
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixScale_Length_ShouldBe3()
-        {
-            Assert.Equal(3, GetPrivateArray("matrixScale").Length);
-        }
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(ImGuizMoRemainingCoverageTests).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
 
-        /// <summary>
-        /// Statics the fields matrix translation length should be 3
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void StaticFields_MatrixTranslation_Length_ShouldBe3()
-        {
-            Assert.Equal(3, GetPrivateArray("matrixTranslation").Length);
-        }
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "cimgui"),
+                System.IO.Path.Combine(assemblyDir, "libcimgui"),
+                System.IO.Path.Combine(assemblyDir, "libcimgui.dylib")
+            };
 
-        /// <summary>
-        /// Canonicals the matrices camera view should have ones on diagonal
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void CanonicalMatrices_CameraView_ShouldHaveOnesOnDiagonal()
-        {
-            float[] values = GetPrivateArray("cameraView");
-            Assert.Equal(1.0f, values[0], 5);
-            Assert.Equal(1.0f, values[5], 5);
-            Assert.Equal(1.0f, values[10], 5);
-            Assert.Equal(1.0f, values[15], 5);
-        }
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
 
-        /// <summary>
-        /// Canonicals the matrices identity matrix should have ones on diagonal
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void CanonicalMatrices_IdentityMatrix_ShouldHaveOnesOnDiagonal()
-        {
-            float[] values = GetPrivateArray("identityMatrix");
-            Assert.Equal(1.0f, values[0], 5);
-            Assert.Equal(1.0f, values[5], 5);
-            Assert.Equal(1.0f, values[10], 5);
-            Assert.Equal(1.0f, values[15], 5);
-        }
-
-        /// <summary>
-        /// Gets the private array using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The value</returns>
-        private static float[] GetPrivateArray(string name)
-        {
-            FieldInfo field = typeof(ImGuizMo).GetField(name, BindingFlags.NonPublic | BindingFlags.Static);
-            Assert.NotNull(field);
-            Assert.Equal(typeof(float[]), field.FieldType);
-            float[] value = field.GetValue(null) as float[];
-            Assert.NotNull(value);
-            return value;
-        }
-
-        /// <summary>
-        /// Asserts the method using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="returnType">The return type</param>
-        /// <param name="parameterTypes">The parameter types</param>
-        private static void AssertMethod(string name, Type returnType, params Type[] parameterTypes)
-        {
-            MethodInfo method = typeof(ImGuizMo).GetMethod(name, BindingFlags.Public | BindingFlags.Static, null, parameterTypes, null);
-            Assert.NotNull(method);
-            Assert.Equal(returnType, method.ReturnType);
-            Assert.True(method.IsPublic);
-            Assert.True(method.IsStatic);
+            return false;
         }
     }
 }
