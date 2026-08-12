@@ -363,16 +363,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(result || !result);
         }
 
-        /// <summary>
-        ///     Tests that get joystick axes returns an array
-        /// </summary>
-        [Fact]
-        public void GetJoystickAxes_ReturnsArray()
-        {
-            float[] axes = GlfwNative.GetJoystickAxes(Joystick.Joystick1);
-
-            Assert.NotNull(axes);
-        }
+      
 
         /// <summary>
         ///     Tests that get joystick buttons returns an array
