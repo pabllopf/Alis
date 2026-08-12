@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Xunit;
+
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
@@ -34,6 +37,53 @@ namespace Alis.Extension.Graphic.Ui.Test
     /// </summary>
     public class ImFontGlyphRangesBuilderRemainingCoverageTests
     {
-        
+        /// <summary>
+        ///     Tests that default instance used chars should be default vector
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_UsedChars_ShouldBeDefaultVector()
+        {
+            ImFontGlyphRangesBuilder builder = default;
+
+            Assert.Equal(0, builder.UsedChars.Size);
+            Assert.Equal(0, builder.UsedChars.Capacity);
+            Assert.Equal(IntPtr.Zero, builder.UsedChars.Data);
+        }
+
+        /// <summary>
+        ///     Tests that used chars should round trip assigned vector
+        /// </summary>
+        [Fact]
+        public void UsedChars_ShouldRoundTripAssignedVector()
+        {
+            ImFontGlyphRangesBuilder builder = default;
+            ImVector vector = new ImVector
+            {
+                Size = 7,
+                Capacity = 16,
+                Data = new IntPtr(42)
+            };
+
+            builder.UsedChars = vector;
+
+            Assert.Equal(7, builder.UsedChars.Size);
+            Assert.Equal(16, builder.UsedChars.Capacity);
+            Assert.Equal(new IntPtr(42), builder.UsedChars.Data);
+        }
+
+        /// <summary>
+        ///     Tests that used chars should remain zero after clear of untouched builder
+        /// </summary>
+        [Fact]
+        public void UsedChars_ShouldRemainZeroOnUntouchedBuilder()
+        {
+            ImFontGlyphRangesBuilder builder = default;
+            ImVector first = builder.UsedChars;
+            ImVector second = builder.UsedChars;
+
+            Assert.Equal(first.Size, second.Size);
+            Assert.Equal(first.Capacity, second.Capacity);
+            Assert.Equal(first.Data, second.Data);
+        }
     }
 }
