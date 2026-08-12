@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
@@ -208,6 +210,78 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(3840u, vm.Width);
             Assert.Equal(2160u, vm.Height);
             Assert.Equal(30u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that isValid throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void IsValid_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                VideoMode vm = new VideoMode(800, 600);
+                Assert.Throws<DllNotFoundException>(() => vm.IsValid());
+            }
+        }
+
+        /// <summary>
+        /// Tests that desktop mode throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void DesktopMode_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => VideoMode.DesktopMode);
+            }
+        }
+
+        /// <summary>
+        /// Tests that fullscreen modes throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void FullscreenModes_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadWindowLibrary())
+            {
+                Assert.Throws<DllNotFoundException>(() => VideoMode.FullscreenModes);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the csfml window native library can be loaded
+        /// </summary>
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadWindowLibrary()
+        {
+            if (NativeLibrary.TryLoad("csfml-window", out _))
+            {
+                return true;
+            }
+
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(Alis.Extension.Graphic.Sfml.Test.Attributes.RequireCSfmlWindowsFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
+
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "csfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-window.dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
