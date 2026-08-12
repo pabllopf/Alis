@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -44,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that native ptr should return constructor value
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void NativePtr_ShouldReturnConstructorValue()
         {
             ImGuiIoPtr ptr = new ImGuiIoPtr(_nativePtr);
@@ -54,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ImplicitConversion_ToIntPtr_ReturnsNativePtr()
         {
             IntPtr result = _ioPtr;
@@ -64,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion from int ptr returns wrapper
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ImplicitConversion_FromIntPtr_ReturnsWrapper()
         {
             ImGuiIoPtr wrapper = _nativePtr;
@@ -74,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that config flags get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ConfigFlags_GetSet_ShouldRoundtrip()
         {
             ImGuiConfigFlags val = ImGuiConfigFlags.DockingEnable;
@@ -85,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend flags get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendFlags_GetSet_ShouldRoundtrip()
         {
             ImGuiBackendFlags val = ImGuiBackendFlags.RendererHasVtxOffset;
@@ -96,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display size get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void DisplaySize_GetSet_ShouldRoundtrip()
         {
             Vector2F val = new Vector2F(1920f, 1080f);
@@ -107,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that delta time get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void DeltaTime_GetSet_ShouldRoundtrip()
         {
             _ioPtr.DeltaTime = 0.016f;
@@ -117,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that user data get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void UserData_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(42);
@@ -128,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font global scale get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void FontGlobalScale_GetSet_ShouldRoundtrip()
         {
             _ioPtr.FontGlobalScale = 1.5f;
@@ -138,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display framebuffer scale get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void DisplayFramebufferScale_GetSet_ShouldRoundtrip()
         {
             Vector2F val = new Vector2F(2f, 2f);
@@ -149,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that config docking with shift get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ConfigDockingWithShift_GetSet_ShouldRoundtrip()
         {
             _ioPtr.ConfigDockingWithShift = true;
@@ -159,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend platform name get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendPlatformName_GetSet_ShouldRoundtrip()
         {
             NullTerminatedString str = new NullTerminatedString(new byte[] { (byte)'t', (byte)'e', (byte)'s', (byte)'t' });
@@ -170,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend platform user data get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendPlatformUserData_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(100);
@@ -181,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend renderer user data get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendRendererUserData_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(200);
@@ -192,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend language user data get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendLanguageUserData_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(300);
@@ -203,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that get clipboard text fn get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void GetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(400);
@@ -214,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set clipboard text fn get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void SetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(500);
@@ -225,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clipboard user data get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ClipboardUserData_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(600);
@@ -236,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set platform ime data fn get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void SetPlatformImeDataFn_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(700);
@@ -247,7 +246,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that unused padding get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void UnusedPadding_GetSet_ShouldRoundtrip()
         {
             IntPtr val = new IntPtr(800);
@@ -258,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want capture mouse get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantCaptureMouse_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantCaptureMouse = true;
@@ -268,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want capture keyboard get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantCaptureKeyboard_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantCaptureKeyboard = true;
@@ -278,7 +277,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want text input get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantTextInput_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantTextInput = true;
@@ -288,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want set mouse pos get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantSetMousePos_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantSetMousePos = true;
@@ -298,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want save ini settings get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantSaveIniSettings_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantSaveIniSettings = true;
@@ -308,7 +307,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that nav active get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void NavActive_GetSet_ShouldRoundtrip()
         {
             _ioPtr.NavActive = true;
@@ -318,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that nav visible get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void NavVisible_GetSet_ShouldRoundtrip()
         {
             _ioPtr.NavVisible = true;
@@ -328,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that framerate get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void Framerate_GetSet_ShouldRoundtrip()
         {
             _ioPtr.Framerate = 60f;
@@ -338,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that metrics render vertices get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MetricsRenderVertices_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MetricsRenderVertices = 1000;
@@ -348,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that metrics render indices get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MetricsRenderIndices_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MetricsRenderIndices = 2000;
@@ -358,7 +357,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that metrics render windows get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MetricsRenderWindows_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MetricsRenderWindows = 5;
@@ -368,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that metrics active windows get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MetricsActiveWindows_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MetricsActiveWindows = 3;
@@ -378,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that metrics active allocations get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MetricsActiveAllocations_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MetricsActiveAllocations = 500;
@@ -388,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse delta get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDelta_GetSet_ShouldRoundtrip()
         {
             Vector2F val = new Vector2F(10f, 20f);
@@ -399,7 +398,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse pos get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MousePos_GetSet_ShouldRoundtrip()
         {
             Vector2F val = new Vector2F(100f, 200f);
@@ -410,7 +409,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse wheel get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseWheel_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MouseWheel = 1.5f;
@@ -420,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse wheel h get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseWheelH_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MouseWheelH = 2.5f;
@@ -430,7 +429,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse hovered viewport get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseHoveredViewport_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MouseHoveredViewport = 42u;
@@ -440,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key ctrl get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyCtrl_GetSet_ShouldRoundtrip()
         {
             _ioPtr.KeyCtrl = true;
@@ -450,7 +449,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key shift get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyShift_GetSet_ShouldRoundtrip()
         {
             _ioPtr.KeyShift = true;
@@ -460,7 +459,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key alt get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyAlt_GetSet_ShouldRoundtrip()
         {
             _ioPtr.KeyAlt = true;
@@ -470,7 +469,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key super get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeySuper_GetSet_ShouldRoundtrip()
         {
             _ioPtr.KeySuper = true;
@@ -480,7 +479,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key mods get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyMods_GetSet_ShouldRoundtrip()
         {
             ImGuiKey val = ImGuiKey.ImGuiModCtrl | ImGuiKey.ImGuiModShift;
@@ -491,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that want capture mouse unless popup close get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void WantCaptureMouseUnlessPopupClose_GetSet_ShouldRoundtrip()
         {
             _ioPtr.WantCaptureMouseUnlessPopupClose = true;
@@ -501,7 +500,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse pos prev get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MousePosPrev_GetSet_ShouldRoundtrip()
         {
             Vector2F val = new Vector2F(50f, 60f);
@@ -512,7 +511,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pen pressure get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void PenPressure_GetSet_ShouldRoundtrip()
         {
             _ioPtr.PenPressure = 0.5f;
@@ -522,7 +521,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that app focus lost get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void AppFocusLost_GetSet_ShouldRoundtrip()
         {
             _ioPtr.AppFocusLost = true;
@@ -532,7 +531,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that app accepting events get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void AppAcceptingEvents_GetSet_ShouldRoundtrip()
         {
             _ioPtr.AppAcceptingEvents = true;
@@ -542,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend using legacy key arrays get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendUsingLegacyKeyArrays_GetSet_ShouldRoundtrip()
         {
             _ioPtr.BackendUsingLegacyKeyArrays = 1;
@@ -552,7 +551,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend using legacy nav input array get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendUsingLegacyNavInputArray_GetSet_ShouldRoundtrip()
         {
             _ioPtr.BackendUsingLegacyNavInputArray = true;
@@ -562,7 +561,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that input queue surrogate get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void InputQueueSurrogate_GetSet_ShouldRoundtrip()
         {
             _ioPtr.InputQueueSurrogate = 0xDC00;
@@ -572,7 +571,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that read only properties should have default values
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ReadOnlyProperties_ShouldHaveDefaultValues()
         {
             Assert.Equal(0f, _ioPtr.MouseDoubleClickTime, 5);
@@ -605,7 +604,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key map get should return list
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyMap_Get_ShouldReturnList()
         {
             List<int> keyMap = _ioPtr.KeyMap;
@@ -616,7 +615,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that keys down get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeysDown_GetSet_ShouldRoundtrip()
         {
             List<bool> keysDown = new List<bool>(512);
@@ -632,7 +631,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse down get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDown_GetSet_ShouldRoundtrip()
         {
             List<bool> mouseDown = new List<bool> { true, false, true, false, true };
@@ -647,7 +646,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse clicked time get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseClickedTime_GetSet_ShouldRoundtrip()
         {
             List<double> times = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0 };
@@ -662,7 +661,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse clicked get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseClicked_GetSet_ShouldRoundtrip()
         {
             List<bool> clicked = new List<bool> { true, false, true, false, true };
@@ -677,7 +676,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse double clicked get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDoubleClicked_GetSet_ShouldRoundtrip()
         {
             List<bool> dblClicked = new List<bool> { false, true, false, true, false };
@@ -692,7 +691,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse clicked count get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseClickedCount_GetSet_ShouldRoundtrip()
         {
             List<ushort> counts = new List<ushort> { 1, 2, 3, 4, 5 };
@@ -707,7 +706,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse clicked last count get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseClickedLastCount_GetSet_ShouldRoundtrip()
         {
             List<ushort> counts = new List<ushort> { 5, 4, 3, 2, 1 };
@@ -722,7 +721,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse released get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseReleased_GetSet_ShouldRoundtrip()
         {
             List<bool> released = new List<bool> { true, true, false, false, true };
@@ -737,7 +736,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse down owned get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDownOwned_GetSet_ShouldRoundtrip()
         {
             List<bool> owned = new List<bool> { false, false, true, true, false };
@@ -752,7 +751,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse down owned unless popup close get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDownOwnedUnlessPopupClose_GetSet_ShouldRoundtrip()
         {
             List<bool> owned = new List<bool> { true, false, true, false, true };
@@ -767,7 +766,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse down duration get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDownDuration_GetSet_ShouldRoundtrip()
         {
             List<float> durations = new List<float> { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f };
@@ -782,7 +781,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse down duration prev get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDownDurationPrev_GetSet_ShouldRoundtrip()
         {
             List<float> durations = new List<float> { 0.5f, 0.4f, 0.3f, 0.2f, 0.1f };
@@ -797,7 +796,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that mouse drag max distance sqr get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void MouseDragMaxDistanceSqr_GetSet_ShouldRoundtrip()
         {
             List<float> distances = new List<float> { 1f, 2f, 3f, 4f, 5f };
@@ -812,7 +811,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor from im gui io should allocate and marshal
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void Constructor_FromImGuiIo_ShouldAllocateAndMarshal()
         {
             ImGuiIo src = new ImGuiIo { DeltaTime = 0.033f };
@@ -823,7 +822,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that read only null terminated string properties should not be null
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ReadOnly_NullTerminatedString_Properties_ShouldNotBeNull()
         {
         }
@@ -831,7 +830,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that backend renderer name get should return default
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void BackendRendererName_Get_ShouldReturnDefault()
         {
             NullTerminatedString name = _ioPtr.BackendRendererName;
@@ -840,7 +839,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that read only fonts should return im font atlas ptr
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ReadOnly_Fonts_ShouldReturnImFontAtlasPtr()
         {
             ImFontAtlasPtr fonts = _ioPtr.Fonts;
@@ -849,7 +848,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that read only font default should return im font ptr
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void ReadOnly_FontDefault_ShouldReturnImFontPtr()
         {
             ImFontPtr font = _ioPtr.FontDefault;
@@ -858,7 +857,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that nav inputs get set should roundtrip
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void NavInputs_GetSet_ShouldRoundtrip()
         {
             List<float> navInputs = new List<float>(16);
@@ -874,7 +873,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key map set should update value
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void KeyMap_Set_ShouldUpdateValue()
         {
             List<int> keyMap = new List<int>(652);
@@ -890,7 +889,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ini filename get should not throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void IniFilename_Get_ShouldNotThrow()
         {
             NullTerminatedString result = _ioPtr.IniFilename;
@@ -900,11 +899,38 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that log filename get should not throw
         /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void LogFilename_Get_ShouldNotThrow()
         {
             NullTerminatedString result = _ioPtr.LogFilename;
             Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that keys data get throws argument exception for missing field
+        /// </summary>
+        [Fact]
+        public void KeysData_Get_ThrowsArgumentException_WhenFieldMissing()
+        {
+            Assert.Throws<ArgumentException>(() => _ioPtr.KeysData);
+        }
+
+        /// <summary>
+        /// Tests that mouse clicked pos get throws argument exception for missing field
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos_Get_ThrowsArgumentException_WhenFieldMissing()
+        {
+            Assert.Throws<ArgumentException>(() => _ioPtr.MouseClickedPos);
+        }
+
+        /// <summary>
+        /// Tests that mouse drag max distance abs get throws argument exception for missing field
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs_Get_ThrowsArgumentException_WhenFieldMissing()
+        {
+            Assert.Throws<ArgumentException>(() => _ioPtr.MouseDragMaxDistanceAbs);
         }
     }
 }

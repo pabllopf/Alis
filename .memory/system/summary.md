@@ -1680,3 +1680,12 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **Coverage After**: managed + native wrapper lines covered (conditional Throws pattern)
 - **Tests Added**: 9
 - **Status**: COMPLETED
+
+## Session 2026-08-12 (ImGuiIOPtr.cs headless conversion)
+
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs`
+- **CoverageBefore**: 0.0% (CI — 906 tests skipped by RequireCImguiSystemFact)
+- **CoverageAfter**: 89.1% line / 80.4% branch (headless, CI-equivalent)
+- **TestsAdded**: 909 (906 converted to [Fact] + 3 throw-behavior tests)
+- **Commit**: test: ImGuiIOPtr.cs
+- **Status**: COMPLETED
