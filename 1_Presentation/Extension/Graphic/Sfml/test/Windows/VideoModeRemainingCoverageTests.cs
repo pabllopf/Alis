@@ -132,5 +132,82 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             VideoMode vm = new VideoMode(0, 0, 0);
             Assert.False(vm.IsValid());
         }
+
+        /// <summary>
+        /// Tests that constructor with width and height defaults bpp to 32
+        /// </summary>
+        [Fact]
+        public void Constructor_WithWidthAndHeight_DefaultsBppTo32()
+        {
+            VideoMode vm = new VideoMode(1280, 720);
+            Assert.Equal(1280u, vm.Width);
+            Assert.Equal(720u, vm.Height);
+            Assert.Equal(32u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that constructor with width height and bpp assigns all fields
+        /// </summary>
+        [Fact]
+        public void Constructor_WithWidthHeightAndBpp_AssignsAllFields()
+        {
+            VideoMode vm = new VideoMode(2560, 1440, 24);
+            Assert.Equal(2560u, vm.Width);
+            Assert.Equal(1440u, vm.Height);
+            Assert.Equal(24u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that constructor with zero values assigns zero fields
+        /// </summary>
+        [Fact]
+        public void Constructor_WithZeroValues_AssignsZeroFields()
+        {
+            VideoMode vm = new VideoMode(0, 0, 0);
+            Assert.Equal(0u, vm.Width);
+            Assert.Equal(0u, vm.Height);
+            Assert.Equal(0u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that to string contains width height and bits per pixel values
+        /// </summary>
+        [Fact]
+        public void ToString_ContainsAllValues()
+        {
+            VideoMode vm = new VideoMode(640, 480, 16);
+            string str = vm.ToString();
+            Assert.Contains("640", str);
+            Assert.Contains("480", str);
+            Assert.Contains("16", str);
+        }
+
+        /// <summary>
+        /// Tests that to string contains component labels
+        /// </summary>
+        [Fact]
+        public void ToString_ContainsComponentLabels()
+        {
+            VideoMode vm = new VideoMode(800, 600);
+            string str = vm.ToString();
+            Assert.Contains("Width", str);
+            Assert.Contains("Height", str);
+            Assert.Contains("BitsPerPixel", str);
+        }
+
+        /// <summary>
+        /// Tests that fields can be mutated directly
+        /// </summary>
+        [Fact]
+        public void Fields_CanBeMutatedDirectly()
+        {
+            VideoMode vm = new VideoMode(1, 2, 3);
+            vm.Width = 3840;
+            vm.Height = 2160;
+            vm.BitsPerPixel = 30;
+            Assert.Equal(3840u, vm.Width);
+            Assert.Equal(2160u, vm.Height);
+            Assert.Equal(30u, vm.BitsPerPixel);
+        }
     }
 }
