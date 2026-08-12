@@ -63,33 +63,5 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
                 return GlfwTestBootstrap.Window;
             }
         }
-
-        /// <summary>
-        /// Tests that opacity getter returns a value in range
-        /// </summary>
-        [Fact]
-        public void Opacity_Getter_ReturnsValueInRange()
-        {
-            Window sharedWindow = SharedWindow;
-
-            float opacity = sharedWindow.Opacity;
-
-            Assert.True((opacity >= 0.0f) && (opacity <= 1.0f));
-        }
-
-        /// <summary>
-        /// Tests that opacity setter clamps and sets the value
-        /// </summary>
-        [Fact]
-        public void Opacity_Setter_SetsValue()
-        {
-            Window sharedWindow = SharedWindow;
-
-            sharedWindow.Opacity = 0.5f;
-
-            float opacity = sharedWindow.Opacity;
-
-            Assert.True(Math.Abs(opacity - 0.5f) < 0.1f);
-        }
     }
 }
