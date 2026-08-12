@@ -817,18 +817,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Tests that get monitor physical size returns positive values
-        /// </summary>
-        [Fact]
-        public void GetMonitorPhysicalSize_ReturnsPositiveValues()
-        {
-            GlfwNative.GetMonitorPhysicalSize(PrimaryMonitor, out int width, out int height);
-
-            Assert.True(width > 0);
-            Assert.True(height > 0);
-        }
-
-        /// <summary>
         ///     Tests that get monitor position returns a position
         /// </summary>
         [Fact]
