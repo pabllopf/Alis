@@ -1630,6 +1630,15 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **File**: `4_Operation/Audio/src/Players/BrowserPlayer.cs` — remaining lines OpenAL-native-bound — BLOCKED_BY_PRODUCTION_CODE
 - **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GlShader.cs` / `GlShaderProgramParam.cs` — GL-bound + brace artifacts — BLOCKED_BY_PRODUCTION_CODE
 
+## Session 2026-08-12 (autonomous queue sweep)
+
+- **File**: N/A (queue sweep)
+- **CoverageBefore**: N/A
+- **CoverageAfter**: N/A
+- **TestsAdded**: 0
+- **Commit**: N/A
+- **Status**: NO_REMAINING_COVERAGE_TASKS — refreshed SonarCloud cache (2026-08-12T18:36, 1472 files); all 203 delta tasks (coverage < 100%) already in processed.json (735 entries); remaining 453 files without a coverage metric are SonarCloud-analysis-excluded (OpenGL enums/delegates, ECS archetypes) — not valid tasks. Terminal condition verified at skip=203: "No coverage delta detected".
+
 ## ImFontGlyphRangesBuilder.cs
 
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs`
@@ -1637,4 +1646,13 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **Coverage After**: property lines covered; native bodies untestable (host crash)
 - **Tests Added**: 3
 - **Commit**: de363d43d
+- **Status**: COMPLETED
+
+## VideoMode.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: managed surface covered; native wrappers untestable on CI
+- **Tests Added**: 6
+- **Commit**: 5f42a65f (next)
 - **Status**: COMPLETED
