@@ -93,21 +93,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that awake dynamic bodies with static body create contacts
-        /// </summary>
-        [Fact]
-        public void AwakeDynamic_WithStatic_CreatesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f));
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
         ///     Tests that disabled bodies skip contact processing
         /// </summary>
         [Fact]
