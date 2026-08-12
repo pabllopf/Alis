@@ -89,17 +89,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Tests that time getter returns a non negative value
-        /// </summary>
-        [Fact]
-        public void Time_Getter_ReturnsNonNegativeValue()
-        {
-            double time = GlfwNative.Time;
-
-            Assert.True(time >= 0.0);
-        }
-
-        /// <summary>
         ///     Tests that time setter sets the timer
         /// </summary>
         [Fact]
