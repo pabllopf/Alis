@@ -123,5 +123,62 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime roundTrip = SfmlTime.FromMilliseconds(original.AsMilliseconds());
             Assert.Equal(original.AsMicroseconds(), roundTrip.AsMicroseconds());
         }
+
+        /// <summary>
+        /// Tests that equals object returns true for boxed same value
+        /// </summary>
+        [Fact]
+        public void Equals_BoxedSameValue_ReturnsTrue()
+        {
+            SfmlTime time = default;
+            object obj = time;
+            Assert.True(time.Equals(obj));
+        }
+
+        /// <summary>
+        /// Tests that equals object returns false for other type
+        /// </summary>
+        [Fact]
+        public void Equals_OtherType_ReturnsFalse()
+        {
+            SfmlTime time = default;
+            Assert.False(time.Equals(42));
+            Assert.False(time.Equals("hello"));
+            Assert.False(time.Equals(null));
+        }
+
+        /// <summary>
+        /// Tests that typed equals returns true for equal microseconds
+        /// </summary>
+        [Fact]
+        public void Equals_TypedSameValue_ReturnsTrue()
+        {
+            SfmlTime first = default;
+            SfmlTime second = default;
+            Assert.True(first.Equals(second));
+        }
+
+        /// <summary>
+        /// Tests that equality operators return true for equal values
+        /// </summary>
+        [Fact]
+        public void EqualityOperators_EqualValues_ReturnTrue()
+        {
+            SfmlTime first = default;
+            SfmlTime second = default;
+            Assert.True(first == second);
+            Assert.False(first != second);
+        }
+
+        /// <summary>
+        /// Tests that get hash code is stable for equal values
+        /// </summary>
+        [Fact]
+        public void GetHashCode_IsStableForEqualValues()
+        {
+            SfmlTime first = default;
+            SfmlTime second = default;
+            Assert.Equal(first.GetHashCode(), second.GetHashCode());
+        }
     }
 }
