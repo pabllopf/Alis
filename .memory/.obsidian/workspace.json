@@ -203,6 +203,11 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/state/current_task.md",
+    "system/cache/sonarcloud_cache_20260812_183911.json",
+    "system/cache/sonarcloud_cache_20260812_183751.json",
+    "system/cache/sonarcloud_cache_20260812_183649.json",
+    "system/cache/sonarcloud_cache_20260812_183647.json",
     "system/cache/sonarcloud_cache_20260810_142014.json",
     "system/cache/sonarcloud_cache_20260810_141717.json",
     "system/cache/sonarcloud_cache_20260810_120343.json",
@@ -234,11 +239,6 @@
     "system/results/MemoryHelpersRemainingCoverageTests.md",
     "system/results/ArchetypeNeighborCacheRemainingCoverageTests.md",
     "system/reports",
-    "coverage/state/uncovered-files.json",
-    "coverage/decisions",
-    "coverage/patterns",
-    "coverage/tests",
-    "coverage/tasks",
     "Sin título.canvas"
   ]
 }
