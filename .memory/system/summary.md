@@ -1672,3 +1672,11 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **Coverage After**: managed surface covered; native wrappers untestable on CI
 - **Tests Added**: 6
 - **Status**: COMPLETED
+
+## VideoMode.cs
+
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: managed + native wrapper lines covered (conditional Throws pattern)
+- **Tests Added**: 9
+- **Status**: COMPLETED
