@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -383,6 +385,167 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
 
             Assert.Contains("[Transform]", str);
             Assert.Contains("Matrix", str);
+        }
+
+        /// <summary>
+        ///     Tests that get inverse throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void GetInverse_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.GetInverse());
+            }
+        }
+
+        /// <summary>
+        ///     Tests that transform point throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void TransformPoint_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.TransformPoint(1f, 2f));
+                Assert.Throws<DllNotFoundException>(() => t.TransformPoint(new Vector2F(1f, 2f)));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that transform rect throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void TransformRect_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.TransformRect(new FloatRect(0f, 0f, 1f, 1f)));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that combine throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Combine_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Transform other = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.Combine(other));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that translate throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Translate_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.Translate(1f, 2f));
+                Assert.Throws<DllNotFoundException>(() => t.Translate(new Vector2F(1f, 2f)));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that rotate throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Rotate_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.Rotate(90f));
+                Assert.Throws<DllNotFoundException>(() => t.Rotate(90f, 1f, 2f));
+                Assert.Throws<DllNotFoundException>(() => t.Rotate(90f, new Vector2F(1f, 2f)));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that scale throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void Scale_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.Scale(2f, 3f));
+                Assert.Throws<DllNotFoundException>(() => t.Scale(2f, 3f, 1f, 2f));
+                Assert.Throws<DllNotFoundException>(() => t.Scale(new Vector2F(2f, 3f)));
+                Assert.Throws<DllNotFoundException>(() => t.Scale(new Vector2F(2f, 3f), new Vector2F(1f, 2f)));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that typed equals throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void TypedEquals_WithoutNativeLibrary_Throws()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t.Equals(t));
+            }
+        }
+
+        /// <summary>
+        ///     Tests that multiply operator throws when native library is unavailable
+        /// </summary>
+        [Fact]
+        public void MultiplyOperators_WithoutNativeLibrary_Throw()
+        {
+            if (!CanLoadGraphicsLibrary())
+            {
+                Transform t = Transform.Identity;
+                Assert.Throws<DllNotFoundException>(() => t * t);
+                Assert.Throws<DllNotFoundException>(() => t * new Vector2F(1f, 2f));
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether the csfml graphics native library can be loaded
+        /// </summary>
+        /// <returns>True if the library can be loaded</returns>
+        private static bool CanLoadGraphicsLibrary()
+        {
+            if (NativeLibrary.TryLoad("csfml-graphics", out _))
+            {
+                return true;
+            }
+
+            string assemblyDir = System.IO.Path.GetDirectoryName(typeof(Alis.Extension.Graphic.Sfml.Test.Attributes.RequireCSfmlSystemFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+            {
+                return false;
+            }
+
+            string[] candidates = new[]
+            {
+                System.IO.Path.Combine(assemblyDir, "csfml-graphics"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-graphics"),
+                System.IO.Path.Combine(assemblyDir, "libcsfml-graphics.dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (System.IO.File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
