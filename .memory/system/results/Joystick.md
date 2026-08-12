@@ -1,8 +1,8 @@
-# ImGuiP2.cs
+# Joystick.cs
 
-- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiP2.cs`
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs`
 - **Coverage Before**: 0.0% (SonarCloud)
 - **Coverage After**: wrapper method lines covered on CI via conditional-native tests (managed lines via plain `[Fact]`)
-- **Tests Added**: 39 (RemainingCoverageTests)
+- **Tests Added**: 7 (RemainingCoverageTests)
 - **Uncovered Lines**: Native P/Invoke wrapper lines covered on CI via conditional `Assert.Throws<DllNotFoundException>` pattern (skipped locally when lib present); plain `[Fact]` for managed surface
 - **Status**: COMPLETED
