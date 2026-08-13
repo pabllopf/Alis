@@ -1970,3 +1970,10 @@ CoverageAfter: 97.3% local
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 97.27% local
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
