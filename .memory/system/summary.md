@@ -1823,3 +1823,10 @@ CoverageAfter: 50.0%
 TestsAdded: 23
 Commit: test: WebAssemblyGameContext.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+CoverageBefore: 0.0%
+CoverageAfter: 91.48%
+TestsAdded: 47
+Commit: test: Shader.cs
+Status: COMPLETED
