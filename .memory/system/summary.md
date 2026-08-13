@@ -1795,3 +1795,10 @@ CoverageAfter: 100%
 TestsAdded: 13
 Commit: test: ImPlotP14.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP12.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100%
+TestsAdded: 11
+Commit: test: ImPlotP12.cs
+Status: COMPLETED
