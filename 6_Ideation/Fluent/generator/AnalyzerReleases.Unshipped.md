@@ -12,4 +12,3 @@
 | ALIS008 | AOT/Expression | Error | AotReflectionAnalyzer - IdExpressionCompile |
 | ALIS009 | AOT/Runtime | Error | AotReflectionAnalyzer - IdRuntimeHelpers |
 | ALIS010 | AOT/ManualReview | Error | AotReflectionAnalyzer - IdUnknownReflection |
-
