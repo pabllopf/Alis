@@ -48,6 +48,7 @@ public static class StartupHook
             if (Environment.GetEnvironmentVariable("ALIS_MACWINDOW_HOOK") == "1")
             {
                 MacWindowBootstrap.Initialize();
+                MacOpenGLContextBootstrap.Initialize();
             }
         }
         catch (Exception)
@@ -138,6 +139,85 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
                 Frame = Window.GetFrame();
                 Window.Hide();
                 HiddenAfterHide = Window.IsVisible();
+                Ready = true;
+            }
+            catch (Exception)
+            {
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Creates the MacOpenGLContext on the process main thread after the window bootstrap and records
+    ///     the results of every member call.
+    ///     <para>
+    ///         AppKit requires NSOpenGLView creation on the main thread while xUnit runs tests on worker threads,
+    ///         so this bootstrap is triggered from the <see cref="StartupHook" /> which the runtime executes on
+    ///         the main thread before the entry point.
+    ///     </para>
+    /// </summary>
+    internal static class MacOpenGLContextBootstrap
+    {
+        /// <summary>
+        ///     The context created on the main thread.
+        /// </summary>
+        internal static MacOpenGLContext Context;
+
+        /// <summary>
+        ///     The view handle recorded right after construction.
+        /// </summary>
+        internal static IntPtr View;
+
+        /// <summary>
+        ///     The context handle recorded right after construction.
+        /// </summary>
+        internal static IntPtr ContextHandle;
+
+        /// <summary>
+        ///     The pixel format handle recorded right after construction.
+        /// </summary>
+        internal static IntPtr PixelFormat;
+
+        /// <summary>
+        ///     Indicates whether MakeCurrent executed successfully on the main thread.
+        /// </summary>
+        internal static bool MakeCurrentOk;
+
+        /// <summary>
+        ///     Indicates whether SwapBuffers executed successfully on the main thread.
+        /// </summary>
+        internal static bool SwapOk;
+
+        /// <summary>
+        ///     Indicates whether the bootstrap completed successfully on the main thread.
+        /// </summary>
+        internal static bool Ready;
+
+        /// <summary>
+        ///     Creates the context and exercises every member on the main thread.
+        /// </summary>
+        internal static void Initialize()
+        {
+            if (Ready)
+            {
+                return;
+            }
+
+            if (!MacWindowBootstrap.Ready)
+            {
+                return;
+            }
+
+            try
+            {
+                Context = new MacOpenGLContext(MacWindowBootstrap.Window);
+                View = Context.View;
+                ContextHandle = Context.Context;
+                PixelFormat = Context.PixelFormat;
+                Context.MakeCurrent();
+                MakeCurrentOk = true;
+                Context.SwapBuffers();
+                SwapOk = true;
                 Ready = true;
             }
             catch (Exception)
