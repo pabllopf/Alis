@@ -1739,3 +1739,10 @@ CoverageAfter: 96.43%
 TestsAdded: 63
 Commit: test: NativeWindow.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs
+CoverageBefore: 0.0%
+CoverageAfter: 82.2%
+TestsAdded: 51
+Commit: test: EmscriptenWeb.cs
+Status: COMPLETED

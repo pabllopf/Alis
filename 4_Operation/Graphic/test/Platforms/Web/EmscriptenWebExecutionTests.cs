@@ -1,0 +1,532 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EmscriptenWebExecutionTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using Alis.Core.Graphic.Platforms.Web;
+using Xunit;
+
+namespace Alis.Core.Graphic.Test.Platforms.Web
+{
+    /// <summary>
+    ///     Execution tests for EmscriptenWeb JavaScript interop static class.
+    ///     On non-WebAssembly runtimes all P/Invoke calls to "emscripten"
+    ///     throw DllNotFoundException, which the wrappers swallow, so these
+    ///     tests verify the catch/fallback paths of every public wrapper method.
+    /// </summary>
+    public class EmscriptenWebExecutionTests
+    {
+        /// <summary>
+        /// Tests that register keyboard callbacks does not throw
+        /// </summary>
+        [Fact]
+        public void RegisterKeyboardCallbacks_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() =>
+                EmscriptenWeb.RegisterKeyboardCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that register mouse callbacks does not throw
+        /// </summary>
+        [Fact]
+        public void RegisterMouseCallbacks_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() =>
+                EmscriptenWeb.RegisterMouseCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that register gamepad callbacks does not throw
+        /// </summary>
+        [Fact]
+        public void RegisterGamepadCallbacks_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() =>
+                EmscriptenWeb.RegisterGamepadCallbacks(IntPtr.Zero, IntPtr.Zero));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that register window callbacks does not throw
+        /// </summary>
+        [Fact]
+        public void RegisterWindowCallbacks_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() =>
+                EmscriptenWeb.RegisterWindowCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that get connected gamepads returns empty on native failure
+        /// </summary>
+        [Fact]
+        public void GetConnectedGamepads_ReturnsEmptyOnNativeFailure()
+        {
+            int[] result = EmscriptenWeb.GetConnectedGamepads();
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        /// Tests that get gamepad axes returns empty on native failure
+        /// </summary>
+        [Fact]
+        public void GetGamepadAxes_ReturnsEmptyOnNativeFailure()
+        {
+            float[] result = EmscriptenWeb.GetGamepadAxes(0);
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        /// Tests that get gamepad buttons returns empty on native failure
+        /// </summary>
+        [Fact]
+        public void GetGamepadButtons_ReturnsEmptyOnNativeFailure()
+        {
+            bool[] result = EmscriptenWeb.GetGamepadButtons(0);
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        /// Tests that show canvas does not throw
+        /// </summary>
+        [Fact]
+        public void ShowCanvas_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ShowCanvas());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that hide canvas does not throw
+        /// </summary>
+        [Fact]
+        public void HideCanvas_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.HideCanvas());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that set window title does not throw
+        /// </summary>
+        [Fact]
+        public void SetWindowTitle_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle("Test Title"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that set window title null does not throw
+        /// </summary>
+        [Fact]
+        public void SetWindowTitle_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle(null));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that set canvas size does not throw
+        /// </summary>
+        [Fact]
+        public void SetCanvasSize_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.SetCanvasSize(800, 600));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that set window icon does not throw
+        /// </summary>
+        [Fact]
+        public void SetWindowIcon_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon("/icon.png"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that set window icon null does not throw
+        /// </summary>
+        [Fact]
+        public void SetWindowIcon_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon(null));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that get window position x returns default
+        /// </summary>
+        [Fact]
+        public void GetWindowPositionX_ReturnsDefault()
+        {
+            Assert.Equal(0, EmscriptenWeb.GetWindowPositionX());
+        }
+
+        /// <summary>
+        /// Tests that get window position y returns default
+        /// </summary>
+        [Fact]
+        public void GetWindowPositionY_ReturnsDefault()
+        {
+            Assert.Equal(0, EmscriptenWeb.GetWindowPositionY());
+        }
+
+        /// <summary>
+        /// Tests that get device pixel ratio returns default
+        /// </summary>
+        [Fact]
+        public void GetDevicePixelRatio_ReturnsDefault()
+        {
+            Assert.Equal(1.0f, EmscriptenWeb.GetDevicePixelRatio());
+        }
+
+        /// <summary>
+        /// Tests that request fullscreen returns false
+        /// </summary>
+        [Fact]
+        public void RequestFullscreen_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.RequestFullscreen());
+        }
+
+        /// <summary>
+        /// Tests that exit fullscreen returns false
+        /// </summary>
+        [Fact]
+        public void ExitFullscreen_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.ExitFullscreen());
+        }
+
+        /// <summary>
+        /// Tests that is fullscreen enabled returns false
+        /// </summary>
+        [Fact]
+        public void IsFullscreenEnabled_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.IsFullscreenEnabled());
+        }
+
+        /// <summary>
+        /// Tests that lock pointer returns false
+        /// </summary>
+        [Fact]
+        public void LockPointer_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.LockPointer());
+        }
+
+        /// <summary>
+        /// Tests that unlock pointer returns false
+        /// </summary>
+        [Fact]
+        public void UnlockPointer_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.UnlockPointer());
+        }
+
+        /// <summary>
+        /// Tests that is pointer locked returns false
+        /// </summary>
+        [Fact]
+        public void IsPointerLocked_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.IsPointerLocked());
+        }
+
+        /// <summary>
+        /// Tests that vibrate gamepad returns false
+        /// </summary>
+        [Fact]
+        public void VibrateGamepad_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.VibrateGamepad(0, 0.5f, 0.5f, 100.0f));
+        }
+
+        /// <summary>
+        /// Tests that get system time ms returns default
+        /// </summary>
+        [Fact]
+        public void GetSystemTimeMs_ReturnsDefault()
+        {
+            Assert.Equal(0.0, EmscriptenWeb.GetSystemTimeMs());
+        }
+
+        /// <summary>
+        /// Tests that open file dialog returns null
+        /// </summary>
+        [Fact]
+        public void OpenFileDialog_ReturnsNull()
+        {
+            Assert.Null(EmscriptenWeb.OpenFileDialog());
+        }
+
+        /// <summary>
+        /// Tests that open file dialog custom mime returns null
+        /// </summary>
+        [Fact]
+        public void OpenFileDialog_CustomMime_ReturnsNull()
+        {
+            Assert.Null(EmscriptenWeb.OpenFileDialog("image/png"));
+        }
+
+        /// <summary>
+        /// Tests that open file dialog null mime returns null
+        /// </summary>
+        [Fact]
+        public void OpenFileDialog_NullMime_ReturnsNull()
+        {
+            Assert.Null(EmscriptenWeb.OpenFileDialog(null));
+        }
+
+        /// <summary>
+        /// Tests that save file returns false
+        /// </summary>
+        [Fact]
+        public void SaveFile_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.SaveFile("test.txt", Array.Empty<byte>(), 0));
+        }
+
+        /// <summary>
+        /// Tests that save file with data returns false
+        /// </summary>
+        [Fact]
+        public void SaveFile_WithData_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.SaveFile("test.bin", new byte[] { 1, 2, 3 }, 3));
+        }
+
+        /// <summary>
+        /// Tests that save file null data returns false
+        /// </summary>
+        [Fact]
+        public void SaveFile_NullData_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.SaveFile("file.dat", null, 0));
+        }
+
+        /// <summary>
+        /// Tests that copy to clipboard returns false
+        /// </summary>
+        [Fact]
+        public void CopyToClipboard_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.CopyToClipboard("test"));
+        }
+
+        /// <summary>
+        /// Tests that copy to clipboard null returns false
+        /// </summary>
+        [Fact]
+        public void CopyToClipboard_Null_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.CopyToClipboard(null));
+        }
+
+        /// <summary>
+        /// Tests that paste from clipboard returns null
+        /// </summary>
+        [Fact]
+        public void PasteFromClipboard_ReturnsNull()
+        {
+            Assert.Null(EmscriptenWeb.PasteFromClipboard());
+        }
+
+        /// <summary>
+        /// Tests that show alert does not throw
+        /// </summary>
+        [Fact]
+        public void ShowAlert_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert("Alert message"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that show alert null does not throw
+        /// </summary>
+        [Fact]
+        public void ShowAlert_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert(null));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that show confirm returns false
+        /// </summary>
+        [Fact]
+        public void ShowConfirm_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.ShowConfirm("Confirm?"));
+        }
+
+        /// <summary>
+        /// Tests that show confirm null returns false
+        /// </summary>
+        [Fact]
+        public void ShowConfirm_Null_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.ShowConfirm(null));
+        }
+
+        /// <summary>
+        /// Tests that get language returns default
+        /// </summary>
+        [Fact]
+        public void GetLanguage_ReturnsDefault()
+        {
+            Assert.Equal("en", EmscriptenWeb.GetLanguage());
+        }
+
+        /// <summary>
+        /// Tests that is online returns false
+        /// </summary>
+        [Fact]
+        public void IsOnline_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.IsOnline());
+        }
+
+        /// <summary>
+        /// Tests that get battery level returns default
+        /// </summary>
+        [Fact]
+        public void GetBatteryLevel_ReturnsDefault()
+        {
+            Assert.Equal(-1.0f, EmscriptenWeb.GetBatteryLevel());
+        }
+
+        /// <summary>
+        /// Tests that is charging returns false
+        /// </summary>
+        [Fact]
+        public void IsCharging_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.IsCharging());
+        }
+
+        /// <summary>
+        /// Tests that get orientation returns default
+        /// </summary>
+        [Fact]
+        public void GetOrientation_ReturnsDefault()
+        {
+            Assert.Equal(1, EmscriptenWeb.GetOrientation());
+        }
+
+        /// <summary>
+        /// Tests that request camera permission returns false
+        /// </summary>
+        [Fact]
+        public void RequestCameraPermission_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.RequestCameraPermission());
+        }
+
+        /// <summary>
+        /// Tests that request microphone permission returns false
+        /// </summary>
+        [Fact]
+        public void RequestMicrophonePermission_ReturnsFalse()
+        {
+            Assert.False(EmscriptenWeb.RequestMicrophonePermission());
+        }
+
+        /// <summary>
+        /// Tests that console log does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleLog_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog("log message"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that console log null does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleLog_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog(null));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that console warn does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleWarn_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn("warn message"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that console warn null does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleWarn_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn(null));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that console error does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleError_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError("error message"));
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that console error null does not throw
+        /// </summary>
+        [Fact]
+        public void ConsoleError_Null_DoesNotThrow()
+        {
+            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError(null));
+            Assert.Null(ex);
+        }
+    }
+}
