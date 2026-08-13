@@ -2,7 +2,7 @@
 
 - **File**: `4_Operation/Graphic/src/Platforms/Web/WebAssemblyDisplayManager.cs`
 - **Coverage Before**: 0.0%
-- **Coverage After**: ~0.0% (ceiling)
-- **Tests Added**: 0
-- **Uncovered Lines**: Native library bindings (cimgui/glfw/sdl2/ffmpeg/objc/JS) unavailable on SonarCloud CI
+- **Coverage After**: 87.26% (137/157; all 13 members covered)
+- **Tests Added**: 47 (WebAssemblyDisplayManagerExecutionTests.cs)
+- **Uncovered Lines**: SetResolution catch, ToggleFullscreen/Update fullscreen-true paths, Enter/ExitFullscreen success bodies (RequestFullscreen never true on desktop), SaveScreenshot catch — native fullscreen success only reachable on WASM
 - **Status**: COMPLETED
