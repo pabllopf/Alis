@@ -2103,3 +2103,10 @@ CoverageAfter: 100%
 TestsAdded: 6
 Commit: test: MacWindow.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs
+CoverageBefore: 0.0%
+CoverageAfter: 91.3% local
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
