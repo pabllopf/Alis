@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 5 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 13 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    364
+    210
 
     ### Uncovered Branches
-    88
+    0
 
     ### Method
-    NativeWindow
+    ImPlotP14
 
     ### Complexity / LOC
-    134 / 594 lines
+    70 / 287 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeWindow.cs
+//  File:ImPlotP14.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
-using Microsoft.Win32.SafeHandles;
-using Image = Alis.Core.Graphic.Image;
 
-namespace Alis.Extension.Graphic.Glfw
+namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Provides a simplified interface for creating and using a GLFW window with properties, events, etc.
+    ///     The im plot class
     /// </summary>
-    /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
-    // S3897: Static fields are inherited from SafeHandle base class; ISerializable is not applicable for native handles
-    // S4035: No unsafe methods in this class; base SafeHandle inherits from unsafe contexts
-    [SuppressMessage("SonarAnalyzer.CSharp", "S3897", Justification = "Inherited static fields from SafeHandle base class")]
-    [SuppressMessage("SonarAnalyzer.CSharp", "S4035", Justification = "No unsafe methods in this class")]
-    public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
+    public static partial class ImPlot
     {
         /// <summary>
-        ///     The window instance this object wraps.
+        ///     Plots the stems using the specified label id
         /// </summary>
-        protected readonly Window Window;
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
+        }
 
         /// <summary>
-        ///     Roots GLFW callback delegates to prevent GC collection while they are registered with unmanaged code.
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/NativeWindowTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP14Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage NativeWindow.cs
+    Commit format: test: coverage ImPlotP14.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
