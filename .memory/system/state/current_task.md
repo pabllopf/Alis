@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 59 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 41 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    43
+    99
 
     ### Uncovered Branches
-    6
+    48
 
     ### Method
-    Sprite
+    AudioPlayer
 
     ### Complexity / LOC
-    16 / 98 lines
+    32 / 133 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Sprite.cs
+//  File:AudioPlayer.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Extension.Graphic.Sfml.Systems;
+using System.Diagnostics;
+using System.IO;
+using Alis.Extension.Media.FFmpeg.BaseClasses;
 
-namespace Alis.Extension.Graphic.Sfml.Render
+namespace Alis.Extension.Media.FFmpeg.Audio
 {
     /// <summary>
-    ///     This class defines a sprite : texture, transformations,
-    ///     color, and draw on screen
+    ///     The audio player class
     /// </summary>
-    /// <remarks>
-    ///     See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
-    /// </remarks>
-    public class Sprite : Transformable, IDrawable
+    /// <seealso cref="MediaWriter{Frame}" />
+    /// <seealso cref="IDisposable" />
+    public class AudioPlayer : MediaWriter<AudioFrame>, IDisposable
     {
         /// <summary>
-        ///     The my texture
+        ///     The ffplay
         /// </summary>
-        private Texture myTexture;
+        internal readonly string ffplay;
 
         /// <summary>
-        ///     Default constructor
+        ///     The ffplayp
         /// </summary>
-        public Sprite() :
-            base(sfSprite_create())
+        private Process ffplayp;
+
+        /// <summary>
+        ///     Used for playing audio data
+        /// </summary>
+        /// <param name="input">Input audio to play (can be left empty if planning on playing samples directly)</param>
+        /// <param name="ffplayExecutable">Name or path to the ffplay executable</param>
+        public AudioPlayer(string input = null, string ffplayExecutable = "ffplay")
         {
-        }
-
-
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/SpriteTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioPlayerTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Sprite.cs
+    Commit format: test: coverage AudioPlayer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
