@@ -2089,3 +2089,10 @@ CoverageAfter: 98% local
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 97.9%
+TestsAdded: 1
+Commit: test: View.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
