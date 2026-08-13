@@ -1949,3 +1949,10 @@ CoverageAfter: 91.43%
 TestsAdded: 47
 Commit: test: GlfwNative.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 89.76%
+TestsAdded: 22
+Commit: test: Texture.cs
+Status: COMPLETED
