@@ -2313,3 +2313,10 @@ CoverageAfter: 85.68%
 TestsAdded: 10
 Commit: test: ImGuiP7.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs
+CoverageBefore: 1.4%
+CoverageAfter: 100%
+TestsAdded: 5
+Commit: test: ImPlotP3.cs
+Status: COMPLETED
