@@ -1921,3 +1921,10 @@ CoverageAfter: 100%
 TestsAdded: 12
 Commit: test: ImPlotP16.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs
+CoverageBefore: 0.0%
+CoverageAfter: 54.6%
+TestsAdded: 42
+Commit: test: WebAssemblyPlatformIntegration.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
