@@ -203,6 +203,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260813_070241.json",
     "system/results/Joystick.md",
     "system/results/Sensor.md",
     "system/results/ImGui.md",
@@ -238,7 +239,6 @@
     "system/results/QuaternionRemainingCoverageTests.md",
     "system/results/GameObjectRefTupleRemainingCoverageTests.md",
     "system/results/RefTupleRemainingCoverageTests.md",
-    "system/results/SceneQueryExtensionsRemainingCoverageTests.md",
     "Sin título.canvas"
   ]
 }
