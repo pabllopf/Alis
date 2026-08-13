@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 5 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    690
+    364
 
     ### Uncovered Branches
-    112
+    88
 
     ### Method
-    ImGuiIOPtr
+    NativeWindow
 
     ### Complexity / LOC
-    235 / 1001 lines
+    134 / 594 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIOPtr.cs
+//  File:NativeWindow.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -58,49 +58,49 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Glfw.Enums;
+using Alis.Extension.Graphic.Glfw.Structs;
+using Microsoft.Win32.SafeHandles;
+using Image = Alis.Core.Graphic.Image;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Glfw
 {
     /// <summary>
-    ///     The im gui io ptr
+    ///     Provides a simplified interface for creating and using a GLFW window with properties, events, etc.
     /// </summary>
-    public struct ImGuiIoPtr
+    /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
+    // S3897: Static fields are inherited from SafeHandle base class; ISerializable is not applicable for native handles
+    // S4035: No unsafe methods in this class; base SafeHandle inherits from unsafe contexts
+    [SuppressMessage("SonarAnalyzer.CSharp", "S3897", Justification = "Inherited static fields from SafeHandle base class")]
+    [SuppressMessage("SonarAnalyzer.CSharp", "S4035", Justification = "No unsafe methods in this class")]
+    public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
     {
         /// <summary>
-        ///     Gets the value of the native ptr
+        ///     The window instance this object wraps.
         /// </summary>
-        public IntPtr NativePtr { get; }
+        protected readonly Window Window;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
-        /// </summary>
-        /// <param name="imGuiIo">The im gui io</param>
-        public ImGuiIoPtr(ImGuiIo imGuiIo)
-        {
-            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
+        ///     Roots GLFW callback delegates to prevent GC collection while they are registered with unmanaged code.
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiIOPtrTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/NativeWindowTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiIOPtr.cs
+    Commit format: test: coverage NativeWindow.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
