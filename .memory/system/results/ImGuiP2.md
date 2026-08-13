@@ -1,8 +1,8 @@
 # ImGuiP2.cs
 
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiP2.cs`
-- **Coverage Before**: 0.0% (SonarCloud)
-- **Coverage After**: wrapper method lines covered on CI via conditional-native tests (managed lines via plain `[Fact]`)
-- **Tests Added**: 39 (RemainingCoverageTests)
-- **Uncovered Lines**: Native P/Invoke wrapper lines covered on CI via conditional `Assert.Throws<DllNotFoundException>` pattern (skipped locally when lib present); plain `[Fact]` for managed surface
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100% (161/161 lines)
+- **Tests Added**: 7 (ImGuiP2ExecutionTests.cs, macOS-only, real native cimgui execution; all 39 DragInt/DragScalar overloads)
+- **Uncovered Lines**: none
 - **Status**: COMPLETED
