@@ -1942,3 +1942,10 @@ CoverageAfter: 98.0%
 TestsAdded: 8
 Commit: test: ImGuizMo.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs
+CoverageBefore: 0.0%
+CoverageAfter: 91.43%
+TestsAdded: 47
+Commit: test: GlfwNative.cs
+Status: COMPLETED
