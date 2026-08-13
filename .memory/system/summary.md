@@ -2243,3 +2243,10 @@ CoverageAfter: 75%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 100% local
+TestsAdded: 0
+Commit: none
+Status: COMPLETED
