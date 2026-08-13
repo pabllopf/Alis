@@ -644,6 +644,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs"
   ]
 }
