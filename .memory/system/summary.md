@@ -2005,3 +2005,10 @@ CoverageAfter: 2.2%
 TestsAdded: 2
 Commit: test: RenderTexture.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 95.6%
+TestsAdded: 1
+Commit: test: Image.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
