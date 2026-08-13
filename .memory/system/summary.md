@@ -1872,3 +1872,10 @@ CoverageAfter: 100%
 TestsAdded: 11
 Commit: test: ImPlotP19.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP6.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100%
+TestsAdded: 12
+Commit: test: ImPlotP6.cs
+Status: COMPLETED
