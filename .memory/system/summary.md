@@ -2306,3 +2306,10 @@ CoverageAfter: N/A (const-only, not instrumentable)
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+CoverageBefore: 0.6%
+CoverageAfter: 85.68%
+TestsAdded: 10
+Commit: test: ImGuiP7.cs
+Status: COMPLETED
