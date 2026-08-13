@@ -2061,3 +2061,10 @@ CoverageAfter: 77.8%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs
+CoverageBefore: 0.0%
+CoverageAfter: 85% local
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
