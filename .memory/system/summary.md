@@ -2201,3 +2201,10 @@ CoverageAfter: 38.9%
 TestsAdded: 2
 Commit: test: Cursor.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs
+CoverageBefore: 0.0%
+CoverageAfter: 81.25%
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
