@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.4] - 2026-08-13
+### :bug: Bug Fixes
+- [`ce798bf`](https://github.com/pabllopf/Alis/commit/ce798bf607d010869b7d404d079e4016a4510a8b) - update the cache *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`035186f`](https://github.com/pabllopf/Alis/commit/035186fff0971a410d14cba2dcf756bd04399a47) - systems *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`de363d4`](https://github.com/pabllopf/Alis/commit/de363d43d1dadbd03fc4e5b2b6f227e59b9c7a0f) - ImFontGlyphRangesBuilder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`295d7d1`](https://github.com/pabllopf/Alis/commit/295d7d17b16aea225d1816f04a33cb3007881f9d) - ImFontGlyphRangesBuilder.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93f5e9e`](https://github.com/pabllopf/Alis/commit/93f5e9e53c018dcdb1cd2e8fb36fdd1c4f359a89) - VideoMode.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`103fbaa`](https://github.com/pabllopf/Alis/commit/103fbaaa5c7aaf02226e23a8f8f87885e70aa52d) - VideoMode.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`573cccd`](https://github.com/pabllopf/Alis/commit/573cccd894a0011c97ba4a9140a4e6ea9ee9b01c) - SfmlTime.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`629a59c`](https://github.com/pabllopf/Alis/commit/629a59ce48f76200d7a5ab0426ee4816ef1eb2ee) - SfmlTime.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`247741a`](https://github.com/pabllopf/Alis/commit/247741a48a2116ee9957dd5e139843398aa561e0) - Transform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`432b1f9`](https://github.com/pabllopf/Alis/commit/432b1f934b0e6d261eed385c4b73dcf9a7cb898f) - Transform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`569137d`](https://github.com/pabllopf/Alis/commit/569137d4b9f11683779cfd43780bcc68819c519e) - VideoMode.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6119f15`](https://github.com/pabllopf/Alis/commit/6119f15a8e311d065c48644a62487a4242320277) - VideoMode.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b98094e`](https://github.com/pabllopf/Alis/commit/b98094e714d5e3e5ca834f4ad9a5ad7f1dafd15a) - SfmlTime.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f584ff`](https://github.com/pabllopf/Alis/commit/1f584ffecbcd1275c033db8a20f5b70a0af05e16) - Transform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5dc87d7`](https://github.com/pabllopf/Alis/commit/5dc87d791fec8e1d0041bfb86916a8b30f43c584) - Joystick.cs Clipboard.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`83f9fe2`](https://github.com/pabllopf/Alis/commit/83f9fe2c5866a3f47b69410edf0a49dc580582cd) - Keyboard.cs Sensor.cs Mouse.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16356ec`](https://github.com/pabllopf/Alis/commit/16356ec0fa060bf3860c212059d227ab224029a6) - RenderStates.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1da0ec`](https://github.com/pabllopf/Alis/commit/e1da0ecb20909c03d17d89c0487a733e805bccf9) - ImGui.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20e3bb2`](https://github.com/pabllopf/Alis/commit/20e3bb2cfb77f38febcacef4018a5cd03b48e907) - ImGuiP1.cs ImGuiP2.cs ImGuiP4.cs ImGuiP6.cs ImGuiP8.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`020054a`](https://github.com/pabllopf/Alis/commit/020054abaa3e6a33f454c6e5182ebc7f6d600451) - ImGuiP3.cs ImGuiP5.cs ImGuiP7.cs ImDrawListPtr.cs ImFontAtlasPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1ed0867`](https://github.com/pabllopf/Alis/commit/1ed086778ba06bf184c7332822238ad4b8c096bb) - ImGuiIOPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4e8f091`](https://github.com/pabllopf/Alis/commit/4e8f091d2d7d6f750db0b8a8bf5b815538eaf181) - ImPlot.cs ImPlotP1-22.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f08bd95`](https://github.com/pabllopf/Alis/commit/f08bd9580f2b737ae020f60f1f670a81f6e38cf8) - ImGuizMo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6245dc`](https://github.com/pabllopf/Alis/commit/f6245dc9254479fb5ce7c072d70241d0d40b462d) - session coverage summary *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a670e53`](https://github.com/pabllopf/Alis/commit/a670e5360e9bf51405e04d4b3778032b6f79f17c) - state tracking *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47f5a07`](https://github.com/pabllopf/Alis/commit/47f5a07f203920c983426eb40d382573c8d779a8) - ContextHandler.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.3] - 2026-08-12
 ### :white_check_mark: Tests
 - [`8394c8d`](https://github.com/pabllopf/Alis/commit/8394c8defd5327b4ca3042e6d81e4152a8ef7b31) - BoxCollider.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -9427,3 +9459,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.1]: https://github.com/pabllopf/Alis/compare/v1.1.0...v1.1.1
 [v1.1.2]: https://github.com/pabllopf/Alis/compare/v1.1.1...v1.1.2
 [v1.1.3]: https://github.com/pabllopf/Alis/compare/v1.1.2...v1.1.3
+[v1.1.4]: https://github.com/pabllopf/Alis/compare/v1.1.3...v1.1.4
