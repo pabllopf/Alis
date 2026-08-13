@@ -675,6 +675,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs"
   ]
 }
