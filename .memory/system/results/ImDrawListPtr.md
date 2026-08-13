@@ -1,8 +1,8 @@
 # ImDrawListPtr.cs
 
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs`
-- **Coverage Before**: 0.0% (SonarCloud)
-- **Coverage After**: wrapper method lines covered on CI via conditional-native tests (managed lines via plain `[Fact]`)
-- **Tests Added**: 93 (RemainingCoverageTests)
-- **Uncovered Lines**: Native P/Invoke wrapper lines covered on CI via conditional `Assert.Throws<DllNotFoundException>` pattern (skipped locally when lib present); plain `[Fact]` for managed surface
+- **Coverage Before**: 7.0% (23/328)
+- **Coverage After**: 100% (328/328)
+- **Tests Added**: 12 (ImDrawListPtrExecutionTests.cs, macOS-only, real native cimgui execution)
+- **Uncovered Lines**: none (ResetForNewFrame/ClearFreeMemory covered as terminal calls before context destroy)
 - **Status**: COMPLETED
