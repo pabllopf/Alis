@@ -1886,3 +1886,10 @@ CoverageAfter: 100%
 TestsAdded: 9
 Commit: test: ImPlotP7.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 63.35%
+TestsAdded: 21
+Commit: test: RenderWindow.cs
+Status: COMPLETED
