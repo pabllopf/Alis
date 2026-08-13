@@ -1732,3 +1732,10 @@ CoverageAfter: 94.27%
 TestsAdded: 18
 Commit: test: ImGuiP6.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 96.43%
+TestsAdded: 63
+Commit: test: NativeWindow.cs
+Status: COMPLETED
