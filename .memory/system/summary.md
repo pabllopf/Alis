@@ -2285,3 +2285,10 @@ CoverageAfter: 100% local
 TestsAdded: 0
 Commit: none
 Status: COMPLETED
+
+File: 4_Operation/Physic/src/Dynamics/Categories.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (enum, not instrumentable)
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
