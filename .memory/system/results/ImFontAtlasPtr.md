@@ -1,8 +1,8 @@
 # ImFontAtlasPtr.cs
 
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs`
-- **Coverage Before**: 0.0% (SonarCloud)
-- **Coverage After**: wrapper method lines covered on CI via conditional-native tests (managed lines via plain `[Fact]`)
-- **Tests Added**: 44 (RemainingCoverageTests)
-- **Uncovered Lines**: Native P/Invoke wrapper lines covered on CI via conditional `Assert.Throws<DllNotFoundException>` pattern (skipped locally when lib present); plain `[Fact]` for managed surface
+- **Coverage Before**: 0.0%
+- **Coverage After**: 95.05% (173/182 lines)
+- **Tests Added**: 13 (ImFontAtlasPtrExecutionTests.cs, macOS-only, real native cimgui execution)
+- **Uncovered Lines**: GetTexDataAsAlpha8/Rgba32 out byte[] overloads (P/Invoke out byte[] without size info SIGSEGVs), GetCustomRectByIndex invalid index (native vector assert)
 - **Status**: COMPLETED

@@ -1830,3 +1830,10 @@ CoverageAfter: 91.48%
 TestsAdded: 47
 Commit: test: Shader.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs
+CoverageBefore: 0.0%
+CoverageAfter: 95.05%
+TestsAdded: 13
+Commit: test: ImFontAtlasPtr.cs
+Status: COMPLETED
