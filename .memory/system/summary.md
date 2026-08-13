@@ -2208,3 +2208,10 @@ CoverageAfter: 81.25%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs
+CoverageBefore: 7.1%
+CoverageAfter: 100%
+TestsAdded: 6
+Commit: test: ImFontGlyphRangesBuilder.cs
+Status: COMPLETED
