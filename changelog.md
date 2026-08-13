@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.5] - 2026-08-13
+### :white_check_mark: Tests
+- [`cf4ac30`](https://github.com/pabllopf/Alis/commit/cf4ac30651ea8b74f89664bf0affecf8ccd91083) - ImPlot.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8533855`](https://github.com/pabllopf/Alis/commit/8533855f78962995fe813f90ae2f7c55a0aa5f3e) - ImGuiP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04952d4`](https://github.com/pabllopf/Alis/commit/04952d4b3efe7ae995c1b7938c503b6e7fc72cde) - ImGuiP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eb1cbb4`](https://github.com/pabllopf/Alis/commit/eb1cbb40e52e9c164cddb40696f4c34c4bfeb09c) - ImGuiP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffce845`](https://github.com/pabllopf/Alis/commit/ffce84508f67aef728ef447599070ba424eddfc8) - NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c78f45`](https://github.com/pabllopf/Alis/commit/0c78f459653d277a883a5dacaf6cd04e12a49687) - EmscriptenWeb.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`933ef83`](https://github.com/pabllopf/Alis/commit/933ef83d481167fabe75f73b30d54d3e1f0b7cf5) - ImDrawListPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c687caa`](https://github.com/pabllopf/Alis/commit/c687caac57b941e626d7a2964ee06c7ddc28017e) - ImPlotP10.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`badc970`](https://github.com/pabllopf/Alis/commit/badc97063464a8ec1139b084fc938671911882f0) - ImPlotP1.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e82d9df`](https://github.com/pabllopf/Alis/commit/e82d9df24dedeb0b51f5ba83946bf7b22eab0347) - ImPlotP15.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2fb9205`](https://github.com/pabllopf/Alis/commit/2fb92059fdf5b3e077aac41246baafb3ecf24a9d) - ImPlotP11.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f315b1f`](https://github.com/pabllopf/Alis/commit/f315b1fff0e60c8430172102d76fa929a6fa58ef) - ImGuiP4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.4] - 2026-08-13
 ### :bug: Bug Fixes
 - [`ce798bf`](https://github.com/pabllopf/Alis/commit/ce798bf607d010869b7d404d079e4016a4510a8b) - update the cache *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -9460,3 +9476,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.2]: https://github.com/pabllopf/Alis/compare/v1.1.1...v1.1.2
 [v1.1.3]: https://github.com/pabllopf/Alis/compare/v1.1.2...v1.1.3
 [v1.1.4]: https://github.com/pabllopf/Alis/compare/v1.1.3...v1.1.4
+[v1.1.5]: https://github.com/pabllopf/Alis/compare/v1.1.4...v1.1.5
