@@ -1844,3 +1844,10 @@ CoverageAfter: 98.3% local
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (enum, not instrumentable)
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
