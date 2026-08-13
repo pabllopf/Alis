@@ -2096,3 +2096,10 @@ CoverageAfter: 97.9%
 TestsAdded: 1
 Commit: test: View.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100%
+TestsAdded: 6
+Commit: test: MacWindow.cs
+Status: COMPLETED
