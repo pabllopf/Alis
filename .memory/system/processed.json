@@ -652,6 +652,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs"
   ]
 }

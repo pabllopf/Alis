@@ -2019,3 +2019,10 @@ CoverageAfter: 100%
 TestsAdded: 8
 Commit: test: ImPlotP20.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 95.2% local
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
