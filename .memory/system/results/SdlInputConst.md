@@ -1,8 +1,8 @@
 # SdlInputConst.cs
 
 - **File**: `1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs`
-- **Coverage Before**: 0.0%
-- **Coverage After**: ~0.0% (ceiling)
-- **Tests Added**: 0
-- **Uncovered Lines**: Native library bindings (cimgui/glfw/sdl2/ffmpeg/objc/JS) unavailable on SonarCloud CI
-- **Status**: COMPLETED
+- **Coverage Before**: 0.0% (SonarCloud artifact)
+- **Coverage After**: N/A — static class of const fields only: coverlet does not instrument const declarations (compile-time inlined, no executable IL)
+- **Tests Added**: 0 (existing suite authoritative)
+- **Uncovered Lines**: const declarations — structurally un-coverable
+- **Status**: BLOCKED_BY_PRODUCTION_CODE
