@@ -1,8 +1,8 @@
 # Font.cs
 
-- **File**: `4_Operation/Graphic/src/Ui/Font.cs`
-- **Coverage Before**: 46.5% (122 uncovered)
-- **Coverage After**: ~57% (+24 lines)
-- **Tests Added**: 5 (FontRemainingBranchCoverageTests.cs — InitializeShaders/LoadTexture/SetupBuffers throw-points, RenderText GL-init block entry/exit)
-- **Uncovered Lines**: GL render loop, resource-load success paths — require live GL context
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs`
+- **Coverage Before**: 0.0% (SonarCloud stale)
+- **Coverage After**: 100% (59/59, local — 49 existing tests pass)
+- **Tests Added**: 0 (existing suite authoritative)
+- **Uncovered Lines**: none
 - **Status**: COMPLETED
