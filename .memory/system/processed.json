@@ -665,6 +665,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs"
   ]
 }

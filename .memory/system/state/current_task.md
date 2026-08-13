@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 13 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 59 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    210
+    43
 
     ### Uncovered Branches
-    0
+    6
 
     ### Method
-    ImPlotP14
+    Sprite
 
     ### Complexity / LOC
-    70 / 287 lines
+    16 / 98 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImPlotP14.cs
+//  File:Sprite.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using System.Security;
+using Alis.Extension.Graphic.Sfml.Systems;
 
-namespace Alis.Extension.Graphic.Ui.Extras.Plot
+namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     The im plot class
+    ///     This class defines a sprite : texture, transformations,
+    ///     color, and draw on screen
     /// </summary>
-    public static partial class ImPlot
+    /// <remarks>
+    ///     See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
+    /// </remarks>
+    public class Sprite : Transformable, IDrawable
     {
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     The my texture
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
-        }
+        private Texture myTexture;
 
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Default constructor
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        public Sprite() :
+            base(sfSprite_create())
+        {
+        }
+
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP14Tests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/SpriteTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImPlotP14.cs
+    Commit format: test: coverage Sprite.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
