@@ -2054,3 +2054,10 @@ CoverageAfter: 4.3%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs
+CoverageBefore: 0.0%
+CoverageAfter: 77.8%
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
