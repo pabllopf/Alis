@@ -1697,3 +1697,17 @@ Processed all 208 SonarCloud-queued files (735 entries in processed.json). All 1
 - **ImFontGlyphRangesBuilder.cs**: UsedChars property coverage (native calls abort host even locally).
 - **KeyCodes.cs**: BLOCKED — enum member lines counted as coverable by SonarCloud (169) but coverlet emits no data for enums; cannot be covered by any test.
 - **GameWindow.cs**: BLOCKED_BY_PRODUCTION_CODE — native window creation hangs the test host without a display.
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
+CoverageBefore: 0.0% (SonarCloud stale) / 96.5% local
+CoverageAfter: 96.5% local
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs
+CoverageBefore: 4.1%
+CoverageAfter: 88.18%
+TestsAdded: 7
+Commit: test: ImPlot.cs
+Status: COMPLETED

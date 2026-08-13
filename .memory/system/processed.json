@@ -606,6 +606,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Styles.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEvent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/InputStream.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/CSFML.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/CSFML.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs"
   ]
 }
