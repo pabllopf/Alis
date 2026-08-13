@@ -688,6 +688,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Constant.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Constant.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs"
   ]
 }
