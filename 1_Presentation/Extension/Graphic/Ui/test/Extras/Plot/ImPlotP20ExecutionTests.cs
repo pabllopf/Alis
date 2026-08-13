@@ -1,0 +1,365 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImPlotP20ExecutionTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
+using Xunit;
+
+namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
+{
+    /// <summary>
+    ///     Executes the ImPlotP20 wrapper methods (PlotHeatmap overloads for int, uint,
+    ///     long and ulong arrays plus PlotHistogram overloads for float, double, sbyte
+    ///     and byte arrays) against the native cimgui library so that the managed bodies
+    ///     of the wrappers in ImPlotP20.cs are exercised for line coverage.
+    /// </summary>
+    public class ImPlotP20ExecutionTests
+    {
+        /// <summary>
+        ///     The image offset of the native GImGui context slot
+        /// </summary>
+        private const int GImGuiSlot = 0x4597e0;
+
+        /// <summary>
+        ///     The image offset of the native GImPlot context slot
+        /// </summary>
+        private const int GImPlotSlot = 0x459808;
+
+        /// <summary>
+        ///     The dyld image count
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "_dyld_image_count")]
+        private static extern int DyldImageCount();
+
+        /// <summary>
+        ///     The dyld get image name
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "_dyld_get_image_name")]
+        private static extern IntPtr DyldGetImageName(int index);
+
+        /// <summary>
+        ///     The dyld get image header
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "_dyld_get_image_header")]
+        private static extern IntPtr DyldGetImageHeader(int index);
+
+        /// <summary>
+        ///     Creates an ImGui context, binds an ImPlot context to it and starts a new frame.
+        ///     The native cimgui library is loaded twice by the runtime, so the context slots
+        ///     of every loaded image are synchronized to keep all native calls consistent.
+        /// </summary>
+        /// <returns>The imgui context</returns>
+        private static IntPtr CreateContexts()
+        {
+            IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
+            ImGuiNative.igSetCurrentContext(imgui);
+            IntPtr ioPtr = ImGuiNative.igGetIO();
+            Marshal.StructureToPtr(1280.0f, IntPtr.Add(ioPtr, 8), false);
+            Marshal.StructureToPtr(720.0f, IntPtr.Add(ioPtr, 12), false);
+            IntPtr fontsPtr = Marshal.ReadIntPtr(ioPtr, 80);
+            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(fontsPtr, out IntPtr _, out int _, out int _, out int _);
+            IntPtr implot = ImPlot.CreateContext();
+            ImPlot.SetImGuiContext(imgui);
+            ImPlot.SetCurrentContext(implot);
+            SyncContextSlots(imgui, implot);
+            ImGuiNative.igNewFrame();
+            return imgui;
+        }
+
+        /// <summary>
+        ///     Ends the active frame, destroys the ImPlot context and the ImGui context.
+        /// </summary>
+        /// <param name="imgui">The imgui context</param>
+        private static void DestroyContexts(IntPtr imgui)
+        {
+            ImGuiNative.igEndFrame();
+            ImPlot.DestroyContext();
+            ImGuiNative.igDestroyContext(imgui);
+        }
+
+        /// <summary>
+        ///     Synchronizes the ImGui and ImPlot context pointers of every loaded cimgui image.
+        /// </summary>
+        /// <param name="imgui">The imgui context</param>
+        /// <param name="implot">The implot context</param>
+        private static void SyncContextSlots(IntPtr imgui, IntPtr implot)
+        {
+            int count = DyldImageCount();
+
+            for (int i = 0; i < count; i++)
+            {
+                string name = Marshal.PtrToStringAnsi(DyldGetImageName(i));
+
+                if (name != null && name.Contains("cimgui"))
+                {
+                    IntPtr imageBase = DyldGetImageHeader(i);
+                    Marshal.WriteInt64(imageBase + GImGuiSlot, imgui.ToInt64());
+                    Marshal.WriteInt64(imageBase + GImPlotSlot, implot.ToInt64());
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Executes the int array PlotHeatmap wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHeatmap_IntArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                int[] values = new int[] { 1 };
+                if (ImPlot.BeginPlot("P20 Heatmap Int", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    ImPlot.PlotHeatmap("hm s32 a", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 });
+                    ImPlot.PlotHeatmap("hm s32 b", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the uint array PlotHeatmap wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHeatmap_UintArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                uint[] values = new uint[] { 1 };
+                if (ImPlot.BeginPlot("P20 Heatmap Uint", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    ImPlot.PlotHeatmap("hm u32 a", values, 1, 1);
+                    ImPlot.PlotHeatmap("hm u32 b", values, 1, 1, 0);
+                    ImPlot.PlotHeatmap("hm u32 c", values, 1, 1, 0, 1);
+                    ImPlot.PlotHeatmap("hm u32 d", values, 1, 1, 0, 1, "%.1f");
+                    ImPlot.PlotHeatmap("hm u32 e", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 });
+                    ImPlot.PlotHeatmap("hm u32 f", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 });
+                    ImPlot.PlotHeatmap("hm u32 g", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the long array PlotHeatmap wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHeatmap_LongArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                long[] values = new long[] { 1 };
+                if (ImPlot.BeginPlot("P20 Heatmap Long", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    ImPlot.PlotHeatmap("hm s64 a", values, 1, 1);
+                    ImPlot.PlotHeatmap("hm s64 b", values, 1, 1, 0);
+                    ImPlot.PlotHeatmap("hm s64 c", values, 1, 1, 0, 1);
+                    ImPlot.PlotHeatmap("hm s64 d", values, 1, 1, 0, 1, "%.1f");
+                    ImPlot.PlotHeatmap("hm s64 e", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 });
+                    ImPlot.PlotHeatmap("hm s64 f", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 });
+                    ImPlot.PlotHeatmap("hm s64 g", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the ulong array PlotHeatmap wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHeatmap_UlongArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                ulong[] values = new ulong[] { 1 };
+                if (ImPlot.BeginPlot("P20 Heatmap Ulong", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    ImPlot.PlotHeatmap("hm u64 a", values, 1, 1);
+                    ImPlot.PlotHeatmap("hm u64 b", values, 1, 1, 0);
+                    ImPlot.PlotHeatmap("hm u64 c", values, 1, 1, 0, 1);
+                    ImPlot.PlotHeatmap("hm u64 d", values, 1, 1, 0, 1, "%.1f");
+                    ImPlot.PlotHeatmap("hm u64 e", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 });
+                    ImPlot.PlotHeatmap("hm u64 f", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 });
+                    ImPlot.PlotHeatmap("hm u64 g", values, 1, 1, 0, 1, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the float array PlotHistogram wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHistogram_FloatArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                float[] values = new float[] { 1, 2, 3 };
+                if (ImPlot.BeginPlot("P20 Histogram Float", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    double result = ImPlot.PlotHistogram("hi f a", values, 3);
+                    Assert.True(double.IsFinite(result));
+                    _ = ImPlot.PlotHistogram("hi f b", values, 3, 4);
+                    _ = ImPlot.PlotHistogram("hi f c", values, 3, 4, 1.0);
+                    _ = ImPlot.PlotHistogram("hi f d", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 });
+                    _ = ImPlot.PlotHistogram("hi f e", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 }, ImPlotHistogramFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the double array PlotHistogram wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHistogram_DoubleArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                double[] values = new double[] { 1, 2, 3 };
+                if (ImPlot.BeginPlot("P20 Histogram Double", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    double result = ImPlot.PlotHistogram("hi d a", values, 3);
+                    Assert.True(double.IsFinite(result));
+                    _ = ImPlot.PlotHistogram("hi d b", values, 3, 4);
+                    _ = ImPlot.PlotHistogram("hi d c", values, 3, 4, 1.0);
+                    _ = ImPlot.PlotHistogram("hi d d", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 });
+                    _ = ImPlot.PlotHistogram("hi d e", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 }, ImPlotHistogramFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the sbyte array PlotHistogram wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHistogram_SbyteArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                sbyte[] values = new sbyte[] { 1, 2, 3 };
+                if (ImPlot.BeginPlot("P20 Histogram Sbyte", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    double result = ImPlot.PlotHistogram("hi s8 a", values, 3);
+                    Assert.True(double.IsFinite(result));
+                    _ = ImPlot.PlotHistogram("hi s8 b", values, 3, 4);
+                    _ = ImPlot.PlotHistogram("hi s8 c", values, 3, 4, 1.0);
+                    _ = ImPlot.PlotHistogram("hi s8 d", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 });
+                    _ = ImPlot.PlotHistogram("hi s8 e", values, 3, 4, 1.0, new ImPlotRange { Min = 0, Max = 1 }, ImPlotHistogramFlags.None);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Executes the byte array PlotHistogram wrapper overloads inside the active plot.
+        /// </summary>
+        [MacOsOnly]
+        public void PlotHistogram_ByteArray_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                byte[] values = new byte[] { 1, 2, 3 };
+                if (ImPlot.BeginPlot("P20 Histogram Byte", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    double result = ImPlot.PlotHistogram("hi u8 a", values, 3);
+                    Assert.True(double.IsFinite(result));
+                    _ = ImPlot.PlotHistogram("hi u8 b", values, 3, 4);
+                    _ = ImPlot.PlotHistogram("hi u8 c", values, 3, 4, 1.0);
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+    }
+}
