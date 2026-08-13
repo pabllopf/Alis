@@ -2159,3 +2159,10 @@ CoverageAfter: 100% local
 TestsAdded: 0
 Commit: none
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs
+CoverageBefore: 0.0% (stale)
+CoverageAfter: 100% local
+TestsAdded: 0
+Commit: none
+Status: COMPLETED
