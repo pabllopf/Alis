@@ -1,0 +1,2032 @@
+[
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs",
+  "cov": 0.0,
+  "un": 690,
+  "br": 112,
+  "cx": 235,
+  "loc": 1001,
+  "status": "BLOCKED_BY_PRODUCTION_CODE",
+  "stem": "ImGuiIOPtr"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs",
+  "cov": 0.0,
+  "un": 457,
+  "br": 8,
+  "cx": 135,
+  "loc": 597,
+  "status": "COMPLETED",
+  "stem": "ImPlot"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP3.cs",
+  "cov": 0.0,
+  "un": 445,
+  "br": 2,
+  "cx": 128,
+  "loc": 564,
+  "status": "COMPLETED",
+  "stem": "ImGuiP3"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP5.cs",
+  "cov": 0.0,
+  "un": 369,
+  "br": 16,
+  "cx": 98,
+  "loc": 467,
+  "status": "COMPLETED",
+  "stem": "ImGuiP5"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP6.cs",
+  "cov": 0.0,
+  "un": 367,
+  "br": 16,
+  "cx": 97,
+  "loc": 465,
+  "status": "COMPLETED",
+  "stem": "ImGuiP6"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
+  "cov": 0.0,
+  "un": 364,
+  "br": 88,
+  "cx": 134,
+  "loc": 594,
+  "status": "COMPLETED",
+  "stem": "NativeWindow"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+  "cov": 0.0,
+  "un": 332,
+  "br": 22,
+  "cx": 50,
+  "loc": 634,
+  "status": "COMPLETED",
+  "stem": "EmscriptenWeb"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs",
+  "cov": 0.0,
+  "un": 328,
+  "br": 2,
+  "cx": 112,
+  "loc": 418,
+  "status": "COMPLETED",
+  "stem": "ImDrawListPtr"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP10.cs",
+  "cov": 0.0,
+  "un": 315,
+  "br": 0,
+  "cx": 105,
+  "loc": 428,
+  "status": "COMPLETED",
+  "stem": "ImPlotP10"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP1.cs",
+  "cov": 0.0,
+  "un": 240,
+  "br": 14,
+  "cx": 66,
+  "loc": 308,
+  "status": "COMPLETED",
+  "stem": "ImPlotP1"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP15.cs",
+  "cov": 0.0,
+  "un": 224,
+  "br": 22,
+  "cx": 65,
+  "loc": 285,
+  "status": "COMPLETED",
+  "stem": "ImPlotP15"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP11.cs",
+  "cov": 0.0,
+  "un": 221,
+  "br": 38,
+  "cx": 61,
+  "loc": 270,
+  "status": "COMPLETED",
+  "stem": "ImPlotP11"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP4.cs",
+  "cov": 0.0,
+  "un": 214,
+  "br": 0,
+  "cx": 69,
+  "loc": 384,
+  "status": "COMPLETED",
+  "stem": "ImGuiP4"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs",
+  "cov": 0.0,
+  "un": 210,
+  "br": 0,
+  "cx": 70,
+  "loc": 287,
+  "status": "COMPLETED",
+  "stem": "ImPlotP14"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP12.cs",
+  "cov": 0.0,
+  "un": 200,
+  "br": 0,
+  "cx": 50,
+  "loc": 257,
+  "status": "COMPLETED",
+  "stem": "ImPlotP12"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGui.cs",
+  "cov": 0.0,
+  "un": 197,
+  "br": 2,
+  "cx": 58,
+  "loc": 258,
+  "status": "NO-RESULT",
+  "stem": "ImGui"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP1.cs",
+  "cov": 0.0,
+  "un": 196,
+  "br": 0,
+  "cx": 46,
+  "loc": 250,
+  "status": "COMPLETED",
+  "stem": "ImGuiP1"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+  "cov": 0.0,
+  "un": 190,
+  "br": 22,
+  "cx": 66,
+  "loc": 230,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyGameContext"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs",
+  "cov": 0.0,
+  "un": 189,
+  "br": 24,
+  "cx": 54,
+  "loc": 350,
+  "status": "NO-RESULT",
+  "stem": "Shader"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs",
+  "cov": 0.0,
+  "un": 182,
+  "br": 0,
+  "cx": 71,
+  "loc": 243,
+  "status": "COMPLETED",
+  "stem": "ImFontAtlasPtr"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs",
+  "cov": 0.0,
+  "un": 179,
+  "br": 78,
+  "cx": 67,
+  "loc": 221,
+  "status": "COMPLETED",
+  "stem": "AudioVideoWriter"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs",
+  "cov": 0.0,
+  "un": 169,
+  "br": 0,
+  "cx": 0,
+  "loc": 258,
+  "status": "COMPLETED",
+  "stem": "KeyCodes"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyDisplayManager.cs",
+  "cov": 0.0,
+  "un": 166,
+  "br": 51,
+  "cx": 70,
+  "loc": 239,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyDisplayManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP22.cs",
+  "cov": 0.0,
+  "un": 165,
+  "br": 0,
+  "cx": 55,
+  "loc": 227,
+  "status": "COMPLETED",
+  "stem": "ImPlotP22"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP19.cs",
+  "cov": 0.0,
+  "un": 162,
+  "br": 0,
+  "cx": 54,
+  "loc": 223,
+  "status": "COMPLETED",
+  "stem": "ImPlotP19"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP6.cs",
+  "cov": 0.0,
+  "un": 162,
+  "br": 0,
+  "cx": 54,
+  "loc": 223,
+  "status": "COMPLETED",
+  "stem": "ImPlotP6"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP7.cs",
+  "cov": 0.0,
+  "un": 162,
+  "br": 0,
+  "cx": 54,
+  "loc": 223,
+  "status": "COMPLETED",
+  "stem": "ImPlotP7"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs",
+  "cov": 0.0,
+  "un": 161,
+  "br": 8,
+  "cx": 57,
+  "loc": 319,
+  "status": "COMPLETED",
+  "stem": "RenderWindow"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP2.cs",
+  "cov": 0.0,
+  "un": 161,
+  "br": 0,
+  "cx": 39,
+  "loc": 208,
+  "status": "COMPLETED",
+  "stem": "ImGuiP2"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP13.cs",
+  "cov": 0.0,
+  "un": 159,
+  "br": 0,
+  "cx": 53,
+  "loc": 220,
+  "status": "COMPLETED",
+  "stem": "ImPlotP13"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP17.cs",
+  "cov": 0.0,
+  "un": 159,
+  "br": 0,
+  "cx": 53,
+  "loc": 220,
+  "status": "COMPLETED",
+  "stem": "ImPlotP17"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP16.cs",
+  "cov": 0.0,
+  "un": 156,
+  "br": 0,
+  "cx": 52,
+  "loc": 215,
+  "status": "COMPLETED",
+  "stem": "ImPlotP16"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs",
+  "cov": 0.0,
+  "un": 152,
+  "br": 38,
+  "cx": 62,
+  "loc": 207,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyPlatformIntegration"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP21.cs",
+  "cov": 0.0,
+  "un": 150,
+  "br": 0,
+  "cx": 50,
+  "loc": 207,
+  "status": "COMPLETED",
+  "stem": "ImPlotP21"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs",
+  "cov": 0.0,
+  "un": 149,
+  "br": 14,
+  "cx": 27,
+  "loc": 182,
+  "status": "COMPLETED",
+  "stem": "ImGuizMo"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
+  "cov": 0.0,
+  "un": 140,
+  "br": 18,
+  "cx": 57,
+  "loc": 448,
+  "status": "COMPLETED",
+  "stem": "GlfwNative"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs",
+  "cov": 0.0,
+  "un": 127,
+  "br": 18,
+  "cx": 43,
+  "loc": 238,
+  "status": "NO-RESULT",
+  "stem": "Texture"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs",
+  "cov": 0.0,
+  "un": 121,
+  "br": 10,
+  "cx": 36,
+  "loc": 161,
+  "status": "COMPLETED",
+  "stem": "ImGuiP8"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs",
+  "cov": 0.0,
+  "un": 111,
+  "br": 50,
+  "cx": 40,
+  "loc": 142,
+  "status": "COMPLETED",
+  "stem": "VideoWriter"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs",
+  "cov": 0.0,
+  "un": 110,
+  "br": 58,
+  "cx": 44,
+  "loc": 141,
+  "status": "COMPLETED",
+  "stem": "AudioWriter"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs",
+  "cov": 0.0,
+  "un": 100,
+  "br": 0,
+  "cx": 52,
+  "loc": 129,
+  "status": "COMPLETED",
+  "stem": "ImPlotP18"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs",
+  "cov": 0.0,
+  "un": 99,
+  "br": 48,
+  "cx": 32,
+  "loc": 133,
+  "status": "COMPLETED",
+  "stem": "AudioPlayer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs",
+  "cov": 0.0,
+  "un": 95,
+  "br": 36,
+  "cx": 26,
+  "loc": 128,
+  "status": "COMPLETED",
+  "stem": "VideoPlayer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs",
+  "cov": 0.0,
+  "un": 93,
+  "br": 14,
+  "cx": 38,
+  "loc": 187,
+  "status": "COMPLETED",
+  "stem": "RenderTexture"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
+  "cov": 0.0,
+  "un": 91,
+  "br": 10,
+  "cx": 27,
+  "loc": 162,
+  "status": "COMPLETED",
+  "stem": "Image"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs",
+  "cov": 0.0,
+  "un": 87,
+  "br": 0,
+  "cx": 41,
+  "loc": 117,
+  "status": "COMPLETED",
+  "stem": "ImPlotP20"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs",
+  "cov": 0.0,
+  "un": 84,
+  "br": 10,
+  "cx": 30,
+  "loc": 197,
+  "status": "COMPLETED",
+  "stem": "SfmlText"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs",
+  "cov": 0.0,
+  "un": 82,
+  "br": 8,
+  "cx": 34,
+  "loc": 200,
+  "status": "COMPLETED",
+  "stem": "Music"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs",
+  "cov": 0.0,
+  "un": 76,
+  "br": 2,
+  "cx": 23,
+  "loc": 129,
+  "status": "COMPLETED",
+  "stem": "Transform"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs",
+  "cov": 0.0,
+  "un": 72,
+  "br": 4,
+  "cx": 16,
+  "loc": 112,
+  "status": "COMPLETED",
+  "stem": "Transformable"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs",
+  "cov": 0.0,
+  "un": 69,
+  "br": 2,
+  "cx": 29,
+  "loc": 171,
+  "status": "COMPLETED",
+  "stem": "SoundStream"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs",
+  "cov": 0.0,
+  "un": 63,
+  "br": 8,
+  "cx": 16,
+  "loc": 121,
+  "status": "COMPLETED",
+  "stem": "SoundBuffer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs",
+  "cov": 0.0,
+  "un": 60,
+  "br": 6,
+  "cx": 20,
+  "loc": 138,
+  "status": "NO-RESULT",
+  "stem": "Shape"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
+  "cov": 0.0,
+  "un": 59,
+  "br": 10,
+  "cx": 21,
+  "loc": 111,
+  "status": "COMPLETED",
+  "stem": "Font"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs",
+  "cov": 0.0,
+  "un": 53,
+  "br": 4,
+  "cx": 28,
+  "loc": 151,
+  "status": "COMPLETED",
+  "stem": "Sound"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs",
+  "cov": 0.0,
+  "un": 51,
+  "br": 2,
+  "cx": 19,
+  "loc": 111,
+  "status": "COMPLETED",
+  "stem": "SoundRecorder"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs",
+  "cov": 0.0,
+  "un": 48,
+  "br": 2,
+  "cx": 20,
+  "loc": 115,
+  "status": "COMPLETED",
+  "stem": "View"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs",
+  "cov": 0.0,
+  "un": 47,
+  "br": 0,
+  "cx": 16,
+  "loc": 59,
+  "status": "COMPLETED",
+  "stem": "MacWindow"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
+  "cov": 0.0,
+  "un": 46,
+  "br": 4,
+  "cx": 15,
+  "loc": 106,
+  "status": "COMPLETED",
+  "stem": "VertexArray"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs",
+  "cov": 0.0,
+  "un": 43,
+  "br": 6,
+  "cx": 16,
+  "loc": 98,
+  "status": "COMPLETED",
+  "stem": "Sprite"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
+  "cov": 0.0,
+  "un": 40,
+  "br": 4,
+  "cx": 16,
+  "loc": 108,
+  "status": "COMPLETED",
+  "stem": "VertexBuffer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+  "cov": 0.0,
+  "un": 37,
+  "br": 4,
+  "cx": 18,
+  "loc": 60,
+  "status": "COMPLETED",
+  "stem": "RenderStates"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs",
+  "cov": 0.0,
+  "un": 33,
+  "br": 0,
+  "cx": 10,
+  "loc": 44,
+  "status": "COMPLETED",
+  "stem": "MacOpenGLContext"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs",
+  "cov": 0.0,
+  "un": 32,
+  "br": 0,
+  "cx": 9,
+  "loc": 48,
+  "status": "COMPLETED",
+  "stem": "CircleShape"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs",
+  "cov": 0.0,
+  "un": 26,
+  "br": 2,
+  "cx": 26,
+  "loc": 50,
+  "status": "COMPLETED",
+  "stem": "SfmlTime"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs",
+  "cov": 0.0,
+  "un": 26,
+  "br": 2,
+  "cx": 8,
+  "loc": 36,
+  "status": "COMPLETED",
+  "stem": "ConvexShape"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs",
+  "cov": 0.0,
+  "un": 25,
+  "br": 2,
+  "cx": 7,
+  "loc": 55,
+  "status": "COMPLETED",
+  "stem": "VideoMode"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs",
+  "cov": 0.0,
+  "un": 22,
+  "br": 0,
+  "cx": 13,
+  "loc": 70,
+  "status": "NO-RESULT",
+  "stem": "Joystick"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs",
+  "cov": 0.0,
+  "un": 21,
+  "br": 2,
+  "cx": 3,
+  "loc": 44,
+  "status": "COMPLETED",
+  "stem": "Clipboard"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs",
+  "cov": 0.0,
+  "un": 20,
+  "br": 2,
+  "cx": 7,
+  "loc": 47,
+  "status": "NO-RESULT",
+  "stem": "Context"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs",
+  "cov": 0.0,
+  "un": 19,
+  "br": 5,
+  "cx": 11,
+  "loc": 41,
+  "status": "COMPLETED",
+  "stem": "RectangleShape"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs",
+  "cov": 0.0,
+  "un": 18,
+  "br": 0,
+  "cx": 3,
+  "loc": 57,
+  "status": "COMPLETED",
+  "stem": "Cursor"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs",
+  "cov": 0.0,
+  "un": 16,
+  "br": 2,
+  "cx": 5,
+  "loc": 27,
+  "status": "COMPLETED",
+  "stem": "SoundBufferRecorder"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs",
+  "cov": 0.0,
+  "un": 14,
+  "br": 0,
+  "cx": 6,
+  "loc": 24,
+  "status": "COMPLETED",
+  "stem": "ImFontGlyphRangesBuilder"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs",
+  "cov": 0.0,
+  "un": 10,
+  "br": 0,
+  "cx": 3,
+  "loc": 17,
+  "status": "COMPLETED",
+  "stem": "GameWindow"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs",
+  "cov": 0.0,
+  "un": 9,
+  "br": 0,
+  "cx": 4,
+  "loc": 28,
+  "status": "COMPLETED",
+  "stem": "Clock"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Listener.cs",
+  "cov": 0.0,
+  "un": 8,
+  "br": 0,
+  "cx": 8,
+  "loc": 47,
+  "status": "COMPLETED",
+  "stem": "Listener"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs",
+  "cov": 0.0,
+  "un": 8,
+  "br": 2,
+  "cx": 4,
+  "loc": 26,
+  "status": "NO-RESULT",
+  "stem": "Touch"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs",
+  "cov": 0.0,
+  "un": 5,
+  "br": 0,
+  "cx": 3,
+  "loc": 33,
+  "status": "NO-RESULT",
+  "stem": "Sensor"
+ },
+ {
+  "key": "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
+  "cov": 0.0,
+  "un": 5,
+  "br": 0,
+  "cx": 0,
+  "loc": 16,
+  "status": "COMPLETED",
+  "stem": "Constant"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs",
+  "cov": 0.0,
+  "un": 4,
+  "br": 0,
+  "cx": 2,
+  "loc": 130,
+  "status": "COMPLETED",
+  "stem": "Keyboard"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Constant.cs",
+  "cov": 0.0,
+  "un": 2,
+  "br": 0,
+  "cx": 0,
+  "loc": 9,
+  "status": "COMPLETED",
+  "stem": "Constant"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs",
+  "cov": 0.0,
+  "un": 1,
+  "br": 0,
+  "cx": 1,
+  "loc": 7,
+  "status": "COMPLETED",
+  "stem": "ImNodesMiniMapNodeHoveringCallback"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs",
+  "cov": 0.0,
+  "un": 1,
+  "br": 0,
+  "cx": 1,
+  "loc": 7,
+  "status": "COMPLETED",
+  "stem": "ImNodesMiniMapNodeHoveringCallbackUserData"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Categories.cs",
+  "cov": 0.0,
+  "un": 1,
+  "br": 0,
+  "cx": 0,
+  "loc": 41,
+  "status": "COMPLETED",
+  "stem": "Categories"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs",
+  "cov": 0.0,
+  "un": 1,
+  "br": 0,
+  "cx": 0,
+  "loc": 41,
+  "status": "COMPLETED",
+  "stem": "ControllerCategories"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs",
+  "cov": 0.0,
+  "un": 1,
+  "br": 0,
+  "cx": 0,
+  "loc": 40,
+  "status": "COMPLETED",
+  "stem": "SdlInputConst"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs",
+  "cov": 0.6,
+  "un": 486,
+  "br": 22,
+  "cx": 155,
+  "loc": 640,
+  "status": "COMPLETED",
+  "stem": "ImGuiP7"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs",
+  "cov": 1.4,
+  "un": 139,
+  "br": 0,
+  "cx": 47,
+  "loc": 195,
+  "status": "COMPLETED",
+  "stem": "ImPlotP3"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs",
+  "cov": 1.5,
+  "un": 166,
+  "br": 32,
+  "cx": 68,
+  "loc": 334,
+  "status": "NO-RESULT",
+  "stem": "Window"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs",
+  "cov": 1.6,
+  "un": 445,
+  "br": 61,
+  "cx": 110,
+  "loc": 534,
+  "status": "COMPLETED",
+  "stem": "ImPlotP2"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs",
+  "cov": 2.2,
+  "un": 176,
+  "br": 0,
+  "cx": 47,
+  "loc": 249,
+  "status": "COMPLETED",
+  "stem": "SdlTtf"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs",
+  "cov": 3.3,
+  "un": 386,
+  "br": 18,
+  "cx": 105,
+  "loc": 513,
+  "status": "COMPLETED",
+  "stem": "ImNodes"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+  "cov": 4.2,
+  "un": 416,
+  "br": 205,
+  "cx": 204,
+  "loc": 543,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyPlatform"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs",
+  "cov": 4.8,
+  "un": 20,
+  "br": 0,
+  "cx": 21,
+  "loc": 29,
+  "status": "COMPLETED",
+  "stem": "SdlImage"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs",
+  "cov": 5.0,
+  "un": 19,
+  "br": 0,
+  "cx": 5,
+  "loc": 96,
+  "status": "COMPLETED",
+  "stem": "ObjectiveCInterop"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs",
+  "cov": 6.1,
+  "un": 44,
+  "br": 2,
+  "cx": 92,
+  "loc": 104,
+  "status": "COMPLETED",
+  "stem": "MediaStream"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
+  "cov": 6.3,
+  "un": 56,
+  "br": 4,
+  "cx": 34,
+  "loc": 83,
+  "status": "COMPLETED",
+  "stem": "ImFontPtr"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+  "cov": 11.1,
+  "un": 379,
+  "br": 84,
+  "cx": 76,
+  "loc": 411,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyGameExamples"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs",
+  "cov": 12.7,
+  "un": 647,
+  "br": 0,
+  "cx": 1481,
+  "loc": 781,
+  "status": "COMPLETED",
+  "stem": "ImGuiIO"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
+  "cov": 14.2,
+  "un": 295,
+  "br": 111,
+  "cx": 101,
+  "loc": 424,
+  "status": "COMPLETED",
+  "stem": "MacNativePlatform"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
+  "cov": 18.2,
+  "un": 12,
+  "br": 6,
+  "cx": 6,
+  "loc": 44,
+  "status": "COMPLETED",
+  "stem": "Vulkan"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
+  "cov": 19.6,
+  "un": 673,
+  "br": 4,
+  "cx": 381,
+  "loc": 1042,
+  "status": "NO-RESULT",
+  "stem": "Sdl"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
+  "cov": 30.7,
+  "un": 145,
+  "br": 11,
+  "cx": 101,
+  "loc": 262,
+  "status": "COMPLETED",
+  "stem": "Gl"
+ },
+ {
+  "key": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
+  "cov": 31.6,
+  "un": 151,
+  "br": 24,
+  "cx": 40,
+  "loc": 250,
+  "status": "COMPLETED",
+  "stem": "Sprite"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs",
+  "cov": 33.3,
+  "un": 2,
+  "br": 0,
+  "cx": 4,
+  "loc": 10,
+  "status": "NO-RESULT",
+  "stem": "ImColor"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs",
+  "cov": 36.4,
+  "un": 105,
+  "br": 28,
+  "cx": 38,
+  "loc": 195,
+  "status": "COMPLETED",
+  "stem": "FFMpegWrapper"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs",
+  "cov": 38.1,
+  "un": 89,
+  "br": 23,
+  "cx": 33,
+  "loc": 189,
+  "status": "COMPLETED",
+  "stem": "WindowsPlayer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs",
+  "cov": 38.4,
+  "un": 61,
+  "br": 24,
+  "cx": 35,
+  "loc": 135,
+  "status": "COMPLETED",
+  "stem": "VideoReader"
+ },
+ {
+  "key": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs",
+  "cov": 39.6,
+  "un": 129,
+  "br": 42,
+  "cx": 48,
+  "loc": 266,
+  "status": "COMPLETED",
+  "stem": "GraphicManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+  "cov": 43.8,
+  "un": 36,
+  "br": 14,
+  "cx": 15,
+  "loc": 104,
+  "status": "BLOCKED_BY_PRODUCTION_CODE (dead finalizer path)",
+  "stem": "Gen2GcCallback"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
+  "cov": 47.5,
+  "un": 110,
+  "br": 77,
+  "cx": 149,
+  "loc": 250,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyInputManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs",
+  "cov": 47.6,
+  "un": 122,
+  "br": 8,
+  "cx": 34,
+  "loc": 250,
+  "status": "COMPLETED",
+  "stem": "Font"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs",
+  "cov": 47.6,
+  "un": 66,
+  "br": 0,
+  "cx": 42,
+  "loc": 175,
+  "status": "COMPLETED",
+  "stem": "ImPlotP5"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
+  "cov": 52.5,
+  "un": 77,
+  "br": 17,
+  "cx": 32,
+  "loc": 197,
+  "status": "COMPLETED",
+  "stem": "GLShaderProgram"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs",
+  "cov": 52.6,
+  "un": 9,
+  "br": 0,
+  "cx": 22,
+  "loc": 30,
+  "status": "NO-RESULT",
+  "stem": "ImDrawData"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs",
+  "cov": 53.8,
+  "un": 6,
+  "br": 0,
+  "cx": 20,
+  "loc": 27,
+  "status": "COMPLETED",
+  "stem": "ImGuiPayload"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs",
+  "cov": 54.2,
+  "un": 9,
+  "br": 2,
+  "cx": 7,
+  "loc": 57,
+  "status": "COMPLETED (window-relative branches + enums covered with plain `[Fact]` tests that run on CI; native paths untestable on CI)",
+  "stem": "Mouse"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs",
+  "cov": 54.6,
+  "un": 83,
+  "br": 11,
+  "cx": 75,
+  "loc": 216,
+  "status": "COMPLETED",
+  "stem": "WebAssemblyConfiguration"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs",
+  "cov": 55.2,
+  "un": 9,
+  "br": 4,
+  "cx": 12,
+  "loc": 38,
+  "status": "COMPLETED",
+  "stem": "MediaReader"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
+  "cov": 55.6,
+  "un": 13,
+  "br": 3,
+  "cx": 11,
+  "loc": 46,
+  "status": "COMPLETED",
+  "stem": "GLShader"
+ },
+ {
+  "key": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
+  "cov": 56.1,
+  "un": 117,
+  "br": 26,
+  "cx": 72,
+  "loc": 314,
+  "status": "COMPLETED",
+  "stem": "BoxCollider"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs",
+  "cov": 60.0,
+  "un": 10,
+  "br": 0,
+  "cx": 11,
+  "loc": 46,
+  "status": "COMPLETED",
+  "stem": "Monitor"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
+  "cov": 62.4,
+  "un": 241,
+  "br": 84,
+  "cx": 141,
+  "loc": 766,
+  "status": "COMPLETED",
+  "stem": "DTSweep"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
+  "cov": 63.5,
+  "un": 19,
+  "br": 0,
+  "cx": 104,
+  "loc": 59,
+  "status": "COMPLETED",
+  "stem": "ImPlotStyle"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs",
+  "cov": 65.9,
+  "un": 44,
+  "br": 13,
+  "cx": 40,
+  "loc": 154,
+  "status": "COMPLETED",
+  "stem": "AudioReader"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP8.cs",
+  "cov": 66.7,
+  "un": 53,
+  "br": 0,
+  "cx": 53,
+  "loc": 220,
+  "status": "COMPLETED",
+  "stem": "ImPlotP8"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs",
+  "cov": 66.7,
+  "un": 36,
+  "br": 0,
+  "cx": 36,
+  "loc": 151,
+  "status": "COMPLETED",
+  "stem": "ImPlotP4"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs",
+  "cov": 67.5,
+  "un": 59,
+  "br": 7,
+  "cx": 33,
+  "loc": 197,
+  "status": "COMPLETED",
+  "stem": "StripeGatewayClient"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs",
+  "cov": 69.2,
+  "un": 25,
+  "br": 8,
+  "cx": 27,
+  "loc": 113,
+  "status": "COMPLETED",
+  "stem": "GLShaderProgramParam"
+ },
+ {
+  "key": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
+  "cov": 70.3,
+  "un": 48,
+  "br": 6,
+  "cx": 17,
+  "loc": 196,
+  "status": "COMPLETED",
+  "stem": "ContextHandler"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Graphic/src/Ui/FontManager.cs",
+  "cov": 71.4,
+  "un": 2,
+  "br": 0,
+  "cx": 3,
+  "loc": 16,
+  "status": "COMPLETED",
+  "stem": "FontManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
+  "cov": 73.0,
+  "un": 90,
+  "br": 40,
+  "cx": 94,
+  "loc": 412,
+  "status": "BLOCKED_BY_PRODUCTION_CODE",
+  "stem": "ContactManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+  "cov": 73.2,
+  "un": 46,
+  "br": 9,
+  "cx": 32,
+  "loc": 216,
+  "status": "COMPLETED",
+  "stem": "DropBoxCloudManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs",
+  "cov": 76.9,
+  "un": 51,
+  "br": 10,
+  "cx": 47,
+  "loc": 248,
+  "status": "COMPLETED",
+  "stem": "BrowserPlayer"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs",
+  "cov": 78.3,
+  "un": 16,
+  "br": 2,
+  "cx": 18,
+  "loc": 88,
+  "status": "COMPLETED",
+  "stem": "VideoFrame"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
+  "cov": 79.9,
+  "un": 92,
+  "br": 44,
+  "cx": 137,
+  "loc": 603,
+  "status": "BLOCKED_BY_PRODUCTION_CODE (dead code in production)",
+  "stem": "MarchingSquares"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs",
+  "cov": 80.1,
+  "un": 28,
+  "br": 16,
+  "cx": 37,
+  "loc": 220,
+  "status": "COMPLETED",
+  "stem": "WebSocketNetworkTransport"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP9.cs",
+  "cov": 80.7,
+  "un": 45,
+  "br": 6,
+  "cx": 60,
+  "loc": 269,
+  "status": "COMPLETED",
+  "stem": "ImPlotP9"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs",
+  "cov": 83.7,
+  "un": 38,
+  "br": 8,
+  "cx": 54,
+  "loc": 271,
+  "status": "COMPLETED",
+  "stem": "NetworkClientManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
+  "cov": 85.1,
+  "un": 78,
+  "br": 35,
+  "cx": 93,
+  "loc": 719,
+  "status": "COMPLETED",
+  "stem": "ContactSolver"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+  "cov": 86.3,
+  "un": 49,
+  "br": 30,
+  "cx": 102,
+  "loc": 578,
+  "status": "COMPLETED",
+  "stem": "UpdateManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs",
+  "cov": 86.9,
+  "un": 43,
+  "br": 2,
+  "cx": 308,
+  "loc": 243,
+  "status": "COMPLETED",
+  "stem": "ImGuiStyle"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
+  "cov": 86.9,
+  "un": 18,
+  "br": 5,
+  "cx": 30,
+  "loc": 183,
+  "status": "BLOCKED_BY_PRODUCTION_CODE",
+  "stem": "TimeOfImpact"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs",
+  "cov": 88.3,
+  "un": 13,
+  "br": 10,
+  "cx": 36,
+  "loc": 188,
+  "status": "COMPLETED",
+  "stem": "UnixPlayerBase"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs",
+  "cov": 88.7,
+  "un": 13,
+  "br": 2,
+  "cx": 19,
+  "loc": 149,
+  "status": "COMPLETED",
+  "stem": "WebSocketFrameReader"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs",
+  "cov": 89.1,
+  "un": 39,
+  "br": 0,
+  "cx": 98,
+  "loc": 333,
+  "status": "COMPLETED",
+  "stem": "Events"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs",
+  "cov": 89.5,
+  "un": 26,
+  "br": 13,
+  "cx": 88,
+  "loc": 347,
+  "status": "COMPLETED",
+  "stem": "Contact"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs",
+  "cov": 90.0,
+  "un": 2,
+  "br": 0,
+  "cx": 10,
+  "loc": 32,
+  "status": "NO-RESULT",
+  "stem": "Window"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
+  "cov": 90.1,
+  "un": 78,
+  "br": 44,
+  "cx": 244,
+  "loc": 1106,
+  "status": "COMPLETED",
+  "stem": "WorldPhysic"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
+  "cov": 90.2,
+  "un": 56,
+  "br": 18,
+  "cx": 104,
+  "loc": 786,
+  "status": "BLOCKED_BY_PRODUCTION_CODE",
+  "stem": "Archetype"
+ },
+ {
+  "key": "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
+  "cov": 90.2,
+  "un": 21,
+  "br": 15,
+  "cx": 66,
+  "loc": 334,
+  "status": "COMPLETED",
+  "stem": "AssetRegistry"
+ },
+ {
+  "key": "pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs",
+  "cov": 90.6,
+  "un": 0,
+  "br": 6,
+  "cx": 17,
+  "loc": 70,
+  "status": "COMPLETED",
+  "stem": "Logger"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/YuPengClipper.cs",
+  "cov": 91.1,
+  "un": 27,
+  "br": 10,
+  "cx": 87,
+  "loc": 363,
+  "status": "COMPLETED",
+  "stem": "YuPengClipper"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Scene.cs",
+  "cov": 91.7,
+  "un": 63,
+  "br": 44,
+  "cx": 187,
+  "loc": 1187,
+  "status": "COMPLETED",
+  "stem": "Scene"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
+  "cov": 92.2,
+  "un": 6,
+  "br": 3,
+  "cx": 37,
+  "loc": 108,
+  "status": "COMPLETED",
+  "stem": "DungeonData"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Collections/EnumerableHelpers.cs",
+  "cov": 92.2,
+  "un": 3,
+  "br": 3,
+  "cx": 15,
+  "loc": 79,
+  "status": "COMPLETED",
+  "stem": "EnumerableHelpers"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs",
+  "cov": 92.8,
+  "un": 7,
+  "br": 5,
+  "cx": 32,
+  "loc": 158,
+  "status": "COMPLETED",
+  "stem": "ComponentRegistry"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/BufferPool.cs",
+  "cov": 93.3,
+  "un": 3,
+  "br": 0,
+  "cx": 10,
+  "loc": 57,
+  "status": "COMPLETED",
+  "stem": "BufferPool"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs",
+  "cov": 93.6,
+  "un": 12,
+  "br": 6,
+  "cx": 35,
+  "loc": 394,
+  "status": "COMPLETED",
+  "stem": "Update"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs",
+  "cov": 93.7,
+  "un": 32,
+  "br": 16,
+  "cx": 192,
+  "loc": 730,
+  "status": "COMPLETED",
+  "stem": "Body"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs",
+  "cov": 93.8,
+  "un": 1,
+  "br": 0,
+  "cx": 23,
+  "loc": 24,
+  "status": "NO-RESULT",
+  "stem": "ImDrawCmd"
+ },
+ {
+  "key": "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs",
+  "cov": 93.8,
+  "un": 1,
+  "br": 0,
+  "cx": 4,
+  "loc": 35,
+  "status": "COMPLETED",
+  "stem": "VideoGameBuilder"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs",
+  "cov": 93.9,
+  "un": 3,
+  "br": 0,
+  "cx": 10,
+  "loc": 64,
+  "status": "COMPLETED",
+  "stem": "StreamAdaptor"
+ },
+ {
+  "key": "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs",
+  "cov": 94.0,
+  "un": 6,
+  "br": 0,
+  "cx": 20,
+  "loc": 100,
+  "status": "COMPLETED",
+  "stem": "FileLogOutput"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs",
+  "cov": 94.1,
+  "un": 4,
+  "br": 0,
+  "cx": 10,
+  "loc": 98,
+  "status": "COMPLETED",
+  "stem": "GameObjectExtensions"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs",
+  "cov": 94.1,
+  "un": 1,
+  "br": 0,
+  "cx": 34,
+  "loc": 24,
+  "status": "COMPLETED",
+  "stem": "ImNodesStyle"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island.cs",
+  "cov": 94.6,
+  "un": 20,
+  "br": 7,
+  "cx": 86,
+  "loc": 456,
+  "status": "COMPLETED",
+  "stem": "Island"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/EarclipDecomposer.cs",
+  "cov": 94.6,
+  "un": 11,
+  "br": 9,
+  "cx": 66,
+  "loc": 312,
+  "status": "COMPLETED",
+  "stem": "EarclipDecomposer"
+ },
+ {
+  "key": "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs",
+  "cov": 94.7,
+  "un": 3,
+  "br": 0,
+  "cx": 18,
+  "loc": 61,
+  "status": "COMPLETED",
+  "stem": "ConsoleLogOutput"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientFactory.cs",
+  "cov": 94.8,
+  "un": 9,
+  "br": 1,
+  "cx": 35,
+  "loc": 218,
+  "status": "COMPLETED",
+  "stem": "WebSocketClientFactory"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs",
+  "cov": 95.1,
+  "un": 10,
+  "br": 2,
+  "cx": 55,
+  "loc": 205,
+  "status": "COMPLETED",
+  "stem": "BayazitDecomposer"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunction.cs",
+  "cov": 95.7,
+  "un": 4,
+  "br": 2,
+  "cx": 13,
+  "loc": 161,
+  "status": "COMPLETED",
+  "stem": "SeparationFunction"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs",
+  "cov": 95.8,
+  "un": 0,
+  "br": 1,
+  "cx": 7,
+  "loc": 32,
+  "status": "COMPLETED",
+  "stem": "ThreadManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs",
+  "cov": 96.2,
+  "un": 4,
+  "br": 2,
+  "cx": 43,
+  "loc": 179,
+  "status": "COMPLETED",
+  "stem": "Fixture"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs",
+  "cov": 96.6,
+  "un": 6,
+  "br": 3,
+  "cx": 54,
+  "loc": 223,
+  "status": "COMPLETED",
+  "stem": "SimpleCombiner"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/PingPongManager.cs",
+  "cov": 96.6,
+  "un": 3,
+  "br": 0,
+  "cx": 18,
+  "loc": 106,
+  "status": "COMPLETED",
+  "stem": "PingPongManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs",
+  "cov": 96.6,
+  "un": 0,
+  "br": 4,
+  "cx": 28,
+  "loc": 119,
+  "status": "COMPLETED",
+  "stem": "BinaryReaderWriter"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs",
+  "cov": 96.7,
+  "un": 7,
+  "br": 5,
+  "cx": 87,
+  "loc": 361,
+  "status": "COMPLETED",
+  "stem": "FastestStack"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+  "cov": 96.8,
+  "un": 5,
+  "br": 5,
+  "cx": 49,
+  "loc": 319,
+  "status": "COMPLETED",
+  "stem": "GoogleDriveCloudManager"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs",
+  "cov": 96.9,
+  "un": 1,
+  "br": 37,
+  "cx": 207,
+  "loc": 1153,
+  "status": "COMPLETED",
+  "stem": "GameObject"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs",
+  "cov": 97.0,
+  "un": 0,
+  "br": 3,
+  "cx": 18,
+  "loc": 103,
+  "status": "COMPLETED",
+  "stem": "FilePickerExecutor"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs",
+  "cov": 97.1,
+  "un": 0,
+  "br": 2,
+  "cx": 10,
+  "loc": 71,
+  "status": "COMPLETED",
+  "stem": "PolygonGenerator"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
+  "cov": 97.1,
+  "un": 0,
+  "br": 1,
+  "cx": 9,
+  "loc": 43,
+  "status": "COMPLETED",
+  "stem": "GitHubApiService"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CryptoRandomNumberGenerator.cs",
+  "cov": 97.8,
+  "un": 0,
+  "br": 1,
+  "cx": 11,
+  "loc": 54,
+  "status": "COMPLETED",
+  "stem": "CryptoRandomNumberGenerator"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+  "cov": 97.9,
+  "un": 15,
+  "br": 8,
+  "cx": 172,
+  "loc": 961,
+  "status": "COMPLETED",
+  "stem": "Collision"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+  "cov": 98.1,
+  "un": 0,
+  "br": 3,
+  "cx": 30,
+  "loc": 179,
+  "status": "COMPLETED",
+  "stem": "WindowsFilePicker"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs",
+  "cov": 98.3,
+  "un": 0,
+  "br": 1,
+  "cx": 19,
+  "loc": 62,
+  "status": "COMPLETED",
+  "stem": "FilePickerResult"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs",
+  "cov": 98.5,
+  "un": 3,
+  "br": 1,
+  "cx": 46,
+  "loc": 332,
+  "status": "COMPLETED",
+  "stem": "WheelJoint"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs",
+  "cov": 98.6,
+  "un": 0,
+  "br": 5,
+  "cx": 66,
+  "loc": 367,
+  "status": "COMPLETED",
+  "stem": "SimplePriorityQueue"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
+  "cov": 98.7,
+  "un": 0,
+  "br": 4,
+  "cx": 90,
+  "loc": 265,
+  "status": "COMPLETED",
+  "stem": "DelaunayTriangle"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs",
+  "cov": 98.8,
+  "un": 4,
+  "br": 1,
+  "cx": 71,
+  "loc": 430,
+  "status": "COMPLETED",
+  "stem": "WebSocketImplementation"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs",
+  "cov": 98.8,
+  "un": 0,
+  "br": 2,
+  "cx": 29,
+  "loc": 187,
+  "status": "COMPLETED",
+  "stem": "DistanceJoint"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+  "cov": 99.0,
+  "un": 3,
+  "br": 0,
+  "cx": 59,
+  "loc": 301,
+  "status": "COMPLETED",
+  "stem": "NetworkServerManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs",
+  "cov": 99.0,
+  "un": 0,
+  "br": 2,
+  "cx": 51,
+  "loc": 170,
+  "status": "COMPLETED",
+  "stem": "DialogManager"
+ },
+ {
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
+  "cov": 99.0,
+  "un": 0,
+  "br": 2,
+  "cx": 42,
+  "loc": 186,
+  "status": "COMPLETED",
+  "stem": "FilePickerValidator"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Controllers/GravityController.cs",
+  "cov": 99.1,
+  "un": 0,
+  "br": 1,
+  "cx": 37,
+  "loc": 103,
+  "status": "COMPLETED",
+  "stem": "GravityController"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs",
+  "cov": 99.1,
+  "un": 0,
+  "br": 2,
+  "cx": 32,
+  "loc": 241,
+  "status": "COMPLETED",
+  "stem": "WeldJoint"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+  "cov": 99.2,
+  "un": 0,
+  "br": 1,
+  "cx": 26,
+  "loc": 121,
+  "status": "COMPLETED",
+  "stem": "BreakableBody"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
+  "cov": 99.4,
+  "un": 0,
+  "br": 2,
+  "cx": 61,
+  "loc": 312,
+  "status": "COMPLETED",
+  "stem": "PolygonShape"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CommandBuffer.cs",
+  "cov": 99.5,
+  "un": 1,
+  "br": 0,
+  "cx": 44,
+  "loc": 226,
+  "status": "COMPLETED",
+  "stem": "CommandBuffer"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
+  "cov": 99.7,
+  "un": 0,
+  "br": 1,
+  "cx": 23,
+  "loc": 335,
+  "status": "COMPLETED",
+  "stem": "GearJoint"
+ },
+ {
+  "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTree.cs",
+  "cov": 99.8,
+  "un": 0,
+  "br": 1,
+  "cx": 94,
+  "loc": 637,
+  "status": "COMPLETED",
+  "stem": "DynamicTree"
+ }
+]
