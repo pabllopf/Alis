@@ -2215,3 +2215,10 @@ CoverageAfter: 100%
 TestsAdded: 6
 Commit: test: ImFontGlyphRangesBuilder.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100%
+TestsAdded: 3
+Commit: test: GameWindow.cs
+Status: COMPLETED

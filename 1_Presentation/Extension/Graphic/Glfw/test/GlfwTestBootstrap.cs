@@ -79,6 +79,21 @@ namespace Alis.Extension.Graphic.Glfw.Test
         internal static NativeWindow Window;
 
         /// <summary>
+        ///     The game window created on the main thread.
+        /// </summary>
+        internal static GameWindow GameWindowInstance;
+
+        /// <summary>
+        ///     The sized game window created on the main thread.
+        /// </summary>
+        internal static GameWindow GameWindowSizedInstance;
+
+        /// <summary>
+        ///     The fully parameterized game window created on the main thread.
+        /// </summary>
+        internal static GameWindow GameWindowFullInstance;
+
+        /// <summary>
         ///     The primary monitor handle captured on the main thread.
         /// </summary>
         internal static Monitor PrimaryMonitor;
@@ -104,6 +119,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             GlfwNative.WindowHint(Hint.OpenglProfile, GlfwProfile.Core);
             GlfwNative.WindowHint(Hint.OpenglForwardCompatible, true);
             Window = new TestableNativeWindow(320, 200, "alis-coverage");
+            GameWindowInstance = new GameWindow();
+            GameWindowSizedInstance = new GameWindow(320, 200, "alis-sized");
+            GameWindowFullInstance = new GameWindow(320, 200, "alis-full", Alis.Extension.Graphic.Glfw.Structs.Monitor.None, Alis.Extension.Graphic.Glfw.Structs.Window.None);
             PrimaryMonitor = GlfwNative.PrimaryMonitor;
             GlfwNative.SetErrorCallback(SilentErrorCallback);
             Ready = true;
