@@ -1816,3 +1816,10 @@ CoverageAfter: 87.75%
 TestsAdded: 11
 Commit: test: ImGuiP1.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs
+CoverageBefore: 0.0%
+CoverageAfter: 50.0%
+TestsAdded: 23
+Commit: test: WebAssemblyGameContext.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
