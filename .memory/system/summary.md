@@ -2194,3 +2194,10 @@ CoverageAfter: 100% local
 TestsAdded: 0
 Commit: none
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs
+CoverageBefore: 0.0%
+CoverageAfter: 38.9%
+TestsAdded: 2
+Commit: test: Cursor.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
