@@ -670,6 +670,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs"
   ]
 }
