@@ -1802,3 +1802,10 @@ CoverageAfter: 100%
 TestsAdded: 11
 Commit: test: ImPlotP12.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGui.cs
+CoverageBefore: 0.0%
+CoverageAfter: 95.9%
+TestsAdded: 7
+Commit: test: ImGui.cs
+Status: COMPLETED
