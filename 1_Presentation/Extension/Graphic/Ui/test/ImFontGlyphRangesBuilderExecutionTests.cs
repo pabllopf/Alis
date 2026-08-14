@@ -42,9 +42,9 @@ namespace Alis.Extension.Graphic.Ui.Test
     public class ImFontGlyphRangesBuilderExecutionTests
     {
         /// <summary>
-        ///     The image offset of the native GImGui context slot
+        ///     The no load mode of the dyld dynamic loader
         /// </summary>
-        private const int GImGuiSlot = 0x4597e0;
+        private const int RtlNoLoad = 0x10;
 
         /// <summary>
         ///     The dyld image count
@@ -62,12 +62,30 @@ namespace Alis.Extension.Graphic.Ui.Test
         private static extern IntPtr DyldGetImageName(int index);
 
         /// <summary>
-        ///     The dyld get image header
+        ///     Opens an already loaded dynamic library
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport("libSystem.dylib", EntryPoint = "_dyld_get_image_header")]
-        private static extern IntPtr DyldGetImageHeader(int index);
+        /// <param name="path">The image path</param>
+        /// <param name="mode">The open mode</param>
+        /// <returns>The library handle</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dlopen")]
+        private static extern IntPtr DlOpen(string path, int mode);
+
+        /// <summary>
+        ///     Closes a dynamic library handle
+        /// </summary>
+        /// <param name="handle">The library handle</param>
+        /// <returns>The result</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dlclose")]
+        private static extern int DlClose(IntPtr handle);
+
+        /// <summary>
+        ///     Resolves the address of an exported symbol inside a loaded library
+        /// </summary>
+        /// <param name="handle">The library handle</param>
+        /// <param name="symbol">The symbol name</param>
+        /// <returns>The symbol address</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dlsym")]
+        private static extern IntPtr Dlsym(IntPtr handle, string symbol);
 
         /// <summary>
         ///     Creates a raw ImGui context and binds it as the current context.
@@ -83,7 +101,9 @@ namespace Alis.Extension.Graphic.Ui.Test
 
         /// <summary>
         ///     Synchronizes the ImGui context pointer of every loaded cimgui image so that the allocator used
-        ///     by the font glyph ranges builder is visible to all the image copies.
+        ///     by the font glyph ranges builder is visible to all the image copies. The GImGui slot is resolved
+        ///     through the exported symbol of each image instead of a hardcoded offset, which varies between
+        ///     the x64 and arm64 slices of the native library.
         /// </summary>
         /// <param name="imgui">The imgui context</param>
         private static void SyncContextSlots(IntPtr imgui)
@@ -96,8 +116,19 @@ namespace Alis.Extension.Graphic.Ui.Test
 
                 if (name != null && name.Contains("cimgui"))
                 {
-                    IntPtr imageBase = DyldGetImageHeader(i);
-                    Marshal.WriteInt64(imageBase + GImGuiSlot, imgui.ToInt64());
+                    IntPtr handle = DlOpen(name, RtlNoLoad);
+
+                    if (handle != IntPtr.Zero)
+                    {
+                        IntPtr slot = Dlsym(handle, "GImGui");
+
+                        if (slot != IntPtr.Zero)
+                        {
+                            Marshal.WriteIntPtr(slot, imgui);
+                        }
+
+                        DlClose(handle);
+                    }
                 }
             }
         }
