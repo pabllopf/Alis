@@ -338,5 +338,357 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
 
             Assert.True(RenderWindowMainThreadWorker.HandleCtorOk);
         }
+
+        /// <summary>
+        ///     Tests that the video mode constructor produced a valid base window on the main thread.
+        /// </summary>
+        [Fact]
+        public void Ctor_VideoMode_CreatesValidWindow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.VideoModeCtorOk);
+        }
+
+        /// <summary>
+        ///     Tests that the plain base window was created from a native handle on the main thread.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Ctor_FromNativeHandle_CreatesValidWindow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseWindowOk);
+        }
+
+        /// <summary>
+        ///     Tests that the plain base window reports itself open.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_IsOpen_ReturnsTrue()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseIsOpenResult);
+        }
+
+        /// <summary>
+        ///     Tests that the plain base window reports the requested depth bits.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Settings_ReturnsRequestedDepthBits()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.Equal(0u, RenderWindowMainThreadWorker.BaseSettingsResult.DepthBits);
+        }
+
+        /// <summary>
+        ///     Tests that the base window position getter completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Position_Get_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BasePositionExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the base window size getter completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Size_Get_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseSizeExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the base window system handle getter throws the missing entry point error because the installed
+        ///     CSFML 3.0 renamed it.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SystemHandle_ThrowsMissingEntryPoint()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.Contains("BaseSystemHandle", RenderWindowMainThreadWorker.MissingEntryPoints);
+        }
+
+        /// <summary>
+        ///     Tests that displaying the base window completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Display_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseDisplayExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window title completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetTitle_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseTitleExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window visibility completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetVisible_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseVisibleExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window mouse cursor visibility completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetMouseCursorVisible_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseMouseCursorVisibleExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window mouse cursor grab state completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetMouseCursorGrabbed_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseMouseCursorGrabbedExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window mouse cursor completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetMouseCursor_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseMouseCursorExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window vertical sync completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetVerticalSyncEnabled_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseVerticalSyncExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window key repeat completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetKeyRepeatEnabled_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseKeyRepeatExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that activating the base window succeeded.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetActive_ReturnsTrue()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseActiveResult);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window framerate limit completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetFramerateLimit_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseFramerateExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that setting the base window joystick threshold completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_SetJoystickThreshold_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseJoystickExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that dispatching pending events on the base window completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_DispatchEvents_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseDispatchEventsExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the base window focus query completed without throwing.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_RequestFocus_Completed()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseFocusExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the base window string description identifies a window.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_ToString_ContainsWindow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.Contains("[Window]", RenderWindowMainThreadWorker.BaseToStringResult);
+        }
+
+        /// <summary>
+        ///     Tests that polling an event on the base window does not throw.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_PollEvent_DoesNotThrow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BasePollEventExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the base window mouse and touch queries do not throw.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_MouseAndTouch_DoNotThrow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseMousePositionExecuted);
+            Assert.True(RenderWindowMainThreadWorker.BaseTouchPositionExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that closing the base window makes it report closed.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Close_ThenIsOpen_ReturnsFalse()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseClosedOk);
+        }
+
+        /// <summary>
+        ///     Tests that disposing the base window destroys the native handle and is safe twice.
+        /// </summary>
+        [Fact]
+        public void BaseWindow_Dispose_DestroysNativeHandle()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(RenderWindowMainThreadWorker.BaseDisposeSafe);
+        }
     }
 }

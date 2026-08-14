@@ -695,6 +695,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs"
   ]
 }
