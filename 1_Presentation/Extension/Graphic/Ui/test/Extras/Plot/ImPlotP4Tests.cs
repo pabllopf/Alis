@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleAll_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8Default_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 8 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8Default_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 8 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16Default_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -224,7 +225,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -254,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -274,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 16 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S16WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             short[] values = { 1, 2 };
@@ -284,7 +285,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16Default_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -294,7 +295,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -304,7 +305,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -334,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap u 16 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_U16WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort[] values = { 1, 2 };
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 32 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S32Default_WithNullLabel_ThrowsArgumentNullException()
         {
             int[] values = { 1, 2 };
@@ -364,7 +365,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 32 with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S32WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             int[] values = { 1, 2 };
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 32 with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S32WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             int[] values = { 1, 2 };
@@ -384,7 +385,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 32 with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S32WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             int[] values = { 1, 2 };
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap s 32 with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_S32WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             int[] values = { 1, 2 };

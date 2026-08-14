@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded s byte flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_SByteFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded s byte flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_SByteFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded byte default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ByteDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded byte flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ByteFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded byte flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ByteFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded byte flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ByteFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded short default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ShortDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded short flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ShortFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded short flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ShortFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -152,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded short flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ShortFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u short default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UShortDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort xs = 1;
@@ -176,7 +177,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u short flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UShortFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort xs = 1;
@@ -188,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u short flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UShortFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort xs = 1;
@@ -200,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u short flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UShortFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             ushort xs = 1;
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded int default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_IntDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -224,7 +225,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded int flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_IntFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded int flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_IntFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded int flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_IntFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -260,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u int default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UIntDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1;
@@ -272,7 +273,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u int flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UIntFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1;
@@ -284,7 +285,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u int flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UIntFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1;
@@ -296,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u int flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_UIntFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1;
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded long default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_LongDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -320,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded long flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_LongFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -332,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded long flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_LongFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded long flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_LongFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -356,7 +357,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u long default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ULongDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1;
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u long flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ULongFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1;
@@ -380,7 +381,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u long flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ULongFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1;
@@ -392,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded u long flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_ULongFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1;
@@ -404,7 +405,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded g default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShadedG_Default_WithNullLabel_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotShadedG(null, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, 1));
@@ -413,7 +414,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot shaded g flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShadedG_Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotShadedG(null, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, 1, ImPlotShadedFlags.None));
@@ -422,7 +423,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -432,7 +433,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float xscale with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatXscale_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -442,7 +443,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float xscale xstart with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatXscaleXstart_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -452,7 +453,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -462,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -472,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs float flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -482,7 +483,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -492,7 +493,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double xscale with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleXscale_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -502,7 +503,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double xscale xstart with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleXscaleXstart_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -512,7 +513,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -522,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -532,7 +533,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs double flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -542,7 +543,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -552,7 +553,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte xscale with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteXscale_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -562,7 +563,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte xscale xstart with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteXscaleXstart_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -572,7 +573,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -582,7 +583,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -592,7 +593,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs s byte flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SByteFlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte[] values = { 1, 2 };
@@ -602,7 +603,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs byte default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ByteDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -612,7 +613,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs byte xscale with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ByteXscale_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };
@@ -622,7 +623,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot stairs byte xscale xstart with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ByteXscaleXstart_WithNullLabel_ThrowsArgumentNullException()
         {
             byte[] values = { 1, 2 };

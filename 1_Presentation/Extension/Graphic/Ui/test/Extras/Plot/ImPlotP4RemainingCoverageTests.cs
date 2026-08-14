@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_8_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_9_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_10_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_11_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -186,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_12_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_13_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_14_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_15_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -238,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_16_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_17_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_18_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_19_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_20_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_21_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -316,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_22_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -329,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_23_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -342,7 +343,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_24_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_25_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_26_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_27_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_28_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -407,7 +408,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_29_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -420,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_30_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -433,7 +434,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_31_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -446,7 +447,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_32_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -459,7 +460,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_33_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -472,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_34_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -485,7 +486,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_35_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotHeatmap throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_36_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

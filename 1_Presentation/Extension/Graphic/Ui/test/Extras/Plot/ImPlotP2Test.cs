@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that passing a null labels array to <c>PlotBarGroups</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotBarGroups_WithNullLabelsArray_ShouldThrowNullReferenceException()
         {
             float[] values = { 1f, 2f };
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that passing a null label item in <c>PlotBarGroups</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotBarGroups_WithNullLabelItem_ShouldThrowArgumentNullException()
         {
             string[] labels = { "A", null };

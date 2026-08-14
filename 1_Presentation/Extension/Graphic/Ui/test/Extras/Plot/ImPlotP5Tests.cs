@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 8 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S8Default_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 8 with flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S8WithFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 8 with flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S8WithFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 8 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             sbyte xs = 1;
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars u 8 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_U8Default_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars u 8 with flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_U8WithFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars u 8 with flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_U8WithFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars u 8 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_U8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             byte xs = 1;
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 16 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S16Default_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 16 with flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S16WithFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 16 with flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S16WithFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 16 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S16WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             short xs = 1;
@@ -200,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 32 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S32Default_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -213,7 +214,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 32 with flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S32WithFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -226,7 +227,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 32 with flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S32WithFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -239,7 +240,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 32 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S32WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1;
@@ -252,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 64 default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S64Default_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 64 with flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S64WithFlags_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -278,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 64 with flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S64WithFlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -291,7 +292,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot error bars s 64 with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S64WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1;
@@ -304,7 +305,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -334,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with bounds min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with bounds min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -364,7 +365,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap float with all with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_FloatWithAll_WithNullLabel_ThrowsArgumentNullException()
         {
             float[] values = { 1f, 2f };
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double default with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleDefault_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -384,7 +385,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double with scale min with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleWithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double with scale min max with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleWithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };
@@ -404,7 +405,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot heatmap double with format with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_DoubleWithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
             double[] values = { 1.0, 2.0 };

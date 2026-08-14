@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that default values are all zero
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Default_Should_SetAllPropertiesToDefaultValues()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Pan_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PanMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fit can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Fit_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Select_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select cancel can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void SelectCancel_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void SelectMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select horz mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void SelectHorzMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select vert mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void SelectVertMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that menu can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Menu_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that override mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void OverrideMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom mod can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void ZoomMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom rate can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void ZoomRate_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that struct is a value type
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void ImPlotInputMap_Should_BeValueType()
         {
             ImPlotInputMap first = new ImPlotInputMap { Pan = ImGuiMouseButton.Left, ZoomRate = 2.0f };

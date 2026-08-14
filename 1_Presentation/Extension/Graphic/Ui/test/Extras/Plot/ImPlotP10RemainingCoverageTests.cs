@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_8_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_9_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_10_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_11_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -186,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_12_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_13_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_14_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_15_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -238,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_16_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_17_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_18_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_19_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_20_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_21_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -316,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_22_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -329,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatter_23_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -342,7 +343,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatterG throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatterG_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotScatterG throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotScatterG_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -407,7 +408,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -420,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -433,7 +434,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -446,7 +447,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -459,7 +460,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_8_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -472,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_9_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -485,7 +486,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_10_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_11_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -511,7 +512,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_12_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -524,7 +525,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_13_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -537,7 +538,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_14_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -550,7 +551,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_15_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -563,7 +564,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_16_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -576,7 +577,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_17_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -589,7 +590,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_18_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -602,7 +603,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_19_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -615,7 +616,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_20_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -628,7 +629,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_21_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -641,7 +642,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_22_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -654,7 +655,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_23_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -667,7 +668,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_24_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -680,7 +681,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_25_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -693,7 +694,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_26_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -706,7 +707,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_27_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -719,7 +720,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_28_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -732,7 +733,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_29_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -745,7 +746,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_30_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -758,7 +759,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_31_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -771,7 +772,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_32_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -784,7 +785,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_33_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -797,7 +798,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_34_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -810,7 +811,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_35_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -823,7 +824,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_36_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -836,7 +837,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_37_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -849,7 +850,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_38_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -862,7 +863,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_39_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -875,7 +876,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_40_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -888,7 +889,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_41_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -901,7 +902,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_42_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -914,7 +915,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_43_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -927,7 +928,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_44_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -940,7 +941,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_45_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -953,7 +954,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_46_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -966,7 +967,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_47_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -979,7 +980,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_48_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -992,7 +993,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_49_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1005,7 +1006,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_50_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1018,7 +1019,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_51_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1031,7 +1032,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_52_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1044,7 +1045,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_53_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1057,7 +1058,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_54_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1070,7 +1071,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_55_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1083,7 +1084,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_56_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1096,7 +1097,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_57_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1109,7 +1110,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_58_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1122,7 +1123,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_59_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1135,7 +1136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_60_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1148,7 +1149,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_61_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1161,7 +1162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_62_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1174,7 +1175,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_63_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1187,7 +1188,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_64_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1200,7 +1201,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_65_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1213,7 +1214,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_66_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1226,7 +1227,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_67_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1239,7 +1240,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_68_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1252,7 +1253,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_69_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1265,7 +1266,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_70_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1278,7 +1279,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_71_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1291,7 +1292,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_72_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1304,7 +1305,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_73_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1317,7 +1318,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_74_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1330,7 +1331,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_75_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1343,7 +1344,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_76_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1356,7 +1357,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_77_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1369,7 +1370,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_78_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1382,7 +1383,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_79_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1395,7 +1396,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotShaded throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotShaded_80_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

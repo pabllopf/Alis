@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_8_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_9_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_10_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_11_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -186,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_12_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_13_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_14_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_15_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -238,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_16_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLineG throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLineG_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotLineG throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLineG_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -316,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -329,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -342,7 +343,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_8_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_9_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_10_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -407,7 +408,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_11_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -420,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_12_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -433,7 +434,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_13_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -446,7 +447,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_14_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -459,7 +460,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_15_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -472,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_16_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -485,7 +486,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_17_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_18_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -511,7 +512,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_19_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -524,7 +525,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_20_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -537,7 +538,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that PlotPieChart throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_21_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

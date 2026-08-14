@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that range properties round trip
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Range_Properties_RoundTrip()
         {
             ImPlotRange range = new ImPlotRange
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that range defaults are zero
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Range_Defaults_AreZero()
         {
             ImPlotRange range = new ImPlotRange();
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that rect properties round trip
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Rect_Properties_RoundTrip()
         {
             ImPlotRect rect = new ImPlotRect
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that rect defaults are zero
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Rect_Defaults_AreZero()
         {
             ImPlotRect rect = new ImPlotRect();

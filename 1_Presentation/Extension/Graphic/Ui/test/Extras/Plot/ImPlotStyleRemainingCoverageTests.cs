@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that numeric properties round trip
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void NumericProperties_RoundTrip()
         {
             ImPlotStyle style = new ImPlotStyle
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that color properties round trip
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void ColorProperties_RoundTrip()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colormap property round trips
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Colormap_Property_RoundTrips()
         {
             ImPlotStyle style = new ImPlotStyle
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that defaults are zero
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void Defaults_AreZero()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that all numeric properties round trip
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void AllNumericProperties_RoundTrip()
         {
             ImPlotStyle style = new ImPlotStyle

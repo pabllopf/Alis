@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 32 base with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int32Base_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1; int ys = 2;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 32 flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int32Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1; int ys = 2;
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 32 flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int32FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1; int ys = 2;
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 32 flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int32FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             int xs = 1; int ys = 2;
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 32 base with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint32Base_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1; uint ys = 2;
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 32 flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint32Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1; uint ys = 2;
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 32 flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint32FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1; uint ys = 2;
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 32 flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint32FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             uint xs = 1; uint ys = 2;
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 64 base with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int64Base_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1; long ys = 2;
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 64 flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int64Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1; long ys = 2;
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 64 flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int64FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1; long ys = 2;
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line int 64 flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Int64FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             long xs = 1; long ys = 2;
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 64 base with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint64Base_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1; ulong ys = 2;
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 64 flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint64Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1; ulong ys = 2;
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 64 flags offset with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint64FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1; ulong ys = 2;
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line uint 64 flags offset stride with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLine_Uint64FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
             ulong xs = 1; ulong ys = 2;
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line g base with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLineG_Base_WithNullLabel_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1));
@@ -213,7 +214,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot line g flags with null label throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotLineG_Flags_WithNullLabel_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1, ImPlotLineFlags.None));
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart float with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_Float_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
@@ -233,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart float label fmt with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_FloatLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart float angle 0 with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_FloatAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart float flags with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_FloatFlags_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -266,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart double with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_Double_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart double label fmt with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_DoubleLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -288,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart double angle 0 with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_DoubleAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart double flags with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_DoubleFlags_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -310,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart s byte with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_SByte_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart s byte label fmt with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_SByteLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -332,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart s byte angle 0 with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_SByteAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -343,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart s byte flags with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_SByteFlags_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart byte with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_Byte_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
@@ -365,7 +366,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart byte label fmt with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ByteLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -376,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart byte angle 0 with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ByteAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -387,7 +388,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart byte flags with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ByteFlags_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart short with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_Short_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
@@ -409,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart short label fmt with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ShortLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -420,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart short angle 0 with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ShortAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -431,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart short flags with null label fmt throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_ShortFlags_WithNullLabelFmt_ThrowsArgumentNullException()
         {
             string[] labels = { "A", "B" };
@@ -442,7 +443,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         /// Tests that plot pie chart u short with null label item throws argument null exception
         /// </summary>
-        [Fact]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_UShort_WithNullLabelItem_ThrowsArgumentNullException()
         {
             string[] labels = { "A", null };
