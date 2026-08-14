@@ -33,6 +33,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -155,7 +156,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play valid wav should not throw unexpected exception
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Play_ValidWav_ShouldNotThrowUnexpectedException()
         {
             byte[] wav = CreateValidWav();
@@ -176,7 +177,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play valid wav should fire playback finished
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Play_ValidWav_ShouldFirePlaybackFinished()
         {
             byte[] wav = CreateValidWav();
@@ -234,7 +235,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that play should handle playback finished without handler
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Play_ShouldHandlePlaybackFinishedWithoutHandler()
         {
             byte[] wav = CreateValidWav();

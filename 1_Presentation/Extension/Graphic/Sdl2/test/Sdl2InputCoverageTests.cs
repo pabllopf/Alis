@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that joystick query functions do not crash without devices
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void JoystickQueries_DoNotCrash()
         {
             Sdl.NumJoysticks();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that game controller query functions do not crash without devices
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GameControllerQueries_DoNotCrash()
         {
             Sdl.GameControllerAddMapping("03000000123456780000000000000000,coverage,a:b0,b:b1,x:b2,y:b3");
@@ -133,7 +134,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that haptic query functions do not crash
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void HapticQueries_DoNotCrash()
         {
             Sdl.NumHaptics();
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that joystick functions accept null pointers
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void JoystickFunctions_WithNull_DoNotCrash()
         {
             Sdl.JoystickRumble(IntPtr.Zero, 0, 0, 0);
@@ -176,7 +177,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that game controller functions accept null pointers
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GameControllerFunctions_WithNull_DoNotCrash()
         {
             Sdl.GameControllerName(IntPtr.Zero);

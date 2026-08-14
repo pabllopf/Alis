@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Windows;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that the system constructor with wait type does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void System_Constructor_Wait_DoesNotThrow()
         {
             using Cursor cursor = new Cursor(Cursor.CursorType.Wait);
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that the system constructor with size all type does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void System_Constructor_SizeAll_DoesNotThrow()
         {
             using Cursor cursor = new Cursor(Cursor.CursorType.SizeAll);

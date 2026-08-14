@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Verifies that reset executes the native call (symbol renamed in CSFML 3.0, throws entry point not found).
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Reset_WithFloatRect_Executes()
         {
             using View view = new View(new Vector2F(0f, 0f), new Vector2F(800f, 600f));

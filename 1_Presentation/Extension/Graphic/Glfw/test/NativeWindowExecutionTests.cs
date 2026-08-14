@@ -32,6 +32,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that every native step executed on the main thread completed without an exception.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WorkerSteps_AllSucceeded()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the bounds round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Bounds_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client bounds setter applied the requested content size.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientBounds_SetThenRead_ContentSizeMatches()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client bounds read back keeps the content dimensions.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientBounds_Get_ReturnsContentDimensions()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client width round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientWidth_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client height round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientHeight_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client size round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientSize_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the clipboard round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Clipboard_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that every cursor mode round trips.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void CursorMode_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the maximized state round trips in both directions.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Maximized_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the minimized property reads the auto iconify attribute which the wrapper uses for the state.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Minimized_GetSet_ReadsHintAttribute()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         ///     Tests that the mouse position can be set and read; the read value is the current cursor position relative
         ///     to the window because macOS cursor warping requires accessibility permissions unavailable to the test host.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void MousePosition_GetSet_ReadsCurrentCursor()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -227,7 +228,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the window position round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Position_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the window size round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Size_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the sticky keys mode round trips in both directions.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void StickyKeys_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -270,7 +271,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the sticky mouse button mode round trips in both directions.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void StickyMouseButtons_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the title round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Title_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the user pointer round trip preserves the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void UserPointer_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the visibility round trip preserves both directions.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Visible_GetSet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -328,7 +329,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the content scale of the live window is positive.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ContentScale_Get_ReturnsPositiveValues()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the handle of the live window is a non-zero pointer.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Handle_Get_ReturnsNonZero()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -361,7 +362,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the underlying GLFW window is a non-zero pointer.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void UnderlyingWindow_Get_ReturnsNonZero()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -376,7 +377,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the video mode of the live window reports a non-empty mode.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void VideoMode_Get_ReturnsPrimaryMode()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -391,7 +392,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the Win32 HWND is unavailable on macOS and the property degrades to zero.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Hwnd_Get_ReturnsZeroOnMacOS()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -406,7 +407,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that a freshly created window is not flagged as closing.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void IsClosing_Get_ReturnsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -420,7 +421,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the default window is decorated.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void IsDecorated_Get_ReturnsTrue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the default window is not floating.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void IsFloating_Get_ReturnsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -448,7 +449,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the hidden bootstrap window is not focused.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void IsFocused_Get_ReturnsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -462,7 +463,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the default window is resizable.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void IsResizable_Get_ReturnsTrue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -476,7 +477,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the windowed bootstrap window reports no monitor.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Monitor_Get_ReturnsNone()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -490,7 +491,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the live window size is positive.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ClientSize_Get_LiveWindow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -506,7 +507,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the live window attributes can be read.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void State_Get_LiveWindow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -525,7 +526,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the sticky keys mode can be toggled from the test thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void StickyKeys_GetSet_OnTestThread()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -543,7 +544,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the sticky mouse button mode can be toggled from the test thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void StickyMouseButtons_GetSet_OnTestThread()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -561,7 +562,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the user pointer can be set and read from the test thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void UserPointer_GetSet_OnTestThread()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -578,7 +579,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that making the context current does not throw from the test thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void MakeCurrent_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -592,7 +593,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the window equals itself and not null.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Equals_HandlesSelfAndNull()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -610,7 +611,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that two distinct windows are not equal.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Equals_DifferentInstance_ReturnsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -624,7 +625,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the hash code is derived from the underlying window.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetHashCode_ReturnsNonZero()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -638,7 +639,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests the implicit conversions to <see cref="Window" /> and <see cref="IntPtr" />.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void ImplicitConversions_ReturnNonNullHandles()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -656,7 +657,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the default constructor produced a valid window handle on the main thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void DefaultCtor_CreatesValidHandle()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -670,7 +671,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that setting icons throws the interop exception because the image array cannot be marshaled.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void SetIcons_ThrowsInteropException()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -684,7 +685,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the X11 and Win32 entry points are unavailable on macOS and throw the missing entry point error.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void PlatformSpecificMethods_ThrowMissingEntryPoint()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -704,7 +705,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that closing a window reports the closed state and double dispose is safe.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Close_AndDoubleDispose_AreSafe()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -719,7 +720,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the closing event can cancel the close and the window stays open.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnClosing_Cancel_KeepsWindowOpen()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -733,7 +734,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the Cocoa monitor identifier is returned on macOS.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetCocoaMonitor_OnMacOS_ReturnsNonZero()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -752,7 +753,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the Cocoa window pointer is returned on macOS.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetCocoaWindow_OnMacOS_ReturnsNonZero()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -771,7 +772,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the platform context handles can be queried without throwing.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetContextHandles_DoNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -787,7 +788,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the maximize change event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnMaximizeChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -817,7 +818,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the content scale change event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnContentScaleChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -847,7 +848,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the character input event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnCharacterInput_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -877,7 +878,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the closed event is raised.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnClosed_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -904,7 +905,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the file drop event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnFileDrop_Strings_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -935,7 +936,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the file drop event is raised when the paths come from a native pointer array.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnFileDrop_Pointers_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -977,7 +978,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the focus change event is raised.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnFocusChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1004,7 +1005,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the framebuffer size change event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnFramebufferSizeChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1034,7 +1035,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the key events are raised for every input state.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnKey_RaisesKeyEvents()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1078,7 +1079,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the mouse button event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnMouseButton_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1108,7 +1109,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the mouse enter and leave events are raised.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnMouseEnter_RaisesEvents()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1141,7 +1142,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the mouse move event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnMouseMove_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1171,7 +1172,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the mouse scroll event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnMouseScroll_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1201,7 +1202,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the position change event is raised.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnPositionChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -1228,7 +1229,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the size change event is raised with the expected payload.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void FireOnSizeChanged_RaisesEvent()
         {
             if (!GlfwTestBootstrap.Ready)

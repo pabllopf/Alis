@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that a software surface can be created and filled
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SurfaceCreateAndFill_Works()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that surface state getters work on a real surface
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SurfaceStateGetters_Work()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that surface state setters work on a real surface
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SurfaceStateSetters_Work()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that surface locking works on a real surface
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SurfaceLock_Works()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that blit operations work between software surfaces
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SurfaceBlits_Work()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that palette functions accept null pointers
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void PaletteFunctions_WithNull_DoNotCrash()
         {
             Sdl.SetPaletteColors(IntPtr.Zero, new Color[1], 0, 1);
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that setting a null palette on a surface does not crash
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SetSurfacePalette_WithNull_DoesNotCrash()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that converting a surface with a null format does not crash
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void ConvertSurface_WithNullFormat_DoesNotCrash()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that a software renderer can be created on a surface
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void CreateSoftwareRenderer_Works()
         {
             IntPtr surface = Sdl.CreateRgbSurfaceWithFormat(0, 64, 64, 32, Sdl.PixelFormatArgb8888);
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that a bitmap can be loaded from the assets folder
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void LoadBmp_FromAssets_ReturnsSurface()
         {
             string file = Sdl2TestAssets.Find("tile000.bmp");

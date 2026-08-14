@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sdl2.Sdl2Image;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that the linked version can be queried
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void LinkedVersion_ThrowsOnUnblittableType()
         {
             bool throws;
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that image can be initialized and images loaded
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Init_AndLoadImage_Work()
         {
             string file = Sdl2TestAssets.Find("tile000.bmp");
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that image error functions work
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ErrorFunctions_Work()
         {
             SdlImage.SetError("coverage image");
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that texture loading with an invalid renderer returns zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void LoadTexture_WithInvalidRenderer_ReturnsZero()
         {
             IntPtr result = SdlImage.LoadTexture(IntPtr.Zero, "coverage.png");
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that invalid loads return zero without crashing
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InvalidLoads_ReturnZero()
         {
             SdlImage.LoadAnimation("nonexistent_file_xyz.gif");
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that save functions with invalid parameters return error
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SaveFunctions_WithInvalidParams_ReturnError()
         {
             int pngResult = SdlImage.SavePngRw(IntPtr.Zero, IntPtr.Zero, 0);

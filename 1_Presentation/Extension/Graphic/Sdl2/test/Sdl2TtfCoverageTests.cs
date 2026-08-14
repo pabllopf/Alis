@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Extension.Graphic.Sdl2.Sdl2Ttf;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that ttf can be initialized and queried
         /// </summary>
-        [Fact]
+        [RequireSdl2TtfFact]
         public void Init_AndQuery_Work()
         {
             int initResult = SdlTtf.Init();
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that a font can be opened and measured from the assets folder
         /// </summary>
-        [Fact]
+        [RequireSdl2TtfFact]
         public void FontMetrics_Work()
         {
             string file = Sdl2TestAssets.Find("FontSample.otf");
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that font style, outline, hinting and kerning setters work
         /// </summary>
-        [Fact]
+        [RequireSdl2TtfFact]
         public void FontAttributes_Work()
         {
             string file = Sdl2TestAssets.Find("FontSample.otf");
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that text can be rendered to surfaces in every mode
         /// </summary>
-        [Fact]
+        [RequireSdl2TtfFact]
         public void RenderText_AllModes_Work()
         {
             string file = Sdl2TestAssets.Find("FontSample.otf");

@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the compiled version of the native library is three or newer.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Version_Get_IsThreeOrNewer()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the compile-time generated version string of the native library is not empty.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void VersionString_Get_IsNotEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the GLFW timer reports a non-negative value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Time_Get_IsNonNegative()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the timer can be set and read back on the same thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Time_SetThenGet_RoundTrips()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the raw timer frequency is positive.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void TimerFrequency_Get_IsPositive()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the raw timer value can be read without an exception.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void TimerValue_Get_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the error query clears and returns the none code on a clean thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetError_CleanThread_ReturnsNone()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that an invalid native hint produces a pending error that the query returns with a description.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetError_AfterInvalidHint_ReturnsDescription()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the monitor enumeration returns at least one connected monitor.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Monitors_Get_IsNotEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -193,7 +194,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the primary monitor handle is valid.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void PrimaryMonitor_Get_IsNotNull()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the current context query does not throw on the worker thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void CurrentContext_Get_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the joystick hats query for a missing device returns no hats.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickHats_MissingDevice_ReturnsNone()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -237,7 +238,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the joystick GUID query for a missing device returns null.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickGuid_MissingDevice_ReturnsNull()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -252,7 +253,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the gamepad name query for a missing device returns null.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetGamepadName_MissingDevice_ReturnsNull()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -267,7 +268,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that parsing an empty mappings string does not crash.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void UpdateGamepadMappings_EmptyString_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -281,7 +282,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that parsing a malformed mappings string fails without crashing.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void UpdateGamepadMappings_MalformedString_ReturnsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that a UTF-8 window string hint can be set and reset without an exception.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHintStringUTF8_CocoaFrameName_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -310,7 +311,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that an ASCII window string hint can be set and reset without an exception.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHintStringASCII_CocoaFrameName_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -325,7 +326,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the boolean window hint wrapper accepts a default value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_Bool_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -339,7 +340,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client API window hint wrapper accepts the default value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_ClientApi_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the constants window hint wrapper accepts the no preference value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_Constants_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the context creation API window hint wrapper accepts the default value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_ContextApi_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the robustness window hint wrapper accepts the default value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_Robustness_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -395,7 +396,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the profile window hint wrapper accepts the value used by the bootstrap window.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_GlfwProfile_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -409,7 +410,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the release behavior window hint wrapper accepts the default value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void WindowHint_ReleaseBehavior_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -423,7 +424,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the client API attribute of the bootstrap window reports the OpenGL API.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetClientApi_BootstrapWindow_ReturnsOpenGl()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -439,7 +440,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the context creation API attribute of the bootstrap window reports the native API.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetContextCreationApi_BootstrapWindow_ReturnsNative()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -455,7 +456,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the context version attribute of the bootstrap window reports version 3.3.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetContextVersion_BootstrapWindow_ReturnsThreeThree()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -471,7 +472,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the debug context attribute of the bootstrap window is disabled.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetIsDebugContext_BootstrapWindow_IsFalse()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -487,7 +488,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the forward compatible attribute of the bootstrap window is enabled.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetIsForwardCompatible_BootstrapWindow_IsTrue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -503,7 +504,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the profile attribute of the bootstrap window reports the core profile.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetProfile_BootstrapWindow_ReturnsCore()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -519,7 +520,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the robustness attribute of the bootstrap window reports no robustness.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetRobustness_BootstrapWindow_ReturnsNone()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -535,7 +536,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the decorated attribute of the bootstrap window is enabled.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetWindowAttribute_BootstrapWindow_DecoratedIsTrue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -551,7 +552,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the clipboard recorded by the main thread worker round trips the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetClipboardString_MainThreadWorker_RecordedValue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -565,7 +566,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the title recorded by the main thread worker round trips the set value.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void SetWindowTitle_MainThreadWorker_RecordedValue()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -579,7 +580,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the joystick axes query for a missing device returns an empty array.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickAxes_MissingDevice_ReturnsEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -594,7 +595,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the joystick buttons query for a missing device returns an empty array.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickButtons_MissingDevice_ReturnsEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -609,7 +610,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the joystick name query for a missing device returns an empty string.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickName_MissingDevice_ReturnsEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -625,7 +626,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         ///     Tests that the joystick state queries do not crash when a device is actually present. It is a no-op on
         ///     machines without a connected joystick.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetJoystickState_PresentDevice_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -648,7 +649,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the key name query for an unknown key does not crash.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetKeyName_UnknownKey_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -662,7 +663,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the extension support query does not crash without a current context.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetExtensionSupported_NoCurrentContext_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -676,7 +677,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that a function address can be resolved from the native library.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetProcAddress_KnownFunction_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -690,7 +691,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the primary monitor name is not empty.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetMonitorName_PrimaryMonitor_IsNotEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -705,7 +706,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the current video mode of the primary monitor reports a positive width.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetVideoMode_PrimaryMonitor_WidthIsPositive()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -720,7 +721,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the supported video modes of the primary monitor are not empty.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetVideoModes_PrimaryMonitor_IsNotEmpty()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -735,7 +736,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the gamma ramp of the primary monitor can be read.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetGammaRamp_PrimaryMonitor_DoesNotThrow()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -750,7 +751,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the internal gamma ramp pointer of the primary monitor is valid.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void GetGammaRampInternal_PrimaryMonitor_IsNotNull()
         {
             if (!GlfwTestBootstrap.Ready)

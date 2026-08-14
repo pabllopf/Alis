@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the is supported no display does not throw
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_IsSupported_NoDisplay_DoesNotThrow()
         {
             try
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the is supported no display returns bool
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_IsSupported_NoDisplay_ReturnsBool()
         {
             try
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get instance proc address null vulkan returns zero or address
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetInstanceProcAddress_NullVulkan_ReturnsZeroOrAddress()
         {
             try
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get instance proc address empty proc name returns zero
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetInstanceProcAddress_EmptyProcName_ReturnsZero()
         {
             try
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get instance proc address invalid proc name returns zero
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetInstanceProcAddress_InvalidProcName_ReturnsZero()
         {
             try
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get instance proc address does not throw
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetInstanceProcAddress_DoesNotThrow()
         {
             try
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get required instance extensions returns array
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetRequiredInstanceExtensions_ReturnsArray()
         {
             try
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Vulkans the get required instance extensions does not throw
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Vulkan_GetRequiredInstanceExtensions_DoesNotThrow()
         {
             try

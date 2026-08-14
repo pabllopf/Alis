@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -45,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the bootstrap created the persistent window on the main thread.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Bootstrap_CreatesLiveWindow()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that every native step executed on the main thread completed without an exception.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void WorkerSteps_AllSucceeded()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the live window reports itself open.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void IsOpen_Get_ReturnsTrue()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the creation settings report the requested depth bits.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Settings_Get_ReturnsRequestedDepthBits()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the position getter and setter completed without throwing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Position_GetSet_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the size getter and setter completed without throwing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Size_GetSet_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the view set on the live window is returned with its size.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void View_SetThenGet_SizeMatches()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the default view matches the window size.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void DefaultView_Get_MatchesWindowSize()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the viewport query completed without throwing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void GetViewport_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the pixel to coords mapping completed without throwing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void MapPixelToCoords_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the coords to pixel mapping completed without throwing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void MapCoordsToPixel_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the push and pop GL states calls completed.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void GlStates_PushPop_Completed()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that polling an event does not throw.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void PollEvent_DoesNotThrow()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the mouse and touch queries do not throw.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void MouseAndTouch_DoNotThrow()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that activating the window succeeded.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetActive_ReturnsTrue()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -258,7 +259,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the string description identifies a render window.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void ToString_ContainsRenderWindow()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -272,7 +273,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the system handle getter throws the missing entry point error because CSFML 3.0 renamed it.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SystemHandle_ThrowsMissingEntryPoint()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -286,7 +287,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the capture call throws the missing entry point error because CSFML 3.0 removed it.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Capture_ThrowsMissingEntryPoint()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -300,7 +301,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that closing the window makes it report closed.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Close_ThenIsOpen_ReturnsFalse()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that disposing the window destroys the native handle and is safe twice.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Dispose_DestroysNativeHandle()
         {
             if (!SfmlTestBootstrap.Ready)
@@ -328,7 +329,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the one argument handle constructor produced a valid window on the main thread.
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Ctor_FromNativeHandle_CreatesValidWindow()
         {
             if (!SfmlTestBootstrap.Ready)

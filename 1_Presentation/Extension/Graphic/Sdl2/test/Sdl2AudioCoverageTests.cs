@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that audio device functions work after audio initialization
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void AudioDeviceFunctions_Work()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that audio stream functions work without audio initialization
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void AudioStreamFunctions_Work()
         {
             IntPtr stream = Sdl.SdlNewAudioStream(Sdl.GlAudioS16Sys, 2, 44100, Sdl.GlAudioS16Sys, 2, 44100);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that a wav file can be loaded and audio queued
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void LoadWav_AndQueueAudio_Work()
         {
             string file = Sdl2TestAssets.Find("AudioSample.wav");

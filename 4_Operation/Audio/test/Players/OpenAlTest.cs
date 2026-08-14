@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -43,7 +44,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc open device should not throw exception when called
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcOpenDevice_ShouldNotThrowException_WhenCalled()
         {
             try
@@ -66,7 +67,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc open device with device name should accept string parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcOpenDevice_WithDeviceName_ShouldAcceptStringParameter()
         {
             try
@@ -91,7 +92,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc create context should accept device and attributes
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcCreateContext_ShouldAcceptDeviceAndAttributes()
         {
             try
@@ -116,7 +117,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc make context current should accept context parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcMakeContextCurrent_ShouldAcceptContextParameter()
         {
             try
@@ -143,7 +144,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc close device should accept device parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcCloseDevice_ShouldAcceptDeviceParameter()
         {
             try
@@ -166,7 +167,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen sources should generate sources
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenSources_ShouldGenerateSources()
         {
             try
@@ -199,7 +200,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al delete sources should delete sources
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlDeleteSources_ShouldDeleteSources()
         {
             try
@@ -228,7 +229,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source play should accept source parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcePlay_ShouldAcceptSourceParameter()
         {
             try
@@ -258,7 +259,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source stop should accept source parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourceStop_ShouldAcceptSourceParameter()
         {
             try
@@ -288,7 +289,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen buffers should generate buffers
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenBuffers_ShouldGenerateBuffers()
         {
             try
@@ -321,7 +322,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al delete buffers should delete buffers
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlDeleteBuffers_ShouldDeleteBuffers()
         {
             try
@@ -354,7 +355,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al buffer data should accept buffer data parameters
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlBufferData_ShouldAcceptBufferDataParameters()
         {
             try
@@ -394,7 +395,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al sourcei should accept source and parameters
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcei_ShouldAcceptSourceAndParameters()
         {
             try
@@ -431,7 +432,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source queue buffers should accept source and buffer array
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourceQueueBuffers_ShouldAcceptSourceAndBufferArray()
         {
             try
@@ -468,7 +469,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen sources with multiple sources should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenSources_WithMultipleSources_ShouldWork()
         {
             try
@@ -512,7 +513,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen buffers with multiple buffers should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenBuffers_WithMultipleBuffers_ShouldWork()
         {
             try
@@ -556,7 +557,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc open device with null should accept null parameter
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcOpenDevice_WithNull_ShouldAcceptNullParameter()
         {
             try
@@ -583,7 +584,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc open device with empty string should handle gracefully
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcOpenDevice_WithEmptyString_ShouldHandleGracefully()
         {
             try
@@ -610,7 +611,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc create context with null attributes should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcCreateContext_WithNullAttributes_ShouldWork()
         {
             try
@@ -640,7 +641,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc make context current with null should handle gracefully
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcMakeContextCurrent_WithNull_ShouldHandleGracefully()
         {
             try
@@ -661,7 +662,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that alc close device with null should handle gracefully
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlcCloseDevice_WithNull_ShouldHandleGracefully()
         {
             try
@@ -682,7 +683,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen sources with zero count should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenSources_WithZeroCount_ShouldBeCallable()
         {
             try
@@ -715,7 +716,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al gen buffers with zero count should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlGenBuffers_WithZeroCount_ShouldBeCallable()
         {
             try
@@ -748,7 +749,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source play with zero source should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcePlay_WithZeroSource_ShouldBeCallable()
         {
             try
@@ -781,7 +782,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source stop with zero source should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourceStop_WithZeroSource_ShouldBeCallable()
         {
             try
@@ -814,7 +815,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al delete sources with zero source should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlDeleteSources_WithZeroSource_ShouldBeCallable()
         {
             try
@@ -848,7 +849,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al delete buffers with zero buffer should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlDeleteBuffers_WithZeroBuffer_ShouldBeCallable()
         {
             try
@@ -882,7 +883,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al buffer data with empty data should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlBufferData_WithEmptyData_ShouldBeCallable()
         {
             try
@@ -917,7 +918,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al sourcei with different parameters should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcei_WithDifferentParameters_ShouldWork()
         {
             try
@@ -953,7 +954,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source queue buffers with zero count should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourceQueueBuffers_WithZeroCount_ShouldBeCallable()
         {
             try
@@ -989,7 +990,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that open al methods should be callable in sequence
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void OpenAl_Methods_ShouldBeCallableInSequence()
         {
             try
@@ -1024,7 +1025,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al buffer data with different formats should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlBufferData_WithDifferentFormats_ShouldBeCallable()
         {
             try
@@ -1067,7 +1068,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al buffer data with different frequencies should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlBufferData_WithDifferentFrequencies_ShouldBeCallable()
         {
             try
@@ -1109,7 +1110,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al source play and stop sequence should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcePlay_AndStop_Sequence_ShouldWork()
         {
             try
@@ -1147,7 +1148,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al sourcei with zero buffer should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcei_WithZeroBuffer_ShouldBeCallable()
         {
             try
@@ -1182,7 +1183,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al sourcei with looping parameter should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlSourcei_WithLoopingParameter_ShouldWork()
         {
             try
@@ -1218,7 +1219,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that create and destroy multiple sources should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void CreateAndDestroy_MultipleSources_ShouldWork()
         {
             try
@@ -1255,7 +1256,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that create and destroy multiple buffers should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void CreateAndDestroy_MultipleBuffers_ShouldWork()
         {
             try
@@ -1292,7 +1293,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that al buffer data with large data should be callable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlBufferData_WithLargeData_ShouldBeCallable()
         {
             try
@@ -1332,7 +1333,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that multiple al open close device cycles should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void AlOpenCloseDevice_MultipleCycles_ShouldWork()
         {
             try

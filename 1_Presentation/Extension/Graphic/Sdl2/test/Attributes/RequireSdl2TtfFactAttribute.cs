@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CsfmlAudioFactAttribute.cs
+//  File:RequireSdl2TtfFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,33 +34,32 @@ using Xunit;
 namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
 {
     /// <summary>
-    ///     The require sdl2 image fact attribute class
+    ///     The require sdl2 ttf fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    public class RequireSdl2ImageFactAttribute : FactAttribute
+    public class RequireSdl2TtfFactAttribute : FactAttribute
     {
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequireSdl2ImageFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="RequireSdl2TtfFactAttribute"/> class
         /// </summary>
-        public RequireSdl2ImageFactAttribute()
+        public RequireSdl2TtfFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("sdl2_image"))
+            if (!TryLoadSdl2TtfLibrary("sdl2_ttf"))
             {
                 Skip = "Test skipped because its not platform";
             }
         }
 
         /// <summary>
-        ///     Attempts to load the specified SDL2_image library by name, falling back to
+        ///     Attempts to load the specified SDL2_ttf library by name, falling back to
         ///     absolute path resolution from the test assembly output directory.
         /// </summary>
-        private static bool TryLoadSfmlLibrary(string name)
+        private static bool TryLoadSdl2TtfLibrary(string name)
         {
             if (NativeLibrary.TryLoad(name, out _))
                 return true;
 
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2TtfFactAttribute).Assembly.Location);
             if (assemblyDir == null)
                 return false;
 

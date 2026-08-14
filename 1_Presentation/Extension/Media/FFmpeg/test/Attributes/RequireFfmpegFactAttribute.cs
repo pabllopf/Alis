@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CsfmlAudioFactAttribute.cs
+//  File:RequireFfmpegFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,28 +31,29 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
+namespace Alis.Extension.Media.FFmpeg.Test.Attributes
 {
+
     /// <summary>
-    ///     The require sdl2 image fact attribute class
+    ///     The require ffmpeg fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    public class RequireSdl2ImageFactAttribute : FactAttribute
+    public class RequireFfmpegFactAttribute : FactAttribute
     {
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequireSdl2ImageFactAttribute"/> class
+        /// Initializes a new instance of the <see cref="RequireFfmpegFactAttribute"/> class
         /// </summary>
-        public RequireSdl2ImageFactAttribute()
+        public RequireFfmpegFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("sdl2_image"))
+            if (!TryLoadSfmlLibrary("avformat"))
             {
                 Skip = "Test skipped because its not platform";
             }
         }
 
         /// <summary>
-        ///     Attempts to load the specified SDL2_image library by name, falling back to
+        ///     Attempts to load the specified SFML library by name, falling back to
         ///     absolute path resolution from the test assembly output directory.
         /// </summary>
         private static bool TryLoadSfmlLibrary(string name)
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
             if (NativeLibrary.TryLoad(name, out _))
                 return true;
 
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireFfmpegFactAttribute).Assembly.Location);
             if (assemblyDir == null)
                 return false;
 
@@ -81,7 +82,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
                     Path.Combine(dir, name),
                     Path.Combine(dir, "lib" + name),
                     Path.Combine(dir, "lib" + name + ".dylib"),
-                    Path.Combine(dir, "lib" + name + ".so")
+                    Path.Combine(dir, "lib" + name + ".so"),
+                    Path.Combine(dir, "lib" + name + ".so.1")
                 };
 
                 foreach (string candidate in candidates)

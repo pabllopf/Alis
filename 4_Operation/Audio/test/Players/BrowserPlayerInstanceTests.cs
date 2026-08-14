@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -13,7 +14,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that constructor with open al available should initialize
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Constructor_WithOpenALAvailable_ShouldInitialize()
         {
             try
@@ -36,7 +37,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that pause when not playing should set paused
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Pause_WhenNotPlaying_ShouldSetPaused()
         {
             try
@@ -57,7 +58,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that resume when not playing should set playing
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Resume_WhenNotPlaying_ShouldSetPlaying()
         {
             try
@@ -78,7 +79,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that stop when not playing should set both false
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Stop_WhenNotPlaying_ShouldSetBothFalse()
         {
             try
@@ -99,7 +100,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that set volume should return completed task
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void SetVolume_ShouldReturnCompletedTask()
         {
             try
@@ -119,7 +120,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that pause resume stop sequence should work
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void Pause_Resume_Stop_Sequence_ShouldWork()
         {
             try
@@ -146,7 +147,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Tests that playback finished should be raiseable
         /// </summary>
-        [Fact]
+        [RequireOpenAlFact]
         public void PlaybackFinished_ShouldBeRaiseable()
         {
             try

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CsfmlAudioFactAttribute.cs
+//  File:RequireCSfmlGraphicsFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,64 +31,49 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
+namespace Alis.Extension.Graphic.Sfml.Test.Attributes
 {
     /// <summary>
-    ///     The require sdl2 image fact attribute class
+    ///     The require c sfml graphics fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    public class RequireSdl2ImageFactAttribute : FactAttribute
+    public class RequireCSfmlGraphicsFactAttribute : FactAttribute
     {
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequireSdl2ImageFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="RequireCSfmlGraphicsFactAttribute"/> class
         /// </summary>
-        public RequireSdl2ImageFactAttribute()
+        public RequireCSfmlGraphicsFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("sdl2_image"))
+            if (!TryLoadCsfmlLibrary("csfml-graphics"))
             {
                 Skip = "Test skipped because its not platform";
             }
         }
 
         /// <summary>
-        ///     Attempts to load the specified SDL2_image library by name, falling back to
+        ///     Attempts to load the specified CSFML library by name, falling back to
         ///     absolute path resolution from the test assembly output directory.
         /// </summary>
-        private static bool TryLoadSfmlLibrary(string name)
+        private static bool TryLoadCsfmlLibrary(string name)
         {
             if (NativeLibrary.TryLoad(name, out _))
                 return true;
 
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireCSfmlGraphicsFactAttribute).Assembly.Location);
             if (assemblyDir == null)
                 return false;
 
-            string[] searchDirs = new[]
+            string[] candidates = new[]
             {
-                assemblyDir,
-                "/opt/homebrew/lib",
-                "/usr/local/lib",
-                "/usr/lib",
-                "/usr/lib/x86_64-linux-gnu",
-                "/usr/lib/aarch64-linux-gnu"
+                Path.Combine(assemblyDir, name),
+                Path.Combine(assemblyDir, "lib" + name),
+                Path.Combine(assemblyDir, "lib" + name + ".dylib")
             };
 
-            foreach (string dir in searchDirs)
+            foreach (string candidate in candidates)
             {
-                string[] candidates = new[]
-                {
-                    Path.Combine(dir, name),
-                    Path.Combine(dir, "lib" + name),
-                    Path.Combine(dir, "lib" + name + ".dylib"),
-                    Path.Combine(dir, "lib" + name + ".so")
-                };
-
-                foreach (string candidate in candidates)
-                {
-                    if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
-                        return true;
-                }
+                if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                    return true;
             }
 
             return false;

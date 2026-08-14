@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RequiresSfmlFactAttribute.cs
+//  File:RequireGlfwFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,37 +31,35 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Media.FFmpeg.Test.Attributes
+namespace Alis.Extension.Graphic.Glfw.Test.Attributes
 {
-
     /// <summary>
-    /// The require imgui system fact attribute class
+    ///     The require glfw fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    public class RequireFfmpegFactAttribute : FactAttribute
+    public class RequireGlfwFactAttribute : FactAttribute
     {
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequireFfmpegFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="RequireGlfwFactAttribute"/> class
         /// </summary>
-        public RequireFfmpegFactAttribute()
+        public RequireGlfwFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("avformat"))
+            if (!TryLoadGlfwLibrary("glfw"))
             {
                 Skip = "Test skipped because its not platform";
             }
         }
 
         /// <summary>
-        ///     Attempts to load the specified SFML library by name, falling back to
+        ///     Attempts to load the specified GLFW library by name, falling back to
         ///     absolute path resolution from the test assembly output directory.
         /// </summary>
-        private static bool TryLoadSfmlLibrary(string name)
+        private static bool TryLoadGlfwLibrary(string name)
         {
             if (NativeLibrary.TryLoad(name, out _))
                 return true;
 
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireFfmpegFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireGlfwFactAttribute).Assembly.Location);
             if (assemblyDir == null)
                 return false;
 
@@ -83,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
                     Path.Combine(dir, "lib" + name),
                     Path.Combine(dir, "lib" + name + ".dylib"),
                     Path.Combine(dir, "lib" + name + ".so"),
-                    Path.Combine(dir, "lib" + name + ".so.1")
+                    Path.Combine(dir, "lib" + name + ".so.3")
                 };
 
                 foreach (string candidate in candidates)

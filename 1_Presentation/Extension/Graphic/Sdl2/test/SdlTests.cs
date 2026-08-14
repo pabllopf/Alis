@@ -30,6 +30,7 @@
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that set error then get error returns set message
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SetError_ThenGetError_ReturnsSetMessage()
         {
             Sdl.SetError("test error message");
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get error initially returns empty string
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetError_Initially_ReturnsEmptyString()
         {
             Sdl.SetError("");
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that clear hints does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void ClearHints_DoesNotThrow()
         {
             Sdl.ClearHints();
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that set hint get hint roundtrip
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SetHint_GetHint_Roundtrip()
         {
             string hint = "TEST_HINT_SETGET";
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that set hint with priority get hint roundtrip
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SetHintWithPriority_GetHint_Roundtrip()
         {
             string hint = "TEST_HINT_PRIORITY";
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get hint boolean returns default for unknown hint
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetHintBoolean_ReturnsDefaultForUnknownHint()
         {
             bool result = Sdl.GetHintBoolean("NONEXISTENT_HINT_XYZ", true);
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that init and quit lifecycle
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void Init_And_Quit_Lifecycle()
         {
             uint wasInitBefore = Sdl.WasInit(InitSettings.InitTimer);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that init with multiple flags works
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void Init_WithMultipleFlags_Works()
         {
             int result = Sdl.Init(InitSettings.InitTimer | InitSettings.InitAudio | InitSettings.InitEvents);
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that was init after partial init returns correct flags
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void WasInit_AfterPartialInit_ReturnsCorrectFlags()
         {
             Sdl.Init(InitSettings.InitTimer | InitSettings.InitAudio);
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get num audio drivers after audio init returns positive
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetNumAudioDrivers_AfterAudioInit_ReturnsPositive()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get current audio driver after audio init returns non null
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetCurrentAudioDriver_AfterAudioInit_ReturnsNonNull()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get audio driver by index returns non null
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetAudioDriver_ByIndex_ReturnsNonNull()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get num audio devices after audio init returns non negative
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetNumAudioDevices_AfterAudioInit_ReturnsNonNegative()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get audio device status zero does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetAudioDeviceStatus_Zero_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitAudio);
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get performance frequency returns positive
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetPerformanceFrequency_ReturnsPositive()
         {
             Sdl.Init(InitSettings.InitTimer);
@@ -258,7 +259,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get performance counter returns positive
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetPerformanceCounter_ReturnsPositive()
         {
             Sdl.Init(InitSettings.InitTimer);
@@ -272,7 +273,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get performance counter increases
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetPerformanceCounter_Increases()
         {
             Sdl.Init(InitSettings.InitTimer);
@@ -287,7 +288,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get pixel format name returns non null
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetPixelFormatName_ReturnsNonNull()
         {
             string name = Sdl.GetPixelFormatName(Sdl.PixelFormatRgb888);
@@ -298,7 +299,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get pixel format name for unknown returns non null
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetPixelFormatName_ForUnknown_ReturnsNonNull()
         {
             string name = Sdl.GetPixelFormatName(0);
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that format enum to masks for rgb 888 returns valid masks
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void FormatEnumToMasks_ForRgb888_ReturnsValidMasks()
         {
             bool result = Sdl.FormatEnumToMasks(Sdl.PixelFormatRgb888, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that format enum to masks for argb 8888 includes alpha
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void FormatEnumToMasks_ForArgb8888_IncludesAlpha()
         {
             bool result = Sdl.FormatEnumToMasks(Sdl.PixelFormatArgb8888, out int _, out uint _, out uint _, out uint _, out uint aMask);
@@ -336,7 +337,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that calculate gamma ramp with gamma one produces correct values
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void CalculateGammaRamp_WithGammaOne_ProducesCorrectValues()
         {
             ushort[] ramp = new ushort[256];
@@ -352,7 +353,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that calculate gamma ramp with gamma two produces correct shape
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void CalculateGammaRamp_WithGammaTwo_ProducesCorrectShape()
         {
             ushort[] ramp = new ushort[256];
@@ -369,7 +370,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that compose custom blend mode returns valid mode
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void ComposeCustomBlendMode_ReturnsValidMode()
         {
             Sdl.ComposeCustomBlendMode(BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd, BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd);
@@ -378,7 +379,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get key from scancode does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetKeyFromScancode_DoesNotThrow()
         {
             Sdl.GetKeyFromScancode(SdlScancode.SdlScancodeA);
@@ -387,7 +388,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get scancode from key does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetScancodeFromKey_DoesNotThrow()
         {
             Sdl.GetScancodeFromKey(KeyCodes.Unknown);
@@ -396,7 +397,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get scancode name does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetScancodeName_DoesNotThrow()
         {
             string name = Sdl.GetScancodeName(SdlScancode.SdlScancodeA);
@@ -406,7 +407,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get scancode from name does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetScancodeFromName_DoesNotThrow()
         {
             Sdl.GetScancodeFromName("A");
@@ -415,7 +416,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that s get key name does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void SGetKeyName_DoesNotThrow()
         {
             string name = Sdl.SGetKeyName(KeyCodes.Unknown);
@@ -425,7 +426,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get key from name does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetKeyFromName_DoesNotThrow()
         {
             Sdl.GetKeyFromName("A");
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that has event does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void HasEvent_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitEvents);
@@ -448,7 +449,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that has events does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void HasEvents_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitEvents);
@@ -462,7 +463,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that flush event does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void FlushEvent_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitEvents);
@@ -475,7 +476,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that get event state does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GetEventState_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitEvents);
@@ -488,7 +489,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that register events returns non zero
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void RegisterEvents_ReturnsNonZero()
         {
             Sdl.Init(InitSettings.InitEvents);
@@ -502,7 +503,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that push event does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void PushEvent_DoesNotThrow()
         {
             Sdl.Init(InitSettings.InitEvents);

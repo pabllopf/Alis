@@ -33,6 +33,7 @@ using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -45,7 +46,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that video query functions behave without initializing video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void VideoQueries_DoNotRequireVideoInit()
         {
             int drivers = Sdl.GetNumVideoDrivers();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that clipboard functions do not crash without video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void Clipboard_Functions_DoNotThrow()
         {
             Sdl.HasClipboardText();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that gl attribute functions do not crash without video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void GlAttributes_DoNotRequireVideoInit()
         {
             Sdl.ResetAttributes();
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that window getter functions accept a null window
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void WindowGetters_WithNullWindow_DoNotCrash()
         {
             Sdl.GetWindowTitle(IntPtr.Zero);
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that window setter functions accept a null window
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void WindowSetters_WithNullWindow_DoNotCrash()
         {
             Sdl.SetWindowOpacity(IntPtr.Zero, 0.5f);
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that window action functions accept a null window
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void WindowActions_WithNullWindow_DoNotCrash()
         {
             Sdl.HideWindow(IntPtr.Zero);
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that renderer query functions accept a null renderer
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void RendererQueries_WithNullRenderer_DoNotCrash()
         {
             Sdl.CreateRenderer(IntPtr.Zero, -1, Renderers.None);
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that render drawing functions accept a null renderer
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void RenderDrawing_WithNullRenderer_DoNotCrash()
         {
             Sdl.RenderClear(IntPtr.Zero);
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that render state functions accept a null renderer
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void RenderState_WithNullRenderer_DoNotCrash()
         {
             RectangleI rect = new RectangleI();
@@ -332,7 +333,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that keyboard functions do not crash without video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void Keyboard_Functions_DoNotCrash()
         {
             Sdl.GetKeyboardFocus();
@@ -352,7 +353,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that mouse functions do not crash without video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void Mouse_Functions_DoNotCrash()
         {
             Sdl.GetMouseFocus();
@@ -375,7 +376,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that cursor functions do not crash without video
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void CursorFunctions_DoNotCrash()
         {
             Sdl.ShowCursor(0);
@@ -389,7 +390,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that load file handles a missing file
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void LoadFile_MissingFile_ReturnsNull()
         {
             IntPtr dataSize;
@@ -400,7 +401,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that event filter and watch registrations do not crash
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void EventFilters_DoNotCrash()
         {
             Sdl.SetEventFilter(null, IntPtr.Zero);
@@ -411,7 +412,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that peep events works with the events subsystem
         /// </summary>
-        [Fact]
+        [RequireSdl2Fact]
         public void PeepEvents_WithEventsInit_Works()
         {
             Sdl.Init(InitSettings.InitEvents);

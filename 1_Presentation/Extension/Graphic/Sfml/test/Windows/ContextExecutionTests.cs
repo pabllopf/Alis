@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Windows;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that the finalizer runs when the context is not disposed
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Finalizer_Runs_WhenNotDisposed()
         {
             Context context = new Context();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that the finalizer runs when the context was used before collection
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Finalizer_Runs_AfterContextUsage()
         {
             System.WeakReference reference = CreateWeakContextReference();

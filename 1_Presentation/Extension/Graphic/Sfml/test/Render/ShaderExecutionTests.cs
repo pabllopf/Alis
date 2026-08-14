@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Windows;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the shader from string with a valid fragment source
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void FromString_ValidFragmentSource_ReturnsShader()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the shader from string throws on invalid source
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void FromString_InvalidSource_Throws()
         {
             Assert.Throws<LoadingFailedException>(() => Shader.FromString(null, null, "this is not a shader"));
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the shader from string with a vertex and a fragment source
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void FromString_VertexAndFragment_ReturnsShader()
         {
             using Shader shader = Shader.FromString("void main() { gl_Position = gl_Vertex; }", null, FragmentSource);
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from file throws on a nonexistent path
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Constructor_FromFile_NonexistentPath_Throws()
         {
             Assert.Throws<LoadingFailedException>(() => new Shader(null, null, "/nonexistent/shader.glsl"));
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from stream with a valid fragment stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Constructor_FromStream_ValidFragment_ReturnsShader()
         {
             byte[] bytes = Encoding.UTF8.GetBytes(FragmentSource);
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from stream throws on an empty stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Constructor_FromStream_EmptyStream_Throws()
         {
             using MemoryStream stream = new MemoryStream();
@@ -123,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the is available property returns without throwing
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void IsAvailable_ReturnsWithoutThrowing()
         {
             bool available = Shader.IsAvailable;
@@ -133,7 +134,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the is geometry available property returns without throwing
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void IsGeometryAvailable_ReturnsWithoutThrowing()
         {
             bool available = Shader.IsGeometryAvailable;
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the native handle is readable on a real shader
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void NativeHandle_OnRealShader_ReturnsValue()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform float overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Float_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform vec2 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Vec2_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -193,7 +194,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform vec3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Vec3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -203,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform vec4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Vec4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -213,7 +214,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform int overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Int_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform ivec2 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Ivec2_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -233,7 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform ivec3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Ivec3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -243,7 +244,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform ivec4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Ivec4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform bool overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Bool_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -263,7 +264,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform bvec2 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Bvec2_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -273,7 +274,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform bvec3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Bvec3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -283,7 +284,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform bvec4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Bvec4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform mat3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Mat3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform mat4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Mat4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform texture overload with a real texture
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_Texture_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform current texture overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniform_CurrentTexture_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -334,7 +335,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array float overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Float_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array vec2 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Vec2_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array vec3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Vec3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -364,7 +365,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array vec4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Vec4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array mat3 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Mat3_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -384,7 +385,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set uniform array mat4 overload
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetUniformArray_Mat4_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -394,7 +395,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter float overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Float_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -404,7 +405,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter float2 overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Float2_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -414,7 +415,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter float3 overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Float3_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -424,7 +425,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter float4 overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Float4_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter vector2f overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Vector2F_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -444,7 +445,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter color overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Color_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -454,7 +455,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter transform overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Transform_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -465,7 +466,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter texture overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_Texture_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -476,7 +477,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the set parameter current texture overload throws entry point not found
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void SetParameter_CurrentTexture_ThrowsEntryPointNotFound()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -486,7 +487,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the bind with a shader and with null
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Bind_ShaderAndNull_DoesNotThrow()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -497,7 +498,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the to string returns the shader description
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void ToString_ReturnsDescription()
         {
             using Shader shader = Shader.FromString(null, null, FragmentSource);
@@ -507,7 +508,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the dispose sets the pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlGraphicsFact]
         public void Dispose_SetsPointerToZero()
         {
             Shader shader = Shader.FromString(null, null, FragmentSource);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Verifies the default constructor executed on the main thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Ctor_Default_Executes()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Verifies the sized constructor executed on the main thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Ctor_WidthHeightTitle_Executes()
         {
             if (!GlfwTestBootstrap.Ready)
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Verifies the fully parameterized constructor executed on the main thread.
         /// </summary>
-        [Fact]
+        [RequireGlfwFact]
         public void Ctor_WidthHeightTitleMonitorShare_Executes()
         {
             if (!GlfwTestBootstrap.Ready)
