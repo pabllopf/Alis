@@ -281,7 +281,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
 
-            Exception ex = Record.Exception(() => reader.LoadMetadataAsync().Wait());
+            Exception ex = Record.Exception(() => reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30)));
 
             Assert.Null(ex);
         }
@@ -294,7 +294,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
 
-            Exception ex = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
+            Exception ex = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait(TimeSpan.FromSeconds(30)));
 
             Assert.Null(ex);
             Assert.True(reader.MetadataLoaded);
@@ -307,7 +307,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void Load_AfterMetadata_OpensDataStream()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
-            reader.LoadMetadataAsync().Wait();
+            reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
 
             reader.Load(16);
 
@@ -321,7 +321,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void Load_WithBitDepth24_Succeeds()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
-            reader.LoadMetadataAsync().Wait();
+            reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
 
             Exception ex = Record.Exception(() => reader.Load(24));
 
@@ -336,7 +336,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void Load_WithInvalidBitDepth8_Throws()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
-            reader.LoadMetadataAsync().Wait();
+            reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
 
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(8));
 
@@ -350,7 +350,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void Load_WhenAlreadyOpened_Throws()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
-            reader.LoadMetadataAsync().Wait();
+            reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
             reader.Load(16);
 
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(16));

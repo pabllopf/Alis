@@ -254,7 +254,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
                 queue.Clear();
             }
 
-            thread.Join();
+            Assert.True(thread.Join(TimeSpan.FromSeconds(10)));
             Assert.False(result);
         }
 
@@ -280,7 +280,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
                 queue.Clear();
             }
 
-            thread.Join();
+            Assert.True(thread.Join(TimeSpan.FromSeconds(10)));
             Assert.False(result);
         }
     }

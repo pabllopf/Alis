@@ -209,7 +209,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         {
             if (!File.Exists(_realVideoFile)) return;
             using VideoReader reader = new VideoReader(_realVideoFile);
-            await reader.LoadMetadataAsync();
+            await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
             Assert.NotNull(reader.Metadata);
             Assert.True(reader.LoadedMetadata);
             Assert.True(reader.Metadata.Width > 0 || reader.Metadata.Height == 0);

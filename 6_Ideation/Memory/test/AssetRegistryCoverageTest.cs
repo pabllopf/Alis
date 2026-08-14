@@ -376,7 +376,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourcePathByName("file.txt");
 
-            using CancellationTokenSource cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(6));
 
             Task.Run(() =>
             {

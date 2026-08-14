@@ -640,7 +640,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 }
 
                 using AudioReader reader = new AudioReader(realWav);
-                Exception ex = Record.Exception(() => reader.LoadMetadataAsync().Wait());
+                Exception ex = Record.Exception(() => reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30)));
 
                 Assert.Null(ex);
                 Assert.True(reader.MetadataLoaded);
@@ -679,7 +679,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 }
 
                 using AudioReader reader = new AudioReader(realWav);
-                Exception ex = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
+                Exception ex = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait(TimeSpan.FromSeconds(30)));
 
                 Assert.Null(ex);
                 Assert.True(reader.MetadataLoaded);
@@ -717,7 +717,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 }
 
                 using AudioReader reader = new AudioReader(realWav);
-                reader.LoadMetadataAsync().Wait();
+                reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
 
                 Assert.True(reader.MetadataLoaded);
                 Assert.NotNull(reader.Metadata);
@@ -755,7 +755,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 }
 
                 using AudioReader reader = new AudioReader(realWav);
-                reader.LoadMetadataAsync().Wait();
+                reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
                 reader.Load(16);
 
                 Assert.True(reader.OpenedForReading);

@@ -148,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             if (!File.Exists(_videoFile)) return;
             using VideoReader reader = new VideoReader(_videoFile);
 
-            await reader.LoadMetadataAsync();
+            await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
 
             InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => reader.LoadMetadataAsync());
             Assert.Contains("already loaded", ex.Message);
@@ -176,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             if (!File.Exists(_videoFile)) return;
             using VideoReader reader = new VideoReader(_videoFile);
 
-            reader.LoadMetadataAsync().Wait();
+            reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30));
 
             InvalidDataException ex = Assert.Throws<InvalidDataException>(() => reader.Load());
             Assert.Contains("Loaded metadata contains errors", ex.Message);

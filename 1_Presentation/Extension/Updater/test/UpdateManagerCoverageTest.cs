@@ -346,7 +346,7 @@ namespace Alis.Extension.Updater.Test
 
                 try
                 {
-                    _worker.GetAwaiter().GetResult();
+                    _worker.Wait(TimeSpan.FromSeconds(5));
                 }
                 catch
                 {
@@ -390,6 +390,7 @@ namespace Alis.Extension.Updater.Test
                     using (client)
                     using (NetworkStream stream = client.GetStream())
                     {
+                        client.ReceiveTimeout = 5000;
                         byte[] buffer = new byte[4096];
                         stream.Read(buffer, 0, buffer.Length);
                         string body = _responseContent;

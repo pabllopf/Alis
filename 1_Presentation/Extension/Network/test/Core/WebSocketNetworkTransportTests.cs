@@ -335,7 +335,8 @@ namespace Alis.Extension.Network.Test.Core
             byte[] frame = BuildTextFrame(json);
             await stream.WriteAsync(frame, 0, frame.Length);
 
-            (string clientId, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            (string clientId, NetworkMessageEnvelope received) = await transport.ReceiveAsync(cts.Token);
 
             Assert.NotNull(clientId);
             Assert.NotNull(received);
@@ -416,7 +417,8 @@ namespace Alis.Extension.Network.Test.Core
             byte[] inboundFrame = BuildTextFrame(inboundJson);
             await stream.WriteAsync(inboundFrame, 0, inboundFrame.Length);
 
-            (string _, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            (string _, NetworkMessageEnvelope received) = await transport.ReceiveAsync(cts.Token);
             Assert.NotNull(received);
             Assert.Equal("get-client-id", received.MessageId);
 
@@ -482,9 +484,10 @@ namespace Alis.Extension.Network.Test.Core
                 await stream.WriteAsync(frame, 0, frame.Length);
             }
 
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             for (int i = 0; i < 2; i++)
             {
-                (string clientId, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
+                (string clientId, NetworkMessageEnvelope received) = await transport.ReceiveAsync(cts.Token);
                 Assert.NotNull(clientId);
                 Assert.Equal(envelope.MessageId, received.MessageId);
             }
@@ -547,7 +550,8 @@ namespace Alis.Extension.Network.Test.Core
             byte[] frame = BuildTextFrame(json);
             await stream.WriteAsync(frame, 0, frame.Length);
 
-            (string _, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            (string _, NetworkMessageEnvelope received) = await transport.ReceiveAsync(cts.Token);
             Assert.Equal(envelope.MessageId, received.MessageId);
 
             client.Close();
@@ -597,8 +601,9 @@ namespace Alis.Extension.Network.Test.Core
             await stream.WriteAsync(frame1, 0, frame1.Length);
             await stream.WriteAsync(frame2, 0, frame2.Length);
 
-            (string _, NetworkMessageEnvelope msg1) = await transport.ReceiveAsync();
-            (string _, NetworkMessageEnvelope msg2) = await transport.ReceiveAsync();
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            (string _, NetworkMessageEnvelope msg1) = await transport.ReceiveAsync(cts.Token);
+            (string _, NetworkMessageEnvelope msg2) = await transport.ReceiveAsync(cts.Token);
 
             Assert.Equal("first", msg1.MessageId);
             Assert.Equal("second", msg2.MessageId);

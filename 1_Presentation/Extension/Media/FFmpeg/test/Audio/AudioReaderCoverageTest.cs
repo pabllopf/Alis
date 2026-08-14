@@ -363,7 +363,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             // Act - Should not throw from stream parsing error when ignoreStreamErrors=true
             // Note: This test may throw if ffmpeg/ffprobe is not installed on the system.
             // The ignoreStreamErrors parameter allows catching stream parsing errors.
-            Exception exception = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
+            Exception exception = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait(TimeSpan.FromSeconds(30)));
 
             // Assert - Should complete without exception from stream parsing error
             // The ignoreStreamErrors parameter allows catching stream parsing errors

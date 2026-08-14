@@ -68,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 return;
 
             using AudioReader reader = new AudioReader(_realAudioFile);
-            await reader.LoadMetadataAsync();
+            await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
 
             Assert.True(reader.MetadataLoaded);
             Assert.NotNull(reader.Metadata);
@@ -103,7 +103,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             using AudioReader reader = new AudioReader(_realAudioFile);
             reader.LoadMetadata();
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(
-                () => reader.LoadMetadataAsync().Wait());
+                () => reader.LoadMetadataAsync().Wait(TimeSpan.FromSeconds(30)));
             Assert.Contains("already loaded", ex.Message);
         }
 

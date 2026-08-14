@@ -37,7 +37,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             using (AudioReader reader = new AudioReader(audioFile))
             {
-                await reader.LoadMetadataAsync();
+                await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
 
                 Assert.True(reader.MetadataLoaded);
                 Assert.NotNull(reader.Metadata);
@@ -55,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             using (AudioReader reader = new AudioReader(audioFile))
             {
-                await reader.LoadMetadataAsync();
+                await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
 
                 Assert.True(reader.MetadataLoaded);
                 Assert.NotNull(reader.Metadata);
@@ -107,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             using (AudioReader reader = new AudioReader(audioFile))
             {
-                await reader.LoadMetadataAsync();
+                await reader.LoadMetadataAsync().WaitAsync(TimeSpan.FromSeconds(30));
                 Exception ex = await Assert.ThrowsAnyAsync<Exception>(() => reader.LoadMetadataAsync());
                 Assert.NotNull(ex);
             }

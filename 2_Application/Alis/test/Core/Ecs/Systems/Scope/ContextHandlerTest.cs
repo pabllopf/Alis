@@ -173,7 +173,10 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
                 {
                     captured = ex;
                 }
-            });
+            })
+            {
+                IsBackground = true
+            };
             thread.Start();
 
             Thread.Sleep(50);
@@ -207,7 +210,10 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
                 {
                     captured = ex;
                 }
-            });
+            })
+            {
+                IsBackground = true
+            };
             thread.Start();
 
             Thread.Sleep(50);
@@ -257,7 +263,10 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
                 {
                     captured = ex;
                 }
-            });
+            })
+            {
+                IsBackground = true
+            };
             thread.Start();
 
             Thread.Sleep(50);

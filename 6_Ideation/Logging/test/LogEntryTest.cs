@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             foreach (Thread thread in threads)
             {
-                thread.Join();
+                thread.Join(TimeSpan.FromSeconds(10));
             }
 
             Assert.Equal(5, threadIds.Count);
