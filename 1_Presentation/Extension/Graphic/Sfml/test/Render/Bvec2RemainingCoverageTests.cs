@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsComponents()
         {
             Bvec2 vec = new Bvec2(true, false);

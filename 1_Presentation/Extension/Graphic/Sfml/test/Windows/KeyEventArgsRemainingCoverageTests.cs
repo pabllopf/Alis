@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that constructor assigns code and modifiers
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsCodeAndModifiers()
         {
             KeyEvent keyEvent = new KeyEvent
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that constructor with zero modifiers sets false flags
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_WithZeroModifiers_SetsFalseFlags()
         {
             KeyEvent keyEvent = new KeyEvent
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that properties get and set values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Properties_GetAndSetValues()
         {
             KeyEventArgs args = new KeyEventArgs(new KeyEvent());
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             KeyEvent keyEvent = new KeyEvent

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns coordinates
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsCoordinates()
         {
             Ivec4 vec = new Ivec4(1, 2, 3, 4);
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor from color assigns components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromColor_AssignsComponents()
         {
             Color color = new Color(10, 20, 30, 40);

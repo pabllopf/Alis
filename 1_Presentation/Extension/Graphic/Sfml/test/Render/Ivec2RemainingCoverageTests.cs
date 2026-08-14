@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns coordinates
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsCoordinates()
         {
             Ivec2 vec = new Ivec2(1, 2);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor from vector 2 f assigns components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromVector2F_AssignsComponents()
         {
             Vector2F source = new Vector2F(3.0f, 4.0f);
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that implicit cast from vector 2 f assigns components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ImplicitCast_FromVector2F_AssignsComponents()
         {
             Vector2F source = new Vector2F(5.0f, 6.0f);

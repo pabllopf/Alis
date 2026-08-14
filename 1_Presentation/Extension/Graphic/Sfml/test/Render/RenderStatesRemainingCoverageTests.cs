@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor blend mode only sets blend mode and identity transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_BlendModeOnly_SetsBlendModeAndIdentityTransform()
         {
             RenderStates states = new RenderStates(BlendMode.Add);
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor transform only sets transform and alpha blend mode
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_TransformOnly_SetsTransformAndAlphaBlendMode()
         {
             Transform transform = new Transform(2, 0, 0, 0, 2, 0, 0, 0, 1);
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor texture only sets null texture and defaults
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_TextureOnly_SetsDefaults()
         {
             RenderStates states = new RenderStates((Texture)null);
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor shader only sets null shader and defaults
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_ShaderOnly_SetsDefaults()
         {
             RenderStates states = new RenderStates((Shader)null);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor full assigns every property
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_Full_AssignsEveryProperty()
         {
             Transform transform = new Transform(3, 0, 0, 0, 3, 0, 0, 0, 3);
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor copy copies every property
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_Copy_CopiesEveryProperty()
         {
             Transform transform = new Transform(4, 0, 0, 0, 4, 0, 0, 0, 4);
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that default returns alpha blend mode and identity transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Default_ReturnsAlphaBlendModeAndIdentityTransform()
         {
             RenderStates states = RenderStates.Default;
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that properties can be mutated and read back
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Properties_MutateAndReadBack()
         {
             RenderStates states = RenderStates.Default;
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that marshal maps managed fields to native data
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Marshal_MapsFieldsToNativeData()
         {
             Transform transform = new Transform(6, 0, 0, 0, 6, 0, 0, 0, 6);

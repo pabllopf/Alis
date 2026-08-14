@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsFields()
         {
             Color color = new Color(10, 20, 30, 40);
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor without alpha defaults alpha to 255
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_WithoutAlpha_DefaultsAlphaTo255()
         {
             Color color = new Color(10, 20, 30);
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor from uint unpacks components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromUInt_UnpacksComponents()
         {
             uint value = 0xAABBCCDD;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor from color copies components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromColor_CopiesComponents()
         {
             Color source = new Color(1, 2, 3, 4);
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to integer packs components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToInteger_PacksComponents()
         {
             Color color = new Color(0xAA, 0xBB, 0xCC, 0xDD);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with same color returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithSameColor_ReturnsTrue()
         {
             Color c1 = new Color(1, 2, 3, 4);
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with different color returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithDifferentColor_ReturnsFalse()
         {
             Color c1 = new Color(1, 2, 3, 4);
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with boxed color returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithBoxedColor_ReturnsTrue()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with non color object returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithNonColorObject_ReturnsFalse()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that get hash code matches packed components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_MatchesPackedComponents()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equality operator returns true for equal colors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void EqualityOperator_WithEqualColors_ReturnsTrue()
         {
             Color c1 = new Color(1, 2, 3, 4);
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that inequality operator returns true for different colors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InequalityOperator_WithDifferentColors_ReturnsTrue()
         {
             Color c1 = new Color(1, 2, 3, 4);
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that addition clamps components at 255
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Addition_ClampsComponentsAt255()
         {
             Color c1 = new Color(200, 100, 0, 0);
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that addition sums non overflowing components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Addition_SumsNonOverflowingComponents()
         {
             Color c1 = new Color(10, 20, 30, 40);
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that subtraction clamps components at 0
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Subtraction_ClampsComponentsAt0()
         {
             Color c1 = new Color(10, 20, 30, 40);
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that multiplication scales components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Multiplication_ScalesComponents()
         {
             Color c1 = new Color(200, 100, 50, 25);
@@ -276,7 +277,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined black has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Black_HasExpectedComponents()
         {
             Assert.Equal(0, Color.Black.R);
@@ -288,7 +289,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined white has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_White_HasExpectedComponents()
         {
             Assert.Equal(255, Color.White.R);
@@ -300,7 +301,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined red has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Red_HasExpectedComponents()
         {
             Assert.Equal(255, Color.Red.R);
@@ -312,7 +313,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined green has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Green_HasExpectedComponents()
         {
             Assert.Equal(0, Color.Green.R);
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined blue has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Blue_HasExpectedComponents()
         {
             Assert.Equal(0, Color.Blue.R);
@@ -336,7 +337,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined yellow has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Yellow_HasExpectedComponents()
         {
             Assert.Equal(255, Color.Yellow.R);
@@ -348,7 +349,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined magenta has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Magenta_HasExpectedComponents()
         {
             Assert.Equal(255, Color.Magenta.R);
@@ -360,7 +361,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined cyan has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Cyan_HasExpectedComponents()
         {
             Assert.Equal(0, Color.Cyan.R);
@@ -372,7 +373,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined transparent has expected components
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Transparent_HasExpectedComponents()
         {
             Assert.Equal(0, Color.Transparent.R);

@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equals object returns true for boxed same value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_BoxedSameValue_ReturnsTrue()
         {
             SfmlTime time = default;
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equals object returns false for other type
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_OtherType_ReturnsFalse()
         {
             SfmlTime time = default;
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that typed equals returns true for equal microseconds
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_TypedSameValue_ReturnsTrue()
         {
             SfmlTime first = default;
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equality operators return true for equal values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void EqualityOperators_EqualValues_ReturnTrue()
         {
             SfmlTime first = default;
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that get hash code is stable for equal values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_IsStableForEqualValues()
         {
             SfmlTime first = default;
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that from seconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FromSeconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that from milliseconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FromMilliseconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that from microseconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FromMicroseconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that as seconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void AsSeconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that as milliseconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void AsMilliseconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that as microseconds throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void AsMicroseconds_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that comparison operators throw when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ComparisonOperators_WithoutNativeLibrary_Throw()
         {
             if (!CanLoadSystemLibrary())
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that arithmetic operators throw when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ArithmeticOperators_WithoutNativeLibrary_Throw()
         {
             if (!CanLoadSystemLibrary())
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that zero access throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Zero_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadSystemLibrary())

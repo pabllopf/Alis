@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that attributes enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Attributes_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int) ContextSettings.Attributes.None);
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that two parameter constructor assigns depth and stencil bits
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TwoParameterConstructor_AssignsDepthAndStencilBits()
         {
             ContextSettings settings = new ContextSettings(24u, 8u);
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that three parameter constructor assigns antialiasing level
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ThreeParameterConstructor_AssignsAntialiasingLevel()
         {
             ContextSettings settings = new ContextSettings(24u, 8u, 4u);
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that full constructor assigns all fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullConstructor_AssignsAllFields()
         {
             ContextSettings settings = new ContextSettings(32u, 16u, 8u, 4u, 6u, ContextSettings.Attributes.Core | ContextSettings.Attributes.Debug, true);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             ContextSettings settings = new ContextSettings(24u, 8u, 4u, 3u, 3u, ContextSettings.Attributes.Core, true);

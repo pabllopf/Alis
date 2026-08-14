@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is connected throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsConnected_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get button count throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetButtonCount_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that has axis throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void HasAxis_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsButtonPressed_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get axis position throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetAxisPosition_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that update throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Update_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get identification throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetIdentification_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

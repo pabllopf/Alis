@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that contents getter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contents_Getter_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that contents setter throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contents_Setter_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

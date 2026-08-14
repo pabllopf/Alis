@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that constructor assigns value from event
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsValueFromEvent()
         {
             JoystickConnectEvent connectEvent = new JoystickConnectEvent
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that property gets and sets value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Property_GetAndSetValue()
         {
             JoystickConnectEventArgs args = new JoystickConnectEventArgs(new JoystickConnectEvent());
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             JoystickConnectEvent connectEvent = new JoystickConnectEvent

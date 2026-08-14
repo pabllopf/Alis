@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum letter values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_Letters_AreSequential()
         {
             Assert.Equal(-1, (int) Keyboard.Key.Unknown);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum number values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_Numbers_AreSequential()
         {
             Assert.Equal(26, (int) Keyboard.Key.Num0);
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum control values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_ControlValues_AreSequential()
         {
             Assert.Equal(36, (int) Keyboard.Key.Escape);
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum punctuation values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_Punctuation_AreSequential()
         {
             Assert.Equal(46, (int) Keyboard.Key.LBracket);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum navigation values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_Navigation_AreSequential()
         {
             Assert.Equal(57, (int) Keyboard.Key.Space);
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that key enum numpad and function values are sequential
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Key_Enum_NumpadAndFunction_AreSequential()
         {
             Assert.Equal(75, (int) Keyboard.Key.Numpad0);
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that is key pressed throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsKeyPressed_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that set virtual keyboard visible throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetVirtualKeyboardVisible_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

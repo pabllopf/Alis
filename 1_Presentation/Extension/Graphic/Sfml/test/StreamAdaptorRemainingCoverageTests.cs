@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that constructor allocates input stream pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AllocatesInputStreamPointer()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that read callback returns bytes from stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Read_ReturnsBytesFromStream()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 0x48, 0x65, 0x6C, 0x6C, 0x6F });
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that read callback with empty stream returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Read_WithEmptyStream_ReturnsZero()
         {
             MemoryStream stream = new MemoryStream(Array.Empty<byte>());
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that read callback with size larger than stream reads available bytes
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Read_WithSizeLargerThanStream_ReadsAvailableBytes()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2 });
@@ -123,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that seek callback moves stream position
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Seek_MovesStreamPosition()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5 });
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that tell callback returns current position
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Tell_ReturnsCurrentPosition()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that get size callback returns stream length
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetSize_ReturnsStreamLength()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3, 4 });
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that dispose frees input stream pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_FreesInputStreamPointer()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1 });
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that dispose suppresses finalizer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_SuppressesFinalizer()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1 });
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that finalizer frees input stream pointer without throwing
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Finalizer_FreesInputStreamPointer_WithoutThrowing()
         {
             MemoryStream stream = new MemoryStream(new byte[] { 1 });

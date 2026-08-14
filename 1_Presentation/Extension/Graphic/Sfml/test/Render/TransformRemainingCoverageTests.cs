@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns every matrix element.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsEveryMatrixElement()
         {
             Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that identity transform has unit diagonal and zero offsets.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Identity_HasUnitDiagonal()
         {
             Transform t = Transform.Identity;
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that get hash code is stable for equal transforms.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_IsStableForEqualTransforms()
         {
             Transform first = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to string contains every matrix element.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ContainsEveryMatrixElement()
         {
             Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to string contains the transform label.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ContainsTransformLabel()
         {
             Transform t = Transform.Identity;
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that get inverse throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetInverse_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that transform point throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TransformPoint_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that transform rect throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TransformRect_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that combine throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Combine_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that translate throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Translate_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that rotate throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Rotate_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that scale throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Scale_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -489,7 +489,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that typed equals throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TypedEquals_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadGraphicsLibrary())
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that multiply operator throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void MultiplyOperators_WithoutNativeLibrary_Throw()
         {
             if (!CanLoadGraphicsLibrary())

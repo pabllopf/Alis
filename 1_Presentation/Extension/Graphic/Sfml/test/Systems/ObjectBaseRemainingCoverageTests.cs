@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that constructor assigns c pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsCPointer()
         {
             IntPtr expected = new IntPtr(1234);
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that c pointer getter returns assigned pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void CPointer_Getter_ReturnsAssignedPointer()
         {
             MockObjectBase obj = new MockObjectBase(IntPtr.Zero);
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that dispose with valid pointer calls destroy
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_WithValidPointer_CallsDestroy()
         {
             MockObjectBase obj = new MockObjectBase(new IntPtr(42));
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that dispose with zero pointer does not call destroy
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_WithZeroPointer_DoesNotCallDestroy()
         {
             MockObjectBase obj = new MockObjectBase(IntPtr.Zero);
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that dispose called twice only destroys once
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_CalledTwice_DestroysOnlyOnce()
         {
             MockObjectBase obj = new MockObjectBase(new IntPtr(42));
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that finalizer calls dispose without throwing
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Finalizer_CallsDispose_WithoutThrowing()
         {
             CreateUnreferencedObject(new IntPtr(99));
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that finalizer catches destroy exception
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Finalizer_CatchesDestroyException()
         {
             CreateUnreferencedThrowingObject(new IntPtr(77));

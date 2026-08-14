@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that button enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Button_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Mouse.Button.Left);
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that wheel enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Wheel_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Mouse.Wheel.VerticalWheel);
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that get position with window calls internal get mouse position
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetPosition_WithWindow_CallsInternalGetMousePosition()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that get position with window returns from window
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetPosition_WithWindow_ReturnsFromWindow()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that set position with window calls internal set mouse position
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetPosition_WithWindow_CallsInternalSetMousePosition()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that set position with window sets position on window
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetPosition_WithWindow_SetsPositionOnWindow()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -186,7 +187,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that is button pressed throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsButtonPressed_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that get position without window throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetPosition_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that set position without window throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetPosition_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

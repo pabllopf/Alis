@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor assigns fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_AssignsFields()
         {
             FloatRect rect = new FloatRect(1, 2, 3, 4);
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that constructor from vector 2 f assigns fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromVector2F_AssignsFields()
         {
             FloatRect rect = new FloatRect(new Vector2F(1, 2), new Vector2F(3, 4));
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with point inside returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithPointInside_ReturnsTrue()
         {
             FloatRect rect = new FloatRect(0, 0, 10, 10);
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with point outside returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithPointOutside_ReturnsFalse()
         {
             FloatRect rect = new FloatRect(0, 0, 10, 10);
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with point on right edge returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithPointOnRightEdge_ReturnsFalse()
         {
             FloatRect rect = new FloatRect(0, 0, 10, 10);
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with point on bottom edge returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithPointOnBottomEdge_ReturnsFalse()
         {
             FloatRect rect = new FloatRect(0, 0, 10, 10);
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with negative width handles min max
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithNegativeWidth_HandlesMinMax()
         {
             FloatRect rect = new FloatRect(10, 0, -10, 10);
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that contains with negative height handles min max
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Contains_WithNegativeHeight_HandlesMinMax()
         {
             FloatRect rect = new FloatRect(0, 10, 10, -10);
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with overlapping returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithOverlapping_ReturnsTrue()
         {
             FloatRect r1 = new FloatRect(0, 0, 10, 10);
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with non overlapping returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithNonOverlapping_ReturnsFalse()
         {
             FloatRect r1 = new FloatRect(0, 0, 10, 10);
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with touching edges returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithTouchingEdges_ReturnsFalse()
         {
             FloatRect r1 = new FloatRect(0, 0, 10, 10);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with overlap output fills overlap
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithOverlapOutput_FillsOverlap()
         {
             FloatRect r1 = new FloatRect(0, 0, 10, 10);
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with no overlap zeroes output
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithNoOverlap_ZeroesOutput()
         {
             FloatRect r1 = new FloatRect(0, 0, 10, 10);
@@ -209,7 +210,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that intersects with negative dimensions handles min max
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Intersects_WithNegativeDimensions_HandlesMinMax()
         {
             FloatRect r1 = new FloatRect(10, 10, -10, -10);
@@ -227,7 +228,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             FloatRect rect = new FloatRect(1, 2, 3, 4);
@@ -243,7 +244,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with same rect returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithSameRect_ReturnsTrue()
         {
             FloatRect r1 = new FloatRect(1, 2, 3, 4);
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with different rect returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithDifferentRect_ReturnsFalse()
         {
             FloatRect r1 = new FloatRect(1, 2, 3, 4);
@@ -267,7 +268,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with boxed rect returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithBoxedRect_ReturnsTrue()
         {
             FloatRect rect = new FloatRect(1, 2, 3, 4);
@@ -279,7 +280,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with non rect object returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithNonRectObject_ReturnsFalse()
         {
             FloatRect rect = new FloatRect(1, 2, 3, 4);
@@ -291,7 +292,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equality operator returns true for equal rects
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void EqualityOperator_WithEqualRects_ReturnsTrue()
         {
             FloatRect r1 = new FloatRect(1, 2, 3, 4);
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that inequality operator returns true for different rects
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InequalityOperator_WithDifferentRects_ReturnsTrue()
         {
             FloatRect r1 = new FloatRect(1, 2, 3, 4);
@@ -315,7 +316,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that get hash code is deterministic for equal rects
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_IsDeterministic()
         {
             FloatRect r1 = new FloatRect(1, 2, 3, 4);
@@ -327,7 +328,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that explicit cast to int rect truncates values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ExplicitCast_ToIntRect_TruncatesValues()
         {
             FloatRect rect = new FloatRect(1.5f, 2.5f, 3.5f, 4.5f);

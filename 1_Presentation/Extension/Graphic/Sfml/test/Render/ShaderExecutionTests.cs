@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from a zero pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_FromPointer_ZeroPointer()
         {
             using Shader shader = new Shader(IntPtr.Zero);
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the current texture static field is null
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void CurrentTexture_IsNull()
         {
             Assert.Null(Shader.CurrentTexture);
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the current texture type constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void CurrentTextureType_Constructor_ReturnsInstance()
         {
             Shader.CurrentTextureType current = new Shader.CurrentTextureType();
@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that the dispose of a zero pointer shader does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Dispose_ZeroPointer_DoesNotThrow()
         {
             using Shader shader = new Shader(IntPtr.Zero);

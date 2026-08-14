@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is available throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsAvailable_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set enabled throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetEnabled_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get value throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetValue_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

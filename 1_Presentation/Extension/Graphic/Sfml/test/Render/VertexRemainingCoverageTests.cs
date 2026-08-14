@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that position constructor assigns position white color and zero tex coords
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void PositionConstructor_AssignsPositionWhiteColorAndZeroTexCoords()
         {
             Vertex vertex = new Vertex(new Vector2F(1, 2));
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that position and color constructor assigns color and zero tex coords
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void PositionAndColorConstructor_AssignsColorAndZeroTexCoords()
         {
             Color color = new Color(10, 20, 30, 40);
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that position and tex coords constructor assigns tex coords and white color
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void PositionAndTexCoordsConstructor_AssignsTexCoordsAndWhiteColor()
         {
             Vertex vertex = new Vertex(new Vector2F(5, 6), new Vector2F(0.5f, 0.25f));
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that full constructor assigns all fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullConstructor_AssignsAllFields()
         {
             Color color = new Color(255, 0, 0, 255);
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             Vertex vertex = new Vertex(new Vector2F(1, 2), Color.Red, new Vector2F(3, 4));

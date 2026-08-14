@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that constructor converts unicode value to string
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_ConvertsUnicodeValueToString()
         {
             TextEvent textEvent = new TextEvent
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that property gets and sets value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Property_GetAndSetValue()
         {
             TextEventArgs args = new TextEventArgs(new TextEvent());
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that to string returns expected format
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ReturnsExpectedFormat()
         {
             TextEvent textEvent = new TextEvent

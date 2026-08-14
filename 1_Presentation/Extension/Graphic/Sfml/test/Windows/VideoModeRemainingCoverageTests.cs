@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with width and height defaults bpp to 32
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_WithWidthAndHeight_DefaultsBppTo32()
         {
             VideoMode vm = new VideoMode(1280, 720);
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with width height and bpp assigns all fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_WithWidthHeightAndBpp_AssignsAllFields()
         {
             VideoMode vm = new VideoMode(2560, 1440, 24);
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with zero values assigns zero fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Constructor_WithZeroValues_AssignsZeroFields()
         {
             VideoMode vm = new VideoMode(0, 0, 0);
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that to string contains width height and bits per pixel values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ContainsAllValues()
         {
             VideoMode vm = new VideoMode(640, 480, 16);
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that to string contains component labels
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ToString_ContainsComponentLabels()
         {
             VideoMode vm = new VideoMode(800, 600);
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that fields can be mutated directly
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Fields_CanBeMutatedDirectly()
         {
             VideoMode vm = new VideoMode(1, 2, 3);
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that isValid throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsValid_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that desktop mode throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void DesktopMode_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that fullscreen modes throws when native library is unavailable
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullscreenModes_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadWindowLibrary())

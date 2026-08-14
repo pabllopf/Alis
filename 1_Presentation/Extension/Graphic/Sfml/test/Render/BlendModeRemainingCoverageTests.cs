@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that factor enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Factor_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int) BlendMode.Factor.Zero);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equation enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equation_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int) BlendMode.Equation.Add);
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that two factor constructor assigns matching factors and add equation
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TwoFactorConstructor_AssignsMatchingFactors_AndAddEquation()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcColor, BlendMode.Factor.DstColor);
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that three factor constructor assigns matching factors and equation
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void ThreeFactorConstructor_AssignsMatchingFactors_AndEquation()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha, BlendMode.Equation.Subtract);
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that six factor constructor assigns all factors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SixFactorConstructor_AssignsAllFactors()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.One, BlendMode.Equation.Add,
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined alpha has expected factors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Alpha_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.SrcAlpha, BlendMode.Alpha.ColorSrcFactor);
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined add has expected factors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Add_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.SrcAlpha, BlendMode.Add.ColorSrcFactor);
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined multiply has expected factors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_Multiply_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.DstColor, BlendMode.Multiply.ColorSrcFactor);
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined none has expected factors
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Predefined_None_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.One, BlendMode.None.ColorSrcFactor);
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with same mode returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithSameMode_ReturnsTrue()
         {
             BlendMode m1 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -186,7 +187,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with different mode returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithDifferentMode_ReturnsFalse()
         {
             BlendMode m1 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with boxed mode returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithBoxedMode_ReturnsTrue()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equals with non mode object returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_WithNonModeObject_ReturnsFalse()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that equality operator returns true for equal modes
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void EqualityOperator_WithEqualModes_ReturnsTrue()
         {
             BlendMode m1 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that inequality operator returns true for different modes
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InequalityOperator_WithDifferentModes_ReturnsTrue()
         {
             BlendMode m1 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
@@ -246,7 +247,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that get hash code is deterministic for equal modes
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_IsDeterministic()
         {
             BlendMode m1 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
