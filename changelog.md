@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.8] - 2026-08-14
+### :bug: Bug Fixes
+- [`4ac6e30`](https://github.com/pabllopf/Alis/commit/4ac6e308115b6da48355629f08fa4719e67b414a) - [RequireImNodesSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b8ad77b`](https://github.com/pabllopf/Alis/commit/b8ad77b5de7e13d71f07c374b2143417ce22d035) - Update ImFontGlyphRangesBuilderExecutionTests.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.7] - 2026-08-14
 ### :bug: Bug Fixes
 - [`5a2abb9`](https://github.com/pabllopf/Alis/commit/5a2abb980f649e0b36a95a1bd314a789ed9ceced) - uni tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -9572,3 +9578,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.5]: https://github.com/pabllopf/Alis/compare/v1.1.4...v1.1.5
 [v1.1.6]: https://github.com/pabllopf/Alis/compare/v1.1.5...v1.1.6
 [v1.1.7]: https://github.com/pabllopf/Alis/compare/v1.1.6...v1.1.7
+[v1.1.8]: https://github.com/pabllopf/Alis/compare/v1.1.7...v1.1.8
