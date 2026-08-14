@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array and short array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_ByteArray_And_ShortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_UshortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_IntArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_UintArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_LongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_UlongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref float and ref double PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_Float_And_Double_Ref_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref sbyte and ref byte PlotScatter overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_Sbyte_And_Byte_Ref_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref short PlotScatter overload inside an active plot in isolation.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_Short_Ref_Overload_Executes()
         {
             IntPtr imgui = CreateContexts();

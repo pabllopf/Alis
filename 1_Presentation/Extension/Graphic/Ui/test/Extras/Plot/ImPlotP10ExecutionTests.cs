@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_S16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_U16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_S32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_U32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_S64_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_U64_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the PlotScatterG wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatterG_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_FloatArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_DoubleArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -566,7 +566,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S64_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -596,7 +596,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U64_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -626,7 +626,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float ref PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_FloatRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -655,7 +655,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double ref PlotShaded wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_DoubleRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     The PlotErrorBars overloads pass a zero count because the native binding takes the
         ///     error array by value, which cannot be dereferenced safely.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotBars_BarsG_Dummy_ErrorBars_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the PlotDigital and PlotDigitalG wrapper overloads across all numeric types.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotDigital_And_PlotDigitalG_Execute()
         {
             IntPtr imgui = CreateContexts();

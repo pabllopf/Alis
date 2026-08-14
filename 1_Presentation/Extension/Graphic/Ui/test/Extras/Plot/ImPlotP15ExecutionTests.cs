@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     rejects with a managed MarshalDirectiveException before entering the native
         ///     function, so the call is expected and handled inside the plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void BarGroups_U32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     rejects with a managed MarshalDirectiveException before entering the native
         ///     function, so the call is expected and handled inside the plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void BarGroups_S64_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     rejects with a managed MarshalDirectiveException before entering the native
         ///     function, so the call is expected and handled inside the plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void BarGroups_U64_Full_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     rejects with a managed MarshalDirectiveException before entering the native
         ///     function, so the call is expected and handled inside the plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void BarGroups_U64_Default_Overload_Executes_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_Float_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_Double_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_S8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -422,7 +422,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_U8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_S16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_U16_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotBars wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_S32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotBars wrapper overload inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Bars_U32_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the context management wrappers.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Context_Functions_Execute()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ColormapButton and ColormapIcon wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Colormap_Button_And_Icon_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the title only and title with size BeginPlot overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Plot_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the BeginPlot overload with title, size and flags.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Plot_Flags_Overload_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the Annotation and misc wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Annotation_And_Misc_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the drag drop source, target and legend popup wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void DragDrop_Sources_Targets_And_Legend_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the aligned plots wrappers with a plot group spanning two plots.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Aligned_Plots_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the vertical aligned plots wrappers with a single plot inside the group.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Aligned_Plots_Vertical_Execute()
         {
             IntPtr imgui = CreateContexts();

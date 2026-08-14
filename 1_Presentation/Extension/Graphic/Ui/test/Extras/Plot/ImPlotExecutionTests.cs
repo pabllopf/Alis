@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the style color, style var, colormap and next style wrapper overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Style_And_NextStyle_Functions_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ImPlot window and selector wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Show_Windows_And_Selectors_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the axis setup, axis selection and drawing wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Setup_And_Draw_Functions_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the axis selection, tag and draw wrappers inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void Draw_Functions_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies the PlotToPixels overloads return finite pixel coordinates inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotToPixels_Returns_Finite_Vector()
         {
             IntPtr imgui = CreateContexts();
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the SetupAxisFormat callback overloads with a null formatter inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void SetupAxisFormat_With_Null_Formatter_Executes()
         {
             IntPtr imgui = CreateContexts();
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the SetupAxisScale callback overloads with null transforms inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void SetupAxisScale_With_Null_Transform_Executes()
         {
             IntPtr imgui = CreateContexts();

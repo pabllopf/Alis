@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ByteArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ShortArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_UshortArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_IntArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_UintArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_LongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_UlongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float reference PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_FloatRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double reference PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_DoubleRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte reference PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_SbyteRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte reference PlotStairs wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStairs_ByteRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S8_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U8_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S16_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U16_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S32_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U32_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S64_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong pair PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_U64_Pair_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float triple PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_Float_Triple_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -395,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double triple PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_Double_Triple_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte triple PlotShaded wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotShaded_S8_Triple_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();

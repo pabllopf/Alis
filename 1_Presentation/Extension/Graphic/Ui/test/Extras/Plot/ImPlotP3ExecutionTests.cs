@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     Executes the float and double PlotErrorBars single error wrapper overloads,
         ///     together with the sbyte and ushort single error overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_Float_Double_S8_U16_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     Executes the long and ulong PlotErrorBars single error wrapper overloads,
         ///     together with the float and double pair error overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S64_U64_FloatPair_DoublePair_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte and short PlotErrorBars single error wrapper overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_U8_S16_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int and uint PlotErrorBars single error wrapper overloads.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S32_U32_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte PlotErrorBars pair error wrapper overload.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotErrorBars_S8_Pair_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

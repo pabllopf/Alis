@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_ByteArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_ShortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_UshortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_IntArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_UintArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_LongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotHistogram wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_UlongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref float PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_FloatRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref double PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_DoubleRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref sbyte PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_SByteRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref byte PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_ByteRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();

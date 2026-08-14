@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that macOS-only tests can be isolated when needed.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void MacOsOnly_SurfaceCheck_ShouldRunIsolated()
         {
             Assert.NotNull(typeof(ImPlot));

@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_ByteArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_ShortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_UshortArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_IntArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_UintArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_LongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_UlongArray_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref float PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_FloatRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref double PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_DoubleRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -395,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref sbyte PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_SByteRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref byte PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_ByteRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -453,7 +453,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref short PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_ShortRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ref ushort PlotStems wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotStems_UshortRef_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();

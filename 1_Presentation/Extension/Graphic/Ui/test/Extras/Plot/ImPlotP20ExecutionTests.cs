@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotHeatmap wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_IntArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotHeatmap wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_UintArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotHeatmap wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_LongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotHeatmap wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHeatmap_UlongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float array PlotHistogram wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_FloatArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double array PlotHistogram wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_DoubleArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte array PlotHistogram wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_SbyteArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotHistogram wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram_ByteArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

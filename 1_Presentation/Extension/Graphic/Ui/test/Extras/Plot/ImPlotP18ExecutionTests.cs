@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte, short and ushort ref PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_Ref_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int, uint, long and ulong ref PlotHistogram2D wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotHistogram2D_Ref_Overloads_Execute_Inside_Plot_Second()
         {
             IntPtr imgui = CreateContexts();
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes all PlotImage wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotImage_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes all PlotInfLines wrapper overloads inside an active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotInfLines_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

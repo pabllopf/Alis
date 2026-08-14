@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the short array PlotLine wrapper overload inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_ShortArray_Full_Overload_Executes_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort array PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_UshortArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int array PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_IntArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint array PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_UintArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long array PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_LongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong array PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_UlongArray_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float reference PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_FloatRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double reference PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_DoubleRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -361,7 +361,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte reference PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_SbyteRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte reference PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_ByteRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort reference PlotLine wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotLine_UshortRef_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();

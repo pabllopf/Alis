@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ushort PlotPieChart wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_U16_Overloads_Execute_Inside_Plot()
         {
             ProbeFailure = string.Empty;
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the int PlotPieChart wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_S32_Overloads_Execute_Inside_Plot()
         {
             ProbeFailure = string.Empty;
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the uint PlotPieChart wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_U32_Overloads_Execute_Inside_Plot()
         {
             ProbeFailure = string.Empty;
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the long PlotPieChart wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_S64_Overloads_Execute_Inside_Plot()
         {
             ProbeFailure = string.Empty;
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the ulong PlotPieChart wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotPieChart_U64_Overloads_Execute_Inside_Plot()
         {
             ProbeFailure = string.Empty;
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the float array PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_Float_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the double array PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_Double_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the sbyte array PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_S8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Executes the byte array PlotScatter wrapper overloads inside the active plot.
         /// </summary>
-        [MacOsOnly]
+        [RequireImNodesSystemFact]
         public void PlotScatter_U8_Overloads_Execute_Inside_Plot()
         {
             IntPtr imgui = CreateContexts();
