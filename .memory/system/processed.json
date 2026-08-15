@@ -1152,6 +1152,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Wndclass.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/WinNativePlatform.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/HashCode.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Matrix/Matrix4X4.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Matrix/Matrix4X4.cs",
+    "pabllopf-official_alis:6_Ideation/Math/src/Vector/Vector2F.cs"
   ]
 }
