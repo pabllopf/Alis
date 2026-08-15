@@ -1205,3 +1205,21 @@ test: coverage MacOpenGLContext.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (26/26, local coverlet)
+
+TestsAdded:
+0 (already covered by committed SfmlTimeTest.cs)
+
+Commit:
+test: coverage SfmlTime.cs
+
+Status:
+ALREADY_REMEDIATED
