@@ -1278,6 +1278,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdConfiguration.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerPathConverter.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/LoggerFactory.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerTransform.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/GiftWrap.cs"
   ]
 }

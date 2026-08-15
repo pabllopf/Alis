@@ -6387,3 +6387,10 @@ TestsAdded: 0
 Commit: test: ControllerTransform.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/ConvexHull/GiftWrap.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GiftWrap.cs
+Status: COMPLETED
+
