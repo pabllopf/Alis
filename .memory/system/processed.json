@@ -1225,6 +1225,7 @@
     "pabllopf-official_alis:6_Ideation/Logging/src/Formatters/JsonLogFormatter.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/IDTable.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Triangulate.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ProfileSnapshot.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ProfileSnapshot.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs"
   ]
 }
