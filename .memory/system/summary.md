@@ -2051,3 +2051,21 @@ test: coverage WindowsPlayer.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (216/216, local coverlet)
+
+TestsAdded:
+2 (SpriteRenderCoverageTests.cs: resource fallback + render empty-path branch)
+
+Commit:
+test: coverage Sprite.cs
+
+Status:
+PARTIALLY_REMEDIATED
