@@ -5435,3 +5435,10 @@ TestsAdded: 0
 Commit: test: Pixelformatdescriptor.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/Platforms/Win/Native/Rect.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: Rect.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
