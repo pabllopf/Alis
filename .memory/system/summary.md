@@ -6093,3 +6093,10 @@ TestsAdded: 0
 Commit: test: DialogContext.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Profile/src/Models/ResourceMetrics.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ResourceMetrics.cs
+Status: COMPLETED
+
