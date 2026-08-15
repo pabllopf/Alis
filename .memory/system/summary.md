@@ -2105,3 +2105,21 @@ test: coverage VideoReader.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs
+
+CoverageBefore:
+43.8% (SonarCloud; stale artifact)
+
+CoverageAfter:
+52.0% (78/150, local coverlet; unchanged)
+
+TestsAdded:
+0 (finalizer unreachable; Register keeps instances alive in static list, private ctors)
+
+Commit:
+test: coverage Gen2GcCallback.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
