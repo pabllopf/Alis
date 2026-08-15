@@ -8469,3 +8469,10 @@ TestsAdded: 645
 Commit: test: ImGuiIO.cs
 Status: COMPLETED
 
+
+File: 4_Operation/Audio/src/Players/WindowsPlayer.cs
+CoverageBefore: 38.1% (SonarCloud) / 38.6% local
+CoverageAfter: 48.3% (70/145); winmm paths Windows-only
+TestsAdded: 8
+Commit: test: WindowsPlayer.cs
+Status: COMPLETED
