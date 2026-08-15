@@ -1517,6 +1517,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/JsonNativePropertyNameAttribute.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/PlatformHelper.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/ClientConnectionEventArgs.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/PlayerEventArgs.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/PlayerEventArgs.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/PongEventArgs.cs"
   ]
 }
