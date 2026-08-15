@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 102 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 148 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
 
     ### Language
     cs
 
     ### Coverage
-    19.6% (Line: 19.3%, Branch: 50.0%)
+    90.0% (Line: 87.5%, Branch: 100.0%)
 
     ### Uncovered Lines
-    673
+    2
 
     ### Uncovered Branches
-    4
+    0
 
     ### Method
-    Sdl
+    Window
 
     ### Complexity / LOC
-    381 / 1042 lines
+    10 / 32 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.cs
+//  File:Window.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shapes.Point;
-using Alis.Core.Aspect.Math.Shapes.Rectangle;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sdl2.Delegates;
-using Alis.Extension.Graphic.Sdl2.Enums;
-using Alis.Extension.Graphic.Sdl2.Mapping;
-using Alis.Extension.Graphic.Sdl2.Structs;
-using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 
-namespace Alis.Extension.Graphic.Sdl2
+namespace Alis.Extension.Graphic.Glfw.Structs
 {
     /// <summary>
-    ///     The sdl class
+    ///     Wrapper around a GLFW window pointer.
     /// </summary>
-    public static class Sdl
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Window : IEquatable<Window>
     {
         /// <summary>
-        ///     The sdl text editing event text size
+        ///     Describes a default/null instance.
         /// </summary>
-        public const int TextEditingEventTextSize = 32;
+        public static readonly Window None;
 
         /// <summary>
-        ///     The sdl text input event text size
+        ///     Internal pointer.
         /// </summary>
-        public const int TextInputEventTextSize = 32;
+        internal readonly IntPtr handle;
 
+        /// <summary>
+        ///     Performs an implicit conversion from <see cref="Window" /> to <see cref="IntPtr" />.
+        /// </summary>
+        /// <param name="window">The window.</param>
+        /// <returns>
+        ///     The result of the conversion.
+        /// </returns>
+        public static implicit operator IntPtr(Window window) => window.handle;
+
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/SdlTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/WindowTests.cs
 
     Priority
-    CRITICAL (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Sdl.cs
+    Commit format: test: coverage Window.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
