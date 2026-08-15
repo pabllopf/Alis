@@ -1477,6 +1477,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/SceneMarshal.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ManagerBuilders/Scenes/SceneManagerBuilder.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Audio/AudioSettingBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Audio/src/Players/MacPlayer.cs"
+    "pabllopf-official_alis:4_Operation/Audio/src/Players/MacPlayer.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RayDataComparer.cs"
   ]
 }
