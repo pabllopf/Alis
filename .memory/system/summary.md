@@ -3783,3 +3783,10 @@ TestsAdded: 0
 Commit: test: IAction.8.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Components/IOnUpdate.6.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IOnUpdate.6.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
