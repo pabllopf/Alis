@@ -7584,3 +7584,10 @@ TestsAdded: 0
 Commit: test: RandomUtils.cs
 Status: COMPLETED
 
+File: 4_Operation/Audio/src/Players/LinuxPlayer.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: LinuxPlayer.cs
+Status: COMPLETED
+

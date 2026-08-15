@@ -1449,6 +1449,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Deserialization/JsonDeserializer.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Physic/PhysicSettingBuilder.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Util/RandomUtils.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Util/RandomUtils.cs",
+    "pabllopf-official_alis:4_Operation/Audio/src/Players/LinuxPlayer.cs"
   ]
 }
