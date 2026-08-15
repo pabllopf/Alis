@@ -3972,3 +3972,10 @@ TestsAdded: 0
 Commit: test: FramebufferTarget.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Data/src/Json/Serialization/IJsonSerializer.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IJsonSerializer.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
