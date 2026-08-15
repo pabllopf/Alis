@@ -289,6 +289,24 @@ Status:
 ALREADY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs
+
+CoverageBefore:
+47.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (126/126, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 5e58f0515)
+
+Commit:
+test: coverage ImPlotP5.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
 
 CoverageBefore:
@@ -2141,3 +2159,21 @@ test: coverage WebAssemblyInputManager.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs
+
+CoverageBefore:
+38.4% (SonarCloud; stale artifact)
+
+CoverageAfter:
+98.7% (450/456, local coverlet; unchanged)
+
+TestsAdded:
+0 (resource-fallback + NameFile-init branches need live GL context/font asset)
+
+Commit:
+test: coverage Font.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
