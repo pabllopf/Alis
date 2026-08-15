@@ -892,6 +892,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetActiveAttrib.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetActiveUniform.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetString.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexImage2D.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexImage2D.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/VertexAttribPointerDel.cs"
   ]
 }
