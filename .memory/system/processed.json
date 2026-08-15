@@ -1017,6 +1017,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPhysic.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPlayOnAwake.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPlugin.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPosition2D.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPosition2D.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IProfile.cs"
   ]
 }
