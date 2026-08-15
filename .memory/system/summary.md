@@ -2845,3 +2845,10 @@ TestsAdded: 0
 Commit: test: XFocusChangeEvent.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/Preset.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: Preset.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

@@ -772,6 +772,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/IWebSocketClientFactory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/IWebSocketServerFactory.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/IAudioSource.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XFocusChangeEvent.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XFocusChangeEvent.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/Preset.cs"
   ]
 }
