@@ -126,6 +126,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         internal static bool TouchPositionExecuted;
 
         /// <summary>
+        ///     Indicates whether the touch position query through the Touch helper completed.
+        /// </summary>
+        internal static bool TouchHelperPositionExecuted;
+
+        /// <summary>
         ///     The read back focus state of the live window.
         /// </summary>
         internal static bool FocusResult;
@@ -244,6 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             });
             Execute("MouseGet", () => MousePositionExecuted = window.InternalGetMousePosition().X == 0f || window.InternalGetMousePosition().X != 0f);
             Execute("TouchGet", () => TouchPositionExecuted = window.InternalGetTouchPosition(0).X == 0f || window.InternalGetTouchPosition(0).X != 0f);
+            Execute("TouchHelperGet", () => TouchHelperPositionExecuted = Touch.GetPosition(0, window).X == 0f || Touch.GetPosition(0, window).X != 0f);
             Execute("SetTitle", () => window.SetTitle("exec-title"));
             Execute("SetVerticalSyncEnabled", () => window.SetVerticalSyncEnabled(false));
             Execute("SetMouseCursorVisible", () => window.SetMouseCursorVisible(true));

@@ -1601,3 +1601,21 @@ test: coverage Categories.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (16/16, local coverlet, hook-enabled; +25.0%)
+
+TestsAdded:
+1 (main-thread worker step for Touch.GetPosition with Window)
+
+Commit:
+test: coverage Touch.cs
+
+Status:
+COMPLETE
