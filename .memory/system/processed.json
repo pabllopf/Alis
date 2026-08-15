@@ -754,6 +754,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorDest.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XButtonEvent.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XKeyEvent.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XMotionEvent.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XMotionEvent.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorSrc.cs"
   ]
 }
