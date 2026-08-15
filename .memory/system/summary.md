@@ -7269,3 +7269,10 @@ TestsAdded: 0
 Commit: test: ScenesMap.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Language/Dialogue/src/Core/DialogEvent.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: DialogEvent.cs
+Status: COMPLETED
+

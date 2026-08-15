@@ -1404,6 +1404,7 @@
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointF.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Physic/PhysicSetting.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Core/WorkItem.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEvent.cs"
   ]
 }
