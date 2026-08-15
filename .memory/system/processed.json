@@ -1008,6 +1008,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ILinearVelocity.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ILogLevel.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IManager.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IManagerOf.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IManagerOf.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IMass.cs"
   ]
 }
