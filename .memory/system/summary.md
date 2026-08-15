@@ -8312,3 +8312,10 @@ TestsAdded: 7
 Commit: test: SdlTtf.cs
 Status: COMPLETED
 
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs
+CoverageBefore: 1.6% (SonarCloud)
+CoverageAfter: 84.1% (380/452 local); guard tests cover remaining 72 lines on no-native-lib CI
+TestsAdded: 89
+Commit: test: ImPlotP2.cs
+Status: COMPLETED
