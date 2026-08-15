@@ -8256,3 +8256,10 @@ TestsAdded: 0
 Commit: test: ArchetypeDeferredUpdateRecord.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/ComponentData.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ComponentData.cs
+Status: COMPLETED
+
