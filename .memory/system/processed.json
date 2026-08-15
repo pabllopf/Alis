@@ -1264,6 +1264,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkConfig.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/SceneQueryExtensions.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Matrix/Matrix2X2.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointFactory.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointFactory.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/MemoryLogOutput.cs"
   ]
 }
