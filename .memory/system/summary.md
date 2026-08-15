@@ -6954,3 +6954,10 @@ TestsAdded: 0
 Commit: test: GameObjectRefTuple.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/ChunkTuple.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ChunkTuple.cs
+Status: COMPLETED
+

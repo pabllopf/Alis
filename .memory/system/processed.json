@@ -1359,6 +1359,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Builder/ParallelExtensionBuilder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketServerOptions.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Network/NetworkSetting.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectRefTuple.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectRefTuple.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkTuple.cs"
   ]
 }
