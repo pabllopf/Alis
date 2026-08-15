@@ -1077,6 +1077,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteShader.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteTextures.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteVertexArrays.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DetachShader.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DetachShader.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DisableVertexAttribArray.cs"
   ]
 }
