@@ -791,6 +791,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Manifold.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SimplexCache.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SimplexVertex.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonError.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonError.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureProxy.cs"
   ]
 }
