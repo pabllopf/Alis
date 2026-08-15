@@ -1413,6 +1413,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Graphic/GraphicSettingBuilder.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray2.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Utilities/ProfilerScope.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Ref.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Ref.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Core/LoggerScope.cs"
   ]
 }
