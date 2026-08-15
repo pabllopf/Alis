@@ -235,6 +235,132 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (95/95, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 0f7032162)
+
+Commit:
+test: coverage VideoPlayer.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (99/99, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 3442ad5f4)
+
+Commit:
+test: coverage AudioPlayer.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (100/100, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP18Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP18.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+97.3% (107/110, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit c8569a659; Kill() race-only catch branch blocked)
+
+Commit:
+test: coverage AudioWriter.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+97.3% (108/111, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 54033a0b9; Kill() race-only catch branch blocked)
+
+Commit:
+test: coverage VideoWriter.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+93.4% (113/121, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 3f4bf404b; SliderFloat4 Vector4F overloads SIGSEGV on by-value marshaling)
+
+Commit:
+test: coverage ImGuiP8.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+91.43% (128/140, committed; local hook run 86.4% due to macOS clipboard/title flake)
+
+TestsAdded:
+0 (already remediated in commit f95d84630; joystick loops + GlfwError callback blocked)
+
+Commit:
+test: coverage GlfwNative.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP21.cs
 
 CoverageBefore:
@@ -662,6 +788,24 @@ TestsAdded:
 
 Commit:
 test: coverage ImGuizMo.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+2.2% (2/93, local coverlet; unchanged)
+
+TestsAdded:
+0 (sfRenderTexture_create ABI mismatch vs CSFML 3.0 -> SIGSEGV on instance creation; header verified)
+
+Commit:
+test: coverage RenderTexture.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
