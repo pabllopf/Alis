@@ -36,6 +36,7 @@ _No previous state available — fresh start after memory cleanup._
 
 | File | Coverage Before | Coverage After | Tests Added |
 |------|-----------------|----------------|-------------|
+| `MacNativePlatform.cs` (Graphic/Osx) | 14.2% | 43.7% (153/350) | 9 |
 | `WebAssemblyGameExamples.cs` (Graphic/Web) | 6.3% | 17.4% (73/419) | 14 |
 | `ObjectiveCInterop.cs` (Graphic/Osx) | 5.0% | 100.0% (19/19) | 10 |
 | `WebAssemblyPlatform.cs` (Graphic/Web) | 4.2% | 74.4% (328/441) | 34 |

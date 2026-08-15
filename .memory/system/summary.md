@@ -8376,3 +8376,10 @@ CoverageAfter: 100.0% (741/741 verified locally)
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+CoverageBefore: 14.2% (SonarCloud) / 15.7% local
+CoverageAfter: 43.7% (153/350); remaining blocked by AppKit windowing requirements
+TestsAdded: 9
+Commit: test: MacNativePlatform.cs
+Status: COMPLETED
