@@ -1175,6 +1175,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkMessageEnvelope.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkQueryEnumerator.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/AManager.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/MathUtils.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/MathUtils.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs"
   ]
 }
