@@ -5862,3 +5862,10 @@ TestsAdded: 0
 Commit: test: JointCollection.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Dynamics/BodyCollection.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: BodyCollection.cs
+Status: COMPLETED
+
