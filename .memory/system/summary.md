@@ -4714,3 +4714,10 @@ TestsAdded: 0
 Commit: test: IUpdate.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Words/IVersion.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IVersion.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
