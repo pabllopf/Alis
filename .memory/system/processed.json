@@ -994,6 +994,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IFriction.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IGeneral.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IGraphic.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IGravity.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IGravity.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IGravityScale.cs"
   ]
 }
