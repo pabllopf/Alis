@@ -947,6 +947,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAwake.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnBeforeDraw.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnBeforeFixedUpdate.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnBeforeUpdate.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnBeforeUpdate.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnCollisionEnter.cs"
   ]
 }
