@@ -5568,3 +5568,10 @@ TestsAdded: 0
 Commit: test: Path.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: QueryIterationExtensions.cs
+Status: COMPLETED
+
