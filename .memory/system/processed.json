@@ -1250,6 +1250,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketServerFactory.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/SceneUpdateFilter.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/FlipcodeDecomposer.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Cache/MemoryTranslationCache.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Cache/MemoryTranslationCache.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs"
   ]
 }
