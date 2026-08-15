@@ -1124,6 +1124,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/BroadphaseDelegate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BeforeCollisionEventHandler.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BodyDelegate.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/CollisionFilterDelegate.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/CollisionFilterDelegate.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureDelegate.cs"
   ]
 }
