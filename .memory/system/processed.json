@@ -919,6 +919,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/IComponentRunnerFactory.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BindBuffer.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BindTexture.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BlendEquation.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BlendEquation.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BlendFunc.cs"
   ]
 }
