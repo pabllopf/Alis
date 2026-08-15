@@ -341,3 +341,21 @@ test: coverage Shader.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+95.1% (173/182, local coverlet; unchanged)
+
+TestsAdded:
+0 (byte[] GetTexDataAsAlpha8/Rgba32 overloads segfault the test host; broken out byte[] P/Invoke marshaling at ImGuiNative.cs:4421/4443)
+
+Commit:
+test: coverage ImFontAtlasPtr.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
