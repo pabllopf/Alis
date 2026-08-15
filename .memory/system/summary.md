@@ -8341,3 +8341,10 @@ CoverageAfter: 74.4% (328/441 local); rest blocked by EGL/emscripten native avai
 TestsAdded: 34
 Commit: test: WebAssemblyPlatform.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs
+CoverageBefore: 5.0% (SonarCloud)
+CoverageAfter: 100.0% (19/19, macOS)
+TestsAdded: 10
+Commit: test: ObjectiveCInterop.cs
+Status: COMPLETED
