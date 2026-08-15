@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+
+CoverageBefore:
+0.0% (SonarCloud; accurate — committed tests are reflection-only)
+
+CoverageAfter:
+0.0% (0/43, local coverlet; unchanged)
+
+TestsAdded:
+0 (10 behavioral tests written and removed — sfSprite_create SEGFAULTs host; CSFML 3.0 takes const sfTexture* arg, wrapper declares 2.x no-arg signature)
+
+Commit:
+none
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs
 
 CoverageBefore:
@@ -1331,3 +1349,21 @@ test: coverage RectangleShape.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (21/21, local coverlet)
+
+TestsAdded:
+2 (ClipboardExecutionTests.cs: read + set/round-trip with restore)
+
+Commit:
+test: coverage Clipboard.cs
+
+Status:
+PARTIALLY_REMEDIATED

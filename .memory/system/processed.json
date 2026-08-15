@@ -70,6 +70,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs"
  ]
 }
