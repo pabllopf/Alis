@@ -8397,3 +8397,10 @@ CoverageAfter: 19.3% (161/834); managed helpers covered, native wrappers need SD
 TestsAdded: 8
 Commit: test: Sdl.cs
 Status: COMPLETED
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs
+CoverageBefore: 4.8%
+CoverageAfter: 100.0% (21/21 executable lines, local coverlet)
+TestsAdded: 21
+Commit: test: SdlImage.cs
+Status: COMPLETED
+

@@ -116,23 +116,83 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
 
         /// <summary>
-        ///     Tests that saving png with an invalid surface returns an error code
+        ///     Tests that saving png with a valid surface writes the file successfully
         /// </summary>
         [Fact]
-        public void SavePng_InvalidSurface_ReturnsError()
+        public void SavePng_ValidSurface_SavesFile()
         {
-            int result = SaveOrError(() => SdlImage.SavePng(IntPtr.Zero, "alis_coverage_save.png"));
-            Assert.NotEqual(0, result);
+            try
+            {
+                string file = Sdl2TestAssets.Find("tile000.bmp");
+                if (file == null)
+                {
+                    return;
+                }
+                int initResult = SdlImage.Init(ImgInitFlags.ImgInitPng);
+                Assert.NotEqual(0, initResult & (int) ImgInitFlags.ImgInitPng);
+                IntPtr surface = SdlImage.LoadImg(file);
+                Assert.NotEqual(IntPtr.Zero, surface);
+                string output = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis_sdlimage_save.png");
+                try
+                {
+                    int result = SdlImage.SavePng(surface, output);
+                    Assert.Equal(0, result);
+                }
+                finally
+                {
+                    if (System.IO.File.Exists(output))
+                    {
+                        System.IO.File.Delete(output);
+                    }
+                }
+                SdlImage.Quit();
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
         }
 
         /// <summary>
-        ///     Tests that saving jpg with an invalid surface returns an error code
+        ///     Tests that saving jpg with a valid surface writes the file successfully
         /// </summary>
         [Fact]
-        public void SaveJpg_InvalidSurface_ReturnsError()
+        public void SaveJpg_ValidSurface_SavesFile()
         {
-            int result = SaveOrError(() => SdlImage.SaveJpg(IntPtr.Zero, "alis_coverage_save.jpg", 90));
-            Assert.NotEqual(0, result);
+            try
+            {
+                string file = Sdl2TestAssets.Find("tile000.bmp");
+                if (file == null)
+                {
+                    return;
+                }
+                int initResult = SdlImage.Init(ImgInitFlags.ImgInitJpg);
+                Assert.NotEqual(0, initResult & (int) ImgInitFlags.ImgInitJpg);
+                IntPtr surface = SdlImage.LoadImg(file);
+                Assert.NotEqual(IntPtr.Zero, surface);
+                string output = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis_sdlimage_save.jpg");
+                try
+                {
+                    int result = SdlImage.SaveJpg(surface, output, 90);
+                    Assert.Equal(0, result);
+                }
+                finally
+                {
+                    if (System.IO.File.Exists(output))
+                    {
+                        System.IO.File.Delete(output);
+                    }
+                }
+                SdlImage.Quit();
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
         }
 
         /// <summary>

@@ -1563,6 +1563,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs"
   ]
 }
