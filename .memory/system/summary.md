@@ -8440,3 +8440,10 @@ TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+
+File: 2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs
+CoverageBefore: 31.6% (SonarCloud) / 34.3% local
+CoverageAfter: 99.1% (214/216)
+TestsAdded: 5
+Commit: test: Sprite.cs
+Status: COMPLETED
