@@ -235,6 +235,78 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs
+
+CoverageBefore:
+4.2% (SonarCloud; stale artifact)
+
+CoverageAfter:
+74.4% (328/441, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 648bd6a98; EGL/gamepad/emscripten native paths blocked)
+
+Commit:
+test: coverage WebAssemblyPlatform.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs
+
+CoverageBefore:
+3.3% (SonarCloud; stale artifact)
+
+CoverageAfter:
+83.0% (332/400, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 99c54b57b; MiniMap/StyleColors JIT throws, ini-file side effects, by-value struct deref abort)
+
+Commit:
+test: coverage ImNodes.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs
+
+CoverageBefore:
+2.2% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (180/180, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 5bd16841c)
+
+Commit:
+test: coverage SdlTtf.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+
+CoverageBefore:
+1.5% (SonarCloud; line 1.8%)
+
+CoverageAfter:
+32.0% (54/169, no-hook local coverlet; hook-enabled measurement blocked by host crash)
+
+TestsAdded:
+0 (committed WindowTest.cs + WindowRemainingCoverageTests.cs; concurrent WIP WindowExecutionTests in tree)
+
+Commit:
+none
+
+Status:
+PARTIALLY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
 
 CoverageBefore:
@@ -1709,3 +1781,21 @@ test: coverage ImGuiP7.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+
+CoverageBefore:
+32.0% (54/169, local coverlet no-hook; SonarCloud stale 0.0%)
+
+CoverageAfter:
+50.9% (86/169, local coverlet hook-enabled)
+
+TestsAdded:
+16 (WindowExecutionTests.cs + WindowMainThreadWorker.cs via SfmlTestBootstrap)
+
+Commit:
+test: coverage Window.cs
+
+Status:
+PARTIALLY_REMEDIATED
