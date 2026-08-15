@@ -7773,3 +7773,10 @@ TestsAdded: 0
 Commit: test: AudioSettingBuilder.cs
 Status: COMPLETED
 
+File: 4_Operation/Audio/src/Players/MacPlayer.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: MacPlayer.cs
+Status: COMPLETED
+
