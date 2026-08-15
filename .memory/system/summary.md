@@ -8425,3 +8425,11 @@ CoverageAfter: 100.0% (94/94 verified locally, net8.0)
 TestsAdded: 0
 Commit: test: MediaStream.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs
+CoverageBefore: 6.3%
+CoverageAfter: 100.0% (local coverlet, net8.0)
+TestsAdded: 3
+Commit: test: ImFontPtr.cs
+Status: COMPLETED
+
