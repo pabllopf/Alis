@@ -1043,3 +1043,21 @@ test: coverage Sound.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+89.8% (228/254, local coverlet; unchanged)
+
+TestsAdded:
+0 (window-based Update overloads corrupt the host; CSFML 3.0 sfVector2u ABI mismatch in src DllImports)
+
+Commit:
+test: coverage Texture.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
