@@ -973,6 +973,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddAnimation.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddFrame.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAds.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAi.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAi.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAngularVelocity.cs"
   ]
 }
