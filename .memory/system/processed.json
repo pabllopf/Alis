@@ -1328,6 +1328,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Scheduling/BatchPartitioner.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Providers/LanguageProvider.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationPoint.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintInitData.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintInitData.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/VideoGame.cs"
   ]
 }

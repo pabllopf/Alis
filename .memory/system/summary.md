@@ -6737,3 +6737,10 @@ TestsAdded: 0
 Commit: test: VelocityConstraintInitData.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/VideoGame.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: VideoGame.cs
+Status: COMPLETED
+
