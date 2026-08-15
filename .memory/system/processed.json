@@ -1024,6 +1024,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IRestitution.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IRotation.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IRun.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScale2D.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScale2D.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScreenMode.cs"
   ]
 }
