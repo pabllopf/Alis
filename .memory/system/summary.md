@@ -8242,3 +8242,10 @@ TestsAdded: 0
 Commit: test: ContactPositionConstraint.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/WorldArchetypeTableItem.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: WorldArchetypeTableItem.cs
+Status: COMPLETED
+

@@ -1543,6 +1543,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IncludeDisabled.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryHashCache.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/WorldArchetypeTableItem.cs"
   ]
 }
