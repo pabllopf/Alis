@@ -1363,6 +1363,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkTuple.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/DungeonGenerator.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/Serialization/JsonSerializer.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Serialization/JsonSerializer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/RoomFactory.cs"
   ]
 }
