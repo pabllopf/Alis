@@ -1197,6 +1197,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Trapezoid.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorage.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs"
   ]
 }
