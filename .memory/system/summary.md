@@ -343,6 +343,24 @@ Status:
 BLOCKED_BY_PRODUCTION_CODE
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP19.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (162/162, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 90537bedd)
+
+Commit:
+test: coverage ImPlotP19.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
 
 CoverageBefore:
