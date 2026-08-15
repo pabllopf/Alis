@@ -1380,6 +1380,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/SolveVelocityConstraintsState.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Filters/CompositeLogFilter.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrame.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/FileBuffer.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/FileBuffer.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Camera.cs"
   ]
 }

@@ -7101,3 +7101,10 @@ TestsAdded: 0
 Commit: test: FileBuffer.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Components/Render/Camera.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Camera.cs
+Status: COMPLETED
+
