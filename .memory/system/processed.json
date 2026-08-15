@@ -943,6 +943,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IAction.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAfterDraw.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAfterFixedUpdate.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAfterUpdate.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAfterUpdate.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnAwake.cs"
   ]
 }
