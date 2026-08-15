@@ -980,6 +980,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAutoTilling.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IBackground.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IBodyType.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICloud.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICloud.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IConfiguration.cs"
   ]
 }
