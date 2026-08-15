@@ -932,6 +932,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/PolygonMode.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Storei.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexParameteri.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/FramebufferAttachment.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/FramebufferAttachment.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/FramebufferTarget.cs"
   ]
 }
