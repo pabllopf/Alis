@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 150 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 161 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
 
     ### Language
     cs
 
     ### Coverage
-    90.2% (Line: 91.3%, Branch: 84.2%)
+    93.8% (Line: 93.8%, Branch: None%)
 
     ### Uncovered Lines
-    56
+    1
 
     ### Uncovered Branches
-    18
+    0
 
     ### Method
-    Archetype
+    ImDrawCmd
 
     ### Complexity / LOC
-    104 / 786 lines
+    23 / 24 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Archetype.cs
+//  File:ImDrawCmd.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Exceptions;
-using Alis.Core.Ecs.Redifinition;
-using Alis.Core.Ecs.Updating;
-using HashCode = Alis.Core.Aspect.Math.HashCode;
+using Alis.Core.Aspect.Math.Vector;
 
-// S3963: Static constructor required for ECS null archetype initialization
-[assembly: SuppressMessage("SonarAnalyzer.CSharp", "S3963", Justification = "Static constructor required for ECS null archetype lazy initialization")]
-
-namespace Alis.Core.Ecs.Kernel.Archetypes
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The archetype class
+    ///     The im draw cmd
     /// </summary>
-    public class Archetype(GameObjectType archetypeId, ComponentStorageBase[] components, bool isTempCreateArchetype)
+    public struct ImDrawCmd
     {
         /// <summary>
-        ///     The null
+        ///     The clip rect
         /// </summary>
-        internal static readonly GameObjectType Null;
+        public Vector4F ClipRect { get; set; }
 
         /// <summary>
-        ///     The create
+        ///     The texture id
         /// </summary>
-        // S2223: Required for ECS archetype table access from GameObjectType
+        public IntPtr TextureId { get; set; }
+
+        /// <summary>
+        ///     The vtx offset
+        /// </summary>
+        public uint VtxOffset { get; set; }
+
+        /// <summary>
+        ///     The idx offset
+        /// </summary>
+        public uint IdxOffset { get; set; }
+
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/Archetypes/ArchetypeTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImDrawCmdTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Archetype.cs
+    Commit format: test: coverage ImDrawCmd.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
