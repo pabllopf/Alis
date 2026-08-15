@@ -914,6 +914,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDebugColor.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IIsActive.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogCondition.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogEventObserver.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogEventObserver.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IAction.cs"
   ]
 }
