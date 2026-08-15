@@ -929,6 +929,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetProgramiv.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetShaderInfoLogDel.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetShaderiv.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/PolygonMode.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/PolygonMode.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Storei.cs"
   ]
 }
