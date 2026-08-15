@@ -8411,3 +8411,10 @@ CoverageAfter: 100.0% (209/209)
 TestsAdded: 13
 Commit: test: Gl.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs
+CoverageBefore: 5.0%
+CoverageAfter: 100.0% (19/19 coverable lines, local coverlet, macOS)
+TestsAdded: 7
+Commit: test: ObjectiveCInterop.cs
+Status: COMPLETED
