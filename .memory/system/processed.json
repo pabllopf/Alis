@@ -799,6 +799,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketOpCode.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Files/IFileService.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ClearBufferMask.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ShaderType.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ShaderType.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsRect.cs"
   ]
 }
