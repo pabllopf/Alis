@@ -7262,3 +7262,10 @@ TestsAdded: 0
 Commit: test: WorkItem.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ScenesMap.cs
+Status: COMPLETED
+
