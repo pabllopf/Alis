@@ -7976,3 +7976,10 @@ TestsAdded: 0
 Commit: test: NetworkManager.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Updating/Runners/NoneUpdate.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: NoneUpdate.cs
+Status: COMPLETED
+
