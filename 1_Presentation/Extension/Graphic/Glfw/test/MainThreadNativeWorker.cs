@@ -476,6 +476,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Execute("RequestAttention", () => window.RequestAttention());
             Execute("SetMonitorWindowed", () => window.SetMonitor(Monitor.None, 64, 64, 320, 200, (int) Constants.Default));
             Execute("FullscreenWindowed", () => window.Fullscreen(Monitor.None));
+            Execute("FullscreenPrimary", () =>
+            {
+                window.Fullscreen();
+                window.Fullscreen(Monitor.None);
+            });
             Execute("Hwnd", () => HwndResult = window.Hwnd);
             Execute("Throws", () =>
             {

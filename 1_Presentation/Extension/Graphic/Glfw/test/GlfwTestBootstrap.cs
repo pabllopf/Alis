@@ -48,6 +48,7 @@ public static class StartupHook
             if (Environment.GetEnvironmentVariable("ALIS_GLFW_HOOK") == "1")
             {
                 Alis.Extension.Graphic.Glfw.Test.GlfwTestBootstrap.Initialize();
+                Alis.Extension.Graphic.Glfw.Test.MainThreadNativeWorker.Run();
             }
         }
         catch (Exception)

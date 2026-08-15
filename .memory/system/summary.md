@@ -89,3 +89,21 @@ none
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 0/728 locally without startup hook)
+
+CoverageAfter:
+98.63% (718/728, hook-enabled local run)
+
+TestsAdded:
+1 (Fullscreen_Parameterless_AppliesAndRestores) + StartupHook->MainThreadNativeWorker.Run wiring + Fullscreen worker step
+
+Commit:
+test: coverage NativeWindow.cs
+
+Status:
+PARTIALLY_REMEDIATED

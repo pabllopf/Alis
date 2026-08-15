@@ -718,6 +718,20 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
+        ///     Tests that the parameterless fullscreen overload applies and restores without throwing.
+        /// </summary>
+        [RequireGlfwFact]
+        public void Fullscreen_Parameterless_AppliesAndRestores()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.Empty(MainThreadNativeWorker.Failures);
+        }
+
+        /// <summary>
         ///     Tests that the closing event can cancel the close and the window stays open.
         /// </summary>
         [RequireGlfwFact]

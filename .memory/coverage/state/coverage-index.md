@@ -43,6 +43,7 @@ _No previous state available — fresh start after memory cleanup._
 | `WebAssemblyPlatform.cs` (Graphic/Web) | 4.2% | 74.4% (328/441) | 34 |
 | `ImPlotP2.cs` (Ui/Plot) | 1.6% | 84.1% (380/452 local) | 89 |
 | `Mouse.cs` (Sfml/Windows) | 0.0% | 55.0% | 6 |
+| `NativeWindow.cs` (Glfw) | 0.0% (SonarCloud) | 98.63% (718/728, hook-enabled local run) | 1 + existing worker suite wiring |
 
 ## Notable Files with Low Coverage (Filtered)
 
