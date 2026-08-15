@@ -235,6 +235,60 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (1/1, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImNodesMiniMapNodeHoveringCallbackTest.cs)
+
+Commit:
+test: coverage ImNodesMiniMapNodeHoveringCallback.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Constant.cs
+
+CoverageBefore:
+0.0% (SonarCloud; const-only class artifact)
+
+CoverageAfter:
+Not measurable (coverlet emits no class for const-only classes)
+
+TestsAdded:
+0 (already covered by committed ConstantTest.cs / ConstantRemainingCoverageTests.cs)
+
+Commit:
+test: coverage Constant.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (5/5, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit bced19e1a)
+
+Commit:
+test: coverage Sensor.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs
 
 CoverageBefore:
@@ -1493,3 +1547,21 @@ test: coverage Constant.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (4/4, local coverlet)
+
+TestsAdded:
+2 (KeyboardExecutionTests.cs)
+
+Commit:
+test: coverage Keyboard.cs
+
+Status:
+PARTIALLY_REMEDIATED
