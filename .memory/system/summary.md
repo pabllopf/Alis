@@ -7745,3 +7745,10 @@ TestsAdded: 0
 Commit: test: Sweep.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/Components/Render/AnimatorBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: AnimatorBuilder.cs
+Status: COMPLETED
+
