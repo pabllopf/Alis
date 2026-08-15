@@ -1546,6 +1546,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/WorldArchetypeTableItem.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ArchetypeDeferredUpdateRecord.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentData.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentData.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeData.cs"
   ]
 }

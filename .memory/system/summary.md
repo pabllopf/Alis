@@ -8263,3 +8263,10 @@ TestsAdded: 0
 Commit: test: ComponentData.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeData.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ArchetypeData.cs
+Status: COMPLETED
+
