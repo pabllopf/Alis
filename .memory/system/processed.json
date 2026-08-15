@@ -1519,6 +1519,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/ClientConnectionEventArgs.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/PlayerEventArgs.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/PongEventArgs.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/StablePriorityQueueNode.cs"
   ]
 }
