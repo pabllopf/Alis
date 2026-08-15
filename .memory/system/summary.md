@@ -6842,3 +6842,10 @@ TestsAdded: 0
 Commit: test: CompactLogFormatter.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Decomposition/Seidel/Point.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Point.cs
+Status: COMPLETED
+
