@@ -6702,3 +6702,10 @@ TestsAdded: 0
 Commit: test: QueryGraph.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Logic/SimpleExplosion.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SimpleExplosion.cs
+Status: COMPLETED
+
