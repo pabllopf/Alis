@@ -82,6 +82,9 @@
   "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Constant.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Categories.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs"
  ]
 }

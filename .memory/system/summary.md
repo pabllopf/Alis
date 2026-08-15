@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (1/1, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImNodesMiniMapNodeHoveringCallbackUserDataTest.cs)
+
+Commit:
+test: coverage ImNodesMiniMapNodeHoveringCallbackUserData.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs
 
 CoverageBefore:
@@ -1565,3 +1583,21 @@ test: coverage Keyboard.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Categories.cs
+
+CoverageBefore:
+0.0% (SonarCloud; enum LOC artifact)
+
+CoverageAfter:
+Not measurable (pure enum, 0 instrumented lines)
+
+TestsAdded:
+0 (already covered by committed CategoriesTest.cs)
+
+Commit:
+test: coverage Categories.cs
+
+Status:
+ALREADY_REMEDIATED
