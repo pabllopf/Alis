@@ -7514,3 +7514,10 @@ TestsAdded: 0
 Commit: test: YNode.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/Entity/SceneBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SceneBuilder.cs
+Status: COMPLETED
+
