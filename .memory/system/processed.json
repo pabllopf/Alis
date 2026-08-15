@@ -106,6 +106,7 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs",
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs"
  ]
 }

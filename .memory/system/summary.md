@@ -2033,3 +2033,21 @@ test: coverage FFMpegWrapper.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs
+
+CoverageBefore:
+38.1% (SonarCloud; stale artifact)
+
+CoverageAfter:
+48.3% (140/290, local coverlet; unchanged)
+
+TestsAdded:
+0 (success paths need winmm.dll; Windows-only platform)
+
+Commit:
+test: coverage WindowsPlayer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
