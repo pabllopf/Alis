@@ -1216,6 +1216,7 @@
     "pabllopf-official_alis:6_Ideation/Math/src/Util/Helper.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioMetadata.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/MonotoneMountain.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/Helpers/EscapeSequenceHandler.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Helpers/EscapeSequenceHandler.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Providers/MemoryTranslationProvider.cs"
   ]
 }
