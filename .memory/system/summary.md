@@ -8207,3 +8207,10 @@ TestsAdded: 0
 Commit: test: With.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/Components/Light/SpotLightBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SpotLightBuilder.cs
+Status: COMPLETED
+
