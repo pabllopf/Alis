@@ -8490,3 +8490,10 @@ CoverageAfter: 65.6% (145/221); platform-window paths blocked
 TestsAdded: 4
 Commit: test: GraphicManager.cs
 Status: COMPLETED
+
+File: 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs
+CoverageBefore: 43.8% (SonarCloud) / 52.0% local
+CoverageAfter: 52.0% (39/75 verified ceiling); finalizer unreachable (no removal API)
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: BLOCKED_BY_PRODUCTION_CODE
