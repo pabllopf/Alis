@@ -1276,6 +1276,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/MP3Encoder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/Dimensions.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdConfiguration.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerPathConverter.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerPathConverter.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/LoggerFactory.cs"
   ]
 }
