@@ -8004,3 +8004,10 @@ TestsAdded: 0
 Commit: test: JsonParsingException.cs
 Status: COMPLETED
 
+File: 6_Ideation/Data/src/Json/Exceptions/JsonSerializationException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: JsonSerializationException.cs
+Status: COMPLETED
+
