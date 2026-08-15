@@ -814,6 +814,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/IPingPongManager.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/EntityData.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/EntityWorldInfoAccess.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/IGenericAction.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/IGenericAction.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendEquationMode.cs"
   ]
 }
