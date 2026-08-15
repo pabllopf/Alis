@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (47/47, local coverlet, hook-enabled run)
+
+TestsAdded:
+0 (already remediated in commit 18170af8a)
+
+Commit:
+test: coverage MacWindow.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs
 
 CoverageBefore:
@@ -1076,6 +1094,24 @@ TestsAdded:
 
 Commit:
 test: coverage View.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+91.3% (84/92, local coverlet; unchanged)
+
+TestsAdded:
+0 (Draw branches blocked: sfRenderStates ABI SIGSEGV / RenderTexture creation impossible)
+
+Commit:
+test: coverage VertexArray.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
