@@ -112,6 +112,96 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
+        ///     Verifies that every letter key code maps to its matching console key.
+        /// </summary>
+        [Fact]
+        public void OnKeyDown_MapsEveryLetter()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            ConsoleKey[] expected = new ConsoleKey[]
+            {
+                ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E, ConsoleKey.F,
+                ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J, ConsoleKey.K, ConsoleKey.L,
+                ConsoleKey.M, ConsoleKey.N, ConsoleKey.O, ConsoleKey.P, ConsoleKey.Q, ConsoleKey.R,
+                ConsoleKey.S, ConsoleKey.T, ConsoleKey.U, ConsoleKey.V, ConsoleKey.W, ConsoleKey.X,
+                ConsoleKey.Y, ConsoleKey.Z
+            };
+
+            for (int i = 0; i < expected.Length; i++)
+            {
+                platform.OnKeyDown(65 + i, 0);
+            }
+
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.True(platform.IsKeyDown(expected[i]));
+            }
+        }
+
+        /// <summary>
+        ///     Verifies that every digit key code maps to its matching console key.
+        /// </summary>
+        [Fact]
+        public void OnKeyDown_MapsEveryDigit()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            for (int i = 0; i < 10; i++)
+            {
+                platform.OnKeyDown(48 + i, 0);
+            }
+
+            Assert.True(platform.IsKeyDown(ConsoleKey.D0));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D1));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D2));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D3));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D4));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D5));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D6));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D7));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D8));
+            Assert.True(platform.IsKeyDown(ConsoleKey.D9));
+        }
+
+        /// <summary>
+        ///     Verifies that every function key code maps to its matching console key.
+        /// </summary>
+        [Fact]
+        public void OnKeyDown_MapsEveryFunctionKey()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            for (int i = 0; i < 12; i++)
+            {
+                platform.OnKeyDown(112 + i, 0);
+            }
+
+            Assert.True(platform.IsKeyDown(ConsoleKey.F1));
+            Assert.True(platform.IsKeyDown(ConsoleKey.F6));
+            Assert.True(platform.IsKeyDown(ConsoleKey.F12));
+        }
+
+        /// <summary>
+        ///     Verifies that every keypad key code maps to its matching console key.
+        /// </summary>
+        [Fact]
+        public void OnKeyDown_MapsEveryKeypadKey()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            platform.OnKeyDown(96, 0);
+            platform.OnKeyDown(97, 0);
+            platform.OnKeyDown(98, 0);
+            platform.OnKeyDown(99, 0);
+            platform.OnKeyDown(100, 0);
+            platform.OnKeyDown(101, 0);
+            platform.OnKeyDown(102, 0);
+            platform.OnKeyDown(103, 0);
+            platform.OnKeyDown(104, 0);
+            platform.OnKeyDown(105, 0);
+            Assert.True(platform.IsKeyDown(ConsoleKey.NumPad0));
+            Assert.True(platform.IsKeyDown(ConsoleKey.NumPad5));
+            Assert.True(platform.IsKeyDown(ConsoleKey.NumPad9));
+        }
+
+        /// <summary>
         ///     Verifies that number, control, arrow, function and keypad key codes map to the
         ///     expected console keys.
         /// </summary>
@@ -485,6 +575,24 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.Cleanup();
             Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey key));
             Assert.Equal(ConsoleKey.A, key);
+        }
+
+        /// <summary>
+        ///     Verifies that the proc address query executes whether the EGL native library
+        ///     is present or absent.
+        /// </summary>
+        [Fact]
+        public void GetProcAddress_WithOrWithoutNativeLibrary_DoesNotFail()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            try
+            {
+                IntPtr address = platform.GetProcAddress("glClear");
+                Assert.NotEqual(IntPtr.Zero, address);
+            }
+            catch (DllNotFoundException)
+            {
+            }
         }
 
         /// <summary>

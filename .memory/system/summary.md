@@ -8334,3 +8334,10 @@ TestsAdded: 29
 Commit: test: WebAssemblyPlatform.cs
 Status: COMPLETED
 
+
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs
+CoverageBefore: 4.2% (SonarCloud) / 36.3% local
+CoverageAfter: 74.4% (328/441 local); rest blocked by EGL/emscripten native availability
+TestsAdded: 34
+Commit: test: WebAssemblyPlatform.cs
+Status: COMPLETED
