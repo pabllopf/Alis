@@ -1237,6 +1237,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Pluralization/PluralizationEngine.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.Factory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogContext.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ResourceMetrics.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ResourceMetrics.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerOptions.cs"
   ]
 }
