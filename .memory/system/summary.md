@@ -5659,3 +5659,10 @@ TestsAdded: 0
 Commit: test: AManager.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Dynamics/MathUtils.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: MathUtils.cs
+Status: COMPLETED
+
