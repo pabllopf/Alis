@@ -1231,6 +1231,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestArrayPool.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/FixedBitArray3.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/FixedArray3.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioFrame.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioFrame.cs",
+    "pabllopf-official_alis:6_Ideation/Math/src/Definition/Color.cs"
   ]
 }
