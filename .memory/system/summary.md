@@ -5414,3 +5414,10 @@ TestsAdded: 0
 Commit: test: Opengl32.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/Platforms/Win/Native/PixelFormatFlags.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: PixelFormatFlags.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
