@@ -752,6 +752,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureParameterName.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointType.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorDest.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XButtonEvent.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XButtonEvent.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XKeyEvent.cs"
   ]
 }
