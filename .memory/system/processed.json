@@ -1502,6 +1502,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Input/InputSettingBuilder.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentAlreadyExistsException.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentNotFoundException.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/MaskKeyLengthException.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/MaskKeyLengthException.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs"
   ]
 }
