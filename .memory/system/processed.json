@@ -715,6 +715,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/IPriorityQueue.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ITypeID.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Physic/IPhysicSetting.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/IInputSetting.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/IInputSetting.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IHasContext.cs"
   ]
 }
