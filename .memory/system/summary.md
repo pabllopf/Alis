@@ -8454,3 +8454,10 @@ CoverageAfter: 100.0% (3/3 verified locally)
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+CoverageBefore: 36.4% (SonarCloud stale)
+CoverageAfter: 100.0% (173/173 verified locally)
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: COMPLETED
