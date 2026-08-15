@@ -7675,3 +7675,10 @@ TestsAdded: 0
 Commit: test: ControllerFilter.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Ads/GoogleAds/src/AdRewardEventArgs.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: AdRewardEventArgs.cs
+Status: COMPLETED
+
