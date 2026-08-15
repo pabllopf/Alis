@@ -984,6 +984,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IConfiguration.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICreate.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDebug.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDelete.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDelete.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDensity.cs"
   ]
 }
