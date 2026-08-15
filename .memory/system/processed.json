@@ -1109,6 +1109,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/IsExternalInit.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/AfterCollisionEventHandler.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BeginContactDelegate.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerDelegate.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerDelegate.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/EndContactDelegate.cs"
   ]
 }
