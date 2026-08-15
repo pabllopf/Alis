@@ -1288,6 +1288,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PathManager.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastLookup.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/GameObjectOnlyEvent.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerFactory.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerFactory.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureByte.cs"
   ]
 }
