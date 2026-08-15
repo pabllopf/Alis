@@ -8067,3 +8067,10 @@ TestsAdded: 0
 Commit: test: PongEventArgs.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GameObjectMarshal.cs
+Status: COMPLETED
+
