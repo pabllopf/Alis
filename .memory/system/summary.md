@@ -7353,3 +7353,10 @@ TestsAdded: 0
 Commit: test: SecureString.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ArchetypeEdgeKey.cs
+Status: COMPLETED
+
