@@ -3237,3 +3237,10 @@ TestsAdded: 0
 Commit: test: IRoomFactory.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Network/src/Core/NetworkTransportState.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: NetworkTransportState.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

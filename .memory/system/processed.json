@@ -828,6 +828,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IGameObject.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogStateType.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/IPluralizationEngine.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IRoomFactory.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IRoomFactory.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkTransportState.cs"
   ]
 }
