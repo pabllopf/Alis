@@ -8018,3 +8018,10 @@ TestsAdded: 0
 Commit: test: CustomIndexOutOfRangeException.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Network/NetworkSettingBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: NetworkSettingBuilder.cs
+Status: COMPLETED
+
