@@ -787,6 +787,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Verbosity.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkManagerState.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/IAnimator.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ActiveAttribType.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ActiveAttribType.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Manifold.cs"
   ]
 }
