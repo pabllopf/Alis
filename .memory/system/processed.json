@@ -758,6 +758,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorSrc.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ProgramParameter.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureTarget.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureUnit.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureUnit.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XConfigureEvent.cs"
   ]
 }
