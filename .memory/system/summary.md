@@ -5512,3 +5512,10 @@ TestsAdded: 0
 Commit: test: Vector2F.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Logic/RealExplosion.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: RealExplosion.cs
+Status: COMPLETED
+
