@@ -3734,3 +3734,10 @@ TestsAdded: 0
 Commit: test: GravityType.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Data/src/Json/Deserialization/IJsonDeserializer.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IJsonDeserializer.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
