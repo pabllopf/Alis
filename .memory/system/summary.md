@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs
+
+CoverageBefore:
+6.1% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (47/47 instrumented lines, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 093c7db78)
+
+Commit:
+test: coverage MediaStream.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs
 
 CoverageBefore:
@@ -1832,6 +1850,24 @@ TestsAdded:
 
 Commit:
 test: coverage ObjectiveCInterop.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (60/60, local coverlet)
+
+TestsAdded:
+0 (already covered by committed ImFontPtr test suite)
+
+Commit:
+test: coverage ImFontPtr.cs
 
 Status:
 ALREADY_REMEDIATED
