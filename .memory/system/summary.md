@@ -4994,3 +4994,10 @@ TestsAdded: 0
 Commit: test: EnableVertexAttribArrayDel.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/OpenGL/Delegates/End.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: End.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
