@@ -8327,3 +8327,10 @@ TestsAdded: 34
 Commit: test: ImNodes.cs
 Status: COMPLETED
 
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs
+CoverageBefore: 4.2%
+CoverageAfter: 72.1%
+TestsAdded: 29
+Commit: test: WebAssemblyPlatform.cs
+Status: COMPLETED
+
