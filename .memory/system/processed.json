@@ -1042,6 +1042,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IUpdate.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IVersion.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IVolume.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWhere.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWhere.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWindow.cs"
   ]
 }
