@@ -700,6 +700,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/IGraphicSetting.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/General/IGeneralSetting.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/ISetting.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/ISetting.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogEntry.cs"
   ]
 }
