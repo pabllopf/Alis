@@ -305,3 +305,21 @@ test: coverage ImGuiP1.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+29.6% (80/270, local coverlet; unchanged)
+
+TestsAdded:
+0 (instance construction impossible on macOS: ctor -> WebAssemblyPlatformFactory.Create -> Initialize -> EGL interop throws InvalidOperationException; all 95 uncovered lines are instance members)
+
+Commit:
+test: coverage WebAssemblyGameContext.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
