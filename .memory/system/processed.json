@@ -796,6 +796,7 @@
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/LogLevel.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ILanguageProvider.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IBoardBuilder.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketOpCode.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketOpCode.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Files/IFileService.cs"
   ]
 }
