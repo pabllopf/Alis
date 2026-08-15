@@ -7885,3 +7885,10 @@ TestsAdded: 0
 Commit: test: InputSetting.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ComponentEvent.cs
+Status: COMPLETED
+
