@@ -1304,6 +1304,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FrugalStack.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Dungeon.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Sets/PointSet.cs",
-    "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/DebugLogOutput.cs"
+    "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/DebugLogOutput.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs"
   ]
 }

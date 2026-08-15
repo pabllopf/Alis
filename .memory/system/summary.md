@@ -6569,3 +6569,10 @@ TestsAdded: 0
 Commit: test: DebugLogOutput.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: DialogOption.cs
+Status: COMPLETED
+
