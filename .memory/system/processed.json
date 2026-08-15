@@ -764,6 +764,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XClientMessageEvent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/BoardSquareType.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectFlags.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BufferTarget.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BufferTarget.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BeginMode.cs"
   ]
 }
