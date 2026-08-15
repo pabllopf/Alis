@@ -841,6 +841,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/PointState.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ShapeData.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/PolyClipError.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointEdge.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointEdge.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/LimitState.cs"
   ]
 }
