@@ -2369,3 +2369,10 @@ TestsAdded: 0
 Commit: test: ILanguage.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Ads/GoogleAds/src/IAdsManager.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IAdsManager.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
