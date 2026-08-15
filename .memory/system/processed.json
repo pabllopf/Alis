@@ -761,6 +761,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureUnit.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XConfigureEvent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/IStripeGatewayClient.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XClientMessageEvent.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XClientMessageEvent.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/BoardSquareType.cs"
   ]
 }
