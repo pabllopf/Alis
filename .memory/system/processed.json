@@ -895,6 +895,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexImage2D.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/VertexAttribPointerDel.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/DrawElements.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/CGPoint.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/CGPoint.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactFeatureType.cs"
   ]
 }
