@@ -876,6 +876,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Helpers/IEscapeSequenceHandler.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Parsing/IJsonParser.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddComponent.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/ICallbackDialogAction.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/ICallbackDialogAction.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IDungeonGenerator.cs"
   ]
 }
