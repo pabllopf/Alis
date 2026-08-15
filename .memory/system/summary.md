@@ -413,3 +413,21 @@ test: coverage KeyCodes.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyDisplayManager.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+88.5% (278/314, local coverlet; unchanged)
+
+TestsAdded:
+0 (18 browser-only lines unreachable on desktop: SetResolution catch, Enter/ExitFullscreen success bodies, SaveScreenshot catch, Update fullscreen branch)
+
+Commit:
+test: coverage WebAssemblyDisplayManager.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
