@@ -125,3 +125,21 @@ test: coverage EmscriptenWeb.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale cimgui artifact 2/656)
+
+CoverageAfter:
+100.0% (656/656, committed ImDrawListPtrTest/ExecutionTests/RemainingCoverageTests)
+
+TestsAdded:
+0 (already remediated in commit 933ef83d4)
+
+Commit:
+test: coverage ImDrawListPtr.cs
+
+Status:
+ALREADY_REMEDIATED
