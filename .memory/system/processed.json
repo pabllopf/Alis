@@ -1337,6 +1337,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Scheduling/ParallelExecutionScheduler.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/Event.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray4.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray4.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestTable.cs"
   ]
 }

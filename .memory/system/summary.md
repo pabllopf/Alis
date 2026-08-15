@@ -6800,3 +6800,10 @@ TestsAdded: 0
 Commit: test: FixedArray4.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Collections/FastestTable.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: FastestTable.cs
+Status: COMPLETED
+
