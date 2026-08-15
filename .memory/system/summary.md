@@ -1259,3 +1259,21 @@ test: coverage Joystick.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (25/25, local coverlet)
+
+TestsAdded:
+0 (already covered by committed VideoModeTest.cs)
+
+Commit:
+test: coverage VideoMode.cs
+
+Status:
+ALREADY_REMEDIATED
