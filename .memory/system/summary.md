@@ -2376,3 +2376,10 @@ TestsAdded: 0
 Commit: test: IAdsManager.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/IAudioSetting.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IAudioSetting.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
