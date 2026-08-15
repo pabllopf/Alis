@@ -4084,3 +4084,10 @@ TestsAdded: 0
 Commit: test: IOnCollisionExit.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Components/IOnDestroy.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IOnDestroy.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
