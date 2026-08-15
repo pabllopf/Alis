@@ -1051,6 +1051,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithTag.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWorld.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Interfaces/IParallelCapable.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/AnimatorConfig.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/AnimatorConfig.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/CameraConfig.cs"
   ]
 }
