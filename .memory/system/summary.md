@@ -3496,3 +3496,10 @@ TestsAdded: 0
 Commit: test: SeparationFunctionType.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Physic/src/Common/Decomposition/CDT/Orientation.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: Orientation.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

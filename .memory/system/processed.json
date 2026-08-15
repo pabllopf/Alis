@@ -865,6 +865,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/EPAxis.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/EPAxisType.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ManifoldType.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunctionType.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunctionType.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Orientation.cs"
   ]
 }
