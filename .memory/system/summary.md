@@ -235,7 +235,25 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
-pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP14.cs
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP21.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (150/150, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP21Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP21.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs
 
 CoverageBefore:
 0.0% (SonarCloud; stale artifact)
@@ -626,6 +644,24 @@ TestsAdded:
 
 Commit:
 test: coverage WebAssemblyPlatformIntegration.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+98.0% (292/298, local coverlet; unchanged)
+
+TestsAdded:
+0 (DrawCubes body segfaults host; by-value pointer defect in ImGuiZmoNative.cs:78)
+
+Commit:
+test: coverage ImGuizMo.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
