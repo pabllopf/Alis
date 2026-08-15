@@ -1482,6 +1482,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFrontNode.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/XNode.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/EntityTooLargeException.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/SecWebSocketKeyMissingException.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/SecWebSocketKeyMissingException.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/ServerListenerSocketException.cs"
   ]
 }
