@@ -1339,6 +1339,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/Event.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray4.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestTable.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEventPublisher.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEventPublisher.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/GlobalWorldTables.cs"
   ]
 }

@@ -6814,3 +6814,10 @@ TestsAdded: 0
 Commit: test: DialogEventPublisher.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Archetypes/GlobalWorldTables.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GlobalWorldTables.cs
+Status: COMPLETED
+
