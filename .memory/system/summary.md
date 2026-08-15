@@ -5883,3 +5883,10 @@ TestsAdded: 0
 Commit: test: FilterData.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/General/GeneralSetting.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GeneralSetting.cs
+Status: COMPLETED
+
