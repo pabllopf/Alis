@@ -1163,6 +1163,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/FastPriorityQueue.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Path.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/StablePriorityQueue.cs"
   ]
 }
