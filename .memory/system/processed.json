@@ -732,6 +732,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogAction.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogState.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/IFixedSizePriorityQueue.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/IMediaFrame.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/IMediaFrame.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogFilter.cs"
   ]
 }
