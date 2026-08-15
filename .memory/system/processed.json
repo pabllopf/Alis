@@ -1549,6 +1549,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentData.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeData.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/AddComponent.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CreateCommand.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CreateCommand.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/DeleteComponent.cs"
   ]
 }
