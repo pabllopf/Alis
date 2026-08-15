@@ -1084,6 +1084,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GenBuffers.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GenTextures.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GenVertexArrays.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetAttribLocation.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetAttribLocation.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetUniformLocation.cs"
   ]
 }
