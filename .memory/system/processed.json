@@ -1182,6 +1182,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/Terrain.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonConfiguration.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs"
   ]
 }
