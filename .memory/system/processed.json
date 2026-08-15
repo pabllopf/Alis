@@ -1285,6 +1285,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VorbisEncoder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/Position.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/RefTuple.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/PathManager.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/PathManager.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastLookup.cs"
   ]
 }
