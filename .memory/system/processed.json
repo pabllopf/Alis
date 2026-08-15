@@ -1419,6 +1419,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureString.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketHttpContext.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Circle/CircleF.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Circle/CircleF.cs",
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Circle/CircleI.cs"
   ]
 }
