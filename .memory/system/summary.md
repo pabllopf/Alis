@@ -8362,3 +8362,10 @@ CoverageAfter: 95.0% (57/60); RenderChar blocked by native crash
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs
+CoverageBefore: 6.3% (SonarCloud) / 9.5% local
+CoverageAfter: 17.4% (73/419); remaining blocked by WebAssemblyGameContext ctor (EGL absent on desktop)
+TestsAdded: 14
+Commit: test: WebAssemblyGameExamples.cs
+Status: COMPLETED
