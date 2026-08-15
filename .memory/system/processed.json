@@ -1396,6 +1396,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Audio/AudioSourceBuilder.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Edge.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDTDecomposer.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDTDecomposer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs"
   ]
 }
