@@ -1529,6 +1529,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/GeomPolyVal.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/PointOnEdgeException.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/LanguageNotFoundException.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationNotFoundException.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationNotFoundException.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Body/RigidBodyBuilder.cs"
   ]
 }
