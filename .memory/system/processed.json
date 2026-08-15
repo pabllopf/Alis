@@ -1542,6 +1542,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/SpotLightBuilder.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IncludeDisabled.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryHashCache.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs"
   ]
 }
