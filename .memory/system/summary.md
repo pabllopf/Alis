@@ -2677,3 +2677,10 @@ TestsAdded: 0
 Commit: test: TextureParameter.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/OpenGL/Enums/TextureParameterName.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: TextureParameterName.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
