@@ -1357,6 +1357,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogConditionEvaluator.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Builder/ParallelExtensionBuilder.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketServerOptions.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketServerOptions.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Network/NetworkSetting.cs"
   ]
 }
