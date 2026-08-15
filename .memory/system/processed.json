@@ -1072,6 +1072,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Color4f.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/CompileShader.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/CreateProgram.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteBuffers.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteBuffers.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/DeleteProgram.cs"
   ]
 }
