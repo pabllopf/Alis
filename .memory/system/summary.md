@@ -1133,3 +1133,21 @@ test: coverage Sprite.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+90.0% (72/80, local coverlet; unchanged)
+
+TestsAdded:
+0 (Draw branches blocked: sfRenderStates ABI SIGSEGV / RenderTexture creation impossible)
+
+Commit:
+test: coverage VertexBuffer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
