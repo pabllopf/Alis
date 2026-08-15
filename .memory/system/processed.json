@@ -1401,6 +1401,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Builders/ProfilerServiceBuilder.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Render/CameraBuilder.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/Chunk.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointF.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointF.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Physic/PhysicSetting.cs"
   ]
 }
