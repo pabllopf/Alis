@@ -1256,6 +1256,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/RoomData.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Dialog.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/HttpHelper.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/HttpHelper.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/BoxColliderBuilder.cs"
   ]
 }

@@ -6233,3 +6233,10 @@ TestsAdded: 0
 Commit: test: HttpHelper.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/BoxColliderBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: BoxColliderBuilder.cs
+Status: COMPLETED
+
