@@ -696,6 +696,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/IGraphicSetting.cs"
   ]
 }

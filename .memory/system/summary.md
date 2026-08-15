@@ -2320,3 +2320,10 @@ CoverageAfter: 100%
 TestsAdded: 5
 Commit: test: ImPlotP3.cs
 Status: COMPLETED
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/IGraphicSetting.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IGraphicSetting.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
