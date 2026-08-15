@@ -954,6 +954,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnDraw.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnExit.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnFixedUpdate.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnHoldKey.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnHoldKey.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnInit.cs"
   ]
 }
