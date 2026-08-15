@@ -7990,3 +7990,10 @@ TestsAdded: 0
 Commit: test: PointComparer.cs
 Status: COMPLETED
 
+File: 6_Ideation/Data/src/Json/Exceptions/JsonDeserializationException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: JsonDeserializationException.cs
+Status: COMPLETED
+
