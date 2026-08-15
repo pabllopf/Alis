@@ -289,6 +289,24 @@ Status:
 ALREADY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
+
+CoverageBefore:
+52.5% (SonarCloud; stale artifact)
+
+CoverageAfter:
+69.9% (116/166, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 7c2ea51dc; GL-context-bound paths blocked)
+
+Commit:
+test: coverage GLShaderProgram.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs
 
 CoverageBefore:
@@ -2192,6 +2210,24 @@ TestsAdded:
 
 Commit:
 test: coverage ImDrawData.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
+
+CoverageBefore:
+53.8% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (26/26, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage ImGuiPayload.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
