@@ -1167,6 +1167,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/StablePriorityQueue.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/BoardBuilder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/PublicBufferMemoryStream.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Time/TimeManager.cs"
   ]
 }

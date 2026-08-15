@@ -5610,3 +5610,10 @@ TestsAdded: 0
 Commit: test: GenericPriorityQueue.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Manager/Time/TimeManager.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: TimeManager.cs
+Status: COMPLETED
+
