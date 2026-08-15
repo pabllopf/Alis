@@ -1961,3 +1961,21 @@ test: coverage Vulkan.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (209/209, local coverlet)
+
+TestsAdded:
+0 (already covered by committed Gl test suite)
+
+Commit:
+test: coverage Gl.cs
+
+Status:
+ALREADY_REMEDIATED
