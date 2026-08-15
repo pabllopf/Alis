@@ -251,3 +251,21 @@ test: coverage ImPlotP14.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP12.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (400/400, committed ImPlotP12Tests/ExecutionTests/RemainingCoverageTests)
+
+TestsAdded:
+0 (already remediated)
+
+Commit:
+test: coverage ImPlotP12.cs
+
+Status:
+ALREADY_REMEDIATED
