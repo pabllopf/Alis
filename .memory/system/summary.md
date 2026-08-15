@@ -6128,3 +6128,10 @@ TestsAdded: 0
 Commit: test: NetworkSession.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Payment/Stripe/src/StripeCheckoutSessionRequest.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: StripeCheckoutSessionRequest.cs
+Status: COMPLETED
+
