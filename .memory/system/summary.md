@@ -8504,3 +8504,10 @@ CoverageAfter: 100.0% (193/193 verified locally)
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Ui/Font.cs
+CoverageBefore: 47.6% (SonarCloud) / 59.2% local
+CoverageAfter: 98.7% (225/228)
+TestsAdded: 6
+Commit: test: Font.cs
+Status: COMPLETED
