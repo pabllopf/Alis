@@ -1115,3 +1115,21 @@ test: coverage VertexArray.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+0.0% (instance construction crashes the host)
+
+TestsAdded:
+0 (CSFML 3.0 sfSprite_create(const sfTexture*) ABI mismatch -> host crash; header verified)
+
+Commit:
+test: coverage Sprite.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
