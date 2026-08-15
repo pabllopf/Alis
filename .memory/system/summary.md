@@ -4322,3 +4322,10 @@ TestsAdded: 0
 Commit: test: IDebug.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Words/IDelete.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IDelete.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
