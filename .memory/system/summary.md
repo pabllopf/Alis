@@ -1187,3 +1187,21 @@ test: coverage CircleShape.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale no-hook artifact)
+
+CoverageAfter:
+100.0% (66/66, local coverlet, hook-enabled run)
+
+TestsAdded:
+0 (already fully covered by committed hook-gated suite)
+
+Commit:
+test: coverage MacOpenGLContext.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
