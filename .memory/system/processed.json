@@ -1090,6 +1090,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Scissor.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/ShaderSourceDel.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexCoord2F.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform1F.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform1F.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform1I.cs"
   ]
 }

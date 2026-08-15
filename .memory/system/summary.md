@@ -5071,3 +5071,10 @@ TestsAdded: 0
 Commit: test: Uniform1F.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/OpenGL/Delegates/Uniform1I.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: Uniform1I.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
