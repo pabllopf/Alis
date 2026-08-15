@@ -951,6 +951,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnCollisionEnter.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnCollisionExit.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnDestroy.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnDraw.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnDraw.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnExit.cs"
   ]
 }
