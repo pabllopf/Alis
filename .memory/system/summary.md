@@ -6583,3 +6583,10 @@ TestsAdded: 0
 Commit: test: TriangulationContext.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Components/Render/Animation.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Animation.cs
+Status: COMPLETED
+
