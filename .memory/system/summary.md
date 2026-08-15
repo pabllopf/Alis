@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, hook-enabled run)
+
+TestsAdded:
+0 (already remediated in commit ba1e711e6)
+
+Commit:
+test: coverage GameWindow.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
 
 CoverageBefore:
@@ -1418,6 +1436,24 @@ TestsAdded:
 
 Commit:
 test: coverage Clock.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Listener.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (16/16, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage Listener.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
