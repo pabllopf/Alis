@@ -1475,3 +1475,21 @@ test: coverage SoundBufferRecorder.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs
+
+CoverageBefore:
+0.0% (SonarCloud; const LOC artifact)
+
+CoverageAfter:
+Not measurable (pure const class, 0 instrumented lines)
+
+TestsAdded:
+0 (already covered by committed ConstantTest.cs, 40 tests)
+
+Commit:
+test: coverage Constant.cs
+
+Status:
+ALREADY_REMEDIATED

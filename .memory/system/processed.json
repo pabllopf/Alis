@@ -77,6 +77,8 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Listener.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs",
+  "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs"
  ]
 }
