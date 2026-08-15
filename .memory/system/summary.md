@@ -5687,3 +5687,10 @@ TestsAdded: 0
 Commit: test: Vector3F.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: EdgeShape.cs
+Status: COMPLETED
+

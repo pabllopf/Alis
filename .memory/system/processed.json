@@ -1178,6 +1178,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/MathUtils.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/LineTools.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Vector/Vector3F.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Vector/Vector3F.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs"
   ]
 }
