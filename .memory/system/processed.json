@@ -1417,6 +1417,7 @@
     "pabllopf-official_alis:6_Ideation/Logging/src/Core/LoggerScope.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryHash.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureString.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketHttpContext.cs"
   ]
 }
