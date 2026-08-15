@@ -7297,3 +7297,10 @@ TestsAdded: 0
 Commit: test: Node.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Component.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Component.cs
+Status: COMPLETED
+
