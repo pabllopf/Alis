@@ -1487,6 +1487,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketBufferOverflowException.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketHandshakeFailedException.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketVersionNotSupportedException.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/BoardSquare.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/BoardSquare.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/ClientDisconnectionEventArgs.cs"
   ]
 }
