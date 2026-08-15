@@ -1149,6 +1149,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/WindowExStyles.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/WindowMessage.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/WindowStyles.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Wndclass.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Wndclass.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/WinNativePlatform.cs"
   ]
 }
