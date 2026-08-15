@@ -2231,3 +2231,21 @@ test: coverage ImGuiPayload.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact; local 65.6%)
+
+CoverageAfter:
+97.3% (215/221, local coverlet hook-enabled)
+
+TestsAdded:
+4 (GraphicManagerBootstrapTests.cs + main-thread bootstrap hook)
+
+Commit:
+test: coverage GraphicManager.cs
+
+Status:
+PARTIALLY_REMEDIATED
