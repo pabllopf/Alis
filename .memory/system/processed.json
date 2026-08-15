@@ -1205,6 +1205,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/JointCollection.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BodyCollection.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/FilterData.cs"
   ]
 }
