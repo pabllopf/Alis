@@ -1407,6 +1407,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEvent.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Render/AnimationBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectLocation.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectLocation.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Node.cs"
   ]
 }
