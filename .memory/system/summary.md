@@ -323,3 +323,21 @@ test: coverage WebAssemblyGameContext.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+95.2% (358/376, local coverlet; unchanged)
+
+TestsAdded:
+0 (9 closing braces of legacy SetParameter overloads; installed libcsfml no longer exports sfShader_set*Parameter -> EntryPointNotFoundException)
+
+Commit:
+test: coverage Shader.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
