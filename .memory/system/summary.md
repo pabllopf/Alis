@@ -1169,3 +1169,21 @@ test: coverage RenderStates.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (32/32, local coverlet)
+
+TestsAdded:
+0 (already covered by committed CircleShapeTest.cs)
+
+Commit:
+test: coverage CircleShape.cs
+
+Status:
+ALREADY_REMEDIATED
