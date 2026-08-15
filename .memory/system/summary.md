@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs
+
+CoverageBefore:
+4.8% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (21/21, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 3e6d21b5f)
+
+Commit:
+test: coverage SdlImage.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs
 
 CoverageBefore:
@@ -1799,3 +1817,21 @@ test: coverage Window.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (19/19, local coverlet)
+
+TestsAdded:
+0 (already covered by committed ObjectiveCInteropTests.cs)
+
+Commit:
+test: coverage ObjectiveCInterop.cs
+
+Status:
+ALREADY_REMEDIATED

@@ -93,6 +93,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs",
-  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs"
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs"
  ]
 }
