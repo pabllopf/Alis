@@ -837,6 +837,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeType.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsPoint.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactFeature.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactID.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactID.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/PointState.cs"
   ]
 }
