@@ -970,6 +970,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/IBuild.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/IHasBuilder.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAdd.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddAnimation.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddAnimation.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddFrame.cs"
   ]
 }
