@@ -921,6 +921,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BindTexture.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BlendEquation.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BlendFunc.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Clear.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Clear.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/CreateShader.cs"
   ]
 }
