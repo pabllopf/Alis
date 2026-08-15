@@ -1242,6 +1242,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/OpusEncoder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioFormat.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkSession.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeCheckoutSessionRequest.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeCheckoutSessionRequest.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs"
   ]
 }
