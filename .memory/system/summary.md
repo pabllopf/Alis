@@ -359,3 +359,21 @@ test: coverage ImFontAtlasPtr.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+98.3% (176/179, local coverlet; unchanged)
+
+TestsAdded:
+0 (3-line swallow catch in CloseWrite unreachable: live process -> Kill succeeds, disposed process -> WaitForExit(5000) throws before try)
+
+Commit:
+test: coverage AudioVideoWriter.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE

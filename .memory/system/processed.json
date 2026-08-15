@@ -19,6 +19,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP1.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyDisplayManager.cs"
  ]
 }
