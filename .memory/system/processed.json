@@ -1441,6 +1441,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepPointComparator.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/YNode.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/SceneBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/PhysicsLogic.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/PhysicsLogic.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/AudioSetting.cs"
   ]
 }

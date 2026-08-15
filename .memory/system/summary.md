@@ -7528,3 +7528,10 @@ TestsAdded: 0
 Commit: test: PhysicsLogic.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/AudioSetting.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: AudioSetting.cs
+Status: COMPLETED
+
