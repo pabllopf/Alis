@@ -886,6 +886,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IEntityChunkAction.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/RuleTypes.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/IComponentUpdateFilter.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/ParamType.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/ParamType.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BufferData.cs"
   ]
 }
