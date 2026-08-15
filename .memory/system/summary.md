@@ -7115,3 +7115,10 @@ TestsAdded: 0
 Commit: test: LoggerNameFilter.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/StreamTags.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: StreamTags.cs
+Status: COMPLETED
+
