@@ -1377,6 +1377,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Integration/ComponentUpdateParallelizer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Implementations/StopwatchTimeTracker.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/CallbackDialogAction.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/SolveVelocityConstraintsState.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/SolveVelocityConstraintsState.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Filters/CompositeLogFilter.cs"
   ]
 }
