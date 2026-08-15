@@ -1534,6 +1534,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/CircleColliderBuilder.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/AreaLightBuilder.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/DirectionalLightBuilder.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/PointLightBuilder.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/PointLightBuilder.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Ui/CanvasBuilder.cs"
   ]
 }

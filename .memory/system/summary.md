@@ -8179,3 +8179,10 @@ TestsAdded: 0
 Commit: test: PointLightBuilder.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/Components/Ui/CanvasBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: CanvasBuilder.cs
+Status: COMPLETED
+
