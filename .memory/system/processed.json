@@ -1092,6 +1092,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/TexCoord2F.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform1F.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform1I.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform2F.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform2F.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform3F.cs"
   ]
 }
