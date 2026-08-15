@@ -720,6 +720,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/IStoreManager.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/IBroadPhase.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogger.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkServerManager.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkServerManager.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/ICloudManager.cs"
   ]
 }

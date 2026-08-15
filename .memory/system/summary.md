@@ -2481,3 +2481,10 @@ TestsAdded: 0
 Commit: test: INetworkServerManager.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Cloud/DropBox/src/ICloudManager.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: ICloudManager.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
