@@ -898,6 +898,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/CGPoint.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactFeatureType.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TOIOutput.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationConstraint.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationConstraint.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Controllers/GravityType.cs"
   ]
 }
