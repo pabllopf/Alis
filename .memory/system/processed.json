@@ -1246,6 +1246,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Controllers/VelocityLimitController.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Helpers/DirectionHelper.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Helpers/DirectionHelper.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketServerFactory.cs"
   ]
 }
