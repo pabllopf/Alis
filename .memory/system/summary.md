@@ -6975,3 +6975,10 @@ TestsAdded: 0
 Commit: test: GameObjectQueryEnumerator.1.cs
 Status: COMPLETED
 
+File: 6_Ideation/Data/src/Json/Serialization/JsonSerializer.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: JsonSerializer.cs
+Status: COMPLETED
+
