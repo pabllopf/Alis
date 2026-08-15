@@ -2177,3 +2177,21 @@ test: coverage Font.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs
+
+CoverageBefore:
+52.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (38/38, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage ImDrawData.cs
+
+Status:
+COMPLETE_ALREADY_COVERED

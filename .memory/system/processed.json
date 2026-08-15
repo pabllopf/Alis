@@ -113,6 +113,8 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs"
  ]
 }
