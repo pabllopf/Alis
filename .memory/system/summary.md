@@ -1997,3 +1997,21 @@ test: coverage MacNativePlatform.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs
+
+CoverageBefore:
+33.3% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (6/6, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage ImColor.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
