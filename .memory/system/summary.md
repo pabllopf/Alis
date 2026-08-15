@@ -503,3 +503,21 @@ test: coverage ImPlotP22.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP2.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (322/322, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage ImGuiP2.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
