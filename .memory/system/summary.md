@@ -8532,3 +8532,10 @@ CoverageAfter: 76.3% (261/342 verified ceiling); multicore gated by readonly int
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+CoverageBefore: 79.9% (SonarCloud) / 81.5% local
+CoverageAfter: 81.5% (405/497 verified ceiling); scan-line merge machinery dead code
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: BLOCKED_BY_PRODUCTION_CODE
