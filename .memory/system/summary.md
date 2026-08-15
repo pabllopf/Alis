@@ -8461,3 +8461,11 @@ CoverageAfter: 100.0% (173/173 verified locally)
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+CoverageBefore: 12.7%
+CoverageAfter: 100.0% (1482/1482 lines, measured via XPlat Code Coverage, net8.0)
+TestsAdded: 645
+Commit: test: ImGuiIO.cs
+Status: COMPLETED
+
