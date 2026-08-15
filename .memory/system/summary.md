@@ -289,6 +289,24 @@ Status:
 ALREADY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
+
+CoverageBefore:
+19.6% (SonarCloud; stale — local no-hook 818/834 = 98.1%)
+
+CoverageAfter:
+99.0% (826/834, local coverlet, hook-enabled run)
+
+TestsAdded:
+6 (Sdl2TestBootstrap + Sdl2MainThreadExecutionTests main-thread hook pattern; TouchDeviceQuery)
+
+Commit:
+test: coverage Sdl.cs
+
+Status:
+PARTIALLY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs
 
 CoverageBefore:
