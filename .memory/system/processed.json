@@ -820,6 +820,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/StringName.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Android/EGLDroid.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/Emscripten.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ClipVertex.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ClipVertex.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DistanceOutput.cs"
   ]
 }
