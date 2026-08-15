@@ -1127,6 +1127,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/CollisionFilterDelegate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureDelegate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/QueryReportFixtureDelegate.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IComponentBase.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IComponentBase.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/SkipLocalsInitAttribute.cs"
   ]
 }
