@@ -2621,3 +2621,10 @@ TestsAdded: 0
 Commit: test: ActiveUniformType.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/Platforms/Web/EGL.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: EGL.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

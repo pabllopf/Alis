@@ -740,6 +740,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWebScript.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/PixelInternalFormat.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/EnableCap.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ActiveUniformType.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ActiveUniformType.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EGL.cs"
   ]
 }
