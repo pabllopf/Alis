@@ -1113,6 +1113,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/EndContactDelegate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/JointDelegate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/OnCollisionEventHandler.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/OnSeparationEventHandler.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/OnSeparationEventHandler.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/PostSolveDelegate.cs"
   ]
 }
