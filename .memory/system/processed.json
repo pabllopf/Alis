@@ -1103,6 +1103,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Vertex2f.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Viewport.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/PreSolveDelegate.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/IShape.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/IShape.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Audio/AudioSourceConfig.cs"
   ]
 }
