@@ -1295,3 +1295,21 @@ test: coverage Clipboard.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+85.0% (34/40, local coverlet; unchanged)
+
+TestsAdded:
+0 (finalizer catch block unreachable; requires reflection or src changes)
+
+Commit:
+test: coverage Context.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
