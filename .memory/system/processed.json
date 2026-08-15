@@ -1506,6 +1506,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Input/InputManager.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Network/NetworkManager.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdate.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdate.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/PointComparer.cs"
   ]
 }
