@@ -197,3 +197,21 @@ test: coverage ImPlotP15.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP11.cs
+
+CoverageBefore:
+0.0% (SonarCloud; local coverlet 404/442 = 91.4%)
+
+CoverageAfter:
+91.4% (404/442, unchanged; 19 closing braces blocked)
+
+TestsAdded:
+0
+
+Commit:
+test: coverage ImPlotP11.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
