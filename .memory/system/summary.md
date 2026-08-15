@@ -3356,3 +3356,10 @@ TestsAdded: 0
 Commit: test: FileDialogType.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Io/FileDialog/src/IFilePicker.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IFilePicker.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
