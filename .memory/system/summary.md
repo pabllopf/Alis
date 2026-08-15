@@ -6086,3 +6086,10 @@ TestsAdded: 0
 Commit: test: Body.Factory.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Language/Dialogue/src/Core/DialogContext.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: DialogContext.cs
+Status: COMPLETED
+
