@@ -1374,6 +1374,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray3.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameCommon.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Sets/ConstrainedPointSet.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Integration/ComponentUpdateParallelizer.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Integration/ComponentUpdateParallelizer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Implementations/StopwatchTimeTracker.cs"
   ]
 }
