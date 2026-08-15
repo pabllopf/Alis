@@ -99,7 +99,21 @@ namespace Alis.Extension.Graphic.Sfml.Test
             Window.SetVisible(false);
             Ready = true;
             Render.RenderWindowMainThreadWorker.Run();
+            Windows.WindowMainThreadWorker.Run();
         }
+
+        /// <summary>
+        ///     Creates an extra native window for the base Window worker.
+        /// </summary>
+        /// <returns>The native window pointer</returns>
+        internal static IntPtr CreateExtraNativeWindow() => NativeWindowFactory.Create(320, 200, "alis-window");
+
+        /// <summary>
+        ///     Gets the platform handle of an extra native window.
+        /// </summary>
+        /// <param name="nativeWindow">The native window pointer</param>
+        /// <returns>The platform handle</returns>
+        internal static IntPtr GetExtraNativeHandle(IntPtr nativeWindow) => NativeWindowFactory.GetNativeHandle(nativeWindow);
 
         /// <summary>
         ///     Ensures the bootstrap ran; throws a skip signal when SFML could not be initialized on the main thread.
