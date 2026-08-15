@@ -1045,6 +1045,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWhere.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWindow.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWith.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithColor.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithColor.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithModel.cs"
   ]
 }
