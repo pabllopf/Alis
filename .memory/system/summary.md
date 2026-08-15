@@ -3489,3 +3489,10 @@ TestsAdded: 0
 Commit: test: ManifoldType.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Physic/src/Collisions/SeparationFunctionType.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: SeparationFunctionType.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
