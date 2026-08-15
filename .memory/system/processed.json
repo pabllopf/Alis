@@ -1392,6 +1392,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Implementations/ProcessResourceMonitor.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/SingleComponentUpdateFilter.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Formatters/SimpleLogFormatter.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Helpers/ProfileSnapshotFormatter.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Helpers/ProfileSnapshotFormatter.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs"
   ]
 }
