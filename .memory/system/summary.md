@@ -1457,3 +1457,21 @@ test: coverage Listener.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+81.2% (13/16, local coverlet; unchanged)
+
+TestsAdded:
+0 (OnStop -> SoundBuffer(short[]) ctor: CSFML 3.0 6-param sfSoundBuffer_createFromSamples ABI defect)
+
+Commit:
+test: coverage SoundBufferRecorder.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
