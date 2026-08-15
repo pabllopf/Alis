@@ -2123,3 +2123,21 @@ test: coverage Gen2GcCallback.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs
+
+CoverageBefore:
+30.7% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (386/386, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage WebAssemblyInputManager.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
