@@ -5253,3 +5253,10 @@ TestsAdded: 0
 Commit: test: UpdateProgressEventHandler.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Ecs/src/Updating/IComponentUpdateOrderAttribute.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IComponentUpdateOrderAttribute.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
