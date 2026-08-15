@@ -1,7 +1,9 @@
-# Archetype.cs
+# Result — Archetype.cs
 
-- **File**: `4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs`
-- **Coverage**: 91.3% (ceiling)
-- **Tests Added**: 0
-- **Uncovered Lines**: generic-class duplicates of CreateOrGetExistingArchetype/GetAdjacentArchetypeLookup (no callers), GetComponentSpan defensive throw, empty-archetype Update guard (no public API creates a deferred empty archetype), 65535-archetype and hash-collision limits
-- **Status**: BLOCKED_BY_PRODUCTION_CODE
+- File: 4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+- CoverageBefore: 90.2% (SonarCloud)
+- CoverageAfter: 99.1% (local coverlet estimate on Kernel.Archetypes subset, 85.4% -> 99.1%)
+- TestsAdded: 15 (ArchetypeRemainingCoverage.cs) + 16 (ArchetypeEdgeAndSpanCoverageTest.cs)
+- Commit: 163867cb8, d48f695cc
+- Status: COMPLETED
+- Remaining unreachable: 65535-archetype limit throw, SameComponents hash-collision branch.

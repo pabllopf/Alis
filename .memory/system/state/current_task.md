@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 148 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 150 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
 
     ### Language
     cs
 
     ### Coverage
-    90.0% (Line: 87.5%, Branch: 100.0%)
+    90.2% (Line: 91.3%, Branch: 84.2%)
 
     ### Uncovered Lines
-    2
+    56
 
     ### Uncovered Branches
-    0
+    18
 
     ### Method
-    Window
+    Archetype
 
     ### Complexity / LOC
-    10 / 32 lines
+    104 / 786 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Window.cs
+//  File:Archetype.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Updating;
+using HashCode = Alis.Core.Aspect.Math.HashCode;
 
-namespace Alis.Extension.Graphic.Glfw.Structs
+// S3963: Static constructor required for ECS null archetype initialization
+[assembly: SuppressMessage("SonarAnalyzer.CSharp", "S3963", Justification = "Static constructor required for ECS null archetype lazy initialization")]
+
+namespace Alis.Core.Ecs.Kernel.Archetypes
 {
     /// <summary>
-    ///     Wrapper around a GLFW window pointer.
+    ///     The archetype class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct Window : IEquatable<Window>
+    public class Archetype(GameObjectType archetypeId, ComponentStorageBase[] components, bool isTempCreateArchetype)
     {
         /// <summary>
-        ///     Describes a default/null instance.
+        ///     The null
         /// </summary>
-        public static readonly Window None;
+        internal static readonly GameObjectType Null;
 
         /// <summary>
-        ///     Internal pointer.
+        ///     The create
         /// </summary>
-        internal readonly IntPtr handle;
-
-        /// <summary>
-        ///     Performs an implicit conversion from <see cref="Window" /> to <see cref="IntPtr" />.
-        /// </summary>
-        /// <param name="window">The window.</param>
-        /// <returns>
-        ///     The result of the conversion.
-        /// </returns>
-        public static implicit operator IntPtr(Window window) => window.handle;
-
-        /// <summary>
+        // S2223: Required for ECS archetype table access from GameObjectType
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/WindowTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/Archetypes/ArchetypeTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Window.cs
+    Commit format: test: coverage Archetype.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

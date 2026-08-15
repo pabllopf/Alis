@@ -8560,3 +8560,10 @@ CoverageAfter: 51.7% (181/350 lines local coverlet)
 TestsAdded: 11
 Commit: test: MacNativePlatform.cs
 Status: COMPLETED
+
+File: 4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+CoverageBefore: 90.2%
+CoverageAfter: 99.1%
+TestsAdded: 15
+Commit: 163867cb8
+Status: COMPLETED

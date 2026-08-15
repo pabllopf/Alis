@@ -1580,6 +1580,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs"
   ]
 }
