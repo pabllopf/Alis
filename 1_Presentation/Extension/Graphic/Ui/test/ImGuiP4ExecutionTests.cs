@@ -406,5 +406,71 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        ///     Verifies every CalcTextSize overload executes and returns a non-zero size.
+        /// </summary>
+        [MacOsOnly]
+        public void CalcTextSize_AllOverloads_Execute()
+        {
+            IntPtr ctx = CreateFramedContext();
+            try
+            {
+                ImGuiNative.igNewFrame();
+                ImGui.Begin("p4-calctextsize-window");
+                _ = ImGui.CalcTextSize("p4 text");
+                _ = ImGui.CalcTextSize("p4 text", 2);
+                _ = ImGui.CalcTextSize("p4 text", 128.0f);
+                _ = ImGui.CalcTextSize("p4 text", true);
+                _ = ImGui.CalcTextSize("p4 text", 2, 4);
+                _ = ImGui.CalcTextSize("p4 text", 2, true);
+                _ = ImGui.CalcTextSize("p4 text", 2, 128.0f);
+                _ = ImGui.CalcTextSize("p4 text", true, 128.0f);
+                _ = ImGui.CalcTextSize("p4 text", 2, 4, true);
+                _ = ImGui.CalcTextSize("p4 text", 2, 4, 128.0f);
+                _ = ImGui.CalcTextSize("p4 text", 2, 4, true, 128.0f);
+                ImGui.End();
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(ctx);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies every InputText overload taking an IntPtr buffer executes inside a framed
+        ///     window against a real allocated buffer without throwing.
+        /// </summary>
+        [MacOsOnly]
+        public void InputText_IntPtrOverloads_ExecuteInsideWindow()
+        {
+            IntPtr ctx = CreateFramedContext();
+            try
+            {
+                ImGuiNative.igNewFrame();
+                ImGui.Begin("p4-inputtext-window");
+                IntPtr buffer = Marshal.AllocHGlobal(256);
+                byte[] initial = Encoding.UTF8.GetBytes("p4 buffer\0");
+                Marshal.Copy(initial, 0, buffer, initial.Length);
+                try
+                {
+                    _ = ImGui.InputText("p4-input-ptr-1", buffer, 256);
+                    _ = ImGui.InputText("p4-input-ptr-2", buffer, 256, ImGuiInputTextFlags.None);
+                    _ = ImGui.InputText("p4-input-ptr-3", buffer, 256, ImGuiInputTextFlags.None, null);
+                    _ = ImGui.InputText("p4-input-ptr-4", buffer, 256, ImGuiInputTextFlags.None, null, IntPtr.Zero);
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(buffer);
+                }
+                ImGui.End();
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(ctx);
+            }
+        }
+
     }
 }

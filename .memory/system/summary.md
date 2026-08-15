@@ -215,3 +215,21 @@ test: coverage ImPlotP11.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP4.cs
+
+CoverageBefore:
+0.0% (SonarCloud; local coverlet 320/428 = 74.8%)
+
+CoverageAfter:
+87.8% (376/428, local coverlet)
+
+TestsAdded:
+2 (CalcTextSize_AllOverloads_Execute, InputText_IntPtrOverloads_ExecuteInsideWindow)
+
+Commit:
+test: coverage ImGuiP4.cs
+
+Status:
+PARTIALLY_REMEDIATED
