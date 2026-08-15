@@ -1386,6 +1386,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/StreamTags.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Line/LineF.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Line/LineI.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeRefundResponse.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeRefundResponse.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactEdge.cs"
   ]
 }
