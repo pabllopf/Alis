@@ -1326,6 +1326,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/QueryGraph.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/SimpleExplosion.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Scheduling/BatchPartitioner.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Providers/LanguageProvider.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Providers/LanguageProvider.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationPoint.cs"
   ]
 }

@@ -6723,3 +6723,10 @@ TestsAdded: 0
 Commit: test: LanguageProvider.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationPoint.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: TriangulationPoint.cs
+Status: COMPLETED
+
