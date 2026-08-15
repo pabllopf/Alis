@@ -1004,6 +1004,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IIsResizable.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IIsStatic.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IIsTrigger.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ILicense.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ILicense.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ILinearVelocity.cs"
   ]
 }
