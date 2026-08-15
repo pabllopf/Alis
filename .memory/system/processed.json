@@ -1460,6 +1460,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Factories/ResourceMetricsFactory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadTask.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepConstraint.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/LambdaDialogCondition.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/LambdaDialogCondition.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Time/TimeSetting.cs"
   ]
 }
