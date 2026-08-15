@@ -4931,3 +4931,10 @@ TestsAdded: 0
 Commit: test: CompileShader.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/OpenGL/Delegates/CreateProgram.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: CreateProgram.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
