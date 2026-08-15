@@ -767,6 +767,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BufferTarget.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BeginMode.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/VertexAttribPointerType.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacConstants.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacConstants.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryDelegates.cs"
   ]
 }
