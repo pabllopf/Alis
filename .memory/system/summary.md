@@ -8369,3 +8369,10 @@ CoverageAfter: 17.4% (73/419); remaining blocked by WebAssemblyGameContext ctor 
 TestsAdded: 14
 Commit: test: WebAssemblyGameExamples.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+CoverageBefore: 12.7% (SonarCloud stale)
+CoverageAfter: 100.0% (741/741 verified locally)
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: COMPLETED
