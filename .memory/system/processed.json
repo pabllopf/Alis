@@ -1274,6 +1274,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Pair.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/MP3Encoder.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/Dimensions.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/Dimensions.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdConfiguration.cs"
   ]
 }
