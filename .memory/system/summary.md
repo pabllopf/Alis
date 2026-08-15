@@ -287,3 +287,21 @@ test: coverage ImGui.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP1.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+87.8% (344/392, local coverlet; unchanged)
+
+TestsAdded:
+0 (DragFloat4 by-value marshalling defect crashes native host)
+
+Commit:
+test: coverage ImGuiP1.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
