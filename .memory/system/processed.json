@@ -1138,6 +1138,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Gdi32.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Kernel32.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/LayerType.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Msg.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Msg.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Opengl32.cs"
   ]
 }
