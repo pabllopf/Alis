@@ -6513,3 +6513,10 @@ TestsAdded: 0
 Commit: test: ParallelExecutionContext.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/AACEncoder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: AACEncoder.cs
+Status: COMPLETED
+
