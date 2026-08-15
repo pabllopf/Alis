@@ -1159,6 +1159,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/AABB.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimplifyTools.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimplifyTools.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/FastPriorityQueue.cs"
   ]
 }
