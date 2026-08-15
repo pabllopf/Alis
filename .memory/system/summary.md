@@ -2586,3 +2586,10 @@ TestsAdded: 0
 Commit: test: IFastImmutableArray.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Ecs/src/Systems/IRuleProvider.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IRuleProvider.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

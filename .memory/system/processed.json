@@ -735,6 +735,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/IMediaFrame.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogFilter.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogFormatter.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Collections/IFastImmutableArray.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Collections/IFastImmutableArray.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IRuleProvider.cs"
   ]
 }
