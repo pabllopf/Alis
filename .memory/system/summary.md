@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs
+
+CoverageBefore:
+11.1% (SonarCloud; stale artifact)
+
+CoverageAfter:
+17.4% (73/419, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 94f2b490a; WASM-runtime-only lines unreachable on desktop)
+
+Commit:
+test: coverage WebAssemblyGameExamples.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs
 
 CoverageBefore:
@@ -1889,3 +1907,21 @@ test: coverage ImPlotP2.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (741/741, local coverlet)
+
+TestsAdded:
+0 (already covered by committed ImGuiIo test surface)
+
+Commit:
+test: coverage ImGuiIO.cs
+
+Status:
+ALREADY_REMEDIATED
