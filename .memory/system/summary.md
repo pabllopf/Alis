@@ -3510,3 +3510,10 @@ TestsAdded: 0
 Commit: test: TriangulationMode.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Physic/src/Common/Logic/BreakableBodyState.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: BreakableBodyState.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
