@@ -800,5 +800,35 @@ namespace Alis.Test.Core.Ecs.Components.Render
             sprite.Render(gameObject, new Vector2F(0.0f, 0.0f), new Vector2F(1280.0f, 720.0f), 100.0f);
         }
 
+        /// <summary>
+        ///     Verifies that loading a texture through the embedded-resource fallback path
+        ///     completes when the packed test assets contain the named image.
+        /// </summary>
+        [Fact]
+        public void LoadTexture_WithResourceName_LoadsFromResources()
+        {
+            Gl.Initialize(FakeProcAddress);
+            Sprite sprite = new Sprite(new Context(), "dino_assets.bmp", 0);
+
+            Exception ex = Record.Exception(() => sprite.LoadTexture(string.Empty));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Verifies that rendering a sprite with a resource name and an empty path enters
+        ///     the shared-resource initialization branch and loads the texture.
+        /// </summary>
+        [Fact]
+        public void Render_WithResourceNameAndEmptyPath_Executes()
+        {
+            Gl.Initialize(FakeProcAddress);
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(0.0f, 0.0f), 0.0f, new Vector2F(1.0f, 1.0f)));
+            Sprite sprite = new Sprite(new Context(), "dino_assets.bmp", 0);
+
+            sprite.Render(gameObject, new Vector2F(0.0f, 0.0f), new Vector2F(1280.0f, 720.0f), 100.0f);
+        }
+
     }
 }
