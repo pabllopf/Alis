@@ -1061,3 +1061,21 @@ test: coverage Texture.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+97.9% (47/48, local coverlet; unchanged)
+
+TestsAdded:
+0 (Reset closing brace unreachable: sfView_reset removed in CSFML 3.0 -> EntryPointNotFound)
+
+Commit:
+test: coverage View.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
