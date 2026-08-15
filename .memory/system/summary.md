@@ -8546,3 +8546,10 @@ CoverageAfter: 90.5% (133/147 verified ceiling); non-convergence edge cases need
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+CoverageBefore: 90.0% (SonarCloud) / 87.5% local
+CoverageAfter: 87.5% local; Opacity lines covered when ALIS_GLFW_HOOK startup hook active
+TestsAdded: 2
+Commit: test: Window.cs
+Status: COMPLETED
