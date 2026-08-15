@@ -1031,6 +1031,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISetAudioClip.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISetMax.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISetTexture.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISettings.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISettings.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISize.cs"
   ]
 }
