@@ -1058,6 +1058,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/AreaLight.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/DirectionalLight.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/PointLight.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/SpotLight.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/SpotLight.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/IAnimation.cs"
   ]
 }
