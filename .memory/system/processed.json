@@ -1495,6 +1495,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/InputSetting.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/CxFastListNode.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdateRunnerFactory.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdateRunnerFactory.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs"
   ]
 }
