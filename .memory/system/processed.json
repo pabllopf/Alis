@@ -1484,6 +1484,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/EntityTooLargeException.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/SecWebSocketKeyMissingException.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/ServerListenerSocketException.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketBufferOverflowException.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketBufferOverflowException.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/WebSocketHandshakeFailedException.cs"
   ]
 }

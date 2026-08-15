@@ -7829,3 +7829,10 @@ TestsAdded: 0
 Commit: test: WebSocketBufferOverflowException.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Network/src/Exceptions/WebSocketHandshakeFailedException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: WebSocketHandshakeFailedException.cs
+Status: COMPLETED
+
