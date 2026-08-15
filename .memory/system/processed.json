@@ -756,6 +756,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XKeyEvent.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XMotionEvent.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorSrc.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ProgramParameter.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ProgramParameter.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureTarget.cs"
   ]
 }
