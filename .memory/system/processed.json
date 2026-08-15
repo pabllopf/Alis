@@ -1456,6 +1456,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Sink.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Files/FileService.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/PolygonSet.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Controllers/Controller.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Controllers/Controller.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Factories/ResourceMetricsFactory.cs"
   ]
 }
