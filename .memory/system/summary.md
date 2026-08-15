@@ -8137,3 +8137,10 @@ TestsAdded: 0
 Commit: test: LanguageNotFoundException.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Language/Translator/src/TranslationNotFoundException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: TranslationNotFoundException.cs
+Status: COMPLETED
+
