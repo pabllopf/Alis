@@ -1130,6 +1130,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IComponentBase.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/SkipLocalsInitAttribute.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryMarshal.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/ModuleInitializerAttribute.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/ModuleInitializerAttribute.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/RuntimeHelpers.cs"
   ]
 }
