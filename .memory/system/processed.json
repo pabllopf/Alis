@@ -1421,6 +1421,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketHttpContext.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Circle/CircleF.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Circle/CircleI.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Square/SquareF.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Square/SquareF.cs",
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Square/SquareI.cs"
   ]
 }
