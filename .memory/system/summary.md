@@ -5393,3 +5393,10 @@ TestsAdded: 0
 Commit: test: Kernel32.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/Platforms/Win/Native/LayerType.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: LayerType.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
