@@ -1241,3 +1241,21 @@ test: coverage ConvexShape.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (44/44, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage Joystick.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
