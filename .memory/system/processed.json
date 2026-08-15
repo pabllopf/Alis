@@ -1471,6 +1471,7 @@
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointI.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/FastPriorityQueueNode.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/SettingEnv.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Sweep.cs"
   ]
 }
