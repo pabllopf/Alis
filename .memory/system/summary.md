@@ -6310,3 +6310,10 @@ TestsAdded: 0
 Commit: test: Context.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Math/ProceduralDungeon/src/Validators/DimensionsValidator.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: DimensionsValidator.cs
+Status: COMPLETED
+
