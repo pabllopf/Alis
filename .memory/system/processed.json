@@ -1539,6 +1539,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Body/RigidBody.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Not.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/With.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/SpotLightBuilder.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/SpotLightBuilder.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IncludeDisabled.cs"
   ]
 }
