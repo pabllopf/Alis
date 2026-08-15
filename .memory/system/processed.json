@@ -1523,6 +1523,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/StablePriorityQueueNode.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Frame.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/InlineArray8.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/KeyEventInfo.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/KeyEventInfo.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs"
   ]
 }
