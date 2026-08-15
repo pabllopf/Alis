@@ -1510,6 +1510,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/PointComparer.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonDeserializationException.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonParsingException.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonSerializationException.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonSerializationException.cs",
+    "pabllopf-official_alis:6_Ideation/Math/src/Matrix/CustomIndexOutOfRangeException.cs"
   ]
 }
