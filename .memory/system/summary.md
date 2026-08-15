@@ -7136,3 +7136,10 @@ TestsAdded: 0
 Commit: test: LineI.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Payment/Stripe/src/StripeRefundResponse.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: StripeRefundResponse.cs
+Status: COMPLETED
+
