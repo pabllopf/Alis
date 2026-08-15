@@ -7913,3 +7913,10 @@ TestsAdded: 0
 Commit: test: ContactVelocityConstraint.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Kernel/Events/EventRecord.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: EventRecord.cs
+Status: COMPLETED
+
