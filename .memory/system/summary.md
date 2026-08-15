@@ -8418,3 +8418,10 @@ CoverageAfter: 100.0% (19/19 coverable lines, local coverlet, macOS)
 TestsAdded: 7
 Commit: test: ObjectiveCInterop.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs
+CoverageBefore: 6.1% (SonarCloud stale)
+CoverageAfter: 100.0% (94/94 verified locally, net8.0)
+TestsAdded: 0
+Commit: test: MediaStream.cs
+Status: COMPLETED
