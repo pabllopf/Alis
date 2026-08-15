@@ -1508,6 +1508,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Network/NetworkManager.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdate.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/PointComparer.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonDeserializationException.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonDeserializationException.cs",
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonParsingException.cs"
   ]
 }
