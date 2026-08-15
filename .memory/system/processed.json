@@ -408,6 +408,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgInitFlags.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/NativeSdlTtf.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DisplayEvent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalAndroidWminfo.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/MouseWheelEvent.cs",

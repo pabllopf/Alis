@@ -8305,3 +8305,10 @@ TestsAdded: 0
 Commit: test: UpdateOrderAttribute.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs
+CoverageBefore: 2.2%
+CoverageAfter: 100.0% (180/180 executable lines)
+TestsAdded: 7
+Commit: test: SdlTtf.cs
+Status: COMPLETED
+
