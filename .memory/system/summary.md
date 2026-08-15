@@ -143,3 +143,21 @@ test: coverage ImDrawListPtr.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP10.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale cimgui artifact 0/630)
+
+CoverageAfter:
+100.0% (630/630, committed ImPlotP10Test/ExecutionTests/RemainingCoverageTests)
+
+TestsAdded:
+0 (already remediated in commit c687caac5)
+
+Commit:
+test: coverage ImPlotP10.cs
+
+Status:
+ALREADY_REMEDIATED
