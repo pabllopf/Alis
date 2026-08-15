@@ -1171,6 +1171,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Time/TimeManager.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Matrix/Matrix3X2.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Parsing/JsonParser.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/CustomMathF.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/CustomMathF.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkMessageEnvelope.cs"
   ]
 }
