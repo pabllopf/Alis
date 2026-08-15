@@ -1047,6 +1047,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWith.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithColor.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithModel.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithName.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithName.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IWithTag.cs"
   ]
 }

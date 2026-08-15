@@ -4770,3 +4770,10 @@ TestsAdded: 0
 Commit: test: IWithName.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Words/IWithTag.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IWithTag.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
