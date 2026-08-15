@@ -1173,6 +1173,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Parsing/JsonParser.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/CustomMathF.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkMessageEnvelope.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkQueryEnumerator.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkQueryEnumerator.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/AManager.cs"
   ]
 }
