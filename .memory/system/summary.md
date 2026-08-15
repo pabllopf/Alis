@@ -8574,3 +8574,10 @@ CoverageAfter: 100%
 TestsAdded: 3
 Commit: a85281de8
 Status: COMPLETED
+File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
+CoverageBefore: 93.8%
+CoverageAfter: 100% (parallel session, commit a85281de8; GetTexId covered)
+TestsAdded: 2
+Commit: test: coverage ImDrawCmd.cs
+Status: COMPLETED
+
