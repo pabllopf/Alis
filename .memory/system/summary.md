@@ -1151,3 +1151,21 @@ test: coverage VertexBuffer.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (37/37, local coverlet)
+
+TestsAdded:
+0 (already covered by committed RenderStatesTest.cs)
+
+Commit:
+test: coverage RenderStates.cs
+
+Status:
+ALREADY_REMEDIATED
