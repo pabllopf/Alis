@@ -1271,6 +1271,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Validators/DimensionsValidator.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerCollection.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Setting.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Pair.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Pair.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs"
   ]
 }
