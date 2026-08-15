@@ -8095,3 +8095,10 @@ TestsAdded: 0
 Commit: test: InlineArray8.cs
 Status: COMPLETED
 
+File: 6_Ideation/Fluent/src/KeyEventInfo.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: KeyEventInfo.cs
+Status: COMPLETED
+
