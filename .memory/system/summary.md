@@ -8404,3 +8404,10 @@ TestsAdded: 21
 Commit: test: SdlImage.cs
 Status: COMPLETED
 
+
+File: 4_Operation/Graphic/src/OpenGL/Gl.cs
+CoverageBefore: 30.7% (SonarCloud) / 73.2% local
+CoverageAfter: 100.0% (209/209)
+TestsAdded: 13
+Commit: test: Gl.cs
+Status: COMPLETED
