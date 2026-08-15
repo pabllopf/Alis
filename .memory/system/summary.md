@@ -7794,3 +7794,10 @@ TestsAdded: 0
 Commit: test: AdvancingFrontNode.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Decomposition/Seidel/XNode.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: XNode.cs
+Status: COMPLETED
+
