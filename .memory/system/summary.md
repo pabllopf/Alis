@@ -8200,3 +8200,10 @@ TestsAdded: 0
 Commit: test: Not.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/With.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: With.cs
+Status: COMPLETED
+
