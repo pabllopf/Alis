@@ -1979,3 +1979,21 @@ test: coverage Gl.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+
+CoverageBefore:
+14.2% (SonarCloud; stale artifact)
+
+CoverageAfter:
+65.4% (458/700, local coverlet, hook-enabled; +13.7%)
+
+TestsAdded:
+8 (main-thread platform bootstrap tests)
+
+Commit:
+test: coverage MacNativePlatform.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE

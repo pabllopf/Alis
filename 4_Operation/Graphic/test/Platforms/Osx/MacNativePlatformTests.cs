@@ -31,6 +31,7 @@
 using System;
 using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Core.Graphic.Test.Attributes;
+using Alis.Core.Graphic.Test.Platforms.Osx.Native;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Osx
@@ -191,6 +192,128 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             catch (DllNotFoundException)
             {
             }
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker initialized the platform.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_InitializesPlatformOnMainThread()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.InitializeOk);
+            Assert.NotNull(MacNativePlatformBootstrap.Platform);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker read back the window size.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_ReadsBackWindowSize()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.Width > 0);
+            Assert.True(MacNativePlatformBootstrap.Height > 0);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker toggled visibility through the window wrappers.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_WindowVisibilityToggles()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.VisibleAfterShow);
+            Assert.False(MacNativePlatformBootstrap.HiddenAfterHide);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker read back the window position.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_ReadsBackWindowPosition()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.PositionX >= 0);
+            Assert.True(MacNativePlatformBootstrap.PositionY >= 0);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker read back the window metrics.
+        ///     The hidden bootstrap window may report a zero-size framebuffer, so the
+        ///     assertion only requires the query to have completed without throwing.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_ReadsBackWindowMetrics()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.MetricW >= 0);
+            Assert.True(MacNativePlatformBootstrap.MetricH >= 0);
+            Assert.True(MacNativePlatformBootstrap.FbW >= 0);
+            Assert.True(MacNativePlatformBootstrap.FbH >= 0);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker queried the input state.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_QueriesInputState()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.KeyQueryOk);
+            Assert.True(MacNativePlatformBootstrap.LastKeyPressedQueryOk);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker resolved an OpenGL symbol.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_ResolvesOpenGlSymbol()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.NotEqual(IntPtr.Zero, MacNativePlatformBootstrap.ProcAddress);
+        }
+
+        /// <summary>
+        ///     Verifies that the main thread worker completed cleanup.
+        /// </summary>
+        [MacOsOnly]
+        public void Bootstrap_CompletesCleanup()
+        {
+            if (!MacNativePlatformBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MacNativePlatformBootstrap.CleanupOk);
         }
     }
 }

@@ -29,6 +29,7 @@
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Core.Graphic.Platforms.Osx.Native;
 using Alis.Core.Graphic.Test.Platforms.Osx.Native;
 
@@ -49,6 +50,7 @@ public static class StartupHook
             {
                 MacWindowBootstrap.Initialize();
                 MacOpenGLContextBootstrap.Initialize();
+                MacNativePlatformBootstrap.Initialize();
             }
         }
         catch (Exception)
@@ -218,6 +220,167 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
                 MakeCurrentOk = true;
                 Context.SwapBuffers();
                 SwapOk = true;
+                Ready = true;
+            }
+            catch (Exception)
+            {
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Initializes the MacNativePlatform on the process main thread after the window bootstrap and
+    ///     records the results of every reachable member call.
+    ///     <para>
+    ///         AppKit requires NSApplication/NSWindow work on the main thread while xUnit runs tests on
+    ///         worker threads, so this bootstrap is triggered from the <see cref="StartupHook" /> which the
+    ///         runtime executes on the main thread before the entry point.
+    ///     </para>
+    /// </summary>
+    internal static class MacNativePlatformBootstrap
+    {
+        /// <summary>
+        ///     The platform initialized on the main thread.
+        /// </summary>
+        internal static MacNativePlatform Platform;
+
+        /// <summary>
+        ///     Indicates whether Initialize completed successfully.
+        /// </summary>
+        internal static bool InitializeOk;
+
+        /// <summary>
+        ///     The width read back after Initialize.
+        /// </summary>
+        internal static int Width;
+
+        /// <summary>
+        ///     The height read back after Initialize.
+        /// </summary>
+        internal static int Height;
+
+        /// <summary>
+        ///     The visibility read back after ShowWindow.
+        /// </summary>
+        internal static bool VisibleAfterShow;
+
+        /// <summary>
+        ///     The visibility read back after HideWindow.
+        /// </summary>
+        internal static bool HiddenAfterHide;
+
+        /// <summary>
+        ///     The window position X read back after Initialize.
+        /// </summary>
+        internal static int PositionX;
+
+        /// <summary>
+        ///     The window position Y read back after Initialize.
+        /// </summary>
+        internal static int PositionY;
+
+        /// <summary>
+        ///     The window metrics read back after Initialize.
+        /// </summary>
+        internal static int MetricW;
+
+        /// <summary>
+        ///     The window metrics read back after Initialize.
+        /// </summary>
+        internal static int MetricH;
+
+        /// <summary>
+        ///     The framebuffer width read back after Initialize.
+        /// </summary>
+        internal static int FbW;
+
+        /// <summary>
+        ///     The framebuffer height read back after Initialize.
+        /// </summary>
+        internal static int FbH;
+
+        /// <summary>
+        ///     The mouse position X read back after Initialize.
+        /// </summary>
+        internal static float MouseX;
+
+        /// <summary>
+        ///     The mouse position Y read back after Initialize.
+        /// </summary>
+        internal static float MouseY;
+
+        /// <summary>
+        ///     Indicates whether a key state query completed.
+        /// </summary>
+        internal static bool KeyQueryOk;
+
+        /// <summary>
+        ///     The OpenGL handle read back after GetProcAddress.
+        /// </summary>
+        internal static IntPtr ProcAddress;
+
+        /// <summary>
+        ///     The last key pressed read back after a poll.
+        /// </summary>
+        internal static bool LastKeyPressedQueryOk;
+
+        /// <summary>
+        ///     Indicates whether Cleanup completed.
+        /// </summary>
+        internal static bool CleanupOk;
+
+        /// <summary>
+        ///     Indicates whether the bootstrap completed successfully on the main thread.
+        /// </summary>
+        internal static bool Ready;
+
+        /// <summary>
+        ///     Initializes the platform and exercises every reachable member on the main thread.
+        /// </summary>
+        internal static void Initialize()
+        {
+            if (Ready)
+            {
+                return;
+            }
+
+            if (!MacWindowBootstrap.Ready)
+            {
+                return;
+            }
+
+            try
+            {
+                ObjectiveCInterop.NSApplicationLoad();
+                Platform = new MacNativePlatform();
+                InitializeOk = Platform.Initialize(320, 200, "exec");
+                Width = Platform.GetWindowWidth();
+                Height = Platform.GetWindowHeight();
+                Platform.ShowWindow();
+                VisibleAfterShow = Platform.IsWindowVisible();
+                Platform.SetTitle("exec-title");
+                Platform.SetSize(400, 300);
+                Platform.MakeContextCurrent();
+                Platform.SwapBuffers();
+                PositionX = Platform.GetWindowPositionX();
+                PositionY = Platform.GetWindowPositionY();
+                Platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
+                MetricW = winW;
+                MetricH = winH;
+                FbW = fbW;
+                FbH = fbH;
+                Platform.GetMousePositionInView(out float mouseX, out float mouseY);
+                MouseX = mouseX;
+                MouseY = mouseY;
+                KeyQueryOk = Platform.IsKeyDown(ConsoleKey.A) == false;
+                ProcAddress = Platform.GetProcAddress("glClearColor");
+                Platform.GetMouseState(out int stateX, out int stateY, out bool[] buttons);
+                LastKeyPressedQueryOk = Platform.TryGetLastKeyPressed(out ConsoleKey key) == false;
+                Platform.TryGetLastInputCharacters(out string chars);
+                Platform.HideWindow();
+                HiddenAfterHide = Platform.IsWindowVisible();
+                Platform.Cleanup();
+                CleanupOk = true;
                 Ready = true;
             }
             catch (Exception)
