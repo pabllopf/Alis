@@ -6030,3 +6030,10 @@ TestsAdded: 0
 Commit: test: ComponentHandle.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Collections/FastestArrayPool.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: FastestArrayPool.cs
+Status: COMPLETED
+
