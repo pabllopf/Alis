@@ -7801,3 +7801,10 @@ TestsAdded: 0
 Commit: test: XNode.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Network/src/Exceptions/EntityTooLargeException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: EntityTooLargeException.cs
+Status: COMPLETED
+
