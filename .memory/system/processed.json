@@ -1195,6 +1195,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Trapezoid.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Trapezoid.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorage.cs"
   ]
 }
