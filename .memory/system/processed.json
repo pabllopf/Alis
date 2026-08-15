@@ -1211,6 +1211,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/TrapezoidalMap.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/ChainShape.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Util/Quaternion.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Util/Quaternion.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs"
   ]
 }
