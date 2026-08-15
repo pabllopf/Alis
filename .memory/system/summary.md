@@ -1313,3 +1313,21 @@ test: coverage Context.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (38/38, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage RectangleShape.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
