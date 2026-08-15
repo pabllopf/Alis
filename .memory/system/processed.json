@@ -743,6 +743,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ActiveUniformType.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EGL.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/StoreParameter.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/PixelType.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/PixelType.cs",
+    "pabllopf-official_alis:4_Operation/Audio/src/Players/OpenAL.cs"
   ]
 }
