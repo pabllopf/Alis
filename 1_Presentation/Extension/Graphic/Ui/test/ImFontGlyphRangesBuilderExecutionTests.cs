@@ -71,14 +71,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         private static extern IntPtr DlOpen(string path, int mode);
 
         /// <summary>
-        ///     Closes a dynamic library handle
-        /// </summary>
-        /// <param name="handle">The library handle</param>
-        /// <returns>The result</returns>
-        [DllImport("libSystem.dylib", EntryPoint = "dlclose")]
-        private static extern int DlClose(IntPtr handle);
-
-        /// <summary>
         ///     Resolves the address of an exported symbol inside a loaded library
         /// </summary>
         /// <param name="handle">The library handle</param>
@@ -86,6 +78,42 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <returns>The symbol address</returns>
         [DllImport("libSystem.dylib", EntryPoint = "dlsym")]
         private static extern IntPtr Dlsym(IntPtr handle, string symbol);
+
+        /// <summary>
+        ///     Returns information about the loaded image that owns the given address
+        /// </summary>
+        /// <param name="address">The address to resolve</param>
+        /// <param name="info">The image information</param>
+        /// <returns>The result</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dladdr")]
+        private static extern int DlAddr(IntPtr address, ref DlInfo info);
+
+        /// <summary>
+        ///     The image information returned by the dladdr call
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct DlInfo
+        {
+            /// <summary>
+            ///     The file name of the loaded image
+            /// </summary>
+            public IntPtr FileName;
+
+            /// <summary>
+            ///     The base address of the loaded image
+            /// </summary>
+            public IntPtr Base;
+
+            /// <summary>
+            ///     The name of the nearest symbol
+            /// </summary>
+            public IntPtr SymbolName;
+
+            /// <summary>
+            ///     The address of the nearest symbol
+            /// </summary>
+            public IntPtr SymbolAddress;
+        }
 
         /// <summary>
         ///     Creates a raw ImGui context and binds it as the current context.
@@ -103,7 +131,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Synchronizes the ImGui context pointer of every loaded cimgui image so that the allocator used
         ///     by the font glyph ranges builder is visible to all the image copies. The GImGui slot is resolved
         ///     through the exported symbol of each image instead of a hardcoded offset, which varies between
-        ///     the x64 and arm64 slices of the native library.
+        ///     the x64 and arm64 slices of the native library. The handle opened with RtlNoLoad is never closed
+        ///     because dlclose can unload the image, and the resolved address is verified with dladdr before the
+        ///     write so a stale slot can never fault the test host.
         /// </summary>
         /// <param name="imgui">The imgui context</param>
         private static void SyncContextSlots(IntPtr imgui)
@@ -122,15 +152,32 @@ namespace Alis.Extension.Graphic.Ui.Test
                     {
                         IntPtr slot = Dlsym(handle, "GImGui");
 
-                        if (slot != IntPtr.Zero)
+                        if (slot != IntPtr.Zero && IsLoadedCimgui(slot))
                         {
                             Marshal.WriteIntPtr(slot, imgui);
                         }
-
-                        DlClose(handle);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Verifies that the given address belongs to a currently loaded cimgui image, so that a stale
+        ///     symbol address can never trigger an access violation while synchronizing the context slot.
+        /// </summary>
+        /// <param name="address">The resolved symbol address</param>
+        /// <returns>The bool</returns>
+        private static bool IsLoadedCimgui(IntPtr address)
+        {
+            DlInfo info = new DlInfo();
+
+            if (DlAddr(address, ref info) == 0)
+            {
+                return false;
+            }
+
+            string fileName = Marshal.PtrToStringAnsi(info.FileName);
+            return fileName != null && fileName.Contains("cimgui");
         }
 
         /// <summary>

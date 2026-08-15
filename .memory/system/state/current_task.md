@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 89 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 102 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
 
     ### Language
     cs
 
     ### Coverage
-    1.5% (Line: 1.8%, Branch: 0.0%)
+    19.6% (Line: 19.3%, Branch: 50.0%)
 
     ### Uncovered Lines
-    166
+    673
 
     ### Uncovered Branches
-    32
+    4
 
     ### Method
-    Window
+    Sdl
 
     ### Complexity / LOC
-    68 / 334 lines
+    381 / 1042 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Window.cs
+//  File:Sdl.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -58,49 +58,49 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security;
-using System.Text;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Shapes.Point;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sdl2.Delegates;
+using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Mapping;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 
-namespace Alis.Extension.Graphic.Sfml.Windows
+namespace Alis.Extension.Graphic.Sdl2
 {
     /// <summary>
-    ///     Window is a rendering window ; it can create a new window
-    ///     or connect to an existing one
+    ///     The sdl class
     /// </summary>
-    public class Window : ObjectBase
+    public static class Sdl
     {
         /// <summary>
-        ///     Create the window with default style and creation settings
+        ///     The sdl text editing event text size
         /// </summary>
-        /// <param name="mode">Video mode to use</param>
-        /// <param name="title">Title of the window</param>
-        public Window(VideoMode mode, string title) :
-            this(mode, title, Styles.Default, new ContextSettings(0, 0))
-        {
-        }
-
+        public const int TextEditingEventTextSize = 32;
 
         /// <summary>
-        ///     Create the window with default creation settings
+        ///     The sdl text input event text size
         /// </summary>
-        /// <param name="mode">Video mode to use</param>
+        public const int TextInputEventTextSize = 32;
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/WindowTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/SdlTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Window.cs
+    Commit format: test: coverage Sdl.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
