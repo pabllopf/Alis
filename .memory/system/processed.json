@@ -1258,6 +1258,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/HttpHelper.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/BoxColliderBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Rule.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Rule.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/GraphicSetting.cs"
   ]
 }

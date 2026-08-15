@@ -6247,3 +6247,10 @@ TestsAdded: 0
 Commit: test: Rule.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/GraphicSetting.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GraphicSetting.cs
+Status: COMPLETED
+
