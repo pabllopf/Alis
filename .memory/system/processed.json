@@ -1187,6 +1187,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Query.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Helpers/BoardSquareTypeHelper.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonTools.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/Joint.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/Joint.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Core/CoreLogger.cs"
   ]
 }
