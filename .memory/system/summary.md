@@ -4672,3 +4672,10 @@ TestsAdded: 0
 Commit: test: ISpeed.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 6_Ideation/Fluent/src/Words/ISplashScreen.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: ISplashScreen.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

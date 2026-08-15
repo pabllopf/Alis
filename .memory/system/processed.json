@@ -1033,6 +1033,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISetTexture.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISettings.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISize.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISpeed.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISpeed.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISplashScreen.cs"
   ]
 }
