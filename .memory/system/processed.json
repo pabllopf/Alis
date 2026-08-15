@@ -1527,6 +1527,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TreeNode.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/GeomPolyVal.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/PointOnEdgeException.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/PointOnEdgeException.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/LanguageNotFoundException.cs"
   ]
 }
