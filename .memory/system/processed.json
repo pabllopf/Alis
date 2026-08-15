@@ -1532,6 +1532,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationNotFoundException.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Body/RigidBodyBuilder.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/CircleColliderBuilder.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/AreaLightBuilder.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/AreaLightBuilder.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Light/DirectionalLightBuilder.cs"
   ]
 }
