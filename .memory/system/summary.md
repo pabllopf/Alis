@@ -8383,3 +8383,10 @@ CoverageAfter: 43.7% (153/350); remaining blocked by AppKit windowing requiremen
 TestsAdded: 9
 Commit: test: MacNativePlatform.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs
+CoverageBefore: 18.2% (SonarCloud) / 50.0% local
+CoverageAfter: 50.0% local; marshal loop covered on CI with Vulkan loader
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: COMPLETED
