@@ -1345,6 +1345,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactListHead.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Formatters/CompactLogFormatter.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/Seidel/Point.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerFilter.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerFilter.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Exceptions/InvalidHttpResponseCodeException.cs"
   ]
 }

@@ -6856,3 +6856,10 @@ TestsAdded: 0
 Commit: test: FilePickerFilter.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Network/src/Exceptions/InvalidHttpResponseCodeException.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: InvalidHttpResponseCodeException.cs
+Status: COMPLETED
+
