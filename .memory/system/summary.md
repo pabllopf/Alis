@@ -1691,3 +1691,21 @@ test: coverage ImPlotP3.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+
+CoverageBefore:
+0.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+93.5% (914/978, local coverlet; +7.8%)
+
+TestsAdded:
+19 (null-label overload probes: PlotHistogram×7, PlotLines×7, Selectable×3, SetDragDropPayload×2)
+
+Commit:
+test: coverage ImGuiP7.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE

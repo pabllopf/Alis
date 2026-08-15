@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Reflection;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
@@ -534,6 +536,194 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowSize").ToArray();
             Assert.True(methods.Length >= 4);
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with offset and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with overlay and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithOverlay_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0, "overlay")));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with scale min and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithScaleMin_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0, "overlay", 0.0f)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with scale max and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithScaleMax_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0, "overlay", 0.0f, 1.0f)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with graph size and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithGraphSize_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F())));
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram ref float overload with stride and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotHistogram_RefFloat_WithStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotHistogram(null, ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F(), sizeof(float))));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with offset and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with overlay and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithOverlay_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0, "overlay")));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with scale min and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithScaleMin_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0, "overlay", 0.0f)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with scale max and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithScaleMax_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0, "overlay", 0.0f, 1.0f)));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with graph size and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithGraphSize_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F())));
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines ref float overload with stride and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLines_RefFloat_WithStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            float values = 1;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.PlotLines(null, ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F(), sizeof(float))));
+        }
+
+        /// <summary>
+        ///     Verifies Selectable ref bool overload with null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Selectable_RefBool_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            bool selected = false;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.Selectable(null, ref selected)));
+        }
+
+        /// <summary>
+        ///     Verifies Selectable ref bool overload with flags and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Selectable_RefBool_WithFlags_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            bool selected = false;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.Selectable(null, ref selected, ImGuiSelectableFlags.None)));
+        }
+
+        /// <summary>
+        ///     Verifies Selectable ref bool overload with size and null label throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Selectable_RefBool_WithSize_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            bool selected = false;
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.Selectable(null, ref selected, ImGuiSelectableFlags.None, new Vector2F())));
+        }
+
+        /// <summary>
+        ///     Verifies SetDragDropPayload with null type throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetDragDropPayload_WithNullType_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.SetDragDropPayload(null, IntPtr.Zero, 0)));
+        }
+
+        /// <summary>
+        ///     Verifies SetDragDropPayload with condition and null type throws
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetDragDropPayload_WithCondition_WithNullType_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>((Action)(() => ImGui.SetDragDropPayload(null, IntPtr.Zero, 0, ImGuiCond.None)));
         }
     }
 }
