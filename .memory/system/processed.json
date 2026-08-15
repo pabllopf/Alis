@@ -1053,6 +1053,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Interfaces/IParallelCapable.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/AnimatorConfig.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/CameraConfig.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/SpriteConfig.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/SpriteConfig.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/CircleCollider.cs"
   ]
 }
