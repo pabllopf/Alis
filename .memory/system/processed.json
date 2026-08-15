@@ -1228,6 +1228,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ProfileSnapshot.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentHandle.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestArrayPool.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestArrayPool.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/FixedBitArray3.cs"
   ]
 }
