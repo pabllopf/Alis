@@ -710,6 +710,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/ITriangulatable.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogOutput.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/IEncoderOptionsBuilder.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Time/ITimeSetting.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Time/ITimeSetting.cs",
+    "pabllopf-official_alis:4_Operation/Audio/src/Interfaces/IPlayer.cs"
   ]
 }
