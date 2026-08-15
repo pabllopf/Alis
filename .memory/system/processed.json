@@ -903,6 +903,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Deserialization/IJsonDeserializer.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/FileOperations/IJsonFileHandler.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/IJsonDesSerializable.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/IJsonSerializable.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/IJsonSerializable.cs",
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/JsonNativeIgnoreAttribute.cs"
   ]
 }
