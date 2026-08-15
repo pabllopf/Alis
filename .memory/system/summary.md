@@ -3566,3 +3566,10 @@ TestsAdded: 0
 Commit: test: IAddComponent.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Language/Dialogue/src/Core/ICallbackDialogAction.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: ICallbackDialogAction.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
