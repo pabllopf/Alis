@@ -118,6 +118,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs",
-  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs"
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs"
  ]
 }

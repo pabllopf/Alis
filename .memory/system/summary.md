@@ -289,6 +289,42 @@ Status:
 ALREADY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs
+
+CoverageBefore:
+55.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+75.0% (24/32, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 9c1504180; GL-context-bound paths blocked)
+
+Commit:
+test: coverage GLShader.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
+
+CoverageBefore:
+54.2% (SonarCloud; stale artifact)
+
+CoverageAfter:
+70.0% (14/20, local coverlet)
+
+TestsAdded:
+0 (already remediated; SetPosition system-cursor side effect + live-window branch blocked)
+
+Commit:
+test: coverage Mouse.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
 
 CoverageBefore:
@@ -2249,3 +2285,21 @@ test: coverage GraphicManager.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs
+
+CoverageBefore:
+54.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+90.8% (330/358, local coverlet; +36.6%)
+
+TestsAdded:
+8 (desktop-safe WebAssemblyPlatformFactory tests)
+
+Commit:
+test: coverage WebAssemblyConfiguration.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE

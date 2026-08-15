@@ -673,5 +673,90 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentException>(() =>
                 new WebAssemblyConfigurationBuilder().WithTargetFrameRate(-5));
         }
+
+        // =====================================================================
+
+        /// <summary>
+        /// Tests that the platform factory create default returns a platform on desktop
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_CreateDefault_ReturnsInstanceOnDesktop()
+        {
+            WebAssemblyPlatform platform = WebAssemblyPlatformFactory.CreateDefault();
+            Assert.NotNull(platform);
+            Assert.IsType<WebAssemblyPlatform>(platform);
+        }
+
+        /// <summary>
+        /// Tests that the platform factory create with a null configuration throws on desktop
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_Create_NullConfig_ThrowsOnDesktop()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                WebAssemblyPlatformFactory.Create((WebAssemblyConfiguration)null));
+        }
+
+        /// <summary>
+        /// Tests that the platform factory create with a null action throws on desktop
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_Create_NullAction_ThrowsOnDesktop()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                WebAssemblyPlatformFactory.Create((Action<WebAssemblyConfigurationBuilder>)null));
+        }
+
+        /// <summary>
+        /// Tests that the platform factory create with a configuration throws on desktop
+        /// because the EGL initialization cannot complete outside the browser
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_Create_WithConfig_ThrowsOnDesktop()
+        {
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
+            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.Create(config));
+        }
+
+        /// <summary>
+        /// Tests that the platform factory create with an action throws on desktop
+        /// because the EGL initialization cannot complete outside the browser
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_Create_WithAction_ThrowsOnDesktop()
+        {
+            Assert.Throws<InvalidOperationException>(() =>
+                WebAssemblyPlatformFactory.Create(builder => builder.WithSize(640, 480)));
+        }
+
+        /// <summary>
+        /// Tests that the game development factory preset throws on desktop
+        /// because the EGL initialization cannot complete outside the browser
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_CreateForGameDevelopment_ThrowsOnDesktop()
+        {
+            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForGameDevelopment());
+        }
+
+        /// <summary>
+        /// Tests that the low end device factory preset throws on desktop
+        /// because the EGL initialization cannot complete outside the browser
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_CreateForLowEndDevice_ThrowsOnDesktop()
+        {
+            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForLowEndDevice());
+        }
+
+        /// <summary>
+        /// Tests that the high end device factory preset throws on desktop
+        /// because the EGL initialization cannot complete outside the browser
+        /// </summary>
+        [Fact]
+        public void WebAssemblyPlatformFactory_CreateForHighEndDevice_ThrowsOnDesktop()
+        {
+            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForHighEndDevice());
+        }
     }
 }
