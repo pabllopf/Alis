@@ -343,6 +343,42 @@ Status:
 BLOCKED_BY_PRODUCTION_CODE
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP17.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (159/159, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP17Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP17.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+63.4% (102/161, local coverlet, hook-enabled run)
+
+TestsAdded:
+0 (already remediated in commit 23f34b13c; remaining lines blocked by CSFML 3.0 ABI defects: Draw SIGSEGV, SetIcon NSException, InternalSetMousePosition SIGBUS, WaitEvent blocks, ctor ABI)
+
+Commit:
+test: coverage RenderWindow.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP7.cs
 
 CoverageBefore:
@@ -521,3 +557,21 @@ test: coverage ImGuiP2.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP13.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+92.5% (294/318, local coverlet; +15.1%)
+
+TestsAdded:
+12 (null-label overload probes for ref short/int/uint PlotStairs overloads)
+
+Commit:
+test: coverage ImPlotP13.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE

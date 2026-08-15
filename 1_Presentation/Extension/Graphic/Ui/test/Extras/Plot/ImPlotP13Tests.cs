@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,6 +41,150 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     /// </summary>
     public class ImPlotP13Tests
     {
+
+        /// <summary>
+        /// Plots the stairs ref short with null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefShort_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref short with flags and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefShort_WithFlags_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref short with flags and offset and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefShort_WithFlagsAndOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref short with flags offset and stride and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefShort_WithFlagsOffsetAndStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0, sizeof(short))));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref int with null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefInt_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            int xs = 1;
+            int ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref int with flags and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefInt_WithFlags_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            int xs = 1;
+            int ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref int with flags and offset and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefInt_WithFlagsAndOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            int xs = 1;
+            int ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref int with flags offset and stride and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefInt_WithFlagsOffsetAndStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            int xs = 1;
+            int ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0, sizeof(int))));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref uint with null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefUint_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            uint xs = 1;
+            uint ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref uint with flags and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefUint_WithFlags_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            uint xs = 1;
+            uint ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref uint with flags and offset and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefUint_WithFlagsAndOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            uint xs = 1;
+            uint ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0)));
+        }
+
+        /// <summary>
+        /// Plots the stairs ref uint with flags offset and stride and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotStairs_RefUint_WithFlagsOffsetAndStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            uint xs = 1;
+            uint ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotStairs(null, ref xs, ref ys, 1, ImPlotStairsFlags.None, 0, sizeof(uint))));
+        }
 
         /// <summary>
         /// Gets the public static method using the specified name
