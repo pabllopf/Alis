@@ -1157,6 +1157,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationManager.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/AABB.cs"
   ]
 }
