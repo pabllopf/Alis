@@ -343,6 +343,24 @@ Status:
 BLOCKED_BY_PRODUCTION_CODE
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
+
+CoverageBefore:
+0.0% (SonarCloud; constant-only enum, no executable IL)
+
+CoverageAfter:
+n/a (coverlet emits no class for constant-only enums; 33/33 KeyCodes-filtered tests pass)
+
+TestsAdded:
+0 (all 240 members already asserted in KeyCodesTest.cs + Sdl2MappingRemainingCoverageTests.cs)
+
+Commit:
+none
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs
 
 CoverageBefore:
@@ -377,3 +395,21 @@ test: coverage AudioVideoWriter.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
+
+CoverageBefore:
+0.0% (SonarCloud; enum LOC artifact)
+
+CoverageAfter:
+Not measurable (pure enum, 0 instrumented lines)
+
+TestsAdded:
+0 (already covered by committed KeyCodesTest.cs, 33 tests)
+
+Commit:
+test: coverage KeyCodes.cs
+
+Status:
+ALREADY_REMEDIATED
