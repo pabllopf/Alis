@@ -822,6 +822,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/Emscripten.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ClipVertex.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DistanceOutput.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ManifoldPoint.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ManifoldPoint.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/RayCastOutput.cs"
   ]
 }
