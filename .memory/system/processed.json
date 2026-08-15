@@ -1354,6 +1354,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/RefundResult.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureRandom.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/ProfilerService.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogConditionEvaluator.cs"
   ]
 }
