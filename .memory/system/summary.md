@@ -8390,3 +8390,10 @@ CoverageAfter: 50.0% local; marshal loop covered on CI with Vulkan loader
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
+CoverageBefore: 19.6% (SonarCloud) / 18.5% local
+CoverageAfter: 19.3% (161/834); managed helpers covered, native wrappers need SDL runtime
+TestsAdded: 8
+Commit: test: Sdl.cs
+Status: COMPLETED

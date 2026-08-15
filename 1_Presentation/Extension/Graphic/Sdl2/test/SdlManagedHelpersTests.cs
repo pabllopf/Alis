@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void GetVersion_ReturnsExpected()
         {
-            Version version = Sdl.GetVersion();
+            Sdl2.Structs.Version version = Sdl.GetVersion();
             Assert.Equal((byte) 2, version.major);
             Assert.Equal((byte) 0, version.minor);
             Assert.Equal((byte) 18, version.patch);
@@ -80,8 +80,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             int value = Sdl.WindowPosUndefinedDisplay(2);
             Assert.True(Sdl.WindowPosIsUndefined(value));
             Assert.False(Sdl.WindowPosIsUndefined(100));
-            Assert.Equal(1, Sdl.WindowPosCenteredDisplay(1));
-            Assert.True(Sdl.WindowPosIsCentered(Sdl.WindowPosCenteredDisplay(3)));
+            int centered = Sdl.WindowPosCenteredDisplay(1);
+            Assert.True(Sdl.WindowPosIsCentered(centered));
+            Assert.Equal(1, centered & 0xFFFF);
             Assert.False(Sdl.WindowPosIsCentered(50));
         }
 
@@ -91,9 +92,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ScanCodeToKeyCode_AppliesMask()
         {
-            KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.A);
+            KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
             Assert.True(((int) result & (1 << 30)) != 0);
-            Assert.Equal((int) SdlScancode.A, (int) result & 0x3FFFFFFF);
+            Assert.Equal((int) SdlScancode.SdlScancodeA, (int) result & 0x3FFFFFFF);
         }
 
         /// <summary>
