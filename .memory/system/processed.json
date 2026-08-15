@@ -1254,6 +1254,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/FixedArray8.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/RoomData.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Dialog.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Dialog.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs"
   ]
 }
