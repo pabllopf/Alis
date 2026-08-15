@@ -4966,3 +4966,10 @@ TestsAdded: 0
 Commit: test: DeleteTextures.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/OpenGL/Delegates/DeleteVertexArrays.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: DeleteVertexArrays.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
