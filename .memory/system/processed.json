@@ -1512,6 +1512,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonParsingException.cs",
     "pabllopf-official_alis:6_Ideation/Data/src/Json/Exceptions/JsonSerializationException.cs",
     "pabllopf-official_alis:6_Ideation/Math/src/Matrix/CustomIndexOutOfRangeException.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Network/NetworkSettingBuilder.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Network/NetworkSettingBuilder.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/Tags.cs"
   ]
 }
