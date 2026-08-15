@@ -1474,6 +1474,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Sweep.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Render/AnimatorBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/SceneMarshal.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/SceneMarshal.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ManagerBuilders/Scenes/SceneManagerBuilder.cs"
   ]
 }

@@ -7759,3 +7759,10 @@ TestsAdded: 0
 Commit: test: SceneMarshal.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Builder/Core/Ecs/System/ManagerBuilders/Scenes/SceneManagerBuilder.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SceneManagerBuilder.cs
+Status: COMPLETED
+
