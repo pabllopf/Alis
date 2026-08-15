@@ -8186,3 +8186,10 @@ TestsAdded: 0
 Commit: test: CanvasBuilder.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Components/Body/RigidBody.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: RigidBody.cs
+Status: COMPLETED
+
