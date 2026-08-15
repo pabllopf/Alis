@@ -803,6 +803,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsRect.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DistanceInput.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/RayCastInput.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/ShapeType.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/ShapeType.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TOIInput.cs"
   ]
 }
