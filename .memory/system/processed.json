@@ -1261,6 +1261,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Rule.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/GraphicSetting.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/MassData.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkConfig.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkConfig.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/SceneQueryExtensions.cs"
   ]
 }
