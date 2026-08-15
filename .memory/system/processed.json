@@ -1087,6 +1087,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetAttribLocation.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetUniformLocation.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/LinkProgram.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Scissor.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Scissor.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/ShaderSourceDel.cs"
   ]
 }
