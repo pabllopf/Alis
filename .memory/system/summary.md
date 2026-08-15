@@ -71,3 +71,21 @@ none
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP6.cs
+
+CoverageBefore:
+97.14% (local; SonarCloud stale 0.0%)
+
+CoverageAfter:
+97.14%
+
+TestsAdded:
+0
+
+Commit:
+none
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
