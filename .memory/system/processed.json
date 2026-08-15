@@ -878,6 +878,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IAddComponent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/ICallbackDialogAction.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IDungeonGenerator.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/IBufferPool.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/IBufferPool.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/IGame.cs"
   ]
 }
