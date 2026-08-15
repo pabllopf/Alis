@@ -1,8 +1,0 @@
-# Color.cs
-
-- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Color.cs`
-- **Coverage Before**: 0.0%
-- **Coverage After**: 100.0%
-- **Tests Added**: 26
-- **Uncovered Lines**: None
-- **Status**: COMPLETED
