@@ -8476,3 +8476,10 @@ CoverageAfter: 48.3% (70/145); winmm paths Windows-only
 TestsAdded: 8
 Commit: test: WindowsPlayer.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
+CoverageBefore: 38.4% (SonarCloud) / 81.0% local
+CoverageAfter: 81.0% (81/100); stream-parse block unreachable (generated DeserializeArray primitives-only)
+TestsAdded: 2
+Commit: test: VideoReader.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
