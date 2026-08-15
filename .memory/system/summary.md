@@ -2936,3 +2936,10 @@ TestsAdded: 0
 Commit: test: NetworkManagerState.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 2_Application/Alis/src/Core/Ecs/Components/Render/IAnimator.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IAnimator.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
