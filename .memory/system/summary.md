@@ -8483,3 +8483,10 @@ CoverageAfter: 81.0% (81/100); stream-parse block unreachable (generated Deseria
 TestsAdded: 2
 Commit: test: VideoReader.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs
+CoverageBefore: 39.6% (SonarCloud) / 58.8% local
+CoverageAfter: 65.6% (145/221); platform-window paths blocked
+TestsAdded: 4
+Commit: test: GraphicManager.cs
+Status: COMPLETED
