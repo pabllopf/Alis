@@ -6681,3 +6681,10 @@ TestsAdded: 0
 Commit: test: PaymentIntentResult.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Payment/Stripe/src/StoreProduct.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: StoreProduct.cs
+Status: COMPLETED
+
