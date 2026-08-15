@@ -925,6 +925,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/CreateShader.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Disable.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Enable.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetProgramInfoLogDel.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetProgramInfoLogDel.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/GetProgramiv.cs"
   ]
 }
