@@ -107,3 +107,21 @@ test: coverage NativeWindow.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs
+
+CoverageBefore:
+0.0% (SonarCloud; local coverlet already 82.2% = 546/664)
+
+CoverageAfter:
+82.2% (546/664, existing un-gated EmscriptenWebExecutionTests)
+
+TestsAdded:
+0
+
+Commit:
+test: coverage EmscriptenWeb.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
