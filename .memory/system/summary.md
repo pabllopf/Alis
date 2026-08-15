@@ -7878,3 +7878,10 @@ TestsAdded: 0
 Commit: test: ParallelSafeAttribute.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/InputSetting.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: InputSetting.cs
+Status: COMPLETED
+

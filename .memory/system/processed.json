@@ -1491,6 +1491,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/ClientDisconnectionEventArgs.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkErrorEventArgs.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/ServerMessageEventArgs.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Attributes/ParallelSafeAttribute.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Attributes/ParallelSafeAttribute.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/InputSetting.cs"
   ]
 }
