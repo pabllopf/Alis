@@ -8539,3 +8539,10 @@ CoverageAfter: 81.5% (405/497 verified ceiling); scan-line merge machinery dead 
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Physic/src/Collisions/TimeOfImpact.cs
+CoverageBefore: 86.9% (SonarCloud) / 90.5% local
+CoverageAfter: 90.5% (133/147 verified ceiling); non-convergence edge cases need degenerate geometries
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: BLOCKED_BY_PRODUCTION_CODE
