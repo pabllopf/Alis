@@ -235,6 +235,168 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+85.0% (51/60, local coverlet)
+
+TestsAdded:
+0 (Draw RenderWindow/RenderTexture cases SIGSEGV — CSFML 3.0 layout shift)
+
+Commit:
+test: coverage Shape.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+77.8% (49/63, local coverlet)
+
+TestsAdded:
+0 (samples-ctor SIGBUS — 4-param vs CSFML 3.0 6-param ABI)
+
+Commit:
+test: coverage SoundBuffer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+4.3% (3/69, local coverlet)
+
+TestsAdded:
+0 (17 probe tests crashed the test host; CSFML 2.x 5-arg ABI vs 3.0 7-arg — NULL deref)
+
+Commit:
+test: coverage SoundStream.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (72/72, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 2f79dcd08)
+
+Commit:
+test: coverage Transformable.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (76/76, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit c743504a8)
+
+Commit:
+test: coverage Transform.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (82/82, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 25fca0c5c)
+
+Commit:
+test: coverage Music.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+95.2% (80/84, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit d94c9678f; Draw RenderWindow/RenderTexture cases SIGSEGV — CSFML 3.0 layout shift)
+
+Commit:
+test: coverage SfmlText.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (87/87, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP20Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP20.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+95.6% (87/91, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit e2ce3efd5; LoadingFailedException throw paths unreachable)
+
+Commit:
+test: coverage Image.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs
 
 CoverageBefore:
@@ -809,3 +971,21 @@ test: coverage RenderTexture.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (87/87, local coverlet)
+
+TestsAdded:
+0 (already covered by committed ImPlotP20ExecutionTests.cs)
+
+Commit:
+test: coverage ImPlotP20.cs
+
+Status:
+ALREADY_REMEDIATED
