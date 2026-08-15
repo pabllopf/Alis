@@ -1143,6 +1143,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/PixelFormatFlags.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/PixelType.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Pixelformatdescriptor.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Rect.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Rect.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/ShowWindowCommand.cs"
   ]
 }
