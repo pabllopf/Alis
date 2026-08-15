@@ -169,6 +169,42 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
+        /// Plots the line ref short with flags and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLine_RefShort_WithFlags_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None)));
+        }
+
+        /// <summary>
+        /// Plots the line ref short with flags and offset and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLine_RefShort_WithFlagsAndOffset_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0)));
+        }
+
+        /// <summary>
+        /// Plots the line ref short with flags offset and stride and null label should throw argument null exception
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotLine_RefShort_WithFlagsOffsetAndStride_WithNullLabel_ShouldThrowArgumentNullException()
+        {
+            short xs = 1;
+            short ys = 2;
+
+            Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(short))));
+        }
+
+        /// <summary>
         /// Plots the line ref ushort with null label should throw argument null exception
         /// </summary>
         [RequireCImguiSystemFact]

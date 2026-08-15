@@ -343,6 +343,42 @@ Status:
 BLOCKED_BY_PRODUCTION_CODE
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP7.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (162/162, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP7Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP7.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP6.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (162/162, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 8737dec9f)
+
+Commit:
+test: coverage ImPlotP6.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP19.cs
 
 CoverageBefore:
@@ -449,3 +485,21 @@ test: coverage WebAssemblyDisplayManager.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP22.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+97.6% (322/330, local coverlet; +3.7%)
+
+TestsAdded:
+3 (null-label overload probes for ref short flags/offset/stride PlotLine overloads)
+
+Commit:
+test: coverage ImPlotP22.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE
