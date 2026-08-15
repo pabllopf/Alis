@@ -1129,6 +1129,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/QueryReportFixtureDelegate.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IComponentBase.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/SkipLocalsInitAttribute.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryMarshal.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryMarshal.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/ModuleInitializerAttribute.cs"
   ]
 }
