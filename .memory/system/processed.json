@@ -1135,6 +1135,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/LinuxNativePlatform.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Linux/Native/XEvent.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/ClassStyles.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Gdi32.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Gdi32.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Win/Native/Kernel32.cs"
   ]
 }
