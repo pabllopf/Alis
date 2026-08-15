@@ -1499,6 +1499,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/EventRecord.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Render/FrameBuilder.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Input/InputSettingBuilder.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/Input/InputSettingBuilder.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentAlreadyExistsException.cs"
   ]
 }
