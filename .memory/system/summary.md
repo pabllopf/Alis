@@ -343,6 +343,42 @@ Status:
 BLOCKED_BY_PRODUCTION_CODE
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+54.6% (83/152, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit 3bb446d58; remaining bodies require constructible WebAssemblyGameContext, ctor throws on desktop — EGL absent)
+
+Commit:
+test: coverage WebAssemblyPlatformIntegration.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP16.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (156/156, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed ImPlotP16Tests/ExecutionTests/RemainingCoverageTests)
+
+Commit:
+test: coverage ImPlotP16.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP17.cs
 
 CoverageBefore:
@@ -575,3 +611,21 @@ test: coverage ImPlotP13.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+54.6% (166/304, local coverlet; unchanged)
+
+TestsAdded:
+0 (138 lines require constructed WebAssemblyGameContext; EGL interop throws on macOS)
+
+Commit:
+test: coverage WebAssemblyPlatformIntegration.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
