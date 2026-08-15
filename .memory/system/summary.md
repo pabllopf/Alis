@@ -8433,3 +8433,10 @@ TestsAdded: 3
 Commit: test: ImFontPtr.cs
 Status: COMPLETED
 
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs
+CoverageBefore: 11.1%
+CoverageAfter: N/A (coverage ceiling 17.4% — example bodies unreachable without browser/EGL host)
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
+

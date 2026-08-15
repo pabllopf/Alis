@@ -1565,6 +1565,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs"
   ]
 }
