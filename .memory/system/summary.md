@@ -439,13 +439,13 @@ CoverageBefore:
 0.0% (SonarCloud; stale artifact)
 
 CoverageAfter:
-88.5% (278/314, local coverlet; unchanged)
+90.4% (142/157, local coverlet; +2 tests added)
 
 TestsAdded:
-0 (18 browser-only lines unreachable on desktop: SetResolution catch, Enter/ExitFullscreen success bodies, SaveScreenshot catch, Update fullscreen branch)
+2 (WebAssemblyDisplayManagerCatchCoverageTests.cs; SetResolution catch via throwing event subscribers)
 
 Commit:
 test: coverage WebAssemblyDisplayManager.cs
 
 Status:
-BLOCKED_BY_PRODUCTION_CODE
+PARTIALLY_REMEDIATED
