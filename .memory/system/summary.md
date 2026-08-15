@@ -3286,3 +3286,10 @@ TestsAdded: 0
 Commit: test: NsPoint.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Physic/src/Collisions/ContactFeature.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: ContactFeature.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

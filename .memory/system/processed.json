@@ -835,6 +835,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Interfaces/IResourceMonitor.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/EntityHighLow.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeType.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsPoint.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsPoint.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/ContactFeature.cs"
   ]
 }
