@@ -1334,6 +1334,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientOptions.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Mat33.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Mat22.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Scheduling/ParallelExecutionScheduler.cs"
   ]
 }
