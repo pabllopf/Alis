@@ -1353,6 +1353,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StoreConfiguration.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/RefundResult.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureRandom.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/ProfilerService.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/ProfilerService.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs"
   ]
 }
