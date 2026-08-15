@@ -6303,3 +6303,10 @@ TestsAdded: 0
 Commit: test: AsyncLogOutput.cs
 Status: COMPLETED
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Scope/Context.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Context.cs
+Status: COMPLETED
+
