@@ -1068,6 +1068,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Begin.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BindSampler.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/BindVertexArray.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/ClearColor.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/ClearColor.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Color4f.cs"
   ]
 }
