@@ -982,6 +982,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IBodyType.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICloud.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IConfiguration.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICreate.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ICreate.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDebug.cs"
   ]
 }
