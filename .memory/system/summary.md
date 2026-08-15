@@ -3615,3 +3615,10 @@ TestsAdded: 0
 Commit: test: IChunkAction.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Ecs/src/Systems/IEntityChunkAction.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IEntityChunkAction.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+

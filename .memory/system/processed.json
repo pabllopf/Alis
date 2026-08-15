@@ -882,6 +882,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/IGame.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/IManager.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentDelegates.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IChunkAction.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IChunkAction.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IEntityChunkAction.cs"
   ]
 }
