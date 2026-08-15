@@ -1468,6 +1468,7 @@
     "pabllopf-official_alis:6_Ideation/Math/src/Definition/Depth.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkSerializer.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Filters/LogLevelFilter.cs",
-    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointI.cs"
+    "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Point/PointI.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/FastPriorityQueueNode.cs"
   ]
 }
