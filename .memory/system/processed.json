@@ -725,6 +725,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ITranslationProvider.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkTransport.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/IContextHandler.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkClientManager.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkClientManager.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Interfaces/IProfilerService.cs"
   ]
 }
