@@ -1436,6 +1436,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Filters/SamplingLogFilter.cs",
-    "pabllopf-official_alis:6_Ideation/Data/src/Json/JsonNativeAot.cs"
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/JsonNativeAot.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Core/WorkItemPool.cs"
   ]
 }
