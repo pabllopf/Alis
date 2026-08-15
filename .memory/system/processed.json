@@ -801,6 +801,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ClearBufferMask.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ShaderType.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/NsRect.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DistanceInput.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DistanceInput.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/RayCastInput.cs"
   ]
 }
