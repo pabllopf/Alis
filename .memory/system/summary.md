@@ -1367,3 +1367,21 @@ test: coverage Clipboard.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+38.9% (14/36, local coverlet; unchanged)
+
+TestsAdded:
+0 (pixel ctor segfaults host; Vector2F vs sfVector2u ABI mismatch in src DllImport)
+
+Commit:
+test: coverage Cursor.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
