@@ -2439,3 +2439,10 @@ TestsAdded: 0
 Commit: test: IPhysicSetting.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/IInputSetting.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IInputSetting.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
