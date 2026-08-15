@@ -959,6 +959,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnPhysicUpdate.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnPressKey.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnProcessPendingChanges.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnReleaseKey.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnReleaseKey.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IOnStart.cs"
   ]
 }
