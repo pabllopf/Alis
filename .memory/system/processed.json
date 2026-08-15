@@ -870,6 +870,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationMode.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBodyState.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/PolyClipType.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BodyType.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BodyType.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/SolverPosition.cs"
   ]
 }
