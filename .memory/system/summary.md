@@ -2069,3 +2069,21 @@ test: coverage Sprite.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
+
+CoverageBefore:
+38.4% (SonarCloud; stale artifact)
+
+CoverageAfter:
+81.0% (162/200, local coverlet; unchanged)
+
+TestsAdded:
+0 (stream-mapping block unreachable; JsonNativeAot never populates MediaStream[] Streams)
+
+Commit:
+test: coverage VideoReader.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
