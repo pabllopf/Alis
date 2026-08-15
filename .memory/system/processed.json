@@ -806,6 +806,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/ShapeType.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TOIInput.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/TriangulationAlgorithm.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/TimeStep.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/TimeStep.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEventType.cs"
   ]
 }

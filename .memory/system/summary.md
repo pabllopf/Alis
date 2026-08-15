@@ -3083,3 +3083,10 @@ TestsAdded: 0
 Commit: test: TimeStep.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 1_Presentation/Extension/Language/Dialogue/src/Core/DialogEventType.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: DialogEventType.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
