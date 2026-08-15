@@ -850,6 +850,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ITranslationObserver.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/ICorridorFactory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IRandomNumberGenerator.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/Quality.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/Quality.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/MediaType.cs"
   ]
 }
