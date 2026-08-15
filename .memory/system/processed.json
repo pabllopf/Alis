@@ -1433,6 +1433,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Collections/SparseSet.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PointGenerator.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/TransformBuilder.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs"
   ]
 }

@@ -7472,3 +7472,10 @@ TestsAdded: 0
 Commit: test: GameObjectIdOnly.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GameObjectEnumerator.cs
+Status: COMPLETED
+
