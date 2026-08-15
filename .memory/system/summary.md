@@ -8348,3 +8348,17 @@ CoverageAfter: 100.0% (19/19, macOS)
 TestsAdded: 10
 Commit: test: ObjectiveCInterop.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs
+CoverageBefore: 6.1% (SonarCloud stale)
+CoverageAfter: 100.0% (47/47 verified locally)
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs
+CoverageBefore: 6.3% (SonarCloud)
+CoverageAfter: 95.0% (57/60); RenderChar blocked by native crash
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: COMPLETED
