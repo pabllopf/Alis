@@ -1099,6 +1099,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform4Fv.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/UniformMatrix3FvDel.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/UniformMatrix4FvDel.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/UseProgram.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/UseProgram.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Vertex2f.cs"
   ]
 }
