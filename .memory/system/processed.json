@@ -749,6 +749,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Execution/IRuntime.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/INativePlatform.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureParameter.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureParameterName.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/TextureParameterName.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/JointType.cs"
   ]
 }
