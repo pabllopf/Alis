@@ -269,3 +269,21 @@ test: coverage ImPlotP12.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGui.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+96.9% (382/394, local coverlet; +2 via DockBuilderSetNodeFlags_Execute)
+
+TestsAdded:
+1 (ImGuiExecutionTests.DockBuilderSetNodeFlags_Execute)
+
+Commit:
+test: coverage ImGui.cs
+
+Status:
+PARTIALLY_REMEDIATED
