@@ -3608,3 +3608,10 @@ TestsAdded: 0
 Commit: test: ComponentDelegates.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Ecs/src/Systems/IChunkAction.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: IChunkAction.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
