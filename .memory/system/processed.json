@@ -1569,6 +1569,17 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs",
-    "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs"
+    "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs"
   ]
 }

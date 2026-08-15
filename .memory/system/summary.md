@@ -8553,3 +8553,10 @@ CoverageAfter: 87.5% local; Opacity lines covered when ALIS_GLFW_HOOK startup ho
 TestsAdded: 2
 Commit: test: Window.cs
 Status: COMPLETED
+
+File: 4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+CoverageBefore: 14.2%
+CoverageAfter: 51.7% (181/350 lines local coverlet)
+TestsAdded: 11
+Commit: test: MacNativePlatform.cs
+Status: COMPLETED
