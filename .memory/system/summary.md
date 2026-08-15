@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
+
+CoverageBefore:
+14.2% (SonarCloud; stale artifact)
+
+CoverageAfter:
+51.7% (181/350, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit b032c12a4; live AppKit window / real NSEvents paths blocked)
+
+Commit:
+test: coverage MacNativePlatform.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs
 
 CoverageBefore:
@@ -1925,3 +1943,21 @@ test: coverage ImGuiIO.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+50.0% (8/16, local coverlet; unchanged)
+
+TestsAdded:
+0 (extension-list loop needs a Vulkan loader; none installed on this machine)
+
+Commit:
+test: coverage Vulkan.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
