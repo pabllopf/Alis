@@ -872,6 +872,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/PolyClipType.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BodyType.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/SolverPosition.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/SolverVelocity.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/SolverVelocity.cs",
+    "pabllopf-official_alis:6_Ideation/Data/src/Json/Helpers/IEscapeSequenceHandler.cs"
   ]
 }
