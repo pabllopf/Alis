@@ -988,6 +988,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDensity.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDepth.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IDescription.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IFile.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IFile.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IFilePath.cs"
   ]
 }
