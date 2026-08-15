@@ -1294,6 +1294,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureLong.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureDecimal.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureDouble.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureFloat.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Security/src/SecureFloat.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Core/LogEntry.cs"
   ]
 }
