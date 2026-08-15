@@ -8525,3 +8525,10 @@ CoverageAfter: 100.0% (19/19 verified locally)
 TestsAdded: 0
 Commit: none (no changes needed)
 Status: COMPLETED
+
+File: 4_Operation/Physic/src/Dynamics/ContactManager.cs
+CoverageBefore: 73.0% (SonarCloud) / 76.3% local
+CoverageAfter: 76.3% (261/342 verified ceiling); multicore gated by readonly int.MaxValue thresholds
+TestsAdded: 0
+Commit: none (no changes needed)
+Status: BLOCKED_BY_PRODUCTION_CODE

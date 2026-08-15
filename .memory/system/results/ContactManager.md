@@ -1,7 +1,8 @@
 # ContactManager.cs
 
 - **File**: `4_Operation/Physic/src/Dynamics/ContactManager.cs`
-- **Coverage**: 76.3% (ceiling)
-- **Tests Added**: 0
-- **Uncovered Lines**: disabled-body guards (bodies filtered earlier in World.Step), Contact.Create null guard, entire multicore path (CollideMultithreadThreshold locked at int.MaxValue — internal ctor, no setter)
+- **Coverage Before**: 73.0% (SonarCloud); 76.3% local
+- **Coverage After**: 76.3% (261/342 lines — verified ceiling, matches prior session)
+- **Tests Added**: 0 (existing ContactManager test suites cover all reachable surface)
+- **Uncovered Lines**: 81 — multicore collide/constraint paths gated by `readonly CollideMultithreadThreshold = int.MaxValue` (permanently disabled, no setter), Contact.Create null guard, disabled-body guards filtered earlier in World.Step
 - **Status**: BLOCKED_BY_PRODUCTION_CODE
