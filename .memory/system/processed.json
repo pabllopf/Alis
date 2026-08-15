@@ -1239,6 +1239,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogContext.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Models/ResourceMetrics.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerOptions.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/OpusEncoder.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/OpusEncoder.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioFormat.cs"
   ]
 }
