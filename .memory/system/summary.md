@@ -53,3 +53,21 @@ test: ImGuiP3.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP5.cs
+
+CoverageBefore:
+91.19% (local; SonarCloud stale 0.0%)
+
+CoverageAfter:
+91.19%
+
+TestsAdded:
+0
+
+Commit:
+none
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
