@@ -2383,3 +2383,10 @@ TestsAdded: 0
 Commit: test: IAudioSetting.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Physic/src/Common/Decomposition/CDT/ITriangulatable.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: ITriangulatable.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
