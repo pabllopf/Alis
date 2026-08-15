@@ -826,6 +826,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/RayCastOutput.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TOIOutputState.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Components/IGameObject.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogStateType.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogStateType.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/IPluralizationEngine.cs"
   ]
 }
