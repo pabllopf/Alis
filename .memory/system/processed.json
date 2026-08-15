@@ -1315,6 +1315,7 @@
     "pabllopf-official_alis:6_Ideation/Data/src/Json/FileOperations/JsonFileHandler.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CorridorFactory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameWriter.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Execution/ParallelUpdateExecutor.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Thread/src/Execution/ParallelUpdateExecutor.cs",
+    "pabllopf-official_alis:4_Operation/Audio/src/Player.cs"
   ]
 }
