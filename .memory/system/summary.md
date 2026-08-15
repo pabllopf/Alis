@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+
+CoverageBefore:
+0.6% (SonarCloud stale; local 419/489)
+
+CoverageAfter:
+85.7% (419/489, local coverlet)
+
+TestsAdded:
+0 (already remediated in commit ac9a64dad; PlotHistogram/PlotLines SIGSEGV, Selectable ref bool, SetDragDropPayload crash, SetAllocatorFunctions hang)
+
+Commit:
+test: coverage ImGuiP7.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
 pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs
 
 CoverageBefore:
@@ -1652,6 +1670,24 @@ TestsAdded:
 
 Commit:
 test: coverage SdlInputConst.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (141/141, local coverlet)
+
+TestsAdded:
+0 (already covered by committed ImPlotP3ExecutionTests.cs)
+
+Commit:
+test: coverage ImPlotP3.cs
 
 Status:
 ALREADY_REMEDIATED
