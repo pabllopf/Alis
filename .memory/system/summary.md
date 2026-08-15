@@ -8193,3 +8193,10 @@ TestsAdded: 0
 Commit: test: RigidBody.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/Not.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: Not.cs
+Status: COMPLETED
+
