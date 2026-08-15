@@ -5897,3 +5897,10 @@ TestsAdded: 0
 Commit: test: TrapezoidalMap.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Collisions/Shapes/ChainShape.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: ChainShape.cs
+Status: COMPLETED
+
