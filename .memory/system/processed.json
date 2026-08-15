@@ -1060,6 +1060,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/PointLight.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/SpotLight.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/IAnimation.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Ui/Canvas.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Ui/Canvas.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Execution/IRunteable.cs"
   ]
 }
