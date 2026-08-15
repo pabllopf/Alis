@@ -6891,3 +6891,10 @@ TestsAdded: 0
 Commit: test: StoreConfiguration.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Payment/Stripe/src/RefundResult.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: RefundResult.cs
+Status: COMPLETED
+

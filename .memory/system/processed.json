@@ -1350,6 +1350,7 @@
     "pabllopf-official_alis:6_Ideation/Math/src/Shapes/Rectangle/RectangleI.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectType.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentID.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StoreConfiguration.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StoreConfiguration.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/RefundResult.cs"
   ]
 }
