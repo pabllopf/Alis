@@ -1037,6 +1037,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISplashScreen.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IStore.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IStyle.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ITime.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ITime.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ITransform.cs"
   ]
 }
