@@ -161,3 +161,21 @@ test: coverage ImPlotP10.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP1.cs
+
+CoverageBefore:
+0.0% (SonarCloud; local coverlet 240/480 = 50.0%)
+
+CoverageAfter:
+50.0% (240/480, unchanged; 120 lines blocked)
+
+TestsAdded:
+0 (all attempts crash the native test host)
+
+Commit:
+test: coverage ImPlotP1.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
