@@ -1119,6 +1119,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Events/UpdateProgressEventHandler.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/IComponentUpdateOrderAttribute.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/DrawArrays.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/BroadPhaseQueryCallback.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/BroadPhaseQueryCallback.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/BroadPhaseRayCastCallback.cs"
   ]
 }
