@@ -810,6 +810,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogEventType.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ITranslationCache.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Direction.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkSerializer.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkSerializer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/IPingPongManager.cs"
   ]
 }
