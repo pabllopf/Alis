@@ -817,6 +817,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/IGenericAction.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/BlendEquationMode.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/ShaderParameter.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/StringName.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Enums/StringName.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Android/EGLDroid.cs"
   ]
 }
