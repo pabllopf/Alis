@@ -1027,6 +1027,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScale2D.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScreenMode.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IScript.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISet.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISet.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/ISetAudioClip.cs"
   ]
 }
