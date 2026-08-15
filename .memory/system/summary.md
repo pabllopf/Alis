@@ -235,6 +235,24 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs
+
+CoverageBefore:
+0.0% (SonarCloud; constant-only enum artifact)
+
+CoverageAfter:
+Not measurable (coverlet emits no class for constant-only enums)
+
+TestsAdded:
+0 (already covered by committed ControllerCategoriesTest.cs)
+
+Commit:
+test: coverage ControllerCategories.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs
 
 CoverageBefore:
@@ -1619,3 +1637,21 @@ test: coverage Touch.cs
 
 Status:
 COMPLETE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs
+
+CoverageBefore:
+0.0% (SonarCloud; const LOC artifact)
+
+CoverageAfter:
+Not measurable (pure const class, 0 instrumented lines)
+
+TestsAdded:
+0 (already covered by committed SdlInputConstTest.cs)
+
+Commit:
+test: coverage SdlInputConst.cs
+
+Status:
+ALREADY_REMEDIATED
