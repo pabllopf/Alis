@@ -729,6 +729,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Interfaces/IProfilerService.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Interfaces/ITimeTracker.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/IGitHubApiService.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogAction.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogAction.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/IDialogState.cs"
   ]
 }
