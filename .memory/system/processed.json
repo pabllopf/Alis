@@ -1189,6 +1189,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonTools.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/Joint.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Core/CoreLogger.cs",
-    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs"
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/MotorJoint.cs"
   ]
 }
