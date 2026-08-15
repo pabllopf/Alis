@@ -1096,6 +1096,7 @@
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform3F.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform3Fv.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform4F.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform4Fv.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/Uniform4Fv.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Delegates/UniformMatrix3FvDel.cs"
   ]
 }
