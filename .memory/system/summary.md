@@ -2712,3 +2712,10 @@ TestsAdded: 0
 Commit: test: XKeyEvent.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 
+File: 4_Operation/Graphic/src/Platforms/Linux/Native/XMotionEvent.cs
+CoverageBefore: 0.0% (SonarCloud artifact)
+CoverageAfter: N/A (no executable lines - interface/delegate/enum/data-only, not instrumentable)
+TestsAdded: 0
+Commit: test: XMotionEvent.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
+
