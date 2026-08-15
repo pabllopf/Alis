@@ -7164,3 +7164,10 @@ TestsAdded: 0
 Commit: test: ProcessResourceMonitor.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Updating/SingleComponentUpdateFilter.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SingleComponentUpdateFilter.cs
+Status: COMPLETED
+
