@@ -1019,6 +1019,7 @@
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPlugin.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IPosition2D.cs",
     "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IProfile.cs",
-    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IRelativePosition.cs"
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IRelativePosition.cs",
+    "pabllopf-official_alis:6_Ideation/Fluent/src/Words/IResolution.cs"
   ]
 }
