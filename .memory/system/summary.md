@@ -2015,3 +2015,21 @@ test: coverage ImColor.cs
 
 Status:
 COMPLETE_ALREADY_COVERED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+
+CoverageBefore:
+36.4% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (346/346, local coverlet; unchanged)
+
+TestsAdded:
+0 (already fully covered by committed suite)
+
+Commit:
+test: coverage FFMpegWrapper.cs
+
+Status:
+COMPLETE_ALREADY_COVERED
