@@ -235,6 +235,42 @@ Status:
 PARTIALLY_REMEDIATED
 
 File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+98.0% (50/51, local coverlet)
+
+TestsAdded:
+0 (SetProcessingInterval symbol missing in CSFML 3.0 — EntryPointNotFoundException)
+
+Commit:
+test: coverage SoundRecorder.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+100.0% (59/59, local coverlet)
+
+TestsAdded:
+0 (already remediated, committed FontTest.cs)
+
+Commit:
+test: coverage Font.cs
+
+Status:
+ALREADY_REMEDIATED
+
+File:
 pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs
 
 CoverageBefore:
@@ -989,3 +1025,21 @@ test: coverage ImPlotP20.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact)
+
+CoverageAfter:
+0.0% (0/93, local coverlet; unchanged)
+
+TestsAdded:
+0 (CSFML 3.0 sfSound_create(const sfSoundBuffer*) ABI mismatch -> host crash on new Sound(); header verified)
+
+Commit:
+test: coverage Sound.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
