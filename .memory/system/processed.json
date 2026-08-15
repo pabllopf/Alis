@@ -1445,6 +1445,7 @@
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/AudioSetting.cs",
     "pabllopf-official_alis:6_Ideation/Memory/src/ZipCacheEntry.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/PolygonPoint.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs"
   ]
 }
