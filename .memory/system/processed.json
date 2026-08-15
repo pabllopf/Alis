@@ -831,6 +831,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IRoomFactory.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkTransportState.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/PlayerConnectionState.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/SessionState.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/SessionState.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Profile/src/Interfaces/IResourceMonitor.cs"
   ]
 }
