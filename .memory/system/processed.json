@@ -97,6 +97,8 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs"
  ]
 }

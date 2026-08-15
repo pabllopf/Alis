@@ -1871,3 +1871,21 @@ test: coverage ImFontPtr.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs
+
+CoverageBefore:
+1.6% (SonarCloud; stale artifact)
+
+CoverageAfter:
+84.1% (760/904, local coverlet; unchanged)
+
+TestsAdded:
+0 (state-query/End wrappers crash host with BadImageFormatException; PlotBarGroups closing braces unreachable via byte[][] marshalling)
+
+Commit:
+test: coverage ImPlotP2.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
