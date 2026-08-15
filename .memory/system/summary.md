@@ -8319,3 +8319,11 @@ CoverageAfter: 84.1% (380/452 local); guard tests cover remaining 72 lines on no
 TestsAdded: 89
 Commit: test: ImPlotP2.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs
+CoverageBefore: 3.3%
+CoverageAfter: 83.0% (332/400 executable lines, local coverlet)
+TestsAdded: 34
+Commit: test: ImNodes.cs
+Status: COMPLETED
+

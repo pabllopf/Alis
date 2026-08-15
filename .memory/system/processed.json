@@ -1553,6 +1553,7 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CreateCommand.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/DeleteComponent.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/DeleteComponentData.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/UpdateOrderAttribute.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Updating/UpdateOrderAttribute.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs"
   ]
 }
