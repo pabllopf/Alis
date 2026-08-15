@@ -6968,3 +6968,10 @@ TestsAdded: 0
 Commit: test: DungeonGenerator.cs
 Status: COMPLETED
 
+File: 4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: GameObjectQueryEnumerator.1.cs
+Status: COMPLETED
+
