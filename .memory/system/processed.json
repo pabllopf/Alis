@@ -812,6 +812,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Direction.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/INetworkSerializer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/IPingPongManager.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/EntityData.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/EntityData.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/EntityWorldInfoAccess.cs"
   ]
 }
