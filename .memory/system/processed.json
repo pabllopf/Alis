@@ -795,6 +795,7 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureProxy.cs",
     "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/LogLevel.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ILanguageProvider.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IBoardBuilder.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Interfaces/IBoardBuilder.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketOpCode.cs"
   ]
 }
