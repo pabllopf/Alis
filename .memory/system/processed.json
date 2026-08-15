@@ -1367,6 +1367,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/RoomFactory.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ConfigurationBuilders/General/GeneralSettingBuilder.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Updating/GenerationServices.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/SeidelDecomposer.cs"
   ]
 }

@@ -7010,3 +7010,10 @@ TestsAdded: 0
 Commit: test: GameObjectQueryEnumerator.cs
 Status: COMPLETED
 
+File: 4_Operation/Physic/src/Common/Decomposition/SeidelDecomposer.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: SeidelDecomposer.cs
+Status: COMPLETED
+
