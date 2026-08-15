@@ -707,6 +707,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/Abstractions/ILanguage.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Ads/GoogleAds/src/IAdsManager.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/IAudioSetting.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/ITriangulatable.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/ITriangulatable.cs",
+    "pabllopf-official_alis:6_Ideation/Logging/src/Abstractions/ILogOutput.cs"
   ]
 }
