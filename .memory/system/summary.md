@@ -6450,3 +6450,10 @@ TestsAdded: 0
 Commit: test: GameObjectOnlyEvent.cs
 Status: COMPLETED
 
+File: 1_Presentation/Extension/Io/FileDialog/src/FilePickerFactory.cs
+CoverageBefore: 100.0% (SonarCloud artifact)
+CoverageAfter: 100.0% (already fully covered)
+TestsAdded: 0
+Commit: test: FilePickerFactory.cs
+Status: COMPLETED
+
