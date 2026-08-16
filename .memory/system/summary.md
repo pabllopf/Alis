@@ -2899,3 +2899,38 @@ test: coverage Archetype.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
+
+CoverageBefore:
+85.1% (SonarCloud; Line: 87.6%, Branch: 72.7%)
+
+CoverageAfter:
+100.0% (577/577, local coverlet, full ContactSolver suite, Debug net8.0)
+
+TestsAdded:
+5 (ContactSolverLatestCoverageTests.cs: warm-start-off reset, degenerate two-point reduction, MT velocity batch path, MT position Parallel.For path, SolveToiPositionConstraints loop)
+
+Commit:
+test: coverage ContactSolver.cs
+
+Status:
+COMPLETE
+File:
+pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+
+CoverageBefore:
+90.2% (SonarCloud; Line: 92.1%, Branch: 85.3%)
+
+CoverageAfter:
+98.5% (526/534, local coverlet, full Memory suite)
+
+TestsAdded:
+0 (4 remaining lines: empty-SHA defensive branch + duplicate loader guard)
+
+Commit:
+test: coverage AssetRegistry.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
