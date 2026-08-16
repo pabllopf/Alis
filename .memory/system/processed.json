@@ -196,6 +196,8 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Common/PathManager.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Core/Github/GitHubApiService.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
+  "pabllopf-official_alis:6_Ideation/Math/src/CryptoRandomNumberGenerator.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CryptoRandomNumberGenerator.cs"
  ]
 }

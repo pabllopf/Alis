@@ -3680,3 +3680,20 @@ test: coverage GitHubApiService.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CryptoRandomNumberGenerator.cs
+
+CoverageBefore:
+97.8% (SonarCloud; Line: 100.0%, Branch: 90.0%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (72/72, local coverlet, full ProceduralDungeon suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage CryptoRandomNumberGenerator.cs
+
+Status:
+ALREADY_REMEDIATED
