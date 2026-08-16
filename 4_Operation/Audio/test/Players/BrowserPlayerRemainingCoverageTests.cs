@@ -493,5 +493,84 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         #endregion
+
+        #region PlayLoop / SetVolume (no OpenAL required)
+
+        /// <summary>
+        ///     The previous active name
+        /// </summary>
+        private string _previousActiveName;
+
+        /// <summary>
+        ///     Registers an assembly with a single wav entry and makes it active.
+        /// </summary>
+        /// <param name="entryName">The entry name</param>
+        /// <param name="content">The content</param>
+        private void SetupAssembly(string entryName, byte[] content)
+        {
+            _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
+            string name = AssetRegistryTestHelper.RegisterNewAssembly(entryName, content);
+            AssetRegistryTestHelper.SaveAndSetActive(name);
+        }
+
+        /// <summary>
+        ///     Tests that play loop with a missing resource throws file not found exception.
+        /// </summary>
+        [Fact]
+        public async System.Threading.Tasks.Task PlayLoop_WithMissingResource_ThrowsFileNotFoundException()
+        {
+            SetupAssembly("present.wav", BuildWavWithDataSize(1764, 1, 44100, 16));
+            BrowserPlayer player = (BrowserPlayer) System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
+
+            try
+            {
+                await Assert.ThrowsAsync<System.IO.FileNotFoundException>(async () => await player.PlayLoop("missing.wav", true));
+            }
+            finally
+            {
+                if (_previousActiveName != null)
+                {
+                    AssetRegistryTestHelper.RestoreActive(_previousActiveName);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that play loop with false delegates to play and throws file not found exception.
+        /// </summary>
+        [Fact]
+        public async System.Threading.Tasks.Task PlayLoop_WithFalseAndMissingResource_ThrowsFileNotFoundException()
+        {
+            SetupAssembly("present.wav", BuildWavWithDataSize(1764, 1, 44100, 16));
+            BrowserPlayer player = (BrowserPlayer) System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
+
+            try
+            {
+                await Assert.ThrowsAsync<System.IO.FileNotFoundException>(async () => await player.PlayLoop("missing.wav", false));
+            }
+            finally
+            {
+                if (_previousActiveName != null)
+                {
+                    AssetRegistryTestHelper.RestoreActive(_previousActiveName);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that set volume returns a completed task.
+        /// </summary>
+        [Fact]
+        public async System.Threading.Tasks.Task SetVolume_ReturnsCompletedTask()
+        {
+            BrowserPlayer player = (BrowserPlayer) System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
+
+            System.Threading.Tasks.Task task = player.SetVolume(50);
+
+            await task;
+            Assert.True(task.IsCompleted);
+        }
+
+        #endregion
     }
 }

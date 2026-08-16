@@ -2546,3 +2546,21 @@ test: coverage DTSweep.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
+
+CoverageBefore:
+76.9% (SonarCloud; local coverlet baseline 76.5% line)
+
+CoverageAfter:
+77.9% line / 89.3% branch (local coverlet)
+
+TestsAdded:
+3 (BrowserPlayerRemainingCoverageTests.cs)
+
+Commit:
+test: coverage BrowserPlayer.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE
