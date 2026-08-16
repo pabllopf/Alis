@@ -3885,3 +3885,20 @@ test: coverage DialogManager.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs
+
+CoverageBefore:
+99.0% (SonarCloud; Line: 100.0%, Branch: 97.0%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (278/278, local coverlet, full FileDialog suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage FilePickerValidator.cs
+
+Status:
+ALREADY_REMEDIATED
