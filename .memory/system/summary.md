@@ -3868,3 +3868,20 @@ test: coverage NetworkServerManager.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+
+CoverageBefore:
+99.0% (SonarCloud; Line: 100.0%, Branch: 97.1%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (268/268, local coverlet, full Dialogue suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage DialogManager.cs
+
+Status:
+ALREADY_REMEDIATED
