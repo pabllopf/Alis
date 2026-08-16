@@ -2653,3 +2653,20 @@ test: coverage DropBoxCloudManager.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs
+
+CoverageBefore:
+83.7% (SonarCloud; Line: 82.2%, Branch: 88.2%)
+
+CoverageAfter:
+98.6% (422/428, local coverlet; loopback WebSocket server, SHA512 handshake)
+
+TestsAdded:
+1 (NetworkClientManagerExecutionTests.cs: full connect + message dispatch flow)
+
+Commit:
+test: coverage NetworkClientManager.cs
+
+Status:
+PARTIALLY_REMEDIATED
