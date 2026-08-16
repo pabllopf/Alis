@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 122 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
 
     ### Language
     cs
 
     ### Coverage
-    60.0% (Line: 52.4%, Branch: 100.0%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    10
+    690
 
     ### Uncovered Branches
-    0
+    112
 
     ### Method
-    Monitor
+    ImGuiIOPtr
 
     ### Complexity / LOC
-    11 / 46 lines
+    235 / 1001 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Monitor.cs
+//  File:ImGuiIOPtr.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.Glfw.Structs
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     Wrapper around a pointer to monitor.
+    ///     The im gui io ptr
     /// </summary>
-    /// <seealso cref="Monitor" />
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct Monitor : IEquatable<Monitor>
+    public struct ImGuiIoPtr
     {
         /// <summary>
-        ///     Represents a <c>null</c> value for a <see cref="Monitor" /> object.
+        ///     Gets the value of the native ptr
         /// </summary>
-        public static readonly Monitor None;
+        public IntPtr NativePtr { get; }
 
         /// <summary>
-        ///     Internal pointer.
+        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
-        internal readonly IntPtr handle;
+        /// <param name="nativePtr">The native ptr</param>
+        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
-        ///     Determines whether the specified <see cref="Monitor" />, is equal to this instance.
+        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
-        /// <param name="other">The <see cref="Monitor" /> to compare with this instance.</param>
-        /// <returns>
-        ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(Monitor other) => handle.Equals(other.handle);
+        /// <param name="imGuiIo">The im gui io</param>
+        public ImGuiIoPtr(ImGuiIo imGuiIo)
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/MonitorTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiIOPtrTests.cs
 
     Priority
-    MEDIUM (NEW)
+    CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Monitor.cs
+    Commit format: test: coverage ImGuiIOPtr.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
