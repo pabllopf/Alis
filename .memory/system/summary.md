@@ -3388,3 +3388,20 @@ test: coverage Island.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
+
+CoverageBefore:
+95.1% (SonarCloud; Line: 94.2%, Branch: 97.2%)
+
+CoverageAfter:
+94.2% (324/344, local coverlet, Bayazit-filtered run; unchanged)
+
+TestsAdded:
+0 (adjacent-split + aligned-candidate geometric edge cases not constructible)
+
+Commit:
+test: coverage BayazitDecomposer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
