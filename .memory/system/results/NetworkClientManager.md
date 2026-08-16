@@ -1,42 +1,33 @@
 # Result: NetworkClientManager.cs
 
 File: `1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs`
-CoverageBefore: 83.7% (SonarCloud; Line: 82.2%, Branch: 88.2%, 38 uncovered lines)
-CoverageAfter: 98.6% (422/428, local coverlet, full Network suite)
-TestsAdded: 1 (NetworkClientManagerExecutionTests.cs: loopback WebSocket connection flow)
+CoverageBefore: 83.7% (SonarCloud, stale); local coverlet 98.6% line (215/218)
+CoverageAfter: 98.6% line (215/218, local coverlet, net8.0 — unchanged)
+TestsAdded: 0 (2 candidate dispose tests verified to add zero coverage; not committed)
 Commit: test: coverage NetworkClientManager.cs
-Status: PARTIALLY_REMEDIATED
+Status: BLOCKED_BY_PRODUCTION_CODE
 
 ## Summary
 
-NetworkClientManager.cs is the WebSocket client manager (54 complexity / 271 LOC). The
-committed suite covered Initialize/Start/Stop/Disconnect/Send/Broadcast and validation paths;
-ConnectAsync's entire connection flow (60+ lines: factory connect, local player creation,
-receive-loop start, handshake envelope, Connected event) and the message-dispatch path of
-ReceiveMessagesAsync were uncovered because they required a live WebSocket peer.
+NetworkClientManager.cs (497 LOC, WebSocket client manager). The committed suite
+(5 test files: Test/RemainingCoverage/AdditionalCoverage/EdgeCase/Execution) already covers
+98.6% locally — the SonarCloud 83.7% / 38 uncovered lines is stale. The only uncovered lines
+are 445-451, the `Dispose` swallow block around `DisconnectAsync().Wait(TimeSpan.FromSeconds(5))`.
 
-## Tests added (NetworkClientManagerExecutionTests.cs)
+## Analysis (why the catch is unreachable)
 
-A loopback TCP server (TcpListener on 127.0.0.1:0) implementing the repo's handshake
-convention: the client's WebSocketClientFactory computes the accept string with SHA512
-(`HttpHelper.ComputeSocketAcceptString` deviates from the RFC — the server must mirror it),
-so the server parses `Sec-WebSocket-Key`, replies 101 with the SHA512 accept, consumes the
-client's masked handshake frame, sends a text frame with a serialized NetworkMessageEnvelope
-(using extended 16-bit length framing for >125-byte payloads — the single-byte framing caused
-the receive loop to stall), and echoes the close frame. The test registers a handler on the
-envelope channel, connects via `NetworkClientManager.ConnectAsync("ws://127.0.0.1:port")`,
-and asserts the server payload is dispatched.
+- `DisconnectAsync` wraps its whole body in try/catch and converts failures into the `Error`
+  event — it never faults.
+- `Task.Wait(TimeSpan)` returns `false` on timeout and does NOT throw.
+- Therefore `DisconnectAsync().Wait(5s)` can neither fault nor throw; the `catch(Exception)`
+  block in `Dispose` is dead code. Verified empirically: a reflection-injected hanging
+  `WebSocket` (CloseAsync never completes) + `_state = Connected` produced a 5s test that
+  passed without the catch executing (coverlet confirmed 445/447/451 remain uncovered).
 
-## Remaining uncovered lines (3) — BLOCKED_BY_PRODUCTION_CODE
-
-Dispose 445-451 (`catch (Exception) { /* swallow */ }` around `DisconnectAsync().Wait(5s)`):
-DisconnectAsync can neither fault (its own catch swallows all exceptions) nor hang (the custom
-WebSocket CloseAsync only sends the close frame and returns, and CancelAsync does not block),
-so `.Wait(TimeSpan.FromSeconds(5))` can never throw TimeoutException or AggregateException.
-Defensive catch, not coverable without production changes.
+Candidate tests (`Dispose_WithHangingSocket_SwallowsTimeout`, `Dispose_Twice_IsIdempotent`)
+added zero coverage and were removed to keep the repo coverage-honest.
 
 ## Verification
 
-- Full Network suite: 1100 passed / 0 failed (net8.0, ~3s).
-- Local coverlet (valid run): NetworkClientManager.cs 422/428 = 98.6%; ConnectAsync 102/102,
-  ReceiveMessagesAsync 54/54, all other state machines 100%.
+- Targeted run: existing NetworkClientManager suite all pass (net8.0).
+- Local coverlet: 215/218 = 98.6% line; only the dead-code catch remains uncovered.

@@ -2688,3 +2688,21 @@ test: coverage ImPlotP9.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs
+
+CoverageBefore:
+83.7% (SonarCloud, stale; local coverlet 98.6% line)
+
+CoverageAfter:
+98.6% line (215/218, local coverlet, unchanged)
+
+TestsAdded:
+0 (2 candidates verified to add zero coverage; not committed)
+
+Commit:
+test: coverage NetworkClientManager.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE

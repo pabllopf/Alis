@@ -139,11 +139,9 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP9.cs",
-  {
-   "key": "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
-   "status": "PARTIALLY_REMEDIATED",
-   "processed_at": "2026-08-16T11:15:00Z"
-  },
-  "pabllopf-official_alis:1_Presentation/Extension/Network/src/NetworkClientManager.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/NetworkClientManager.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs"
  ]
 }
