@@ -3370,3 +3370,21 @@ test: coverage WebSocketClientFactory.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island.cs
+
+CoverageBefore:
+94.6% (SonarCloud; local coverlet baseline 94.9% line)
+
+CoverageAfter:
+97.4% line (733/753, local coverlet)
+
+TestsAdded:
+3 (IslandClampCoverageTests.cs)
+
+Commit:
+test: coverage Island.cs
+
+Status:
+PARTIALLY_REMEDIATED
