@@ -2969,3 +2969,21 @@ test: coverage WorldPhysic.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+
+CoverageBefore:
+90.2% (SonarCloud; local coverlet baseline 98.7% line)
+
+CoverageAfter:
+100.0% line / 100.0% branch (local coverlet)
+
+TestsAdded:
+3 (ArchetypeSameComponentsCoverageTests.cs)
+
+Commit:
+test: coverage Archetype.cs
+
+Status:
+REMEDIATED

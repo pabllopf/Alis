@@ -1,40 +1,31 @@
 # Result: Archetype.cs
 
 File: `4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs`
-CoverageBefore: 90.2% (SonarCloud; Line: 91.3%, Branch: 84.2%)
-CoverageAfter: 98.7% (616/624, local coverlet, full Ecs suite)
-TestsAdded: 1 (ArchetypeOverflowCoverageTests.cs: max-archetype-count overflow guard)
+CoverageBefore: 90.2% (SonarCloud); local coverlet baseline 98.7% line (1390/1409)
+CoverageAfter: 100.0% line / 100.0% branch (local coverlet, net8.0)
+TestsAdded: 3 (ArchetypeSameComponentsCoverageTests.cs)
 Commit: test: coverage Archetype.cs
-Status: PARTIALLY_REMEDIATED
+Status: REMEDIATED
 
 ## Summary
 
-Archetype.cs is the ECS archetype manager (104 complexity / 786 LOC). The committed suite
-(ArchetypeCoverageTest / ArchetypeCoverage007Test etc.) covers the archetype creation,
-transition and query paths; the `ushort.MaxValue` overflow guard of `GetArchetypeId` and the
-hash-collision branches of `SameComponents` were uncovered.
+Archetype.cs (1409 LOC, ECS archetype registry). The committed suite (14 test files) covered
+98.7%; the only remaining lines were the two defensive `SameComponents` mismatch branches
+(733-734 length mismatch, 740-741 element mismatch) — a hash-collision guard for
+`ExistingArchetypes` lookups that is practically unreachable through the public API without
+constructing an actual HashCode collision.
 
-## Tests added (ArchetypeOverflowCoverageTests.cs)
+## Work performed
 
-`GetArchetypeId_WhenExceedingMaxArchetypeCount_Throws`: creates 65535+ unique archetypes via
-synthesized `ComponentId` triples (raw indices 0..127 keep the component-tag buffer at 128
-bytes/slot — single-component ids would balloon the per-id tag tables into gigabytes), drives
-`NextArchetypeId` past `ushort.MaxValue` and asserts the
-`InvalidOperationException("Exceeded maximum unique archetype count of 65535")`. The global
-`NextArchetypeId` counter and `ComponentTagTableBufferSize` are restored afterwards; the
-`ExistingArchetypes` dictionary retains the synthetic entries (opaque keys, a few MB) and the
-test was verified not to change the Ecs suite's pre-existing failure set.
-
-## Remaining uncovered lines (4) — BLOCKED_BY_PRODUCTION_CODE
-
-- 733-734, 740-741 — `SameComponents` length-mismatch and element-mismatch branches: only
-  reached when `ExistingArchetypes.TryGetValue` hits a key whose 64-bit hash (two combined
-  `HashCode` halves, process-randomized seed) collides with a different component set.
-  Astronomically unlikely and not deterministically constructible.
+Added 3 tests to `ArchetypeSameComponentsCoverageTests.cs` (xUnit, net8.0) that invoke the
+private `SameComponents` method directly via `MethodInfo.CreateDelegate` (ReadOnlySpan
+parameters cannot be boxed for `Invoke`):
+- `SameComponents_WithDifferentLengths_ReturnsFalse` — covers 733-734.
+- `SameComponents_WithDifferentElements_ReturnsFalse` — covers 740-741.
+- `SameComponents_WithEqualContent_ReturnsTrue` — the positive path (737-745).
 
 ## Verification
 
-- Filtered run: 1 passed (50 ms).
-- Full Ecs suite: passes with the same pre-existing order-dependent failure set as without
-  the new test (CommandBufferCoverageTest.AddComponent_BoxedNoType_PlaybackAddsComponent).
-- Local coverlet: Archetype.cs 616/624 = 98.7% (before: 91.3% line).
+- Targeted run: 3 passed / 0 failed (net8.0).
+- Merged suite (Archetype filter): all pass.
+- Local coverlet: Archetype.cs 100.0% line / 100.0% branch; zero uncovered lines.
