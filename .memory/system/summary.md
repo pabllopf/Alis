@@ -2408,3 +2408,20 @@ test: coverage ImPlotP4.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs
+
+CoverageBefore:
+67.5% (SonarCloud; Line: 61.9%, Branch: 85.4%)
+
+CoverageAfter:
+100.0% (310/310, local coverlet; in-process stub IHttpClient, no network)
+
+TestsAdded:
+4 (StripeGatewayClientExecutionTests.cs: success paths via StripeConfiguration.StripeClient stub)
+
+Commit:
+test: coverage StripeGatewayClient.cs
+
+Status:
+REMEDIATED
