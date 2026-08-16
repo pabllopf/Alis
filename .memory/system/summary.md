@@ -3319,3 +3319,20 @@ test: coverage ImNodesStyle.cs
 
 Status:
 REMEDIATED (NO-OP)
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island.cs
+
+CoverageBefore:
+94.6% (SonarCloud; Line: 94.9%, Branch: 93.1%)
+
+CoverageAfter:
+94.9% (772/792, local coverlet, Island-filtered run; unchanged)
+
+TestsAdded:
+0 (readonly AllowSleep guard + unreachable TOI clamp branches)
+
+Commit:
+test: coverage Island.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
