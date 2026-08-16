@@ -2987,3 +2987,21 @@ test: coverage Archetype.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Scene.cs
+
+CoverageBefore:
+91.7% (SonarCloud; local coverlet baseline 94.3% line)
+
+CoverageAfter:
+98.8% line (1022/1034, local coverlet)
+
+TestsAdded:
+6 (SceneDeferredCoverageTests.cs)
+
+Commit:
+test: coverage Scene.cs
+
+Status:
+PARTIALLY_REMEDIATED
