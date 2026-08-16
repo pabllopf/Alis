@@ -2760,3 +2760,21 @@ test: coverage ImGuiStyle.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs
+
+CoverageBefore:
+86.9% (SonarCloud; local coverlet baseline 90.5% line)
+
+CoverageAfter:
+90.5% line / 85.7% branch (local coverlet, unchanged)
+
+TestsAdded:
+0 (14 probes verified to add zero coverage; not committed)
+
+Commit:
+test: coverage TimeOfImpact.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
