@@ -3040,3 +3040,20 @@ test: coverage YuPengClipper.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs
+
+CoverageBefore:
+92.8% (SonarCloud; Line: 94.1%, Branch: 89.6%)
+
+CoverageAfter:
+94.1% (224/238, local coverlet, full Ecs suite; unchanged)
+
+TestsAdded:
+0 (7 lines: dead returns after always-throwing guards + private-counter overflow guards)
+
+Commit:
+test: coverage ComponentRegistry.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
