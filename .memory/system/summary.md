@@ -2425,3 +2425,20 @@ test: coverage StripeGatewayClient.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs
+
+CoverageBefore:
+69.2% (SonarCloud; Line: 71.3%, Branch: 60.0%)
+
+CoverageAfter:
+100.0% (174/174, local coverlet; fake-proc-address Gl.Initialize)
+
+TestsAdded:
+7 (GlShaderProgramParamExecutionTests.cs: GetLocation + all SetValue overloads)
+
+Commit:
+test: coverage GLShaderProgramParam.cs
+
+Status:
+REMEDIATED
