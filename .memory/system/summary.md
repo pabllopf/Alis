@@ -2706,3 +2706,39 @@ test: coverage NetworkClientManager.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP9.cs
+
+CoverageBefore:
+80.7% (SonarCloud, line 79.7%; local coverlet baseline 177/222 = 79.7%, 45 uncovered lines — matches SonarCloud exactly)
+
+CoverageAfter:
+90.5% line (201/222, local coverlet; 21 uncovered lines, all closing braces of the 21 PlotPieChart overloads, blocked by production interop defect)
+
+TestsAdded:
+11 (ImPlotP9AdditionalCoverageTests.cs: 5 native PlotLine/PlotLineG execution tests, 6 PlotPieChart MarshalDirectiveException tests)
+
+Commit:
+test: coverage ImPlotP9.cs
+
+Status:
+PARTIALLY_REMEDIATED (21 lines BLOCKED_BY_PRODUCTION_CODE)
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
+
+CoverageBefore:
+86.3% (SonarCloud; local coverlet baseline 89.6% line)
+
+CoverageAfter:
+92.4% line (437/473, local coverlet)
+
+TestsAdded:
+3 (UpdateManagerFlowCoverageTests.cs)
+
+Commit:
+test: coverage UpdateManager.cs
+
+Status:
+PARTIALLY_REMEDIATED
