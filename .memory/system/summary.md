@@ -3266,3 +3266,20 @@ test: coverage VideoGameBuilder.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs
+
+CoverageBefore:
+94.7% (SonarCloud; Line: 92.9%, Branch: 100.0%)
+
+CoverageAfter:
+92.9% (78/84, local coverlet, full Logging suite; unchanged)
+
+TestsAdded:
+0 (ForegroundColor-restore catch is a Windows-console failure mode)
+
+Commit:
+test: coverage ConsoleLogOutput.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
