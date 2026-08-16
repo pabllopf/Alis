@@ -202,6 +202,10 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Collision/Collision.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/Windows/WindowsFilePicker.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs"
  ]
 }

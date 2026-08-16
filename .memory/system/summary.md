@@ -3748,3 +3748,20 @@ test: coverage WheelJoint.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs
+
+CoverageBefore:
+98.6% (SonarCloud; Line: 100.0%, Branch: 93.6%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (560/560, local coverlet, full HighSpeedPriorityQueue suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage SimplePriorityQueue.cs
+
+Status:
+ALREADY_REMEDIATED
