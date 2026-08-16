@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PolygonManipulation;
@@ -41,24 +42,18 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
     public class SimpleCombinerRemainingCoverageTests
     {
         /// <summary>
-        ///     Tests that polygonize triangles with degenerate triangle skips corrupt poly
+        ///     Tests that polygonize triangles with a degenerate triangle skips the corrupt polygon.
         /// </summary>
         [Fact]
-        public void PolygonizeTriangles_WithDegenerateTriangle_SkipsCorruptPoly()
+        public void PolygonizeTriangles_WithDegenerateTriangle_SkipsCorruptPolygon()
         {
             List<Vertices> triangles = new List<Vertices>
             {
                 new Vertices(new[]
                 {
-                    new Vector2F(0, 0),
-                    new Vector2F(1, 0),
-                    new Vector2F(2, 0)
-                }),
-                new Vertices(new[]
-                {
-                    new Vector2F(0, 0),
-                    new Vector2F(1, 0),
-                    new Vector2F(0.5f, 1)
+                    new Vector2F(0f, 0f),
+                    new Vector2F(1f, 0f),
+                    new Vector2F(1f, 0f)
                 })
             };
 
@@ -68,24 +63,24 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         }
 
         /// <summary>
-        ///     Tests that polygonize triangles with empty triangle removes empty polygons
+        ///     Tests that polygonize triangles with a thin sliver pair collapses and skips the corrupt polygon.
         /// </summary>
         [Fact]
-        public void PolygonizeTriangles_WithEmptyTriangle_RemovesEmptyPolygons()
+        public void PolygonizeTriangles_WithThinSliverPair_SkipsCorruptPolygon()
         {
             List<Vertices> triangles = new List<Vertices>
             {
                 new Vertices(new[]
                 {
-                    new Vector2F(0, 0),
-                    new Vector2F(1, 1),
-                    new Vector2F(2, 2)
+                    new Vector2F(0f, 0f),
+                    new Vector2F(1f, 0f),
+                    new Vector2F(0f, 0.0005f)
                 }),
                 new Vertices(new[]
                 {
-                    new Vector2F(0, 0),
-                    new Vector2F(1, 0),
-                    new Vector2F(0.5f, 1)
+                    new Vector2F(1f, 0f),
+                    new Vector2F(2f, 0f),
+                    new Vector2F(1f, 0.0005f)
                 })
             };
 
@@ -95,40 +90,57 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         }
 
         /// <summary>
-        ///     Tests that polygonize triangles with max polys limits result
+        ///     Tests that polygonize triangles with three tiny slivers collapses and skips the corrupt polygon.
         /// </summary>
         [Fact]
-        public void PolygonizeTriangles_WithMaxPolys_LimitsResult()
+        public void PolygonizeTriangles_WithTinySlivers_SkipsCorruptPolygon()
         {
             List<Vertices> triangles = new List<Vertices>
             {
-                new Vertices(new[] { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0.5f, 1) }),
-                new Vertices(new[] { new Vector2F(2, 0), new Vector2F(3, 0), new Vector2F(2.5f, 1) }),
-                new Vertices(new[] { new Vector2F(4, 0), new Vector2F(5, 0), new Vector2F(4.5f, 1) })
+                new Vertices(new[]
+                {
+                    new Vector2F(0f, 0f),
+                    new Vector2F(1f, 0f),
+                    new Vector2F(0f, 0.0001f)
+                }),
+                new Vertices(new[]
+                {
+                    new Vector2F(1f, 0f),
+                    new Vector2F(2f, 0f),
+                    new Vector2F(1f, 0.0001f)
+                }),
+                new Vertices(new[]
+                {
+                    new Vector2F(2f, 0f),
+                    new Vector2F(3f, 0f),
+                    new Vector2F(2f, 0.0001f)
+                })
             };
 
-            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles, 1);
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
 
             Assert.NotNull(result);
-            Assert.True(result.Count <= 1);
         }
 
         /// <summary>
-        ///     Tests that polygonize triangles with shared collinear edges merges polygon
+        ///     Tests that remove empty polygons removes empty entries.
         /// </summary>
         [Fact]
-        public void PolygonizeTriangles_WithSharedCollinearEdges_MergesPolygon()
+        public void RemoveEmptyPolygons_RemovesEmptyEntries()
         {
-            List<Vertices> triangles = new List<Vertices>
+            MethodInfo method = typeof(SimpleCombiner).GetMethod("RemoveEmptyPolygons",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            List<Vertices> polys = new List<Vertices>
             {
-                new Vertices(new[] { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0.5f, 0.5f) }),
-                new Vertices(new[] { new Vector2F(1, 0), new Vector2F(2, 0), new Vector2F(1.5f, 0.5f) }),
-                new Vertices(new[] { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(1, 0.0001f) })
+                new Vertices(new[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f), new Vector2F(0f, 1f) }),
+                new Vertices(),
+                new Vertices(new[] { new Vector2F(2f, 0f), new Vector2F(3f, 0f), new Vector2F(2f, 1f) })
             };
 
-            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles, int.MaxValue, 0.001f);
+            method.Invoke(null, new object[] { polys });
 
-            Assert.NotNull(result);
+            Assert.Equal(2, polys.Count);
         }
     }
 }

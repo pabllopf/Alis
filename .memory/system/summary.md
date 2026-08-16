@@ -3543,3 +3543,21 @@ test: coverage BinaryReaderWriter.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs
+
+CoverageBefore:
+96.6% (SonarCloud; local coverlet baseline 96.8% line)
+
+CoverageAfter:
+98.3% line (395/402, local coverlet)
+
+TestsAdded:
+4 (SimpleCombinerRemainingCoverageTests.cs)
+
+Commit:
+test: coverage SimpleCombiner.cs
+
+Status:
+PARTIALLY_REMEDIATED
