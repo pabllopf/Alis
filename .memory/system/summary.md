@@ -3248,3 +3248,21 @@ test: coverage GameObjectExtensions.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs
+
+CoverageBefore:
+93.8% (SonarCloud; local coverlet 93.8% line)
+
+CoverageAfter:
+93.8% line (104/111, local coverlet, unchanged)
+
+TestsAdded:
+0 (Run() verified blocking; not testable)
+
+Commit:
+test: coverage VideoGameBuilder.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
