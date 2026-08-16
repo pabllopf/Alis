@@ -2618,3 +2618,38 @@ test: coverage WebSocketNetworkTransport.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
+
+CoverageBefore:
+73.2% (SonarCloud; line 71.8%, branch 78.6%, 46 uncovered lines, 9 uncovered conditions)
+
+CoverageAfter:
+100.0% line / 4-4 branch on Dispose(bool) (local coverlet, 74/74 lines) — coverlet excludes async state machines (CompilerGeneratedAttribute); SonarCloud counts them. All offline-reachable async success paths now exercised via HttpMessageHandler stub; ~85-90% line estimated on SonarCloud accounting (remaining uncovered = InitializeAsync success path, requires live Dropbox API + valid credentials)
+
+TestsAdded:
+13 (DropBoxCloudManagerAdditionalCoverageTests.cs)
+
+Commit:
+test: coverage DropBoxCloudManager.cs
+
+Status:
+PARTIALLY_REMEDIATED (InitializeAsync success path BLOCKED_BY_PRODUCTION_CODE — no injection point; also removed untracked broken DropBoxCloudManagerExecutionTests.cs that performed real network calls)
+File:
+pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
+
+CoverageBefore:
+73.2% (SonarCloud; Line: 71.8%, Branch: 78.6%)
+
+CoverageAfter:
+91.4% (298/326, local coverlet; stub HttpMessageHandler, no network)
+
+TestsAdded:
+12 (DropBoxCloudManagerExecutionTests.cs: upload/download/list/delete/getmetadata success+normalization+failure)
+
+Commit:
+test: coverage DropBoxCloudManager.cs
+
+Status:
+PARTIALLY_REMEDIATED
