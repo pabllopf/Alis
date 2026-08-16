@@ -122,6 +122,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs"
  ]
 }

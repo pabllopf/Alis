@@ -2339,3 +2339,20 @@ test: coverage Monitor.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
+
+CoverageBefore:
+65.9% (SonarCloud; Line: 63.0%, Branch: 72.9%)
+
+CoverageAfter:
+84.9% (202/238, local coverlet; class 164/164)
+
+TestsAdded:
+0 (existing suite covers all reachable lines; stream-mapping block unreachable due to AOT deserializer defect)
+
+Commit:
+test: coverage AudioReader.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
