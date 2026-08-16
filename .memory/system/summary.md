@@ -3057,3 +3057,37 @@ test: coverage ComponentRegistry.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs
+
+CoverageBefore:
+90.1% (SonarCloud)
+
+CoverageAfter:
+98.3% line (921/937, local coverlet, full WorldPhysic-filtered run); 16 remaining lines all unreachable via public APIs
+
+TestsAdded:
+6 (WorldPhysicLatestCoverageTests.cs: TOI island branches — dense static cluster, line-of-bodies capacity saturation, dynamic neighbors in TOI island, polygon-bullet restore candidates, catch-up alpha mismatch)
+
+Commit:
+test: coverage WorldPhysic.cs
+
+Status:
+COMPLETE
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/BufferPool.cs
+
+CoverageBefore:
+93.3% (SonarCloud; Line: 91.9%, Branch: 100.0%)
+
+CoverageAfter:
+91.9% (68/74, local coverlet, full Network suite; unchanged)
+
+TestsAdded:
+0 (finalizer catch unreachable; same family as Context.cs)
+
+Commit:
+test: coverage BufferPool.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
