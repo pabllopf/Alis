@@ -207,6 +207,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs"
  ]
 }

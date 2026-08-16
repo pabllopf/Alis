@@ -3800,3 +3800,20 @@ test: coverage DelaunayTriangle.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs
+
+CoverageBefore:
+98.8% (SonarCloud; Line: 98.8%, Branch: 98.6%)
+
+CoverageAfter:
+99.4% (668/672, local coverlet, WebSocketImplementation-filtered run)
+
+TestsAdded:
+3 (WebSocketImplementationExecutionTests.cs: buffer fallback, ping send, close receive)
+
+Commit:
+test: coverage WebSocketImplementation.cs
+
+Status:
+PARTIALLY_REMEDIATED
