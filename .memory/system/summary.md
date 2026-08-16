@@ -3919,3 +3919,20 @@ test: coverage GravityController.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
+
+CoverageBefore:
+99.1% (SonarCloud; Line: 100.0%, Branch: 90.9%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (400/400, local coverlet, WeldJoint-filtered run)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage WeldJoint.cs
+
+Status:
+ALREADY_REMEDIATED
