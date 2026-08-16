@@ -3301,3 +3301,21 @@ test: coverage StreamAdaptor.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs
+
+CoverageBefore:
+94.1% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% line (local coverlet)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage ImNodesStyle.cs
+
+Status:
+REMEDIATED (NO-OP)
