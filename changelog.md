@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.0] - 2026-08-15
+### :bug: Bug Fixes
+- [`967b4a9`](https://github.com/pabllopf/Alis/commit/967b4a9ac2f951ff9197744843f7def13dd00686) - new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`435ea2c`](https://github.com/pabllopf/Alis/commit/435ea2cd64dcc095717e88f2f84bc6e61c44f4fe) - delete cache *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`1cb4b10`](https://github.com/pabllopf/Alis/commit/1cb4b10c698d0f478942db77642b31782d3999ba) - Sdl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e6d21b`](https://github.com/pabllopf/Alis/commit/3e6d21b5f27b6753a4c1546706d1bec2de570ddc) - SdlImage.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`281211f`](https://github.com/pabllopf/Alis/commit/281211f8ed5abd8b1493d47f8e9f6a14ca8dfee0) - Gl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de6e550`](https://github.com/pabllopf/Alis/commit/de6e550fe2a262467fce32c7183b26b2fff40c52) - ObjectiveCInterop.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`093c7db`](https://github.com/pabllopf/Alis/commit/093c7db78350d293d0179d4b95edca5ec0ca93e2) - MediaStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4497da0`](https://github.com/pabllopf/Alis/commit/4497da0d7d7eae137b0820466b07c3ae430bbc3a) - ImFontPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94f2b49`](https://github.com/pabllopf/Alis/commit/94f2b490ad840dae92498541d2d1b906f7aef89d) - WebAssemblyGameExamples.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2422211`](https://github.com/pabllopf/Alis/commit/2422211ff1c1c6e97e61103cfb7523891038956f) - Sprite.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`36ca0f5`](https://github.com/pabllopf/Alis/commit/36ca0f5f23f26386df6582339025bfa557962968) - ImColor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b482fe`](https://github.com/pabllopf/Alis/commit/7b482fe290916b1ea681a82f98b12bf686a1c30b) - FFMpegWrapper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9d84b7`](https://github.com/pabllopf/Alis/commit/d9d84b7a77dad6dc1adfd36ea75260d324551380) - ImGuiIO.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cdfe067`](https://github.com/pabllopf/Alis/commit/cdfe0672f226ff862c89f62e16c0052c3d6585d4) - WindowsPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b1a280`](https://github.com/pabllopf/Alis/commit/5b1a280c8fb7b313d3dd7a0ce05be2be3d5bb6ce) - VideoReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8057f4d`](https://github.com/pabllopf/Alis/commit/8057f4d77a21724fa7e4ebc7f4d3c082be933958) - GraphicManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`deb4d7b`](https://github.com/pabllopf/Alis/commit/deb4d7be59ad5ec17336ee51b0989d7215ee0d28) - Gen2GcCallback.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed0a6fc`](https://github.com/pabllopf/Alis/commit/ed0a6fc44c1b78d3d0ee61d274563e4eb4535f2c) - WebAssemblyInputManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`69e280c`](https://github.com/pabllopf/Alis/commit/69e280cd046e5f5a0c09bbd2558383d6bf5fafa6) - Font.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e58f05`](https://github.com/pabllopf/Alis/commit/5e58f05155157d5efff7c1d3d8583b47fdd84f1f) - ImPlotP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27fae37`](https://github.com/pabllopf/Alis/commit/27fae3700e45a04700465f11ec3b7651abb592e5) - ImDrawData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2323d56`](https://github.com/pabllopf/Alis/commit/2323d567a97277aee7e8241b7596c70a088c59e7) - ContactManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1ecc22`](https://github.com/pabllopf/Alis/commit/a1ecc220faca574ca861e6d6d92e480596bca62f) - MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b7061b`](https://github.com/pabllopf/Alis/commit/6b7061b6a1d7fbc9e0762b1a1d3becf45b85da52) - TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`56a4909`](https://github.com/pabllopf/Alis/commit/56a4909b3827ad1ce5fb0050248db4754fca0c6a) - Window.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b032c12`](https://github.com/pabllopf/Alis/commit/b032c12a449aaf2052b6373704fdd4df0ff546e1) - MacNativePlatform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`163867c`](https://github.com/pabllopf/Alis/commit/163867cb8826e4fa795706fb85887aa925bb0f63) - coverage Archetype.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d48f695`](https://github.com/pabllopf/Alis/commit/d48f695cca282a22604e1c6239b3562354a2d441) - coverage Archetype.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dffd2d8`](https://github.com/pabllopf/Alis/commit/dffd2d8ffd0c8db03120cdf8581b60c664aa3c0e) - coverage Archetype.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a85281d`](https://github.com/pabllopf/Alis/commit/a85281de8dc83fded8e6333b082201fcf049d01e) - coverage ImDrawCmd.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e0269a`](https://github.com/pabllopf/Alis/commit/6e0269ad7b951ed1eba4d811c28ebe7e434743ed) - coverage ImDrawCmd.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8430c1`](https://github.com/pabllopf/Alis/commit/d8430c19e9b9bebf25a3a677dffe5a9f30ea374b) - coverage ImDrawCmd.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`810f767`](https://github.com/pabllopf/Alis/commit/810f7670f6ff363c838c2c4f42c2613038052451) - ImDrawCmd.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79e49d7`](https://github.com/pabllopf/Alis/commit/79e49d769a9ee8ea458530d2849b666f604311b8) - ImDrawCmd.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.1.9] - 2026-08-15
 ### :bug: Bug Fixes
 - [`38d6029`](https://github.com/pabllopf/Alis/commit/38d6029fe9f59c8d8a46161c29697377097ae6d6) - code *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10453,3 +10493,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.7]: https://github.com/pabllopf/Alis/compare/v1.1.6...v1.1.7
 [v1.1.8]: https://github.com/pabllopf/Alis/compare/v1.1.7...v1.1.8
 [v1.1.9]: https://github.com/pabllopf/Alis/compare/v1.1.8...v1.1.9
+[v1.2.0]: https://github.com/pabllopf/Alis/compare/v1.1.9...v1.2.0
