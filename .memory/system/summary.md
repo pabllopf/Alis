@@ -3231,3 +3231,20 @@ test: coverage FileLogOutput.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs
+
+CoverageBefore:
+94.1% (SonarCloud; Line: 94.1%)
+
+CoverageAfter:
+94.1% (128/136, local coverlet, full Ecs suite; unchanged)
+
+TestsAdded:
+0 (GetComp is AggressiveInlining; provably executed but un-attributable by coverlet)
+
+Commit:
+test: coverage GameObjectExtensions.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
