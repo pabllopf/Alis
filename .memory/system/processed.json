@@ -132,6 +132,7 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Ui/FontManager.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs"
  ]
 }

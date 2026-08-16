@@ -2510,3 +2510,39 @@ test: coverage ContactManager.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Ui/FontManager.cs
+
+CoverageBefore:
+71.4% (SonarCloud)
+
+CoverageAfter:
+100.0% (7/7 lines, local coverlet; full GL pipeline completes both RenderText overloads)
+
+TestsAdded:
+6 (FontManagerAdditionalCoverageTests.cs)
+
+Commit:
+test: coverage FontManager.cs
+
+Status:
+COMPLETE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
+
+CoverageBefore:
+62.4% (SonarCloud; local coverlet baseline 82.2% line / 75.2% branch)
+
+CoverageAfter:
+86.6% line / 79.6% branch (571/659, local coverlet)
+
+TestsAdded:
+9 (DTSweepRemainingCoverageTests.cs)
+
+Commit:
+test: coverage DTSweep.cs
+
+Status:
+PARTIALLY_REMEDIATED
