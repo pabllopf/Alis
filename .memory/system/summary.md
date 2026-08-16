@@ -2476,3 +2476,20 @@ test: coverage ContextHandler.cs
 
 Status:
 COMPLETE
+File:
+pabllopf-official_alis:4_Operation/Graphic/src/Ui/FontManager.cs
+
+CoverageBefore:
+71.4% (SonarCloud; Line: 71.4%)
+
+CoverageAfter:
+100.0% (14/14, local coverlet; registered assets pack + fake GL pipeline)
+
+TestsAdded:
+2 (FontManagerExecutionTests.cs: both RenderText overloads complete)
+
+Commit:
+test: coverage FontManager.cs
+
+Status:
+REMEDIATED
