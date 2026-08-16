@@ -2812,3 +2812,21 @@ test: coverage WebSocketFrameReader.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
+
+CoverageBefore:
+88.3% (SonarCloud; local coverlet baseline 76.2% line)
+
+CoverageAfter:
+86.9% line (73/84, local coverlet)
+
+TestsAdded:
+4 (UnixPlayerBaseRemainingCoverageTests.cs)
+
+Commit:
+test: coverage UnixPlayerBase.cs
+
+Status:
+PARTIALLY_REMEDIATED

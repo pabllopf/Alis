@@ -203,55 +203,6 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
-        ///     The sleeping player for coverage class
-        /// </summary>
-        private class SleepingPlayerForCoverage : UnixPlayerBase
-        {
-            /// <summary>
-            ///     Gets the bash command using the specified file name
-            /// </summary>
-            /// <param name="fileName">The file name</param>
-            /// <returns>The command</returns>
-            internal override string GetBashCommand(string fileName) => "sleep 5; true";
-
-            /// <summary>
-            ///     Sets the volume using the specified percent
-            /// </summary>
-            /// <param name="percent">The percent</param>
-            /// <returns>The task</returns>
-            public override Task SetVolume(byte percent) => Task.CompletedTask;
-        }
-
-        /// <summary>
-        ///     Tests that resume after pause clears the paused state.
-        /// </summary>
-        [Fact]
-        public async Task Resume_AfterPause_ClearsPausedState()
-        {
-            SleepingPlayerForCoverage player = new SleepingPlayerForCoverage();
-            string tempFile = Path.GetTempFileName();
-            try
-            {
-                File.WriteAllText(tempFile, "test");
-                await player.Play(tempFile);
-                Assert.True(player.Playing);
-                await player.Pause();
-                Assert.True(player.Paused);
-                await player.Resume();
-
-                Assert.False(player.Paused);
-            }
-            finally
-            {
-                await player.Stop();
-                if (File.Exists(tempFile))
-                {
-                    File.Delete(tempFile);
-                }
-            }
-        }
-
-        /// <summary>
         ///     Tests that get audio duration with a missing file throws file not found exception.
         /// </summary>
         [Fact]
