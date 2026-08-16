@@ -3646,3 +3646,20 @@ test: coverage FilePickerExecutor.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs
+
+CoverageBefore:
+97.1% (SonarCloud; Line: 100.0%, Branch: 87.5%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (106/106, local coverlet, PolygonGenerator-filtered run)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage PolygonGenerator.cs
+
+Status:
+ALREADY_REMEDIATED
