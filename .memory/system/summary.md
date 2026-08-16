@@ -3405,3 +3405,20 @@ test: coverage BayazitDecomposer.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunction.cs
+
+CoverageBefore:
+95.7% (SonarCloud; Line: 96.7%, Branch: 87.5%)
+
+CoverageAfter:
+96.7% (238/246, local coverlet, SeparationFunction-filtered run; unchanged)
+
+TestsAdded:
+0 (defensive default cases of a private ThreadStatic enum switch)
+
+Commit:
+test: coverage SeparationFunction.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
