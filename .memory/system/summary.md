@@ -3663,3 +3663,20 @@ test: coverage PolygonGenerator.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs
+
+CoverageBefore:
+97.1% (SonarCloud; Line: 100.0%, Branch: 83.3%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (58/58, local coverlet, full Updater suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage GitHubApiService.cs
+
+Status:
+ALREADY_REMEDIATED
