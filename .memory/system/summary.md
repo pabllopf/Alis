@@ -3612,3 +3612,20 @@ test: coverage GoogleDriveCloudManager.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs
+
+CoverageBefore:
+96.9% (SonarCloud; Line: 99.9%, Branch: 84.7%)
+
+CoverageAfter:
+99.9% (1944/1946, local coverlet, GameObject-filtered run)
+
+TestsAdded:
+7 (GameObjectGenericEventArityTests.cs: direct multi-arity generic-event invocations)
+
+Commit:
+test: coverage GameObject.cs
+
+Status:
+PARTIALLY_REMEDIATED
