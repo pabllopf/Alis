@@ -3629,3 +3629,20 @@ test: coverage GameObject.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
+
+CoverageBefore:
+97.0% (SonarCloud; Line: 100.0%, Branch: 87.5%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (154/154, local coverlet, full FileDialog suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage FilePickerExecutor.cs
+
+Status:
+ALREADY_REMEDIATED
