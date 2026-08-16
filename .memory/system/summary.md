@@ -2493,3 +2493,20 @@ test: coverage FontManager.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs
+
+CoverageBefore:
+73.0% (SonarCloud; Line: 73.7%, Branch: 71.4%)
+
+CoverageAfter:
+76.3% (522/684, local coverlet; unchanged)
+
+TestsAdded:
+0 (84 remaining lines are dead code: int.MaxValue readonly threshold + never-set private ReturnNullOverride)
+
+Commit:
+test: coverage ContactManager.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
