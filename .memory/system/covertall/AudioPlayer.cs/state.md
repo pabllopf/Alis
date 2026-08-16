@@ -40,7 +40,7 @@ Tests added:
 - none (target already fully covered by existing suite)
 
 Commits:
-- none (no changes required)
+- 4da61d723c4e4e0835650e2ce102849d7eca89bd "test: confirm 100% coverage of AudioPlayer.cs" (trace artifacts only; target already fully covered)
 
 Remaining uncovered lines:
 - none
