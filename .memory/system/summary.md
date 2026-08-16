@@ -3697,3 +3697,20 @@ test: coverage CryptoRandomNumberGenerator.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs
+
+CoverageBefore:
+97.9% (SonarCloud; Line: 98.2%, Branch: 96.9%)
+
+CoverageAfter:
+98.2% (1602/1624, local coverlet, Collision-filtered run; unchanged)
+
+TestsAdded:
+0 (15 lines: clip/closest-point/EP-collider degenerate-geometry edge cases)
+
+Commit:
+test: coverage Collision.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
