@@ -92,3 +92,4 @@ Debug/
 
 *.txt
 /coverlet-results
+*.trx
