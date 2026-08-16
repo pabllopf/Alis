@@ -3619,16 +3619,16 @@ CoverageBefore:
 96.9% (SonarCloud; Line: 99.9%, Branch: 84.7%)
 
 CoverageAfter:
-99.9% (1944/1946, local coverlet, GameObject-filtered run)
+99.9% (1944/1946, local coverlet, GameObject-filtered run; residual line 188 is an unreachable closing brace)
 
 TestsAdded:
-7 (GameObjectGenericEventArityTests.cs: direct multi-arity generic-event invocations)
+10 (7 GameObjectGenericEventArityTests.cs + 3 GameObjectLatestCoverageTests.cs)
 
 Commit:
 test: coverage GameObject.cs
 
 Status:
-PARTIALLY_REMEDIATED
+PARTIALLY_REMEDIATED (residual line 188 BLOCKED_BY_PRODUCTION_CODE)
 File:
 pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
 
@@ -3714,3 +3714,20 @@ test: coverage Collision.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs
+
+CoverageBefore:
+98.1% (SonarCloud; Line: 100.0%, Branch: 92.5%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (244/244, local coverlet, full FileDialog suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage WindowsFilePicker.cs
+
+Status:
+ALREADY_REMEDIATED

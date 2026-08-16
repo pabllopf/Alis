@@ -199,6 +199,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
   "pabllopf-official_alis:6_Ideation/Math/src/CryptoRandomNumberGenerator.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CryptoRandomNumberGenerator.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Collision/Collision.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Collision/Collision.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/Windows/WindowsFilePicker.cs"
  ]
 }
