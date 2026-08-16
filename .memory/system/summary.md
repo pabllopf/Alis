@@ -3953,3 +3953,20 @@ test: coverage NetworkServerManager.cs
 
 Status:
 COMPLETE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs
+
+CoverageBefore:
+99.2% (SonarCloud; Line: 100.0%, Branch: 96.4%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (198/198, local coverlet, BreakableBody-filtered run)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage BreakableBody.cs
+
+Status:
+ALREADY_REMEDIATED

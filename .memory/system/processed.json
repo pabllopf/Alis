@@ -214,6 +214,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Controllers/GravityController.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BreakableBody.cs"
  ]
 }
