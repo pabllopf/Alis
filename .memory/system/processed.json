@@ -146,6 +146,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
-  "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs"
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs"
  ]
 }

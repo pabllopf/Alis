@@ -2795,3 +2795,20 @@ test: coverage ContactSolver.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs
+
+CoverageBefore:
+88.7% (SonarCloud; Line: 88.5%, Branch: 90.0%)
+
+CoverageAfter:
+97.8% (221/226, local coverlet, full Network suite)
+
+TestsAdded:
+0 (5 remaining lines are an unreachable defensive overflow catch)
+
+Commit:
+test: coverage WebSocketFrameReader.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
