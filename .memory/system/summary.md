@@ -2830,3 +2830,20 @@ test: coverage UnixPlayerBase.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
+
+CoverageBefore:
+89.1% (SonarCloud; Line: 83.7%, Branch: 100.0%)
+
+CoverageAfter:
+83.7% (400/478, local coverlet, full Network suite; unchanged)
+
+TestsAdded:
+0 (39 WriteEvent lines need EventSource enablement that is inert on this runtime)
+
+Commit:
+test: coverage Events.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
