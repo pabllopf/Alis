@@ -57,20 +57,39 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
         }
 
         /// <summary>
-        ///     Tests that clearing a neighbor stored at index one removes it.
+        ///     Tests that mark neighbor with a triangle sharing the (0,1) edge links both directions.
         /// </summary>
         [Fact]
-        public void ClearNeighbors_WithNeighborAtIndexOne_ClearsIt()
+        public void MarkNeighbor_WithEdge01Shared_LinksBoth()
         {
             TriangulationPoint a = new TriangulationPoint(0, 0);
             TriangulationPoint b = new TriangulationPoint(4, 0);
             TriangulationPoint c = new TriangulationPoint(0, 4);
+            TriangulationPoint d = new TriangulationPoint(4, 4);
             DelaunayTriangle first = new DelaunayTriangle(a, b, c);
-            DelaunayTriangle second = new DelaunayTriangle(a, c, b);
+            DelaunayTriangle second = new DelaunayTriangle(a, b, d);
 
             first.MarkNeighbor(second);
 
-            first.ClearNeighbors(second);
+            Assert.Same(second, first.Neighbors[2]);
+        }
+
+        /// <summary>
+        ///     Tests that clearing a neighbor stored at index one removes it.
+        /// </summary>
+        [Fact]
+        public void ClearNeighbor_WithNeighborAtIndexOne_ClearsIt()
+        {
+            TriangulationPoint a = new TriangulationPoint(0, 0);
+            TriangulationPoint b = new TriangulationPoint(4, 0);
+            TriangulationPoint c = new TriangulationPoint(0, 4);
+            TriangulationPoint d = new TriangulationPoint(4, 4);
+            DelaunayTriangle first = new DelaunayTriangle(a, b, c);
+            DelaunayTriangle second = new DelaunayTriangle(a, c, d);
+
+            first.MarkNeighbor(second);
+
+            first.ClearNeighbor(second);
 
             Assert.Null(first.Neighbors[1]);
         }

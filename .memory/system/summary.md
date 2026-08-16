@@ -3783,3 +3783,20 @@ test: coverage SimplePriorityQueue.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs
+
+CoverageBefore:
+98.7% (SonarCloud; Line: 100.0%, Branch: 95.7%)
+
+CoverageAfter:
+100.0% (414/414, local coverlet, DelaunayTriangle-filtered run)
+
+TestsAdded:
+3 (DelaunayTriangleNeighborTests.cs: edge (1,2)/(0,1) matching + ClearNeighbor index-1)
+
+Commit:
+test: coverage DelaunayTriangle.cs
+
+Status:
+REMEDIATED
