@@ -176,6 +176,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island/Island.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/EarclipDecomposer.cs"
  ]
 }

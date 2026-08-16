@@ -3336,3 +3336,20 @@ test: coverage Island.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/EarclipDecomposer.cs
+
+CoverageBefore:
+94.6% (SonarCloud; Line: 95.9%, Branch: 91.3%)
+
+CoverageAfter:
+99.1% (438/442, local coverlet, EarclipDecomposer-filtered run)
+
+TestsAdded:
+0 (wraparound-duplicate guard is mathematically dead)
+
+Commit:
+test: coverage EarclipDecomposer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
