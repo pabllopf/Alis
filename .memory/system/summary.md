@@ -3283,3 +3283,21 @@ test: coverage ConsoleLogOutput.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
+
+CoverageBefore:
+93.9% (SonarCloud; local coverlet 93.6% line)
+
+CoverageAfter:
+93.6% line (157/168, local coverlet, unchanged)
+
+TestsAdded:
+0 (finalizer catch unreachable)
+
+Commit:
+test: coverage StreamAdaptor.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
