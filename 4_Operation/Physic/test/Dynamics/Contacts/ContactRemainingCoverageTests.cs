@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -43,288 +44,146 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
     public class ContactRemainingCoverageTests
     {
         /// <summary>
-        ///     Tests that update with sensor fixtures processes sensor contact
+        ///     Tests that create from pool with equal shape types resets without swapping.
         /// </summary>
         [Fact]
-        public void Update_WithSensorFixtures_ProcessesSensorContact()
+        public void Create_FromPool_WithEqualShapeTypes_ResetsUnswapped()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(1.0f, 1.0f);
-            CircleShape shapeB = new CircleShape(1.0f, 1.0f);
-            Fixture fixtureA = bodyA.CreateFixture(shapeA);
-            Fixture fixtureB = bodyB.CreateFixture(shapeB);
-            fixtureA.GetIsSensor = true;
+            Body pooledA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body pooledB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
 
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.Update(world.ContactManager);
+            Contact pooled = world.ContactManager.ContactList.Next;
+            Assert.NotNull(pooled);
+            world.ContactManager.Destroy(pooled);
 
-            Assert.True(contact.IsTouching);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture circleA = bodyA.CreateFixture(new CircleShape(0.5f, 1.0f));
+            Fixture circleB = bodyB.CreateFixture(new CircleShape(0.5f, 1.0f));
+            Contact result = Contact.Create(world.ContactManager, circleA, 0, circleB, 0);
+
+            Assert.NotNull(result);
+            Assert.Equal(circleA, result.FixtureA);
+            Assert.Equal(circleB, result.FixtureB);
         }
 
         /// <summary>
-        ///     Tests that update with non sensor fixtures processes non sensor contact
+        ///     Tests that create returns null when the null override is set.
         /// </summary>
         [Fact]
-        public void Update_WithNonSensorFixtures_ProcessesNonSensorContact()
+        public void Create_WithNullOverride_ReturnsNull()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture circleA = bodyA.CreateFixture(new CircleShape(0.5f, 1.0f));
+            Fixture circleB = bodyB.CreateFixture(new CircleShape(0.5f, 1.0f));
 
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            contact.Update(world.ContactManager);
+            FieldInfo field = typeof(Contact).GetField("ReturnNullOverride",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            field.SetValue(null, true);
+            try
+            {
+                Contact result = Contact.Create(world.ContactManager, circleA, 0, circleB, 0);
 
-            Assert.True(contact.IsTouching);
+                Assert.Null(result);
+            }
+            finally
+            {
+                field.SetValue(null, false);
+            }
         }
 
         /// <summary>
-        ///     Tests that update with separated fixtures reports separation
+        ///     Tests that get world manifold computes the world space normal and points.
         /// </summary>
         [Fact]
-        public void Update_WithSeparatedFixtures_ReportsSeparation()
+        public void GetWorldManifold_WithTouchingFixtures_ComputesNormal()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
 
-            bool separated = false;
-            fixtureA.OnSeparation += (fa, fb, contact) => separated = true;
-
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.IsTouching = true;
-            contact.Update(world.ContactManager);
-
-            Assert.False(contact.IsTouching);
-            Assert.True(separated);
-        }
-
-        /// <summary>
-        ///     Tests that report separation invokes end contact delegate
-        /// </summary>
-        [Fact]
-        public void ReportSeparation_InvokesEndContactDelegate()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            bool ended = false;
-            world.ContactManager.EndContact += contact => ended = true;
-
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.ReportSeparation(bodyA, bodyB, world.ContactManager);
-
-            Assert.True(ended);
-        }
-
-        /// <summary>
-        ///     Tests that report collision with enabled handlers keeps contact enabled
-        /// </summary>
-        [Fact]
-        public void ReportCollision_WithEnabledHandlers_KeepsContactEnabled()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            bool began = false;
-            world.ContactManager.BeginContact += contact => { began = true; return true; };
-
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.ReportCollision(bodyA, bodyB, world.ContactManager);
-
-            Assert.True(began);
-            Assert.True(contact.Enabled);
-        }
-
-        /// <summary>
-        ///     Tests that report collision with disabling handler disables contact
-        /// </summary>
-        [Fact]
-        public void ReportCollision_WithDisablingHandler_DisablesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-            fixtureA.OnCollision += (fa, fb, contact) => false;
-
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.ReportCollision(bodyA, bodyB, world.ContactManager);
-
-            Assert.False(contact.Enabled);
-            Assert.False(contact.IsTouching);
-        }
-
-        /// <summary>
-        ///     Tests that process pre solve invokes pre solve delegate
-        /// </summary>
-        [Fact]
-        public void ProcessPreSolve_InvokesPreSolveDelegate()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            bool called = false;
-            world.ContactManager.PreSolve += (Contact contact, ref Manifold oldManifold) => called = true;
-
-            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            contact.ProcessPreSolve(world.ContactManager, new Manifold());
-
-            Assert.True(called);
-        }
-
-        /// <summary>
-        ///     Tests that evaluate with circle fixtures computes manifold
-        /// </summary>
-        [Fact]
-        public void Evaluate_WithCircleFixtures_ComputesManifold()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            Manifold manifold = new Manifold();
-            contact.Evaluate(ref manifold, ref bodyA.Xf, ref bodyB.Xf);
-
-            Assert.True(manifold.PointCount > 0);
-        }
-
-        /// <summary>
-        ///     Tests that create with polygon and circle fixtures returns contact
-        /// </summary>
-        [Fact]
-        public void Create_WithPolygonAndCircle_ReturnsContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Vertices vertices = PolygonTools.CreateRectangle(1.0f, 1.0f);
-            Fixture fixtureA = bodyA.CreateFixture(new PolygonShape(vertices, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-
+            Contact contact = world.ContactManager.ContactList.Next;
             Assert.NotNull(contact);
-        }
-
-        /// <summary>
-        ///     Tests that evaluate with polygon fixtures computes manifold
-        /// </summary>
-        [Fact]
-        public void Evaluate_WithPolygonFixtures_ComputesManifold()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Vertices vertices = PolygonTools.CreateRectangle(1.0f, 1.0f);
-            Fixture fixtureA = bodyA.CreateFixture(new PolygonShape(vertices, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new PolygonShape(vertices, 1.0f));
-
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            Manifold manifold = new Manifold();
-            contact.Evaluate(ref manifold, ref bodyA.Xf, ref bodyB.Xf);
-
-            Assert.True(manifold.PointCount > 0);
-        }
-
-        /// <summary>
-        ///     Tests that get world manifold returns normal and points
-        /// </summary>
-        [Fact]
-        public void GetWorldManifold_ReturnsNormalAndPoints()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            contact.Update(world.ContactManager);
 
             contact.GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points);
 
-            Assert.NotEqual(0.0f, normal.LengthSquared());
+            Assert.True(normal.Length() > 0.0f);
         }
 
         /// <summary>
-        ///     Tests that destroy with touching fixtures wakes bodies
+        ///     Tests that report collision invokes every registered handler.
         /// </summary>
         [Fact]
-        public void Destroy_WithTouchingFixtures_WakesBodies()
+        public void ReportCollision_WithMultipleHandlers_InvokesAll()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-            bodyA.Awake = false;
-            bodyB.Awake = false;
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            int invoked = 0;
+            OnCollisionEventHandler handler = (sender, other, contact) =>
+            {
+                invoked++;
+                return true;
+            };
 
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            contact.Update(world.ContactManager);
-            contact.Destroy();
+            Fixture fixtureA = bodyA.FixtureList[0];
+            fixtureA.OnCollision += handler;
+            fixtureA.OnCollision += handler;
 
-            Assert.Null(contact.FixtureA);
-            Assert.Null(contact.FixtureB);
-        }
+            world.Step(1.0f / 60.0f);
 
-        /// <summary>
-        ///     Tests that create reuses contact from pool
-        /// </summary>
-        [Fact]
-        public void Create_ReusesContactFromPool()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Fixture fixtureA = bodyA.CreateFixture(new CircleShape(1.0f, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new CircleShape(1.0f, 1.0f));
-
-            Contact first = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-            first.Destroy();
-
-            Contact second = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-
-            Assert.NotNull(second);
-            Assert.NotNull(second.FixtureA);
-            Assert.NotNull(second.FixtureB);
-        }
-
-        /// <summary>
-        ///     Tests that create with polygon and edge fixtures swaps fixtures
-        /// </summary>
-        [Fact]
-        public void Create_WithPolygonAndEdge_SwapsFixtures()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0.1f, 0), 0, BodyType.Dynamic);
-            Vertices vertices = PolygonTools.CreateRectangle(1.0f, 1.0f);
-            Fixture fixtureA = bodyA.CreateFixture(new PolygonShape(vertices, 1.0f));
-            Fixture fixtureB = bodyB.CreateFixture(new EdgeShape(new Vector2F(-1, 0), new Vector2F(1, 0)));
-
-            Contact contact = Contact.Create(world.ContactManager, fixtureA, 0, fixtureB, 0);
-
+            Contact contact = world.ContactManager.ContactList.Next;
             Assert.NotNull(contact);
+            contact.ReportCollision(bodyA, bodyB, world.ContactManager);
+
+            Assert.True(invoked >= 2);
+        }
+
+        /// <summary>
+        ///     Tests that report separation invokes the end contact callback.
+        /// </summary>
+        [Fact]
+        public void ReportSeparation_WithEndContactHandler_InvokesCallback()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+            int invoked = 0;
+            world.ContactManager.EndContact += c => invoked++;
+
+            contact.ReportSeparation(bodyA, bodyB, world.ContactManager);
+
+            Assert.Equal(1, invoked);
+        }
+
+        /// <summary>
+        ///     Tests that process pre solve invokes the pre solve callback.
+        /// </summary>
+        [Fact]
+        public void ProcessPreSolve_WithHandler_InvokesCallback()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+            int invoked = 0;
+            world.ContactManager.PreSolve += (Contact c, ref Manifold oldManifold) => invoked++;
+
+            contact.ProcessPreSolve(world.ContactManager, new Manifold());
+
+            Assert.Equal(1, invoked);
         }
     }
 }

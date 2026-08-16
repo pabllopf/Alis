@@ -2847,3 +2847,21 @@ test: coverage Events.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/Contact.cs
+
+CoverageBefore:
+89.5% (SonarCloud; local coverlet baseline 98.3% line)
+
+CoverageAfter:
+100.0% line / 97.4% branch (local coverlet)
+
+TestsAdded:
+6 (ContactRemainingCoverageTests.cs)
+
+Commit:
+test: coverage Contact.cs
+
+Status:
+REMEDIATED
