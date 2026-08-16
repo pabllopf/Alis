@@ -2321,3 +2321,21 @@ test: coverage Monitor.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs
+
+CoverageBefore:
+60.0% (SonarCloud; Line: 52.4% = 22/42, Branch: 100.0%)
+
+CoverageAfter:
+100.0% (42/42, local coverlet hook-enabled)
+
+TestsAdded:
+5 (WorkArea, ContentScale, UserPointer roundtrip/zero, boxed ToString) + MonitorExecutionTests.cs (3)
+
+Commit:
+test: coverage Monitor.cs
+
+Status:
+REMEDIATED

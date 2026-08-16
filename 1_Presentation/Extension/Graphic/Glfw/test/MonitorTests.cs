@@ -115,5 +115,16 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             Assert.Equal(IntPtr.Zero, monitor.UserPointer);
         }
+
+        /// <summary>
+        ///     Tests that the boxed string representation of a monitor matches its handle.
+        /// </summary>
+        [Fact]
+        public void ToString_Boxed_ReturnsHandleString()
+        {
+            object boxed = Monitor.None;
+
+            Assert.Equal(IntPtr.Zero.ToString(), boxed.ToString());
+        }
     }
 }
