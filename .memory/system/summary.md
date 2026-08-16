@@ -3214,3 +3214,20 @@ test: coverage StreamAdaptor.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs
+
+CoverageBefore:
+94.0% (SonarCloud; Line: 91.9%, Branch: 100.0%)
+
+CoverageAfter:
+91.9% (136/148, local coverlet, full Logging suite; unchanged)
+
+TestsAdded:
+0 (private AutoFlush writer; Flush/Dispose swallow catches unreachable)
+
+Commit:
+test: coverage FileLogOutput.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
