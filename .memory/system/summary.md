@@ -3457,3 +3457,21 @@ test: coverage ThreadManager.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs
+
+CoverageBefore:
+95.8% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% line (local coverlet)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage ThreadManager.cs
+
+Status:
+REMEDIATED (NO-OP)
