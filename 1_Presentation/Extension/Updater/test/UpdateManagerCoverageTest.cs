@@ -245,6 +245,63 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
+        ///     Tests that download latest version async downloads the file and reports progress
+        /// </summary>
+        [Fact]
+        public void DownloadLatestVersionAsync_DownloadsFile_AndReportsProgress()
+        {
+            using LoopbackHttpServer server = LoopbackHttpServer.Start();
+            string expectedContent = "latest-package-" + Guid.NewGuid().ToString("N");
+            string fileName = "latest-downloaded-" + Guid.NewGuid().ToString("N") + ".zip";
+            server.SetResponse("/" + fileName, expectedContent);
+
+            UpdateManager sut = CreateManagerFast();
+            sut.ContinueDelayMilliseconds = 0;
+            float capturedProgress = -1;
+            System.Collections.Generic.List<string> capturedMessages = new System.Collections.Generic.List<string>();
+            sut.UpdateProgressChanged += (progress, message) =>
+            {
+                capturedProgress = progress;
+                capturedMessages.Add(message);
+            };
+
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            try
+            {
+                string result = sut.DownloadLatestVersionAsync(server.Uri + fileName, "v1.0.0").GetAwaiter().GetResult();
+
+                Assert.NotNull(result);
+                Assert.Equal(filePath, result);
+                Assert.True(File.Exists(result));
+                Assert.Equal(expectedContent, File.ReadAllText(result));
+                Assert.Equal(0.5f, capturedProgress, 4);
+                Assert.Contains(capturedMessages, message => message.Contains("Downloading the latest version 'v1.0.0'", StringComparison.OrdinalIgnoreCase));
+            }
+            finally
+            {
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that download latest version async throws when the download url is invalid
+        /// </summary>
+        [Fact]
+        public void DownloadLatestVersionAsync_WhenDownloadUrlIsInvalid_Throws()
+        {
+            UpdateManager sut = CreateManagerFast();
+            sut.ContinueDelayMilliseconds = 0;
+
+            Exception ex = Assert.ThrowsAny<Exception>(() =>
+                sut.DownloadLatestVersionAsync("http://127.0.0.1:1/invalid/package.zip", "v1.0.0").GetAwaiter().GetResult());
+
+            Assert.NotNull(ex);
+        }
+
+        /// <summary>
         /// Creates the manager fast using the specified version to install
         /// </summary>
         /// <param name="versionToInstall">The version to install</param>

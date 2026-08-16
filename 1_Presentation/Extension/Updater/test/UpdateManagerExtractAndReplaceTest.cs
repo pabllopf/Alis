@@ -33,6 +33,7 @@ using System.IO;
 using System.IO.Compression;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
+using Alis.Extension.Updater.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -128,6 +129,47 @@ namespace Alis.Extension.Updater.Test
 
             Assert.Contains("invalid extension", ex.Message, StringComparison.OrdinalIgnoreCase);
             Assert.True(caseId >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that execute package extraction with a dmg package runs the dmg extraction path
+        /// </summary>
+        [MacOsOnly]
+        public void ExecutePackageExtraction_WithDmgPackage_RunsDmgExtraction()
+        {
+            using TempFolder temp = TempFolder.Create();
+            string programFolder = Path.Combine(temp.Path, "program");
+            string dmgPath = Path.Combine(temp.Path, "fake.dmg");
+            File.WriteAllText(dmgPath, "dummy");
+
+            UpdateManager sut = CreateManagerFast(programFolder: programFolder);
+
+            sut.ExecutePackageExtraction(dmgPath, "dmg");
+
+            Assert.True(Directory.Exists(programFolder));
+        }
+
+        /// <summary>
+        ///     Tests that execute package extraction with a zip package runs the zip extraction path
+        /// </summary>
+        [Fact]
+        public void ExecutePackageExtraction_WithZipPackage_RunsZipExtraction()
+        {
+            using TempFolder temp = TempFolder.Create();
+            string programFolder = Path.Combine(temp.Path, "program");
+            string zipPath = Path.Combine(temp.Path, "fake.zip");
+            using (ZipArchive zip = ZipFile.Open(zipPath, ZipArchiveMode.Create))
+            {
+                ZipArchiveEntry entry = zip.CreateEntry("content/readme.txt", CompressionLevel.Fastest);
+                using StreamWriter writer = new StreamWriter(entry.Open());
+                writer.Write("hello");
+            }
+
+            UpdateManager sut = CreateManagerFast(programFolder: programFolder);
+
+            sut.ExecutePackageExtraction(zipPath, "zip");
+
+            Assert.True(File.Exists(Path.Combine(programFolder, "content", "readme.txt")));
         }
 
         /// <summary>
