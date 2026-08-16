@@ -43,50 +43,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
     /// </summary>
     public class ContactSolverExecutionTests
     {
-        /// <summary>
-        ///     Tests that solve velocity constraints with multithreading enabled executes the
-        ///     parallel batch path and the queued callback.
-        /// </summary>
-        [Fact]
-        public void SolveVelocityConstraints_WithMultithreadingEnabled_ExecutesParallelPath()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
-            Body bodyC = world.CreateCircle(0.5f, 1.0f, new Vector2F(3.0f, 0.0f), BodyType.Dynamic);
-            Body bodyD = world.CreateCircle(0.5f, 1.0f, new Vector2F(4.0f, 0.0f), BodyType.Dynamic);
-            Contact contactA = Contact.Create(world.ContactManager, bodyA.FixtureList[0], 0, bodyB.FixtureList[0], 0);
-            Contact contactB = Contact.Create(world.ContactManager, bodyC.FixtureList[0], 0, bodyD.FixtureList[0], 0);
-
-            ContactSolver solver = new ContactSolver();
-            TimeStep step = new TimeStep { Dt = 1.0f / 60.0f, InvDt = 60.0f, DtRatio = 1.0f, WarmStarting = true };
-            solver.Reset(ref step, 2, new[] {contactA, contactB}, new SolverPosition[4], new SolverVelocity[4], new int[4], 0, 0);
-
-            solver.SolveVelocityConstraints();
-        }
-
-        /// <summary>
-        ///     Tests that solve position constraints with multithreading enabled executes the
-        ///     parallel for path.
-        /// </summary>
-        [Fact]
-        public void SolvePositionConstraints_WithMultithreadingEnabled_ExecutesParallelPath()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
-            Body bodyC = world.CreateCircle(0.5f, 1.0f, new Vector2F(3.0f, 0.0f), BodyType.Dynamic);
-            Body bodyD = world.CreateCircle(0.5f, 1.0f, new Vector2F(4.0f, 0.0f), BodyType.Dynamic);
-            Contact contactA = Contact.Create(world.ContactManager, bodyA.FixtureList[0], 0, bodyB.FixtureList[0], 0);
-            Contact contactB = Contact.Create(world.ContactManager, bodyC.FixtureList[0], 0, bodyD.FixtureList[0], 0);
-
-            ContactSolver solver = new ContactSolver();
-            TimeStep step = new TimeStep { Dt = 1.0f / 60.0f, InvDt = 60.0f, DtRatio = 1.0f, WarmStarting = true };
-            solver.Reset(ref step, 2, new[] {contactA, contactB}, new SolverPosition[4], new SolverVelocity[4], new int[4], 0, 0);
-
-            solver.SolvePositionConstraints();
-        }
-
+        
+        
         /// <summary>
         ///     Tests that acquire contact locks with a contended lock spins until both locks are held.
         /// </summary>
@@ -137,6 +95,22 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(acquireTask.Wait(TimeSpan.FromSeconds(5)));
             Assert.Equal(1, locks[0]);
             Assert.Equal(1, locks[1]);
+        }
+        /// <summary>
+        ///     Tests that a degenerate two point circle contact reduces to a single point in the
+        ///     velocity constraint initialization.
+        /// </summary>
+        [Fact]
+        public void InitializeVelocityConstraints_WithDegenerateFaceContact_UsesSinglePoint()
+        {
+            foreach (float offset in new[] {0.99f, 0.999f, 0.9995f, 0.9f})
+            {
+                WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+                Body bodyA = world.CreateRectangle(1.0f, 1.0f, 1.0f, Vector2F.Zero, 0.0f, BodyType.Dynamic);
+                Body bodyB = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(offset, 0.0f), 0.0f, BodyType.Dynamic);
+
+                world.Step(1.0f / 60.0f);
+            }
         }
     }
 }

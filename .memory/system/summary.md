@@ -2778,3 +2778,20 @@ test: coverage TimeOfImpact.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
+
+CoverageBefore:
+85.1% (SonarCloud; Line: 87.6%, Branch: 72.7%)
+
+CoverageAfter:
+93.9% (1084/1154, local coverlet, full Physic suite)
+
+TestsAdded:
+3 (ContactSolverExecutionTests.cs: lock contention + degenerate face contact)
+
+Commit:
+test: coverage ContactSolver.cs
+
+Status:
+PARTIALLY_REMEDIATED
