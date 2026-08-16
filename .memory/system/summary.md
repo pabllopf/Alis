@@ -3145,3 +3145,38 @@ test: coverage Body.cs
 
 Status:
 REMEDIATED (NO-OP)
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Collections/EnumerableHelpers.cs
+
+CoverageBefore:
+92.2% (SonarCloud)
+
+CoverageAfter:
+94.9% line (112/118, local coverlet net8.0 — matches SonarCloud Line 94.9%); Branch 83.3% (5/6)
+
+TestsAdded:
+0 (remaining 3 lines unreachable via public API)
+
+Commit:
+test: coverage EnumerableHelpers.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
+
+CoverageBefore:
+93.8% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% line (local coverlet)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage ImDrawCmd.cs
+
+Status:
+REMEDIATED (NO-OP)
