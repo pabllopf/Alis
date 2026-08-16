@@ -182,6 +182,7 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunction.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Collision/SeparationFunction.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Threading/ThreadManager.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Threading/ThreadManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs"
  ]
 }

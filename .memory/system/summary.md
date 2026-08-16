@@ -3440,3 +3440,20 @@ test: coverage SeparationFunction.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs
+
+CoverageBefore:
+95.8% (SonarCloud; Line: 100.0%, Branch: 83.3%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (36/36, local coverlet, full Thread suite)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage ThreadManager.cs
+
+Status:
+ALREADY_REMEDIATED
