@@ -2356,3 +2356,38 @@ test: coverage AudioReader.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs
+
+CoverageBefore:
+63.5% (SonarCloud)
+
+CoverageAfter:
+100.0% (52/52 executable lines, local coverlet, ImNodes-hook suite subset)
+
+TestsAdded:
+4 (ImPlotStyleAdditionalCoverageTests.cs covering Colors1..Colors19)
+
+Commit:
+test: coverage ImPlotStyle.cs
+
+Status:
+REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP8.cs
+
+CoverageBefore:
+66.7% (212/318, SonarCloud Line: 66.7%)
+
+CoverageAfter:
+84.9% (270/318, local coverlet, full Ui suite)
+
+TestsAdded:
+4 (ImPlotP8ExecutionTests.cs: S8/U8 ref, ShadedG real getters, Stairs float/double/sbyte/byte)
+
+Commit:
+test: coverage ImPlotP8.cs
+
+Status:
+PARTIALLY_REMEDIATED
