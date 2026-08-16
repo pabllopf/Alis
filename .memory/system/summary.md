@@ -3353,3 +3353,20 @@ test: coverage EarclipDecomposer.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientFactory.cs
+
+CoverageBefore:
+94.8% (SonarCloud; Line: 94.4%, Branch: 96.9%)
+
+CoverageAfter:
+97.5% (230/236, local coverlet, WebSocketClientFactory-filtered run)
+
+TestsAdded:
+1 (WebSocketClientFactoryTlsCoverageTests.cs: loopback self-signed TLS handshake attempt)
+
+Commit:
+test: coverage WebSocketClientFactory.cs
+
+Status:
+PARTIALLY_REMEDIATED
