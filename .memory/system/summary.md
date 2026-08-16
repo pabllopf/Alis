@@ -2442,3 +2442,20 @@ test: coverage GLShaderProgramParam.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs
+
+CoverageBefore:
+70.3% (SonarCloud; Line: 71.4%, Branch: 57.1%)
+
+CoverageAfter:
+100.0% (336/336, local coverlet; fake-GL preview mode frame loop)
+
+TestsAdded:
+3 (ContextHandlerExecutionTests.cs: Run loop 60ms + 1.1s average-frames + full Preview)
+
+Commit:
+test: coverage ContextHandler.cs
+
+Status:
+REMEDIATED
