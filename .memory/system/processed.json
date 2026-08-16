@@ -154,6 +154,8 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Archetype.cs",
   "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
-  "pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs"
+  "pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/Util.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/YuPengClipper.cs"
  ]
 }

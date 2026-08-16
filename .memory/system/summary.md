@@ -2951,3 +2951,21 @@ test: coverage Logger.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs
+
+CoverageBefore:
+90.1% (SonarCloud; local coverlet baseline 91.7% line)
+
+CoverageAfter:
+93.8% line (879/937, local coverlet)
+
+TestsAdded:
+10 (WorldPhysicRemainingCoverageTests.cs)
+
+Commit:
+test: coverage WorldPhysic.cs
+
+Status:
+PARTIALLY_REMEDIATED
