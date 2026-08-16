@@ -3851,3 +3851,20 @@ test: coverage DistanceJoint.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs
+
+CoverageBefore:
+99.0% (SonarCloud; Line: 98.8%, Branch: 100.0%)
+
+CoverageAfter:
+99.2% (470/474, local coverlet, NetworkServerManager-filtered run; unchanged)
+
+TestsAdded:
+0 (Dispose swallow catch needs a non-injectable 5s-blocking transport)
+
+Commit:
+test: coverage NetworkServerManager.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
