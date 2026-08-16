@@ -143,6 +143,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/NetworkClientManager.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs"
  ]
 }

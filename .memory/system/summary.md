@@ -2742,3 +2742,21 @@ test: coverage UpdateManager.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
+
+CoverageBefore:
+86.9% (SonarCloud, stale; local coverlet 99.1% line)
+
+CoverageAfter:
+99.1% line (663/669, local coverlet, unchanged)
+
+TestsAdded:
+0 (remaining lines verified dead code)
+
+Commit:
+test: coverage ImGuiStyle.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
