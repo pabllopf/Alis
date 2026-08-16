@@ -3561,3 +3561,20 @@ test: coverage SimpleCombiner.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+
+CoverageBefore:
+96.7% (SonarCloud; Line: 97.4%, Branch: 94.4%)
+
+CoverageAfter:
+97.4% (528/542, local coverlet, FastestStack-filtered run; unchanged)
+
+TestsAdded:
+0 (version guards dead by struct-copy design; Grow clamp needs ~1B elements)
+
+Commit:
+test: coverage FastestStack.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
