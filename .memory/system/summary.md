@@ -3023,3 +3023,20 @@ test: coverage DungeonData.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/YuPengClipper.cs
+
+CoverageBefore:
+91.1% (SonarCloud; Line: 91.1%, Branch: 91.1%)
+
+CoverageAfter:
+97.5% (548/562, local coverlet, YuPengClipper-filtered run)
+
+TestsAdded:
+5 (YuPengClipperExecutionTests.cs: reversed zigzag insertion + degenerate/collinear geometries)
+
+Commit:
+test: coverage YuPengClipper.cs
+
+Status:
+PARTIALLY_REMEDIATED
