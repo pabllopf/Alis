@@ -165,6 +165,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BufferPool.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/BufferPool.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Island/Update.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs"
  ]
 }

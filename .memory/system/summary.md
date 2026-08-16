@@ -3127,3 +3127,21 @@ test: coverage Update.cs
 
 Status:
 REMEDIATED (NO-OP)
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
+
+CoverageBefore:
+93.7% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% line / 98.4% branch (local coverlet)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage Body.cs
+
+Status:
+REMEDIATED (NO-OP)
