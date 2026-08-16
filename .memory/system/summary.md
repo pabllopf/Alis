@@ -2670,3 +2670,21 @@ test: coverage NetworkClientManager.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP9.cs
+
+CoverageBefore:
+80.7% (SonarCloud; local coverlet baseline 79.7% line)
+
+CoverageAfter:
+84.2% line (187/222, local coverlet)
+
+TestsAdded:
+3 (ImPlotP9ExecutionTests.cs)
+
+Commit:
+test: coverage ImPlotP9.cs
+
+Status:
+PARTIAL_BLOCKED_BY_PRODUCTION_CODE
