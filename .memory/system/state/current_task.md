@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
+    pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    88.3% (Line: 91.3%, Branch: 78.3%)
 
     ### Uncovered Lines
-    690
+    13
 
     ### Uncovered Branches
-    112
+    10
 
     ### Method
-    ImGuiIOPtr
+    UnixPlayerBase
 
     ### Complexity / LOC
-    235 / 1001 lines
+    36 / 188 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIOPtr.cs
+//  File:UnixPlayerBase.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using Alis.Core.Aspect.Math.Vector;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     The im gui io ptr
+    ///     The unix player base class
     /// </summary>
-    public struct ImGuiIoPtr
+    /// <seealso cref="IPlayer" />
+    public abstract class UnixPlayerBase : IPlayer
     {
         /// <summary>
-        ///     Gets the value of the native ptr
+        ///     The pause process command
         /// </summary>
-        public IntPtr NativePtr { get; }
+        internal const string PauseProcessCommand = "kill -STOP {0}";
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
+        ///     The resume process command
         /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
+        internal const string ResumeProcessCommand = "kill -CONT {0}";
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
+        ///     The last extracted file
         /// </summary>
-        /// <param name="imGuiIo">The im gui io</param>
-        public ImGuiIoPtr(ImGuiIo imGuiIo)
-        {
-            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
+        internal string _lastExtractedFile;
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiIOPtrTests.cs
+    pabllopf-official_alis:4_Operation/Audio/test/Players/UnixPlayerBaseTests.cs
 
     Priority
-    CRITICAL (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiIOPtr.cs
+    Commit format: test: coverage UnixPlayerBase.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

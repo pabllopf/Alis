@@ -44,14 +44,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     public class ImPlotP11ExecutionTests
     {
         /// <summary>
-        ///     The image offset of the native GImGui context slot
+        ///     The no load mode of the dyld dynamic loader
         /// </summary>
-        private const int GImGuiSlot = 0x4597e0;
-
-        /// <summary>
-        ///     The image offset of the native GImPlot context slot
-        /// </summary>
-        private const int GImPlotSlot = 0x459808;
+        private const int RtlNoLoad = 0x10;
 
         /// <summary>
         ///     The captured unexpected failure message
@@ -74,12 +69,58 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         private static extern IntPtr DyldGetImageName(int index);
 
         /// <summary>
-        ///     The dyld get image header
+        ///     Opens an already loaded dynamic library
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport("libSystem.dylib", EntryPoint = "_dyld_get_image_header")]
-        private static extern IntPtr DyldGetImageHeader(int index);
+        /// <param name="path">The image path</param>
+        /// <param name="mode">The open mode</param>
+        /// <returns>The library handle</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dlopen")]
+        private static extern IntPtr DlOpen(string path, int mode);
+
+        /// <summary>
+        ///     Resolves the address of an exported symbol inside a loaded library
+        /// </summary>
+        /// <param name="handle">The library handle</param>
+        /// <param name="symbol">The symbol name</param>
+        /// <returns>The symbol address</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dlsym")]
+        private static extern IntPtr Dlsym(IntPtr handle, string symbol);
+
+        /// <summary>
+        ///     Returns information about the loaded image that owns the given address
+        /// </summary>
+        /// <param name="address">The address to resolve</param>
+        /// <param name="info">The image information</param>
+        /// <returns>The result</returns>
+        [DllImport("libSystem.dylib", EntryPoint = "dladdr")]
+        private static extern int DlAddr(IntPtr address, ref DlInfo info);
+
+        /// <summary>
+        ///     The image information returned by the dladdr call
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct DlInfo
+        {
+            /// <summary>
+            ///     The file name of the loaded image
+            /// </summary>
+            public IntPtr FileName;
+
+            /// <summary>
+            ///     The base address of the loaded image
+            /// </summary>
+            public IntPtr Base;
+
+            /// <summary>
+            ///     The name of the nearest symbol
+            /// </summary>
+            public IntPtr SymbolName;
+
+            /// <summary>
+            ///     The address of the nearest symbol
+            /// </summary>
+            public IntPtr SymbolAddress;
+        }
 
         /// <summary>
         ///     Creates an ImGui context, binds an ImPlot context to it and starts a new frame.
@@ -116,7 +157,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        ///     Synchronizes the ImGui and ImPlot context pointers of every loaded cimgui image.
+        ///     Synchronizes the ImGui and ImPlot context pointers of every loaded cimgui image. Both
+        ///     slots are resolved through the exported symbol of each image instead of hardcoded
+        ///     offsets, which vary between the x64 and arm64 slices of the native library. The handle
+        ///     opened with RtlNoLoad is never closed because dlclose can unload the image, and every
+        ///     resolved address is verified with dladdr before the write so a stale slot can never
+        ///     fault the test host.
         /// </summary>
         /// <param name="imgui">The imgui context</param>
         /// <param name="implot">The implot context</param>
@@ -130,11 +176,45 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
                 if (name != null && name.Contains("cimgui"))
                 {
-                    IntPtr imageBase = DyldGetImageHeader(i);
-                    Marshal.WriteInt64(imageBase + GImGuiSlot, imgui.ToInt64());
-                    Marshal.WriteInt64(imageBase + GImPlotSlot, implot.ToInt64());
+                    IntPtr handle = DlOpen(name, RtlNoLoad);
+
+                    if (handle != IntPtr.Zero)
+                    {
+                        IntPtr slot = Dlsym(handle, "GImGui");
+
+                        if (slot != IntPtr.Zero && IsLoadedCimgui(slot))
+                        {
+                            Marshal.WriteIntPtr(slot, imgui);
+                        }
+
+                        slot = Dlsym(handle, "GImPlot");
+
+                        if (slot != IntPtr.Zero && IsLoadedCimgui(slot))
+                        {
+                            Marshal.WriteIntPtr(slot, implot);
+                        }
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Verifies that the given address belongs to a currently loaded cimgui image, so that a stale
+        ///     symbol address can never trigger an access violation while synchronizing the context slot.
+        /// </summary>
+        /// <param name="address">The resolved symbol address</param>
+        /// <returns>The bool</returns>
+        private static bool IsLoadedCimgui(IntPtr address)
+        {
+            DlInfo info = new DlInfo();
+
+            if (DlAddr(address, ref info) == 0)
+            {
+                return false;
+            }
+
+            string fileName = Marshal.PtrToStringAnsi(info.FileName);
+            return fileName != null && fileName.Contains("cimgui");
         }
 
         /// <summary>
