@@ -135,6 +135,7 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
   "pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs"
  ]
 }

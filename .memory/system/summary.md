@@ -2582,3 +2582,21 @@ test: coverage VideoFrame.cs
 
 Status:
 REMEDIATED (NO-OP)
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+
+CoverageBefore:
+79.9% (SonarCloud; local coverlet baseline 74.4% line)
+
+CoverageAfter:
+74.4% line / 70.6% branch (local coverlet, unchanged)
+
+TestsAdded:
+0 (13 candidates verified to add zero coverage; not committed)
+
+Commit:
+test: coverage MarchingSquares.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
