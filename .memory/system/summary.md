@@ -3987,3 +3987,74 @@ test: coverage PolygonShape.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
+
+CoverageBefore:
+99.4% (SonarCloud)
+
+CoverageAfter:
+99.9% (503/504 branches measured locally; remaining uncovered branch is dead code at line 472: `i == outoIndex2 ? outoVec : Vertices[i]` — loop guard `i != outoIndex2` makes the outoVec outcome unreachable)
+
+TestsAdded:
+4 (PolygonShapeLatestCoverageTests.cs: ray-cast starting inside, clockwise-rotated AABB upper bounds, CompareTo differing radius, CompareTo differing mass data)
+
+Commit:
+test: coverage PolygonShape.cs
+
+Status:
+PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CommandBuffer.cs
+
+CoverageBefore:
+99.5% (SonarCloud)
+
+CoverageAfter:
+99.5% (0.9945 line-rate measured locally via coverlet on the CommandBuffer filter; the 1 uncovered line — line 363, the closing brace of the `if` block in AssertCreatingEntity() — is an unreachable compiler-generated nop in the Debug build and does not exist as a sequence point in Release)
+
+TestsAdded:
+0 (uncovered line is dead code; no coverable path)
+
+Commit:
+test: coverage CommandBuffer.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
+
+CoverageBefore:
+99.7% (SonarCloud)
+
+CoverageAfter:
+100.0% (line-rate 1.0 and branch-rate 1.0 measured locally via coverlet on the GearJoint filter; both previously uncovered branches — the zero-mass false paths of `_mass > 0.0f ? 1.0f / _mass : 0.0f` at line 413 and `if (mass > 0.0f)` at line 561 — are now exercised by zero inverse-mass/inertia bodies)
+
+TestsAdded:
+2 (GearJointLatestCoverageTests.cs: InitVelocityConstraints_WithZeroMassBodies_ShouldKeepMassZero, SolvePositionConstraints_WithZeroMassBodies_ShouldReturnTrue)
+
+Commit:
+test: coverage GearJoint.cs
+
+Status:
+COMPLETE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTree.cs
+
+CoverageBefore:
+99.8% (SonarCloud)
+
+CoverageAfter:
+100.0% line / 99.9% branch (measured locally via coverlet on the DynamicTree filter: line-rate 1.0, branch-rate 0.9918; both remaining coverable branches — RayCast separation-axis skip at line 398 and Balance double right rotation at line 750 — now 2/2. The last 1/4 at line 728 `IsLeaf() || Height < 2` is the unreachable `leaf && height>=2` combination: leaves always have Height = 0)
+
+TestsAdded:
+2 (DynamicTreeLatestCoverageTests.cs: RayCast_SeparationAxisPositive_WhileSegmentBoxOverlaps_ShouldSkipNode, Balance_DoubleRightRotation_WhenLeftGrandchildOfRightChildIsTaller)
+
+Commit:
+test: coverage DynamicTree.cs
+
+Status:
+COMPLETE
