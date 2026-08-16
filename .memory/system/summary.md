@@ -3091,3 +3091,21 @@ test: coverage BufferPool.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/BufferPool.cs
+
+CoverageBefore:
+93.3% (SonarCloud, stale; local coverlet 91.9% line)
+
+CoverageAfter:
+91.9% line (129/140, local coverlet, unchanged)
+
+TestsAdded:
+0 (remaining lines verified dead code)
+
+Commit:
+test: coverage BufferPool.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
