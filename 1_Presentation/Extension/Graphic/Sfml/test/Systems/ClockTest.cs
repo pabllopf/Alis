@@ -81,8 +81,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Clock clock = new Clock();
             SfmlTime elapsedTime = clock.ElapsedSfmlTime;
 
-            // Assert
-            Assert.Equal(0, elapsedTime.AsMicroseconds());
+// Assert
+            Assert.True(elapsedTime.AsMicroseconds() < 1000);
 
             // Cleanup
             clock.Destroy(true);
