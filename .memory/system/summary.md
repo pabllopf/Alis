@@ -3817,3 +3817,37 @@ test: coverage WebSocketImplementation.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs
+
+CoverageBefore:
+98.7% (SonarCloud; Line: 100.0%, Branch: 95.7%)
+
+CoverageAfter:
+100.0% (207/207 lines, 92/92 branches, local coverlet, DelaunayTriangle-filtered run)
+
+TestsAdded:
+7 (DelaunayTriangleLatestCoverageTests.cs: reversed-order MarkNeighbor edges, constraint-with-outside-P, null-point ToString, reversed EdgeIndex)
+
+Commit:
+test: coverage DelaunayTriangle.cs
+
+Status:
+COMPLETE
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs
+
+CoverageBefore:
+98.8% (SonarCloud; Line: 100.0%, Branch: 87.5%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (294/294, local coverlet, DistanceJoint-filtered run)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage DistanceJoint.cs
+
+Status:
+ALREADY_REMEDIATED
