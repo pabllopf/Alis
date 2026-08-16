@@ -3526,3 +3526,20 @@ test: coverage PingPongManager.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
+
+CoverageBefore:
+96.6% (SonarCloud; Line: 100.0%, Branch: 86.7%, 0 uncovered lines)
+
+CoverageAfter:
+100.0% (178/178, local coverlet, BinaryReaderWriter-filtered run)
+
+TestsAdded:
+0 (no uncovered lines)
+
+Commit:
+test: coverage BinaryReaderWriter.cs
+
+Status:
+ALREADY_REMEDIATED

@@ -187,6 +187,7 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/SimpleCombiner.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Network/src/PingPongManager.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/PingPongManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs"
  ]
 }
