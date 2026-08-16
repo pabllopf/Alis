@@ -3422,3 +3422,21 @@ test: coverage SeparationFunction.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/SeparationFunction.cs
+
+CoverageBefore:
+95.7% (SonarCloud; local coverlet baseline 96.7% line)
+
+CoverageAfter:
+100.0% line / 100.0% branch (local coverlet)
+
+TestsAdded:
+2 (SeparationFunctionDefaultCoverageTests.cs)
+
+Commit:
+test: coverage SeparationFunction.cs
+
+Status:
+REMEDIATED
