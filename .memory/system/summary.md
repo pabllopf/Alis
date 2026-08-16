@@ -2459,3 +2459,20 @@ test: coverage ContextHandler.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs
+
+CoverageBefore:
+70.3% (SonarCloud Line: 71.4%, Branch: 57.1%)
+
+CoverageAfter:
+100.0% (336/336 local coverlet, 100% branches; combined suites incl. e11a6c81b fake-GL execution tests + new deterministic loop test)
+
+TestsAdded:
+1 (ContextHandlerAdditionalCoverageTests.cs: Run_WithoutGraphicsContext_ExecutesLoopBody_ThenThrows)
+
+Commit:
+test: coverage ContextHandler.cs
+
+Status:
+COMPLETE
