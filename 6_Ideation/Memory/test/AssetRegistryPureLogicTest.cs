@@ -40,6 +40,7 @@ namespace Alis.Core.Aspect.Memory.Test
     ///     Tests for AssetRegistry pure logic methods that can be tested without external dependencies.
     ///     These tests cover edge cases in string normalization, hash generation, and hex conversion.
     /// </summary>
+    [Collection("AssetRegistryCollection")]
     public class AssetRegistryPureLogicTest
     {
         // Note: NormalizeResourceKey, MakeSafeTempName, and ToLowerHex are private methods.

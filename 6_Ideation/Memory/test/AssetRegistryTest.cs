@@ -39,6 +39,7 @@ namespace Alis.Core.Aspect.Memory.Test
     /// <summary>
     ///     The asset registry test class
     /// </summary>
+    [Collection("AssetRegistryCollection")]
     public class AssetRegistryTest
     {
         /// <summary>
