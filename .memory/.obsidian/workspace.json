@@ -203,6 +203,8 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/covertall/locks",
+    "system/covertall",
     "system/cache/sonarcloud_cache_20260816_181433.json",
     "system/cache/sonarcloud_cache_20260816_141803.json",
     "system/cache/sonarcloud_cache_20260816_141738.json",
@@ -237,8 +239,6 @@
     "system/state/reanalyze_candidates.json",
     "system/state/deltas_all.json",
     "system/state/deltas.json",
-    "system/cache/sonarcloud_cache_20260812_183911.json",
-    "system/cache/sonarcloud_cache_20260812_183751.json",
     "Sin título.canvas"
   ]
 }
