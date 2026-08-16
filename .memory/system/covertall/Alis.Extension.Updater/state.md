@@ -7,7 +7,7 @@ Test project:
 ./1_Presentation/Extension/Updater/test/Alis.Extension.Updater.Test.csproj
 
 Status:
-IN_PROGRESS
+COMPLETED
 
 Agent:
 covertall-agent-001
@@ -16,7 +16,7 @@ Started:
 2026-08-16T19:12:48Z
 
 Last update:
-2026-08-16T19:30:00Z
+2026-08-16T19:35:00Z
 
 Initial coverage:
 92.93% (946/1018 lines in Updater/src)
@@ -59,7 +59,7 @@ Remaining opportunities:
   because the path always derives from Path.GetFullPath.
 
 Last commit:
-pending
+pending (commit created: test: cover dmg branch and download flow of UpdateManager.cs)
 
 Attempts:
 1
