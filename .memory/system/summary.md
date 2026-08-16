@@ -3970,3 +3970,20 @@ test: coverage BreakableBody.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs
+
+CoverageBefore:
+99.4% (SonarCloud; Line: 100.0%, Branch: 97.4%)
+
+CoverageAfter:
+96.5% (498/516, local coverlet, PolygonShape-filtered run)
+
+TestsAdded:
+2 (PolygonShapeExecutionTests.cs: ray-cast miss + rotated AABB)
+
+Commit:
+test: coverage PolygonShape.cs
+
+Status:
+PARTIALLY_REMEDIATED

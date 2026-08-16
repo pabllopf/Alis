@@ -215,6 +215,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Controllers/GravityController.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BreakableBody.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/BreakableBody.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Collision/Shapes/PolygonShape.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs"
  ]
 }
