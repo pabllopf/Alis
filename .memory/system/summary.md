@@ -2564,3 +2564,21 @@ test: coverage BrowserPlayer.cs
 
 Status:
 PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
+
+CoverageBefore:
+78.3% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% (local coverlet, line/branch 1.0)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage VideoFrame.cs
+
+Status:
+REMEDIATED (NO-OP)
