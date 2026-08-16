@@ -3005,3 +3005,21 @@ test: coverage Scene.cs
 
 Status:
 PARTIALLY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs
+
+CoverageBefore:
+92.2% (SonarCloud; local coverlet baseline 91.3% line)
+
+CoverageAfter:
+100.0% line / 100.0% branch (local coverlet)
+
+TestsAdded:
+3 (DungeonDataValidateCoverageTests.cs)
+
+Commit:
+test: coverage DungeonData.cs
+
+Status:
+REMEDIATED
