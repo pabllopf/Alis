@@ -3180,3 +3180,20 @@ test: coverage ImDrawCmd.cs
 
 Status:
 REMEDIATED (NO-OP)
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
+
+CoverageBefore:
+93.6% (SonarCloud; Line: 95.3%, Branch: 78.6%)
+
+CoverageAfter:
+100.0% (668/668, local coverlet, Update-filtered Ecs run)
+
+TestsAdded:
+1 (UpdateArity9CoverageTests.cs: arity-9 non-range Run)
+
+Commit:
+test: coverage Update.cs
+
+Status:
+REMEDIATED
