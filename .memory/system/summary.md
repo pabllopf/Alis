@@ -3578,3 +3578,37 @@ test: coverage FastestStack.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs
+
+CoverageBefore:
+93.8% (SonarCloud; local coverlet 93.8% line, 104/111)
+
+CoverageAfter:
+93.8% line (104/111, local coverlet, net8.0 — unchanged)
+
+TestsAdded:
+0 (line 110 is the blocking game-loop entry point; deterministically unreachable)
+
+Commit:
+none — no tests added, nothing to stage
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
+File:
+pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs
+
+CoverageBefore:
+96.8% (SonarCloud; Line: 98.0%, Branch: 92.2%)
+
+CoverageAfter:
+98.0% (404/412, local coverlet, full GoogleDrive suite; unchanged)
+
+TestsAdded:
+0 (InitializeAsync catch unreachable: FromAccessToken accepts any string, initializer hardcoded)
+
+Commit:
+test: coverage GoogleDriveCloudManager.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
