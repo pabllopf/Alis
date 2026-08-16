@@ -2865,3 +2865,20 @@ test: coverage Contact.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+
+CoverageBefore:
+90.0% (SonarCloud; Line: 87.5%, Branch: 100.0%)
+
+CoverageAfter:
+100.0% (32/32, local coverlet, hook-enabled full Glfw suite)
+
+TestsAdded:
+0 (committed WindowOpacityExecutionTests already cover the native lines with the hook)
+
+Commit:
+test: coverage Window.cs
+
+Status:
+ALREADY_REMEDIATED
