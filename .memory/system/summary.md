@@ -2600,3 +2600,21 @@ test: coverage MarchingSquares.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs
+
+CoverageBefore:
+80.1% (SonarCloud; local coverlet baseline 88.8% line)
+
+CoverageAfter:
+97.0% line (164/169, local coverlet)
+
+TestsAdded:
+6 (WebSocketNetworkTransportFailureCoverageTests.cs)
+
+Commit:
+test: coverage WebSocketNetworkTransport.cs
+
+Status:
+PARTIALLY_REMEDIATED
