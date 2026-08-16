@@ -1,22 +1,24 @@
-# Result: Constant.cs
+# Result: Constant.cs (Physic)
 
-File: `6_Ideation/Math/src/Util/Constant.cs`
-CoverageBefore: 0.0% (SonarCloud; const LOC artifact)
-CoverageAfter: Not measurable (0 instrumented lines; coverlet emits no coverage for const classes)
-TestsAdded: 0 (already covered by committed ConstantTest.cs / ConstantTests.cs / ConstantRemainingCoverageTests.cs)
+File: `4_Operation/Physic/src/Common/Constant.cs`
+CoverageBefore: 0.0% (SonarCloud; const-only class artifact)
+CoverageAfter: Not measurable (coverlet emits no class for const-only classes)
+TestsAdded: 0 (already covered by committed ConstantTest.cs / ConstantRemainingCoverageTests.cs)
 Commit: test: coverage Constant.cs
 Status: ALREADY_REMEDIATED
 
 ## Summary
 
-Constant.cs is a pure `static` const class (12 float constants: Epsilon, Euler, E, Log10E,
-Log2E, Pi, PiOver2, PiOver4, TwoPi, Tau). It contains no executable statements, so coverlet
-produces no `<class>` entry for it and line coverage is not a meaningful metric (SonarCloud's
-"uncovered lines" are const declaration lines that can never be hit). The committed
-`ConstantTest.cs` / `ConstantTests.cs` / `ConstantRemainingCoverageTests.cs` (40 tests) assert
-every constant value and the documented epsilon semantics.
+`Constant` is an internal static class of two compile-time `const float` fields
+(`Pi = (float)Math.PI`, `Tau = (float)(Math.PI * 2.0)`). Constant initializers are evaluated at
+compile time, so the type emits zero executable IL and coverlet omits it from the report —
+SonarCloud's 2 "uncovered lines" are a const-declaration artifact, identical to the KeyCodes
+enum case. Committed `ConstantTest.cs` (4 tests) + `ConstantRemainingCoverageTests.cs` assert
+the values.
 
 ## Verification
 
-- Constant filter (net8.0, Debug): 40 passed, 0 failed, 0 skipped.
-- Coverlet: no `<class>` entry for Constant.cs → not instrumentable, nothing to remediate.
+- `dotnet test Alis.Core.Physic.Test.csproj -c Debug -f net8.0 --filter
+  "FullyQualifiedName~Constant"`: 6 passed, 0 failed, 0 skipped.
+- Local coverlet (XPlat Code Coverage, cobertura): no `Constant` class emitted (no executable
+  lines).

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c451b3fb-75d7-41ca-95ed-b2eaf24ae179" name="@MacBook-Pro-de-Pablo 2026-08-15 23:25:04" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-08-15T23:25:04.5808820+01:00" queuing="2026-08-15T23:25:04.5808820+01:00" start="2026-08-15T23:25:02.5780810+01:00" finish="2026-08-15T23:25:04.5833670+01:00" />
+  <TestSettings name="default" id="01daae87-f387-40d5-b15e-952585b87cf0">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-08-15_23_25_04" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="21763744-bef6-46fb-92af-92f5a5dd8bef" testId="47aba086-07ce-94ce-7c4e-3b7678cfce2b" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetRequiredInstanceExtensions_ReturnsArray" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0003081" startTime="2026-08-15T23:25:04.1408270+01:00" endTime="2026-08-15T23:25:04.1408270+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21763744-bef6-46fb-92af-92f5a5dd8bef" />
+    <UnitTestResult executionId="01b7742f-49a6-4ca8-90e4-6d4729201f29" testId="a9f9b5a5-9eb5-753b-3e0b-c40b916f2137" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_EmptyProcName_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0048656" startTime="2026-08-15T23:25:04.1361180+01:00" endTime="2026-08-15T23:25:04.1361260+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01b7742f-49a6-4ca8-90e4-6d4729201f29" />
+    <UnitTestResult executionId="b899eda7-60a9-48bf-8ae5-a554ba61f461" testId="96e6d015-528f-4cc9-4be1-4f09ba698b59" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_NullVulkan_ReturnsZeroOrAddress" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001009" startTime="2026-08-15T23:25:04.1401990+01:00" endTime="2026-08-15T23:25:04.1401990+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b899eda7-60a9-48bf-8ae5-a554ba61f461" />
+    <UnitTestResult executionId="66008329-b357-4a4c-9d52-ca4b423d8201" testId="49980dbf-72d2-df53-fd21-5ebcad21a8ae" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000268" startTime="2026-08-15T23:25:04.1411860+01:00" endTime="2026-08-15T23:25:04.1411860+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="66008329-b357-4a4c-9d52-ca4b423d8201" />
+    <UnitTestResult executionId="2c7c5605-6aca-4f46-af1a-2f39aac56734" testId="4fd91965-8d19-6a83-eaac-1cc986cc3cc6" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_IsSupported_NoDisplay_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000372" startTime="2026-08-15T23:25:04.1417680+01:00" endTime="2026-08-15T23:25:04.1417680+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c7c5605-6aca-4f46-af1a-2f39aac56734" />
+    <UnitTestResult executionId="df06a4f8-b96a-459c-af0e-dd316d828817" testId="92ca0049-5ff6-5992-f3ff-ea4cda335fcb" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_InvalidProcName_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000396" startTime="2026-08-15T23:25:04.1415940+01:00" endTime="2026-08-15T23:25:04.1415940+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df06a4f8-b96a-459c-af0e-dd316d828817" />
+    <UnitTestResult executionId="999d3c6f-d541-44d7-960d-91c5b2c364cc" testId="c216e324-e4a3-5918-b948-684edead2935" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_IsSupported_NoDisplay_ReturnsBool" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000831" startTime="2026-08-15T23:25:04.1414130+01:00" endTime="2026-08-15T23:25:04.1414130+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="999d3c6f-d541-44d7-960d-91c5b2c364cc" />
+    <UnitTestResult executionId="0c07a9f4-2106-4ba2-a266-17950dfc3b07" testId="98c6d3e5-0536-1082-512e-ee3562593dd3" testName="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetRequiredInstanceExtensions_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000250" startTime="2026-08-15T23:25:04.1410090+01:00" endTime="2026-08-15T23:25:04.1410090+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c07a9f4-2106-4ba2-a266-17950dfc3b07" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_InvalidProcName_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="92ca0049-5ff6-5992-f3ff-ea4cda335fcb">
+      <Execution id="df06a4f8-b96a-459c-af0e-dd316d828817" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetInstanceProcAddress_InvalidProcName_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetRequiredInstanceExtensions_ReturnsArray" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="47aba086-07ce-94ce-7c4e-3b7678cfce2b">
+      <Execution id="21763744-bef6-46fb-92af-92f5a5dd8bef" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetRequiredInstanceExtensions_ReturnsArray" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetRequiredInstanceExtensions_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="98c6d3e5-0536-1082-512e-ee3562593dd3">
+      <Execution id="0c07a9f4-2106-4ba2-a266-17950dfc3b07" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetRequiredInstanceExtensions_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_IsSupported_NoDisplay_ReturnsBool" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="c216e324-e4a3-5918-b948-684edead2935">
+      <Execution id="999d3c6f-d541-44d7-960d-91c5b2c364cc" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_IsSupported_NoDisplay_ReturnsBool" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_NullVulkan_ReturnsZeroOrAddress" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="96e6d015-528f-4cc9-4be1-4f09ba698b59">
+      <Execution id="b899eda7-60a9-48bf-8ae5-a554ba61f461" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetInstanceProcAddress_NullVulkan_ReturnsZeroOrAddress" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_IsSupported_NoDisplay_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="4fd91965-8d19-6a83-eaac-1cc986cc3cc6">
+      <Execution id="2c7c5605-6aca-4f46-af1a-2f39aac56734" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_IsSupported_NoDisplay_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_EmptyProcName_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="a9f9b5a5-9eb5-753b-3e0b-c40b916f2137">
+      <Execution id="01b7742f-49a6-4ca8-90e4-6d4729201f29" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetInstanceProcAddress_EmptyProcName_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanTests.Vulkan_GetInstanceProcAddress_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="49980dbf-72d2-df53-fd21-5ebcad21a8ae">
+      <Execution id="66008329-b357-4a4c-9d52-ca4b423d8201" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanTests" name="Vulkan_GetInstanceProcAddress_DoesNotThrow" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="47aba086-07ce-94ce-7c4e-3b7678cfce2b" executionId="21763744-bef6-46fb-92af-92f5a5dd8bef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a9f9b5a5-9eb5-753b-3e0b-c40b916f2137" executionId="01b7742f-49a6-4ca8-90e4-6d4729201f29" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="96e6d015-528f-4cc9-4be1-4f09ba698b59" executionId="b899eda7-60a9-48bf-8ae5-a554ba61f461" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49980dbf-72d2-df53-fd21-5ebcad21a8ae" executionId="66008329-b357-4a4c-9d52-ca4b423d8201" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4fd91965-8d19-6a83-eaac-1cc986cc3cc6" executionId="2c7c5605-6aca-4f46-af1a-2f39aac56734" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92ca0049-5ff6-5992-f3ff-ea4cda335fcb" executionId="df06a4f8-b96a-459c-af0e-dd316d828817" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c216e324-e4a3-5918-b948-684edead2935" executionId="999d3c6f-d541-44d7-960d-91c5b2c364cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98c6d3e5-0536-1082-512e-ee3562593dd3" executionId="0c07a9f4-2106-4ba2-a266-17950dfc3b07" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="8" executed="8" passed="8" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.04]   Discovering: Alis.Extension.Graphic.Glfw.Test (method display = ClassAndMethod, method display options = None)
+[xUnit.net 00:00:00.16]   Discovered:  Alis.Extension.Graphic.Glfw.Test (found 588 test cases)
+[xUnit.net 00:00:00.17]   Starting:    Alis.Extension.Graphic.Glfw.Test (parallel test collections = off, stop on fail = off)
+objc[57356]: Class GLFWHelper is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x11e651150) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x11e969bb8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[57356]: Class GLFWApplicationDelegate is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x11e6511a0) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x11e969c08). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[57356]: Class GLFWWindowDelegate is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x11e6511c8) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x11e969c30). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[57356]: Class GLFWContentView is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x11e651218) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x11e969c80). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[57356]: Class GLFWWindow is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x11e651290) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x11e969cf8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+[xUnit.net 00:00:00.21]   Finished:    Alis.Extension.Graphic.Glfw.Test
+</StdOut>
+    </Output>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>

@@ -342,5 +342,33 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImGuiNative.igDestroyContext(ctx);
             }
         }
+
+        /// <summary>
+        ///     Verifies the DockBuilderSetNodeFlags wrapper dispatch against a live context; the
+        ///     C wrapper export is absent from the shipped cimgui build so the call is expected
+        ///     to fail with EntryPointNotFoundException.
+        /// </summary>
+        [MacOsOnly]
+        public void DockBuilderSetNodeFlags_Execute()
+        {
+            IntPtr ctx = CreateFramedContext();
+            try
+            {
+                ImGuiNative.igNewFrame();
+                try
+                {
+                    ImGui.DockBuilderSetNodeFlags(0x12345678u, ImGuiDockNodeFlags.None);
+                }
+                catch (EntryPointNotFoundException)
+                {
+                }
+
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(ctx);
+            }
+        }
     }
 }

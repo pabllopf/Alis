@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c1293495-2bcf-4083-bbff-f333d4a318e3" name="@MacBook-Pro-de-Pablo 2026-08-15 23:27:38" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-08-15T23:27:38.4332420+01:00" queuing="2026-08-15T23:27:38.4332420+01:00" start="2026-08-15T23:27:36.4411070+01:00" finish="2026-08-15T23:27:38.4358450+01:00" />
+  <TestSettings name="default" id="28583f18-9e7a-45ab-a14e-62f912bc95e7">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-08-15_23_27_38" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="23ee6a9c-681d-47f3-9b17-5ba38c8f0167" testId="cf71173d-eb83-e702-c35f-4b1c1c1ab509" testName="Alis.Extension.Graphic.Glfw.Test.VulkanProbeTests.Probe_GetRequiredInstanceExtensions" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0036891" startTime="2026-08-15T23:27:38.0416110+01:00" endTime="2026-08-15T23:27:38.0416210+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23ee6a9c-681d-47f3-9b17-5ba38c8f0167" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Alis.Extension.Graphic.Glfw.Test.VulkanProbeTests.Probe_GetRequiredInstanceExtensions" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/glfw/test/bin/debug/lib/alis.extension.graphic.glfw.test.dll" id="cf71173d-eb83-e702-c35f-4b1c1c1ab509">
+      <Execution id="23ee6a9c-681d-47f3-9b17-5ba38c8f0167" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/Alis.Extension.Graphic.Glfw.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Glfw.Test.VulkanProbeTests" name="Probe_GetRequiredInstanceExtensions" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="cf71173d-eb83-e702-c35f-4b1c1c1ab509" executionId="23ee6a9c-681d-47f3-9b17-5ba38c8f0167" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.03]   Discovering: Alis.Extension.Graphic.Glfw.Test (method display = ClassAndMethod, method display options = None)
+[xUnit.net 00:00:00.16]   Discovered:  Alis.Extension.Graphic.Glfw.Test (found 589 test cases)
+[xUnit.net 00:00:00.16]   Starting:    Alis.Extension.Graphic.Glfw.Test (parallel test collections = off, stop on fail = off)
+objc[71909]: Class GLFWHelper is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x1546f9150) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x154a49bb8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[71909]: Class GLFWApplicationDelegate is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x1546f91a0) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x154a49c08). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[71909]: Class GLFWWindowDelegate is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x1546f91c8) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x154a49c30). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[71909]: Class GLFWContentView is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x1546f9218) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x154a49c80). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[71909]: Class GLFWWindow is implemented in both /opt/homebrew/Cellar/glfw/3.5.1/lib/libglfw.3.5.dylib (0x1546f9290) and /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/bin/Debug/lib/glfw.dylib (0x154a49cf8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+VULKANPROBE: returned count=0
+[xUnit.net 00:00:00.20]   Finished:    Alis.Extension.Graphic.Glfw.Test
+</StdOut>
+    </Output>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>
