@@ -1362,3 +1362,379 @@ Begin by:
 Do not wait for further instructions.
 
 Work autonomously.
+
+
+# AOT COMPATIBILITY — ABSOLUTE RULE
+
+The entire codebase must remain compatible with **AOT compilation**.
+
+All tests and any production-code changes made as part of coverage remediation MUST respect AOT constraints.
+
+## DO NOT USE DYNAMIC CODE
+
+Never introduce or rely on dynamic code generation.
+
+Do NOT use:
+
+```csharp
+System.Linq.Expressions
+System.Reflection.Emit
+DynamicMethod
+ILGenerator
+Expression.Compile()
+Microsoft.CSharp.RuntimeBinder
+dynamic
+```
+
+Do not introduce libraries or test utilities that internally require runtime code generation if an AOT-compatible alternative exists.
+
+---
+
+## DO NOT USE REFLECTION
+
+Do NOT use reflection in tests or production code introduced by the agent.
+
+Never use:
+
+```csharp
+System.Reflection
+typeof(...).GetMethod(...)
+typeof(...).GetProperty(...)
+typeof(...).GetField(...)
+Activator.CreateInstance(...)
+MethodInfo.Invoke(...)
+PropertyInfo.GetValue(...)
+PropertyInfo.SetValue(...)
+FieldInfo.GetValue(...)
+FieldInfo.SetValue(...)
+Assembly.Load(...)
+Assembly.GetTypes()
+```
+
+Do not use reflection merely to access:
+
+* private methods
+* private fields
+* private properties
+* internal implementation details
+
+If functionality cannot be tested without reflection, first look for an existing public API or an AOT-compatible testing approach.
+
+---
+
+## DO NOT BYPASS ENCAPSULATION WITH RUNTIME DISCOVERY
+
+Do not create tests that dynamically discover implementation details.
+
+For example, avoid patterns such as:
+
+```csharp
+var method = typeof(MyClass)
+    .GetMethod("SomePrivateMethod");
+
+method.Invoke(instance, ...);
+```
+
+or:
+
+```csharp
+var property = typeof(MyClass)
+    .GetProperty("SomeProperty");
+
+property.GetValue(instance);
+```
+
+Tests must interact with the system through its normal statically known API.
+
+---
+
+## NO DYNAMIC MOCKING IF IT BREAKS AOT
+
+Moq may be used only when strictly necessary, but verify that the particular usage is compatible with the project's AOT constraints.
+
+Do not introduce mocking mechanisms based on:
+
+* runtime proxy generation
+* dynamic assembly generation
+* runtime IL generation
+
+If a dependency can be replaced with a simple hand-written fake, stub, or test implementation, prefer that approach.
+
+Example:
+
+```csharp
+private sealed class FakeRepository : IRepository
+{
+    public Entity Get()
+    {
+        return new Entity();
+    }
+}
+```
+
+is preferred over introducing a dynamic runtime proxy when the latter creates AOT compatibility concerns.
+
+---
+
+## NO CODE GENERATION IN TESTS
+
+Do not generate C# code at runtime.
+
+Do not compile source code dynamically during tests.
+
+Do not use:
+
+```text
+Roslyn runtime compilation
+CSharpCompilation
+CodeDOM
+runtime scripting
+runtime IL generation
+```
+
+unless the repository explicitly requires testing a compiler/generator component and the existing architecture already supports this in an AOT-safe way.
+
+---
+
+## STATIC AND EXPLICIT TESTS
+
+Tests must be statically analyzable and deterministic.
+
+Prefer:
+
+```csharp
+[Fact]
+public void Method_WhenCondition_ReturnsExpectedResult()
+{
+    var service = new MyService(new FakeDependency());
+
+    var result = service.Execute();
+
+    Assert.Equal(expected, result);
+}
+```
+
+over mechanisms that dynamically discover, instantiate, invoke, or generate code.
+
+---
+
+## SOURCE GENERATORS
+
+The repository may contain projects under:
+
+```text
+generator/
+```
+
+These are source generators and are different from runtime dynamic code generation.
+
+Do NOT confuse source generation performed at **build time** with dynamic code generation performed at **runtime**.
+
+Testing an existing source generator is allowed when appropriate.
+
+However:
+
+* do not introduce runtime code generation
+* do not introduce reflection-based discovery
+* do not modify generated source merely to increase coverage
+* respect the existing source-generator architecture
+* keep generated output deterministic
+
+---
+
+## AOT REVIEW BEFORE COMMIT
+
+Before every commit, inspect the changes specifically for AOT violations.
+
+Search for newly introduced usages of:
+
+```text
+dynamic
+System.Reflection
+System.Linq.Expressions
+Reflection.Emit
+DynamicMethod
+ILGenerator
+Activator.CreateInstance
+MethodInfo.Invoke
+PropertyInfo.GetValue
+PropertyInfo.SetValue
+Assembly.Load
+CSharpCompilation
+CodeDOM
+runtime proxy generation
+runtime code generation
+```
+
+If any of these appear in your changes, stop and replace the implementation with an AOT-compatible alternative unless the usage is explicitly required by an existing source-generator/testing architecture.
+
+**AOT compatibility takes priority over coverage percentage.**
+
+Never sacrifice AOT compatibility merely to increase test coverage.
+
+# GIT CONCURRENCY — ABSOLUTE RULE
+
+Multiple agents may share the same Git working tree.
+
+Git operations MUST be treated as concurrent operations.
+
+Before any staging or commit operation:
+
+1. Run `git status --short`.
+2. Stage ONLY files explicitly modified by this agent.
+3. Never use `git add .`.
+4. Never use `git add -A`.
+5. Never use `git commit -am`.
+6. Never use `git reset`.
+7. Never use `git checkout --`.
+8. Never use `git restore` on files not exclusively owned by this agent.
+
+If Git reports an index lock such as:
+
+    another git process seems to be running
+    .git/index.lock
+
+DO NOT delete `.git/index.lock` immediately.
+
+First determine whether another Git operation is currently running.
+
+If another agent is actively committing:
+
+1. Wait.
+2. Re-check Git status.
+3. Retry the operation.
+
+Only remove an index lock if there is clear evidence that no Git process is active and the lock is stale.
+
+Never delete an active `.git/index.lock`.
+
+After another agent has committed, re-run:
+
+    git status --short
+
+before continuing.
+
+
+# GLOBAL INDEX CONCURRENCY
+
+The global `./.memory/system/covertall/index.md` is a shared resource.
+
+Agents MUST NOT modify `index.md` during normal project execution.
+
+The authoritative state is the individual:
+
+    .memory/system/covertall/<project>/state.md
+
+and:
+
+    .memory/system/covertall/<project>/attempts/
+
+The global `index.md` may be regenerated separately from the individual project states.
+
+Never allow project work to block because `index.md` cannot be safely updated.
+
+
+
+# SHARED FILE PROTECTION
+
+The following files/directories are considered GLOBAL SHARED RESOURCES:
+
+- Directory.Build.props
+- Directory.Build.targets
+- global.json
+- NuGet.config
+- solution files (*.sln, *.slnx)
+- repository-wide build scripts
+- repository-wide test scripts
+- .github/
+- shared configuration files
+
+An agent MUST NOT modify a shared resource while performing project-level coverage remediation.
+
+If a coverage task appears to require modifying a shared resource:
+
+1. Do not modify it.
+2. Record the requirement in the project state.
+3. Mark the project as BLOCKED or NEEDS_GLOBAL_CHANGE.
+4. Release the project lock.
+5. Continue with another project.
+
+Coverage remediation must remain isolated to the selected project and its associated tests.
+
+
+# COVERAGE EFFICIENCY
+
+Do not spend unlimited time pursuing marginal coverage improvements.
+
+For each uncovered area, estimate:
+
+- complexity
+- behavioral value
+- expected coverage gain
+- implementation effort
+- AOT compatibility risk
+
+Prefer high-value coverage improvements.
+
+If a remaining coverage gap requires disproportionate effort for negligible benefit, document it and move on.
+
+Never spend excessive time attempting to cover generated, platform-specific, unreachable, defensive, or trivial code unless the repository explicitly requires it.
+
+
+# PROJECTS WITHOUT A TEST PROJECT
+
+Some listed projects, especially `generator` projects, may not have an associated test project.
+
+Never invent a test project.
+
+If a production project has no associated test project:
+
+1. Inspect whether the project contains meaningful executable logic.
+2. Search the repository for existing tests targeting it.
+3. If tests already exist elsewhere, use them.
+4. If no test infrastructure exists, determine whether adding tests belongs to the current task.
+5. Do not modify project structure merely to increase coverage.
+6. If the project cannot reasonably be covered within the existing architecture, document it and continue.
+
+
+# DUPLICATE TEST PROTECTION
+
+Before creating a test:
+
+1. Search the entire associated test project for the target method/class.
+2. Search for semantically equivalent tests.
+3. Inspect existing tests, not only filenames.
+4. Reuse or extend an existing test class when appropriate.
+
+Never create a second test that verifies the same behavior merely because
+the first test has a different name.
+
+
+# 17. TEST VALIDATION AND COVERAGE VERIFICATION — ABSOLUTE RULE
+
+Every test created or modified by the agent MUST be validated before the
+work can be considered complete.
+
+The agent MUST NOT assume that a test is valid merely because the code
+compiles.
+
+The validation process has two mandatory stages:
+
+1. Validate that all tests pass.
+2. Validate the resulting code coverage.
+
+Both stages are mandatory.
+
+---
+
+## 17.1 TEST VALIDATION
+
+After creating or modifying tests, the agent MUST first execute the complete
+associated test project.
+
+Use the project's test `.csproj`.
+
+The minimum required validation is:
+
+```bash
+dotnet test -f net8.0 -c Debug ./PATH/TO/TEST_PROJECT.csproj
