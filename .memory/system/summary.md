@@ -2391,3 +2391,20 @@ test: coverage ImPlotP8.cs
 
 Status:
 PARTIALLY_REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs
+
+CoverageBefore:
+66.7% (SonarCloud Line: 66.7%)
+
+CoverageAfter:
+100.0% (216/216, local coverlet, ImPlotP4-filtered run)
+
+TestsAdded:
+4 (ImPlotP4ExecutionTests.cs: 36 PlotHeatmap overloads)
+
+Commit:
+test: coverage ImPlotP4.cs
+
+Status:
+REMEDIATED
