@@ -184,6 +184,8 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Collision/SeparationFunction.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Threading/ThreadManager.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Thread/src/ThreadManager.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Fixture.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/SimpleCombiner.cs"
  ]
 }

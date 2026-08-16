@@ -3492,3 +3492,20 @@ test: coverage Fixture.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs
+
+CoverageBefore:
+96.6% (SonarCloud; Line: 96.8%, Branch: 96.2%)
+
+CoverageAfter:
+96.8% (360/372, local coverlet, SimpleCombiner-filtered run; unchanged)
+
+TestsAdded:
+0 (internal merge-collapse flows; degenerate inputs crash MarkDegenerateTriangles first)
+
+Commit:
+test: coverage SimpleCombiner.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
