@@ -3109,3 +3109,21 @@ test: coverage BufferPool.cs
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
+
+CoverageBefore:
+93.6% (SonarCloud, stale)
+
+CoverageAfter:
+100.0% line / 100.0% branch (local coverlet)
+
+TestsAdded:
+0 (already fully covered)
+
+Commit:
+test: coverage Update.cs
+
+Status:
+REMEDIATED (NO-OP)
