@@ -2882,3 +2882,20 @@ test: coverage Window.cs
 
 Status:
 ALREADY_REMEDIATED
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs
+
+CoverageBefore:
+90.2% (SonarCloud; Line: 91.3%, Branch: 84.2%)
+
+CoverageAfter:
+98.7% (616/624, local coverlet, full Ecs suite)
+
+TestsAdded:
+1 (ArchetypeOverflowCoverageTests.cs: 65535-archetype overflow guard)
+
+Commit:
+test: coverage Archetype.cs
+
+Status:
+PARTIALLY_REMEDIATED
