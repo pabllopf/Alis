@@ -3197,3 +3197,20 @@ test: coverage Update.cs
 
 Status:
 REMEDIATED
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs
+
+CoverageBefore:
+93.9% (SonarCloud; Line: 93.6%, Branch: 100.0%)
+
+CoverageAfter:
+93.6% (88/94, local coverlet, full Sfml suite; unchanged)
+
+TestsAdded:
+0 (finalizer catch unreachable; same family as Context.cs)
+
+Commit:
+test: coverage StreamAdaptor.cs
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE
