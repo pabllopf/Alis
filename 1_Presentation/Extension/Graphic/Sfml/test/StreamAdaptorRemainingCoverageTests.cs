@@ -229,12 +229,71 @@ namespace Alis.Extension.Graphic.Sfml.Test
         }
 
         /// <summary>
+        ///     Tests that the finalizer swallows exceptions thrown by the non disposing dispose path
+        /// </summary>
+        [Fact]
+        public void Finalizer_WhenDisposeThrows_SwallowsException()
+        {
+            MemoryStream stream = new MemoryStream(new byte[] { 1 });
+            ThrowingDisposeStreamAdaptor.DisposeInvoked = false;
+            CreateUnreferencedThrowingAdaptor(stream);
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+
+            Assert.True(ThrowingDisposeStreamAdaptor.DisposeInvoked);
+
+            stream.Dispose();
+        }
+
+        /// <summary>
         ///     Creates the unreferenced adaptor
         /// </summary>
         /// <param name="stream">The stream</param>
         private static void CreateUnreferencedAdaptor(MemoryStream stream)
         {
             StreamAdaptor adaptor = new StreamAdaptor(stream);
+        }
+
+        /// <summary>
+        ///     Creates the unreferenced throwing adaptor
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        private static void CreateUnreferencedThrowingAdaptor(MemoryStream stream)
+        {
+            ThrowingDisposeStreamAdaptor adaptor = new ThrowingDisposeStreamAdaptor(stream);
+        }
+
+        /// <summary>
+        ///     StreamAdaptor subclass whose dispose override always throws, used to exercise the
+        ///     finalizer's exception swallowing path
+        /// </summary>
+        private sealed class ThrowingDisposeStreamAdaptor : StreamAdaptor
+        {
+            /// <summary>
+            ///     Set when the overridden dispose method executes
+            /// </summary>
+            internal static bool DisposeInvoked;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="ThrowingDisposeStreamAdaptor"/> class
+            /// </summary>
+            /// <param name="stream">The stream</param>
+            internal ThrowingDisposeStreamAdaptor(Stream stream)
+                : base(stream)
+            {
+            }
+
+            /// <summary>
+            ///     Throws to force the base finalizer to swallow the exception
+            /// </summary>
+            /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+            protected override void Dispose(bool disposing)
+            {
+                DisposeInvoked = true;
+                throw new InvalidOperationException("Dispose failed");
+            }
         }
     }
 }
