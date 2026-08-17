@@ -2216,7 +2216,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_S16PtrS16Ptr")]
-        internal static extern void ImPlot_PlotLine_S16PtrS16Ptr(byte[] labelId, short xs, short ys, int count, ImPlotLineFlags flags, int offset, int stride);
+        internal static extern void ImPlot_PlotLine_S16PtrS16Ptr(byte[] labelId, ref short xs, ref short ys, int count, ImPlotLineFlags flags, int offset, int stride);
 
         /// <summary>
         ///     Ims the plot plot line u 16 ptr u 16 ptr using the specified label id
@@ -3371,7 +3371,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotStairs_S16PtrS16Ptr")]
-        internal static extern void ImPlot_PlotStairs_S16PtrS16Ptr(byte[] labelId, short xs, short ys, int count, ImPlotStairsFlags flags, int offset, int stride);
+        internal static extern void ImPlot_PlotStairs_S16PtrS16Ptr(byte[] labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset, int stride);
 
         /// <summary>
         ///     Ims the plot plot stairs u 16 ptr u 16 ptr using the specified label id
@@ -3397,7 +3397,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotStairs_S32PtrS32Ptr")]
-        internal static extern void ImPlot_PlotStairs_S32PtrS32Ptr(byte[] labelId, int xs, int ys, int count, ImPlotStairsFlags flags, int offset, int stride);
+        internal static extern void ImPlot_PlotStairs_S32PtrS32Ptr(byte[] labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset, int stride);
 
         /// <summary>
         ///     Ims the plot plot stairs u 32 ptr u 32 ptr using the specified label id
@@ -3410,7 +3410,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotStairs_U32PtrU32Ptr")]
-        internal static extern void ImPlot_PlotStairs_U32PtrU32Ptr(byte[] labelId, uint xs, uint ys, int count, ImPlotStairsFlags flags, int offset, int stride);
+        internal static extern void ImPlot_PlotStairs_U32PtrU32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset, int stride);
 
         /// <summary>
         ///     Ims the plot plot stairs s 64 ptr s 64 ptr using the specified label id

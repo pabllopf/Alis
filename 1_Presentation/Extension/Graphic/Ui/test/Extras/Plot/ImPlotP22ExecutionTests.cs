@@ -238,6 +238,34 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
+        ///     Executes the short ref PlotLine wrapper overloads inside the active plot.
+        /// </summary>
+        [RequireImNodesSystemFact]
+        public void PlotLine_ShortRef_Overloads_Execute_Inside_Plot()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                short xs = 1;
+                short ys = 2;
+                if (ImPlot.BeginPlot("P22 ShortRef", new Vector2F(400, 300), ImPlotFlags.None))
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    ImPlot.PlotLine("s16 a", ref xs, ref ys, 1);
+                    ImPlot.PlotLine("s16 b", ref xs, ref ys, 1, ImPlotLineFlags.None);
+                    ImPlot.PlotLine("s16 c", ref xs, ref ys, 1, ImPlotLineFlags.None, 0);
+                    ImPlot.PlotLine("s16 d", ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(short));
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
         ///     Executes the ushort array PlotLine wrapper overloads inside the active plot.
         /// </summary>
         [RequireImNodesSystemFact]

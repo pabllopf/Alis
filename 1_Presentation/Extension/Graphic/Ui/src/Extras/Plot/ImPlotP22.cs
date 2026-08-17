@@ -704,7 +704,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref short xs, ref short ys, int count)
         {
-            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(short));
         }
 
         /// <summary>
@@ -717,7 +717,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref short xs, ref short ys, int count, ImPlotLineFlags flags)
         {
-            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(short));
         }
 
         /// <summary>
@@ -731,7 +731,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref short xs, ref short ys, int count, ImPlotLineFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(short));
+            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(short));
         }
 
         /// <summary>
@@ -746,7 +746,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref short xs, ref short ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotLine_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
 
         /// <summary>

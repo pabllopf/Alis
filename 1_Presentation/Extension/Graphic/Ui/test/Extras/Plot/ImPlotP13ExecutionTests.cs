@@ -280,6 +280,48 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
+        ///     Executes the short, int and uint PlotStairs wrapper overloads inside an active plot.
+        /// </summary>
+        [RequireImNodesSystemFact]
+        public void PlotStairs_Short_And_Int_And_Uint_Overloads_Execute()
+        {
+            IntPtr imgui = CreateContexts();
+            try
+            {
+                bool opened = ImPlot.BeginPlot("StairsS16S32U32Plot", new Alis.Core.Aspect.Math.Vector.Vector2F(400, 300), ImPlotFlags.None);
+                Assert.True(opened);
+                if (opened)
+                {
+                    ImPlot.SetupAxes("x", "y");
+                    ImPlot.SetupFinish();
+                    short s16Xs = 1;
+                    short s16Ys = 2;
+                    ImPlot.PlotStairs("s16 a", ref s16Xs, ref s16Ys, 1);
+                    ImPlot.PlotStairs("s16 b", ref s16Xs, ref s16Ys, 1, ImPlotStairsFlags.None);
+                    ImPlot.PlotStairs("s16 c", ref s16Xs, ref s16Ys, 1, ImPlotStairsFlags.None, 0);
+                    ImPlot.PlotStairs("s16 d", ref s16Xs, ref s16Ys, 1, ImPlotStairsFlags.None, 0, sizeof(short));
+                    int s32Xs = 1;
+                    int s32Ys = 2;
+                    ImPlot.PlotStairs("s32 a", ref s32Xs, ref s32Ys, 1);
+                    ImPlot.PlotStairs("s32 b", ref s32Xs, ref s32Ys, 1, ImPlotStairsFlags.None);
+                    ImPlot.PlotStairs("s32 c", ref s32Xs, ref s32Ys, 1, ImPlotStairsFlags.None, 0);
+                    ImPlot.PlotStairs("s32 d", ref s32Xs, ref s32Ys, 1, ImPlotStairsFlags.None, 0, sizeof(int));
+                    uint u32Xs = 1;
+                    uint u32Ys = 2;
+                    ImPlot.PlotStairs("u32 a", ref u32Xs, ref u32Ys, 1);
+                    ImPlot.PlotStairs("u32 b", ref u32Xs, ref u32Ys, 1, ImPlotStairsFlags.None);
+                    ImPlot.PlotStairs("u32 c", ref u32Xs, ref u32Ys, 1, ImPlotStairsFlags.None, 0);
+                    ImPlot.PlotStairs("u32 d", ref u32Xs, ref u32Ys, 1, ImPlotStairsFlags.None, 0, sizeof(uint));
+                    ImPlot.EndPlot();
+                }
+            }
+            finally
+            {
+                DestroyContexts(imgui);
+            }
+        }
+
+        /// <summary>
         ///     Executes the PlotStairsG wrapper overloads with a zero getter and zero count inside an active plot.
         /// </summary>
         [RequireImNodesSystemFact]

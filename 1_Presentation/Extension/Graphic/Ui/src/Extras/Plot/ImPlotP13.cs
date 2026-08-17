@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(short));
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(short));
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(short));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(short));
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(int));
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(int));
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(int));
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(uint));
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(uint));
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(uint));
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
 
         /// <summary>
