@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.3] - 2026-08-17
+### :bug: Bug Fixes
+- [`d57f092`](https://github.com/pabllopf/Alis/commit/d57f0921644265743c25dd18084d9408e980945a) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a7d76f2`](https://github.com/pabllopf/Alis/commit/a7d76f23f6320558fbaed10bf12bec215e526214) - memory *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca5364f`](https://github.com/pabllopf/Alis/commit/ca5364f336ac1ca1daf604026ccde63208f648da) - memory *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ef5a1af`](https://github.com/pabllopf/Alis/commit/ef5a1af22bcb6e196999a05e565ef0babe14fd01) - events *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`4da61d7`](https://github.com/pabllopf/Alis/commit/4da61d723c4e4e0835650e2ce102849d7eca89bd) - confirm 100% coverage of AudioPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76da84f`](https://github.com/pabllopf/Alis/commit/76da84f2d9a690a85b0d9de7bbc228a9ad724b6a) - confirm 100% coverage of AudioPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6905abd`](https://github.com/pabllopf/Alis/commit/6905abd98bbfe733b563420efb3d973c06cebe98) - cover swallow-catch path of CloseWrite in AudioVideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f247045`](https://github.com/pabllopf/Alis/commit/f247045e2fd44eedd61b8090edd46e8724eba152) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3ec2f2`](https://github.com/pabllopf/Alis/commit/c3ec2f2039163d895973084c5f3d6ca9d88392d0) - cover null-state branches of AudioWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db01930`](https://github.com/pabllopf/Alis/commit/db01930536e42d85e938aeb0c1415f525d2bf064) - record AudioWriter.cs coverage commit hash *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`71146f7`](https://github.com/pabllopf/Alis/commit/71146f797ac79b98e26d4a243f1fdc0e85abda98) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b7898c`](https://github.com/pabllopf/Alis/commit/3b7898cd7194864fcabe1b1074e25dadc08981d9) - cover dmg branch and download flow of UpdateManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98d510f`](https://github.com/pabllopf/Alis/commit/98d510f14c3cde455eaba39653c642801a1e5030) - cover dmg branch and download flow of UpdateManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91c6c40`](https://github.com/pabllopf/Alis/commit/91c6c40e93a20d41a6b36fb695505bfe08260a39) - cover dmg branch and download flow of UpdateManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b51613`](https://github.com/pabllopf/Alis/commit/2b51613e73fc54b812dd7d244ab2933ada59f4ba) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04018fb`](https://github.com/pabllopf/Alis/commit/04018fb2d67cd25908a186ab140a55c0c0901778) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f223b9e`](https://github.com/pabllopf/Alis/commit/f223b9e2cca2cd07e267da83ccd0ffdf376c88a4) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`607f265`](https://github.com/pabllopf/Alis/commit/607f26504a9eed64f4f1b6d73a52bb13dad854c4) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a570511`](https://github.com/pabllopf/Alis/commit/a570511619bc97f5cf34f0d26a09282086ada0bd) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf85aad`](https://github.com/pabllopf/Alis/commit/bf85aad22d5b637ba92c69e0f7b233aae88ee504) - confirm 100% coverage of Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff90827`](https://github.com/pabllopf/Alis/commit/ff90827abf11711b6f5f1e2c3e67008241d9a6d4) - document Events.cs EventSource runtime limitation of Events.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.2] - 2026-08-16
 ### :bug: Bug Fixes
 - [`5972fbe`](https://github.com/pabllopf/Alis/commit/5972fbe61a68700780a34762d99a43631389f0a3) - memory crash *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10703,3 +10730,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.0]: https://github.com/pabllopf/Alis/compare/v1.1.9...v1.2.0
 [v1.2.1]: https://github.com/pabllopf/Alis/compare/v1.2.0...v1.2.1
 [v1.2.2]: https://github.com/pabllopf/Alis/compare/v1.2.1...v1.2.2
+[v1.2.3]: https://github.com/pabllopf/Alis/compare/v1.2.2...v1.2.3
