@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
@@ -125,6 +126,45 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
+        ///     Tests that collide multi core keeps the contact when the first body is disabled.
+        /// </summary>
+        [Fact]
+        public void CollideMultiCore_WithDisabledBodyA_KeepsContact()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
+            bodyA.Enabled = false;
+
+            contactManager.CollideMultiCore();
+
+            Assert.Equal(1, contactManager.ContactCount);
+        }
+
+        /// <summary>
+        ///     Tests that collide multi core destroys a contact whose filter flag rejects it.
+        /// </summary>
+        [Fact]
+        public void CollideMultiCore_WithFilterFlaggedContact_DestroysIt()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
+            contactManager.ContactFilter = (fixtureA, fixtureB) => false;
+            contactManager.ContactList.Next.FilterFlag = true;
+
+            contactManager.CollideMultiCore();
+
+            Assert.Equal(0, contactManager.ContactCount);
+        }
+
+        /// <summary>
         ///     Tests that collide multi core keeps the contact when both bodies are sleeping.
         /// </summary>
         [Fact]
@@ -216,8 +256,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             bodyB.LockOrder = 1;
             bodyA.Lock = 1;
 
-            contactManager.UpdateContactWithLock(contactManager.ContactList.Next);
+            Task updateTask = Task.Run(() => contactManager.UpdateContactWithLock(contactManager.ContactList.Next));
+            Thread.Sleep(100);
+            bodyA.Lock = 0;
 
+            Assert.True(updateTask.Wait(TimeSpan.FromSeconds(10)));
             Assert.Equal(0, bodyA.Lock);
             Assert.Equal(0, bodyB.Lock);
         }
@@ -238,16 +281,55 @@ namespace Alis.Core.Physic.Test.Dynamics
             bodyB.LockOrder = 1;
             bodyB.Lock = 1;
 
-            Task.Run(async () =>
-            {
-                await Task.Delay(100);
-                bodyB.Lock = 0;
-            });
+            Task updateTask = Task.Run(() => contactManager.UpdateContactWithLock(contactManager.ContactList.Next));
+            Thread.Sleep(100);
+            bodyB.Lock = 0;
+
+            Assert.True(updateTask.Wait(TimeSpan.FromSeconds(10)));
+            Assert.Equal(0, bodyA.Lock);
+            Assert.Equal(0, bodyB.Lock);
+        }
+
+        /// <summary>
+        ///     Tests that update contact with lock swaps the lock acquisition order when the first body has the greater order.
+        /// </summary>
+        [Fact]
+        public void UpdateContactWithLock_WhenBodyALockOrderGreaterThanBodyB_SwapsLockOrder()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
+            bodyA.LockOrder = 2;
+            bodyB.LockOrder = 1;
 
             contactManager.UpdateContactWithLock(contactManager.ContactList.Next);
 
             Assert.Equal(0, bodyA.Lock);
             Assert.Equal(0, bodyB.Lock);
+        }
+
+        /// <summary>
+        ///     Tests that update contact with lock throws when the lock cannot be acquired within the timeout.
+        /// </summary>
+        [Fact]
+        public void UpdateContactWithLock_WhenLockHeldBeyondTimeout_ThrowsInvalidOperationException()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
+            bodyA.LockOrder = 0;
+            bodyB.LockOrder = 1;
+            bodyA.Lock = 1;
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => contactManager.UpdateContactWithLock(contactManager.ContactList.Next));
+
+            Assert.Equal("Timed out acquiring the body locks.", exception.Message);
         }
     }
 }
