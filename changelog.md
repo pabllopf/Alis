@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.4] - 2026-08-18
+### :bug: Bug Fixes
+- [`2e91a3e`](https://github.com/pabllopf/Alis/commit/2e91a3e6cfb3a7ba79b612b87b591954d0c1a5b4) - memory *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`622e146`](https://github.com/pabllopf/Alis/commit/622e14614b114742a887643d481ace25c649dc83) - uni tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`14b4734`](https://github.com/pabllopf/Alis/commit/14b47343403f7574f183fb8ed5a031a53e5fba65) - cover finalizer exception path of StreamAdaptor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b001f73`](https://github.com/pabllopf/Alis/commit/b001f7396b282abc69fed90764973e02456db9bb) - confirm 100% coverage of AudioPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c879afe`](https://github.com/pabllopf/Alis/commit/c879afe7c81b0128ac6e7aaf881f0e5daa688acf) - cover pixel constructor of Cursor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b5cb17c`](https://github.com/pabllopf/Alis/commit/b5cb17c28f0eee8716d65f9879bd5dc03de07d95) - cover PlotStairs and PlotLine overloads of ImPlotP13.cs and ImPlotP22.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`393a03c`](https://github.com/pabllopf/Alis/commit/393a03c29cedb07dcb20088d6ca04badcb114496) - cover multi-core and disabled-body paths of ContactManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ceb44f2`](https://github.com/pabllopf/Alis/commit/ceb44f273d2a61950a41f3f8291bd2842c513296) - document DropBoxCloudManager.cs coverage state *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1877b5`](https://github.com/pabllopf/Alis/commit/a1877b59a482fe70884efe32bb371bfd7d5a3f37) - cover OpenAL lifecycle paths of BrowserPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe8c1ab`](https://github.com/pabllopf/Alis/commit/fe8c1ab0546040084b269e053583031144f30025) - document VideoFrame.cs coverage state *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1bcf7c5`](https://github.com/pabllopf/Alis/commit/1bcf7c51140b55628e614d452aff4ff53e34ee1a) - cover iterator wrap path of MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3e82c4`](https://github.com/pabllopf/Alis/commit/c3e82c4071a452d83f8cac2fe2a93849832f9aaf) - confirm 100% coverage of Categories.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe474a5`](https://github.com/pabllopf/Alis/commit/fe474a5c470d5993c386caff38d9d07163184b8d) - confirm 100% coverage of Clipboard.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b2fc4a1`](https://github.com/pabllopf/Alis/commit/b2fc4a1844a8cf01311245040f55a078598a7419) - confirm 100% coverage of Constant.cs (physic) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`70f91b8`](https://github.com/pabllopf/Alis/commit/70f91b8e7ef7a56c331f900d5631ac1ce9a68bd2) - confirm 100% coverage of Constant.cs (math) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b613fda`](https://github.com/pabllopf/Alis/commit/b613fda2d415d7f358c1c3a51b4e198669a6333f) - cover PlotBarGroups overloads of ImPlotP15.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fae1470`](https://github.com/pabllopf/Alis/commit/fae14707b2c78746cadffd45a206d119ea553cb7) - cover null-metadata branch of StripeGatewayClient.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18da299`](https://github.com/pabllopf/Alis/commit/18da29953e213f8e5bdaaccee77e8f0fc3926db0) - cover socket lifecycle paths of WebSocketNetworkTransport.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb1767b`](https://github.com/pabllopf/Alis/commit/bb1767bb363d57017da64cdec38b55b8863a163e) - cover choice-zero and null-action branches of DialogManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`859ca12`](https://github.com/pabllopf/Alis/commit/859ca12fc792312f0d87f42900da223857da7750) - cover PlotPieChart native call sites of ImPlotP9.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.3] - 2026-08-17
 ### :bug: Bug Fixes
 - [`d57f092`](https://github.com/pabllopf/Alis/commit/d57f0921644265743c25dd18084d9408e980945a) - all *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10731,3 +10757,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.1]: https://github.com/pabllopf/Alis/compare/v1.2.0...v1.2.1
 [v1.2.2]: https://github.com/pabllopf/Alis/compare/v1.2.1...v1.2.2
 [v1.2.3]: https://github.com/pabllopf/Alis/compare/v1.2.2...v1.2.3
+[v1.2.4]: https://github.com/pabllopf/Alis/compare/v1.2.3...v1.2.4
