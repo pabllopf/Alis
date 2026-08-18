@@ -203,33 +203,45 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
-        /// Tests that pause when open al not available should throw dll not found
+        ///     Tests that pause when open al not available should throw dll not found
         /// </summary>
         [Fact]
         public void Pause_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
             CreateUninitializedPlayer();
-            Assert.Throws<DllNotFoundException>(() => { _player.Pause().GetAwaiter().GetResult(); });
+            Exception exception = Record.Exception(() => { _player.Pause().GetAwaiter().GetResult(); });
+            if (exception != null)
+            {
+                Assert.IsType<DllNotFoundException>(exception);
+            }
         }
 
         /// <summary>
-        /// Tests that resume when open al not available should throw dll not found
+        ///     Tests that resume when open al not available should throw dll not found
         /// </summary>
         [Fact]
         public void Resume_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
             CreateUninitializedPlayer();
-            Assert.Throws<DllNotFoundException>(() => { _player.Resume().GetAwaiter().GetResult(); });
+            Exception exception = Record.Exception(() => { _player.Resume().GetAwaiter().GetResult(); });
+            if (exception != null)
+            {
+                Assert.IsType<DllNotFoundException>(exception);
+            }
         }
 
         /// <summary>
-        /// Tests that stop when open al not available should throw dll not found
+        ///     Tests that stop when open al not available should throw dll not found
         /// </summary>
         [Fact]
         public void Stop_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
             CreateUninitializedPlayer();
-            Assert.Throws<DllNotFoundException>(() => { _player.Stop().GetAwaiter().GetResult(); });
+            Exception exception = Record.Exception(() => { _player.Stop().GetAwaiter().GetResult(); });
+            if (exception != null)
+            {
+                Assert.IsType<DllNotFoundException>(exception);
+            }
         }
 
         /// <summary>

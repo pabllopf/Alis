@@ -29,6 +29,7 @@
 
 using System;
 using System.Buffers;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
@@ -538,25 +539,51 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
+        ///     The maximum amount of time spent spinning while acquiring the contact locks before giving up.
+        /// </summary>
+        private const int LockAcquisitionTimeoutMilliseconds = 10000;
+
+        /// <summary>
+        ///     The number of yield-only spins performed before switching to a sleeping backoff.
+        /// </summary>
+        private const int LockAcquisitionSpinIterations = 100;
+
+        /// <summary>
         /// Acquires the contact locks using the specified index a
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>
+        /// <exception cref="InvalidOperationException">Thrown when the locks cannot be acquired within the timeout.</exception>
         internal void AcquireContactLocks(int indexA, int indexB)
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            int spinCount = 0;
+
             while (true)
             {
                 if (Interlocked.CompareExchange(ref Locks[indexA], 1, 0) == 0)
                 {
                     if (Interlocked.CompareExchange(ref Locks[indexB], 1, 0) == 0)
                     {
-                        break;
+                        return;
                     }
 
                     Interlocked.Exchange(ref Locks[indexA], 0);
                 }
 
-                Thread.Sleep(0);
+                if (stopwatch.ElapsedMilliseconds > LockAcquisitionTimeoutMilliseconds)
+                {
+                    throw new InvalidOperationException("Timed out acquiring the contact locks.");
+                }
+
+                if (++spinCount % LockAcquisitionSpinIterations == 0)
+                {
+                    Thread.Sleep(1);
+                }
+                else
+                {
+                    Thread.Sleep(0);
+                }
             }
         }
 
@@ -868,21 +895,37 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="orderedIndexA">The ordered index</param>
         /// <param name="orderedIndexB">The ordered index</param>
+        /// <exception cref="InvalidOperationException">Thrown when the locks cannot be acquired within the timeout.</exception>
         internal void LockBodies(int orderedIndexA, int orderedIndexB)
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            int spinCount = 0;
+
             while (true)
             {
                 if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
                 {
                     if (Interlocked.CompareExchange(ref Locks[orderedIndexB], 1, 0) == 0)
                     {
-                        break;
+                        return;
                     }
 
                     Interlocked.Exchange(ref Locks[orderedIndexA], 0);
                 }
 
-                Thread.Sleep(0);
+                if (stopwatch.ElapsedMilliseconds > LockAcquisitionTimeoutMilliseconds)
+                {
+                    throw new InvalidOperationException("Timed out acquiring the body locks.");
+                }
+
+                if (++spinCount % LockAcquisitionSpinIterations == 0)
+                {
+                    Thread.Sleep(1);
+                }
+                else
+                {
+                    Thread.Sleep(0);
+                }
             }
         }
 

@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the default constructor throws when no GLFW context is available
         /// </summary>
-        [Fact]
+        [RequireNoGlfwFact]
         public void DefaultConstructor_WhenGlfwUnavailable_Throws()
         {
             Assert.ThrowsAny<Exception>(() => new GameWindow());
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the sized constructor throws when no GLFW context is available
         /// </summary>
-        [Fact]
+        [RequireNoGlfwFact]
         public void SizedConstructor_WhenGlfwUnavailable_Throws()
         {
             Assert.ThrowsAny<Exception>(() => new GameWindow(320, 200, "alis-test"));
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that the full constructor throws when no GLFW context is available
         /// </summary>
-        [Fact]
+        [RequireNoGlfwFact]
         public void FullConstructor_WhenGlfwUnavailable_Throws()
         {
             Assert.ThrowsAny<Exception>(() => new GameWindow(320, 200, "alis-test", Monitor.None, Window.None));
