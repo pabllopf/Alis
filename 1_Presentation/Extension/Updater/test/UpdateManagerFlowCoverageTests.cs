@@ -91,18 +91,23 @@ namespace Alis.Extension.Updater.Test
         public void RemoveOldBackupArchives_DeletesOldestArchives()
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            string[] created = new string[4];
+            string[] created = new string[5];
             try
             {
-                for (int i = 0; i < 3; i++)
+                foreach (string leftover in Directory.GetFiles(baseDir, "Backup_*.zip"))
+                {
+                    File.Delete(leftover);
+                }
+
+                for (int i = 0; i < 4; i++)
                 {
                     string name = "Backup_20" + (10 + i) + "0101010101.zip";
                     created[i] = Path.Combine(baseDir, name);
                     File.WriteAllText(created[i], "backup");
                 }
 
-                created[3] = Path.Combine(baseDir, "Backup_unknown.zip");
-                File.WriteAllText(created[3], "backup");
+                created[4] = Path.Combine(baseDir, "Backup_unknown.zip");
+                File.WriteAllText(created[4], "backup");
 
                 UpdateManager sut = new UpdateManager(Mock.Of<IGitHubApiService>(), "latest", Mock.Of<IFileService>(), Path.GetTempPath());
                 sut.ContinueDelayMilliseconds = 0;
@@ -113,6 +118,7 @@ namespace Alis.Extension.Updater.Test
                 Assert.False(File.Exists(created[1]));
                 Assert.False(File.Exists(created[2]));
                 Assert.True(File.Exists(created[3]));
+                Assert.True(File.Exists(created[4]));
             }
             finally
             {

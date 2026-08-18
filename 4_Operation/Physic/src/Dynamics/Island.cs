@@ -659,7 +659,7 @@ namespace Alis.Core.Physic.Dynamics
 
             if (Locks != null)
             {
-                ArrayPool<int>.Shared.Return(Locks);
+                ArrayPool<int>.Shared.Return(Locks, clearArray: true);
                 Locks = null;
             }
         }
