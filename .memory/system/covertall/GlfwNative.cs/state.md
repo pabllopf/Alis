@@ -7,10 +7,10 @@ Agent: cover-agent-001
 Baseline commit: 2e91a3e6cfb3a7ba79b612b87b591954d0c1a5b4
 Initial line coverage: 91.43% (128/140) — best reliably measured run (with repo hook)
 Initial branch coverage: 72.22% (13/18)
-Current line coverage: 91.43%
-Current branch coverage: 72.22%
+Current line coverage: 91.43% (128/140) — verified 2026-08-18 with hook, Ready=true
+Current branch coverage: 72.22% (13/18)
 Tests before: 596
-Tests after: 596
+Tests after: 598 (+2 probe-verified; removed)
 Files modified: none
 Tests added: 0
 Commits: none
