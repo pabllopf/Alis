@@ -150,6 +150,36 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
+        ///     Tests that create checkout session async with null metadata maps metadata to null.
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithNullMetadata_ReturnsSessionResponse()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+            InstallStubClient("{ \"id\": \"cs_test_2\", \"url\": \"https://checkout.stripe.com/c/pay/cs_test_2\", \"payment_intent\": \"pi_456\" }");
+
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test Product",
+                ProductDescription = "Description",
+                Currency = "usd",
+                UnitAmount = 5000,
+                Quantity = 2,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel"),
+                CustomerEmail = "buyer@example.com",
+                Metadata = null
+            };
+
+            StripeCheckoutSessionResponse response = await gateway.CreateCheckoutSessionAsync(request);
+
+            Assert.Equal("cs_test_2", response.SessionId);
+            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_2", response.Url.ToString());
+            Assert.Equal("pi_456", response.PaymentIntentId);
+        }
+
+        /// <summary>
         ///     Tests that create payment intent async with valid request returns the payment intent response.
         /// </summary>
         [Fact]
