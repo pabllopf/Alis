@@ -700,6 +700,44 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
 
         /// <summary>
+        ///     Tests that ShowDialog with choice zero maps to negative index and does not invoke action
+        /// </summary>
+        [Fact]
+        public void ShowDialog_WithChoiceZero_DoesNotInvokeAction()
+        {
+            DialogManager manager = new DialogManager();
+            bool actionInvoked = false;
+            Dialog dialog = new Dialog("testId", "Test Dialog");
+            dialog.AddOption(new DialogOption("Option 1", () => actionInvoked = true));
+            manager.AddDialog(dialog);
+
+            System.IO.StringReader reader = new System.IO.StringReader("0\n");
+            System.Console.SetIn(reader);
+            manager.ShowDialog("testId");
+
+            Assert.False(actionInvoked);
+        }
+
+        /// <summary>
+        ///     Tests that ShowDialog with option whose action is null does not throw
+        /// </summary>
+        [Fact]
+        public void ShowDialog_WithNullActionOption_DoesNotThrow()
+        {
+            DialogManager manager = new DialogManager();
+            Dialog dialog = new Dialog("testId", "Test Dialog");
+            dialog.AddOption(new DialogOption("Option 1", null));
+            manager.AddDialog(dialog);
+
+            System.IO.StringReader reader = new System.IO.StringReader("1\n");
+            System.Console.SetIn(reader);
+
+            Exception exception = Record.Exception(() => manager.ShowDialog("testId"));
+
+            Assert.Null(exception);
+        }
+
+        /// <summary>
         ///     Mock observer for testing
         /// </summary>
         internal class MockDialogEventObserver : IDialogEventObserver
