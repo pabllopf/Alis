@@ -214,9 +214,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
         /// <summary>
         ///     Executes the uint PlotBarGroups wrapper overloads inside the active plot.
-        ///     The wrappers marshal the label ids as a jagged byte array which the runtime
-        ///     rejects with a managed MarshalDirectiveException before entering the native
-        ///     function, so the call is expected and handled inside the plot.
         /// </summary>
         [RequireImNodesSystemFact]
         public void BarGroups_U32_Overloads_Execute_Inside_Plot()
@@ -231,29 +228,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                     string[] labels = new string[] { "g0\0" };
                     uint[] values = new uint[] { 1 };
 
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
 
                     ImPlot.EndPlot();
                 }
@@ -266,9 +243,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
         /// <summary>
         ///     Executes the long PlotBarGroups wrapper overloads inside the active plot.
-        ///     The wrappers marshal the label ids as a jagged byte array which the runtime
-        ///     rejects with a managed MarshalDirectiveException before entering the native
-        ///     function, so the call is expected and handled inside the plot.
         /// </summary>
         [RequireImNodesSystemFact]
         public void BarGroups_S64_Overloads_Execute_Inside_Plot()
@@ -283,37 +257,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                     string[] labels = new string[] { "g1\0" };
                     long[] values = new long[] { 1 };
 
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
+                    ImPlot.PlotBarGroups(labels, values, 1, 1);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
 
                     ImPlot.EndPlot();
                 }
@@ -326,9 +273,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
         /// <summary>
         ///     Executes the ulong PlotBarGroups wrapper overloads with explicit group sizes inside the active plot.
-        ///     The wrappers marshal the label ids as a jagged byte array which the runtime
-        ///     rejects with a managed MarshalDirectiveException before entering the native
-        ///     function, so the call is expected and handled inside the plot.
         /// </summary>
         [RequireImNodesSystemFact]
         public void BarGroups_U64_Full_Overloads_Execute_Inside_Plot()
@@ -343,29 +287,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                     string[] labels = new string[] { "g2\0" };
                     ulong[] values = new ulong[] { 1 };
 
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
-
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0);
+                    ImPlot.PlotBarGroups(labels, values, 1, 1, 0.67, 0.0, ImPlotBarGroupsFlags.None);
 
                     ImPlot.EndPlot();
                 }
@@ -378,9 +302,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
         /// <summary>
         ///     Executes the ulong PlotBarGroups wrapper overload with default group size inside the active plot.
-        ///     The wrapper marshals the label ids as a jagged byte array which the runtime
-        ///     rejects with a managed MarshalDirectiveException before entering the native
-        ///     function, so the call is expected and handled inside the plot.
         /// </summary>
         [RequireImNodesSystemFact]
         public void BarGroups_U64_Default_Overload_Executes_Inside_Plot()
@@ -395,13 +316,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                     string[] labels = new string[] { "g3\0" };
                     ulong[] values = new ulong[] { 1 };
 
-                    try
-                    {
-                        ImPlot.PlotBarGroups(labels, values, 1, 1);
-                    }
-                    catch (MarshalDirectiveException)
-                    {
-                    }
+                    ImPlot.PlotBarGroups(labels, values, 1, 1);
 
                     ImPlot.EndPlot();
                 }

@@ -1134,14 +1134,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, uint[] values, int itemCount, int groupCount)
         {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
-            }
-
-            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(labelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
     }
 }

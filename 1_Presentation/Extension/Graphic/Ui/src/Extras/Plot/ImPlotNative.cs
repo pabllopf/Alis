@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U32Ptr")]
-        internal static extern void ImPlot_PlotBarGroups_U32Ptr(byte[][] labelIds, uint[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
+        internal static extern void ImPlot_PlotBarGroups_U32Ptr([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr)] string[] labelIds, uint[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
 
         /// <summary>
         ///     Ims the plot plot bar groups s 64 ptr using the specified label ids
@@ -683,7 +683,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_S64Ptr")]
-        internal static extern void ImPlot_PlotBarGroups_S64Ptr(byte[][] labelIds, long[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
+        internal static extern void ImPlot_PlotBarGroups_S64Ptr([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr)] string[] labelIds, long[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
 
         /// <summary>
         ///     Ims the plot plot bar groups u 64 ptr using the specified label ids
@@ -696,7 +696,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U64Ptr")]
-        internal static extern void ImPlot_PlotBarGroups_U64Ptr(byte[][] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
+        internal static extern void ImPlot_PlotBarGroups_U64Ptr([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr)] string[] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
 
         /// <summary>
         ///     Ims the plot plot bars float ptr int using the specified label id
