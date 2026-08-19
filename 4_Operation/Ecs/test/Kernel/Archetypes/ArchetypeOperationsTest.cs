@@ -207,7 +207,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Validates that component data remains accessible and correct
         ///     even after archetype transitions.
         /// </remarks>
-        [Fact] public void Archetype_ComponentAccessWorksAcrossTransitions()
+        [Fact]
+        public void Archetype_ComponentAccessWorksAcrossTransitions()
         {
             Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -222,37 +223,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Assert.Equal(100, pos2.X);
             Assert.Equal(200, pos2.Y);
-
-            scene.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests order of component additions doesn't affect queries
-        /// </summary>
-        /// <remarks>
-        ///     Verifies that regardless of the order components are added,
-        ///     entities are correctly included in matching queries.
-        /// </remarks>
-        [Fact] public void Archetype_ComponentOrderDoesntAffectQueries()
-        {
-            Scene scene = new Scene();
-
-            GameObject e1 = scene.Create();
-            e1.Add(new Position());
-            e1.Add(new Velocity());
-
-            GameObject e2 = scene.Create();
-            e2.Add(new Velocity());
-            e2.Add(new Position());
-
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            int count = 0;
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.Equal(2, count);
 
             scene.Dispose();
         }

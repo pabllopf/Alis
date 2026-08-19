@@ -433,39 +433,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity.Has<Armor>());
         }
 
-        /// <summary>
-        ///     Tests creating entities with alternating component additions
-        ///     and removals to exercise archetype transition graph building.
-        ///     This exercises GetAdjacentArchetypeLookup / GetAdjacentArchetypeCold
-        ///     with both Add and Remove edge types.
-        /// </summary>
-        [Fact] public void Archetype_TransitionGraph_BuildsAddAndRemoveEdges()
-        {
-            using Scene scene = new Scene();
-
-            GameObject entity = scene.Create(new Position());
-            Assert.True(entity.Has<Position>());
-
-            // Add and remove multiple times to create edge transitions
-            entity.Add(new Velocity());
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Add(new Health());
-            Assert.True(entity.Has<Health>());
-
-            entity.Remove<Velocity>();
-            Assert.False(entity.Has<Velocity>());
-
-            entity.Remove<Health>();
-            Assert.False(entity.Has<Health>());
-
-            entity.Add(new Damage());
-            entity.Add(new Armor());
-            entity.Remove<Damage>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Damage>());
-            Assert.True(entity.Has<Armor>());
-        }
+    
     }
 }

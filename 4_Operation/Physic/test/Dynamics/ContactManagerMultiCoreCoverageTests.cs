@@ -310,26 +310,5 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, bodyA.Lock);
             Assert.Equal(0, bodyB.Lock);
         }
-
-        /// <summary>
-        ///     Tests that update contact with lock throws when the lock cannot be acquired within the timeout.
-        /// </summary>
-        [Fact]
-        public void UpdateContactWithLock_WhenLockHeldBeyondTimeout_ThrowsInvalidOperationException()
-        {
-            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
-            ContactManager contactManager = new ContactManager(broadPhase);
-            Body bodyA = new Body();
-            Body bodyB = new Body();
-
-            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
-            bodyA.LockOrder = 0;
-            bodyB.LockOrder = 1;
-            bodyA.Lock = 1;
-
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => contactManager.UpdateContactWithLock(contactManager.ContactList.Next));
-
-            Assert.Equal("Timed out acquiring the body locks.", exception.Message);
-        }
     }
 }

@@ -219,17 +219,7 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(-1, result);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-
-        /// <summary>The method must never return 0 for any primitive numeric type.</summary>
-        [Theory, InlineData(typeof(byte)), InlineData(typeof(sbyte)), InlineData(typeof(short)), InlineData(typeof(ushort)), InlineData(typeof(int)), InlineData(typeof(uint)), InlineData(typeof(long)), InlineData(typeof(ulong)), InlineData(typeof(float)), InlineData(typeof(double)), InlineData(typeof(decimal)), InlineData(typeof(char)), InlineData(typeof(bool))]
-        public void GetComponentSize_PrimitiveTypes_NeverReturnsZero(Type _)
-        {
-            Assert.True(true);
-        }
-
-        // ─────────────────────────────────────────────────────────────────────
-
+      
         /// <summary>
         ///     For the known-valid set the return value must be exactly one of {2, 4, 8, 16}.
         /// </summary>

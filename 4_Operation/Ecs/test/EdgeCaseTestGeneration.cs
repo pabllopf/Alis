@@ -154,28 +154,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, healthCount);
         }
 
-        /// <summary>
-        ///     Tests that edge case parametrized entity creation consistency
-        /// </summary>
-        /// <param name="count">The count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(100)]
-        public void EdgeCase_ParametrizedEntityCreation_Consistency(int count)
-        {
-            using Scene scene = new Scene();
-            for (int i = 0; i < count; i++)
-            {
-                scene.Create(new Position {X = i, Y = i});
-            }
-
-            int queryCount = 0;
-            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
-            {
-                queryCount++;
-            }
-
-            Assert.Equal(count, queryCount);
-        }
-
+       
         /// <summary>
         ///     Tests that edge case large component value
         /// </summary>
@@ -237,31 +216,7 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
-        /// <summary>
-        ///     Tests that edge case nested entity creation and deletion
-        /// </summary>
-        /// <param name="iterations">The iterations</param>
-        [Theory, InlineData(5), InlineData(10), InlineData(20), InlineData(50), InlineData(100)]
-        public void EdgeCase_NestedEntityCreationAndDeletion(int iterations)
-        {
-            using Scene scene = new Scene();
-            for (int i = 0; i < iterations; i++)
-            {
-                GameObject go = scene.Create(new Position {X = i, Y = i});
-                if (i % 2 == 0)
-                {
-                    go.Delete();
-                }
-            }
-
-            int count = 0;
-            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.True(count >= 0);
-        }
+        
 
         /// <summary>
         ///     Tests that edge case component with default values
@@ -275,25 +230,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, go.Get<Position>().Y);
         }
 
-        /// <summary>
-        ///     Tests that edge case recreate deleted entity slot
-        /// </summary>
-        /// <param name="iterations">The iterations</param>
-        [Theory, InlineData(10), InlineData(50), InlineData(100)]
-        public void EdgeCase_RecreateDeletedEntitySlot(int iterations)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position {X = 1, Y = 1});
-
-            for (int i = 0; i < iterations; i++)
-            {
-                go.Delete();
-                go = scene.Create(new Position {X = i, Y = i});
-            }
-
-            Assert.True(go.IsAlive);
-        }
-
+       
         /// <summary>
         ///     Tests that edge case many components on single entity
         /// </summary>

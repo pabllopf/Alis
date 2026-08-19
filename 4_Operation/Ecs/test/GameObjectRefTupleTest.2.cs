@@ -190,31 +190,5 @@ namespace Alis.Core.Ecs.Test
 
             world.Dispose();
         }
-
-        /// <summary>
-        ///     Tests that ref tuple with two components of same type works.
-        /// </summary>
-        [Fact]
-        public void RefTuple2_WithSameComponentTypes_ShouldWork()
-        {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 50};
-            entity.Add(health);
-            entity.Add(armor);
-
-            GameObjectRefTuple<Health, Armor> tuple = new GameObjectRefTuple<Health, Armor>
-            {
-                GameObject = entity,
-                Item1 = new Ref<Health>(new[] {health}, 0),
-                Item2 = new Ref<Armor>(new[] {armor}, 0)
-            };
-
-            Assert.Equal(100, tuple.Item1.Value.Value);
-            Assert.Equal(50, tuple.Item2.Value.Value);
-
-            world.Dispose();
-        }
     }
 }

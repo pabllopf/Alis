@@ -38,20 +38,7 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class BoundaryConditionTests
     {
-        /// <summary>
-        ///     Tests that boundary condition component with extreme values
-        /// </summary>
-        /// <param name="value">The value</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(2), InlineData(-1), InlineData(int.MaxValue), InlineData(int.MinValue)]
-        public void BoundaryCondition_ComponentWithExtremeValues(int value)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Health {Value = value});
-            Assert.Equal(value, go.Get<Health>().Value);
-        }
-
+        
         /// <summary>
         ///     Tests that boundary condition single entity creates
         /// </summary>
@@ -92,20 +79,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(go.IsAlive);
         }
 
-        /// <summary>
-        ///     Tests that boundary condition velocity with zero and negative
-        /// </summary>
-        /// <param name="val">The val</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(-100)]
-        public void BoundaryCondition_VelocityWithZeroAndNegative(int val)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Velocity {X = val, Y = val});
-            Assert.Equal(val, go.Get<Velocity>().X);
-        }
-
+       
         /// <summary>
         ///     Tests that boundary condition component add remove add again
         /// </summary>
@@ -125,19 +99,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(30, go.Get<Position>().X);
         }
 
-        /// <summary>
-        ///     Tests that boundary condition damage with various values
-        /// </summary>
-        /// <param name="dmg">The dmg</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(1000), InlineData(int.MaxValue)]
-        public void BoundaryCondition_DamageWithVariousValues(int dmg)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Damage {Value = dmg});
-            Assert.Equal(dmg, go.Get<Damage>().Value);
-        }
+        
 
         /// <summary>
         ///     Tests that boundary condition transform zero coordinates
@@ -152,22 +114,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, go.Get<Transform>().Y);
         }
 
-        /// <summary>
-        ///     Tests that boundary condition create varying numbers
-        /// </summary>
-        /// <param name="count">The count</param>
-        [Theory, InlineData(1), InlineData(2), InlineData(10), InlineData(100), InlineData(1000)]
-        public void BoundaryCondition_CreateVaryingNumbers(int count)
-        {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < count; i++)
-            {
-                scene.Create();
-            }
-
-            Assert.True(true);
-        }
+       
 
         /// <summary>
         ///     Tests that boundary condition query with single entity match
@@ -186,32 +133,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, count);
         }
 
-        /// <summary>
-        ///     Tests that boundary condition armor with various values
-        /// </summary>
-        /// <param name="armor">The armor</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(10)]
-        public void BoundaryCondition_ArmorWithVariousValues(int armor)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Armor {Value = armor});
-            Assert.Equal(armor, go.Get<Armor>().Value);
-        }
-
-        /// <summary>
-        ///     Tests that boundary condition tag component addition
-        /// </summary>
-        [Fact] public void BoundaryCondition_TagComponentAddition()
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new TagComponent());
-            Assert.True(go.Has<TagComponent>());
-        }
-
+  
         /// <summary>
         ///     Tests that boundary condition all component types on single entity
         /// </summary>

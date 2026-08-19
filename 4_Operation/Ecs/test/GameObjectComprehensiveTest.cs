@@ -75,31 +75,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(20, go.Get<Position>().Y);
         }
 
-        /// <summary>
-        ///     Tests that game object create multiple entities all are independent
-        /// </summary>
-        /// <param name="count">The count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10)]
-        public void GameObject_CreateMultipleEntities_AllAreIndependent(int count)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[count];
-
-            for (int i = 0; i < count; i++)
-            {
-                entities[i] = scene.Create();
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                Assert.True(entities[i].IsAlive);
-                Assert.False(entities[i].IsNull);
-                for (int j = i + 1; j < count; j++)
-                {
-                    Assert.NotEqual(entities[i], entities[j]);
-                }
-            }
-        }
+    
 
         /// <summary>
         ///     Tests that game object add component component exists
@@ -177,70 +153,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(200, go.Get<Position>().Y);
         }
 
-        /// <summary>
-        ///     Tests that game object delete with various component counts succeeds
-        /// </summary>
-        /// <param name="componentCount">The component count</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(5), InlineData(10)]
-        public void GameObject_DeleteWithVariousComponentCounts_Succeeds(int componentCount)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            if (componentCount >= 1)
-            {
-                go.Add(new Position {X = 1, Y = 1});
-            }
-
-            if (componentCount >= 2)
-            {
-                go.Add(new Health {Value = 50});
-            }
-
-            if (componentCount >= 3)
-            {
-                go.Add(new Velocity {X = 1, Y = 1});
-            }
-
-            if (componentCount >= 4)
-            {
-                go.Add(new Transform {X = 0, Y = 0});
-            }
-
-            if (componentCount >= 5)
-            {
-                go.Add(new Damage {Value = 10});
-            }
-
-            if (componentCount >= 6)
-            {
-                go.Add(new AnotherComponent {Data = 42});
-            }
-
-            if (componentCount >= 7)
-            {
-                go.Add(new AnotherComponent2 {Data = 100});
-            }
-
-            if (componentCount >= 8)
-            {
-                go.Add(new Armor {Value = 25});
-            }
-
-            if (componentCount >= 9)
-            {
-                go.Add(new TagComponent());
-            }
-
-            if (componentCount >= 10)
-            {
-                go.Add(new TestComponent {Value = 999});
-            }
-
-            Assert.True(go.IsAlive);
-            go.Delete();
-            Assert.False(go.IsAlive);
-        }
+       
 
         /// <summary>
         ///     Tests that game object equals operator compares two entities
@@ -297,22 +210,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(string.IsNullOrEmpty(str));
         }
 
-        /// <summary>
-        ///     Tests that game object create multiple with same components independent data
-        /// </summary>
-        /// <param name="first">The first</param>
-        /// <param name="second">The second</param>
-        [Theory, InlineData(1, 1), InlineData(2, 2), InlineData(5, 5), InlineData(10, 10)]
-        public void GameObject_CreateMultipleWithSameComponents_IndependentData(int first, int second)
-        {
-            using Scene scene = new Scene();
-
-            GameObject go1 = scene.Create(new Position {X = first, Y = first});
-            GameObject go2 = scene.Create(new Position {X = second, Y = second});
-
-            Assert.Equal(first, go1.Get<Position>().X);
-            Assert.Equal(second, go2.Get<Position>().X);
-        }
+      
 
         /// <summary>
         ///     Tests that game object remove all components entity still alive

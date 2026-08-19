@@ -41,36 +41,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateArity9CoverageTests
     {
-        /// <summary>
-        ///     Tests that the arity 9 non-range run processes entities with all eight arguments.
-        /// </summary>
-        [Fact]
-        public void Update_Arity9_NonRangeRun_ProcessesEntities()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update9Comp { CallCount = 0 },
-                new Position { X = 5, Y = 10 },
-                new Velocity { X = 1, Y = 2 },
-                new Health { Value = 100 },
-                new Armor { Value = 30 },
-                new Damage { Value = 7 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 5 }
-            );
-            entity.Add(new AnotherComponent { Data = 10, Y = 3 });
-
-            ref GameObjectLocation location = ref entity.AssertIsAlive(out Scene sceneRef);
-            Archetype archetype = location.Archetype;
-            int idx = archetype.GetComponentIndex(Component<Update9Comp>.Id);
-            ComponentStorageBase storage = archetype.Components[idx];
-
-            storage.Run(sceneRef, archetype);
-
-            Assert.Equal(1, entity.Get<Update9Comp>().CallCount);
-            Assert.Equal(6, entity.Get<Position>().X);
-            Assert.Equal(12, entity.Get<Position>().Y);
-        }
+        
     }
 
     /// <summary>

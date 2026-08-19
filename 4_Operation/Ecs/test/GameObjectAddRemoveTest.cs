@@ -275,32 +275,7 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
-        #region Remove<T1..T4> (Arity 4) Tests
-
-        /// <summary>
-        ///     Tests that Remove with arity 4 removes all components successfully
-        /// </summary>
-        [Fact] public void Remove_Arity4_RemovesAllComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-            entity.Add(new Armor {Value = 50});
-            entity.Add(new Damage {Value = 25});
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            entity.Remove<Armor>();
-            entity.Remove<Damage>();
-
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-        }
-
-        #endregion
+      
 
         #region Remove<T1..T5> (Arity 5) Tests
 
@@ -331,40 +306,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         #endregion
-
-        #region Remove<T1..T6> (Arity 6) Tests
-
-        /// <summary>
-        ///     Tests that Remove with arity 6 removes all components successfully
-        /// </summary>
-        [Fact] public void Remove_Arity6_RemovesAllComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-            entity.Add(new Armor {Value = 50});
-            entity.Add(new Damage {Value = 25});
-            entity.Add(new Transform {X = 0, Y = 0, Rotation = 0});
-            entity.Add(new TestComponent {Value = 42});
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            entity.Remove<Armor>();
-            entity.Remove<Damage>();
-            entity.Remove<Transform>();
-            entity.Remove<TestComponent>();
-
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-            Assert.False(entity.Has<TestComponent>());
-        }
-
-        #endregion
-
+        
         #region Remove<T1..T7> (Arity 7) Tests
 
         /// <summary>

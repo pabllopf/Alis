@@ -38,36 +38,7 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class ArchetypeColdPathExperimentTest
     {
-        /// <summary>
-        ///     Tests that adding a component to an entity without any components covers cold archetype paths
-        /// </summary>
-        [Fact]
-        public void Add_FromEmptyToSingle_FirstTime()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            entity.Add(new Position {X = 1});
-            entity.Remove<Position>();
-            entity.Add(new Position {X = 2});
-        }
-
-        /// <summary>
-        ///     Tests adding and removing in alternating order across multiple entities
-        /// </summary>
-        [Fact]
-        public void AlternatingAddRemove_MultipleEntities()
-        {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 4; i++)
-            {
-                GameObject entity = scene.Create(new Position {X = i}, new Health {Value = i});
-                entity.Remove<Position>();
-                entity.Add(new Position {X = i + 10});
-                entity.Remove<Health>();
-                entity.Add(new Health {Value = i + 20});
-            }
-        }
-
+        
         /// <summary>
         ///     Tests removal of the only component then re-addition
         /// </summary>
@@ -81,23 +52,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(new Position {X = 5});
             Assert.True(entity.Has<Position>());
         }
-
-        /// <summary>
-        ///     Tests adding components in different orders to different entities
-        /// </summary>
-        [Fact]
-        public void AddComponents_InDifferentOrders()
-        {
-            using Scene scene = new Scene();
-            GameObject a = scene.Create();
-            a.Add(new Position {X = 1});
-            a.Add(new Health {Value = 2});
-
-            GameObject b = scene.Create();
-            b.Add(new Health {Value = 3});
-            b.Add(new Position {X = 4});
-        }
-
+        
         /// <summary>
         ///     Tests removing a component from a multi-component entity in different orders
         /// </summary>

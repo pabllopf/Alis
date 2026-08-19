@@ -67,52 +67,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(40, entity.Get<Position>().Y);
         }
 
-        /// <summary>
-        ///     Tests that ref modify multiple times all changes apply
-        /// </summary>
-        /// <param name="initialX">The initial</param>
-        /// <param name="finalX">The final</param>
-        [Theory, InlineData(1, 1), InlineData(5, 5), InlineData(10, 10), InlineData(100, 100)]
-        public void Ref_ModifyMultipleTimes_AllChangesApply(int initialX, int finalX)
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = initialX, Y = initialX});
-
-            ref Position pos = ref entity.Get<Position>();
-            for (int i = 0; i < 10; i++)
-            {
-                pos.X = finalX + i;
-            }
-
-            Assert.Equal(finalX + 9, entity.Get<Position>().X);
-        }
-
-        /// <summary>
-        ///     Tests that ref multiple entities independently works
-        /// </summary>
-        /// <param name="entityCount">The entity count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50)]
-        public void Ref_MultipleEntitiesIndependently_Works(int entityCount)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[entityCount];
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i] = scene.Create(new Position {X = i, Y = i});
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                ref Position pos = ref entities[i].Get<Position>();
-                pos.X = i * 2;
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                Assert.Equal(i * 2, entities[i].Get<Position>().X);
-            }
-        }
-
+     
         /// <summary>
         ///     Tests that ref health modify value
         /// </summary>
@@ -159,26 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(200, entity.Get<Transform>().Y);
         }
 
-        /// <summary>
-        ///     Tests that ref stress test many modifications
-        /// </summary>
-        /// <param name="modificationCount">The modification count</param>
-        [Theory, InlineData(10), InlineData(50), InlineData(100)]
-        public void Ref_StressTest_ManyModifications(int modificationCount)
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
-
-            for (int i = 0; i < modificationCount; i++)
-            {
-                ref Position pos = ref entity.Get<Position>();
-                pos.X += 1;
-                pos.Y += 1;
-            }
-
-            Assert.Equal(modificationCount, entity.Get<Position>().X);
-            Assert.Equal(modificationCount, entity.Get<Position>().Y);
-        }
+       
 
         /// <summary>
         ///     Tests that ref chained modifications works

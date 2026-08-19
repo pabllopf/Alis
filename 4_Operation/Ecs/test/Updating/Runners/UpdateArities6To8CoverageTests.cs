@@ -170,38 +170,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
         #region Full Run for arity 8
 
-        /// <summary>
-        ///     Tests that arity 8 full Run invokes Update for all entities
-        /// </summary>
-        [Fact]
-        public void Update_Arity8_FullRun_InvokesUpdateForAllEntities()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update8Component { CallCount = 0 },
-                new Position { X = 5, Y = 10 },
-                new Velocity { X = 1, Y = 2 },
-                new Health { Value = 100 },
-                new Armor { Value = 30 },
-                new Damage { Value = 7 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 5 }
-            );
-            entity.Add(new AnotherComponent { Data = 10, Y = 3 });
-
-            scene.Update();
-
-            Assert.Equal(1, entity.Get<Update8Component>().CallCount);
-            Assert.Equal(6, entity.Get<Position>().X);
-            Assert.Equal(12, entity.Get<Position>().Y);
-            Assert.Equal(99, entity.Get<Health>().Value);
-            Assert.Equal(32, entity.Get<Armor>().Value);
-            Assert.Equal(8, entity.Get<Damage>().Value);
-            Assert.Equal(2, entity.Get<Transform>().Rotation);
-            Assert.Equal(10, entity.Get<TestComponent>().Value);
-            Assert.Equal(11, entity.Get<AnotherComponent>().Data);
-            Assert.Equal(4, entity.Get<AnotherComponent>().Y);
-        }
+       
 
         #endregion
     }

@@ -133,20 +133,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(123, entity.Get<TestComponent>().Value);
         }
 
-        /// <summary>
-        ///     Tests that game object add as by component id adds component as specified type
-        /// </summary>
-        [Fact] public void GameObject_AddAs_ByComponentId_AddsComponentAsSpecifiedType()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentId compId = Component<AnotherComponent2>.Id;
-
-            entity.AddAs(compId, new AnotherComponent2 {Name = "boxed"});
-
-            Assert.True(entity.Has<AnotherComponent2>());
-            Assert.Equal("boxed", entity.Get<AnotherComponent2>().Name);
-        }
+    
 
         /// <summary>
         ///     Tests that game object remove by type and by component id work

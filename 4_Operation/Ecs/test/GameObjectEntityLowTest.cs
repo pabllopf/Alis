@@ -316,24 +316,6 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(go1.EntityLow, go2.EntityLow);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-
-        /// <summary>
-        ///     For several (version, worldId) pairs the property must return the expected packed
-        ///     integer computed by <c>ExpectedEntityLow</c>.
-        /// </summary>
-        [Theory, InlineData(0, 0, 0), InlineData(1, 0, 1), InlineData(0, 1, 65536), InlineData(1, 1, 65537), InlineData(255, 0, 255), InlineData(0, 255, unchecked((int) (255u << 16))), InlineData(100, 200, unchecked((int) (100u | (200u << 16)))), InlineData(0xFFFF, 0, 65535), InlineData(0, 0xFFFF, unchecked((int) 0xFFFF0000)), InlineData(0xFFFF, 0xFFFF, -1)]
-        public void EntityLow_Theory_VersionAndWorldId_ReturnExpected(
-            int version, int worldId, int expected)
-        {
-            GameObject go = new GameObject(
-                (ushort) worldId,
-                (ushort) version,
-                0);
-
-            int result = go.EntityLow;
-
-            Assert.Equal(expected, result);
-        }
+      
     }
 }

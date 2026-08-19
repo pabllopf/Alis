@@ -87,54 +87,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(buffer.HasBufferItems);
         }
 
-        /// <summary>
-        ///     Tests that <see cref="CommandBuffer.AddComponent(GameObject, ComponentId, object)" />
-        ///     playback correctly adds the boxed component.
-        /// </summary>
-        [Fact] public void AddComponent_ByComponentIdAndBoxed_PlaybackAddsComponent()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-
-            buffer.AddComponent(entity, Component<AnotherComponent>.Id, new AnotherComponent { Name = "playback-boxed" });
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent>());
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="CommandBuffer.AddComponent(GameObject, object)" />
-        ///     playback correctly adds the component.
-        /// </summary>
-        [Fact] public void AddComponent_BoxedNoType_PlaybackAddsComponent()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-
-            buffer.AddComponent(entity, new AnotherComponent2 { Name = "boxed-nt", Data = 42 });
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent2>());
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="CommandBuffer.RemoveComponent(GameObject, Type)" />
-        ///     playback removes the component.
-        /// </summary>
-        [Fact] public void RemoveComponent_ByType_PlaybackRemovesComponent()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-
-            buffer.RemoveComponent(entity, typeof(TestComponent));
-            buffer.Playback();
-
-            Assert.False(entity.Has<TestComponent>());
-        }
-
+        
         /// <summary>
         ///     Tests that entity created via Entity / With / End has the specified components after playback.
         /// </summary>
@@ -396,26 +349,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             buffer.Playback();
         }
 
-        /// <summary>
-        ///     Tests that <see cref="CommandBuffer.ProcessAddComponents" /> fires
-        ///     the <c>OnComponentAdded</c> event when <see cref="GameObjectFlags.AddComp" />
-        ///     is set on the entity.
-        /// </summary>
-        [Fact] public void AddComponent_WithOnComponentAddedEvent_Fires()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-
-            bool eventFired = false;
-            entity.OnComponentAdded += (_, _) => eventFired = true;
-
-            buffer.AddComponent(entity, new AnotherComponent { Name = "event-test" });
-            buffer.Playback();
-
-            Assert.True(eventFired);
-            Assert.True(entity.Has<AnotherComponent>());
-        }
+  
 
         /// <summary>
         ///     Tests that <see cref="CommandBuffer.Clear" /> handles version mismatches

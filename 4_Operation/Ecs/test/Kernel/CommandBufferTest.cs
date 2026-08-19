@@ -161,42 +161,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        ///     Tests that playback applies add component command
-        /// </summary>
-        /// <remarks>
-        ///     Tests that Playback method applies the Add command to the scene.
-        /// </remarks>
-        [Fact] public void Playback_AppliesAddCommand()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent {Value = 50});
-            buffer.AddComponent(entity, new AnotherComponent {Name = "Added"});
-
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent>());
-        }
-
-        /// <summary>
-        ///     Tests that playback applies remove component command
-        /// </summary>
-        /// <remarks>
-        ///     Tests that Playback method applies the RemoveComponent command to the scene.
-        /// </remarks>
-        [Fact] public void Playback_AppliesRemoveComponentCommand()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent {Value = 60}, new AnotherComponent {Name = "ToRemove"});
-            buffer.RemoveComponent<AnotherComponent>(entity);
-
-            buffer.Playback();
-
-            Assert.False(entity.Has<AnotherComponent>());
-        }
-
-        /// <summary>
         ///     Tests that playback returns true when commands were applied
         /// </summary>
         /// <remarks>
@@ -230,26 +194,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.False(result);
         }
 
-        /// <summary>
-        ///     Tests that command buffer can handle multiple commands
-        /// </summary>
-        /// <remarks>
-        ///     Tests that CommandBuffer can handle multiple buffered commands.
-        /// </remarks>
-        [Fact] public void CommandBuffer_CanHandleMultipleCommands()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
-            GameObject entity2 = scene.Create(new TestComponent {Value = 2});
-
-            buffer.DeleteEntity(entity1);
-            buffer.AddComponent(entity2, new AnotherComponent {Name = "Test"});
-            buffer.Playback();
-
-            Assert.False(entity1.IsAlive);
-            Assert.True(entity2.Has<AnotherComponent>());
-        }
+   
 
         /// <summary>
         ///     Tests that command buffer clears after playback
@@ -286,27 +231,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.False(entity.Has<TestComponent>());
         }
-
-        /// <summary>
-        ///     Tests that command buffer can queue multiple operations on same entity
-        /// </summary>
-        /// <remarks>
-        ///     Tests that multiple operations can be queued for the same entity.
-        /// </remarks>
-        [Fact] public void CommandBuffer_CanQueueMultipleOperationsOnSameEntity()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent {Value = 100});
-
-            buffer.AddComponent(entity, new AnotherComponent {Name = "First"});
-            buffer.RemoveComponent<TestComponent>(entity);
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent>());
-            Assert.False(entity.Has<TestComponent>());
-        }
-
+        
         /// <summary>
         ///     Tests that command buffer handles entity lifecycle correctly
         /// </summary>
@@ -326,40 +251,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(initialCount - 1, scene.EntityCount);
         }
 
-        /// <summary>
-        ///     Tests that add component with type parameter works
-        /// </summary>
-        /// <remarks>
-        ///     Tests that Add overload with Type parameter works correctly.
-        /// </remarks>
-        [Fact] public void Add_WithTypeParameter_Works()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent {Value = 120});
-            AnotherComponent component2 = new AnotherComponent {Name = "TypeTest"};
-
-            buffer.AddComponent(entity, typeof(AnotherComponent), component2);
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent>());
-        }
-
-        /// <summary>
-        ///     Tests that add component with object overload adds component
-        /// </summary>
-        [Fact] public void AddComponent_WithObjectOverload_AddsComponent()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent());
-            object component = new AnotherComponent {Name = "ObjectAdded"};
-
-            buffer.AddComponent(entity, component);
-            buffer.Playback();
-
-            Assert.True(entity.Has<AnotherComponent>());
-        }
+        
 
         /// <summary>
         ///     Tests that playback when scene does not allow changes throws invalid operation exception

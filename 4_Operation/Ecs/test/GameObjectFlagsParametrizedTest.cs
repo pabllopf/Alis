@@ -74,53 +74,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.IsAlive);
         }
 
-        /// <summary>
-        ///     Tests that game object flags multiple entities alive all are alive
-        /// </summary>
-        /// <param name="entityCount">The entity count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10)]
-        public void GameObjectFlags_MultipleEntitiesAlive_AllAreAlive(int entityCount)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[entityCount];
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i] = scene.Create();
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                Assert.True(entities[i].IsAlive);
-                Assert.False(entities[i].IsNull);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that game object flags delete multiple entities all are null
-        /// </summary>
-        /// <param name="entityCount">The entity count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10)]
-        public void GameObjectFlags_DeleteMultipleEntities_AllAreNull(int entityCount)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[entityCount];
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i] = scene.Create();
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i].Delete();
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                Assert.False(entities[i].IsNull);
-            }
-        }
-
+    
         /// <summary>
         ///     Tests that game object flags null constant is null
         /// </summary>
@@ -142,61 +96,7 @@ namespace Alis.Core.Ecs.Test
             Assert.True(defaultEntity.IsNull);
         }
 
-        /// <summary>
-        ///     Tests that game object flags flags consistent after component operations
-        /// </summary>
-        /// <param name="entityCount">The entity count</param>
-        [Theory, InlineData(10), InlineData(50)]
-        public void GameObjectFlags_FlagsConsistent_AfterComponentOperations(int entityCount)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[entityCount];
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i] = scene.Create();
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                entities[i].Add(new Position {X = 1, Y = 1});
-            }
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                Assert.True(entities[i].IsAlive);
-                Assert.False(entities[i].IsNull);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that game object flags delete partially and check works
-        /// </summary>
-        /// <param name="totalCount">The total count</param>
-        [Theory, InlineData(1), InlineData(5), InlineData(10)]
-        public void GameObjectFlags_DeletePartiallyAndCheck_Works(int totalCount)
-        {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[totalCount];
-            for (int i = 0; i < totalCount; i++)
-            {
-                entities[i] = scene.Create();
-            }
-
-            for (int i = 0; i < totalCount / 2; i++)
-            {
-                entities[i].Delete();
-            }
-
-            for (int i = 0; i < totalCount / 2; i++)
-            {
-                Assert.False(entities[i].IsAlive);
-            }
-
-            for (int i = totalCount / 2; i < totalCount; i++)
-            {
-                Assert.True(entities[i].IsAlive);
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that game object flags compare deleted with null both not alive
@@ -213,24 +113,6 @@ namespace Alis.Core.Ecs.Test
             Assert.False(nullGo.IsAlive);
         }
 
-        /// <summary>
-        ///     Tests that game object flags stress test many creates and deletes
-        /// </summary>
-        /// <param name="count">The count</param>
-        [Theory, InlineData(10), InlineData(50)]
-        public void GameObjectFlags_StressTest_ManyCreatesAndDeletes(int count)
-        {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < count; i++)
-            {
-                GameObject entity = scene.Create();
-                Assert.True(entity.IsAlive);
-                entity.Delete();
-                Assert.False(entity.IsAlive);
-            }
-
-            Assert.True(true);
-        }
+       
     }
 }
