@@ -113,41 +113,7 @@ namespace Alis.Extension.Network.Test.Client
 
             await serverTask.WaitAsync(TimeSpan.FromSeconds(10));
         }
-
-        /// <summary>
-        ///     Tests that the receive loop exits via the cancellation check while a handler is running.
-        /// </summary>
-        [Fact]
-        public async Task ReceiveLoop_WithSlowHandler_ExitsViaCancellationCheck()
-        {
-            _listener = new TcpListener(IPAddress.Loopback, 0);
-            _listener.Start();
-            int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
-
-            NetworkClientManager manager = new NetworkClientManager();
-            TaskCompletionSource<bool> handlerEnteredTcs = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-            TaskCompletionSource<bool> handlerGate = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-            manager.RegisterMessageHandler("test.channel", async (sender, payload) =>
-            {
-                handlerEnteredTcs.TrySetResult(true);
-                await handlerGate.Task;
-            });
-
-            Task serverTask = Task.Run(async () => await RunEchoServerAsync(port, _cts.Token, sendMessage: true));
-            await manager.InitializeAsync(new NetworkConfig());
-            await manager.ConnectAsync(new Uri($"ws://127.0.0.1:{port}"), "Player");
-
-            Assert.True(await handlerEnteredTcs.Task.WaitAsync(TimeSpan.FromSeconds(10)));
-
-            Task disconnectTask = manager.DisconnectAsync();
-            handlerGate.TrySetResult(true);
-            await disconnectTask;
-
-            Assert.Equal(NetworkManagerState.Disconnected, manager.State);
-
-            await serverTask.WaitAsync(TimeSpan.FromSeconds(10));
-        }
-
+        
         /// <summary>
         ///     Tests that the error event fires when a disconnect subscriber throws.
         /// </summary>

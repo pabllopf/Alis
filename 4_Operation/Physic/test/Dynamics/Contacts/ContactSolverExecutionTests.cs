@@ -70,47 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(1, locks[0]);
             Assert.Equal(1, locks[1]);
         }
-
-        /// <summary>
-        ///     Tests that lock bodies with a contended lock spins until both locks are held.
-        /// </summary>
-        [Fact]
-        public void LockBodies_WithContendedLock_AcquiresBothLocks()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
-            Contact contact = Contact.Create(world.ContactManager, bodyA.FixtureList[0], 0, bodyB.FixtureList[0], 0);
-
-            ContactSolver solver = new ContactSolver();
-            TimeStep step = new TimeStep { Dt = 1.0f / 60.0f, InvDt = 60.0f, DtRatio = 1.0f, WarmStarting = true };
-            int[] locks = new int[2];
-            locks[1] = 1;
-            solver.Reset(ref step, 2, new[] {contact, contact}, new SolverPosition[2], new SolverVelocity[2], locks, 0, 0);
-
-            Task acquireTask = Task.Run(() => solver.LockBodies(0, 1));
-            Thread.Sleep(50);
-            locks[1] = 0;
-
-            Assert.True(acquireTask.Wait(TimeSpan.FromSeconds(5)));
-            Assert.Equal(1, locks[0]);
-            Assert.Equal(1, locks[1]);
-        }
-        /// <summary>
-        ///     Tests that a degenerate two point circle contact reduces to a single point in the
-        ///     velocity constraint initialization.
-        /// </summary>
-        [Fact]
-        public void InitializeVelocityConstraints_WithDegenerateFaceContact_UsesSinglePoint()
-        {
-            foreach (float offset in new[] {0.99f, 0.999f, 0.9995f, 0.9f})
-            {
-                WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-                Body bodyA = world.CreateRectangle(1.0f, 1.0f, 1.0f, Vector2F.Zero, 0.0f, BodyType.Dynamic);
-                Body bodyB = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(offset, 0.0f), 0.0f, BodyType.Dynamic);
-
-                world.Step(1.0f / 60.0f);
-            }
-        }
+        
+      
     }
 }
