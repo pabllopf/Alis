@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
 using Xunit;
 
+
 namespace Alis.Test.Core.Ecs.Components.Render
 {
     /// <summary>
