@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Physic.Collisions;
@@ -699,52 +698,26 @@ namespace Alis.Core.Physic.Dynamics
             Interlocked.Exchange(ref orderedBodyA.Lock, 0);
         }
 
-/// <summary>
-        ///     The maximum amount of time spent spinning while acquiring the body locks before giving up.
-        /// </summary>
-        private const int LockAcquisitionTimeoutMilliseconds = 10000;
-
         /// <summary>
-        ///     The number of yield-only spins performed before switching to a sleeping backoff.
-        /// </summary>
-        private const int LockAcquisitionSpinIterations = 100;
-
-        /// <summary>
-        ///     Acquires the locks using the specified body a
+        /// Acquires the locks using the specified body a
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
-        /// <exception cref="InvalidOperationException">Thrown when the locks cannot be acquired within the timeout.</exception>
         private static void AcquireLocks(Body bodyA, Body bodyB)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            int spinCount = 0;
-
             while (true)
             {
                 if (Interlocked.CompareExchange(ref bodyA.Lock, 1, 0) == 0)
                 {
                     if (Interlocked.CompareExchange(ref bodyB.Lock, 1, 0) == 0)
                     {
-                        return;
+                        break;
                     }
 
                     Interlocked.Exchange(ref bodyA.Lock, 0);
                 }
 
-                if (stopwatch.ElapsedMilliseconds > LockAcquisitionTimeoutMilliseconds)
-                {
-                    throw new InvalidOperationException("Timed out acquiring the body locks.");
-                }
-
-                if (++spinCount % LockAcquisitionSpinIterations == 0)
-                {
-                    Thread.Sleep(1);
-                }
-                else
-                {
-                    Thread.Sleep(0);
-                }
+                Thread.Sleep(0);
             }
         }
     }
