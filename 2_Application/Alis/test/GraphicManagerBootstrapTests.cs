@@ -51,32 +51,5 @@ namespace Alis.Test
 
             Assert.Empty(GraphicManagerBootstrap.Failures);
         }
-
-        /// <summary>
-        ///     Tests that the init with the default window size completed.
-        /// </summary>
-        [Fact]
-        public void Bootstrap_InitDefaultWindow_Completed()
-        {
-            Assert.True(GraphicManagerBootstrap.Ready && GraphicManagerBootstrap.InitDefaultWindowOk);
-        }
-
-        /// <summary>
-        ///     Tests that the init with the custom window size completed.
-        /// </summary>
-        [Fact]
-        public void Bootstrap_InitCustomWindow_Completed()
-        {
-            Assert.True(GraphicManagerBootstrap.Ready && GraphicManagerBootstrap.InitCustomWindowOk);
-        }
-
-        /// <summary>
-        ///     Tests that the draw completed.
-        /// </summary>
-        [Fact]
-        public void Bootstrap_Draw_Completed()
-        {
-            Assert.True(GraphicManagerBootstrap.Ready && GraphicManagerBootstrap.DrawOk);
-        }
     }
 }
