@@ -181,24 +181,35 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Audio
         }
 
         /// <summary>
-        ///     Tests the full constructor with all parameters.
+        ///     Tests the full constructor with all parameters sets properties correctly.
         /// </summary>
-        [Theory]
-        [InlineData("test-id", "TestAudio", "AudioTag", true)]
-        [InlineData("", "", "", false)]
-        public void FullConstructor_SetsAllProperties(string id, string name, string tag, bool isEnable)
+        [Fact]
+        public void FullConstructor_SetsAllProperties()
         {
-            // Arrange
             Context context = new Context(new Setting());
 
-            // Act
-            AudioManager audioManager = new AudioManager(id, name, tag, isEnable, context);
+            AudioManager audioManager = new AudioManager("test-id", "TestAudio", "AudioTag", true, context);
 
-            // Assert
-            Assert.Equal(id, audioManager.Id);
-            Assert.Equal(name, audioManager.Name);
-            Assert.Equal(tag, audioManager.Tag);
-            Assert.Equal(isEnable, audioManager.IsEnable);
+            Assert.Equal("test-id", audioManager.Id);
+            Assert.Equal("TestAudio", audioManager.Name);
+            Assert.Equal("AudioTag", audioManager.Tag);
+            Assert.True(audioManager.IsEnable);
+        }
+
+        /// <summary>
+        ///     Tests the full constructor with empty values.
+        /// </summary>
+        [Fact]
+        public void FullConstructor_WithEmptyValues_SetsAllProperties()
+        {
+            Context context = new Context(new Setting());
+
+            AudioManager audioManager = new AudioManager(string.Empty, string.Empty, string.Empty, false, context);
+
+            Assert.Equal(string.Empty, audioManager.Id);
+            Assert.Equal(string.Empty, audioManager.Name);
+            Assert.Equal(string.Empty, audioManager.Tag);
+            Assert.False(audioManager.IsEnable);
         }
     }
 }

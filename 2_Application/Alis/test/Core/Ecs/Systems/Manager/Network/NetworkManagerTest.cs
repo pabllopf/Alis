@@ -181,24 +181,35 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         }
 
         /// <summary>
-        ///     Tests the full constructor with all parameters.
+        ///     Tests the full constructor with all parameters sets properties correctly.
         /// </summary>
-        [Theory]
-        [InlineData("test-id", "TestNetwork", "NetworkTag", true)]
-        [InlineData("", "", "", false)]
-        public void FullConstructor_SetsAllProperties(string id, string name, string tag, bool isEnable)
+        [Fact]
+        public void FullConstructor_SetsAllProperties()
         {
-            // Arrange
             Context context = new Context(new Setting());
 
-            // Act
-            NetworkManager networkManager = new NetworkManager(id, name, tag, isEnable, context);
+            NetworkManager networkManager = new NetworkManager("test-id", "TestNetwork", "NetworkTag", true, context);
 
-            // Assert
-            Assert.Equal(id, networkManager.Id);
-            Assert.Equal(name, networkManager.Name);
-            Assert.Equal(tag, networkManager.Tag);
-            Assert.Equal(isEnable, networkManager.IsEnable);
+            Assert.Equal("test-id", networkManager.Id);
+            Assert.Equal("TestNetwork", networkManager.Name);
+            Assert.Equal("NetworkTag", networkManager.Tag);
+            Assert.True(networkManager.IsEnable);
+        }
+
+        /// <summary>
+        ///     Tests the full constructor with empty values.
+        /// </summary>
+        [Fact]
+        public void FullConstructor_WithEmptyValues_SetsAllProperties()
+        {
+            Context context = new Context(new Setting());
+
+            NetworkManager networkManager = new NetworkManager(string.Empty, string.Empty, string.Empty, false, context);
+
+            Assert.Equal(string.Empty, networkManager.Id);
+            Assert.Equal(string.Empty, networkManager.Name);
+            Assert.Equal(string.Empty, networkManager.Tag);
+            Assert.False(networkManager.IsEnable);
         }
     }
 }

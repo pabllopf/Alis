@@ -142,21 +142,35 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Input
         }
 
         /// <summary>
-        ///     Tests the full constructor with all parameters.
+        ///     Tests the full constructor with all parameters sets properties correctly.
         /// </summary>
-        [Theory]
-        [InlineData("test-id", "TestInput", "InputTag", true)]
-        [InlineData("", "", "", false)]
-        public void FullConstructor_SetsAllProperties(string id, string name, string tag, bool isEnable)
+        [Fact]
+        public void FullConstructor_SetsAllProperties()
         {
             Context context = new Context(new Setting());
 
-            InputManager inputManager = new InputManager(id, name, tag, isEnable, context);
+            InputManager inputManager = new InputManager("test-id", "TestInput", "InputTag", true, context);
 
-            Assert.Equal(id, inputManager.Id);
-            Assert.Equal(name, inputManager.Name);
-            Assert.Equal(tag, inputManager.Tag);
-            Assert.Equal(isEnable, inputManager.IsEnable);
+            Assert.Equal("test-id", inputManager.Id);
+            Assert.Equal("TestInput", inputManager.Name);
+            Assert.Equal("InputTag", inputManager.Tag);
+            Assert.True(inputManager.IsEnable);
+        }
+
+        /// <summary>
+        ///     Tests the full constructor with empty values.
+        /// </summary>
+        [Fact]
+        public void FullConstructor_WithEmptyValues_SetsAllProperties()
+        {
+            Context context = new Context(new Setting());
+
+            InputManager inputManager = new InputManager(string.Empty, string.Empty, string.Empty, false, context);
+
+            Assert.Equal(string.Empty, inputManager.Id);
+            Assert.Equal(string.Empty, inputManager.Name);
+            Assert.Equal(string.Empty, inputManager.Tag);
+            Assert.False(inputManager.IsEnable);
         }
     }
 }
