@@ -61,12 +61,14 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Constructor_WithValidSceneAndAttributeType_CreatesFilter()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
-            Assert.NotNull(filter);
+                Assert.NotNull(filter);
+            }
         }
 
         /// <summary>
@@ -75,17 +77,19 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Constructor_ProcessesExistingArchetypes()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
-            GameObject entityA = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entityB = scene.Create(new UpdateComponent {CallCount = 0}, new Position {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+                GameObject entityA = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entityB = scene.Create(new UpdateComponent {CallCount = 0}, new Position {X = 3, Y = 4});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
-            filter.Update();
+                filter.Update();
 
-            Assert.Equal(1, entityA.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, entityB.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entityA.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entityB.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -94,16 +98,18 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Update_InvokesOnUpdateForAllComponentsWithAttribute()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
-            GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject e2 = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+                GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject e2 = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
-            filter.Update();
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+                filter.Update();
 
-            Assert.Equal(1, e1.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, e2.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, e1.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, e2.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -112,15 +118,17 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Update_CalledMultipleTimes_ExecutesEachTime()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
-            GameObject entity = scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+                GameObject entity = scene.Create(new UpdateComponent {CallCount = 0});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
-            filter.Update();
-            filter.Update();
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+                filter.Update();
+                filter.Update();
 
-            Assert.Equal(2, entity.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, entity.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -129,13 +137,15 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Update_WithNoMatchingComponents_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            scene.Create(new TestComponent {Value = 1, Name = "test"});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new TestComponent {Value = 1, Name = "test"});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
-            Exception ex = Record.Exception(filter.Update);
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
+                Exception ex = Record.Exception(filter.Update);
 
-            Assert.Null(ex);
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>
@@ -144,12 +154,13 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Update_WithEmptyScene_DoesNotThrow()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
+                Exception ex = Record.Exception(filter.Update);
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
-            Exception ex = Record.Exception(filter.Update);
-
-            Assert.Null(ex);
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>
@@ -158,17 +169,19 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateSubset_ThroughDeferredCreation_UpdatesOnlyNewEntities()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
-            GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+                GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
-            scene.EnterDisallowState();
-            GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+                Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -181,24 +194,25 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
 
-            using Scene scene = new Scene();
-
             // First entity with UpdateComponent, so its archetype exists
-            scene.Create(new UpdateComponent { CallCount = 0 });
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new UpdateComponent {CallCount = 0});
 
-            // Create filter and register it with the scene
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
-            scene._updatesByAttributes[RegisteredFilterType] = filter;
+                // Create filter and register it with the scene
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+                scene._updatesByAttributes[RegisteredFilterType] = filter;
 
-            // Create entity with a brand-new component type (never before seen by the ComponentTable).
-            // This registers a new entry in ComponentTable, making _lastRegisteredComponentId < Count
-            // when ArchetypeAdded is called on the filter for the new archetype.
-            // Since _filter was already set during construction, the second call to
-            // RegisterNewComponents hits _filter is null = false.
-            scene.Create(new CoverageOnlyComponent { Data = 42 });
+                // Create entity with a brand-new component type (never before seen by the ComponentTable).
+                // This registers a new entry in ComponentTable, making _lastRegisteredComponentId < Count
+                // when ArchetypeAdded is called on the filter for the new archetype.
+                // Since _filter was already set during construction, the second call to
+                // RegisterNewComponents hits _filter is null = false.
+                scene.Create(new CoverageOnlyComponent {Data = 42});
 
-            Exception ex = Record.Exception(() => filter.Update());
-            Assert.Null(ex);
+                Exception ex = Record.Exception(() => filter.Update());
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>
@@ -219,22 +233,23 @@ namespace Alis.Core.Ecs.Test.Updating
             GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp7));
             GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp8));
 
-            using Scene scene = new Scene();
-
             // First entity with 8 matching components fills the initial _allComponents capacity of 8
-            scene.Create(new BufferComp0(), new BufferComp1(), new BufferComp2(), new BufferComp3(),
-                         new BufferComp4(), new BufferComp5(), new BufferComp6(), new BufferComp7());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new BufferComp0(), new BufferComp1(), new BufferComp2(), new BufferComp3(),
+                    new BufferComp4(), new BufferComp5(), new BufferComp6(), new BufferComp7());
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, BufferGrowthAttributeType);
-            scene._updatesByAttributes[BufferGrowthAttributeType] = filter;
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, BufferGrowthAttributeType);
+                scene._updatesByAttributes[BufferGrowthAttributeType] = filter;
 
-            // Second entity with a 9th matching component creates a new archetype;
-            // ArchetypeAdded tries to store its component storage while _nextComponentStorageIndex
-            // equals _allComponents.Length, triggering Array.Resize.
-            scene.Create(new BufferComp8());
+                // Second entity with a 9th matching component creates a new archetype;
+                // ArchetypeAdded tries to store its component storage while _nextComponentStorageIndex
+                // equals _allComponents.Length, triggering Array.Resize.
+                scene.Create(new BufferComp8());
 
-            Exception ex = Record.Exception(() => filter.Update());
-            Assert.Null(ex);
+                Exception ex = Record.Exception(() => filter.Update());
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>

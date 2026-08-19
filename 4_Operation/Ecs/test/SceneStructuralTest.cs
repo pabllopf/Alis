@@ -50,13 +50,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_EntityArchetypeChangesWhenComponentAdded()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2});
+                entity.Add(new Position {X = 1, Y = 2});
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -67,13 +69,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_EntityArchetypeChangesWhenComponentRemoved()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Remove<Position>();
+                entity.Remove<Position>();
 
-            Assert.True(entity.IsAlive);
-            Assert.False(entity.Has<Position>());
+                Assert.True(entity.IsAlive);
+                Assert.False(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -84,15 +88,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_EntityDataIsPreservedDuringTransition()
         {
-            using Scene scene = new Scene();
-            Position originalPos = new Position {X = 42, Y = 84};
-            GameObject entity = scene.Create(originalPos);
+            using (Scene scene = new Scene())
+            {
+                Position originalPos = new Position {X = 42, Y = 84};
+                GameObject entity = scene.Create(originalPos);
 
-            entity.Add(new Velocity {X = 10, Y = 20});
+                entity.Add(new Velocity {X = 10, Y = 20});
 
-            Assert.True(entity.TryGet(out Ref<Position> pos));
-            Assert.Equal(42, pos.Value.X);
-            Assert.Equal(84, pos.Value.Y);
+                Assert.True(entity.TryGet(out Ref<Position> pos));
+                Assert.Equal(42, pos.Value.X);
+                Assert.Equal(84, pos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -103,16 +109,18 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_MultipleComponentsCanBeAddedSequentially()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 3, Y = 4});
-            entity.Add(new Health {Value = 100});
+                entity.Add(new Position {X = 1, Y = 2});
+                entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Health {Value = 100});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -123,19 +131,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_MultipleComponentsCanBeRemovedSequentially()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 100}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100}
+                );
 
-            entity.Remove<Position>();
-            entity.Remove<Velocity>();
+                entity.Remove<Position>();
+                entity.Remove<Velocity>();
 
-            Assert.False(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.False(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -146,14 +156,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_EntityIdentityIsPreservedDuringTransition()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            GameObject originalRef = entity;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObject originalRef = entity;
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Equal(originalRef, entity);
-            Assert.True(entity.IsAlive);
+                Assert.Equal(originalRef, entity);
+                Assert.True(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -164,18 +176,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_RemovingAllComponentsReturnsToDefaultArchetype()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4}
+                );
 
-            entity.Remove<Position>();
-            entity.Remove<Velocity>();
+                entity.Remove<Position>();
+                entity.Remove<Velocity>();
 
-            Assert.True(entity.IsAlive);
-            Assert.False(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.IsAlive);
+                Assert.False(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -186,15 +200,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_ArchetypeTransitionsPreserveOtherEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
-            entity1.Add(new Velocity {X = 5, Y = 6});
+                entity1.Add(new Velocity {X = 5, Y = 6});
 
-            Assert.True(entity2.IsAlive);
-            Assert.True(entity2.Has<Position>());
-            Assert.False(entity2.Has<Velocity>());
+                Assert.True(entity2.IsAlive);
+                Assert.True(entity2.Has<Position>());
+                Assert.False(entity2.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -205,25 +221,27 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_ArchetypeTransitionsWorkWithManyEntities()
         {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[100];
-            for (int i = 0; i < 100; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create(new Position {X = i, Y = i * 2});
-            }
-
-            entities[50].Add(new Velocity {X = 10, Y = 20});
-
-            Assert.True(entities[50].Has<Velocity>());
-            for (int i = 0; i < 100; i++)
-            {
-                if (i == 50)
+                GameObject[] entities = new GameObject[100];
+                for (int i = 0; i < 100; i++)
                 {
-                    Assert.True(entities[i].Has<Velocity>());
+                    entities[i] = scene.Create(new Position {X = i, Y = i * 2});
                 }
-                else
+
+                entities[50].Add(new Velocity {X = 10, Y = 20});
+
+                Assert.True(entities[50].Has<Velocity>());
+                for (int i = 0; i < 100; i++)
                 {
-                    Assert.False(entities[i].Has<Velocity>());
+                    if (i == 50)
+                    {
+                        Assert.True(entities[i].Has<Velocity>());
+                    }
+                    else
+                    {
+                        Assert.False(entities[i].Has<Velocity>());
+                    }
                 }
             }
         }
@@ -236,14 +254,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_StructuralChangesWorkAfterSceneUpdate()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            scene.Update();
-            entity.Add(new Velocity {X = 3, Y = 4});
+                scene.Update();
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -254,18 +274,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_ReplacingComponentWorks()
         {
-            using Scene scene = new Scene();
-            Position originalPos = new Position {X = 1, Y = 2};
-            GameObject entity = scene.Create(originalPos);
+            using (Scene scene = new Scene())
+            {
+                Position originalPos = new Position {X = 1, Y = 2};
+                GameObject entity = scene.Create(originalPos);
 
-            entity.Remove<Position>();
-            Position newPos = new Position {X = 10, Y = 20};
-            entity.Add(newPos);
+                entity.Remove<Position>();
+                Position newPos = new Position {X = 10, Y = 20};
+                entity.Add(newPos);
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.TryGet(out Ref<Position> pos));
-            Assert.Equal(10, pos.Value.X);
-            Assert.Equal(20, pos.Value.Y);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.TryGet(out Ref<Position> pos));
+                Assert.Equal(10, pos.Value.X);
+                Assert.Equal(20, pos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -276,18 +298,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_ArchetypeTransitionsWorkWithMixedComponentTypes()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Add(new Velocity {X = 3, Y = 4});
-            entity.Add(new Health {Value = 100});
-            entity.Remove<Velocity>();
-            entity.Add(new Transform {X = 5, Y = 6, Rotation = 45});
+                entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Health {Value = 100});
+                entity.Remove<Velocity>();
+                entity.Add(new Transform {X = 5, Y = 6, Rotation = 45});
 
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Transform>());
+                Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Transform>());
+            }
         }
 
         /// <summary>
@@ -298,14 +322,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_DeferredStructuralChangesAreApplied()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Add(new Velocity {X = 3, Y = 4});
-            scene.Update();
+                entity.Add(new Velocity {X = 3, Y = 4});
+                scene.Update();
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -316,15 +342,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneStructural_EntityCountIsUpdatedAfterStructuralChanges()
         {
-            using Scene scene = new Scene();
-            int initialCount = scene.EntityCount;
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                int initialCount = scene.EntityCount;
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
 
-            entity1.Add(new Position {X = 1, Y = 2});
-            entity2.Add(new Position {X = 3, Y = 4});
+                entity1.Add(new Position {X = 1, Y = 2});
+                entity2.Add(new Position {X = 3, Y = 4});
 
-            Assert.Equal(initialCount + 2, scene.EntityCount);
+                Assert.Equal(initialCount + 2, scene.EntityCount);
+            }
         }
     }
 }

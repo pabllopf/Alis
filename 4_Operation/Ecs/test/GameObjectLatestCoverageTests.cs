@@ -44,13 +44,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Get_OnDeletedEntity_ThrowsEntityIsDead()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => entity.Get<Position>());
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => entity.Get<Position>());
 
-            Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+                Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+            }
         }
 
         /// <summary>
@@ -59,13 +61,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Add_OnDeletedEntity_ThrowsEntityIsDead()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => entity.Add(new Velocity {X = 3, Y = 4}));
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => entity.Add(new Velocity {X = 3, Y = 4}));
 
-            Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+                Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+            }
         }
 
         /// <summary>
@@ -74,13 +78,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void ComponentTypes_OnDeletedEntity_ThrowsEntityIsDead()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => _ = entity.ComponentTypes);
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => _ = entity.ComponentTypes);
 
-            Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+                Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
+            }
         }
     }
 }

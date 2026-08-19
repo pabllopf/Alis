@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.NotNull(buffer);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.True(entity.Has<Position>());
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.Equal(1, count);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotNull(buffer2);
             Assert.NotNull(buffer3);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(e1.Has<Velocity>());
             Assert.True(e2.Has<Health>());
 
-            scene.Dispose();
+            
         }
     }
 }

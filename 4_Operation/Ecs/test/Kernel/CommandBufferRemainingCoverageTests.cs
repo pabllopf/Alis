@@ -44,10 +44,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void With_WithoutGameObject_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            Assert.Throws<InvalidOperationException>(() => buffer.With<int>(42));
+                Assert.Throws<InvalidOperationException>(() => buffer.With<int>(42));
+            }
         }
 
         /// <summary>
@@ -56,10 +58,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void WithBoxed_WithoutGameObject_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            Assert.Throws<InvalidOperationException>(() => buffer.WithBoxed(42));
+                Assert.Throws<InvalidOperationException>(() => buffer.WithBoxed(42));
+            }
         }
     }
 }

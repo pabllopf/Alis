@@ -141,17 +141,18 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Enumerate_SingleEntity_YieldsOneEntity()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(1);
-
-            int count = 0;
-            foreach (GameObject _ in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(1);
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach (GameObject _ in chunk.Entities)
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -159,17 +160,18 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Enumerate_MultipleEntities_YieldsExpectedCount()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
-
-            int count = 0;
-            foreach (GameObject _ in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
 
-            Assert.Equal(5, count);
+                int count = 0;
+                foreach (GameObject _ in chunk.Entities)
+                {
+                    count++;
+                }
+
+                Assert.Equal(5, count);
+            }
         }
 
         /// <summary>
@@ -177,23 +179,24 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Enumerate_Twice_ProducesSameIds()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(3);
-
-            List<int> firstIds = [];
-            foreach (GameObject entity in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                firstIds.Add(entity.EntityID);
-            }
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(3);
 
-            List<int> secondIds = [];
-            foreach (GameObject entity in chunk.Entities)
-            {
-                secondIds.Add(entity.EntityID);
-            }
+                List<int> firstIds = [];
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    firstIds.Add(entity.EntityID);
+                }
 
-            Assert.Equal(firstIds, secondIds);
+                List<int> secondIds = [];
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    secondIds.Add(entity.EntityID);
+                }
+
+                Assert.Equal(firstIds, secondIds);
+            }
         }
 
         /// <summary>
@@ -201,26 +204,27 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(3);
-
-            chunk.Span[0] = new Position {X = 10, Y = 20};
-            chunk.Span[1] = new Position {X = 30, Y = 40};
-            chunk.Span[2] = new Position {X = 50, Y = 60};
-
-            int[] expectedX = [10, 30, 50];
-            int[] expectedY = [20, 40, 60];
-            int index = 0;
-
-            foreach (GameObject entity in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(expectedX[index], entity.Get<Position>().X);
-                Assert.Equal(expectedY[index], entity.Get<Position>().Y);
-                index++;
-            }
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(3);
 
-            Assert.Equal(3, index);
+                chunk.Span[0] = new Position {X = 10, Y = 20};
+                chunk.Span[1] = new Position {X = 30, Y = 40};
+                chunk.Span[2] = new Position {X = 50, Y = 60};
+
+                int[] expectedX = [10, 30, 50];
+                int[] expectedY = [20, 40, 60];
+                int index = 0;
+
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    Assert.Equal(expectedX[index], entity.Get<Position>().X);
+                    Assert.Equal(expectedY[index], entity.Get<Position>().Y);
+                    index++;
+                }
+
+                Assert.Equal(3, index);
+            }
         }
 
         /// <summary>
@@ -228,22 +232,24 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Current_AccessedBeforeMoveNext_Throws()
         {
-            using Scene scene = new Scene();
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(1);
-
-            GameObjectEnumerator enumerator = chunk.Entities.GetEnumerator();
-
-            bool threw = false;
-            try
+            using (Scene scene = new Scene())
             {
-                _ = enumerator.Current;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                threw = true;
-            }
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(1);
 
-            Assert.True(threw);
+                GameObjectEnumerator enumerator = chunk.Entities.GetEnumerator();
+
+                bool threw = false;
+                try
+                {
+                    _ = enumerator.Current;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    threw = true;
+                }
+
+                Assert.True(threw);
+            }
         }
 
         /// <summary>
@@ -251,21 +257,23 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4});
-
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(2);
-
-            int count = 0;
-            foreach (GameObject entity in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(0, entity.Get<Position>().X);
-                Assert.Equal(0, entity.Get<Position>().Y);
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Position {X = 3, Y = 4});
 
-            Assert.Equal(2, count);
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(2);
+
+                int count = 0;
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    Assert.Equal(0, entity.Get<Position>().X);
+                    Assert.Equal(0, entity.Get<Position>().Y);
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
     }
 }

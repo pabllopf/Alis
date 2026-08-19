@@ -56,24 +56,26 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void EntityUpdate_SceneUpdate_InvokesComponentUpdateAndMutatesAllArgs()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new EntityUpdate5Component {CallCount = 0},
-                new Position {X = 10, Y = 20},
-                new Velocity {X = 1, Y = 2},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 5}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new EntityUpdate5Component {CallCount = 0},
+                    new Position {X = 10, Y = 20},
+                    new Velocity {X = 1, Y = 2},
+                    new Health {Value = 100},
+                    new Armor {Value = 50},
+                    new Damage {Value = 5}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity.Get<EntityUpdate5Component>().CallCount);
-            Assert.Equal(11, entity.Get<Position>().X);
-            Assert.Equal(22, entity.Get<Position>().Y);
-            Assert.Equal(99, entity.Get<Health>().Value);
-            Assert.Equal(51, entity.Get<Armor>().Value);
-            Assert.Equal(7, entity.Get<Damage>().Value);
+                Assert.Equal(1, entity.Get<EntityUpdate5Component>().CallCount);
+                Assert.Equal(11, entity.Get<Position>().X);
+                Assert.Equal(22, entity.Get<Position>().Y);
+                Assert.Equal(99, entity.Get<Health>().Value);
+                Assert.Equal(51, entity.Get<Armor>().Value);
+                Assert.Equal(7, entity.Get<Damage>().Value);
+            }
         }
 
         /// <summary>
@@ -81,25 +83,27 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void EntityUpdate_SceneUpdate_TwoFrames_AccumulatesChanges()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new EntityUpdate5Component {CallCount = 0},
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 10},
-                new Armor {Value = 1},
-                new Damage {Value = 0}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new EntityUpdate5Component {CallCount = 0},
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 10},
+                    new Armor {Value = 1},
+                    new Damage {Value = 0}
+                );
 
-            scene.Update();
-            scene.Update();
+                scene.Update();
+                scene.Update();
 
-            Assert.Equal(2, entity.Get<EntityUpdate5Component>().CallCount);
-            Assert.Equal(4, entity.Get<Position>().X);
-            Assert.Equal(6, entity.Get<Position>().Y);
-            Assert.Equal(8, entity.Get<Health>().Value);
-            Assert.Equal(3, entity.Get<Armor>().Value);
-            Assert.Equal(4, entity.Get<Damage>().Value);
+                Assert.Equal(2, entity.Get<EntityUpdate5Component>().CallCount);
+                Assert.Equal(4, entity.Get<Position>().X);
+                Assert.Equal(6, entity.Get<Position>().Y);
+                Assert.Equal(8, entity.Get<Health>().Value);
+                Assert.Equal(3, entity.Get<Armor>().Value);
+                Assert.Equal(4, entity.Get<Damage>().Value);
+            }
         }
 
         /// <summary>
@@ -107,30 +111,32 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void EntityUpdate_SceneUpdate_UpdatesAllMatchingEntities()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new EntityUpdate5Component {CallCount = 0},
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 5},
-                new Armor {Value = 10},
-                new Damage {Value = 1}
-            );
-            GameObject e2 = scene.Create(
-                new EntityUpdate5Component {CallCount = 0},
-                new Position {X = 2, Y = 2},
-                new Velocity {X = 2, Y = 2},
-                new Health {Value = 6},
-                new Armor {Value = 20},
-                new Damage {Value = 2}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(
+                    new EntityUpdate5Component {CallCount = 0},
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 5},
+                    new Armor {Value = 10},
+                    new Damage {Value = 1}
+                );
+                GameObject e2 = scene.Create(
+                    new EntityUpdate5Component {CallCount = 0},
+                    new Position {X = 2, Y = 2},
+                    new Velocity {X = 2, Y = 2},
+                    new Health {Value = 6},
+                    new Armor {Value = 20},
+                    new Damage {Value = 2}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, e1.Get<EntityUpdate5Component>().CallCount);
-            Assert.Equal(1, e2.Get<EntityUpdate5Component>().CallCount);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(4, e2.Get<Position>().X);
+                Assert.Equal(1, e1.Get<EntityUpdate5Component>().CallCount);
+                Assert.Equal(1, e2.Get<EntityUpdate5Component>().CallCount);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(4, e2.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -138,30 +144,32 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void EntityUpdate_SceneUpdate_PassesCorrectEntityIdentityToEachComponent()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new EntityUpdate5IdentityComponent(),
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 2},
-                new Armor {Value = 3},
-                new Damage {Value = 4}
-            );
-            GameObject e2 = scene.Create(
-                new EntityUpdate5IdentityComponent(),
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 2},
-                new Health {Value = 12},
-                new Armor {Value = 13},
-                new Damage {Value = 14}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(
+                    new EntityUpdate5IdentityComponent(),
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 2},
+                    new Armor {Value = 3},
+                    new Damage {Value = 4}
+                );
+                GameObject e2 = scene.Create(
+                    new EntityUpdate5IdentityComponent(),
+                    new Position {X = 10, Y = 10},
+                    new Velocity {X = 2, Y = 2},
+                    new Health {Value = 12},
+                    new Armor {Value = 13},
+                    new Damage {Value = 14}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(e1.EntityID, e1.Get<EntityUpdate5IdentityComponent>().LastSeenEntityId);
-            Assert.Equal(e2.EntityID, e2.Get<EntityUpdate5IdentityComponent>().LastSeenEntityId);
-            Assert.Equal(1, e1.Get<EntityUpdate5IdentityComponent>().CallCount);
-            Assert.Equal(1, e2.Get<EntityUpdate5IdentityComponent>().CallCount);
+                Assert.Equal(e1.EntityID, e1.Get<EntityUpdate5IdentityComponent>().LastSeenEntityId);
+                Assert.Equal(e2.EntityID, e2.Get<EntityUpdate5IdentityComponent>().LastSeenEntityId);
+                Assert.Equal(1, e1.Get<EntityUpdate5IdentityComponent>().CallCount);
+                Assert.Equal(1, e2.Get<EntityUpdate5IdentityComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -171,43 +179,45 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         {
             EntityUpdate5SpawnerComponent.ResetTracking();
 
-            using Scene scene = new Scene();
-            GameObject existingSpawner = scene.Create(
-                new EntityUpdate5SpawnerComponent {SpawnCount = 2},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 1}
-            );
-            GameObject existingPassive = scene.Create(
-                new EntityUpdate5SpawnerComponent {SpawnCount = 0},
-                new Position {X = 3, Y = 4},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 2}
-            );
-
-            scene.Update();
-
-            Assert.Equal(1, existingSpawner.Get<EntityUpdate5SpawnerComponent>().CallCount);
-            Assert.Equal(1, existingPassive.Get<EntityUpdate5SpawnerComponent>().CallCount);
-
-            Assert.Equal(2, EntityUpdate5SpawnerComponent.TotalSpawned);
-            Assert.Equal(4, EntityUpdate5SpawnerComponent.TotalCalls);
-            Assert.Equal(2, EntityUpdate5SpawnerComponent.SpawnedEntities.Count);
-
-            foreach (GameObject spawned in EntityUpdate5SpawnerComponent.SpawnedEntities)
+            using (Scene scene = new Scene())
             {
-                EntityUpdate5SpawnerComponent component = spawned.Get<EntityUpdate5SpawnerComponent>();
-                Assert.Equal(1, component.CallCount);
+                GameObject existingSpawner = scene.Create(
+                    new EntityUpdate5SpawnerComponent {SpawnCount = 2},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 10},
+                    new Armor {Value = 20},
+                    new Damage {Value = 1}
+                );
+                GameObject existingPassive = scene.Create(
+                    new EntityUpdate5SpawnerComponent {SpawnCount = 0},
+                    new Position {X = 3, Y = 4},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 30},
+                    new Armor {Value = 40},
+                    new Damage {Value = 2}
+                );
 
-                Assert.Equal(7, spawned.Get<Position>().X);
-                Assert.Equal(8, spawned.Get<Position>().Y);
-                Assert.Equal(49, spawned.Get<Health>().Value);
-                Assert.Equal(61, spawned.Get<Armor>().Value);
-                Assert.Equal(8, spawned.Get<Damage>().Value);
+                scene.Update();
+
+                Assert.Equal(1, existingSpawner.Get<EntityUpdate5SpawnerComponent>().CallCount);
+                Assert.Equal(1, existingPassive.Get<EntityUpdate5SpawnerComponent>().CallCount);
+
+                Assert.Equal(2, EntityUpdate5SpawnerComponent.TotalSpawned);
+                Assert.Equal(4, EntityUpdate5SpawnerComponent.TotalCalls);
+                Assert.Equal(2, EntityUpdate5SpawnerComponent.SpawnedEntities.Count);
+
+                foreach (GameObject spawned in EntityUpdate5SpawnerComponent.SpawnedEntities)
+                {
+                    EntityUpdate5SpawnerComponent component = spawned.Get<EntityUpdate5SpawnerComponent>();
+                    Assert.Equal(1, component.CallCount);
+
+                    Assert.Equal(7, spawned.Get<Position>().X);
+                    Assert.Equal(8, spawned.Get<Position>().Y);
+                    Assert.Equal(49, spawned.Get<Health>().Value);
+                    Assert.Equal(61, spawned.Get<Armor>().Value);
+                    Assert.Equal(8, spawned.Get<Damage>().Value);
+                }
             }
         }
 
@@ -218,22 +228,24 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         {
             EntityUpdate5SpawnerComponent.ResetTracking();
 
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new EntityUpdate5SpawnerComponent {SpawnCount = 0},
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 5},
-                new Armor {Value = 5},
-                new Damage {Value = 5}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new EntityUpdate5SpawnerComponent {SpawnCount = 0},
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 5},
+                    new Armor {Value = 5},
+                    new Damage {Value = 5}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity.Get<EntityUpdate5SpawnerComponent>().CallCount);
-            Assert.Equal(1, EntityUpdate5SpawnerComponent.TotalCalls);
-            Assert.Equal(0, EntityUpdate5SpawnerComponent.TotalSpawned);
-            Assert.Empty(EntityUpdate5SpawnerComponent.SpawnedEntities);
+                Assert.Equal(1, entity.Get<EntityUpdate5SpawnerComponent>().CallCount);
+                Assert.Equal(1, EntityUpdate5SpawnerComponent.TotalCalls);
+                Assert.Equal(0, EntityUpdate5SpawnerComponent.TotalSpawned);
+                Assert.Empty(EntityUpdate5SpawnerComponent.SpawnedEntities);
+            }
         }
 
         /// <summary>

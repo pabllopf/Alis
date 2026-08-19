@@ -214,7 +214,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             Assert.Equal(gameObject, passedGameObject);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>

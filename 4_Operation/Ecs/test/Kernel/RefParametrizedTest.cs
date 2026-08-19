@@ -42,13 +42,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_CreateAndAccess_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos = ref entity.Get<Position>();
+                ref Position pos = ref entity.Get<Position>();
 
-            Assert.Equal(10, pos.X);
-            Assert.Equal(20, pos.Y);
+                Assert.Equal(10, pos.X);
+                Assert.Equal(20, pos.Y);
+            }
         }
 
         /// <summary>
@@ -56,15 +58,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_ModifyViaRef_ChangesArePersisted()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 30;
-            pos.Y = 40;
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 30;
+                pos.Y = 40;
 
-            Assert.Equal(30, entity.Get<Position>().X);
-            Assert.Equal(40, entity.Get<Position>().Y);
+                Assert.Equal(30, entity.Get<Position>().X);
+                Assert.Equal(40, entity.Get<Position>().Y);
+            }
         }
 
      
@@ -73,13 +77,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_Health_ModifyValue()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Health {Value = 100});
 
-            ref Health health = ref entity.Get<Health>();
-            health.Value = 50;
+                ref Health health = ref entity.Get<Health>();
+                health.Value = 50;
 
-            Assert.Equal(50, entity.Get<Health>().Value);
+                Assert.Equal(50, entity.Get<Health>().Value);
+            }
         }
 
         /// <summary>
@@ -87,15 +93,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_Velocity_ModifyBothComponents()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity {X = 1, Y = 1});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Velocity {X = 1, Y = 1});
 
-            ref Velocity vel = ref entity.Get<Velocity>();
-            vel.X = 10;
-            vel.Y = 20;
+                ref Velocity vel = ref entity.Get<Velocity>();
+                vel.X = 10;
+                vel.Y = 20;
 
-            Assert.Equal(10, entity.Get<Velocity>().X);
-            Assert.Equal(20, entity.Get<Velocity>().Y);
+                Assert.Equal(10, entity.Get<Velocity>().X);
+                Assert.Equal(20, entity.Get<Velocity>().Y);
+            }
         }
 
         /// <summary>
@@ -103,15 +111,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_Transform_ModifyCoordinates()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Transform {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Transform {X = 0, Y = 0});
 
-            ref Transform transform = ref entity.Get<Transform>();
-            transform.X = 100;
-            transform.Y = 200;
+                ref Transform transform = ref entity.Get<Transform>();
+                transform.X = 100;
+                transform.Y = 200;
 
-            Assert.Equal(100, entity.Get<Transform>().X);
-            Assert.Equal(200, entity.Get<Transform>().Y);
+                Assert.Equal(100, entity.Get<Transform>().X);
+                Assert.Equal(200, entity.Get<Transform>().Y);
+            }
         }
 
        
@@ -121,20 +131,22 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Ref_ChainedModifications_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Health {Value = 100}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Health {Value = 100}
+                );
 
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 5;
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 5;
 
-            ref Health health = ref entity.Get<Health>();
-            health.Value = 50;
+                ref Health health = ref entity.Get<Health>();
+                health.Value = 50;
 
-            Assert.Equal(5, entity.Get<Position>().X);
-            Assert.Equal(50, entity.Get<Health>().Value);
+                Assert.Equal(5, entity.Get<Position>().X);
+                Assert.Equal(50, entity.Get<Health>().Value);
+            }
         }
     }
 }

@@ -48,12 +48,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentAddedGeneric_OnAliveEntity_ReturnsGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            GenericEvent result = entity.OnComponentAddedGeneric;
+                GenericEvent result = entity.OnComponentAddedGeneric;
 
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -62,12 +64,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentRemovedGeneric_OnAliveEntity_ReturnsGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            GenericEvent result = entity.OnComponentRemovedGeneric;
+                GenericEvent result = entity.OnComponentRemovedGeneric;
 
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -75,16 +79,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentAddedGeneric_Handler_FiresOnComponentAdd()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            bool fired = false;
-            IGenericAction<GameObject> handler = new CallbackGenericAction(() => fired = true);
-            entity.OnComponentAddedGeneric += handler;
+                bool fired = false;
+                IGenericAction<GameObject> handler = new CallbackGenericAction(() => fired = true);
+                entity.OnComponentAddedGeneric += handler;
 
-            entity.Add(new Health {Value = 100});
+                entity.Add(new Health {Value = 100});
 
-            Assert.True(fired);
+                Assert.True(fired);
+            }
         }
 
         /// <summary>
@@ -92,16 +98,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentRemovedGeneric_Handler_FiresOnComponentRemove()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Health {Value = 100});
 
-            bool fired = false;
-            IGenericAction<GameObject> handler = new CallbackGenericAction(() => fired = true);
-            entity.OnComponentRemovedGeneric += handler;
+                bool fired = false;
+                IGenericAction<GameObject> handler = new CallbackGenericAction(() => fired = true);
+                entity.OnComponentRemovedGeneric += handler;
 
-            entity.Remove<Health>();
+                entity.Remove<Health>();
 
-            Assert.True(fired);
+                Assert.True(fired);
+            }
         }
 
         /// <summary>
@@ -109,13 +117,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Delete_OnAlreadyDeletedEntity_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Delete();
+                entity.Delete();
 
-            Exception ex = Record.Exception(() => entity.Delete());
-            Assert.Null(ex);
+                Exception ex = Record.Exception(() => entity.Delete());
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>
@@ -124,11 +134,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Set_WithComponentId_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Assert.Throws<ComponentNotFoundException>(() =>
-                entity.Set(Component<Velocity>.Id, new Velocity {X = 3, Y = 4}));
+                Assert.Throws<ComponentNotFoundException>(() =>
+                    entity.Set(Component<Velocity>.Id, new Velocity {X = 3, Y = 4}));
+            }
         }
 
         /// <summary>
@@ -137,11 +149,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Set_WithType_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Assert.Throws<ComponentNotFoundException>(() =>
-                entity.Set(typeof(Velocity), new Velocity {X = 3, Y = 4}));
+                Assert.Throws<ComponentNotFoundException>(() =>
+                    entity.Set(typeof(Velocity), new Velocity {X = 3, Y = 4}));
+            }
         }
 
         /// <summary>
@@ -150,18 +164,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentAdded_SubscribeAndUnsubscribe_HandlerNotInvoked()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            void Handler(GameObject _, ComponentId __) => calls++;
+                int calls = 0;
+                void Handler(GameObject _, ComponentId __) => calls++;
 
-            entity.OnComponentAdded += Handler;
-            entity.OnComponentAdded -= Handler;
+                entity.OnComponentAdded += Handler;
+                entity.OnComponentAdded -= Handler;
 
-            entity.Add(new Health {Value = 100});
+                entity.Add(new Health {Value = 100});
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>
@@ -170,18 +186,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnDelete_SubscribeAndUnsubscribe_HandlerNotInvoked()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            void Handler(GameObject _) => calls++;
+                int calls = 0;
+                void Handler(GameObject _) => calls++;
 
-            entity.OnDelete += Handler;
-            entity.OnDelete -= Handler;
+                entity.OnDelete += Handler;
+                entity.OnDelete -= Handler;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>
@@ -189,13 +207,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GetHashCode_IsConsistent_ForSameEntity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int hash1 = entity.GetHashCode();
-            int hash2 = entity.GetHashCode();
+                int hash1 = entity.GetHashCode();
+                int hash2 = entity.GetHashCode();
 
-            Assert.Equal(hash1, hash2);
+                Assert.Equal(hash1, hash2);
+            }
         }
 
         /// <summary>
@@ -214,13 +234,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void TryGetCore_OnDeadEntity_ReturnsExistsFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            entity.TryGetCore<Position>(out bool exists);
+                entity.TryGetCore<Position>(out bool exists);
 
-            Assert.False(exists);
+                Assert.False(exists);
+            }
         }
 
         /// <summary>

@@ -51,14 +51,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_SingleComponentWorks()
         {
-            using Scene scene = new Scene();
-            Position originalPos = new Position {X = 42, Y = 84};
-            GameObject entity = scene.Create(originalPos);
+            using (Scene scene = new Scene())
+            {
+                Position originalPos = new Position {X = 42, Y = 84};
+                GameObject entity = scene.Create(originalPos);
 
-            entity.Deconstruct(out Ref<Position> pos);
+                entity.Deconstruct(out Ref<Position> pos);
 
-            Assert.Equal(42, pos.Value.X);
-            Assert.Equal(84, pos.Value.Y);
+                Assert.Equal(42, pos.Value.X);
+                Assert.Equal(84, pos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -69,10 +71,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_ThrowsOnMissingComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
+                Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
+            }
         }
 
         /// <summary>
@@ -83,16 +87,18 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_DeconstructedReferenceCanBeModified()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            entity.Deconstruct(out Ref<Position> pos);
-            pos.Value.X = 42;
-            pos.Value.Y = 84;
+                entity.Deconstruct(out Ref<Position> pos);
+                pos.Value.X = 42;
+                pos.Value.Y = 84;
 
-            Assert.True(entity.TryGet(out Ref<Position> modifiedPos));
-            Assert.Equal(42, modifiedPos.Value.X);
-            Assert.Equal(84, modifiedPos.Value.Y);
+                Assert.True(entity.TryGet(out Ref<Position> modifiedPos));
+                Assert.Equal(42, modifiedPos.Value.X);
+                Assert.Equal(84, modifiedPos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -103,11 +109,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_ThrowsOnDeadEntity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => { entity.Deconstruct(out Ref<Position> _); });
+                Assert.Throws<InvalidOperationException>(() => { entity.Deconstruct(out Ref<Position> _); });
+            }
         }
 
         /// <summary>
@@ -118,15 +126,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_MultipleEntitiesCanBeDeconstructed()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
-            entity1.Deconstruct(out Ref<Position> pos1);
-            entity2.Deconstruct(out Ref<Position> pos2);
+                entity1.Deconstruct(out Ref<Position> pos1);
+                entity2.Deconstruct(out Ref<Position> pos2);
 
-            Assert.Equal(1, pos1.Value.X);
-            Assert.Equal(3, pos2.Value.X);
+                Assert.Equal(1, pos1.Value.X);
+                Assert.Equal(3, pos2.Value.X);
+            }
         }
 
         /// <summary>
@@ -137,18 +147,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_ProvidesReadWriteAccess()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
-            entity.Deconstruct(out Ref<Position> pos);
-            int originalX = (int) pos.Value.X;
-            pos.Value.X = 100;
-            int newX = (int) pos.Value.X;
+                entity.Deconstruct(out Ref<Position> pos);
+                int originalX = (int) pos.Value.X;
+                pos.Value.X = 100;
+                int newX = (int) pos.Value.X;
 
-            Assert.Equal(0, originalX);
-            Assert.Equal(100, newX);
-            Assert.True(entity.TryGet(out Ref<Position> stored));
-            Assert.Equal(100, stored.Value.X);
+                Assert.Equal(0, originalX);
+                Assert.Equal(100, newX);
+                Assert.True(entity.TryGet(out Ref<Position> stored));
+                Assert.Equal(100, stored.Value.X);
+            }
         }
 
         /// <summary>
@@ -159,18 +171,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_WorksInLoops()
         {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[5];
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create(new Position {X = i, Y = i * 2});
-            }
+                GameObject[] entities = new GameObject[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    entities[i] = scene.Create(new Position {X = i, Y = i * 2});
+                }
 
-            for (int i = 0; i < 5; i++)
-            {
-                entities[i].Deconstruct(out Ref<Position> pos);
-                Assert.Equal(i, pos.Value.X);
-                Assert.Equal(i * 2, pos.Value.Y);
+                for (int i = 0; i < 5; i++)
+                {
+                    entities[i].Deconstruct(out Ref<Position> pos);
+                    Assert.Equal(i, pos.Value.X);
+                    Assert.Equal(i * 2, pos.Value.Y);
+                }
             }
         }
 
@@ -182,18 +196,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_WorksWithModifiedComponents()
         {
-            using Scene scene = new Scene();
-            Position originalPos = new Position {X = 10, Y = 20};
-            GameObject entity = scene.Create(originalPos);
-
-            if (entity.TryGet(out Ref<Position> getPos))
+            using (Scene scene = new Scene())
             {
-                getPos.Value.X = 50;
+                Position originalPos = new Position {X = 10, Y = 20};
+                GameObject entity = scene.Create(originalPos);
+
+                if (entity.TryGet(out Ref<Position> getPos))
+                {
+                    getPos.Value.X = 50;
+                }
+
+                entity.Deconstruct(out Ref<Position> deconstructPos);
+
+                Assert.Equal(50, deconstructPos.Value.X);
             }
-
-            entity.Deconstruct(out Ref<Position> deconstructPos);
-
-            Assert.Equal(50, deconstructPos.Value.X);
         }
 
         /// <summary>
@@ -204,14 +220,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_ProvidesStableReference()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 42, Y = 84});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
-            entity.Deconstruct(out Ref<Position> pos1);
-            entity.Deconstruct(out Ref<Position> pos2);
+                entity.Deconstruct(out Ref<Position> pos1);
+                entity.Deconstruct(out Ref<Position> pos2);
 
-            Assert.Equal(pos1.Value.X, pos2.Value.X);
-            Assert.Equal(pos1.Value.Y, pos2.Value.Y);
+                Assert.Equal(pos1.Value.X, pos2.Value.X);
+                Assert.Equal(pos1.Value.Y, pos2.Value.Y);
+            }
         }
 
         /// <summary>
@@ -235,14 +253,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_WorksAfterComponentAddition()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 99, Y = 100});
-            entity.Deconstruct(out Ref<Position> pos);
+                entity.Add(new Position {X = 99, Y = 100});
+                entity.Deconstruct(out Ref<Position> pos);
 
-            Assert.Equal(99, pos.Value.X);
-            Assert.Equal(100, pos.Value.Y);
+                Assert.Equal(99, pos.Value.X);
+                Assert.Equal(100, pos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -253,12 +273,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObjectExtensionsDeconstruct_FailsAfterComponentRemoval()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Remove<Position>();
+                entity.Remove<Position>();
 
-            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
+                Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
+            }
         }
 
         /// <summary>
@@ -266,15 +288,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel);
+                entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel);
 
-            Assert.Equal(1, pos.Value.X);
-            Assert.Equal(4, vel.Value.Y);
-            vel.Value.X = 9;
-            Assert.Equal(9, entity.Get<Velocity>().X);
+                Assert.Equal(1, pos.Value.X);
+                Assert.Equal(4, vel.Value.Y);
+                vel.Value.X = 9;
+                Assert.Equal(9, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -282,17 +306,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5});
 
-            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp);
+                entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp);
 
-            Assert.Equal(2, pos.Value.Y);
-            Assert.Equal(3, vel.Value.X);
-            Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(2, pos.Value.Y);
+                Assert.Equal(3, vel.Value.X);
+                Assert.Equal(5, hp.Value.Value);
+            }
         }
 
         /// <summary>
@@ -300,19 +326,21 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_FourComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8});
 
-            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp, out Ref<Transform> tr);
+                entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp, out Ref<Transform> tr);
 
-            Assert.Equal(1, pos.Value.X);
-            Assert.Equal(4, vel.Value.Y);
-            Assert.Equal(5, hp.Value.Value);
-            Assert.Equal(8, tr.Value.Rotation);
+                Assert.Equal(1, pos.Value.X);
+                Assert.Equal(4, vel.Value.Y);
+                Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(8, tr.Value.Rotation);
+            }
         }
 
         /// <summary>
@@ -320,26 +348,28 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "a"});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "a"});
 
-            entity.Deconstruct(
-                out Ref<Position> pos,
-                out Ref<Velocity> vel,
-                out Ref<Health> hp,
-                out Ref<Transform> tr,
-                out Ref<TestComponent> tc);
+                entity.Deconstruct(
+                    out Ref<Position> pos,
+                    out Ref<Velocity> vel,
+                    out Ref<Health> hp,
+                    out Ref<Transform> tr,
+                    out Ref<TestComponent> tc);
 
-            Assert.Equal(1, pos.Value.X);
-            Assert.Equal(3, vel.Value.X);
-            Assert.Equal(5, hp.Value.Value);
-            Assert.Equal(6, tr.Value.X);
-            Assert.Equal(9, tc.Value.Value);
+                Assert.Equal(1, pos.Value.X);
+                Assert.Equal(3, vel.Value.X);
+                Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(6, tr.Value.X);
+                Assert.Equal(9, tc.Value.Value);
+            }
         }
 
         /// <summary>
@@ -347,29 +377,31 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_SixComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "a"},
-                new AnotherComponent {Data = 10, Y = 11, Name = "b"});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "a"},
+                    new AnotherComponent {Data = 10, Y = 11, Name = "b"});
 
-            entity.Deconstruct(
-                out Ref<Position> pos,
-                out Ref<Velocity> vel,
-                out Ref<Health> hp,
-                out Ref<Transform> tr,
-                out Ref<TestComponent> tc,
-                out Ref<AnotherComponent> ac);
+                entity.Deconstruct(
+                    out Ref<Position> pos,
+                    out Ref<Velocity> vel,
+                    out Ref<Health> hp,
+                    out Ref<Transform> tr,
+                    out Ref<TestComponent> tc,
+                    out Ref<AnotherComponent> ac);
 
-            Assert.Equal(2, pos.Value.Y);
-            Assert.Equal(4, vel.Value.Y);
-            Assert.Equal(5, hp.Value.Value);
-            Assert.Equal(8, tr.Value.Rotation);
-            Assert.Equal("a", tc.Value.Name);
-            Assert.Equal(10, ac.Value.Data);
+                Assert.Equal(2, pos.Value.Y);
+                Assert.Equal(4, vel.Value.Y);
+                Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(8, tr.Value.Rotation);
+                Assert.Equal("a", tc.Value.Name);
+                Assert.Equal(10, ac.Value.Data);
+            }
         }
 
         /// <summary>
@@ -377,32 +409,34 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "a"},
-                new AnotherComponent {Data = 10, Y = 11, Name = "b"},
-                new Damage {Value = 12});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "a"},
+                    new AnotherComponent {Data = 10, Y = 11, Name = "b"},
+                    new Damage {Value = 12});
 
-            entity.Deconstruct(
-                out Ref<Position> pos,
-                out Ref<Velocity> vel,
-                out Ref<Health> hp,
-                out Ref<Transform> tr,
-                out Ref<TestComponent> tc,
-                out Ref<AnotherComponent> ac,
-                out Ref<Damage> dmg);
+                entity.Deconstruct(
+                    out Ref<Position> pos,
+                    out Ref<Velocity> vel,
+                    out Ref<Health> hp,
+                    out Ref<Transform> tr,
+                    out Ref<TestComponent> tc,
+                    out Ref<AnotherComponent> ac,
+                    out Ref<Damage> dmg);
 
-            Assert.Equal(1, pos.Value.X);
-            Assert.Equal(3, vel.Value.X);
-            Assert.Equal(5, hp.Value.Value);
-            Assert.Equal(8, tr.Value.Rotation);
-            Assert.Equal(9, tc.Value.Value);
-            Assert.Equal(11, ac.Value.Y);
-            Assert.Equal(12, dmg.Value.Value);
+                Assert.Equal(1, pos.Value.X);
+                Assert.Equal(3, vel.Value.X);
+                Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(8, tr.Value.Rotation);
+                Assert.Equal(9, tc.Value.Value);
+                Assert.Equal(11, ac.Value.Y);
+                Assert.Equal(12, dmg.Value.Value);
+            }
         }
 
         /// <summary>
@@ -410,35 +444,37 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectExtensionsDeconstruct_EightComponents_Works()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "a"},
-                new AnotherComponent {Data = 10, Y = 11, Name = "b"},
-                new Damage {Value = 12},
-                new Armor {Value = 13});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "a"},
+                    new AnotherComponent {Data = 10, Y = 11, Name = "b"},
+                    new Damage {Value = 12},
+                    new Armor {Value = 13});
 
-            entity.Deconstruct(
-                out Ref<Position> pos,
-                out Ref<Velocity> vel,
-                out Ref<Health> hp,
-                out Ref<Transform> tr,
-                out Ref<TestComponent> tc,
-                out Ref<AnotherComponent> ac,
-                out Ref<Damage> dmg,
-                out Ref<Armor> armor);
+                entity.Deconstruct(
+                    out Ref<Position> pos,
+                    out Ref<Velocity> vel,
+                    out Ref<Health> hp,
+                    out Ref<Transform> tr,
+                    out Ref<TestComponent> tc,
+                    out Ref<AnotherComponent> ac,
+                    out Ref<Damage> dmg,
+                    out Ref<Armor> armor);
 
-            Assert.Equal(2, pos.Value.Y);
-            Assert.Equal(4, vel.Value.Y);
-            Assert.Equal(5, hp.Value.Value);
-            Assert.Equal(7, tr.Value.Y);
-            Assert.Equal("a", tc.Value.Name);
-            Assert.Equal("b", ac.Value.Name);
-            Assert.Equal(12, dmg.Value.Value);
-            Assert.Equal(13, armor.Value.Value);
+                Assert.Equal(2, pos.Value.Y);
+                Assert.Equal(4, vel.Value.Y);
+                Assert.Equal(5, hp.Value.Value);
+                Assert.Equal(7, tr.Value.Y);
+                Assert.Equal("a", tc.Value.Name);
+                Assert.Equal("b", ac.Value.Name);
+                Assert.Equal(12, dmg.Value.Value);
+                Assert.Equal(13, armor.Value.Value);
+            }
         }
     }
 }

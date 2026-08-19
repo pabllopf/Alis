@@ -90,15 +90,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastLookup_ColdPath_MultipleTransitions()
         {
-            using Scene scene = new();
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new())
             {
-                GameObject go = scene.Create(new Position { X = i });
-                go.Add(new Velocity { X = i * 2 });
-                go.Remove<Velocity>();
-                go.Add(new Health { Value = i });
+                for (int i = 0; i < 10; i++)
+                {
+                    GameObject go = scene.Create(new Position {X = i});
+                    go.Add(new Velocity {X = i * 2});
+                    go.Remove<Velocity>();
+                    go.Add(new Health {Value = i});
+                }
+
+                scene.Update();
             }
-            scene.Update();
         }
 
         /// <summary>
@@ -106,16 +109,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastLookup_SetArchetype_CircularBuffer()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            for (int i = 0; i < 15; i++)
+            using (Scene scene = new())
             {
-                go.Add(new Velocity { X = i });
-                go.Remove<Velocity>();
-                go.Add(new Health { Value = i });
-                go.Remove<Health>();
+                GameObject go = scene.Create(new Position());
+                for (int i = 0; i < 15; i++)
+                {
+                    go.Add(new Velocity {X = i});
+                    go.Remove<Velocity>();
+                    go.Add(new Health {Value = i});
+                    go.Remove<Health>();
+                }
+
+                scene.Update();
             }
-            scene.Update();
         }
 
         /// <summary>
@@ -123,12 +129,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_PlaybackWhenLocked_Throws()
         {
-            using Scene scene = new();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.DeleteEntity(scene.Create(new Position()));
-            scene.EnterDisallowState();
-            Assert.Throws<InvalidOperationException>(() => buffer.Playback());
-            scene.ExitDisallowState(null);
+            using (Scene scene = new())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.DeleteEntity(scene.Create(new Position()));
+                scene.EnterDisallowState();
+                Assert.Throws<InvalidOperationException>(() => buffer.Playback());
+                scene.ExitDisallowState(null);
+            }
         }
 
         /// <summary>
@@ -136,10 +144,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_EntityWithoutWith_EndCreatesEntity()
         {
-            using Scene scene = new();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.Entity().With(new Position { X = 42 }).With(new Velocity { X = 10 });
-            buffer.Playback();
+            using (Scene scene = new())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.Entity().With(new Position {X = 42}).With(new Velocity {X = 10});
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -147,12 +157,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_AddComponent_WithBoxedNoType_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.AddComponent(go, (object)new Velocity { X = 5 });
-            buffer.Playback();
-            Assert.True(go.Has<Velocity>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.AddComponent(go, (object) new Velocity {X = 5});
+                buffer.Playback();
+                Assert.True(go.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -160,13 +172,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_EntityFluent_WithBoxedByType_Works()
         {
-            using Scene scene = new();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.Entity()
-                .WithBoxed(typeof(Position), (object)new Position { X = 10 })
-                .WithBoxed(new Velocity { X = 20 })
-                .WithBoxed(Component<Health>.Id, (object)new Health { Value = 30 });
-            buffer.Playback();
+            using (Scene scene = new())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.Entity()
+                    .WithBoxed(typeof(Position), (object) new Position {X = 10})
+                    .WithBoxed(new Velocity {X = 20})
+                    .WithBoxed(Component<Health>.Id, (object) new Health {Value = 30});
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -193,10 +207,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void EntityUpdate_WithManyTypes_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
-                         new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -204,10 +220,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Archetype_TypesArrayNull_CreatesNewArray()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position(), new Velocity());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>
@@ -215,12 +233,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_DeleteAndRecreate_Works()
         {
-            using Scene scene = new();
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new())
             {
-                GameObject go = scene.Create(new Position { X = i });
-                go.Delete();
-                scene.Update();
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject go = scene.Create(new Position {X = i});
+                    go.Delete();
+                    scene.Update();
+                }
             }
         }
 
@@ -229,11 +249,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateWithManyEntities_Works()
         {
-            using Scene scene = new();
-            for (int i = 0; i < 50; i++)
-                scene.Create(new Position { X = i });
-            for (int f = 0; f < 10; f++)
-                scene.Update();
+            using (Scene scene = new())
+            {
+                for (int i = 0; i < 50; i++)
+                    scene.Create(new Position {X = i});
+                for (int f = 0; f < 10; f++)
+                    scene.Update();
+            }
         }
 
         /// <summary>
@@ -241,15 +263,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastLookup_FindAdjacent_WithCacheMiss_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            GameObject go = scene.Create(new Position(), new Velocity());
-            go.Add(new Health());
-            go.Add(new Transform());
-            go.Add(new TestComponent());
-            go.Remove<TestComponent>();
-            go.Remove<Transform>();
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                GameObject go = scene.Create(new Position(), new Velocity());
+                go.Add(new Health());
+                go.Add(new Transform());
+                go.Add(new TestComponent());
+                go.Remove<TestComponent>();
+                go.Remove<Transform>();
+                scene.Update();
+            }
         }
     }
 }

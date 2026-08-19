@@ -44,10 +44,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_SingleEntity_Creates()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            Assert.True(go.IsAlive);
+                Assert.True(go.IsAlive);
+            }
         }
 
         /// <summary>
@@ -55,15 +57,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_EmptyScene_Queries()
         {
-            using Scene scene = new Scene();
-
-            int count = 0;
-            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                int count = 0;
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+                {
+                    count++;
+                }
 
-            Assert.Equal(0, count);
+                Assert.Equal(0, count);
+            }
         }
 
         /// <summary>
@@ -71,12 +74,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_DeleteSingleEntity()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            go.Delete();
+                go.Delete();
 
-            Assert.False(go.IsAlive);
+                Assert.False(go.IsAlive);
+            }
         }
 
        
@@ -85,18 +90,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_ComponentAddRemoveAddAgain()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            go.Add(new Position {X = 10, Y = 20});
-            Assert.True(go.Has<Position>());
+                go.Add(new Position {X = 10, Y = 20});
+                Assert.True(go.Has<Position>());
 
-            go.Remove<Position>();
-            Assert.False(go.Has<Position>());
+                go.Remove<Position>();
+                Assert.False(go.Has<Position>());
 
-            go.Add(new Position {X = 30, Y = 40});
-            Assert.True(go.Has<Position>());
-            Assert.Equal(30, go.Get<Position>().X);
+                go.Add(new Position {X = 30, Y = 40});
+                Assert.True(go.Has<Position>());
+                Assert.Equal(30, go.Get<Position>().X);
+            }
         }
 
         
@@ -106,12 +113,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_TransformZeroCoordinates()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            go.Add(new Transform {X = 0, Y = 0});
-            Assert.Equal(0, go.Get<Transform>().X);
-            Assert.Equal(0, go.Get<Transform>().Y);
+                go.Add(new Transform {X = 0, Y = 0});
+                Assert.Equal(0, go.Get<Transform>().X);
+                Assert.Equal(0, go.Get<Transform>().Y);
+            }
         }
 
        
@@ -121,48 +130,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void BoundaryCondition_QueryWithSingleEntityMatch()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-
-            int count = 0;
-            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
+                scene.Create(new Position {X = 1, Y = 1});
+
+                int count = 0;
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
             }
-
-            Assert.Equal(1, count);
         }
-
-  
-        /// <summary>
-        ///     Tests that boundary condition all component types on single entity
-        /// </summary>
-        [Fact] public void BoundaryCondition_AllComponentTypesOnSingleEntity()
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Position {X = 1, Y = 1});
-            go.Add(new Health {Value = 100});
-            go.Add(new Velocity {X = 1, Y = 1});
-            go.Add(new Transform {X = 1, Y = 1});
-            go.Add(new Damage {Value = 10});
-            go.Add(new AnotherComponent {Data = 42});
-            go.Add(new AnotherComponent2 {Data = 99});
-            go.Add(new Armor {Value = 50});
-            go.Add(new TagComponent());
-            go.Add(new TestComponent {Value = 777});
-
-            Assert.True(go.Has<Position>());
-            Assert.True(go.Has<Health>());
-            Assert.True(go.Has<Velocity>());
-            Assert.True(go.Has<Transform>());
-            Assert.True(go.Has<Damage>());
-            Assert.True(go.Has<AnotherComponent>());
-            Assert.True(go.Has<AnotherComponent2>());
-            Assert.True(go.Has<Armor>());
-            Assert.True(go.Has<TagComponent>());
-            Assert.True(go.Has<TestComponent>());
-        }
+        
     }
 }

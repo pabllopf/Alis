@@ -53,11 +53,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Create_SetsCorrectProperties()
         {
-            using Scene scene = new Scene();
-
-            GameObject go = scene.Create();
-            Assert.True(go.IsAlive);
-            Assert.False(go.IsNull);
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
+                Assert.True(go.IsAlive);
+                Assert.False(go.IsNull);
+            }
         }
 
         /// <summary>
@@ -65,14 +66,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_CreateWithComponent_StoresComponent()
         {
-            using Scene scene = new Scene();
-            Position pos = new Position {X = 10, Y = 20};
+            using (Scene scene = new Scene())
+            {
+                Position pos = new Position {X = 10, Y = 20};
 
-            GameObject go = scene.Create(pos);
+                GameObject go = scene.Create(pos);
 
-            Assert.True(go.Has<Position>());
-            Assert.Equal(10, go.Get<Position>().X);
-            Assert.Equal(20, go.Get<Position>().Y);
+                Assert.True(go.Has<Position>());
+                Assert.Equal(10, go.Get<Position>().X);
+                Assert.Equal(20, go.Get<Position>().Y);
+            }
         }
 
     
@@ -82,14 +85,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_AddComponent_ComponentExists()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-            Position pos = new Position {X = 5, Y = 15};
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
+                Position pos = new Position {X = 5, Y = 15};
 
-            go.Add(pos);
+                go.Add(pos);
 
-            Assert.True(go.Has<Position>());
-            Assert.Equal(5, go.Get<Position>().X);
+                Assert.True(go.Has<Position>());
+                Assert.Equal(5, go.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -97,16 +102,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_AddMultipleComponents_AllExist()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            go.Add(new Position {X = 1, Y = 2});
-            go.Add(new Health {Value = 100});
-            go.Add(new Velocity {X = 10, Y = 20});
+                go.Add(new Position {X = 1, Y = 2});
+                go.Add(new Health {Value = 100});
+                go.Add(new Velocity {X = 10, Y = 20});
 
-            Assert.True(go.Has<Position>());
-            Assert.True(go.Has<Health>());
-            Assert.True(go.Has<Velocity>());
+                Assert.True(go.Has<Position>());
+                Assert.True(go.Has<Health>());
+                Assert.True(go.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -114,12 +121,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_RemoveComponent_ComponentNoLongerExists()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create(new Position {X = 1, Y = 2});
 
-            go.Remove<Position>();
+                go.Remove<Position>();
 
-            Assert.False(go.Has<Position>());
+                Assert.False(go.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -127,14 +136,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetComponent_ReturnsCorrectValue()
         {
-            using Scene scene = new Scene();
-            Position expected = new Position {X = 42, Y = 84};
-            GameObject go = scene.Create(expected);
+            using (Scene scene = new Scene())
+            {
+                Position expected = new Position {X = 42, Y = 84};
+                GameObject go = scene.Create(expected);
 
-            ref Position actual = ref go.Get<Position>();
+                ref Position actual = ref go.Get<Position>();
 
-            Assert.Equal(expected.X, actual.X);
-            Assert.Equal(expected.Y, actual.Y);
+                Assert.Equal(expected.X, actual.X);
+                Assert.Equal(expected.Y, actual.Y);
+            }
         }
 
         /// <summary>
@@ -142,15 +153,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_ModifyComponentViaRef_ChangesArePersisted()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos = ref go.Get<Position>();
-            pos.X = 100;
-            pos.Y = 200;
+                ref Position pos = ref go.Get<Position>();
+                pos.X = 100;
+                pos.Y = 200;
 
-            Assert.Equal(100, go.Get<Position>().X);
-            Assert.Equal(200, go.Get<Position>().Y);
+                Assert.Equal(100, go.Get<Position>().X);
+                Assert.Equal(200, go.Get<Position>().Y);
+            }
         }
 
        
@@ -160,13 +173,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_EqualsOperator_ComparesTwoEntities()
         {
-            using Scene scene = new Scene();
-            GameObject go1 = scene.Create();
-            GameObject go2 = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go1 = scene.Create();
+                GameObject go2 = scene.Create();
 
-            Assert.NotEqual(go1, go2);
-            Assert.True(go1 == go1);
-            Assert.False(go1 == go2);
+                Assert.NotEqual(go1, go2);
+                Assert.True(go1 == go1);
+                Assert.False(go1 == go2);
+            }
         }
 
         /// <summary>
@@ -174,12 +189,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_NotEqualsOperator_DifferentiateEntities()
         {
-            using Scene scene = new Scene();
-            GameObject go1 = scene.Create();
-            GameObject go2 = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go1 = scene.Create();
+                GameObject go2 = scene.Create();
 
-            Assert.True(go1 != go2);
-            Assert.False(go1 != go1);
+                Assert.True(go1 != go2);
+                Assert.False(go1 != go1);
+            }
         }
 
         /// <summary>
@@ -187,13 +204,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetHashCode_ConsistentForSameEntity()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            int hash1 = go.GetHashCode();
-            int hash2 = go.GetHashCode();
+                int hash1 = go.GetHashCode();
+                int hash2 = go.GetHashCode();
 
-            Assert.Equal(hash1, hash2);
+                Assert.Equal(hash1, hash2);
+            }
         }
 
         /// <summary>
@@ -201,13 +220,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_ToString_ReturnsValidString()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            string str = go.ToString();
+                string str = go.ToString();
 
-            Assert.NotNull(str);
-            Assert.False(string.IsNullOrEmpty(str));
+                Assert.NotNull(str);
+                Assert.False(string.IsNullOrEmpty(str));
+            }
         }
 
       
@@ -217,14 +238,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_RemoveAllComponents_EntityStillAlive()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
 
-            go.Remove<Position>();
-            go.Remove<Health>();
+                go.Remove<Position>();
+                go.Remove<Health>();
 
-            Assert.False(go.Has<Position>());
-            Assert.False(go.Has<Health>());
+                Assert.False(go.Has<Position>());
+                Assert.False(go.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -232,14 +255,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetComponentCount_ReflectsAddedComponents()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create();
 
-            go.Add(new Position {X = 1, Y = 1});
-            go.Add(new Health {Value = 50});
+                go.Add(new Position {X = 1, Y = 1});
+                go.Add(new Health {Value = 50});
 
-            Assert.True(go.Has<Position>());
-            Assert.True(go.Has<Health>());
+                Assert.True(go.Has<Position>());
+                Assert.True(go.Has<Health>());
+            }
         }
     }
 }

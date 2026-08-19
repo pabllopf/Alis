@@ -14,10 +14,12 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_CreateMany_WithPositionAndVelocity_CreatesMultiple()
         {
-            using Scene scene = new();
-            ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
-            Assert.Equal(3, chunk.Span1.Length);
-            Assert.Equal(3, chunk.Span2.Length);
+            using (Scene scene = new())
+            {
+                ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
+                Assert.Equal(3, chunk.Span1.Length);
+                Assert.Equal(3, chunk.Span2.Length);
+            }
         }
 
         /// <summary>
@@ -25,9 +27,11 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_CreateMany_WithSingleComponent_CreatesMultiple()
         {
-            using Scene scene = new();
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
-            Assert.Equal(5, chunk.Span.Length);
+            using (Scene scene = new())
+            {
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
+                Assert.Equal(5, chunk.Span.Length);
+            }
         }
 
         /// <summary>
@@ -35,11 +39,13 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void SceneQuery_WithNotAndIncludeDisabled_CombinesFilters()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            Query query = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
-            Assert.NotNull(query);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position(), new Velocity());
+                Query query = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
+                Assert.NotNull(query);
+            }
         }
 
         /// <summary>
@@ -49,8 +55,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             Scene scene = new();
             scene.Create(new Position());
-            scene.Dispose();
-            scene.Dispose();
+            
+            
         }
 
         /// <summary>
@@ -58,9 +64,11 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_Update_WithEvents_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -68,11 +76,13 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_Update_WithMultipleFrames_Works()
         {
-            using Scene scene = new();
-            for (int i = 0; i < 3; i++)
-                scene.Create(new Position { X = i });
-            for (int i = 0; i < 5; i++)
-                scene.Update();
+            using (Scene scene = new())
+            {
+                for (int i = 0; i < 3; i++)
+                    scene.Create(new Position {X = i});
+                for (int i = 0; i < 5; i++)
+                    scene.Update();
+            }
         }
 
         /// <summary>
@@ -80,12 +90,14 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_RefTuple_DeconstructWorks()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 5 });
-            Query query = scene.Query<With<Position>>();
-            foreach (RefTuple<Position> tuple in query.Enumerate<Position>())
+            using (Scene scene = new())
             {
-                Assert.Equal(5, tuple.Item1.Value.X);
+                scene.Create(new Position {X = 5});
+                Query query = scene.Query<With<Position>>();
+                foreach (RefTuple<Position> tuple in query.Enumerate<Position>())
+                {
+                    Assert.Equal(5, tuple.Item1.Value.X);
+                }
             }
         }
 
@@ -94,13 +106,15 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_TwoComponents_DeconstructWorks()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 1 }, new Velocity { X = 10 });
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            foreach (RefTuple<Position, Velocity> tuple in query.Enumerate<Position, Velocity>())
+            using (Scene scene = new())
             {
-                Assert.Equal(1, tuple.Item1.Value.X);
-                Assert.Equal(10, tuple.Item2.Value.X);
+                scene.Create(new Position {X = 1}, new Velocity {X = 10});
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                foreach (RefTuple<Position, Velocity> tuple in query.Enumerate<Position, Velocity>())
+                {
+                    Assert.Equal(1, tuple.Item1.Value.X);
+                    Assert.Equal(10, tuple.Item2.Value.X);
+                }
             }
         }
 
@@ -109,14 +123,16 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_ThreeComponents_DeconstructWorks()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 1 }, new Velocity { X = 10 }, new Health { Value = 100 });
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-            foreach (RefTuple<Position, Velocity, Health> tuple in query.Enumerate<Position, Velocity, Health>())
+            using (Scene scene = new())
             {
-                Assert.Equal(1, tuple.Item1.Value.X);
-                Assert.Equal(10, tuple.Item2.Value.X);
-                Assert.Equal(100, tuple.Item3.Value.Value);
+                scene.Create(new Position {X = 1}, new Velocity {X = 10}, new Health {Value = 100});
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+                foreach (RefTuple<Position, Velocity, Health> tuple in query.Enumerate<Position, Velocity, Health>())
+                {
+                    Assert.Equal(1, tuple.Item1.Value.X);
+                    Assert.Equal(10, tuple.Item2.Value.X);
+                    Assert.Equal(100, tuple.Item3.Value.Value);
+                }
             }
         }
 
@@ -125,13 +141,15 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void ChunkEnumerator_WithSingleComponent_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 1 });
-            scene.Create(new Position { X = 2 });
-            Query query = scene.Query<With<Position>>();
-            foreach (ChunkTuple<Position> chunk in query.EnumerateChunks<Position>())
+            using (Scene scene = new())
             {
-                Assert.Equal(2, chunk.Span.Length);
+                scene.Create(new Position {X = 1});
+                scene.Create(new Position {X = 2});
+                Query query = scene.Query<With<Position>>();
+                foreach (ChunkTuple<Position> chunk in query.EnumerateChunks<Position>())
+                {
+                    Assert.Equal(2, chunk.Span.Length);
+                }
             }
         }
 
@@ -140,13 +158,15 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void ChunkEnumerator_WithTwoComponents_Works()
         {
-            using Scene scene = new();
-            scene.CreateMany<Position, Velocity>(2);
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            foreach (ChunkTuple<Position, Velocity> chunk in query.EnumerateChunks<Position, Velocity>())
+            using (Scene scene = new())
             {
-                Assert.Equal(2, chunk.Span1.Length);
-                Assert.Equal(2, chunk.Span2.Length);
+                scene.CreateMany<Position, Velocity>(2);
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                foreach (ChunkTuple<Position, Velocity> chunk in query.EnumerateChunks<Position, Velocity>())
+                {
+                    Assert.Equal(2, chunk.Span1.Length);
+                    Assert.Equal(2, chunk.Span2.Length);
+                }
             }
         }
 
@@ -155,11 +175,13 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_CreateMany_ThreeComponents_Works()
         {
-            using Scene scene = new();
-            ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(4);
-            Assert.Equal(4, chunk.Span1.Length);
-            Assert.Equal(4, chunk.Span2.Length);
-            Assert.Equal(4, chunk.Span3.Length);
+            using (Scene scene = new())
+            {
+                ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(4);
+                Assert.Equal(4, chunk.Span1.Length);
+                Assert.Equal(4, chunk.Span2.Length);
+                Assert.Equal(4, chunk.Span3.Length);
+            }
         }
 
         /// <summary>
@@ -167,10 +189,12 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_CreateMany_FourComponents_Works()
         {
-            using Scene scene = new();
-            ChunkTuple<Position, Velocity, Health, Transform> chunk = scene.CreateMany<Position, Velocity, Health, Transform>(2);
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
+            using (Scene scene = new())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform> chunk = scene.CreateMany<Position, Velocity, Health, Transform>(2);
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+            }
         }
 
         /// <summary>
@@ -178,10 +202,12 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Scene_Create_EightComponents_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
-                         new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+                Assert.NotNull(scene);
+            }
         }
     }
 }

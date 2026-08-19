@@ -48,11 +48,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ComponentsSpan_ReturnsCorrectReadOnlySpan()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            Archetype archetype = scene.DefaultArchetype;
-            ReadOnlySpan<ComponentStorageBase> span = archetype.ComponentsSpan;
-            Assert.False(span.IsEmpty);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                Archetype archetype = scene.DefaultArchetype;
+                ReadOnlySpan<ComponentStorageBase> span = archetype.ComponentsSpan;
+                Assert.False(span.IsEmpty);
+            }
         }
 
         /// <summary>
@@ -61,11 +63,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ComponentTagTableSpan_ReturnsCorrectReadOnlySpan()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            Archetype archetype = scene.DefaultArchetype;
-            ReadOnlySpan<byte> span = archetype.ComponentTagTableSpan;
-            Assert.False(span.IsEmpty);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                Archetype archetype = scene.DefaultArchetype;
+                ReadOnlySpan<byte> span = archetype.ComponentTagTableSpan;
+                Assert.False(span.IsEmpty);
+            }
         }
 
         /// <summary>
@@ -74,10 +78,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_OfComponentIndex_IsAccessible()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            int index = Archetype<Position>.OfComponent<Position>.Index;
-            Assert.NotEqual(0, index);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                int index = Archetype<Position>.OfComponent<Position>.Index;
+                Assert.NotEqual(0, index);
+            }
         }
 
         /// <summary>
@@ -86,11 +92,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_GetComponentIndex_WithComponentId_ReturnsCorrectValue()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
-            Archetype archetype = item.Archetype;
-            int posIndex = archetype.GetComponentIndex(Component<Position>.Id);
-            Assert.True(posIndex > 0);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
+                Archetype archetype = item.Archetype;
+                int posIndex = archetype.GetComponentIndex(Component<Position>.Id);
+                Assert.True(posIndex > 0);
+            }
         }
 
         /// <summary>
@@ -99,11 +107,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_GetHash_WithEvenComponentCount_ComputesHash()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position(), new Velocity());
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position(), new Velocity());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -112,9 +122,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_GetHash_WithSingleComponent_ComputesHash()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            Assert.True(entity.IsAlive);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
+                Assert.True(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -123,12 +135,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_EnsureCapacity_WhenCountLessThanLength_ReturnsEarly()
         {
-            using Scene scene = new Scene();
-            Archetype archetype = scene.DefaultArchetype;
-            scene.Create(new Position());
-            int initialCount = archetype.EntityCount;
-            archetype.EnsureCapacity(0);
-            Assert.Equal(initialCount, archetype.EntityCount);
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                scene.Create(new Position());
+                int initialCount = archetype.EntityCount;
+                archetype.EnsureCapacity(0);
+                Assert.Equal(initialCount, archetype.EntityCount);
+            }
         }
 
         /// <summary>
@@ -137,11 +151,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_DeleteEntity_OnEmptyArchetype_ThrowsInvalidOperation()
         {
-            using Scene scene = new Scene();
-            Archetype archetype = scene.DefaultArchetype;
-            Assert.Equal(0, archetype.EntityCount);
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => archetype.DeleteEntity(0));
-            Assert.Contains("No entities", ex.Message);
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                Assert.Equal(0, archetype.EntityCount);
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => archetype.DeleteEntity(0));
+                Assert.Contains("No entities", ex.Message);
+            }
         }
 
         /// <summary>
@@ -150,10 +166,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ReleaseArrays_OnEmptyArchetype_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            Archetype archetype = scene.DefaultArchetype;
-            archetype.ReleaseArrays();
-            Assert.Equal(0, archetype.EntityCount);
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                archetype.ReleaseArrays();
+                Assert.Equal(0, archetype.EntityCount);
+            }
         }
 
         /// <summary>
@@ -162,10 +180,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_Update_WithRangeAndEmptyArchetype_ReturnsEarly()
         {
-            using Scene scene = new Scene();
-            Archetype archetype = scene.DefaultArchetype;
-            Assert.Equal(0, archetype.EntityCount);
-            scene.Update();
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                Assert.Equal(0, archetype.EntityCount);
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -190,9 +210,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_EnsureCapacity_Passthrough_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            scene.DefaultArchetype.EnsureCapacity(1);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                scene.DefaultArchetype.EnsureCapacity(1);
+            }
         }
 
         /// <summary>
@@ -240,10 +262,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ResizeCreateComponentBuffers_WhenEmpty_HandlesCorrectly()
         {
-            using Scene scene = new Scene();
-            Archetype archetype = scene.DefaultArchetype;
-            archetype.ResizeCreateComponentBuffers();
-            Assert.True(archetype.EntityCount >= 0);
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                archetype.ResizeCreateComponentBuffers();
+                Assert.True(archetype.EntityCount >= 0);
+            }
         }
 
         /// <summary>
@@ -252,9 +276,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_CreateEntityLocations_NewEntityId_WhenNotRecycled()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            Assert.Equal(1, scene.EntityCount);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                Assert.Equal(1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -263,9 +289,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -274,9 +302,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -285,9 +315,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3T4_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -296,9 +328,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3T4T5_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -307,9 +341,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3T4T5T6_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, TagComponent>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, TagComponent>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -318,9 +354,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3T4T5T6T7_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, PlayerTag, ComplexType>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, PlayerTag, ComplexType>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -329,9 +367,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3T4T5T6T7T8_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, Transform, AnotherComponent, AnotherComponent2>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.NotNull(item.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem item = Archetype<Position, Velocity, Health, Damage, Armor, Transform, AnotherComponent, AnotherComponent2>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.NotNull(item.Archetype);
+            }
         }
 
         /// <summary>
@@ -340,12 +380,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ManyArchetypes_ForcesComponentLocationTableResize()
         {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 30; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
+                for (int i = 0; i < 30; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                Assert.Equal(30, scene.EntityCount);
             }
-            Assert.Equal(30, scene.EntityCount);
         }
 
         /// <summary>
@@ -354,13 +397,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_Update_NonEmptyArchetype_ProcessesAll()
         {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
+                for (int i = 0; i < 5; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                Assert.Equal(5, scene.EntityCount);
+                scene.Update();
             }
-            Assert.Equal(5, scene.EntityCount);
-            scene.Update();
         }
 
         /// <summary>
@@ -369,13 +415,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_UpdateRange_WithNonZeroStart_CoversBranch()
         {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
+                for (int i = 0; i < 10; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                Assert.Equal(10, scene.EntityCount);
+                scene.Update();
             }
-            Assert.Equal(10, scene.EntityCount);
-            scene.Update();
         }
 
         /// <summary>
@@ -384,10 +433,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem first = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
-            WorldArchetypeTableItem second = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.Same(first.Archetype, second.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem first = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
+                WorldArchetypeTableItem second = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.Same(first.Archetype, second.Archetype);
+            }
         }
 
         /// <summary>
@@ -396,10 +447,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_CreateOrGetExistingArchetype_ById_ReturnsExisting()
         {
-            using Scene scene = new Scene();
-            GameObjectType id = Archetype<Position>.Id;
-            Archetype result = Archetype.CreateOrGetExistingArchetype(id, scene);
-            Assert.NotNull(result);
+            using (Scene scene = new Scene())
+            {
+                GameObjectType id = Archetype<Position>.Id;
+                Archetype result = Archetype.CreateOrGetExistingArchetype(id, scene);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -408,10 +461,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_CreateOrGetExistingArchetype_BySpan_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            ReadOnlySpan<ComponentId> types = new[] { Component<Position>.Id };
-            Archetype result = Archetype.CreateOrGetExistingArchetype(types, scene);
-            Assert.NotNull(result);
+            using (Scene scene = new Scene())
+            {
+                ReadOnlySpan<ComponentId> types = new[] {Component<Position>.Id};
+                Archetype result = Archetype.CreateOrGetExistingArchetype(types, scene);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -420,10 +475,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem first = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
-            WorldArchetypeTableItem second = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.Same(first.Archetype, second.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem first = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
+                WorldArchetypeTableItem second = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.Same(first.Archetype, second.Archetype);
+            }
         }
 
         /// <summary>
@@ -432,10 +489,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T1T2T3_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
-            using Scene scene = new Scene();
-            WorldArchetypeTableItem first = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
-            WorldArchetypeTableItem second = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
-            Assert.Same(first.Archetype, second.Archetype);
+            using (Scene scene = new Scene())
+            {
+                WorldArchetypeTableItem first = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
+                WorldArchetypeTableItem second = Archetype<Position, Velocity, Health>.CreateNewOrGetExistingArchetypes(scene);
+                Assert.Same(first.Archetype, second.Archetype);
+            }
         }
 
         /// <summary>
@@ -444,21 +503,23 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ModifyComponentLocationTable_WithMultipleArchetypes_CoversResize()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            scene.Create(new Position());
-            scene.Create(new Position());
-            Assert.Equal(3, scene.EntityCount);
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (GameObject entity in query.EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
-                Assert.True(entity.Has<Position>());
-            }
+                scene.Create(new Position());
+                scene.Create(new Position());
+                scene.Create(new Position());
+                Assert.Equal(3, scene.EntityCount);
 
-            Assert.Equal(3, count);
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (GameObject entity in query.EnumerateWithEntities())
+                {
+                    count++;
+                    Assert.True(entity.Has<Position>());
+                }
+
+                Assert.Equal(3, count);
+            }
         }
     }
 }

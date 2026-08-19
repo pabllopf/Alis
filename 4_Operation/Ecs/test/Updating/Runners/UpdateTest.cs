@@ -71,14 +71,16 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity0_Run_InvokesOnUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity1.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, entity2.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entity1.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entity2.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -86,16 +88,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity0_RunWithRange_InvokesOnUpdateForSpecifiedRange()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entity3 = scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entity3 = scene.Create(new UpdateComponent {CallCount = 0});
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity1.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, entity2.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, entity3.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entity1.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entity2.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, entity3.Get<UpdateComponent>().CallCount);
+            }
         }
 
         #endregion
@@ -117,16 +121,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity2_Run_InvokesUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(
-                new Update2Component {CallCount = 0},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 10, Y = 20}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(
+                    new Update2Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 10, Y = 20}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity1.Get<Update2Component>().CallCount);
+                Assert.Equal(1, entity1.Get<Update2Component>().CallCount);
+            }
         }
 
         /// <summary>
@@ -134,17 +140,19 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity2_Run_PassesCorrectComponentReferences()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update2Component {CallCount = 0},
-                new Position {X = 5, Y = 10},
-                new Velocity {X = 1, Y = 2}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update2Component {CallCount = 0},
+                    new Position {X = 5, Y = 10},
+                    new Velocity {X = 1, Y = 2}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(6, entity.Get<Position>().X);
-            Assert.Equal(12, entity.Get<Position>().Y);
+                Assert.Equal(6, entity.Get<Position>().X);
+                Assert.Equal(12, entity.Get<Position>().Y);
+            }
         }
 
         #endregion
@@ -167,17 +175,19 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity3_Run_InvokesUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(
-                new Update3Component {CallCount = 0},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 10, Y = 20},
-                new Health {Value = 100}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(
+                    new Update3Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 10, Y = 20},
+                    new Health {Value = 100}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity1.Get<Update3Component>().CallCount);
+                Assert.Equal(1, entity1.Get<Update3Component>().CallCount);
+            }
         }
 
         /// <summary>
@@ -185,19 +195,21 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity3_Run_PassesCorrectComponentReferences()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update3Component {CallCount = 0},
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update3Component {CallCount = 0},
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 100}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(5, entity.Get<Position>().X);
-            Assert.Equal(10, entity.Get<Position>().Y);
-            Assert.Equal(99, entity.Get<Health>().Value);
+                Assert.Equal(5, entity.Get<Position>().X);
+                Assert.Equal(10, entity.Get<Position>().Y);
+                Assert.Equal(99, entity.Get<Health>().Value);
+            }
         }
 
         #endregion
@@ -220,18 +232,20 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity4_Run_InvokesUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update4Component {CallCount = 0},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update4Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 100},
+                    new Armor {Value = 50}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity.Get<Update4Component>().CallCount);
+                Assert.Equal(1, entity.Get<Update4Component>().CallCount);
+            }
         }
 
         #endregion
@@ -254,26 +268,28 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity6_Run_InvokesUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update6Component {CallCount = 0},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 10},
-                new Transform {X = 0, Y = 0, Rotation = 0}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update6Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 100},
+                    new Armor {Value = 50},
+                    new Damage {Value = 10},
+                    new Transform {X = 0, Y = 0, Rotation = 0}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity.Get<Update6Component>().CallCount);
-            Assert.Equal(6, entity.Get<Position>().X);
-            Assert.Equal(12, entity.Get<Position>().Y);
-            Assert.Equal(90, entity.Get<Health>().Value);
-            Assert.Equal(51, entity.Get<Armor>().Value);
-            Assert.Equal(12, entity.Get<Damage>().Value);
-            Assert.Equal(1, entity.Get<Transform>().Rotation);
+                Assert.Equal(1, entity.Get<Update6Component>().CallCount);
+                Assert.Equal(6, entity.Get<Position>().X);
+                Assert.Equal(12, entity.Get<Position>().Y);
+                Assert.Equal(90, entity.Get<Health>().Value);
+                Assert.Equal(51, entity.Get<Armor>().Value);
+                Assert.Equal(12, entity.Get<Damage>().Value);
+                Assert.Equal(1, entity.Get<Transform>().Rotation);
+            }
         }
 
         #endregion
@@ -296,27 +312,29 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Arity7_Run_InvokesUpdateForAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Update7Component {CallCount = 0},
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 10},
-                new Transform {X = 0, Y = 0, Rotation = 0},
-                new TestComponent {Value = 42}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update7Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 100},
+                    new Armor {Value = 50},
+                    new Damage {Value = 10},
+                    new Transform {X = 0, Y = 0, Rotation = 0},
+                    new TestComponent {Value = 42}
+                );
 
-            scene.Update();
+                scene.Update();
 
-            Assert.Equal(1, entity.Get<Update7Component>().CallCount);
-            Assert.Equal(6, entity.Get<Position>().X);
-            Assert.Equal(12, entity.Get<Position>().Y);
-            Assert.Equal(99, entity.Get<Health>().Value);
-            Assert.Equal(60, entity.Get<Armor>().Value);
-            Assert.Equal(1, entity.Get<Transform>().X);
-            Assert.Equal(45, entity.Get<TestComponent>().Value);
+                Assert.Equal(1, entity.Get<Update7Component>().CallCount);
+                Assert.Equal(6, entity.Get<Position>().X);
+                Assert.Equal(12, entity.Get<Position>().Y);
+                Assert.Equal(99, entity.Get<Health>().Value);
+                Assert.Equal(60, entity.Get<Armor>().Value);
+                Assert.Equal(1, entity.Get<Transform>().X);
+                Assert.Equal(45, entity.Get<TestComponent>().Value);
+            }
         }
 
         #endregion
@@ -328,17 +346,19 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Run_ProcessesMultipleEntitiesCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject entity3 = scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entity2 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject entity3 = scene.Create(new UpdateComponent {CallCount = 0});
 
-            scene.Update();
-            scene.Update();
+                scene.Update();
+                scene.Update();
 
-            Assert.Equal(2, entity1.Get<UpdateComponent>().CallCount);
-            Assert.Equal(2, entity2.Get<UpdateComponent>().CallCount);
-            Assert.Equal(2, entity3.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, entity1.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, entity2.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, entity3.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -346,14 +366,16 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Update_Run_ProcessesEntitiesInReverseOrder()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new OrderTrackingComponent {Order = 0});
-            scene.Create(new OrderTrackingComponent {Order = 0});
-            scene.Create(new OrderTrackingComponent {Order = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new OrderTrackingComponent {Order = 0});
+                scene.Create(new OrderTrackingComponent {Order = 0});
+                scene.Create(new OrderTrackingComponent {Order = 0});
 
-            scene.Update();
+                scene.Update();
 
-            Assert.True(entity1.Get<OrderTrackingComponent>().Order >= 0);
+                Assert.True(entity1.Get<OrderTrackingComponent>().Order >= 0);
+            }
         }
 
         #endregion

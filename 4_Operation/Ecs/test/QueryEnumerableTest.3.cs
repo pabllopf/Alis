@@ -48,12 +48,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_CanBeCreated()
         {
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+            using (Scene scene = new Scene())
+            {
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
+                QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
 
-            Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health>.QueryEnumerable), enumerable);
+                Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health>.QueryEnumerable), enumerable);
+            }
         }
 
         /// <summary>
@@ -62,19 +64,21 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_ProvidesAccessToAll()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 10, Y = 20},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 150}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(10, pos.Value.X);
-                Assert.Equal(5, vel.Value.X);
-                Assert.Equal(150, health.Value.Value);
+                scene.Create(
+                    new Position {X = 10, Y = 20},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 150}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+                foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+                {
+                    Assert.Equal(10, pos.Value.X);
+                    Assert.Equal(5, vel.Value.X);
+                    Assert.Equal(150, health.Value.Value);
+                }
             }
         }
 
@@ -84,18 +88,20 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_FiltersCorrectly()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 100});
-            scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 2, Y = 2}); // Missing Health
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            int count = 0;
-            foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 100});
+                scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 2, Y = 2}); // Missing Health
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -104,32 +110,34 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_AllowsModification()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 0, Y = 0},
-                new Health {Value = 0}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                Position p = pos.Value;
-                p.X = 100;
-                pos.Value = p;
+                GameObject entity = scene.Create(
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 0, Y = 0},
+                    new Health {Value = 0}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-                Velocity v = vel.Value;
-                v.Y = 50;
-                vel.Value = v;
+                foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+                {
+                    Position p = pos.Value;
+                    p.X = 100;
+                    pos.Value = p;
 
-                Health h = health.Value;
-                h.Value = 75;
-                health.Value = h;
+                    Velocity v = vel.Value;
+                    v.Y = 50;
+                    vel.Value = v;
+
+                    Health h = health.Value;
+                    h.Value = 75;
+                    health.Value = h;
+                }
+
+                Assert.Equal(100, entity.Get<Position>().X);
+                Assert.Equal(50, entity.Get<Velocity>().Y);
+                Assert.Equal(75, entity.Get<Health>().Value);
             }
-
-            Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(50, entity.Get<Velocity>().Y);
-            Assert.Equal(75, entity.Get<Health>().Value);
         }
 
         /// <summary>
@@ -138,16 +146,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_WorksWithEmptyQuery()
         {
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            int count = 0;
-            foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Assert.Equal(0, count);
+                int count = 0;
+                foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(0, count);
+            }
         }
 
         /// <summary>
@@ -156,21 +166,23 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_ProvidesEntityAccess()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 11, Y = 22}, new Velocity {X = 33, Y = 44}, new Health {Value = 55});
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            int count = 0;
-            foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.EnumerateWithEntities<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                Assert.True(entity.IsAlive);
-                Assert.Equal(11, pos.Value.X);
-                Assert.Equal(33, vel.Value.X);
-                Assert.Equal(55, health.Value.Value);
-                count++;
-            }
+                scene.Create(new Position {X = 11, Y = 22}, new Velocity {X = 33, Y = 44}, new Health {Value = 55});
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.EnumerateWithEntities<Position, Velocity, Health>())
+                {
+                    Assert.True(entity.IsAlive);
+                    Assert.Equal(11, pos.Value.X);
+                    Assert.Equal(33, vel.Value.X);
+                    Assert.Equal(55, health.Value.Value);
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>

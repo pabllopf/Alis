@@ -13,11 +13,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DataProperty_ReturnsFields()
         {
-            using Scene scene = new();
-            Archetype archetype = scene.DefaultArchetype;
-            Fields data = archetype.Data;
-            Assert.NotNull(data.Map);
-            Assert.NotNull(data.Components);
+            using (Scene scene = new())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                Fields data = archetype.Data;
+                Assert.NotNull(data.Map);
+                Assert.NotNull(data.Components);
+            }
         }
 
         /// <summary>
@@ -26,17 +28,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void GetComponentDataReference_OnProperArchetype_CoversAllLines()
         {
-            using Scene scene = new();
-            scene.Create(new Alis.Core.Ecs.Test.Models.Position { X = 42, Y = 84 });
+            using (Scene scene = new())
+            {
+                scene.Create(new Alis.Core.Ecs.Test.Models.Position {X = 42, Y = 84});
 
-            WorldArchetypeTableItem worldItem = Archetype<Alis.Core.Ecs.Test.Models.Position>.CreateNewOrGetExistingArchetypes(scene);
-            Archetype arch = worldItem.Archetype;
-            Fields fields = arch.Data;
+                WorldArchetypeTableItem worldItem = Archetype<Alis.Core.Ecs.Test.Models.Position>.CreateNewOrGetExistingArchetypes(scene);
+                Archetype arch = worldItem.Archetype;
+                Fields fields = arch.Data;
 
-            ref Alis.Core.Ecs.Test.Models.Position pos = ref fields.GetComponentDataReference<Alis.Core.Ecs.Test.Models.Position>();
+                ref Alis.Core.Ecs.Test.Models.Position pos = ref fields.GetComponentDataReference<Alis.Core.Ecs.Test.Models.Position>();
 
-            Assert.Equal(42f, pos.X, 5);
-            Assert.Equal(84f, pos.Y, 5);
+                Assert.Equal(42f, pos.X, 5);
+                Assert.Equal(84f, pos.Y, 5);
+            }
         }
 
         /// <summary>

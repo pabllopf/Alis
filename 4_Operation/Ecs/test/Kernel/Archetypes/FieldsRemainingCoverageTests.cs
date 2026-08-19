@@ -46,14 +46,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void GetComponentDataReference_WithMissingComponent_Throws()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 1, Y = 2 });
+            using (Scene scene = new())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
 
-            WorldArchetypeTableItem worldItem = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
-            Archetype arch = worldItem.Archetype;
-            Fields fields = arch.Data;
+                WorldArchetypeTableItem worldItem = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
+                Archetype arch = worldItem.Archetype;
+                Fields fields = arch.Data;
 
-            Assert.Throws<ComponentNotFoundException>(() => fields.GetComponentDataReference<Velocity>());
+                Assert.Throws<ComponentNotFoundException>(() => fields.GetComponentDataReference<Velocity>());
+            }
         }
     }
 }

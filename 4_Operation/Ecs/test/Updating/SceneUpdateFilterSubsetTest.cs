@@ -51,18 +51,20 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void Update_ProcessesAllMatchingArchetypes()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(FilterMarkerType, typeof(UpdateComponent));
-            GameObject first = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject second = scene.Create(new UpdateComponent {CallCount = 0}, new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(FilterMarkerType, typeof(UpdateComponent));
+                GameObject first = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject second = scene.Create(new UpdateComponent {CallCount = 0}, new Position {X = 1, Y = 2});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, FilterMarkerType);
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, FilterMarkerType);
 
-            filter.Update();
-            filter.Update();
+                filter.Update();
+                filter.Update();
 
-            Assert.Equal(2, first.Get<UpdateComponent>().CallCount);
-            Assert.Equal(2, second.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, first.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, second.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -71,17 +73,19 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateSubset_WhenResolvingDeferredCreation_UpdatesOnlyNewEntities()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(FilterMarkerType, typeof(UpdateComponent));
-            GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, FilterMarkerType);
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(FilterMarkerType, typeof(UpdateComponent));
+                GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
+                SceneUpdateFilter filter = new SceneUpdateFilter(scene, FilterMarkerType);
 
-            scene.EnterDisallowState();
-            GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+                Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>

@@ -47,17 +47,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_WhenAllowStructualChangesFalse_DeferredViaCommandBuffer()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(3, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(3, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -65,17 +67,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_WhenAllowStructualChangesFalse_DeferredViaCommandBuffer()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity>();
+                entity.Remove<Velocity>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -83,17 +87,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void AddAs_WhenAllowStructualChangesFalse_DeferredViaCommandBuffer()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.AddAs(Component<Velocity>.Id, new Velocity {X = 5, Y = 10});
+                entity.AddAs(Component<Velocity>.Id, new Velocity {X = 5, Y = 10});
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(5, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(5, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -101,17 +107,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void AddAs_ByType_WhenAllowStructualChangesFalse_Deferred()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.AddAs(typeof(Velocity), new Velocity {X = 7, Y = 14});
+                entity.AddAs(typeof(Velocity), new Velocity {X = 7, Y = 14});
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(7, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(7, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -119,16 +127,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Delete_WhenAllowStructualChangesFalse_DeferredViaCommandBuffer()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                scene.EnterDisallowState();
 
-            entity.Delete();
+                entity.Delete();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.IsAlive);
+                Assert.False(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -136,11 +146,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Has_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => entity.Has<Position>());
+                Assert.Throws<InvalidOperationException>(() => entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -148,11 +160,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Has_WithComponentId_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => entity.Has(Component<Position>.Id));
+                Assert.Throws<InvalidOperationException>(() => entity.Has(Component<Position>.Id));
+            }
         }
 
         /// <summary>
@@ -160,11 +174,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Has_WithType_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => entity.Has(typeof(Position)));
+                Assert.Throws<InvalidOperationException>(() => entity.Has(typeof(Position)));
+            }
         }
 
         /// <summary>
@@ -172,11 +188,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void TryGet_Unsafe_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => entity.TryGet(typeof(Position), out _));
+                Assert.Throws<InvalidOperationException>(() => entity.TryGet(typeof(Position), out _));
+            }
         }
 
         /// <summary>
@@ -184,11 +202,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneGetter_OnDeadEntity_ReturnsScene()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Equal(scene, entity.Scene);
+                Assert.Equal(scene, entity.Scene);
+            }
         }
 
         /// <summary>
@@ -196,11 +216,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => _ = entity.ComponentTypes);
+                Assert.Throws<InvalidOperationException>(() => _ = entity.ComponentTypes);
+            }
         }
 
         /// <summary>
@@ -208,11 +230,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_OnDeadEntity_ThrowsInvalidOperationException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => _ = entity.Type);
+                Assert.Throws<InvalidOperationException>(() => _ = entity.Type);
+            }
         }
 
         /// <summary>
@@ -220,10 +244,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Get_ByComponentId_ThrowsComponentNotFoundException_WhenMissing()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Assert.Throws<ComponentNotFoundException>(() => entity.Get(Component<Velocity>.Id));
+                Assert.Throws<ComponentNotFoundException>(() => entity.Get(Component<Velocity>.Id));
+            }
         }
 
         /// <summary>
@@ -231,10 +257,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Get_ByType_ThrowsComponentNotFoundException_WhenMissing()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Assert.Throws<ComponentNotFoundException>(() => entity.Get(typeof(Velocity)));
+                Assert.Throws<ComponentNotFoundException>(() => entity.Get(typeof(Velocity)));
+            }
         }
 
         /// <summary>
@@ -242,13 +270,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void EnumerateComponents_WithOneComponent_VisitsOne()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            CountingGenericActionPlain counter = new CountingGenericActionPlain();
-            entity.EnumerateComponents(counter);
+                CountingGenericActionPlain counter = new CountingGenericActionPlain();
+                entity.EnumerateComponents(counter);
 
-            Assert.Equal(1, counter.CallCount);
+                Assert.Equal(1, counter.CallCount);
+            }
         }
 
         /// <summary>
@@ -256,15 +286,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_WithWorldEvent_FiresComponentAddedEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            List<ComponentId> addedIds = new List<ComponentId>();
-            scene.ComponentAdded += (go, id) => addedIds.Add(id);
+                List<ComponentId> addedIds = new List<ComponentId>();
+                scene.ComponentAdded += (_, id) => addedIds.Add(id);
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Contains(Component<Velocity>.Id, addedIds);
+                Assert.Contains(Component<Velocity>.Id, addedIds);
+            }
         }
 
         /// <summary>
@@ -272,15 +304,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_WithWorldEvent_FiresComponentRemovedEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            List<ComponentId> removedIds = new List<ComponentId>();
-            scene.ComponentRemoved += (go, id) => removedIds.Add(id);
+                List<ComponentId> removedIds = new List<ComponentId>();
+                scene.ComponentRemoved += (_, id) => removedIds.Add(id);
 
-            entity.Remove<Velocity>();
+                entity.Remove<Velocity>();
 
-            Assert.Contains(Component<Velocity>.Id, removedIds);
+                Assert.Contains(Component<Velocity>.Id, removedIds);
+            }
         }
 
         /// <summary>
@@ -288,15 +322,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_WithPerEntityEvent_FiresOnComponentAdded()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            entity.OnComponentAdded += (go, id) => calls++;
+                int calls = 0;
+                entity.OnComponentAdded += (_, _) => calls++;
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -304,15 +340,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_WithPerEntityEvent_FiresOnComponentRemoved()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            int calls = 0;
-            entity.OnComponentRemoved += (go, id) => calls++;
+                int calls = 0;
+                entity.OnComponentRemoved += (_, _) => calls++;
 
-            entity.Remove<Velocity>();
+                entity.Remove<Velocity>();
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -320,15 +358,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Delete_WithPerEntityEvent_FiresOnDelete()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            entity.OnDelete += (go) => calls++;
+                int calls = 0;
+                entity.OnDelete += (_) => calls++;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -336,15 +376,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_MultiComponent_WithWorldEvent_FiresForEach()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            List<ComponentId> addedIds = new List<ComponentId>();
-            scene.ComponentAdded += (go, id) => addedIds.Add(id);
+                List<ComponentId> addedIds = new List<ComponentId>();
+                scene.ComponentAdded += (_, id) => addedIds.Add(id);
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Single(addedIds);
+                Assert.Single(addedIds);
+            }
         }
 
         /// <summary>
@@ -352,15 +394,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_MultiComponent_WithWorldEvent_FiresForEach()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
 
-            List<ComponentId> removedIds = new List<ComponentId>();
-            scene.ComponentRemoved += (go, id) => removedIds.Add(id);
+                List<ComponentId> removedIds = new List<ComponentId>();
+                scene.ComponentRemoved += (_, id) => removedIds.Add(id);
 
-            entity.Remove<Velocity>();
+                entity.Remove<Velocity>();
 
-            Assert.Contains(Component<Velocity>.Id, removedIds);
+                Assert.Contains(Component<Velocity>.Id, removedIds);
+            }
         }
 
         /// <summary>
@@ -368,18 +412,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void UnsubscribeEvent_WhenLastListenerRemoved_ClearsFlag()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Action<GameObject, ComponentId> handler = (go, id) => { };
-            entity.OnComponentAdded += handler;
-            entity.OnComponentAdded -= handler;
+                Action<GameObject, ComponentId> handler = (_, _) => { };
+                entity.OnComponentAdded += handler;
+                entity.OnComponentAdded -= handler;
 
-            int calls = 0;
-            entity.OnComponentAdded += (go, id) => calls++;
-            entity.Add(new Velocity {X = 3, Y = 4});
+                int calls = 0;
+                entity.OnComponentAdded += (_, _) => calls++;
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -387,18 +433,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void UnsubscribeEvent_OnDelete_WhenLastListenerRemoved_ClearsFlag()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            Action<GameObject> handler = (go) => { };
-            entity.OnDelete += handler;
-            entity.OnDelete -= handler;
+                Action<GameObject> handler = (_) => { };
+                entity.OnDelete += handler;
+                entity.OnDelete -= handler;
 
-            int calls = 0;
-            entity.OnDelete += (go) => calls++;
-            entity.Delete();
+                int calls = 0;
+                entity.OnDelete += (_) => calls++;
+                entity.Delete();
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -406,15 +454,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void InitalizeEventRecord_ForOnDelete_AddsHandler()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            entity.OnDelete += (go) => calls++;
+                int calls = 0;
+                entity.OnDelete += (_) => calls++;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -422,15 +472,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void InitalizeEventRecord_ForOnComponentAddedGeneric_AddsGenericHandler()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            CountingGenericAction action = new CountingGenericAction();
-            entity.OnComponentAddedGeneric += action;
+                CountingGenericAction action = new CountingGenericAction();
+                entity.OnComponentAddedGeneric += action;
 
-            entity.Add(new Health {Value = 10});
+                entity.Add(new Health {Value = 10});
 
-            Assert.Equal(1, action.CallCount);
+                Assert.Equal(1, action.CallCount);
+            }
         }
 
         /// <summary>
@@ -438,15 +490,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void InitalizeEventRecord_ForOnComponentRemovedGeneric_AddsGenericHandler()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Health {Value = 10});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Health {Value = 10});
 
-            CountingGenericAction action = new CountingGenericAction();
-            entity.OnComponentRemovedGeneric += action;
+                CountingGenericAction action = new CountingGenericAction();
+                entity.OnComponentRemovedGeneric += action;
 
-            entity.Remove<Health>();
+                entity.Remove<Health>();
 
-            Assert.Equal(1, action.CallCount);
+                Assert.Equal(1, action.CallCount);
+            }
         }
 
         /// <summary>
@@ -454,17 +508,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_NonGeneric_ByComponentId_WithAllowStructualChangesFalse_Deferred()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                scene.EnterDisallowState();
 
-            entity.Remove(Component<Velocity>.Id);
+                entity.Remove(Component<Velocity>.Id);
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -472,17 +528,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_NonGeneric_ByType_WithAllowStructualChangesFalse_Deferred()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                scene.EnterDisallowState();
 
-            entity.Remove(typeof(Velocity));
+                entity.Remove(typeof(Velocity));
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -490,178 +548,41 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_T1T2_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 5});
+                entity.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 5});
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 5}, new Armor {Value = 6});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-        }
-
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 t 4 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3T4_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.True(entity.Has<Damage>());
-        }
-
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 t 4 t 5 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3T4T5_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Transform>());
-        }
-
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 t 4 t 5 t 6 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3T4T5T6_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<TestComponent>());
-        }
-
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 t 4 t 5 t 6 t 7 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3T4T5T6T7_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10},
-                new AnotherComponent {Name = "a"});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<AnotherComponent>());
-        }
-
-        /// <summary>
-        /// Tests that add t 1 t 2 t 3 t 4 t 5 t 6 t 7 t 8 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Add_T1T2T3T4T5T6T7T8_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10},
-                new AnotherComponent {Name = "a"},
-                new AnotherComponent2 {Name = "b"});
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<AnotherComponent2>());
-        }
-
+        
         /// <summary>
         /// Tests that remove t 1 t 2 deferred when allow structual changes false
         /// </summary>
         [Fact] public void Remove_T1T2_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health>();
+                entity.Remove<Velocity, Health>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -669,23 +590,25 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_T1T2T3_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health, Armor>();
+                entity.Remove<Velocity, Health, Armor>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.False(entity.Has<Armor>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -693,25 +616,27 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_T1T2T3T4_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health, Armor, Damage>();
+                entity.Remove<Velocity, Health, Armor, Damage>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.False(entity.Has<Armor>());
+                Assert.False(entity.Has<Damage>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -719,27 +644,29 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_T1T2T3T4T5_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health, Armor, Damage, Transform>();
+                entity.Remove<Velocity, Health, Armor, Damage, Transform>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.False(entity.Has<Armor>());
+                Assert.False(entity.Has<Damage>());
+                Assert.False(entity.Has<Transform>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -747,29 +674,31 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_T1T2T3T4T5T6_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9},
+                    new TestComponent {Value = 10});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health, Armor, Damage, Transform, TestComponent>();
+                entity.Remove<Velocity, Health, Armor, Damage, Transform, TestComponent>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-            Assert.False(entity.Has<TestComponent>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.False(entity.Has<Armor>());
+                Assert.False(entity.Has<Damage>());
+                Assert.False(entity.Has<Transform>());
+                Assert.False(entity.Has<TestComponent>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -777,81 +706,52 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Remove_T1T2T3T4T5T6T7_Deferred_WhenAllowStructualChangesFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10});
-            entity.Add(new AnotherComponent {Name = "a"});
-            scene.EnterDisallowState();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9},
+                    new TestComponent {Value = 10});
+                entity.Add(new AnotherComponent {Name = "a"});
+                scene.EnterDisallowState();
 
-            entity.Remove<Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>();
+                entity.Remove<Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>();
 
-            scene.ExitDisallowState(null);
-            scene.Update();
+                scene.ExitDisallowState(null);
+                scene.Update();
 
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-            Assert.False(entity.Has<TestComponent>());
-            Assert.False(entity.Has<AnotherComponent>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+                Assert.False(entity.Has<Armor>());
+                Assert.False(entity.Has<Damage>());
+                Assert.False(entity.Has<Transform>());
+                Assert.False(entity.Has<TestComponent>());
+                Assert.False(entity.Has<AnotherComponent>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
-        /// <summary>
-        /// Tests that remove t 1 t 2 t 3 t 4 t 5 t 6 t 7 t 8 deferred when allow structual changes false
-        /// </summary>
-        [Fact] public void Remove_T1T2T3T4T5T6T7T8_Deferred_WhenAllowStructualChangesFalse()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9},
-                new TestComponent {Value = 10});
-            entity.Add(new AnotherComponent {Name = "a"});
-            entity.Add(new AnotherComponent2 {Name = "b"});
-            scene.EnterDisallowState();
-
-            entity.Remove<Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent, AnotherComponent2>();
-
-            scene.ExitDisallowState(null);
-            scene.Update();
-
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-            Assert.False(entity.Has<TestComponent>());
-            Assert.False(entity.Has<AnotherComponent>());
-            Assert.False(entity.Has<AnotherComponent2>());
-            Assert.True(entity.Has<Position>());
-        }
-
+        
         /// <summary>
         /// Tests that invoke component world events arity 1 through add fires world event
         /// </summary>
         [Fact] public void InvokeComponentWorldEvents_Arity1_ThroughAdd_FiresWorldEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            scene.ComponentAdded += (go, id) => calls++;
+                int calls = 0;
+                scene.ComponentAdded += (_, _) => calls++;
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Equal(1, calls);
+                Assert.Equal(1, calls);
+            }
         }
 
         /// <summary>
@@ -859,18 +759,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentAdded_ThenRemoveLastListener_EventNoLongerFires()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            int calls = 0;
-            void Handler(GameObject _, ComponentId __) => calls++;
+                int calls = 0;
+                void Handler(GameObject _, ComponentId __) => calls++;
 
-            entity.OnComponentAdded += Handler;
-            entity.OnComponentAdded -= Handler;
+                entity.OnComponentAdded += Handler;
+                entity.OnComponentAdded -= Handler;
 
-            entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Velocity {X = 3, Y = 4});
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>
@@ -878,13 +780,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void TryGet_WithType_OnEntityWithoutComponent_ReturnsFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            bool found = entity.TryGet(typeof(Velocity), out object value);
+                bool found = entity.TryGet(typeof(Velocity), out object value);
 
-            Assert.False(found);
-            Assert.Null(value);
+                Assert.False(found);
+                Assert.Null(value);
+            }
         }
 
         /// <summary>
@@ -892,13 +796,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void TryGet_WithType_OnEntityWithComponent_ReturnsTrue()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            bool found = entity.TryGet(typeof(Position), out object value);
+                bool found = entity.TryGet(typeof(Position), out object value);
 
-            Assert.True(found);
-            Assert.IsType<Position>(value);
+                Assert.True(found);
+                Assert.IsType<Position>(value);
+            }
         }
 
         /// <summary>
@@ -906,14 +812,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Get_ByType_ReturnsBoxedComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 5, Y = 10});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
-            object boxed = entity.Get(typeof(Position));
+                object boxed = entity.Get(typeof(Position));
 
-            Assert.IsType<Position>(boxed);
-            Assert.Equal(5, ((Position)boxed).X);
-            Assert.Equal(10, ((Position)boxed).Y);
+                Assert.IsType<Position>(boxed);
+                Assert.Equal(5, ((Position) boxed).X);
+                Assert.Equal(10, ((Position) boxed).Y);
+            }
         }
 
         /// <summary>
@@ -921,13 +829,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void AddAs_WithComponentId_WhenAllowStructualChanges_AddsComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.AddAs(Component<Velocity>.Id, new Velocity {X = 10, Y = 20});
+                entity.AddAs(Component<Velocity>.Id, new Velocity {X = 10, Y = 20});
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(10, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(10, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -935,13 +845,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void AddAs_WithType_WhenAllowStructualChanges_AddsComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.AddAs(typeof(Velocity), new Velocity {X = 15, Y = 25});
+                entity.AddAs(typeof(Velocity), new Velocity {X = 15, Y = 25});
 
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(15, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(15, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>

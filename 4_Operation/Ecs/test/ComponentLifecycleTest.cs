@@ -51,13 +51,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_CanBeAddedAfterCreation()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
-            entity.Add(new Health {Value = 100});
+                entity.Add(new Health {Value = 100});
 
-            Assert.True(entity.Has<Health>());
-            Assert.Equal(100, entity.Get<Health>().Value);
+                Assert.True(entity.Has<Health>());
+                Assert.Equal(100, entity.Get<Health>().Value);
+            }
         }
 
         /// <summary>
@@ -68,13 +70,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_CanBeRemoved()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
 
-            entity.Remove<Health>();
+                entity.Remove<Health>();
 
-            Assert.False(entity.Has<Health>());
-            Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -85,13 +89,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_DataCanBeAccessed()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            Position pos = entity.Get<Position>();
+                Position pos = entity.Get<Position>();
 
-            Assert.Equal(10, pos.X);
-            Assert.Equal(20, pos.Y);
+                Assert.Equal(10, pos.X);
+                Assert.Equal(20, pos.Y);
+            }
         }
 
         /// <summary>
@@ -103,15 +109,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_TryGetWorks()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 5, Y = 10});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
-            bool hasPos = entity.TryGet(out Ref<Position> posRef);
-            bool hasHealth = entity.TryGet(out Ref<Health> _);
+                bool hasPos = entity.TryGet(out Ref<Position> posRef);
+                bool hasHealth = entity.TryGet(out Ref<Health> _);
 
-            Assert.True(hasPos);
-            Assert.Equal(5, posRef.Value.X);
-            Assert.False(hasHealth);
+                Assert.True(hasPos);
+                Assert.Equal(5, posRef.Value.X);
+                Assert.False(hasHealth);
+            }
         }
 
         /// <summary>
@@ -122,16 +130,18 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_MultipleComponentsCanCoexist()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Health {Value = 75},
-                new Velocity {X = 1.5f, Y = 2.5f}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Health {Value = 75},
+                    new Velocity {X = 1.5f, Y = 2.5f}
+                );
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -142,12 +152,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void Component_DeadEntityThrowsOnAccess()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.ThrowsAny<InvalidOperationException>(() => entity.Get<Position>());
+                Assert.ThrowsAny<InvalidOperationException>(() => entity.Get<Position>());
+            }
         }
     }
 }

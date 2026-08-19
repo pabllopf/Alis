@@ -49,20 +49,22 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityCreatedEventFires()
         {
-            using Scene scene = new Scene();
-            int eventCount = 0;
-            GameObject createdEntity = default(GameObject);
-
-            scene.EntityCreated += entity =>
+            using (Scene scene = new Scene())
             {
-                eventCount++;
-                createdEntity = entity;
-            };
+                int eventCount = 0;
+                GameObject createdEntity = default(GameObject);
 
-            GameObject entity = scene.Create(new Position());
+                scene.EntityCreated += entity =>
+                {
+                    eventCount++;
+                    createdEntity = entity;
+                };
 
-            Assert.Equal(1, eventCount);
-            Assert.Equal(entity.EntityID, createdEntity.EntityID);
+                GameObject entity = scene.Create(new Position());
+
+                Assert.Equal(1, eventCount);
+                Assert.Equal(entity.EntityID, createdEntity.EntityID);
+            }
         }
 
         /// <summary>
@@ -71,15 +73,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityDeletedEventFires()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            int eventCount = 0;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                int eventCount = 0;
 
-            scene.EntityDeleted += _ => eventCount++;
+                scene.EntityDeleted += _ => eventCount++;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(1, eventCount);
+                Assert.Equal(1, eventCount);
+            }
         }
 
         /// <summary>
@@ -88,24 +92,26 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentAddedEventFires()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            int eventCount = 0;
-            ComponentId firedComponentId = default(ComponentId);
-
-            scene.ComponentAdded += (go, componentId) =>
+            using (Scene scene = new Scene())
             {
-                if (go == entity)
+                GameObject entity = scene.Create();
+                int eventCount = 0;
+                ComponentId firedComponentId = default(ComponentId);
+
+                scene.ComponentAdded += (go, componentId) =>
                 {
-                    eventCount++;
-                    firedComponentId = componentId;
-                }
-            };
+                    if (go == entity)
+                    {
+                        eventCount++;
+                        firedComponentId = componentId;
+                    }
+                };
 
-            entity.Add(new Position {X = 10});
+                entity.Add(new Position {X = 10});
 
-            Assert.Equal(1, eventCount);
-            Assert.Equal(Component<Position>.Id, firedComponentId);
+                Assert.Equal(1, eventCount);
+                Assert.Equal(Component<Position>.Id, firedComponentId);
+            }
         }
 
         /// <summary>
@@ -114,24 +120,26 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentRemovedEventFires()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10});
-            int eventCount = 0;
-            ComponentId firedComponentId = default(ComponentId);
-
-            scene.ComponentRemoved += (go, componentId) =>
+            using (Scene scene = new Scene())
             {
-                if (go == entity)
+                GameObject entity = scene.Create(new Position {X = 10});
+                int eventCount = 0;
+                ComponentId firedComponentId = default(ComponentId);
+
+                scene.ComponentRemoved += (go, componentId) =>
                 {
-                    eventCount++;
-                    firedComponentId = componentId;
-                }
-            };
+                    if (go == entity)
+                    {
+                        eventCount++;
+                        firedComponentId = componentId;
+                    }
+                };
 
-            entity.Remove<Position>();
+                entity.Remove<Position>();
 
-            Assert.Equal(1, eventCount);
-            Assert.Equal(Component<Position>.Id, firedComponentId);
+                Assert.Equal(1, eventCount);
+                Assert.Equal(Component<Position>.Id, firedComponentId);
+            }
         }
 
         /// <summary>
@@ -140,23 +148,25 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MultipleEventsAreTrackedCorrectly()
         {
-            using Scene scene = new Scene();
-            int createdCount = 0;
-            int deletedCount = 0;
-            int componentAddedCount = 0;
+            using (Scene scene = new Scene())
+            {
+                int createdCount = 0;
+                int deletedCount = 0;
+                int componentAddedCount = 0;
 
-            scene.EntityCreated += _ => createdCount++;
-            scene.EntityDeleted += _ => deletedCount++;
-            scene.ComponentAdded += (_, __) => componentAddedCount++;
+                scene.EntityCreated += _ => createdCount++;
+                scene.EntityDeleted += _ => deletedCount++;
+                scene.ComponentAdded += (_, _) => componentAddedCount++;
 
-            scene.Create();
-            scene.Create(new Position());
-            _ = scene.Create(); // Create first entity and discard
-            _ = scene.Create(); // Create second entity and discard
+                scene.Create();
+                scene.Create(new Position());
+                _ = scene.Create(); // Create first entity and discard
+                _ = scene.Create(); // Create second entity and discard
 
-            Assert.Equal(4, createdCount);
-            Assert.Equal(0, deletedCount);
-            Assert.Equal(0, componentAddedCount); // entity2 created with Position, entity1 added Health
+                Assert.Equal(4, createdCount);
+                Assert.Equal(0, deletedCount);
+                Assert.Equal(0, componentAddedCount); // entity2 created with Position, entity1 added Health
+            }
         }
 
         /// <summary>
@@ -165,19 +175,21 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EventListenerCanBeRemoved()
         {
-            using Scene scene = new Scene();
-            int eventCount = 0;
+            using (Scene scene = new Scene())
+            {
+                int eventCount = 0;
 
-            void Handler(GameObject _) => eventCount++;
+                void Handler(GameObject _) => eventCount++;
 
-            scene.EntityCreated += Handler;
-            scene.Create();
-            Assert.Equal(1, eventCount);
+                scene.EntityCreated += Handler;
+                scene.Create();
+                Assert.Equal(1, eventCount);
 
-            scene.EntityCreated -= Handler;
-            scene.Create();
+                scene.EntityCreated -= Handler;
+                scene.Create();
 
-            Assert.Equal(1, eventCount); // Should still be 1
+                Assert.Equal(1, eventCount); // Should still be 1
+            }
         }
 
         /// <summary>
@@ -186,17 +198,19 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MultipleListenersReceiveSameEvent()
         {
-            using Scene scene = new Scene();
-            int listener1Count = 0;
-            int listener2Count = 0;
+            using (Scene scene = new Scene())
+            {
+                int listener1Count = 0;
+                int listener2Count = 0;
 
-            scene.EntityCreated += _ => listener1Count++;
-            scene.EntityCreated += _ => listener2Count++;
+                scene.EntityCreated += _ => listener1Count++;
+                scene.EntityCreated += _ => listener2Count++;
 
-            scene.Create();
+                scene.Create();
 
-            Assert.Equal(1, listener1Count);
-            Assert.Equal(1, listener2Count);
+                Assert.Equal(1, listener1Count);
+                Assert.Equal(1, listener2Count);
+            }
         }
 
         /// <summary>
@@ -205,20 +219,22 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentEventsIncludeCorrectComponentId()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            List<ComponentId> addedComponentIds = new List<ComponentId>();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                List<ComponentId> addedComponentIds = new List<ComponentId>();
 
-            scene.ComponentAdded += (_, componentId) => addedComponentIds.Add(componentId);
+                scene.ComponentAdded += (_, componentId) => addedComponentIds.Add(componentId);
 
-            entity.Add(new Position());
-            entity.Add(new Health());
-            entity.Add(new Velocity());
+                entity.Add(new Position());
+                entity.Add(new Health());
+                entity.Add(new Velocity());
 
-            Assert.Equal(3, addedComponentIds.Count);
-            Assert.Contains(Component<Position>.Id, addedComponentIds);
-            Assert.Contains(Component<Health>.Id, addedComponentIds);
-            Assert.Contains(Component<Velocity>.Id, addedComponentIds);
+                Assert.Equal(3, addedComponentIds.Count);
+                Assert.Contains(Component<Position>.Id, addedComponentIds);
+                Assert.Contains(Component<Health>.Id, addedComponentIds);
+                Assert.Contains(Component<Velocity>.Id, addedComponentIds);
+            }
         }
     }
 }

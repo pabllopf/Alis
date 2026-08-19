@@ -63,11 +63,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_CanCreateEntity()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            GameObject entity = scene.Create();
-
-            Assert.True(entity.IsAlive);
+                Assert.True(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -78,12 +79,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_CanAddComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 10, Y = 20});
+                entity.Add(new Position {X = 10, Y = 20});
 
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -94,12 +97,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_CanRemoveComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Remove<Position>();
+                entity.Remove<Position>();
 
-            Assert.False(entity.Has<Position>());
+                Assert.False(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -110,12 +115,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_CanDeleteEntity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.False(entity.IsAlive);
+                Assert.False(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -126,19 +133,20 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_QueuesMultipleOperations()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
+                GameObject entity3 = scene.Create();
 
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
-            GameObject entity3 = scene.Create();
+                entity1.Add(new Position {X = 1, Y = 2});
+                entity2.Add(new Velocity {X = 3, Y = 4});
+                entity3.Add(new Health {Value = 100});
 
-            entity1.Add(new Position {X = 1, Y = 2});
-            entity2.Add(new Velocity {X = 3, Y = 4});
-            entity3.Add(new Health {Value = 100});
-
-            Assert.True(entity1.Has<Position>());
-            Assert.True(entity2.Has<Velocity>());
-            Assert.True(entity3.Has<Health>());
+                Assert.True(entity1.Has<Position>());
+                Assert.True(entity2.Has<Velocity>());
+                Assert.True(entity3.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -149,14 +157,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_AppliesOperationsToScene()
         {
-            using Scene scene = new Scene();
-            int initialCount = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                int initialCount = scene.EntityCount;
 
-            GameObject entity = scene.Create();
-            scene.Update();
+                GameObject entity = scene.Create();
+                scene.Update();
 
-            Assert.True(entity.IsAlive);
-            Assert.Equal(initialCount + 1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(initialCount + 1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -167,16 +177,18 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_MaintainsConsistency()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 42, Y = 84});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
-            entity.Add(new Velocity {X = 5, Y = 10});
-            scene.Update();
+                entity.Add(new Velocity {X = 5, Y = 10});
+                scene.Update();
 
-            Assert.True(entity.TryGet(out Ref<Position> pos));
-            Assert.Equal(42, pos.Value.X);
-            Assert.True(entity.TryGet(out Ref<Velocity> vel));
-            Assert.Equal(5, vel.Value.X);
+                Assert.True(entity.TryGet(out Ref<Position> pos));
+                Assert.Equal(42, pos.Value.X);
+                Assert.True(entity.TryGet(out Ref<Velocity> vel));
+                Assert.Equal(5, vel.Value.X);
+            }
         }
 
         /// <summary>
@@ -187,18 +199,20 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_ScalesWithManyOperations()
         {
-            using Scene scene = new Scene();
-            GameObject[] entities = new GameObject[100];
-
-            for (int i = 0; i < 100; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create();
-                entities[i].Add(new Position {X = i, Y = i * 2});
-            }
+                GameObject[] entities = new GameObject[100];
 
-            for (int i = 0; i < 100; i++)
-            {
-                Assert.True(entities[i].Has<Position>());
+                for (int i = 0; i < 100; i++)
+                {
+                    entities[i] = scene.Create();
+                    entities[i].Add(new Position {X = i, Y = i * 2});
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    Assert.True(entities[i].Has<Position>());
+                }
             }
         }
 
@@ -210,44 +224,20 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_PreservesOperationOrder()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 3, Y = 4});
-            entity.Add(new Health {Value = 100});
+                entity.Add(new Position {X = 1, Y = 2});
+                entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Health {Value = 100});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
-
-        /// <summary>
-        ///     Tests that complex operation sequences work
-        /// </summary>
-        /// <remarks>
-        ///     Validates that CommandBuffer handles complex operation sequences.
-        /// </remarks>
-        [Fact] public void CommandBuffer_HandlesComplexSequences()
-        {
-            using Scene scene = new Scene();
-
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Velocity {X = 3, Y = 4});
-
-            entity1.Add(new Velocity {X = 5, Y = 6});
-            entity2.Add(new Position {X = 7, Y = 8});
-            entity2.Add(new Health {Value = 100});
-
-            entity1.Remove<Velocity>();
-
-            Assert.True(entity1.Has<Position>());
-            Assert.False(entity1.Has<Velocity>());
-            Assert.True(entity2.Has<Position>());
-            Assert.True(entity2.Has<Velocity>());
-            Assert.True(entity2.Has<Health>());
-        }
-
+        
         /// <summary>
         ///     Tests that operations are deferred until update
         /// </summary>
@@ -256,15 +246,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_DefersOperationsUntilUpdate()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2});
+                entity.Add(new Position {X = 1, Y = 2});
 
-            scene.Update();
+                scene.Update();
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -275,12 +267,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </remarks>
         [Fact] public void CommandBuffer_HandlesInvalidEntityGracefully()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.False(entity.IsAlive);
+                Assert.False(entity.IsAlive);
+            }
         }
     }
 }

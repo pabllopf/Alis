@@ -45,12 +45,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RemoveLastComponent_ThenReadd()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1});
-            entity.Remove<Position>();
-            Assert.False(entity.Has<Position>());
-            entity.Add(new Position {X = 5});
-            Assert.True(entity.Has<Position>());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1});
+                entity.Remove<Position>();
+                Assert.False(entity.Has<Position>());
+                entity.Add(new Position {X = 5});
+                Assert.True(entity.Has<Position>());
+            }
         }
         
         /// <summary>
@@ -59,14 +61,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RemoveComponents_InDifferentOrders()
         {
-            using Scene scene = new Scene();
-            GameObject a = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
-            a.Remove<Health>();
-            a.Remove<Position>();
+            using (Scene scene = new Scene())
+            {
+                GameObject a = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
+                a.Remove<Health>();
+                a.Remove<Position>();
 
-            GameObject b = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
-            b.Remove<Position>();
-            b.Remove<Velocity>();
+                GameObject b = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
+                b.Remove<Position>();
+                b.Remove<Velocity>();
+            }
         }
     }
 }

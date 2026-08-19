@@ -141,10 +141,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_FluentApi_Works()
         {
-            using Scene scene = new();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.Entity().With(new Position { X = 5 }).With(new Velocity { X = 10 });
-            buffer.Playback();
+            using (Scene scene = new())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.Entity().With(new Position {X = 5}).With(new Velocity {X = 10});
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -152,13 +154,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_AddComponent_ThenRemove_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position(), new Velocity());
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.RemoveComponent<Velocity>(go);
-            buffer.Playback();
-            Assert.False(go.Has<Velocity>());
-            Assert.True(go.Has<Position>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position(), new Velocity());
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.RemoveComponent<Velocity>(go);
+                buffer.Playback();
+                Assert.False(go.Has<Velocity>());
+                Assert.True(go.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -166,11 +170,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastLookup_FindAdjacentArchetypeId_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            scene.Create(new Position(), new Velocity(), new Health());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position(), new Velocity());
+                scene.Create(new Position(), new Velocity(), new Health());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>
@@ -189,13 +195,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Ref_CreateAndRead_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 42 });
-            Query query = scene.Query<With<Position>>();
-            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
-            using Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
-            Assert.True(enumerator.MoveNext());
-            Assert.Equal(42, enumerator.Current.Item1.Value.X);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position {X = 42});
+                Query query = scene.Query<With<Position>>();
+                Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
+                using (Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    Assert.Equal(42, enumerator.Current.Item1.Value.X);
+                }
+            }
         }
 
         /// <summary>
@@ -203,12 +213,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Archetype_DataProperty_ReturnsFieldsWithComponents()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            Archetype archetype = scene.DefaultArchetype;
-            Fields data = archetype.Data;
-            Assert.NotNull(data.Map);
-            Assert.NotNull(data.Components);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                Archetype archetype = scene.DefaultArchetype;
+                Fields data = archetype.Data;
+                Assert.NotNull(data.Map);
+                Assert.NotNull(data.Components);
+            }
         }
 
         /// <summary>
@@ -216,10 +228,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_WithDisabledEntity_NotEnumerated()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>
@@ -227,14 +241,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_WithMultipleRemove_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position(), new Velocity(), new Health());
-            Assert.True(go.Has<Velocity>());
-            go.Remove<Velocity>();
-            scene.Update();
-            Assert.False(go.Has<Velocity>());
-            Assert.True(go.Has<Position>());
-            Assert.True(go.Has<Health>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position(), new Velocity(), new Health());
+                Assert.True(go.Has<Velocity>());
+                go.Remove<Velocity>();
+                scene.Update();
+                Assert.False(go.Has<Velocity>());
+                Assert.True(go.Has<Position>());
+                Assert.True(go.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -242,17 +258,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_GameObjectEnumerable_ReturnsAll()
         {
-            using Scene scene = new();
-            for (int i = 0; i < 5; i++)
-                scene.Create(new Position());
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
-            int count = 0;
-            foreach (GameObject go in chunk.Entities)
+            using (Scene scene = new())
             {
-                count++;
-                Assert.True(go.IsAlive);
+                for (int i = 0; i < 5; i++)
+                    scene.Create(new Position());
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(5);
+                int count = 0;
+                foreach (GameObject go in chunk.Entities)
+                {
+                    count++;
+                    Assert.True(go.IsAlive);
+                }
+
+                Assert.Equal(5, count);
             }
-            Assert.Equal(5, count);
         }
     }
 }

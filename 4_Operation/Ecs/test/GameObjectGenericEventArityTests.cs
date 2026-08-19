@@ -49,13 +49,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity2_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity);
+            }
         }
 
         /// <summary>
@@ -64,14 +66,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity3_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health);
+            }
         }
 
         /// <summary>
@@ -80,15 +84,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity4_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 30};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
+                Armor armor = new Armor {Value = 30};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor);
+            }
         }
 
         /// <summary>
@@ -97,17 +103,19 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity5_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 30};
-            Damage damage = new Damage {Value = 7};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
+                Armor armor = new Armor {Value = 30};
+                Damage damage = new Damage {Value = 7};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
-                ref damage);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
+                    ref damage);
+            }
         }
 
         /// <summary>
@@ -116,18 +124,20 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity6_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 30};
-            Damage damage = new Damage {Value = 7};
-            Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
+                Armor armor = new Armor {Value = 30};
+                Damage damage = new Damage {Value = 7};
+                Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
-                ref damage, ref transform);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
+                    ref damage, ref transform);
+            }
         }
 
         /// <summary>
@@ -136,19 +146,21 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity7_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 30};
-            Damage damage = new Damage {Value = 7};
-            Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
-            TestComponent test = new TestComponent {Value = 5};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
+                Armor armor = new Armor {Value = 30};
+                Damage damage = new Damage {Value = 7};
+                Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
+                TestComponent test = new TestComponent {Value = 5};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
-                ref damage, ref transform, ref test);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
+                    ref damage, ref transform, ref test);
+            }
         }
 
         /// <summary>
@@ -157,20 +169,22 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_Arity8_WithGenericEvent_FiresGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ComponentEvent events = new ComponentEvent { GenericEvent = CreateGenericEvent() };
-            Position position = new Position {X = 1, Y = 2};
-            Velocity velocity = new Velocity {X = 3, Y = 4};
-            Health health = new Health {Value = 100};
-            Armor armor = new Armor {Value = 30};
-            Damage damage = new Damage {Value = 7};
-            Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
-            TestComponent test = new TestComponent {Value = 5};
-            AnotherComponent another = new AnotherComponent {Data = 10, Y = 3};
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                ComponentEvent events = new ComponentEvent {GenericEvent = CreateGenericEvent()};
+                Position position = new Position {X = 1, Y = 2};
+                Velocity velocity = new Velocity {X = 3, Y = 4};
+                Health health = new Health {Value = 100};
+                Armor armor = new Armor {Value = 30};
+                Damage damage = new Damage {Value = 7};
+                Transform transform = new Transform {X = 0, Y = 0, Rotation = 0};
+                TestComponent test = new TestComponent {Value = 5};
+                AnotherComponent another = new AnotherComponent {Data = 10, Y = 3};
 
-            GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
-                ref damage, ref transform, ref test, ref another);
+                GameObject.InvokePerEntityEvents(entity, true, ref events, ref position, ref velocity, ref health, ref armor,
+                    ref damage, ref transform, ref test, ref another);
+            }
         }
 
         /// <summary>

@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         private static void RegisterUnreferencedFuncObjectBool(bool result)
         {
             object target = new object();
-            Gen2GcCallback.Register(targetObj => result, target);
+            Gen2GcCallback.Register(_ => result, target);
         }
 
         /// <summary>

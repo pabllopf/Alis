@@ -51,16 +51,18 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_ArchetypeMigrationWithMultipleComponents()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position());
-            entity.Add(new Velocity());
-            entity.Add(new Health());
+                entity.Add(new Position());
+                entity.Add(new Velocity());
+                entity.Add(new Health());
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -72,21 +74,23 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_BulkEntityCreationWithSameArchetype()
         {
-            using Scene scene = new Scene();
-            const int entityCount = 100;
-
-            GameObject[] entities = new GameObject[entityCount];
-            for (int i = 0; i < entityCount; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create();
-                entities[i].Add(new Position());
-                entities[i].Add(new Velocity());
-            }
+                const int entityCount = 100;
 
-            for (int i = 0; i < entityCount; i++)
-            {
-                Assert.True(entities[i].Has<Position>());
-                Assert.True(entities[i].Has<Velocity>());
+                GameObject[] entities = new GameObject[entityCount];
+                for (int i = 0; i < entityCount; i++)
+                {
+                    entities[i] = scene.Create();
+                    entities[i].Add(new Position());
+                    entities[i].Add(new Velocity());
+                }
+
+                for (int i = 0; i < entityCount; i++)
+                {
+                    Assert.True(entities[i].Has<Position>());
+                    Assert.True(entities[i].Has<Velocity>());
+                }
             }
         }
 
@@ -99,27 +103,28 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_ComplexArchetypeTopology()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create();
+                e1.Add(new Position());
 
-            GameObject e1 = scene.Create();
-            e1.Add(new Position());
+                GameObject e2 = scene.Create();
+                e2.Add(new Position());
+                e2.Add(new Velocity());
 
-            GameObject e2 = scene.Create();
-            e2.Add(new Position());
-            e2.Add(new Velocity());
+                GameObject e3 = scene.Create();
+                e3.Add(new Position());
+                e3.Add(new Velocity());
+                e3.Add(new Health());
 
-            GameObject e3 = scene.Create();
-            e3.Add(new Position());
-            e3.Add(new Velocity());
-            e3.Add(new Health());
+                GameObject e4 = scene.Create();
+                e4.Add(new Health());
 
-            GameObject e4 = scene.Create();
-            e4.Add(new Health());
-
-            Assert.True(e1.Has<Position>());
-            Assert.True(e2.Has<Position>() && e2.Has<Velocity>());
-            Assert.True(e3.Has<Position>() && e3.Has<Velocity>() && e3.Has<Health>());
-            Assert.True(e4.Has<Health>());
+                Assert.True(e1.Has<Position>());
+                Assert.True(e2.Has<Position>() && e2.Has<Velocity>());
+                Assert.True(e3.Has<Position>() && e3.Has<Velocity>() && e3.Has<Health>());
+                Assert.True(e4.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -131,18 +136,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_ComponentRemovalAndArchetypeDowngrade()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            entity.Add(new Position());
-            entity.Add(new Velocity());
-            entity.Add(new Health());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                entity.Add(new Position());
+                entity.Add(new Velocity());
+                entity.Add(new Health());
 
-            entity.Remove<Health>();
-            entity.Remove<Velocity>();
+                entity.Remove<Health>();
+                entity.Remove<Velocity>();
 
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -154,19 +161,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_DeferredOperationsDoNotBreakState()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create();
-            GameObject e2 = scene.Create();
-            e1.Add(new Position());
-            e2.Add(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create();
+                GameObject e2 = scene.Create();
+                e1.Add(new Position());
+                e2.Add(new Position());
 
-            e1.Add(new Velocity());
-            e2.Add(new Health());
+                e1.Add(new Velocity());
+                e2.Add(new Health());
 
-            Assert.True(e1.Has<Position>());
-            Assert.True(e1.Has<Velocity>());
-            Assert.True(e2.Has<Position>());
-            Assert.True(e2.Has<Health>());
+                Assert.True(e1.Has<Position>());
+                Assert.True(e1.Has<Velocity>());
+                Assert.True(e2.Has<Position>());
+                Assert.True(e2.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -178,19 +187,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_ComponentDataPreservedAcrossArchetypeChanges()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position());
-            ref Position pos1 = ref entity.Get<Position>();
-            pos1.X = 100;
-            pos1.Y = 200;
+                entity.Add(new Position());
+                ref Position pos1 = ref entity.Get<Position>();
+                pos1.X = 100;
+                pos1.Y = 200;
 
-            entity.Add(new Velocity());
-            ref Position pos2 = ref entity.Get<Position>();
+                entity.Add(new Velocity());
+                ref Position pos2 = ref entity.Get<Position>();
 
-            Assert.Equal(100, pos2.X);
-            Assert.Equal(200, pos2.Y);
+                Assert.Equal(100, pos2.X);
+                Assert.Equal(200, pos2.Y);
+            }
         }
 
         /// <summary>
@@ -202,19 +213,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_RapidAddRemoveCyclesDoNotCorruptState()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new Scene())
             {
-                entity.Add(new Position());
-                entity.Add(new Velocity());
-                entity.Remove<Position>();
-                entity.Remove<Velocity>();
-            }
+                GameObject entity = scene.Create();
 
-            Assert.False(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
+                for (int i = 0; i < 10; i++)
+                {
+                    entity.Add(new Position());
+                    entity.Add(new Velocity());
+                    entity.Remove<Position>();
+                    entity.Remove<Velocity>();
+                }
+
+                Assert.False(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -226,18 +239,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_MultipleScenesCoexistIndependently()
         {
-            using Scene scene1 = new Scene();
-            using Scene scene2 = new Scene();
+            using (Scene scene1 = new Scene())
+            {
+                using (Scene scene2 = new Scene())
+                {
+                    GameObject e1 = scene1.Create();
+                    GameObject e2 = scene2.Create();
+                    e1.Add(new Position());
+                    e2.Add(new Health());
 
-            GameObject e1 = scene1.Create();
-            GameObject e2 = scene2.Create();
-            e1.Add(new Position());
-            e2.Add(new Health());
-
-            Assert.True(e1.Has<Position>());
-            Assert.False(e1.Has<Health>());
-            Assert.True(e2.Has<Health>());
-            Assert.False(e2.Has<Position>());
+                    Assert.True(e1.Has<Position>());
+                    Assert.False(e1.Has<Health>());
+                    Assert.True(e2.Has<Health>());
+                    Assert.False(e2.Has<Position>());
+                }
+            }
         }
 
         /// <summary>
@@ -249,17 +265,19 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void AdvancedEcs_ComponentAccessConsistencyAcrossUpdates()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            entity.Add(new Position());
-            ref Position pos1 = ref entity.Get<Position>();
-            pos1.X = 42;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                entity.Add(new Position());
+                ref Position pos1 = ref entity.Get<Position>();
+                pos1.X = 42;
 
-            ref Position pos2 = ref entity.Get<Position>();
-            pos2.Y = 84;
+                ref Position pos2 = ref entity.Get<Position>();
+                pos2.Y = 84;
 
-            Assert.Equal(42, entity.Get<Position>().X);
-            Assert.Equal(84, entity.Get<Position>().Y);
+                Assert.Equal(42, entity.Get<Position>().X);
+                Assert.Equal(84, entity.Get<Position>().Y);
+            }
         }
     }
 }

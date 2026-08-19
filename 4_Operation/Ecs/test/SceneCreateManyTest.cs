@@ -44,13 +44,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_OneComponent_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position> chunk = scene.CreateMany<Position>(4);
 
-            ChunkTuple<Position> chunk = scene.CreateMany<Position>(4);
-
-            Assert.Equal(4, chunk.Span.Length);
-            Assert.Equal(4, CountEntities(chunk.Entities));
-            Assert.Equal(4, scene.EntityCount);
+                Assert.Equal(4, chunk.Span.Length);
+                Assert.Equal(4, CountEntities(chunk.Entities));
+                Assert.Equal(4, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -58,14 +59,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_TwoComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
 
-            ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
-
-            Assert.Equal(3, chunk.Span1.Length);
-            Assert.Equal(3, chunk.Span2.Length);
-            Assert.Equal(3, CountEntities(chunk.Entities));
-            Assert.Equal(3, scene.EntityCount);
+                Assert.Equal(3, chunk.Span1.Length);
+                Assert.Equal(3, chunk.Span2.Length);
+                Assert.Equal(3, CountEntities(chunk.Entities));
+                Assert.Equal(3, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -73,15 +75,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_ThreeComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(2);
 
-            ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
-            Assert.Equal(2, scene.EntityCount);
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -89,15 +92,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_FourComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform> chunk = scene.CreateMany<Position, Velocity, Health, Transform>(2);
 
-            ChunkTuple<Position, Velocity, Health, Transform> chunk = scene.CreateMany<Position, Velocity, Health, Transform>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, chunk.Span4.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+            }
         }
 
         /// <summary>
@@ -105,17 +109,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_FiveComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform, TestComponent> chunk =
+                    scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
 
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent> chunk =
-                scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, chunk.Span4.Length);
-            Assert.Equal(2, chunk.Span5.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, chunk.Span5.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+            }
         }
 
         /// <summary>
@@ -123,18 +128,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_SixComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> chunk =
+                    scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
 
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> chunk =
-                scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, chunk.Span4.Length);
-            Assert.Equal(2, chunk.Span5.Length);
-            Assert.Equal(2, chunk.Span6.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, chunk.Span5.Length);
+                Assert.Equal(2, chunk.Span6.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+            }
         }
 
         /// <summary>
@@ -142,19 +148,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_SevenComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> chunk =
+                    scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
 
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> chunk =
-                scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, chunk.Span4.Length);
-            Assert.Equal(2, chunk.Span5.Length);
-            Assert.Equal(2, chunk.Span6.Length);
-            Assert.Equal(2, chunk.Span7.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, chunk.Span5.Length);
+                Assert.Equal(2, chunk.Span6.Length);
+                Assert.Equal(2, chunk.Span7.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+            }
         }
 
         /// <summary>
@@ -162,20 +169,21 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_EightComponents_ReturnsExpectedSpansAndEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> chunk =
+                    scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
 
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> chunk =
-                scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
-
-            Assert.Equal(2, chunk.Span1.Length);
-            Assert.Equal(2, chunk.Span2.Length);
-            Assert.Equal(2, chunk.Span3.Length);
-            Assert.Equal(2, chunk.Span4.Length);
-            Assert.Equal(2, chunk.Span5.Length);
-            Assert.Equal(2, chunk.Span6.Length);
-            Assert.Equal(2, chunk.Span7.Length);
-            Assert.Equal(2, chunk.Span8.Length);
-            Assert.Equal(2, CountEntities(chunk.Entities));
+                Assert.Equal(2, chunk.Span1.Length);
+                Assert.Equal(2, chunk.Span2.Length);
+                Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, chunk.Span5.Length);
+                Assert.Equal(2, chunk.Span6.Length);
+                Assert.Equal(2, chunk.Span7.Length);
+                Assert.Equal(2, chunk.Span8.Length);
+                Assert.Equal(2, CountEntities(chunk.Entities));
+            }
         }
 
         /// <summary>
@@ -183,15 +191,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_NewEntitiesContainRequestedComponents()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(3);
-
-            foreach (GameObject entity in chunk.Entities)
+            using (Scene scene = new Scene())
             {
-                Assert.True(entity.Has<Position>());
-                Assert.True(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
+                ChunkTuple<Position, Velocity, Health> chunk = scene.CreateMany<Position, Velocity, Health>(3);
+
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    Assert.True(entity.Has<Position>());
+                    Assert.True(entity.Has<Velocity>());
+                    Assert.True(entity.Has<Health>());
+                }
             }
         }
 
@@ -200,27 +209,28 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_CanWriteToReturnedSpans_AndReadBackFromEntities()
         {
-            using Scene scene = new Scene();
-
-            ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
-
-            for (int i = 0; i < chunk.Span1.Length; i++)
+            using (Scene scene = new Scene())
             {
-                chunk.Span1[i] = new Position {X = i + 10, Y = i + 20};
-                chunk.Span2[i] = new Velocity {X = i + 1, Y = i + 2};
-            }
+                ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(3);
 
-            int index = 0;
-            foreach (GameObject entity in chunk.Entities)
-            {
-                Position p = entity.Get<Position>();
-                Velocity v = entity.Get<Velocity>();
+                for (int i = 0; i < chunk.Span1.Length; i++)
+                {
+                    chunk.Span1[i] = new Position {X = i + 10, Y = i + 20};
+                    chunk.Span2[i] = new Velocity {X = i + 1, Y = i + 2};
+                }
 
-                Assert.Equal(index + 10, p.X);
-                Assert.Equal(index + 20, p.Y);
-                Assert.Equal(index + 1, v.X);
-                Assert.Equal(index + 2, v.Y);
-                index++;
+                int index = 0;
+                foreach (GameObject entity in chunk.Entities)
+                {
+                    Position p = entity.Get<Position>();
+                    Velocity v = entity.Get<Velocity>();
+
+                    Assert.Equal(index + 10, p.X);
+                    Assert.Equal(index + 20, p.Y);
+                    Assert.Equal(index + 1, v.X);
+                    Assert.Equal(index + 2, v.Y);
+                    index++;
+                }
             }
         }
 
@@ -229,12 +239,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void SceneCreateMany_ZeroOrNegativeCount_ThrowsArgumentOutOfRangeException()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position>(0));
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position>(-1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Velocity>(0));
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position>(0));
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position>(-1));
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Velocity>(0));
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(0));
+            }
         }
 
         /// <summary>

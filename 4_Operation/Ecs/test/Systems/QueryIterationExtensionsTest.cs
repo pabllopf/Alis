@@ -44,27 +44,29 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity1_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new AnotherComponent2 {Data = 5});
-            GameObject notMatch = scene.Create(new Health {Value = 99});
-
-            Query query = scene.Query<With<Position>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += 2;
-                p.Y += 3;
-            });
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new AnotherComponent2 {Data = 5});
+                GameObject notMatch = scene.Create(new Health {Value = 99});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(3, e1.Get<Position>().X);
-            Assert.Equal(4, e1.Get<Position>().Y);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(13, e2.Get<Position>().Y);
-            Assert.Equal(99, notMatch.Get<Health>().Value);
+                Query query = scene.Query<With<Position>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p) =>
+                {
+                    calls++;
+                    p.X += 2;
+                    p.Y += 3;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(3, e1.Get<Position>().X);
+                Assert.Equal(4, e1.Get<Position>().Y);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(13, e2.Get<Position>().Y);
+                Assert.Equal(99, notMatch.Get<Health>().Value);
+            }
         }
 
         /// <summary>
@@ -72,33 +74,35 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity2_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
-            GameObject notMatch = scene.Create(new Position {X = 100, Y = 100});
-
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += v.X;
-                p.Y += v.Y;
-                v.X += 1;
-                v.Y += 1;
-            });
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
+                GameObject notMatch = scene.Create(new Position {X = 100, Y = 100});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(3, e1.Get<Position>().Y);
-            Assert.Equal(2, e1.Get<Velocity>().X);
-            Assert.Equal(3, e1.Get<Velocity>().Y);
-            Assert.Equal(13, e2.Get<Position>().X);
-            Assert.Equal(14, e2.Get<Position>().Y);
-            Assert.Equal(4, e2.Get<Velocity>().X);
-            Assert.Equal(5, e2.Get<Velocity>().Y);
-            Assert.Equal(100, notMatch.Get<Position>().X);
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p, ref Velocity v) =>
+                {
+                    calls++;
+                    p.X += v.X;
+                    p.Y += v.Y;
+                    v.X += 1;
+                    v.Y += 1;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(3, e1.Get<Position>().Y);
+                Assert.Equal(2, e1.Get<Velocity>().X);
+                Assert.Equal(3, e1.Get<Velocity>().Y);
+                Assert.Equal(13, e2.Get<Position>().X);
+                Assert.Equal(14, e2.Get<Position>().Y);
+                Assert.Equal(4, e2.Get<Velocity>().X);
+                Assert.Equal(5, e2.Get<Velocity>().Y);
+                Assert.Equal(100, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -106,30 +110,32 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity3_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 20}, new AnotherComponent2 {Data = 5});
-            GameObject notMatch = scene.Create(new Position {X = 50, Y = 50}, new Velocity {X = 5, Y = 5});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += v.X;
-                p.Y += v.Y;
-                h.Value += 2;
-            });
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 20}, new AnotherComponent2 {Data = 5});
+                GameObject notMatch = scene.Create(new Position {X = 50, Y = 50}, new Velocity {X = 5, Y = 5});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(2, e1.Get<Position>().Y);
-            Assert.Equal(12, e1.Get<Health>().Value);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(13, e2.Get<Position>().Y);
-            Assert.Equal(22, e2.Get<Health>().Value);
-            Assert.Equal(50, notMatch.Get<Position>().X);
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p, ref Velocity v, ref Health h) =>
+                {
+                    calls++;
+                    p.X += v.X;
+                    p.Y += v.Y;
+                    h.Value += 2;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(2, e1.Get<Position>().Y);
+                Assert.Equal(12, e1.Get<Health>().Value);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(13, e2.Get<Position>().Y);
+                Assert.Equal(22, e2.Get<Health>().Value);
+                Assert.Equal(50, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -137,42 +143,44 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity4_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new AnotherComponent2 {Data = 5}
-            );
-            GameObject notMatch = scene.Create(new Position {X = 99, Y = 99}, new Velocity {X = 9, Y = 9}, new Health {Value = 9});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += 1;
-                p.Y += 1;
-                h.Value -= 1;
-                a.Value += 2;
-            });
+                GameObject e1 = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 10},
+                    new Armor {Value = 20}
+                );
+                GameObject e2 = scene.Create(
+                    new Position {X = 10, Y = 10},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 30},
+                    new Armor {Value = 40},
+                    new AnotherComponent2 {Data = 5}
+                );
+                GameObject notMatch = scene.Create(new Position {X = 99, Y = 99}, new Velocity {X = 9, Y = 9}, new Health {Value = 9});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(9, e1.Get<Health>().Value);
-            Assert.Equal(22, e1.Get<Armor>().Value);
-            Assert.Equal(11, e2.Get<Position>().X);
-            Assert.Equal(29, e2.Get<Health>().Value);
-            Assert.Equal(42, e2.Get<Armor>().Value);
-            Assert.Equal(99, notMatch.Get<Position>().X);
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p, ref Velocity _, ref Health h, ref Armor a) =>
+                {
+                    calls++;
+                    p.X += 1;
+                    p.Y += 1;
+                    h.Value -= 1;
+                    a.Value += 2;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(9, e1.Get<Health>().Value);
+                Assert.Equal(22, e1.Get<Armor>().Value);
+                Assert.Equal(11, e2.Get<Position>().X);
+                Assert.Equal(29, e2.Get<Health>().Value);
+                Assert.Equal(42, e2.Get<Armor>().Value);
+                Assert.Equal(99, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -180,46 +188,48 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity5_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 3}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 4},
-                new AnotherComponent2 {Data = 5}
-            );
-            GameObject notMatch = scene.Create(new Position {X = 9, Y = 9}, new Velocity {X = 9, Y = 9}, new Health {Value = 9}, new Armor {Value = 9});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += v.X;
-                h.Value += d.Value;
-                a.Value += 1;
-                d.Value += 2;
-            });
+                GameObject e1 = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 10},
+                    new Armor {Value = 20},
+                    new Damage {Value = 3}
+                );
+                GameObject e2 = scene.Create(
+                    new Position {X = 10, Y = 10},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 30},
+                    new Armor {Value = 40},
+                    new Damage {Value = 4},
+                    new AnotherComponent2 {Data = 5}
+                );
+                GameObject notMatch = scene.Create(new Position {X = 9, Y = 9}, new Velocity {X = 9, Y = 9}, new Health {Value = 9}, new Armor {Value = 9});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(13, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(5, e1.Get<Damage>().Value);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(34, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(6, e2.Get<Damage>().Value);
-            Assert.Equal(9, notMatch.Get<Position>().X);
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d) =>
+                {
+                    calls++;
+                    p.X += v.X;
+                    h.Value += d.Value;
+                    a.Value += 1;
+                    d.Value += 2;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(13, e1.Get<Health>().Value);
+                Assert.Equal(21, e1.Get<Armor>().Value);
+                Assert.Equal(5, e1.Get<Damage>().Value);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(34, e2.Get<Health>().Value);
+                Assert.Equal(41, e2.Get<Armor>().Value);
+                Assert.Equal(6, e2.Get<Damage>().Value);
+                Assert.Equal(9, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -227,51 +237,53 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity6_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 3},
-                new Transform {X = 4, Y = 5, Rotation = 6}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 4},
-                new Transform {X = 7, Y = 8, Rotation = 9},
-                new AnotherComponent2 {Data = 5}
-            );
-            GameObject notMatch = scene.Create(new Position {X = 8, Y = 8}, new Velocity {X = 8, Y = 8}, new Health {Value = 8}, new Armor {Value = 8}, new Damage {Value = 8});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += 1;
-                h.Value += 1;
-                a.Value += 1;
-                d.Value += 1;
-                t.Rotation += 10;
-            });
+                GameObject e1 = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 10},
+                    new Armor {Value = 20},
+                    new Damage {Value = 3},
+                    new Transform {X = 4, Y = 5, Rotation = 6}
+                );
+                GameObject e2 = scene.Create(
+                    new Position {X = 10, Y = 10},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 30},
+                    new Armor {Value = 40},
+                    new Damage {Value = 4},
+                    new Transform {X = 7, Y = 8, Rotation = 9},
+                    new AnotherComponent2 {Data = 5}
+                );
+                GameObject notMatch = scene.Create(new Position {X = 8, Y = 8}, new Velocity {X = 8, Y = 8}, new Health {Value = 8}, new Armor {Value = 8}, new Damage {Value = 8});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(11, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(4, e1.Get<Damage>().Value);
-            Assert.Equal(16, e1.Get<Transform>().Rotation);
-            Assert.Equal(11, e2.Get<Position>().X);
-            Assert.Equal(31, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(5, e2.Get<Damage>().Value);
-            Assert.Equal(19, e2.Get<Transform>().Rotation);
-            Assert.Equal(8, notMatch.Get<Position>().X);
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>();
+                int calls = 0;
+
+                query.Delegate((ref Position p, ref Velocity _, ref Health h, ref Armor a, ref Damage d, ref Transform t) =>
+                {
+                    calls++;
+                    p.X += 1;
+                    h.Value += 1;
+                    a.Value += 1;
+                    d.Value += 1;
+                    t.Rotation += 10;
+                });
+
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(11, e1.Get<Health>().Value);
+                Assert.Equal(21, e1.Get<Armor>().Value);
+                Assert.Equal(4, e1.Get<Damage>().Value);
+                Assert.Equal(16, e1.Get<Transform>().Rotation);
+                Assert.Equal(11, e2.Get<Position>().X);
+                Assert.Equal(31, e2.Get<Health>().Value);
+                Assert.Equal(41, e2.Get<Armor>().Value);
+                Assert.Equal(5, e2.Get<Damage>().Value);
+                Assert.Equal(19, e2.Get<Transform>().Rotation);
+                Assert.Equal(8, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -279,125 +291,52 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_Arity7_UpdatesAllMatchingAcrossArchetypes()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 3},
-                new Transform {X = 4, Y = 5, Rotation = 6},
-                new TestComponent {Value = 7}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 4},
-                new Transform {X = 7, Y = 8, Rotation = 9},
-                new TestComponent {Value = 11},
-                new AnotherComponent2 {Data = 5}
-            );
-            GameObject notMatch = scene.Create(new Position {X = 5, Y = 5}, new Velocity {X = 5, Y = 5}, new Health {Value = 5}, new Armor {Value = 5}, new Damage {Value = 5}, new Transform {X = 5, Y = 5, Rotation = 5});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc) =>
+            using (Scene scene = new Scene())
             {
-                calls++;
-                p.X += v.X;
-                tc.Value += 3;
-                h.Value -= 2;
-                t.X += 1;
-            });
+                GameObject e1 = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 10},
+                    new Armor {Value = 20},
+                    new Damage {Value = 3},
+                    new Transform {X = 4, Y = 5, Rotation = 6},
+                    new TestComponent {Value = 7}
+                );
+                GameObject e2 = scene.Create(
+                    new Position {X = 10, Y = 10},
+                    new Velocity {X = 2, Y = 3},
+                    new Health {Value = 30},
+                    new Armor {Value = 40},
+                    new Damage {Value = 4},
+                    new Transform {X = 7, Y = 8, Rotation = 9},
+                    new TestComponent {Value = 11},
+                    new AnotherComponent2 {Data = 5}
+                );
+                GameObject notMatch = scene.Create(new Position {X = 5, Y = 5}, new Velocity {X = 5, Y = 5}, new Health {Value = 5}, new Armor {Value = 5}, new Damage {Value = 5}, new Transform {X = 5, Y = 5, Rotation = 5});
 
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(10, e1.Get<TestComponent>().Value);
-            Assert.Equal(8, e1.Get<Health>().Value);
-            Assert.Equal(5, e1.Get<Transform>().X);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(14, e2.Get<TestComponent>().Value);
-            Assert.Equal(28, e2.Get<Health>().Value);
-            Assert.Equal(8, e2.Get<Transform>().X);
-            Assert.Equal(5, notMatch.Get<Position>().X);
-        }
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>();
+                int calls = 0;
 
-        /// <summary>
-        ///     Tests that delegate arity 8 updates all matching across archetypes
-        /// </summary>
-        [Fact] public void Delegate_Arity8_UpdatesAllMatchingAcrossArchetypes()
-        {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 3},
-                new Transform {X = 4, Y = 5, Rotation = 6},
-                new TestComponent {Value = 7},
-                new AnotherComponent {Data = 2, Y = 3}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 4},
-                new Transform {X = 7, Y = 8, Rotation = 9},
-                new TestComponent {Value = 11},
-                new AnotherComponent {Data = 5, Y = 6}
-            );
-            e2.Add(new AnotherComponent2 {Data = 9});
-            GameObject notMatch = scene.Create(
-                new Position {X = 5, Y = 5},
-                new Velocity {X = 5, Y = 5},
-                new Health {Value = 5},
-                new Armor {Value = 5},
-                new Damage {Value = 5},
-                new Transform {X = 5, Y = 5, Rotation = 5},
-                new TestComponent {Value = 5}
-            );
+                query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor _, ref Damage _, ref Transform t, ref TestComponent tc) =>
+                {
+                    calls++;
+                    p.X += v.X;
+                    tc.Value += 3;
+                    h.Value -= 2;
+                    t.X += 1;
+                });
 
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
-            int calls = 0;
-
-            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc, ref AnotherComponent ac) =>
-            {
-                calls++;
-                p.Y += v.Y;
-                h.Value += 1;
-                a.Value += 1;
-                d.Value += 1;
-                t.Rotation += 1;
-                tc.Value += 1;
-                ac.Data += 1;
-                ac.Y += 2;
-            });
-
-            Assert.Equal(2, calls);
-            Assert.Equal(2, e1.Get<Position>().Y);
-            Assert.Equal(11, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(4, e1.Get<Damage>().Value);
-            Assert.Equal(7, e1.Get<Transform>().Rotation);
-            Assert.Equal(8, e1.Get<TestComponent>().Value);
-            Assert.Equal(3, e1.Get<AnotherComponent>().Data);
-            Assert.Equal(5, e1.Get<AnotherComponent>().Y);
-
-            Assert.Equal(13, e2.Get<Position>().Y);
-            Assert.Equal(31, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(5, e2.Get<Damage>().Value);
-            Assert.Equal(10, e2.Get<Transform>().Rotation);
-            Assert.Equal(12, e2.Get<TestComponent>().Value);
-            Assert.Equal(6, e2.Get<AnotherComponent>().Data);
-            Assert.Equal(8, e2.Get<AnotherComponent>().Y);
-
-            Assert.Equal(5, notMatch.Get<Position>().Y);
+                Assert.Equal(2, calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(10, e1.Get<TestComponent>().Value);
+                Assert.Equal(8, e1.Get<Health>().Value);
+                Assert.Equal(5, e1.Get<Transform>().X);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(14, e2.Get<TestComponent>().Value);
+                Assert.Equal(28, e2.Get<Health>().Value);
+                Assert.Equal(8, e2.Get<Transform>().X);
+                Assert.Equal(5, notMatch.Get<Position>().X);
+            }
         }
 
         /// <summary>
@@ -405,34 +344,35 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Delegate_AllArities_DoNothingOnEmptyQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                int c1 = 0;
+                int c2 = 0;
+                int c3 = 0;
+                int c4 = 0;
+                int c5 = 0;
+                int c6 = 0;
+                int c7 = 0;
+                int c8 = 0;
 
-            int c1 = 0;
-            int c2 = 0;
-            int c3 = 0;
-            int c4 = 0;
-            int c5 = 0;
-            int c6 = 0;
-            int c7 = 0;
-            int c8 = 0;
+                scene.Query<With<Position>>().Delegate((ref Position _) => c1++);
+                scene.Query<With<Position>, With<Velocity>>().Delegate((ref Position _, ref Velocity _) => c2++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>>().Delegate((ref Position _, ref Velocity _, ref Health _) => c3++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _) => c4++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _) => c5++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _) => c6++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _) => c7++);
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _, ref AnotherComponent _) => c8++);
 
-            scene.Query<With<Position>>().Delegate((ref Position _) => c1++);
-            scene.Query<With<Position>, With<Velocity>>().Delegate((ref Position _, ref Velocity _) => c2++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Delegate((ref Position _, ref Velocity _, ref Health _) => c3++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _) => c4++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _) => c5++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _) => c6++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _) => c7++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _, ref AnotherComponent _) => c8++);
-
-            Assert.Equal(0, c1);
-            Assert.Equal(0, c2);
-            Assert.Equal(0, c3);
-            Assert.Equal(0, c4);
-            Assert.Equal(0, c5);
-            Assert.Equal(0, c6);
-            Assert.Equal(0, c7);
-            Assert.Equal(0, c8);
+                Assert.Equal(0, c1);
+                Assert.Equal(0, c2);
+                Assert.Equal(0, c3);
+                Assert.Equal(0, c4);
+                Assert.Equal(0, c5);
+                Assert.Equal(0, c6);
+                Assert.Equal(0, c7);
+                Assert.Equal(0, c8);
+            }
         }
 
         /// <summary>
@@ -442,17 +382,19 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction1.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
+                scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
 
-            Assert.Equal(2, InlineAction1.Calls);
-            Assert.Equal(3, e1.Get<Position>().X);
-            Assert.Equal(4, e1.Get<Position>().Y);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(13, e2.Get<Position>().Y);
+                Assert.Equal(2, InlineAction1.Calls);
+                Assert.Equal(3, e1.Get<Position>().X);
+                Assert.Equal(4, e1.Get<Position>().Y);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(13, e2.Get<Position>().Y);
+            }
         }
 
         /// <summary>
@@ -462,17 +404,19 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction2.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
+                scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
 
-            Assert.Equal(2, InlineAction2.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(3, e1.Get<Position>().Y);
-            Assert.Equal(13, e2.Get<Position>().X);
-            Assert.Equal(14, e2.Get<Position>().Y);
+                Assert.Equal(2, InlineAction2.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(3, e1.Get<Position>().Y);
+                Assert.Equal(13, e2.Get<Position>().X);
+                Assert.Equal(14, e2.Get<Position>().Y);
+            }
         }
 
         /// <summary>
@@ -482,17 +426,19 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction3.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 20}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 20}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
+                scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
 
-            Assert.Equal(2, InlineAction3.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(12, e1.Get<Health>().Value);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(22, e2.Get<Health>().Value);
+                Assert.Equal(2, InlineAction3.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(12, e1.Get<Health>().Value);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(22, e2.Get<Health>().Value);
+            }
         }
 
         /// <summary>
@@ -502,19 +448,21 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction4.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
 
-            Assert.Equal(2, InlineAction4.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(9, e1.Get<Health>().Value);
-            Assert.Equal(22, e1.Get<Armor>().Value);
-            Assert.Equal(11, e2.Get<Position>().X);
-            Assert.Equal(29, e2.Get<Health>().Value);
-            Assert.Equal(42, e2.Get<Armor>().Value);
+                Assert.Equal(2, InlineAction4.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(9, e1.Get<Health>().Value);
+                Assert.Equal(22, e1.Get<Armor>().Value);
+                Assert.Equal(11, e2.Get<Position>().X);
+                Assert.Equal(29, e2.Get<Health>().Value);
+                Assert.Equal(42, e2.Get<Armor>().Value);
+            }
         }
 
         /// <summary>
@@ -524,21 +472,23 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction5.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
 
-            Assert.Equal(2, InlineAction5.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(13, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(5, e1.Get<Damage>().Value);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(34, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(6, e2.Get<Damage>().Value);
+                Assert.Equal(2, InlineAction5.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(13, e1.Get<Health>().Value);
+                Assert.Equal(21, e1.Get<Armor>().Value);
+                Assert.Equal(5, e1.Get<Damage>().Value);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(34, e2.Get<Health>().Value);
+                Assert.Equal(41, e2.Get<Armor>().Value);
+                Assert.Equal(6, e2.Get<Damage>().Value);
+            }
         }
 
         /// <summary>
@@ -548,23 +498,25 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction6.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
 
-            Assert.Equal(2, InlineAction6.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(11, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(4, e1.Get<Damage>().Value);
-            Assert.Equal(16, e1.Get<Transform>().Rotation);
-            Assert.Equal(11, e2.Get<Position>().X);
-            Assert.Equal(31, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(5, e2.Get<Damage>().Value);
-            Assert.Equal(19, e2.Get<Transform>().Rotation);
+                Assert.Equal(2, InlineAction6.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(11, e1.Get<Health>().Value);
+                Assert.Equal(21, e1.Get<Armor>().Value);
+                Assert.Equal(4, e1.Get<Damage>().Value);
+                Assert.Equal(16, e1.Get<Transform>().Rotation);
+                Assert.Equal(11, e2.Get<Position>().X);
+                Assert.Equal(31, e2.Get<Health>().Value);
+                Assert.Equal(41, e2.Get<Armor>().Value);
+                Assert.Equal(5, e2.Get<Damage>().Value);
+                Assert.Equal(19, e2.Get<Transform>().Rotation);
+            }
         }
 
         /// <summary>
@@ -574,74 +526,26 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             InlineAction7.Reset();
 
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6}, new TestComponent {Value = 7});
-            GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new TestComponent {Value = 11}, new AnotherComponent2 {Data = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6}, new TestComponent {Value = 7});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new TestComponent {Value = 11}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
 
-            Assert.Equal(2, InlineAction7.Calls);
-            Assert.Equal(2, e1.Get<Position>().X);
-            Assert.Equal(10, e1.Get<TestComponent>().Value);
-            Assert.Equal(8, e1.Get<Health>().Value);
-            Assert.Equal(5, e1.Get<Transform>().X);
-            Assert.Equal(12, e2.Get<Position>().X);
-            Assert.Equal(14, e2.Get<TestComponent>().Value);
-            Assert.Equal(28, e2.Get<Health>().Value);
-            Assert.Equal(8, e2.Get<Transform>().X);
+                Assert.Equal(2, InlineAction7.Calls);
+                Assert.Equal(2, e1.Get<Position>().X);
+                Assert.Equal(10, e1.Get<TestComponent>().Value);
+                Assert.Equal(8, e1.Get<Health>().Value);
+                Assert.Equal(5, e1.Get<Transform>().X);
+                Assert.Equal(12, e2.Get<Position>().X);
+                Assert.Equal(14, e2.Get<TestComponent>().Value);
+                Assert.Equal(28, e2.Get<Health>().Value);
+                Assert.Equal(8, e2.Get<Transform>().X);
+            }
         }
 
-        /// <summary>
-        ///     Tests that inline arity 8 updates all matching across archetypes
-        /// </summary>
-        [Fact] public void Inline_Arity8_UpdatesAllMatchingAcrossArchetypes()
-        {
-            InlineAction8.Reset();
-
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10},
-                new Armor {Value = 20},
-                new Damage {Value = 3},
-                new Transform {X = 4, Y = 5, Rotation = 6},
-                new TestComponent {Value = 7},
-                new AnotherComponent {Data = 2, Y = 3}
-            );
-            GameObject e2 = scene.Create(
-                new Position {X = 10, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 30},
-                new Armor {Value = 40},
-                new Damage {Value = 4},
-                new Transform {X = 7, Y = 8, Rotation = 9},
-                new TestComponent {Value = 11},
-                new AnotherComponent {Data = 5, Y = 6}
-            );
-            e2.Add(new AnotherComponent2 {Data = 9});
-
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default(InlineAction8));
-
-            Assert.Equal(2, InlineAction8.Calls);
-            Assert.Equal(2, e1.Get<Position>().Y);
-            Assert.Equal(11, e1.Get<Health>().Value);
-            Assert.Equal(21, e1.Get<Armor>().Value);
-            Assert.Equal(4, e1.Get<Damage>().Value);
-            Assert.Equal(7, e1.Get<Transform>().Rotation);
-            Assert.Equal(8, e1.Get<TestComponent>().Value);
-            Assert.Equal(3, e1.Get<AnotherComponent>().Data);
-            Assert.Equal(5, e1.Get<AnotherComponent>().Y);
-
-            Assert.Equal(13, e2.Get<Position>().Y);
-            Assert.Equal(31, e2.Get<Health>().Value);
-            Assert.Equal(41, e2.Get<Armor>().Value);
-            Assert.Equal(5, e2.Get<Damage>().Value);
-            Assert.Equal(10, e2.Get<Transform>().Rotation);
-            Assert.Equal(12, e2.Get<TestComponent>().Value);
-            Assert.Equal(6, e2.Get<AnotherComponent>().Data);
-            Assert.Equal(8, e2.Get<AnotherComponent>().Y);
-        }
+       
 
         /// <summary>
         ///     Tests that inline all arities do nothing on empty query
@@ -657,25 +561,26 @@ namespace Alis.Core.Ecs.Test.Systems
             InlineAction7.Reset();
             InlineAction8.Reset();
 
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
+                scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
+                scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
+                scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default(InlineAction8));
 
-            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
-            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default(InlineAction8));
-
-            Assert.Equal(0, InlineAction1.Calls);
-            Assert.Equal(0, InlineAction2.Calls);
-            Assert.Equal(0, InlineAction3.Calls);
-            Assert.Equal(0, InlineAction4.Calls);
-            Assert.Equal(0, InlineAction5.Calls);
-            Assert.Equal(0, InlineAction6.Calls);
-            Assert.Equal(0, InlineAction7.Calls);
-            Assert.Equal(0, InlineAction8.Calls);
+                Assert.Equal(0, InlineAction1.Calls);
+                Assert.Equal(0, InlineAction2.Calls);
+                Assert.Equal(0, InlineAction3.Calls);
+                Assert.Equal(0, InlineAction4.Calls);
+                Assert.Equal(0, InlineAction5.Calls);
+                Assert.Equal(0, InlineAction6.Calls);
+                Assert.Equal(0, InlineAction7.Calls);
+                Assert.Equal(0, InlineAction8.Calls);
+            }
         }
 
         /// <summary>

@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Test
             Assert.True(e1.Equals(e2));
             Assert.Equal(e1, e2);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(e1.Equals(e2));
             Assert.NotEqual(e1, e2);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.False(entity.Equals(null));
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.Equal(hash1, hash2);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.NotEqual(hash1, hash2);
 
-            scene.Dispose();
+            
         }
     }
 }

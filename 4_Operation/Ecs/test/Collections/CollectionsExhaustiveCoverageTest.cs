@@ -69,13 +69,15 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal((ushort) 33, cache.Lookup(2));
             Assert.Equal((ushort) 44, cache.Lookup(3));
 
-            using Scene scene = new Scene();
-            Archetype arch = scene.DefaultArchetype;
-            cache.Set(9, arch);
-            Assert.Same(arch, cache.TraverseArchetype(9));
-            int slot = cache.Traverse(9);
-            Assert.True(slot is >= 0 and <= 3);
-            Assert.Equal(arch.Id.RawIndex, cache.Lookup(slot));
+            using (Scene scene = new Scene())
+            {
+                Archetype arch = scene.DefaultArchetype;
+                cache.Set(9, arch);
+                Assert.Same(arch, cache.TraverseArchetype(9));
+                int slot = cache.Traverse(9);
+                Assert.True(slot is >= 0 and <= 3);
+                Assert.Equal(arch.Id.RawIndex, cache.Lookup(slot));
+            }
         }
 
         /// <summary>
@@ -83,19 +85,21 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void ArchetypeNeighborCache_TraverseArchetype_AllFourSlots()
         {
-            using Scene scene = new Scene();
-            Archetype arch = scene.DefaultArchetype;
+            using (Scene scene = new Scene())
+            {
+                Archetype arch = scene.DefaultArchetype;
 
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-            cache.Set(10, arch);
-            cache.Set(20, arch);
-            cache.Set(30, arch);
-            cache.Set(40, arch);
+                ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+                cache.Set(10, arch);
+                cache.Set(20, arch);
+                cache.Set(30, arch);
+                cache.Set(40, arch);
 
-            Assert.Same(arch, cache.TraverseArchetype(10));
-            Assert.Same(arch, cache.TraverseArchetype(20));
-            Assert.Same(arch, cache.TraverseArchetype(30));
-            Assert.Same(arch, cache.TraverseArchetype(40));
+                Assert.Same(arch, cache.TraverseArchetype(10));
+                Assert.Same(arch, cache.TraverseArchetype(20));
+                Assert.Same(arch, cache.TraverseArchetype(30));
+                Assert.Same(arch, cache.TraverseArchetype(40));
+            }
         }
 
         /// <summary>
@@ -104,42 +108,44 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void FastLookup_SetLookupAndFindAdjacentArchetype_AllPaths_Work()
         {
             FastLookup lookup = new FastLookup();
-            using Scene scene = new Scene();
 
-            Archetype destination = scene.DefaultArchetype;
-            GameObjectType from = destination.Id;
-            ComponentId componentId = Component<Position>.Id;
-
-            lookup.SetArchetype(componentId.RawIndex, from, destination);
-            uint storedKey = FastLookup.GetKey(componentId.RawIndex, from);
-            int storedIndex = lookup.LookupIndex(storedKey);
-            Assert.True(storedIndex is >= 0 and < 8);
-            Assert.Same(destination, lookup.Archetypes[storedIndex]);
-
-            for (int i = 0; i < 8; i++)
+            using (Scene scene = new Scene())
             {
-                ushort id = (ushort) (100 + i);
-                lookup.SetArchetype(id, from, destination);
-                uint key = FastLookup.GetKey(id, from);
-                lookup.LookupIndex(key);
+                Archetype destination = scene.DefaultArchetype;
+                GameObjectType from = destination.Id;
+                ComponentId componentId = Component<Position>.Id;
+
+                lookup.SetArchetype(componentId.RawIndex, from, destination);
+                uint storedKey = FastLookup.GetKey(componentId.RawIndex, from);
+                int storedIndex = lookup.LookupIndex(storedKey);
+                Assert.True(storedIndex is >= 0 and < 8);
+                Assert.Same(destination, lookup.Archetypes[storedIndex]);
+
+                for (int i = 0; i < 8; i++)
+                {
+                    ushort id = (ushort) (100 + i);
+                    lookup.SetArchetype(id, from, destination);
+                    uint key = FastLookup.GetKey(id, from);
+                    lookup.LookupIndex(key);
+                }
+
+                lookup.SetArchetype(200, from, destination);
+                Assert.Equal(1, lookup.LookupIndex(FastLookup.GetKey(200, from)));
+                Assert.Equal(32, lookup.LookupIndex(123456789u));
+
+                ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
+                ArchetypeEdgeKey keyForDict = ArchetypeEdgeKey.Component(componentId, from, edgeType);
+                scene.ArchetypeGraphEdges[keyForDict] = destination;
+
+                GameObjectType idFromDictionary = lookup.FindAdjacentArchetypeId(componentId, from, scene, edgeType);
+                Assert.Equal(destination.Id, idFromDictionary);
+
+                scene.ArchetypeGraphEdges.Clear();
+                FastLookup coldLookup = new FastLookup();
+                GameObjectType coldId = coldLookup.FindAdjacentArchetypeId(componentId, from, scene, edgeType);
+                Assert.True(scene.ArchetypeGraphEdges.Count >= 1);
+                Assert.NotEqual(default(GameObjectType), coldId);
             }
-
-            lookup.SetArchetype(200, from, destination);
-            Assert.Equal(1, lookup.LookupIndex(FastLookup.GetKey(200, from)));
-            Assert.Equal(32, lookup.LookupIndex(123456789u));
-
-            ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
-            ArchetypeEdgeKey keyForDict = ArchetypeEdgeKey.Component(componentId, from, edgeType);
-            scene.ArchetypeGraphEdges[keyForDict] = destination;
-
-            GameObjectType idFromDictionary = lookup.FindAdjacentArchetypeId(componentId, from, scene, edgeType);
-            Assert.Equal(destination.Id, idFromDictionary);
-
-            scene.ArchetypeGraphEdges.Clear();
-            FastLookup coldLookup = new FastLookup();
-            GameObjectType coldId = coldLookup.FindAdjacentArchetypeId(componentId, from, scene, edgeType);
-            Assert.True(scene.ArchetypeGraphEdges.Count >= 1);
-            Assert.NotEqual(default(GameObjectType), coldId);
         }
 
         /// <summary>
@@ -277,21 +283,23 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(boxedIndex, recycledIndex);
             Assert.Null(recycled);
 
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create();
-            TrackingAction tracker = new TrackingAction();
-            GenericEvent genericEvent = new GenericEvent();
-            genericEvent += tracker;
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create();
+                TrackingAction tracker = new TrackingAction();
+                GenericEvent genericEvent = new GenericEvent();
+                genericEvent += tracker;
 
-            ref string atIndex0 = ref table.Take(index0);
-            atIndex0 = "gamma";
-            table.InvokeEventWithAndConsume(genericEvent, gameObject, index0);
-            Assert.Equal(1, tracker.CallCount);
+                ref string atIndex0 = ref table.Take(index0);
+                atIndex0 = "gamma";
+                table.InvokeEventWithAndConsume(genericEvent, gameObject, index0);
+                Assert.Equal(1, tracker.CallCount);
 
-            table.Create(out int reusedIndex0);
-            Assert.Equal(index0, reusedIndex0);
+                table.Create(out int reusedIndex0);
+                Assert.Equal(index0, reusedIndex0);
 
-            table.Dispose();
+                table.Dispose();
+            }
         }
 
         /// <summary>

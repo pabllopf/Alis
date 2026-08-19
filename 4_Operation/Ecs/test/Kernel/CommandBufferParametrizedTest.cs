@@ -45,18 +45,20 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void CommandBuffer_CreateCommandWithComponent_Correct()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new(scene);
-
-            buffer.Playback();
-
-            int count = 0;
-            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                CommandBuffer buffer = new(scene);
 
-            Assert.True(count >= 0);
+                buffer.Playback();
+
+                int count = 0;
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.True(count >= 0);
+            }
         }
 
        
@@ -66,9 +68,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void CommandBuffer_Dispose_Works()
         {
-            using Scene scene = new Scene();
-
-            Assert.True(true);
+            using (new Scene())
+            {
+                Assert.True(true);
+            }
         }
 
        

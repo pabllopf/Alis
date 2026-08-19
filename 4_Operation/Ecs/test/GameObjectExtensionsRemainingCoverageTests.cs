@@ -44,13 +44,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Deconstruct_SingleComponent_ReturnsRef()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 2 });
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-            gameObject.Deconstruct(out Ref<Position> comp);
+                gameObject.Deconstruct(out Ref<Position> comp);
 
-            Assert.Equal(1, comp.Value.X);
-            Assert.Equal(2, comp.Value.Y);
+                Assert.Equal(1, comp.Value.X);
+                Assert.Equal(2, comp.Value.Y);
+            }
         }
     }
 }

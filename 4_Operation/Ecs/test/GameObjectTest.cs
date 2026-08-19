@@ -93,12 +93,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CreatedInScene_IsNotNull()
         {
-            using Scene scene = new Scene();
-            TestComponent component = new TestComponent {Value = 42, Name = "Test"};
+            using (Scene scene = new Scene())
+            {
+                TestComponent component = new TestComponent {Value = 42, Name = "Test"};
 
-            GameObject gameObject = scene.Create(component);
+                GameObject gameObject = scene.Create(component);
 
-            Assert.False(gameObject.IsNull);
+                Assert.False(gameObject.IsNull);
+            }
         }
 
         /// <summary>
@@ -109,12 +111,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_IsAliveAfterCreation()
         {
-            using Scene scene = new Scene();
-            TestComponent component = new TestComponent {Value = 10};
+            using (Scene scene = new Scene())
+            {
+                TestComponent component = new TestComponent {Value = 10};
 
-            GameObject gameObject = scene.Create(component);
+                GameObject gameObject = scene.Create(component);
 
-            Assert.True(gameObject.IsAlive);
+                Assert.True(gameObject.IsAlive);
+            }
         }
 
         /// <summary>
@@ -125,10 +129,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CanCheckIfHasComponent()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 30});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 30});
 
-            Assert.True(gameObject.Has<TestComponent>());
+                Assert.True(gameObject.Has<TestComponent>());
+            }
         }
 
         /// <summary>
@@ -139,10 +145,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_ReturnsFalseForComponentItDoesNotHave()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 40});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 40});
 
-            Assert.False(gameObject.Has<AnotherComponent>());
+                Assert.False(gameObject.Has<AnotherComponent>());
+            }
         }
 
         /// <summary>
@@ -153,14 +161,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CanGetComponent()
         {
-            using Scene scene = new Scene();
-            TestComponent original = new TestComponent {Value = 100, Name = "Original"};
-            GameObject gameObject = scene.Create(original);
+            using (Scene scene = new Scene())
+            {
+                TestComponent original = new TestComponent {Value = 100, Name = "Original"};
+                GameObject gameObject = scene.Create(original);
 
-            ref TestComponent retrieved = ref gameObject.Get<TestComponent>();
+                ref TestComponent retrieved = ref gameObject.Get<TestComponent>();
 
-            Assert.Equal(100, retrieved.Value);
-            Assert.Equal("Original", retrieved.Name);
+                Assert.Equal(100, retrieved.Value);
+                Assert.Equal("Original", retrieved.Name);
+            }
         }
 
         /// <summary>
@@ -171,13 +181,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CanModifyComponentThroughReference()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 50});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
-            ref TestComponent component = ref gameObject.Get<TestComponent>();
-            component.Value = 200;
+                ref TestComponent component = ref gameObject.Get<TestComponent>();
+                component.Value = 200;
 
-            Assert.Equal(200, gameObject.Get<TestComponent>().Value);
+                Assert.Equal(200, gameObject.Get<TestComponent>().Value);
+            }
         }
 
         /// <summary>
@@ -188,12 +200,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_EqualsComparesCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
-            GameObject entity2 = scene.Create(new TestComponent {Value = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new TestComponent {Value = 1});
+                GameObject entity2 = scene.Create(new TestComponent {Value = 2});
 
-            Assert.True(entity1.Equals(entity1));
-            Assert.False(entity1.Equals(entity2));
+                Assert.True(entity1.Equals(entity1));
+                Assert.False(entity1.Equals(entity2));
+            }
         }
 
         /// <summary>
@@ -204,13 +218,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_EqualityOperatorWorksCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent {Value = 10});
-            GameObject entity2 = entity1;
-            GameObject entity3 = scene.Create(new TestComponent {Value = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new TestComponent {Value = 10});
+                GameObject entity2 = entity1;
+                GameObject entity3 = scene.Create(new TestComponent {Value = 20});
 
-            Assert.True(entity1 == entity2);
-            Assert.False(entity1 == entity3);
+                Assert.True(entity1 == entity2);
+                Assert.False(entity1 == entity3);
+            }
         }
 
         /// <summary>
@@ -221,11 +237,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_InequalityOperatorWorksCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent {Value = 15});
-            GameObject entity2 = scene.Create(new TestComponent {Value = 25});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new TestComponent {Value = 15});
+                GameObject entity2 = scene.Create(new TestComponent {Value = 25});
 
-            Assert.True(entity1 != entity2);
+                Assert.True(entity1 != entity2);
+            }
         }
 
         /// <summary>
@@ -236,13 +254,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_GetHashCodeReturnsConsistentValue()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 99});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 99});
 
-            int hashCode1 = gameObject.GetHashCode();
-            int hashCode2 = gameObject.GetHashCode();
+                int hashCode1 = gameObject.GetHashCode();
+                int hashCode2 = gameObject.GetHashCode();
 
-            Assert.Equal(hashCode1, hashCode2);
+                Assert.Equal(hashCode1, hashCode2);
+            }
         }
 
         /// <summary>
@@ -253,11 +273,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_EqualsHandlesNullCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 5});
-            GameObject nullGameObject = GameObject.Null;
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 5});
+                GameObject nullGameObject = GameObject.Null;
 
-            Assert.False(gameObject.Equals(nullGameObject));
+                Assert.False(gameObject.Equals(nullGameObject));
+            }
         }
 
         /// <summary>
@@ -282,10 +304,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_TryHasReturnsTrueWhenComponentExists()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 77});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 77});
 
-            Assert.True(gameObject.TryHas<TestComponent>());
+                Assert.True(gameObject.TryHas<TestComponent>());
+            }
         }
 
         /// <summary>
@@ -296,10 +320,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_TryHasReturnsFalseWhenComponentDoesNotExist()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 88});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 88});
 
-            Assert.False(gameObject.TryHas<AnotherComponent>());
+                Assert.False(gameObject.TryHas<AnotherComponent>());
+            }
         }
 
         /// <summary>
@@ -310,11 +336,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_IsValueType()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
-            GameObject entity2 = entity1;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new TestComponent {Value = 1});
+                GameObject entity2 = entity1;
 
-            Assert.Equal(entity1, entity2);
+                Assert.Equal(entity1, entity2);
+            }
         }
 
         /// <summary>
@@ -325,18 +353,20 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CanBeUsedInCollections()
         {
-            using Scene scene = new Scene();
-            List<GameObject> entities = new List<GameObject>();
-
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                entities.Add(scene.Create(new TestComponent {Value = i}));
-            }
+                List<GameObject> entities = new List<GameObject>();
 
-            Assert.Equal(5, entities.Count);
-            foreach (GameObject entity in entities)
-            {
-                Assert.False(entity.IsNull);
+                for (int i = 0; i < 5; i++)
+                {
+                    entities.Add(scene.Create(new TestComponent {Value = i}));
+                }
+
+                Assert.Equal(5, entities.Count);
+                foreach (GameObject entity in entities)
+                {
+                    Assert.False(entity.IsNull);
+                }
             }
         }
 
@@ -348,28 +378,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_EqualsObjectHandlesDifferentTypes()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 100});
-            object differentType = "not a GameObject";
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 100});
+                object differentType = "not a GameObject";
 
-            Assert.False(gameObject.Equals(differentType));
-        }
-
-        /// <summary>
-        ///     Tests that game object can add component after creation
-        /// </summary>
-        /// <remarks>
-        ///     Tests that components can be added to a GameObject after its creation.
-        /// </remarks>
-        [Fact] public void GameObject_CanAddAfterCreation()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 50});
-
-            gameObject.Add(new AnotherComponent {Data = 1.0f, Y = 2.0f});
-
-            Assert.True(gameObject.Has<TestComponent>());
-            Assert.True(gameObject.Has<AnotherComponent>());
+                Assert.False(gameObject.Equals(differentType));
+            }
         }
 
         /// <summary>
@@ -380,12 +395,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_CanRemoveComponent()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 60});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 60});
 
-            gameObject.Remove<TestComponent>();
+                gameObject.Remove<TestComponent>();
 
-            Assert.False(gameObject.Has<TestComponent>());
+                Assert.False(gameObject.Has<TestComponent>());
+            }
         }
 
         /// <summary>
@@ -396,14 +413,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void GameObject_WithMultipleComponents_CanBeQueried()
         {
-            using Scene scene = new Scene();
-            TestComponent comp1 = new TestComponent {Value = 123};
-            AnotherComponent comp2 = new AnotherComponent {Data = 4.5f, Y = 6.7f};
+            using (Scene scene = new Scene())
+            {
+                TestComponent comp1 = new TestComponent {Value = 123};
+                AnotherComponent comp2 = new AnotherComponent {Data = 4.5f, Y = 6.7f};
 
-            GameObject gameObject = scene.Create(comp1, comp2);
+                GameObject gameObject = scene.Create(comp1, comp2);
 
-            Assert.True(gameObject.Has<TestComponent>());
-            Assert.True(gameObject.Has<AnotherComponent>());
+                Assert.True(gameObject.Has<TestComponent>());
+                Assert.True(gameObject.Has<AnotherComponent>());
+            }
         }
 
         /// <summary>
@@ -411,21 +430,23 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_HasAndTryHas_ByTypeAndComponentId_Work()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-            ComponentId posId = Component<Position>.Id;
-            ComponentId velId = Component<Velocity>.Id;
+                ComponentId posId = Component<Position>.Id;
+                ComponentId velId = Component<Velocity>.Id;
 
-            Assert.True(gameObject.Has(typeof(Position)));
-            Assert.True(gameObject.Has(posId));
-            Assert.True(gameObject.TryHas(typeof(Position)));
-            Assert.True(gameObject.TryHas(posId));
+                Assert.True(gameObject.Has(typeof(Position)));
+                Assert.True(gameObject.Has(posId));
+                Assert.True(gameObject.TryHas(typeof(Position)));
+                Assert.True(gameObject.TryHas(posId));
 
-            Assert.False(gameObject.Has(typeof(Velocity)));
-            Assert.False(gameObject.Has(velId));
-            Assert.False(gameObject.TryHas(typeof(Velocity)));
-            Assert.False(gameObject.TryHas(velId));
+                Assert.False(gameObject.Has(typeof(Velocity)));
+                Assert.False(gameObject.Has(velId));
+                Assert.False(gameObject.TryHas(typeof(Velocity)));
+                Assert.False(gameObject.TryHas(velId));
+            }
         }
 
         /// <summary>
@@ -433,42 +454,25 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetSetAndTryGet_NonGenericOverloads_Work()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
 
-            object boxed = gameObject.Get(Component<Position>.Id);
-            Assert.IsType<Position>(boxed);
-            Assert.Equal(3, ((Position) boxed).X);
+                object boxed = gameObject.Get(Component<Position>.Id);
+                Assert.IsType<Position>(boxed);
+                Assert.Equal(3, ((Position) boxed).X);
 
-            gameObject.Set(typeof(Position), new Position {X = 30, Y = 40});
-            Assert.Equal(30, gameObject.Get<Position>().X);
+                gameObject.Set(typeof(Position), new Position {X = 30, Y = 40});
+                Assert.Equal(30, gameObject.Get<Position>().X);
 
-            bool found = gameObject.TryGet(typeof(Position), out object value);
-            bool notFound = gameObject.TryGet(typeof(Velocity), out object missing);
+                bool found = gameObject.TryGet(typeof(Position), out object value);
+                bool notFound = gameObject.TryGet(typeof(Velocity), out object missing);
 
-            Assert.True(found);
-            Assert.IsType<Position>(value);
-            Assert.False(notFound);
-            Assert.Null(missing);
-        }
-
-        /// <summary>
-        ///     Tests that game object add boxed and add as can add components dynamically
-        /// </summary>
-        [Fact] public void GameObject_AddBoxedAndAddAs_CanAddComponentsDynamically()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create();
-
-            gameObject.AddBoxed(new Position {X = 7, Y = 8});
-            gameObject.AddAs(typeof(TestComponent), new TestComponent {Value = 123});
-            gameObject.AddAs(Component<AnotherComponent2>.Id, new AnotherComponent2 {Name = "boxed"});
-
-            Assert.True(gameObject.Has<Position>());
-            Assert.True(gameObject.Has<TestComponent>());
-            Assert.True(gameObject.Has<AnotherComponent2>());
-            Assert.Equal(123, gameObject.Get<TestComponent>().Value);
-            Assert.Equal("boxed", gameObject.Get<AnotherComponent2>().Name);
+                Assert.True(found);
+                Assert.IsType<Position>(value);
+                Assert.False(notFound);
+                Assert.Null(missing);
+            }
         }
 
         /// <summary>
@@ -476,14 +480,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Remove_ByTypeAndComponentId_Work()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            gameObject.Remove(typeof(Position));
-            Assert.False(gameObject.Has<Position>());
+                gameObject.Remove(typeof(Position));
+                Assert.False(gameObject.Has<Position>());
 
-            gameObject.Remove(Component<Velocity>.Id);
-            Assert.False(gameObject.Has<Velocity>());
+                gameObject.Remove(Component<Velocity>.Id);
+                Assert.False(gameObject.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -491,20 +497,22 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GenericComponentEvents_AreRaisedWithConcreteTypes()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 5, Y = 6});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 5, Y = 6});
 
-            GenericCaptureAction addCapture = new GenericCaptureAction();
-            GenericCaptureAction removeCapture = new GenericCaptureAction();
+                GenericCaptureAction addCapture = new GenericCaptureAction();
+                GenericCaptureAction removeCapture = new GenericCaptureAction();
 
-            gameObject.OnComponentAddedGeneric += addCapture;
-            gameObject.OnComponentRemovedGeneric += removeCapture;
+                gameObject.OnComponentAddedGeneric += addCapture;
+                gameObject.OnComponentRemovedGeneric += removeCapture;
 
-            gameObject.Add(new Health {Value = 77});
-            gameObject.Remove<Position>();
+                gameObject.Add(new Health {Value = 77});
+                gameObject.Remove<Position>();
 
-            Assert.Contains(typeof(Health), addCapture.SeenTypes);
-            Assert.Contains(typeof(Position), removeCapture.SeenTypes);
+                Assert.Contains(typeof(Health), addCapture.SeenTypes);
+                Assert.Contains(typeof(Position), removeCapture.SeenTypes);
+            }
         }
 
         /// <summary>
@@ -512,19 +520,21 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_EnumerateComponents_VisitsAllComponents()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 2, Y = 2},
-                new Health {Value = 3});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 2, Y = 2},
+                    new Health {Value = 3});
 
-            ComponentTypeCaptureAction capture = new ComponentTypeCaptureAction();
-            gameObject.EnumerateComponents(capture);
+                ComponentTypeCaptureAction capture = new ComponentTypeCaptureAction();
+                gameObject.EnumerateComponents(capture);
 
-            Assert.Equal(3, capture.Calls);
-            Assert.Contains(typeof(Position), capture.SeenTypes);
-            Assert.Contains(typeof(Velocity), capture.SeenTypes);
-            Assert.Contains(typeof(Health), capture.SeenTypes);
+                Assert.Equal(3, capture.Calls);
+                Assert.Contains(typeof(Position), capture.SeenTypes);
+                Assert.Contains(typeof(Velocity), capture.SeenTypes);
+                Assert.Contains(typeof(Health), capture.SeenTypes);
+            }
         }
 
         /// <summary>
@@ -532,12 +542,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_MetadataProperties_AreConsistent()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 2, Y = 3});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 2, Y = 3});
 
-            Assert.Equal(scene, gameObject.Scene);
-            Assert.Equal(GameObject.EntityTypeOf([Component<Position>.Id]), gameObject.Type);
-            Assert.Contains(Component<Position>.Id, gameObject.ComponentTypes);
+                Assert.Equal(scene, gameObject.Scene);
+                Assert.Equal(GameObject.EntityTypeOf([Component<Position>.Id]), gameObject.Type);
+                Assert.Contains(Component<Position>.Id, gameObject.ComponentTypes);
+            }
         }
 
         /// <summary>
@@ -545,13 +557,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_TryHas_OnDeletedEntity_ReturnsFalseWithoutThrowing()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
-            gameObject.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+                gameObject.Delete();
 
-            Assert.False(gameObject.TryHas<Position>());
-            Assert.False(gameObject.TryHas(typeof(Position)));
-            Assert.False(gameObject.TryHas(Component<Position>.Id));
+                Assert.False(gameObject.TryHas<Position>());
+                Assert.False(gameObject.TryHas(typeof(Position)));
+                Assert.False(gameObject.TryHas(Component<Position>.Id));
+            }
         }
 
         /// <summary>

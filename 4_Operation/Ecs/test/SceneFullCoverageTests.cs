@@ -47,15 +47,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_TwoComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health> chunk = scene.CreateMany<Position, Health>(3);
+                ChunkTuple<Position, Health> chunk = scene.CreateMany<Position, Health>(3);
 
-            Assert.Equal(3, callCount);
-            Assert.Equal(3, chunk.Span1.Length);
-            Assert.Equal(3, chunk.Span2.Length);
+                Assert.Equal(3, callCount);
+                Assert.Equal(3, chunk.Span1.Length);
+                Assert.Equal(3, chunk.Span2.Length);
+            }
         }
 
         /// <summary>
@@ -64,14 +66,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_ThreeComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity> chunk = scene.CreateMany<Position, Health, Velocity>(2);
+                ChunkTuple<Position, Health, Velocity> chunk = scene.CreateMany<Position, Health, Velocity>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span3.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span3.Length);
+            }
         }
 
         /// <summary>
@@ -80,9 +84,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_ThreeComponents_WithZeroCount_Throws()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity>(0));
+            }
         }
 
         /// <summary>
@@ -91,9 +96,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_FourComponents_WithZeroCount_Throws()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage>(0));
+            }
         }
 
         /// <summary>
@@ -102,14 +108,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_FourComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity, Damage> chunk = scene.CreateMany<Position, Health, Velocity, Damage>(2);
+                ChunkTuple<Position, Health, Velocity, Damage> chunk = scene.CreateMany<Position, Health, Velocity, Damage>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span4.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span4.Length);
+            }
         }
 
         /// <summary>
@@ -118,9 +126,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_FiveComponents_WithZeroCount_Throws()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor>(0));
+            }
         }
 
         /// <summary>
@@ -129,14 +138,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_FiveComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity, Damage, Armor> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor>(2);
+                ChunkTuple<Position, Health, Velocity, Damage, Armor> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span5.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span5.Length);
+            }
         }
 
         /// <summary>
@@ -145,9 +156,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_SixComponents_WithZeroCount_Throws()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(0));
+            }
         }
 
         /// <summary>
@@ -156,14 +168,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_SixComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(2);
+                ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span6.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span6.Length);
+            }
         }
 
         /// <summary>
@@ -172,9 +186,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_SevenComponents_WithZeroCount_Throws()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct>(0));
+            }
         }
 
         /// <summary>
@@ -183,14 +198,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_SevenComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestStruct> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct>(2);
+                ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestStruct> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span7.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span7.Length);
+            }
         }
 
         /// <summary>
@@ -199,14 +216,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_EightComponents_WithListeners_InvokesEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestStruct, TagComponent> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct, TagComponent>(2);
+                ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestStruct, TagComponent> chunk = scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestStruct, TagComponent>(2);
 
-            Assert.Equal(2, callCount);
-            Assert.Equal(2, chunk.Span8.Length);
+                Assert.Equal(2, callCount);
+                Assert.Equal(2, chunk.Span8.Length);
+            }
         }
 
         /// <summary>
@@ -215,11 +234,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void UpdateFilter_ArchetypeAdded_InvokedForAttributeUpdates()
         {
-            using Scene scene = new Scene();
-            scene.Update<FullCoverageUpdateAttribute>();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
-            scene.Create(new Health { Value = 10 });
+            using (Scene scene = new Scene())
+            {
+                scene.Update<FullCoverageUpdateAttribute>();
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Position {X = 3, Y = 4});
+                scene.Create(new Health {Value = 10});
+            }
         }
 
         /// <summary>
@@ -228,10 +249,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void SingleComponentUpdateFilter_ArchetypeAdded_Invoked()
         {
-            using Scene scene = new Scene();
-            scene.UpdateComponent(Component<Position>.Id);
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Health { Value = 10 });
+            using (Scene scene = new Scene())
+            {
+                scene.UpdateComponent(Component<Position>.Id);
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Health {Value = 10});
+            }
         }
 
         /// <summary>
@@ -240,10 +263,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EnsureCapacity_WithValidCount_AllocatesCapacity()
         {
-            using Scene scene = new Scene();
-            GameObjectType entityType = scene.Create(new Position { X = 1, Y = 2 }).Type;
+            using (Scene scene = new Scene())
+            {
+                GameObjectType entityType = scene.Create(new Position {X = 1, Y = 2}).Type;
 
-            scene.EnsureCapacity(entityType, 5);
+                scene.EnsureCapacity(entityType, 5);
+            }
         }
 
         /// <summary>
@@ -252,11 +277,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void DeadGameObject_AccessLocation_Throws()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 2 });
-            gameObject.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+                gameObject.Delete();
 
-            Assert.ThrowsAny<Exception>(() => gameObject.Get<Position>());
+                Assert.ThrowsAny<Exception>(() => gameObject.Get<Position>());
+            }
         }
     }
 

@@ -49,23 +49,25 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void RunRange_ThroughUpdateSubset_UpdatesOnlyNewEntities()
         {
-            using Scene scene = new Scene();
-            GameObject existing = scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 1, Y = 2 }
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject existing = scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 1, Y = 2}
+                );
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject deferred = scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 3, Y = 4 }
-            );
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred = scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 3, Y = 4}
+                );
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(0, existing.Get<RangeUpdateComponent>().CallCount);
-            Assert.Equal(1, deferred.Get<RangeUpdateComponent>().CallCount);
+                Assert.Equal(0, existing.Get<RangeUpdateComponent>().CallCount);
+                Assert.Equal(1, deferred.Get<RangeUpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -74,23 +76,25 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void RunRange_ThroughUpdateSubset_UpdatesComponentData()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 10, Y = 20 }
-            );
+            using (Scene scene = new Scene())
+            {
+                scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 10, Y = 20}
+                );
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject deferred = scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 1, Y = 2 }
-            );
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred = scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 1, Y = 2}
+                );
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(2, deferred.Get<Position>().X);
-            Assert.Equal(3, deferred.Get<Position>().Y);
+                Assert.Equal(2, deferred.Get<Position>().X);
+                Assert.Equal(3, deferred.Get<Position>().Y);
+            }
         }
 
         /// <summary>
@@ -99,32 +103,34 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void RunRange_ThroughUpdateSubset_MultipleDeferredEntities()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 0, Y = 0 }
-            );
+            using (Scene scene = new Scene())
+            {
+                scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 0, Y = 0}
+                );
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<RangeUpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject deferred1 = scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 5, Y = 10 }
-            );
-            GameObject deferred2 = scene.Create(
-                new RangeUpdateComponent { CallCount = 0 },
-                new Position { X = 15, Y = 20 }
-            );
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred1 = scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 5, Y = 10}
+                );
+                GameObject deferred2 = scene.Create(
+                    new RangeUpdateComponent {CallCount = 0},
+                    new Position {X = 15, Y = 20}
+                );
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(1, deferred1.Get<RangeUpdateComponent>().CallCount);
-            Assert.Equal(6, deferred1.Get<Position>().X);
-            Assert.Equal(11, deferred1.Get<Position>().Y);
+                Assert.Equal(1, deferred1.Get<RangeUpdateComponent>().CallCount);
+                Assert.Equal(6, deferred1.Get<Position>().X);
+                Assert.Equal(11, deferred1.Get<Position>().Y);
 
-            Assert.Equal(1, deferred2.Get<RangeUpdateComponent>().CallCount);
-            Assert.Equal(16, deferred2.Get<Position>().X);
-            Assert.Equal(21, deferred2.Get<Position>().Y);
+                Assert.Equal(1, deferred2.Get<RangeUpdateComponent>().CallCount);
+                Assert.Equal(16, deferred2.Get<Position>().X);
+                Assert.Equal(21, deferred2.Get<Position>().Y);
+            }
         }
     }
 

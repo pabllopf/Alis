@@ -48,19 +48,21 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnDelete_UnsubscribedHandler_IsNotInvoked()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            EnsureEventRecordInitialized(entity);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                EnsureEventRecordInitialized(entity);
 
-            int calls = 0;
-            void Handler(GameObject _) => calls++;
+                int calls = 0;
+                void Handler(GameObject _) => calls++;
 
-            entity.OnDelete += Handler;
-            entity.OnDelete -= Handler;
+                entity.OnDelete += Handler;
+                entity.OnDelete -= Handler;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>
@@ -68,17 +70,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentAdded_DoesNotFire_ForOtherEntityChanges()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
-            EnsureEventRecordInitialized(entity1);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
+                EnsureEventRecordInitialized(entity1);
 
-            int calls = 0;
-            entity1.OnComponentAdded += (_, _) => calls++;
+                int calls = 0;
+                entity1.OnComponentAdded += (_, _) => calls++;
 
-            entity2.Add(new Position {X = 1, Y = 2});
+                entity2.Add(new Position {X = 1, Y = 2});
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>
@@ -86,17 +90,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void OnComponentRemoved_DoesNotFire_ForOtherEntityChanges()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
-            EnsureEventRecordInitialized(entity1);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+                EnsureEventRecordInitialized(entity1);
 
-            int calls = 0;
-            entity1.OnComponentRemoved += (_, _) => calls++;
+                int calls = 0;
+                entity1.OnComponentRemoved += (_, _) => calls++;
 
-            entity2.Remove<Position>();
+                entity2.Remove<Position>();
 
-            Assert.Equal(0, calls);
+                Assert.Equal(0, calls);
+            }
         }
 
         /// <summary>

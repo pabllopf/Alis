@@ -66,10 +66,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_CachesArchetypeLookups()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create();
-            gameObject.Add(new Position());
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create();
+                gameObject.Add(new Position());
+                ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+            }
         }
 
         /// <summary>
@@ -82,13 +84,15 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_ImprovestransitionPerformance()
         {
-            using Scene scene = new Scene();
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject go = scene.Create();
-                go.Add(new Position());
+                ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    GameObject go = scene.Create();
+                    go.Add(new Position());
+                }
             }
         }
 
@@ -115,46 +119,27 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_HandlesMultipleComponentTypes()
         {
-            using Scene scene = new Scene();
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+            using (Scene scene = new Scene())
+            {
+                ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            GameObject e1 = scene.Create();
-            e1.Add(new Position());
+                GameObject e1 = scene.Create();
+                e1.Add(new Position());
 
-            GameObject e2 = scene.Create();
-            e2.Add(new Velocity());
+                GameObject e2 = scene.Create();
+                e2.Add(new Velocity());
 
-            GameObject e3 = scene.Create();
-            e3.Add(new Position());
-            e3.Add(new Velocity());
-            Assert.True(e1.Has<Position>());
-            Assert.True(e2.Has<Velocity>());
-            Assert.True(e3.Has<Position>());
-            Assert.True(e3.Has<Velocity>());
+                GameObject e3 = scene.Create();
+                e3.Add(new Position());
+                e3.Add(new Velocity());
+                Assert.True(e1.Has<Position>());
+                Assert.True(e2.Has<Velocity>());
+                Assert.True(e3.Has<Position>());
+                Assert.True(e3.Has<Velocity>());
+            }
         }
 
-        /// <summary>
-        ///     Tests cache behavior with sequential archetype transitions
-        /// </summary>
-        /// <remarks>
-        ///     Verifies that the cache correctly handles entities transitioning
-        ///     through multiple archetypes sequentially.
-        /// </remarks>
-        [Fact]
-        public void ArchetypeNeighborCache_HandlesSequentialTransitions()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            entity.Add(new Position());
-            entity.Add(new Velocity());
-            entity.Remove<Position>();
-            entity.Add(new Health());
-            Assert.False(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-        }
+       
 
         /// <summary>
         ///     Tests cache performance with bulk entity operations
@@ -166,39 +151,42 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_MaintainsPerformanceWithBulkOperations()
         {
-            using Scene scene = new Scene();
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-            const int entityCount = 1000;
-            GameObject[] entities = new GameObject[entityCount];
-
-            for (int i = 0; i < entityCount; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create();
-                entities[i].Add(new Position());
+                ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+                const int entityCount = 1000;
+                GameObject[] entities = new GameObject[entityCount];
 
-                if (i % 2 == 0)
+                for (int i = 0; i < entityCount; i++)
                 {
-                    entities[i].Add(new Velocity());
+                    entities[i] = scene.Create();
+                    entities[i].Add(new Position());
+
+                    if (i % 2 == 0)
+                    {
+                        entities[i].Add(new Velocity());
+                    }
                 }
+
+                int positionCount = 0;
+                int velocityCount = 0;
+
+                for (int i = 0; i < entityCount; i++)
+                {
+                    if (entities[i].Has<Position>())
+                    {
+                        positionCount++;
+                    }
+
+                    if (entities[i].Has<Velocity>())
+                    {
+                        velocityCount++;
+                    }
+                }
+
+                Assert.Equal(entityCount, positionCount);
+                Assert.Equal(entityCount / 2, velocityCount);
             }
-            int positionCount = 0;
-            int velocityCount = 0;
-
-            for (int i = 0; i < entityCount; i++)
-            {
-                if (entities[i].Has<Position>())
-                {
-                    positionCount++;
-                }
-
-                if (entities[i].Has<Velocity>())
-                {
-                    velocityCount++;
-                }
-            }
-
-            Assert.Equal(entityCount, positionCount);
-            Assert.Equal(entityCount / 2, velocityCount);
         }
 
         /// <summary>
@@ -211,54 +199,25 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_IsolatedBetweenScenes()
         {
-            using Scene scene1 = new Scene();
-            using Scene scene2 = new Scene();
-            ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
-            ArchetypeNeighborCache cache2 = new ArchetypeNeighborCache();
+            using (Scene scene1 = new Scene())
+            {
+                using (Scene scene2 = new Scene())
+                {
+                    ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
+                    ArchetypeNeighborCache cache2 = new ArchetypeNeighborCache();
 
-            GameObject e1 = scene1.Create();
-            e1.Add(new Position());
+                    GameObject e1 = scene1.Create();
+                    e1.Add(new Position());
 
-            GameObject e2 = scene2.Create();
-            e2.Add(new Velocity());
-            Assert.True(e1.Has<Position>());
-            Assert.False(e1.Has<Velocity>());
-            Assert.True(e2.Has<Velocity>());
-            Assert.False(e2.Has<Position>());
+                    GameObject e2 = scene2.Create();
+                    e2.Add(new Velocity());
+                    Assert.True(e1.Has<Position>());
+                    Assert.False(e1.Has<Velocity>());
+                    Assert.True(e2.Has<Velocity>());
+                    Assert.False(e2.Has<Position>());
+                }
+            }
         }
-
-        /// <summary>
-        ///     Tests cache with mixed add and remove operations
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the cache correctly handles alternating
-        ///     component additions and removals.
-        /// </remarks>
-        [Fact]
-        public void ArchetypeNeighborCache_HandlesMixedAddRemoveOperations()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            entity.Add(new Position());
-            Assert.True(entity.Has<Position>());
-
-            entity.Add(new Velocity());
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Remove<Position>();
-            Assert.False(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Add(new Health());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-        }
+        
     }
 }

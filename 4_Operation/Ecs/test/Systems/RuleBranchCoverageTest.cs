@@ -18,11 +18,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_HasComponent_ReturnsTrueWhenArchetypeHasComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.HasComponent(Component<Position>.Id);
-            Assert.True(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.HasComponent(Component<Position>.Id);
+                Assert.True(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -31,11 +33,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_HasComponent_ReturnsFalseWhenArchetypeLacksComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.HasComponent(Component<Velocity>.Id);
-            Assert.False(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.HasComponent(Component<Velocity>.Id);
+                Assert.False(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -44,11 +48,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_NotComponent_ReturnsTrueWhenArchetypeLacksComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.NotComponent(Component<Velocity>.Id);
-            Assert.True(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.NotComponent(Component<Velocity>.Id);
+                Assert.True(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -57,11 +63,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_NotComponent_ReturnsFalseWhenArchetypeHasComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.NotComponent(Component<Position>.Id);
-            Assert.False(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.NotComponent(Component<Position>.Id);
+                Assert.False(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -70,11 +78,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_Delegate_ReturnsTrueWhenFunctionReturnsTrue()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.Delegate(_ => true);
-            Assert.True(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.Delegate(_ => true);
+                Assert.True(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -83,11 +93,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_Delegate_ReturnsFalseWhenFunctionReturnsFalse()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule rule = Rule.Delegate(_ => false);
-            Assert.False(rule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule rule = Rule.Delegate(_ => false);
+                Assert.False(rule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -96,10 +108,12 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_IncludeDisabled_ReturnsTrue()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Assert.True(Rule.IncludeDisabledRule.RuleApplies(archetypeType));
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Assert.True(Rule.IncludeDisabledRule.RuleApplies(archetypeType));
+            }
         }
 
         /// <summary>
@@ -108,11 +122,13 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleApplies_Default_ThrowsInvalidDataException()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            GameObjectType archetypeType = entity.Type;
-            Rule defaultRule = default;
-            Assert.Throws<InvalidDataException>(() => { defaultRule.RuleApplies(archetypeType); });
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                GameObjectType archetypeType = entity.Type;
+                Rule defaultRule = default;
+                Assert.Throws<InvalidDataException>(() => { defaultRule.RuleApplies(archetypeType); });
+            }
         }
 
         /// <summary>

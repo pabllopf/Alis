@@ -48,10 +48,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_SharedCountdown_ReturnsStableInstance()
         {
-            using Scene scene = new Scene();
-
-            Assert.Same(scene.SharedCountdown, scene.SharedCountdown);
-            Assert.NotNull(scene.SharedCountdown);
+            using (Scene scene = new Scene())
+            {
+                Assert.Same(scene.SharedCountdown, scene.SharedCountdown);
+                Assert.NotNull(scene.SharedCountdown);
+            }
         }
 
         /// <summary>
@@ -59,14 +60,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityCreatedEvent_TogglesWorldEventFlag()
         {
-            using Scene scene = new Scene();
-            Action<GameObject> handler = _ => { };
+            using (Scene scene = new Scene())
+            {
+                Action<GameObject> handler = _ => { };
 
-            scene.EntityCreated += handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.WorldCreate) != 0);
+                scene.EntityCreated += handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.WorldCreate) != 0);
 
-            scene.EntityCreated -= handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.WorldCreate) == 0);
+                scene.EntityCreated -= handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.WorldCreate) == 0);
+            }
         }
 
         /// <summary>
@@ -74,14 +77,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityDeletedEvent_TogglesWorldEventFlag()
         {
-            using Scene scene = new Scene();
-            Action<GameObject> handler = _ => { };
+            using (Scene scene = new Scene())
+            {
+                Action<GameObject> handler = _ => { };
 
-            scene.EntityDeleted += handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.OnDelete) != 0);
+                scene.EntityDeleted += handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.OnDelete) != 0);
 
-            scene.EntityDeleted -= handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.OnDelete) == 0);
+                scene.EntityDeleted -= handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.OnDelete) == 0);
+            }
         }
 
         /// <summary>
@@ -89,14 +94,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ComponentAddedEvent_TogglesWorldEventFlag()
         {
-            using Scene scene = new Scene();
-            Action<GameObject, ComponentId> handler = (_, _) => { };
+            using (Scene scene = new Scene())
+            {
+                Action<GameObject, ComponentId> handler = (_, _) => { };
 
-            scene.ComponentAdded += handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.AddComp) != 0);
+                scene.ComponentAdded += handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.AddComp) != 0);
 
-            scene.ComponentAdded -= handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.AddComp) == 0);
+                scene.ComponentAdded -= handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.AddComp) == 0);
+            }
         }
 
         /// <summary>
@@ -104,14 +111,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ComponentRemovedEvent_TogglesWorldEventFlag()
         {
-            using Scene scene = new Scene();
-            Action<GameObject, ComponentId> handler = (_, _) => { };
+            using (Scene scene = new Scene())
+            {
+                Action<GameObject, ComponentId> handler = (_, _) => { };
 
-            scene.ComponentRemoved += handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.RemoveComp) != 0);
+                scene.ComponentRemoved += handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.RemoveComp) != 0);
 
-            scene.ComponentRemoved -= handler;
-            Assert.True((scene.WorldEventFlags & GameObjectFlags.RemoveComp) == 0);
+                scene.ComponentRemoved -= handler;
+                Assert.True((scene.WorldEventFlags & GameObjectFlags.RemoveComp) == 0);
+            }
         }
 
         /// <summary>
@@ -119,14 +128,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateGenericAttribute_UpdatesOnlyComponentsRegisteredForAttribute()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(typeof(SceneApiUpdateAttribute), typeof(UpdateComponent));
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(typeof(SceneApiUpdateAttribute), typeof(UpdateComponent));
 
-            GameObject tagged = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject tagged = scene.Create(new UpdateComponent {CallCount = 0});
 
-            scene.Update<SceneApiUpdateAttribute>();
+                scene.Update<SceneApiUpdateAttribute>();
 
-            Assert.Equal(1, tagged.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, tagged.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -134,15 +145,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateByType_UpdatesComponentsRegisteredForAttribute()
         {
-            using Scene scene = new Scene();
-            GenerationServices.RegisterUpdateMethodAttribute(typeof(SceneApiUpdateAttribute), typeof(UpdateComponent));
+            using (Scene scene = new Scene())
+            {
+                GenerationServices.RegisterUpdateMethodAttribute(typeof(SceneApiUpdateAttribute), typeof(UpdateComponent));
 
-            GameObject tagged = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject tagged = scene.Create(new UpdateComponent {CallCount = 0});
 
-            scene.Update(typeof(SceneApiUpdateAttribute));
-            scene.Update(typeof(SceneApiUpdateAttribute));
+                scene.Update(typeof(SceneApiUpdateAttribute));
+                scene.Update(typeof(SceneApiUpdateAttribute));
 
-            Assert.Equal(2, tagged.Get<UpdateComponent>().CallCount);
+                Assert.Equal(2, tagged.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -150,19 +163,21 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateComponent_UpdatesOnlySpecifiedComponentType()
         {
-            using Scene scene = new Scene();
-            GameObject target = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject nonTarget = scene.Create(
-                new Update3Component {CallCount = 0},
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 10}
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject target = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject nonTarget = scene.Create(
+                    new Update3Component {CallCount = 0},
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 10}
+                );
 
-            scene.UpdateComponent(Component<UpdateComponent>.Id);
+                scene.UpdateComponent(Component<UpdateComponent>.Id);
 
-            Assert.Equal(1, target.Get<UpdateComponent>().CallCount);
-            Assert.Equal(0, nonTarget.Get<Update3Component>().CallCount);
+                Assert.Equal(1, target.Get<UpdateComponent>().CallCount);
+                Assert.Equal(0, nonTarget.Get<Update3Component>().CallCount);
+            }
         }
 
         /// <summary>
@@ -170,14 +185,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EnsureCapacity_WithZeroOrNegative_DoesNothing()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 1});
-            int before = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 1});
+                int before = scene.EntityCount;
 
-            scene.EnsureCapacity(entity.Type, 0);
-            scene.EnsureCapacity(entity.Type, -3);
+                scene.EnsureCapacity(entity.Type, 0);
+                scene.EnsureCapacity(entity.Type, -3);
 
-            Assert.Equal(before, scene.EntityCount);
+                Assert.Equal(before, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -185,10 +202,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EnsureCapacityCore_WithNonPositiveCount_ThrowsArgumentOutOfRangeException()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(scene.DefaultArchetype, 0));
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(scene.DefaultArchetype, -1));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(scene.DefaultArchetype, 0));
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(scene.DefaultArchetype, -1));
+            }
         }
 
         /// <summary>
@@ -196,11 +214,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EnsureCapacityCore_WithPositiveCount_DoesNotThrow()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Exception ex = Record.Exception(() => scene.EnsureCapacityCore(scene.DefaultArchetype, 8));
 
-            Exception ex = Record.Exception(() => scene.EnsureCapacityCore(scene.DefaultArchetype, 8));
-
-            Assert.Null(ex);
+                Assert.Null(ex);
+            }
         }
 
         /// <summary>
@@ -208,29 +227,31 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_CreateQuery_AndCreateQueryFromSpan_FilterExpectedEntities()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
-            scene.Create(new Velocity {X = 4, Y = 4});
-
-            Rule[] ruleArray = {new With<Position>().Rule};
-            Query fromSpan = scene.CreateQueryFromSpan(ruleArray);
-            Query fromImmutable = scene.CreateQuery(ToImmutable(ruleArray));
-
-            int spanCount = 0;
-            foreach (RefTuple<Position> _ in fromSpan.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                spanCount++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
+                scene.Create(new Velocity {X = 4, Y = 4});
 
-            int immutableCount = 0;
-            foreach (RefTuple<Position> _ in fromImmutable.Enumerate<Position>())
-            {
-                immutableCount++;
-            }
+                Rule[] ruleArray = {new With<Position>().Rule};
+                Query fromSpan = scene.CreateQueryFromSpan(ruleArray);
+                Query fromImmutable = scene.CreateQuery(ToImmutable(ruleArray));
 
-            Assert.Equal(2, spanCount);
-            Assert.Equal(2, immutableCount);
+                int spanCount = 0;
+                foreach (RefTuple<Position> _ in fromSpan.Enumerate<Position>())
+                {
+                    spanCount++;
+                }
+
+                int immutableCount = 0;
+                foreach (RefTuple<Position> _ in fromImmutable.Enumerate<Position>())
+                {
+                    immutableCount++;
+                }
+
+                Assert.Equal(2, spanCount);
+                Assert.Equal(2, immutableCount);
+            }
         }
 
         /// <summary>

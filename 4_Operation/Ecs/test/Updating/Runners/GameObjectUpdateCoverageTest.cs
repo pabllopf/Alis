@@ -47,9 +47,11 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Run_WithNonMatchingArchetype_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            _ = scene.Create(new TagComponent());
-            scene.Update();
+            using (Scene scene = new Scene())
+            {
+                _ = scene.Create(new TagComponent());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -58,13 +60,15 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void Run_WithDeferredNonMatchingEntities_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            _ = scene.Create(
-                new SpawnPositionOnlyComponent { SpawnCount = 2 },
-                new Position { X = 1, Y = 2 }
-            );
+            using (Scene scene = new Scene())
+            {
+                _ = scene.Create(
+                    new SpawnPositionOnlyComponent {SpawnCount = 2},
+                    new Position {X = 1, Y = 2}
+                );
 
-            scene.Update();
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -73,19 +77,20 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// </summary>
         [Fact] public void RangeRun_SameTypeDeferredEntities_TriggersRangeBasedRun()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new SelfSpawningComponent {SpawnCount = 3, HasSpawned = false, CallCount = 0},
+                    new Position {X = 1, Y = 2}
+                );
 
-            GameObject entity = scene.Create(
-                new SelfSpawningComponent { SpawnCount = 3, HasSpawned = false, CallCount = 0 },
-                new Position { X = 1, Y = 2 }
-            );
+                Assert.Equal(1, scene.EntityCount);
 
-            Assert.Equal(1, scene.EntityCount);
+                scene.Update();
 
-            scene.Update();
-
-            Assert.Equal(4, scene.EntityCount);
-            Assert.Equal(1, entity.Get<SelfSpawningComponent>().CallCount);
+                Assert.Equal(4, scene.EntityCount);
+                Assert.Equal(1, entity.Get<SelfSpawningComponent>().CallCount);
+            }
         }
     }
 

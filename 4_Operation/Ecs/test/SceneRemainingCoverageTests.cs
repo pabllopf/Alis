@@ -44,9 +44,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_WithZeroCount_ThrowsArgumentOutOfRange()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health>(0));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health>(0));
+            }
         }
 
         /// <summary>
@@ -55,9 +56,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_WithNegativeCount_ThrowsArgumentOutOfRange()
         {
-            using Scene scene = new Scene();
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health>(-1));
+            using (Scene scene = new Scene())
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<Position, Health>(-1));
+            }
         }
 
         /// <summary>
@@ -66,11 +68,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_WithPositiveCount_CreatesEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                var chunk = scene.CreateMany<Position, Health>(5);
 
-            var chunk = scene.CreateMany<Position, Health>(5);
-
-            Assert.Equal(5, chunk.Span1.Length);
+                Assert.Equal(5, chunk.Span1.Length);
+            }
         }
     }
 }

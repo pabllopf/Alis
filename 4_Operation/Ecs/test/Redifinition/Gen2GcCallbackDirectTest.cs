@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         {
             object target = new object();
             bool called = false;
-            Gen2GcCallback.Register((obj) =>
+            Gen2GcCallback.Register((_) =>
             {
                 called = true;
                 return true;
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Register_FuncObjectBool_WithNullTarget_DoesNotThrow()
         {
-            Gen2GcCallback.Register((obj) => true, null);
+            Gen2GcCallback.Register((_) => true, null);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Register_FuncObjectBool_WithFalse_DoesNotThrow()
         {
             object target = new object();
-            Gen2GcCallback.Register((obj) => false, target);
+            Gen2GcCallback.Register((_) => false, target);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Register_WithObjectCallbackReturningTrue_DoesNotThrow()
         {
             object target = new object();
-            Gen2GcCallback.Register(obj => true, target);
+            Gen2GcCallback.Register(_ => true, target);
         }
     }
 }

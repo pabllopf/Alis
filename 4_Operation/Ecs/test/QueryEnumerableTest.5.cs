@@ -51,25 +51,27 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithFiveComponents_ProvidesAccessToAll()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 10, Y = 20},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 150},
-                new Transform {X = 1, Y = 2, Rotation = 45},
-                new TestComponent {Value = 999, Name = "Test"}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
-            new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
-
-            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(10, pos.Value.X);
-                Assert.Equal(5, vel.Value.X);
-                Assert.Equal(150, health.Value.Value);
-                Assert.Equal(45, trans.Value.Rotation);
-                Assert.Equal(999, test.Value.Value);
-                Assert.Equal("Test", test.Value.Name);
+                scene.Create(
+                    new Position {X = 10, Y = 20},
+                    new Velocity {X = 5, Y = 10},
+                    new Health {Value = 150},
+                    new Transform {X = 1, Y = 2, Rotation = 45},
+                    new TestComponent {Value = 999, Name = "Test"}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
+                new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
+
+                foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+                {
+                    Assert.Equal(10, pos.Value.X);
+                    Assert.Equal(5, vel.Value.X);
+                    Assert.Equal(150, health.Value.Value);
+                    Assert.Equal(45, trans.Value.Rotation);
+                    Assert.Equal(999, test.Value.Value);
+                    Assert.Equal("Test", test.Value.Name);
+                }
             }
         }
 
@@ -82,30 +84,32 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithFiveComponents_FiltersCorrectly()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 1},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 100},
-                new Transform {X = 0, Y = 0, Rotation = 0},
-                new TestComponent {Value = 1, Name = "Test"}
-            );
-            scene.Create(
-                new Position {X = 2, Y = 2},
-                new Velocity {X = 2, Y = 2},
-                new Health {Value = 50},
-                new Transform {X = 1, Y = 1, Rotation = 0}
-            ); // Missing TestComponent
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
-            new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
-
-            int count = 0;
-            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(
+                    new Position {X = 1, Y = 1},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 100},
+                    new Transform {X = 0, Y = 0, Rotation = 0},
+                    new TestComponent {Value = 1, Name = "Test"}
+                );
+                scene.Create(
+                    new Position {X = 2, Y = 2},
+                    new Velocity {X = 2, Y = 2},
+                    new Health {Value = 50},
+                    new Transform {X = 1, Y = 1, Rotation = 0}
+                ); // Missing TestComponent
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
+                new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -117,35 +121,37 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithFiveComponents_AllowsModification()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 0, Y = 0},
-                new Health {Value = 0},
-                new Transform {X = 0, Y = 0, Rotation = 0},
-                new TestComponent {Value = 0, Name = ""}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
-            new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
-
-            foreach ((Ref<Position> pos, Ref<Velocity> _, Ref<Health> health, Ref<Transform> _, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            using (Scene scene = new Scene())
             {
-                Position p = pos.Value;
-                p.X = 100;
-                pos.Value = p;
+                GameObject entity = scene.Create(
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 0, Y = 0},
+                    new Health {Value = 0},
+                    new Transform {X = 0, Y = 0, Rotation = 0},
+                    new TestComponent {Value = 0, Name = ""}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
+                new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
 
-                Health h = health.Value;
-                h.Value = 200;
-                health.Value = h;
+                foreach ((Ref<Position> pos, Ref<Velocity> _, Ref<Health> health, Ref<Transform> _, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+                {
+                    Position p = pos.Value;
+                    p.X = 100;
+                    pos.Value = p;
 
-                TestComponent t = test.Value;
-                t.Value = 500;
-                test.Value = t;
+                    Health h = health.Value;
+                    h.Value = 200;
+                    health.Value = h;
+
+                    TestComponent t = test.Value;
+                    t.Value = 500;
+                    test.Value = t;
+                }
+
+                Assert.Equal(100, entity.Get<Position>().X);
+                Assert.Equal(200, entity.Get<Health>().Value);
+                Assert.Equal(500, entity.Get<TestComponent>().Value);
             }
-
-            Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(200, entity.Get<Health>().Value);
-            Assert.Equal(500, entity.Get<TestComponent>().Value);
         }
 
         /// <summary>
@@ -157,28 +163,30 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithFiveComponents_WorksWithMultipleEntities()
         {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 2; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(
-                    new Position {X = i, Y = i * 2},
-                    new Velocity {X = i * 0.5f, Y = i * 0.3f},
-                    new Health {Value = i * 10},
-                    new Transform {X = i, Y = i, Rotation = i * 45},
-                    new TestComponent {Value = i, Name = $"Test{i}"}
-                );
+                for (int i = 0; i < 2; i++)
+                {
+                    scene.Create(
+                        new Position {X = i, Y = i * 2},
+                        new Velocity {X = i * 0.5f, Y = i * 0.3f},
+                        new Health {Value = i * 10},
+                        new Transform {X = i, Y = i, Rotation = i * 45},
+                        new TestComponent {Value = i, Name = $"Test{i}"}
+                    );
+                }
+
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
+                new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
+
+                int count = 0;
+                foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
             }
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
-            new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
-
-            int count = 0;
-            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
-            {
-                count++;
-            }
-
-            Assert.Equal(2, count);
         }
 
         /// <summary>

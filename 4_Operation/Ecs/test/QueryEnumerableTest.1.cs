@@ -71,14 +71,16 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_WithOneComponent_CanBeCreated()
         {
             // Arrange
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>>();
+            using (Scene scene = new Scene())
+            {
+                Query query = scene.Query<With<Position>>();
 
-            // Act
-            QueryEnumerator<Position>.QueryEnumerable enumerable = query.Enumerate<Position>();
+                // Act
+                QueryEnumerator<Position>.QueryEnumerable enumerable = query.Enumerate<Position>();
 
-            // Assert
-            Assert.NotEqual(default(QueryEnumerator<Position>.QueryEnumerable), enumerable);
+                // Assert
+                Assert.NotEqual(default(QueryEnumerator<Position>.QueryEnumerable), enumerable);
+            }
         }
 
         /// <summary>
@@ -88,20 +90,22 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_WithOneComponent_CanBeUsedInForeach()
         {
             // Arrange
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4});
-            Query query = scene.Query<With<Position>>();
-
-            // Act
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Position {X = 3, Y = 4});
+                Query query = scene.Query<With<Position>>();
 
-            // Assert
-            Assert.Equal(2, count);
+                // Act
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                // Assert
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -111,20 +115,22 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_WithOneComponent_FiltersCorrectly()
         {
             // Arrange
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 10, Y = 10});
-            scene.Create(new Velocity {X = 1, Y = 1});
-            Query query = scene.Query<With<Position>>();
-
-            // Act
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 10, Y = 10});
+                scene.Create(new Velocity {X = 1, Y = 1});
+                Query query = scene.Query<With<Position>>();
 
-            // Assert
-            Assert.Equal(1, count);
+                // Act
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                // Assert
+                Assert.Equal(1, count);
+            }
         }
 
 
@@ -135,18 +141,20 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_WithOneComponent_WorksWithEmptyQuery()
         {
             // Arrange
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>>();
-
-            // Act
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                Query query = scene.Query<With<Position>>();
 
-            // Assert
-            Assert.Equal(0, count);
+                // Act
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                // Assert
+                Assert.Equal(0, count);
+            }
         }
 
         /// <summary>
@@ -156,21 +164,23 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_WithOneComponent_ProvidesEntityAccess()
         {
             // Arrange
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 5, Y = 7});
-            Query query = scene.Query<With<Position>>();
-
-            // Act
-            int count = 0;
-            foreach ((GameObject entity, Ref<Position> position) in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new Scene())
             {
-                Assert.True(entity.IsAlive);
-                Assert.Equal(5, position.Value.X);
-                count++;
-            }
+                scene.Create(new Position {X = 5, Y = 7});
+                Query query = scene.Query<With<Position>>();
 
-            // Assert
-            Assert.Equal(1, count);
+                // Act
+                int count = 0;
+                foreach ((GameObject entity, Ref<Position> position) in query.EnumerateWithEntities<Position>())
+                {
+                    Assert.True(entity.IsAlive);
+                    Assert.Equal(5, position.Value.X);
+                    count++;
+                }
+
+                // Assert
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>

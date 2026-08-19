@@ -45,16 +45,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity1_InvokesGenericEvent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 5, Y = 15});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 5, Y = 15});
 
-            CaptureGenericAction captureAction = new CaptureGenericAction();
-            entity.OnComponentAddedGeneric += captureAction;
+                CaptureGenericAction captureAction = new CaptureGenericAction();
+                entity.OnComponentAddedGeneric += captureAction;
 
-            entity.Add(new Health {Value = 50});
+                entity.Add(new Health {Value = 50});
 
-            Assert.True(entity.Has<Health>());
-            Assert.Contains(typeof(Health), captureAction.SeenTypes);
+                Assert.True(entity.Has<Health>());
+                Assert.Contains(typeof(Health), captureAction.SeenTypes);
+            }
         }
 
         /// <summary>
@@ -62,17 +64,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity2_InvokesGenericEventsForBoth()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            CaptureGenericAction captureAction = new CaptureGenericAction();
-            entity.OnComponentAddedGeneric += captureAction;
+                CaptureGenericAction captureAction = new CaptureGenericAction();
+                entity.OnComponentAddedGeneric += captureAction;
 
-            entity.Add(new Velocity {X = 3, Y = 4});
-            entity.Add(new Health {Value = 1});
+                entity.Add(new Velocity {X = 3, Y = 4});
+                entity.Add(new Health {Value = 1});
 
-            Assert.Contains(typeof(Velocity), captureAction.SeenTypes);
-            Assert.Contains(typeof(Health), captureAction.SeenTypes);
+                Assert.Contains(typeof(Velocity), captureAction.SeenTypes);
+                Assert.Contains(typeof(Health), captureAction.SeenTypes);
+            }
         }
 
         /// <summary>

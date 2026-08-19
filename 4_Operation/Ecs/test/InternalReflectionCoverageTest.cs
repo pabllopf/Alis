@@ -36,11 +36,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_StoreAndGet_HandleWorks()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position { X = 100 });
-            ComponentHandle handle = Component<Position>.StoreComponent(in go.Get<Position>());
-            Assert.True(typeof(ComponentHandle).IsValueType);
-            handle.Dispose();
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position {X = 100});
+                ComponentHandle handle = Component<Position>.StoreComponent(in go.Get<Position>());
+                Assert.True(typeof(ComponentHandle).IsValueType);
+                handle.Dispose();
+            }
         }
 
         /// <summary>
@@ -49,11 +51,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateWithoutEvent_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.CreateEntityWithoutEvent();
-            go.Add(new Position { X = 7 });
-            scene.InvokeEntityCreated(go);
-            Assert.True(go.Has<Position>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.CreateEntityWithoutEvent();
+                go.Add(new Position {X = 7});
+                scene.InvokeEntityCreated(go);
+                Assert.True(go.Has<Position>());
+            }
         }
     }
 

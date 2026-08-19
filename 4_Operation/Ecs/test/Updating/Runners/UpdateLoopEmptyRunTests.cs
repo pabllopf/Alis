@@ -46,14 +46,16 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity0_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            UpdateComponent comp = new UpdateComponent {CallCount = 0};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                UpdateComponent comp = new UpdateComponent {CallCount = 0};
 
-            UpdateLoop.Run(ref entityIds, ref comp, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -62,16 +64,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity2_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update2Component comp = new Update2Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update2Component comp = new Update2Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -80,17 +84,19 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity3_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update3Component comp = new Update3Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
-            Health arg3 = new Health {Value = 5};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update3Component comp = new Update3Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
+                Health arg3 = new Health {Value = 5};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -99,18 +105,20 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity4_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update4Component comp = new Update4Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
-            Health arg3 = new Health {Value = 5};
-            Armor arg4 = new Armor {Value = 6};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update4Component comp = new Update4Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
+                Health arg3 = new Health {Value = 5};
+                Armor arg4 = new Armor {Value = 6};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -119,20 +127,22 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity6_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update6Component comp = new Update6Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
-            Health arg3 = new Health {Value = 5};
-            Armor arg4 = new Armor {Value = 6};
-            Damage arg5 = new Damage {Value = 7};
-            Transform arg6 = new Transform {X = 8, Y = 9};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update6Component comp = new Update6Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
+                Health arg3 = new Health {Value = 5};
+                Armor arg4 = new Armor {Value = 6};
+                Damage arg5 = new Damage {Value = 7};
+                Transform arg6 = new Transform {X = 8, Y = 9};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -141,21 +151,23 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity7_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update7Component comp = new Update7Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
-            Health arg3 = new Health {Value = 5};
-            Armor arg4 = new Armor {Value = 6};
-            Damage arg5 = new Damage {Value = 7};
-            Transform arg6 = new Transform {X = 8, Y = 9};
-            TestComponent arg7 = new TestComponent {Value = 10};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update7Component comp = new Update7Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
+                Health arg3 = new Health {Value = 5};
+                Armor arg4 = new Armor {Value = 6};
+                Damage arg5 = new Damage {Value = 7};
+                Transform arg6 = new Transform {X = 8, Y = 9};
+                TestComponent arg7 = new TestComponent {Value = 10};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
 
         /// <summary>
@@ -164,22 +176,24 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Run_Arity8_WithZeroLength_Returns()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = default;
-            GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
-            Update8Component comp = new Update8Component {CallCount = 0};
-            Position arg1 = new Position {X = 1, Y = 2};
-            Velocity arg2 = new Velocity {X = 3, Y = 4};
-            Health arg3 = new Health {Value = 5};
-            Armor arg4 = new Armor {Value = 6};
-            Damage arg5 = new Damage {Value = 7};
-            Transform arg6 = new Transform {X = 8, Y = 9};
-            TestComponent arg7 = new TestComponent {Value = 10};
-            AnotherComponent arg8 = new AnotherComponent {Data = 11};
+            using (new Scene())
+            {
+                GameObject gameObject = default;
+                GameObjectIdOnly entityIds = new GameObjectIdOnly(0, 0);
+                Update8Component comp = new Update8Component {CallCount = 0};
+                Position arg1 = new Position {X = 1, Y = 2};
+                Velocity arg2 = new Velocity {X = 3, Y = 4};
+                Health arg3 = new Health {Value = 5};
+                Armor arg4 = new Armor {Value = 6};
+                Damage arg5 = new Damage {Value = 7};
+                Transform arg6 = new Transform {X = 8, Y = 9};
+                TestComponent arg7 = new TestComponent {Value = 10};
+                AnotherComponent arg8 = new AnotherComponent {Data = 11};
 
-            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, 0, gameObject);
+                UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, 0, gameObject);
 
-            Assert.Equal(0, comp.CallCount);
+                Assert.Equal(0, comp.CallCount);
+            }
         }
     }
 }

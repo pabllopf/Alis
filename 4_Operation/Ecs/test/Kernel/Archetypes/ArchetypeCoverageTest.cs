@@ -54,16 +54,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetComponentSpan_ThrowsWhenComponentNotPresent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
 
-            // Accessing a non-present component triggers the error path in GetComponentSpan
-            Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
+                // Accessing a non-present component triggers the error path in GetComponentSpan
+                Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -74,14 +76,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetComponentSpan_ReturnsCorrectSpan()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 42, Y = 84 });
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(42, pos.X);
-            Assert.Equal(84, pos.Y);
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(42, pos.X);
+                Assert.Equal(84, pos.Y);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -92,17 +96,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetComponentDataReference_ReturnsModifiableRef()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 100;
-            pos.Y = 200;
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 100;
+                pos.Y = 200;
 
-            Assert.Equal(100, pos.X);
-            Assert.Equal(200, pos.Y);
+                Assert.Equal(100, pos.X);
+                Assert.Equal(200, pos.Y);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -114,18 +120,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_DeleteEntity_RemovesAndDecrementsCount()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position());
-            GameObject entity2 = scene.Create(new Position());
-            int initialCount = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position());
+                GameObject entity2 = scene.Create(new Position());
+                int initialCount = scene.EntityCount;
 
-            entity1.Delete();
+                entity1.Delete();
 
-            Assert.Equal(initialCount - 1, scene.EntityCount);
-            Assert.False(entity1.IsAlive);
-            Assert.True(entity2.IsAlive);
+                Assert.Equal(initialCount - 1, scene.EntityCount);
+                Assert.False(entity1.IsAlive);
+                Assert.True(entity2.IsAlive);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -136,16 +144,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_DeleteEntity_LastEntityWorksCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            int initialCount = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
+                int initialCount = scene.EntityCount;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(initialCount - 1, scene.EntityCount);
-            Assert.False(entity.IsAlive);
+                Assert.Equal(initialCount - 1, scene.EntityCount);
+                Assert.False(entity.IsAlive);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -156,37 +166,38 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_DeleteEntity_MiddleEntitySwapAndDelete()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i * 2 });
-            }
-
-            int initialCount = scene.EntityCount;
-            GameObject middleEntity = default;
-
-            Query query = scene.Query<With<Position>>();
-            int mid = 5;
-            int idx = 0;
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                if (idx == mid)
+                for (int i = 0; i < 10; i++)
                 {
-                    middleEntity = entity;
-                    break;
+                    scene.Create(new Position {X = i, Y = i * 2});
                 }
 
-                idx++;
+                int initialCount = scene.EntityCount;
+                GameObject middleEntity = default;
+
+                Query query = scene.Query<With<Position>>();
+                int mid = 5;
+                int idx = 0;
+                foreach (GameObject entity in query.EnumerateWithEntities())
+                {
+                    if (idx == mid)
+                    {
+                        middleEntity = entity;
+                        break;
+                    }
+
+                    idx++;
+                }
+
+                Assert.True(middleEntity.IsAlive);
+                middleEntity.Delete();
+
+                Assert.Equal(initialCount - 1, scene.EntityCount);
+                Assert.False(middleEntity.IsAlive);
+
+                
             }
-
-            Assert.True(middleEntity.IsAlive);
-            middleEntity.Delete();
-
-            Assert.Equal(initialCount - 1, scene.EntityCount);
-            Assert.False(middleEntity.IsAlive);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -197,16 +208,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_EnsureCapacity_DoesNothingWhenSufficient()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
 
-            int countBefore = scene.EntityCount;
-            // Request capacity less than current, should trigger early return
-            scene.DefaultArchetype.EnsureCapacity(countBefore + 100);
+                int countBefore = scene.EntityCount;
+                // Request capacity less than current, should trigger early return
+                scene.DefaultArchetype.EnsureCapacity(countBefore + 100);
 
-            Assert.Equal(countBefore, scene.EntityCount);
+                Assert.Equal(countBefore, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -217,17 +230,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_EnsureCapacity_IncreasesCapacity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            // Request large capacity - triggers resize path
-            scene.DefaultArchetype.EnsureCapacity(10000);
+                // Request large capacity - triggers resize path
+                scene.DefaultArchetype.EnsureCapacity(10000);
 
-            // Entity should still be alive and accessible
-            Assert.True(entity.IsAlive);
-            Assert.Equal(1, scene.EntityCount);
+                // Entity should still be alive and accessible
+                Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -238,14 +253,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetEntitySpan_ReturnsCorrectSpan()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            scene.Create(new Position());
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position());
+                scene.Create(new Position());
 
-            Assert.Equal(3, scene.EntityCount);
+                Assert.Equal(3, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -256,12 +273,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetEntityDataReference_ReturnsFirstEntity()
         {
-            using Scene scene = new Scene();
-            GameObject first = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject first = scene.Create(new Position());
 
-            Assert.True(first.IsAlive);
+                Assert.True(first.IsAlive);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -272,12 +291,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetComponentIndex_ReturnsCorrectIndex()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Position>());
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -288,13 +309,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_ReleaseArrays_ClearsStorage()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            Assert.True(entity.IsAlive);
-            Assert.Equal(1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -305,16 +328,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_UpdateWithRange_UpdatesCorrectRange()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
+                for (int i = 0; i < 5; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                Assert.Equal(5, scene.EntityCount);
+
+                
             }
-
-            Assert.Equal(5, scene.EntityCount);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -325,10 +349,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_Update_EmptyArchetype_ReturnsEarly()
         {
-            using Scene scene = new Scene();
-
             // Default archetype starts empty, Update should return early
-            scene.Dispose();
+            using (Scene scene = new Scene())
+            {
+                
+            }
         }
 
         /// <summary>
@@ -339,16 +364,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_CreateOrGetExistingArchetype_ReturnsExisting()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position());
+                GameObject entity2 = scene.Create(new Position());
 
-            GameObject entity1 = scene.Create(new Position());
-            GameObject entity2 = scene.Create(new Position());
+                // Both entities with same components should share archetype
+                Assert.True(entity1.IsAlive);
+                Assert.True(entity2.IsAlive);
 
-            // Both entities with same components should share archetype
-            Assert.True(entity1.IsAlive);
-            Assert.True(entity2.IsAlive);
-
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -359,18 +385,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_CreateOrGetExistingArchetype_CreatesNewWhenNeeded()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position());
+                GameObject entity2 = scene.Create(new Velocity());
 
-            GameObject entity1 = scene.Create(new Position());
-            GameObject entity2 = scene.Create(new Velocity());
+                // Different component sets should create different archetypes
+                Assert.True(entity1.Has<Position>());
+                Assert.True(entity2.Has<Velocity>());
+                Assert.False(entity1.Has<Velocity>());
+                Assert.False(entity2.Has<Position>());
 
-            // Different component sets should create different archetypes
-            Assert.True(entity1.Has<Position>());
-            Assert.True(entity2.Has<Velocity>());
-            Assert.False(entity1.Has<Velocity>());
-            Assert.False(entity2.Has<Position>());
-
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -381,21 +408,22 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetArchetypeId_ThrowsOnMaxComponents()
         {
-            using Scene scene = new Scene();
-
             // Create entities with many components to approach the limit
-            for (int i = 0; i < 50; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject entity = scene.Create(new Position());
-                if (i > 0)
+                for (int i = 0; i < 50; i++)
                 {
-                    entity.Add(new Velocity());
+                    GameObject entity = scene.Create(new Position());
+                    if (i > 0)
+                    {
+                        entity.Add(new Velocity());
+                    }
                 }
+
+                Assert.True(scene.EntityCount > 0);
+
+                
             }
-
-            Assert.True(scene.EntityCount > 0);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -406,15 +434,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetAdjacentArchetypeLookup_CacheHitReturnsArchetype()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            entity.Add(new Velocity());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
+                entity.Add(new Velocity());
 
-            // Entity transition creates archetype graph edges
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
+                // Entity transition creates archetype graph edges
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -425,18 +455,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_GetAdjacentArchetypeCold_CreatesNewArchetype()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            entity.Add(new Velocity());
-            entity.Remove<Position>();
+                entity.Add(new Velocity());
+                entity.Remove<Position>();
 
-            // Should have created a new archetype for the empty entity
-            Assert.True(entity.IsAlive);
-            Assert.False(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
+                // Should have created a new archetype for the empty entity
+                Assert.True(entity.IsAlive);
+                Assert.False(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -447,40 +479,41 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_MultipleDeletions_MaintainsCorrectCount()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 20; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
-            }
-
-            int initialCount = scene.EntityCount;
-            Assert.Equal(20, initialCount);
-
-            for (int i = 0; i < 10; i++)
-            {
-                Query query = scene.Query<With<Position>>();
-                int idx = 0;
-                GameObject toDelete = default;
-                foreach (GameObject entity in query.EnumerateWithEntities())
+                for (int i = 0; i < 20; i++)
                 {
-                    if (idx == i)
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                int initialCount = scene.EntityCount;
+                Assert.Equal(20, initialCount);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Query query = scene.Query<With<Position>>();
+                    int idx = 0;
+                    GameObject toDelete = default;
+                    foreach (GameObject entity in query.EnumerateWithEntities())
                     {
-                        toDelete = entity;
+                        if (idx == i)
+                        {
+                            toDelete = entity;
+                        }
+
+                        idx++;
                     }
 
-                    idx++;
+                    if (toDelete.IsAlive)
+                    {
+                        toDelete.Delete();
+                    }
                 }
 
-                if (toDelete.IsAlive)
-                {
-                    toDelete.Delete();
-                }
+                Assert.Equal(initialCount - 10, scene.EntityCount);
+
+                
             }
-
-            Assert.Equal(initialCount - 10, scene.EntityCount);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -491,14 +524,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_DataProperty_ReturnsValidFields()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
 
-            Fields data = scene.DefaultArchetype.Data;
-            Assert.NotNull(data.Map);
-            Assert.NotNull(data.Components);
+                Fields data = scene.DefaultArchetype.Data;
+                Assert.NotNull(data.Map);
+                Assert.NotNull(data.Components);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -509,11 +544,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_IdProperty_ReturnsValidId()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObjectType id = scene.DefaultArchetype.Id;
 
-            GameObjectType id = scene.DefaultArchetype.Id;
-
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -524,11 +560,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_ArchetypeTypeArray_ReturnsValidTypes()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                FastImmutableArray<ComponentId> types = scene.DefaultArchetype.ArchetypeTypeArray;
 
-            FastImmutableArray<ComponentId> types = scene.DefaultArchetype.ArchetypeTypeArray;
-
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -539,24 +576,26 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_FullLifecycle_CreateModifyDelete()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            // Modify
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 100;
-            pos.Y = 200;
+                // Modify
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 100;
+                pos.Y = 200;
 
-            // Verify modification persisted
-            Assert.Equal(100, pos.X);
-            Assert.Equal(200, pos.Y);
+                // Verify modification persisted
+                Assert.Equal(100, pos.X);
+                Assert.Equal(200, pos.Y);
 
-            // Delete
-            entity.Delete();
-            Assert.False(entity.IsAlive);
-            Assert.Equal(0, scene.EntityCount);
+                // Delete
+                entity.Delete();
+                Assert.False(entity.IsAlive);
+                Assert.Equal(0, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -567,22 +606,24 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_CreateWithMultipleComponents_WorksCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 100 }
-            );
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100}
+                );
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
 
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(1, pos.X);
-            Assert.Equal(2, pos.Y);
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(1, pos.X);
+                Assert.Equal(2, pos.Y);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -593,17 +634,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_AllEntitiesDeleted_EntityCountIsZero()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject entity = scene.Create(new Position());
-                entity.Delete();
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject entity = scene.Create(new Position());
+                    entity.Delete();
+                }
+
+                Assert.Equal(0, scene.EntityCount);
+
+                
             }
-
-            Assert.Equal(0, scene.EntityCount);
-
-            scene.Dispose();
         }
         
         /// <summary>
@@ -614,26 +656,27 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_AddComponentToAll_MaintainsCount()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 100; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject entity = scene.Create(new Position());
-                entity.Add(new Velocity());
+                for (int i = 0; i < 100; i++)
+                {
+                    GameObject entity = scene.Create(new Position());
+                    entity.Add(new Velocity());
+                }
+
+                Assert.Equal(100, scene.EntityCount);
+
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                int count = 0;
+                foreach (GameObject entity in query.EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(100, count);
+
+                
             }
-
-            Assert.Equal(100, scene.EntityCount);
-
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            int count = 0;
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.Equal(100, count);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -644,32 +687,33 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_RemoveComponentFromAll_MaintainsCount()
         {
-            using Scene scene = new Scene();
-
-            for (int i = 0; i < 50; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject entity = scene.Create(new Position());
-                entity.Add(new Velocity());
+                for (int i = 0; i < 50; i++)
+                {
+                    GameObject entity = scene.Create(new Position());
+                    entity.Add(new Velocity());
+                }
+
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                foreach (GameObject entity in query.EnumerateWithEntities())
+                {
+                    entity.Remove<Velocity>();
+                }
+
+                Assert.Equal(50, scene.EntityCount);
+
+                Query query2 = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (GameObject entity in query2.EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(50, count);
+
+                
             }
-
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                entity.Remove<Velocity>();
-            }
-
-            Assert.Equal(50, scene.EntityCount);
-
-            Query query2 = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (GameObject entity in query2.EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.Equal(50, count);
-
-            scene.Dispose();
         }
 
         /// <summary>
@@ -680,25 +724,26 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_DeleteEntity_PreservesRemainingData()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject e2 = scene.Create(new Position {X = 10, Y = 20});
+                GameObject e3 = scene.Create(new Position {X = 100, Y = 200});
 
-            GameObject e1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject e2 = scene.Create(new Position { X = 10, Y = 20 });
-            GameObject e3 = scene.Create(new Position { X = 100, Y = 200 });
+                // Delete middle entity
+                e2.Delete();
 
-            // Delete middle entity
-            e2.Delete();
+                // Remaining entities should preserve their data
+                ref Position pos3 = ref e3.Get<Position>();
+                Assert.Equal(100, pos3.X);
+                Assert.Equal(200, pos3.Y);
 
-            // Remaining entities should preserve their data
-            ref Position pos3 = ref e3.Get<Position>();
-            Assert.Equal(100, pos3.X);
-            Assert.Equal(200, pos3.Y);
+                ref Position pos1 = ref e1.Get<Position>();
+                Assert.Equal(1, pos1.X);
+                Assert.Equal(2, pos1.Y);
 
-            ref Position pos1 = ref e1.Get<Position>();
-            Assert.Equal(1, pos1.X);
-            Assert.Equal(2, pos1.Y);
-
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -709,18 +754,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_SingleEntity_LifecycleWorks()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            Assert.Equal(1, scene.EntityCount);
-            Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(0, scene.EntityCount);
-            Assert.False(entity.IsAlive);
+                Assert.Equal(0, scene.EntityCount);
+                Assert.False(entity.IsAlive);
 
-            scene.Dispose();
+                
+            }
         }
 
         /// <summary>
@@ -731,13 +778,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </remarks>
         [Fact] public void Archetype_TagOnlyEntity_WorksCorrectly()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            Assert.True(entity.IsAlive);
-            Assert.Equal(1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
 
-            scene.Dispose();
+                
+            }
         }
     }
 }

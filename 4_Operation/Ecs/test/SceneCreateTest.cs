@@ -51,11 +51,12 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EmptyEntityCanBeCreated()
         {
-            using Scene scene = new Scene();
-
-            GameObject entity = scene.Create();
-            Assert.False(entity.IsNull);
-            Assert.True(entity.IsAlive);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                Assert.False(entity.IsNull);
+                Assert.True(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -66,13 +67,15 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityWithSingleComponentCanBeCreated()
         {
-            using Scene scene = new Scene();
-            Position pos = new Position {X = 10, Y = 20};
+            using (Scene scene = new Scene())
+            {
+                Position pos = new Position {X = 10, Y = 20};
 
-            GameObject entity = scene.Create(pos);
+                GameObject entity = scene.Create(pos);
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -83,16 +86,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityWithTwoComponentsCanBeCreated()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4}
+                );
 
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4}
-            );
-
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -103,18 +107,19 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityWithThreeComponentsCanBeCreated()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100}
+                );
 
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 100}
-            );
-
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -125,20 +130,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityWithFourComponentsCanBeCreated()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100},
+                    new Transform {X = 5, Y = 6, Rotation = 45}
+                );
 
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 100},
-                new Transform {X = 5, Y = 6, Rotation = 45}
-            );
-
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Transform>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Transform>());
+            }
         }
 
         /// <summary>
@@ -149,22 +155,23 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityWithFiveComponentsCanBeCreated()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100},
+                    new Transform {X = 5, Y = 6, Rotation = 45},
+                    new TestComponent {Value = 999}
+                );
 
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 100},
-                new Transform {X = 5, Y = 6, Rotation = 45},
-                new TestComponent {Value = 999}
-            );
-
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Transform>());
-            Assert.True(entity.Has<TestComponent>());
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Transform>());
+                Assert.True(entity.Has<TestComponent>());
+            }
         }
 
         /// <summary>
@@ -175,17 +182,18 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_MultipleEntitiesCanBeCreated()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+                GameObject entity3 = scene.Create(new Position {X = 5, Y = 6});
 
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
-            GameObject entity3 = scene.Create(new Position {X = 5, Y = 6});
-
-            Assert.True(entity1.IsAlive);
-            Assert.True(entity2.IsAlive);
-            Assert.True(entity3.IsAlive);
-            Assert.NotEqual(entity1, entity2);
-            Assert.NotEqual(entity2, entity3);
+                Assert.True(entity1.IsAlive);
+                Assert.True(entity2.IsAlive);
+                Assert.True(entity3.IsAlive);
+                Assert.NotEqual(entity1, entity2);
+                Assert.NotEqual(entity2, entity3);
+            }
         }
 
         /// <summary>
@@ -196,15 +204,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_CreatedEntitiesHaveUniqueIdentities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
+                GameObject entity3 = scene.Create();
 
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
-            GameObject entity3 = scene.Create();
-
-            Assert.NotEqual(entity1, entity2);
-            Assert.NotEqual(entity2, entity3);
-            Assert.NotEqual(entity1, entity3);
+                Assert.NotEqual(entity1, entity2);
+                Assert.NotEqual(entity2, entity3);
+                Assert.NotEqual(entity1, entity3);
+            }
         }
 
         /// <summary>
@@ -215,12 +224,14 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityCountIncreases()
         {
-            using Scene scene = new Scene();
-            int initialCount = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                int initialCount = scene.EntityCount;
 
-            scene.Create();
+                scene.Create();
 
-            Assert.Equal(initialCount + 1, scene.EntityCount);
+                Assert.Equal(initialCount + 1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -231,14 +242,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_ComponentDataIsPreservedWhenCreated()
         {
-            using Scene scene = new Scene();
-            Position testPos = new Position {X = 42, Y = 84};
+            using (Scene scene = new Scene())
+            {
+                Position testPos = new Position {X = 42, Y = 84};
 
-            GameObject entity = scene.Create(testPos);
+                GameObject entity = scene.Create(testPos);
 
-            Assert.True(entity.TryGet(out Ref<Position> pos));
-            Assert.Equal(42, pos.Value.X);
-            Assert.Equal(84, pos.Value.Y);
+                Assert.True(entity.TryGet(out Ref<Position> pos));
+                Assert.Equal(42, pos.Value.X);
+                Assert.Equal(84, pos.Value.Y);
+            }
         }
 
         /// <summary>
@@ -249,15 +262,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_ComponentDataIsSeparateBetweenEntities()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
+                GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
 
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
-            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
-
-            Assert.True(entity1.TryGet(out Ref<Position> pos1));
-            Assert.True(entity2.TryGet(out Ref<Position> pos2));
-            Assert.Equal(1, pos1.Value.X);
-            Assert.Equal(2, pos2.Value.X);
+                Assert.True(entity1.TryGet(out Ref<Position> pos1));
+                Assert.True(entity2.TryGet(out Ref<Position> pos2));
+                Assert.Equal(1, pos1.Value.X);
+                Assert.Equal(2, pos2.Value.X);
+            }
         }
 
         /// <summary>
@@ -268,14 +282,16 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntityCanBeCreatedAfterDeletion()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
 
-            entity1.Delete();
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+                entity1.Delete();
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
-            Assert.False(entity1.IsAlive);
-            Assert.True(entity2.IsAlive);
+                Assert.False(entity1.IsAlive);
+                Assert.True(entity2.IsAlive);
+            }
         }
 
         /// <summary>
@@ -286,15 +302,17 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_LargeNumberOfEntitiesCanBeCreated()
         {
-            using Scene scene = new Scene();
-            int entityCount = 1000;
-
-            for (int i = 0; i < entityCount; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position {X = i, Y = i * 2});
-            }
+                int entityCount = 1000;
 
-            Assert.Equal(entityCount, scene.EntityCount);
+                for (int i = 0; i < entityCount; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i * 2});
+                }
+
+                Assert.Equal(entityCount, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -305,12 +323,13 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_CreatedEntitiesAreImmediatelyAlive()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            Assert.True(entity.IsAlive);
-            Assert.False(entity.IsNull);
+                Assert.True(entity.IsAlive);
+                Assert.False(entity.IsNull);
+            }
         }
 
         /// <summary>
@@ -321,18 +340,19 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_CreatedEntityCanBeQueriedImmediately()
         {
-            using Scene scene = new Scene();
-
-            scene.Create(new Position {X = 1, Y = 2});
-            Query query = scene.Query<With<Position>>();
-
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 2});
+                Query query = scene.Query<With<Position>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -343,20 +363,21 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void SceneCreate_EntitiesWithDifferentComponentSetsCoexist()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
+                GameObject entity3 = scene.Create();
 
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
-            GameObject entity3 = scene.Create();
-
-            Assert.True(entity1.IsAlive);
-            Assert.True(entity2.IsAlive);
-            Assert.True(entity3.IsAlive);
-            Assert.True(entity1.Has<Position>());
-            Assert.False(entity1.Has<Velocity>());
-            Assert.True(entity2.Has<Position>());
-            Assert.True(entity2.Has<Velocity>());
-            Assert.False(entity3.Has<Position>());
+                Assert.True(entity1.IsAlive);
+                Assert.True(entity2.IsAlive);
+                Assert.True(entity3.IsAlive);
+                Assert.True(entity1.Has<Position>());
+                Assert.False(entity1.Has<Velocity>());
+                Assert.True(entity2.Has<Position>());
+                Assert.True(entity2.Has<Velocity>());
+                Assert.False(entity3.Has<Position>());
+            }
         }
     }
 }

@@ -44,11 +44,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_SingleRule_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<With<Position>>();
 
-            Query result = scene.Query<With<Position>>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -57,11 +58,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_TwoRules_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<With<Position>, With<Velocity>>();
 
-            Query result = scene.Query<With<Position>, With<Velocity>>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -70,11 +72,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_ThreeRules_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Query result = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -83,12 +86,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_Cached_ReturnsSameInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>>();
+                Query second = scene.Query<With<Position>>();
 
-            Query first = scene.Query<With<Position>>();
-            Query second = scene.Query<With<Position>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -97,11 +101,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_IncludeDisabled_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<IncludeDisabled>();
 
-            Query result = scene.Query<IncludeDisabled>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -110,11 +115,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_NotRule_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<Not<Position>>();
 
-            Query result = scene.Query<Not<Position>>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -123,11 +129,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_MixedRules_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
 
-            Query result = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -136,12 +143,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_DifferentTypeCombinations_AreCachedIndependently()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query single = scene.Query<With<Position>>();
+                Query pair = scene.Query<With<Position>, With<Velocity>>();
 
-            Query single = scene.Query<With<Position>>();
-            Query pair = scene.Query<With<Position>, With<Velocity>>();
-
-            Assert.NotSame(single, pair);
+                Assert.NotSame(single, pair);
+            }
         }
 
         /// <summary>
@@ -150,11 +158,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_EightRules_ReturnsNonNullQuery()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query result = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
 
-            Query result = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
-
-            Assert.NotNull(result);
+                Assert.NotNull(result);
+            }
         }
 
         /// <summary>
@@ -163,12 +172,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_TwoRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>>();
+                Query second = scene.Query<With<Position>, With<Velocity>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>>();
-            Query second = scene.Query<With<Position>, With<Velocity>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -177,12 +187,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_ThreeRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -191,12 +202,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_FourRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -205,12 +217,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_FiveRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -219,12 +232,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_SixRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -233,12 +247,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_SevenRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -247,12 +262,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_EightRules_CachesQueryInstance()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
+                Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
 
-            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
-            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
     }
 }

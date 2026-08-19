@@ -47,10 +47,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CommandBuffer_With_WithoutEntity_Throws()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            Assert.Throws<InvalidOperationException>(() => buffer.With(new Position { X = 1, Y = 2 }));
+                Assert.Throws<InvalidOperationException>(() => buffer.With(new Position {X = 1, Y = 2}));
+            }
         }
 
         /// <summary>
@@ -59,10 +61,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CommandBuffer_WithBoxed_WithoutEntity_Throws()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            Assert.Throws<InvalidOperationException>(() => buffer.WithBoxed(new Position { X = 1, Y = 2 }));
+                Assert.Throws<InvalidOperationException>(() => buffer.WithBoxed(new Position {X = 1, Y = 2}));
+            }
         }
 
         /// <summary>

@@ -14,12 +14,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void MultipleArities_CompileAndExecute()
         {
-            using Scene scene = new();
-            scene.Create(new Position(), new Velocity(), new Health());
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform());
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(), new TestComponent());
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(), new TestComponent(), new AnotherComponent());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position(), new Velocity(), new Health());
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform());
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(), new TestComponent());
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(), new TestComponent(), new AnotherComponent());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>

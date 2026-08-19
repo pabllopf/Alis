@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Assert.NotNull(defaultArchetype);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Assert.True(entity.Has<Position>());
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(e1.Has<Position>());
             Assert.True(e2.Has<Position>());
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(e2.Has<Position>());
             Assert.True(e2.Has<Velocity>());
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(entity.Has<Velocity>());
             Assert.False(entity.Has<Health>());
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Assert.True(count > 0);
 
-            scene.Dispose();
+            
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(100, pos2.X);
             Assert.Equal(200, pos2.Y);
 
-            scene.Dispose();
+            
         }
     }
 }

@@ -48,12 +48,14 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void CreateQuery_WithEmptyRules_CreatesQuery()
         {
-            using Scene scene = new Scene();
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>(System.Array.Empty<Rule>());
+            using (Scene scene = new Scene())
+            {
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>(System.Array.Empty<Rule>());
 
-            Query query = scene.CreateQuery(rules);
+                Query query = scene.CreateQuery(rules);
 
-            Assert.NotNull(query);
+                Assert.NotNull(query);
+            }
         }
 
         /// <summary>
@@ -62,13 +64,15 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void CreateQuery_WithIncludeDisabledRule_MatchesDefaultArchetype()
         {
-            using Scene scene = new Scene();
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
+            using (Scene scene = new Scene())
+            {
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
 
-            Query query = scene.CreateQuery(rules);
-            Span<Archetype> archetypes = query.AsSpan();
+                Query query = scene.CreateQuery(rules);
+                Span<Archetype> archetypes = query.AsSpan();
 
-            Assert.False(archetypes.IsEmpty);
+                Assert.False(archetypes.IsEmpty);
+            }
         }
 
         /// <summary>
@@ -77,14 +81,16 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void CreateEntityThenQuery_AsSpanReturnsNonEmpty()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
 
-            Query query = scene.CreateQuery(rules);
-            Span<Archetype> archetypes = query.AsSpan();
+                Query query = scene.CreateQuery(rules);
+                Span<Archetype> archetypes = query.AsSpan();
 
-            Assert.False(archetypes.IsEmpty);
+                Assert.False(archetypes.IsEmpty);
+            }
         }
 
         /// <summary>
@@ -93,12 +99,14 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_SingleComponent_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position>.QueryEnumerable enumerable = query.Enumerate<Position>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position>.QueryEnumerable enumerable = query.Enumerate<Position>();
+            }
         }
 
         /// <summary>
@@ -107,15 +115,17 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_TwoComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity>();
+            }
         }
 
         /// <summary>
@@ -124,16 +134,18 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_ThreeComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
+            }
         }
 
         /// <summary>
@@ -142,12 +154,14 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_SingleComponent_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
 
-            Query query = scene.CreateQuery(rules);
-            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
+                Query query = scene.CreateQuery(rules);
+                Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
+            }
         }
 
         /// <summary>
@@ -156,12 +170,14 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_SingleComponent_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateChunks<Position>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateChunks<Position>();
+            }
         }
 
         /// <summary>
@@ -170,12 +186,14 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_NoGeneric_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.IncludeDisabledRule]);
 
-            Query query = scene.CreateQuery(rules);
-            GameObjectQueryEnumerator.QueryEnumerable enumerable = query.EnumerateWithEntities();
+                Query query = scene.CreateQuery(rules);
+                GameObjectQueryEnumerator.QueryEnumerable enumerable = query.EnumerateWithEntities();
+            }
         }
 
         /// <summary>
@@ -184,14 +202,16 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void CreateQuery_WithDelegateRule_CreatesQuery()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            Rule delegateRule = Rule.Delegate(id => id.HasComponent(Component<Position>.Id));
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([delegateRule]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                Rule delegateRule = Rule.Delegate(id => id.HasComponent(Component<Position>.Id));
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([delegateRule]);
 
-            Query query = scene.CreateQuery(rules);
+                Query query = scene.CreateQuery(rules);
 
-            Assert.NotNull(query);
+                Assert.NotNull(query);
+            }
         }
         /// <summary>
         ///     Verifies that a query with a rule that matches no archetype returns an empty span.
@@ -200,14 +220,16 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ArchetypeSatisfiesQuery_WithUnmatchedRule_ReturnsEmptySpan()
         {
-            using Scene scene = new Scene();
-            Rule rule = Rule.HasComponent(Component<Position>.Id);
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([rule]);
+            using (Scene scene = new Scene())
+            {
+                Rule rule = Rule.HasComponent(Component<Position>.Id);
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([rule]);
 
-            Query query = scene.CreateQuery(rules);
-            Span<Archetype> archetypes = query.AsSpan();
+                Query query = scene.CreateQuery(rules);
+                Span<Archetype> archetypes = query.AsSpan();
 
-            Assert.True(archetypes.IsEmpty);
+                Assert.True(archetypes.IsEmpty);
+            }
         }
 
         /// <summary>
@@ -216,15 +238,17 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_TwoComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity> enumerable = query.EnumerateWithEntities<Position, Velocity>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity> enumerable = query.EnumerateWithEntities<Position, Velocity>();
+            }
         }
 
         /// <summary>
@@ -233,15 +257,17 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_TwoComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity>();
+            }
         }
 
         /// <summary>
@@ -250,16 +276,18 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_ThreeComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health> enumerable = query.EnumerateWithEntities<Position, Velocity, Health>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health> enumerable = query.EnumerateWithEntities<Position, Velocity, Health>();
+            }
         }
 
         /// <summary>
@@ -268,17 +296,19 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_FourComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
+            }
         }
 
         /// <summary>
@@ -287,17 +317,19 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_FourComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health, Transform> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health, Transform> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform>();
+            }
         }
 
         /// <summary>
@@ -306,17 +338,19 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_FourComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform>();
+            }
         }
 
         /// <summary>
@@ -325,18 +359,20 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_FiveComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent>();
+            }
         }
 
         /// <summary>
@@ -345,18 +381,20 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_FiveComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health, Transform, TestComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health, Transform, TestComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent>();
+            }
         }
 
         /// <summary>
@@ -365,18 +403,20 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_FiveComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent>();
+            }
         }
 
         /// <summary>
@@ -385,19 +425,21 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_SixComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+            }
         }
 
         /// <summary>
@@ -406,19 +448,21 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_SixComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+            }
         }
 
         /// <summary>
@@ -427,19 +471,21 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_SixComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+            }
         }
 
         /// <summary>
@@ -448,20 +494,22 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_SevenComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+            }
         }
 
         /// <summary>
@@ -470,20 +518,22 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_SevenComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+            }
         }
 
         /// <summary>
@@ -492,20 +542,22 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_SevenComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
+            }
         }
 
         /// <summary>
@@ -514,21 +566,23 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Enumerate_EightComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 }, new Armor { Value = 11 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id),
-                Rule.HasComponent(Component<Armor>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10}, new Armor {Value = 11});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id),
+                    Rule.HasComponent(Component<Armor>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+            }
         }
 
         /// <summary>
@@ -537,21 +591,23 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateWithEntities_EightComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 }, new Armor { Value = 11 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id),
-                Rule.HasComponent(Component<Armor>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10}, new Armor {Value = 11});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id),
+                    Rule.HasComponent(Component<Armor>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+                Query query = scene.CreateQuery(rules);
+                QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+            }
         }
 
         /// <summary>
@@ -560,21 +616,23 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void EnumerateChunks_EightComponents_ReturnsEnumerable()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 100 }, new Transform { X = 5, Y = 6, Rotation = 0 }, new TestComponent { Value = 7, Name = "test" }, new AnotherComponent { Data = 8, Y = 9, Name = "a" }, new Damage { Value = 10 }, new Armor { Value = 11 });
-            FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
-                Rule.HasComponent(Component<Position>.Id),
-                Rule.HasComponent(Component<Velocity>.Id),
-                Rule.HasComponent(Component<Health>.Id),
-                Rule.HasComponent(Component<Transform>.Id),
-                Rule.HasComponent(Component<TestComponent>.Id),
-                Rule.HasComponent(Component<AnotherComponent>.Id),
-                Rule.HasComponent(Component<Damage>.Id),
-                Rule.HasComponent(Component<Armor>.Id)
-            ]);
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 100}, new Transform {X = 5, Y = 6, Rotation = 0}, new TestComponent {Value = 7, Name = "test"}, new AnotherComponent {Data = 8, Y = 9, Name = "a"}, new Damage {Value = 10}, new Armor {Value = 11});
+                FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([
+                    Rule.HasComponent(Component<Position>.Id),
+                    Rule.HasComponent(Component<Velocity>.Id),
+                    Rule.HasComponent(Component<Health>.Id),
+                    Rule.HasComponent(Component<Transform>.Id),
+                    Rule.HasComponent(Component<TestComponent>.Id),
+                    Rule.HasComponent(Component<AnotherComponent>.Id),
+                    Rule.HasComponent(Component<Damage>.Id),
+                    Rule.HasComponent(Component<Armor>.Id)
+                ]);
 
-            Query query = scene.CreateQuery(rules);
-            ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+                Query query = scene.CreateQuery(rules);
+                ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+            }
         }
     }
 }

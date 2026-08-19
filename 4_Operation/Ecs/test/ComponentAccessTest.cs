@@ -51,11 +51,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanCheckIfHasComponent()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10});
 
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -64,13 +66,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanGetComponentReference()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos = ref entity.Get<Position>();
+                ref Position pos = ref entity.Get<Position>();
 
-            Assert.Equal(10, pos.X);
-            Assert.Equal(20, pos.Y);
+                Assert.Equal(10, pos.X);
+                Assert.Equal(20, pos.Y);
+            }
         }
 
         /// <summary>
@@ -79,16 +83,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanModifyComponentThroughReference()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 50;
-            pos.Y = 60;
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 50;
+                pos.Y = 60;
 
-            ref Position retrievedPos = ref entity.Get<Position>();
-            Assert.Equal(50, retrievedPos.X);
-            Assert.Equal(60, retrievedPos.Y);
+                ref Position retrievedPos = ref entity.Get<Position>();
+                Assert.Equal(50, retrievedPos.X);
+                Assert.Equal(60, retrievedPos.Y);
+            }
         }
 
         /// <summary>
@@ -97,14 +103,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_TryHasWorksOnLiveEntity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Health {Value = 100});
 
-            bool hasHealth = entity.TryHas<Health>();
-            bool hasPosition = entity.TryHas<Position>();
+                bool hasHealth = entity.TryHas<Health>();
+                bool hasPosition = entity.TryHas<Position>();
 
-            Assert.True(hasHealth);
-            Assert.False(hasPosition);
+                Assert.True(hasHealth);
+                Assert.False(hasPosition);
+            }
         }
 
         /// <summary>
@@ -113,20 +121,22 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanAccessMultipleComponents()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Health {Value = 100},
-                new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Health {Value = 100},
+                    new Velocity {X = 3, Y = 4});
 
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(1, pos.X);
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(1, pos.X);
 
-            ref Health health = ref entity.Get<Health>();
-            Assert.Equal(100, health.Value);
+                ref Health health = ref entity.Get<Health>();
+                Assert.Equal(100, health.Value);
 
-            ref Velocity vel = ref entity.Get<Velocity>();
-            Assert.Equal(3, vel.X);
+                ref Velocity vel = ref entity.Get<Velocity>();
+                Assert.Equal(3, vel.X);
+            }
         }
 
         /// <summary>
@@ -135,14 +145,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_ComponentDataPersistsAcrossAccesses()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Health {Value = 100});
 
-            ref Health health = ref entity.Get<Health>();
-            health.Value = 50;
+                ref Health health = ref entity.Get<Health>();
+                health.Value = 50;
 
-            ref Health secondAccess = ref entity.Get<Health>();
-            Assert.Equal(50, secondAccess.Value);
+                ref Health secondAccess = ref entity.Get<Health>();
+                Assert.Equal(50, secondAccess.Value);
+            }
         }
 
         /// <summary>
@@ -151,16 +163,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanGetComponentMultipleTimes()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            ref Position pos1 = ref entity.Get<Position>();
-            ref Position pos2 = ref entity.Get<Position>();
-            ref Position pos3 = ref entity.Get<Position>();
+                ref Position pos1 = ref entity.Get<Position>();
+                ref Position pos2 = ref entity.Get<Position>();
+                ref Position pos3 = ref entity.Get<Position>();
 
-            Assert.Equal(10, pos1.X);
-            Assert.Equal(10, pos2.X);
-            Assert.Equal(10, pos3.X);
+                Assert.Equal(10, pos1.X);
+                Assert.Equal(10, pos2.X);
+                Assert.Equal(10, pos3.X);
+            }
         }
     }
 }

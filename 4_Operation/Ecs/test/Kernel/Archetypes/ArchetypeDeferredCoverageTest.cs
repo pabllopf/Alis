@@ -49,15 +49,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_SingleEntity()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.IsAlive);
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(10, pos.X);
-            Assert.Equal(20, pos.Y);
+                Assert.True(entity.IsAlive);
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(10, pos.X);
+                Assert.Equal(20, pos.Y);
+            }
         }
 
         /// <summary>
@@ -67,25 +69,28 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_MultipleEntitiesOverflow()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            const int count = 10;
-            GameObject[] entities = new GameObject[count];
-            for (int i = 0; i < count; i++)
+            using (Scene scene = new Scene())
             {
-                entities[i] = scene.Create(new Position { X = i, Y = i * 2 });
-            }
-            scene.ExitDisallowState(null);
+                scene.EnterDisallowState();
+                const int count = 10;
+                GameObject[] entities = new GameObject[count];
+                for (int i = 0; i < count; i++)
+                {
+                    entities[i] = scene.Create(new Position {X = i, Y = i * 2});
+                }
 
-            for (int i = 0; i < count; i++)
-            {
-                Assert.True(entities[i].IsAlive);
-                ref Position pos = ref entities[i].Get<Position>();
-                Assert.Equal(i, pos.X);
-                Assert.Equal(i * 2, pos.Y);
-            }
+                scene.ExitDisallowState(null);
 
-            Assert.Equal(count, scene.EntityCount);
+                for (int i = 0; i < count; i++)
+                {
+                    Assert.True(entities[i].IsAlive);
+                    ref Position pos = ref entities[i].Get<Position>();
+                    Assert.Equal(i, pos.X);
+                    Assert.Equal(i * 2, pos.Y);
+                }
+
+                Assert.Equal(count, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -95,18 +100,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_AfterNormalCreate()
         {
-            using Scene scene = new Scene();
-            GameObject first = scene.Create(new Position { X = 1, Y = 2 });
-            scene.EnterDisallowState();
-            GameObject second = scene.Create(new Position { X = 3, Y = 4 });
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                GameObject first = scene.Create(new Position {X = 1, Y = 2});
+                scene.EnterDisallowState();
+                GameObject second = scene.Create(new Position {X = 3, Y = 4});
+                scene.ExitDisallowState(null);
 
-            Assert.True(first.IsAlive);
-            Assert.True(second.IsAlive);
-            ref Position pos1 = ref first.Get<Position>();
-            Assert.Equal(1, pos1.X);
-            ref Position pos2 = ref second.Get<Position>();
-            Assert.Equal(3, pos2.X);
+                Assert.True(first.IsAlive);
+                Assert.True(second.IsAlive);
+                ref Position pos1 = ref first.Get<Position>();
+                Assert.Equal(1, pos1.X);
+                ref Position pos2 = ref second.Get<Position>();
+                Assert.Equal(3, pos2.X);
+            }
         }
 
         /// <summary>
@@ -115,21 +122,23 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_MultiComponent()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(
-                new Position { X = 100, Y = 200 },
-                new Velocity { X = 5, Y = 10 }
-            );
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(
+                    new Position {X = 100, Y = 200},
+                    new Velocity {X = 5, Y = 10}
+                );
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(100, pos.X);
-            ref Velocity vel = ref entity.Get<Velocity>();
-            Assert.Equal(5, vel.X);
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(100, pos.X);
+                ref Velocity vel = ref entity.Get<Velocity>();
+                Assert.Equal(5, vel.X);
+            }
         }
 
         /// <summary>
@@ -139,16 +148,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_LargeBatchOverflow()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            const int count = 100;
-            for (int i = 0; i < count; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
-            }
-            scene.ExitDisallowState(null);
+                scene.EnterDisallowState();
+                const int count = 100;
+                for (int i = 0; i < count; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
 
-            Assert.Equal(count, scene.EntityCount);
+                scene.ExitDisallowState(null);
+
+                Assert.Equal(count, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -157,14 +169,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_WithComponentAdd()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.IsAlive);
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(1, pos.X);
+                Assert.True(entity.IsAlive);
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(1, pos.X);
+            }
         }
 
         /// <summary>
@@ -174,21 +188,23 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_AlternateArchetype()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 100 }
-            );
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 100}
+                );
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            ref Health hp = ref entity.Get<Health>();
-            Assert.Equal(100, hp.Value);
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                ref Health hp = ref entity.Get<Health>();
+                Assert.Equal(100, hp.Value);
+            }
         }
 
         /// <summary>
@@ -197,18 +213,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_ThenRemoveComponent()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 }
-            );
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4}
+                );
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.Has<Velocity>());
-            entity.Remove<Velocity>();
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                entity.Remove<Velocity>();
+                Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -216,13 +234,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_TagOnlyEntity()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create();
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create();
+                scene.ExitDisallowState(null);
 
-            Assert.True(entity.IsAlive);
-            Assert.Equal(1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -231,19 +251,21 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_MultipleBatches()
         {
-            using Scene scene = new Scene();
-
-            for (int batch = 0; batch < 3; batch++)
+            using (Scene scene = new Scene())
             {
-                scene.EnterDisallowState();
-                for (int i = 0; i < 5; i++)
+                for (int batch = 0; batch < 3; batch++)
                 {
-                    scene.Create(new Position { X = batch * 100 + i, Y = i });
-                }
-                scene.ExitDisallowState(null);
-            }
+                    scene.EnterDisallowState();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        scene.Create(new Position {X = batch * 100 + i, Y = i});
+                    }
 
-            Assert.Equal(15, scene.EntityCount);
+                    scene.ExitDisallowState(null);
+                }
+
+                Assert.Equal(15, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -252,17 +274,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_ThenDelete()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject e1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject e2 = scene.Create(new Position { X = 3, Y = 4 });
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject e1 = scene.Create(new Position {X = 1, Y = 2});
+                GameObject e2 = scene.Create(new Position {X = 3, Y = 4});
+                scene.ExitDisallowState(null);
 
-            Assert.Equal(2, scene.EntityCount);
-            e1.Delete();
-            Assert.Equal(1, scene.EntityCount);
-            Assert.False(e1.IsAlive);
-            Assert.True(e2.IsAlive);
+                Assert.Equal(2, scene.EntityCount);
+                e1.Delete();
+                Assert.Equal(1, scene.EntityCount);
+                Assert.False(e1.IsAlive);
+                Assert.True(e2.IsAlive);
+            }
         }
 
         /// <summary>
@@ -271,14 +295,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetArchetypeId_CacheMissPushesToTable()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
 
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
+                Assert.True(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
 
-            entity.Add(new Velocity());
-            Assert.True(entity.Has<Velocity>());
+                entity.Add(new Velocity());
+                Assert.True(entity.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -287,15 +313,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_AdjacentLookup()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                GameObject entity = scene.Create(new Position {X = 5, Y = 10});
+                scene.ExitDisallowState(null);
 
-            entity.Add(new Velocity { X = 1, Y = 2 });
-            Assert.True(entity.Has<Velocity>());
-            ref Position pos = ref entity.Get<Position>();
-            Assert.Equal(5, pos.X);
+                entity.Add(new Velocity {X = 1, Y = 2});
+                Assert.True(entity.Has<Velocity>());
+                ref Position pos = ref entity.Get<Position>();
+                Assert.Equal(5, pos.X);
+            }
         }
 
         /// <summary>
@@ -304,21 +332,23 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_NestedDisallowState()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            scene.EnterDisallowState();
-            scene.EnterDisallowState();
-
-            for (int i = 0; i < 3; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i });
+                scene.EnterDisallowState();
+                scene.EnterDisallowState();
+                scene.EnterDisallowState();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i});
+                }
+
+                scene.ExitDisallowState(null);
+                scene.ExitDisallowState(null);
+                scene.ExitDisallowState(null);
+
+                Assert.Equal(3, scene.EntityCount);
             }
-
-            scene.ExitDisallowState(null);
-            scene.ExitDisallowState(null);
-            scene.ExitDisallowState(null);
-
-            Assert.Equal(3, scene.EntityCount);
         }
 
         /// <summary>
@@ -327,23 +357,26 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_EnsureCapacityPoolResize()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            for (int i = 0; i < 50; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position { X = i, Y = i * 2 });
+                scene.EnterDisallowState();
+                for (int i = 0; i < 50; i++)
+                {
+                    scene.Create(new Position {X = i, Y = i * 2});
+                }
+
+                scene.ExitDisallowState(null);
+
+                scene.DefaultArchetype.EnsureCapacity(200);
+                Assert.Equal(50, scene.EntityCount);
+
+                for (int i = 0; i < 150; i++)
+                {
+                    scene.Create(new Position {X = i + 50, Y = i});
+                }
+
+                Assert.Equal(200, scene.EntityCount);
             }
-            scene.ExitDisallowState(null);
-
-            scene.DefaultArchetype.EnsureCapacity(200);
-            Assert.Equal(50, scene.EntityCount);
-
-            for (int i = 0; i < 150; i++)
-            {
-                scene.Create(new Position { X = i + 50, Y = i });
-            }
-
-            Assert.Equal(200, scene.EntityCount);
         }
 
         /// <summary>
@@ -352,15 +385,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_EntityCount_AfterDeferredResolve()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.Create(new Position());
+                scene.Create(new Position());
+                scene.Create(new Position());
+                scene.ExitDisallowState(null);
 
-            scene.EnterDisallowState();
-            scene.Create(new Position());
-            scene.Create(new Position());
-            scene.Create(new Position());
-            scene.ExitDisallowState(null);
-
-            Assert.Equal(3, scene.EntityCount);
+                Assert.Equal(3, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -368,12 +402,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_Id_ValidAfterDeferredCreate()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            scene.Create(new Position());
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.Create(new Position());
+                scene.ExitDisallowState(null);
 
-            GameObjectType id = scene.DefaultArchetype.Id;
+                GameObjectType id = scene.DefaultArchetype.Id;
+            }
         }
 
         /// <summary>
@@ -381,14 +417,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_Data_ValidAfterDeferredCreate()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            scene.Create(new Position());
-            scene.ExitDisallowState(null);
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.Create(new Position());
+                scene.ExitDisallowState(null);
 
-            Fields data = scene.DefaultArchetype.Data;
-            Assert.NotNull(data.Map);
-            Assert.NotNull(data.Components);
+                Fields data = scene.DefaultArchetype.Data;
+                Assert.NotNull(data.Map);
+                Assert.NotNull(data.Components);
+            }
         }
 
         /// <summary>
@@ -396,16 +434,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_DeferredCreate_ReleaseArrays()
         {
-            using Scene scene = new Scene();
-            scene.EnterDisallowState();
-            for (int i = 0; i < 10; i++)
+            using (Scene scene = new Scene())
             {
-                scene.Create(new Position());
-            }
-            scene.ExitDisallowState(null);
+                scene.EnterDisallowState();
+                for (int i = 0; i < 10; i++)
+                {
+                    scene.Create(new Position());
+                }
 
-            Assert.Equal(10, scene.EntityCount);
-            scene.Dispose();
+                scene.ExitDisallowState(null);
+
+                Assert.Equal(10, scene.EntityCount);
+                
+            }
         }
     }
 }

@@ -45,18 +45,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectLocation_EntityIdentity_PersistsAcrossOperations()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            GameObject id1 = entity;
-            entity.Add(new Health {Value = 100});
-            GameObject id2 = entity;
-            ref Position pos = ref entity.Get<Position>();
-            pos.X = 50;
-            GameObject id3 = entity;
+                GameObject id1 = entity;
+                entity.Add(new Health {Value = 100});
+                GameObject id2 = entity;
+                ref Position pos = ref entity.Get<Position>();
+                pos.X = 50;
+                GameObject id3 = entity;
 
-            Assert.Equal(id1, id2);
-            Assert.Equal(id2, id3);
+                Assert.Equal(id1, id2);
+                Assert.Equal(id2, id3);
+            }
         }
 
        
@@ -65,13 +67,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectLocation_EntityLocationWithinScene_Accessible()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 100, Y = 200});
 
-            GameObject entity = scene.Create(new Position {X = 100, Y = 200});
-
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Assert.Equal(100, entity.Get<Position>().X);
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Assert.Equal(100, entity.Get<Position>().X);
+            }
         }
 
        

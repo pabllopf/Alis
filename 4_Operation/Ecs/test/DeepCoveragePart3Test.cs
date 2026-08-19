@@ -32,16 +32,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastLookup_MultipleCacheMisses_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            for (int i = 0; i < 12; i++)
+            using (Scene scene = new())
             {
-                go.Add(new Velocity { X = i });
-                go.Remove<Velocity>();
-                go.Add(new Health { Value = i });
-                go.Remove<Health>();
+                GameObject go = scene.Create(new Position());
+                for (int i = 0; i < 12; i++)
+                {
+                    go.Add(new Velocity {X = i});
+                    go.Remove<Velocity>();
+                    go.Add(new Health {Value = i});
+                    go.Remove<Health>();
+                }
+
+                scene.Update();
             }
-            scene.Update();
         }
 
         /// <summary>
@@ -49,15 +52,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void CommandBuffer_MultipleOperations_Work()
         {
-            using Scene scene = new();
-            GameObject go1 = scene.Create(new Position());
-            GameObject go2 = scene.Create(new Position(), new Velocity());
-            CommandBuffer buffer = new CommandBuffer(scene);
-            buffer.AddComponent(go1, new Velocity { X = 10 });
-            buffer.AddComponent(go1, new Health { Value = 100 });
-            buffer.RemoveComponent<Velocity>(go2);
-            buffer.DeleteEntity(go1);
-            buffer.Playback();
+            using (Scene scene = new())
+            {
+                GameObject go1 = scene.Create(new Position());
+                GameObject go2 = scene.Create(new Position(), new Velocity());
+                CommandBuffer buffer = new CommandBuffer(scene);
+                buffer.AddComponent(go1, new Velocity {X = 10});
+                buffer.AddComponent(go1, new Health {Value = 100});
+                buffer.RemoveComponent<Velocity>(go2);
+                buffer.DeleteEntity(go1);
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -105,15 +110,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_AllArities_Enumeration()
         {
-            using Scene scene = new();
-            GameObject c8 = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
-                                  new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
-            Query q8 = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
-                                   With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
-            foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> tuple in q8.EnumerateWithEntities<Position, Velocity, Health, Transform,
-                                                          TestComponent, AnotherComponent, Damage, Armor>())
+            using (Scene scene = new())
             {
-                Assert.Equal(c8, tuple.GameObject);
+                GameObject c8 = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+                Query q8 = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
+                    With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
+                foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> tuple in q8.EnumerateWithEntities<Position, Velocity, Health, Transform,
+                             TestComponent, AnotherComponent, Damage, Armor>())
+                {
+                    Assert.Equal(c8, tuple.GameObject);
+                }
             }
         }
 
@@ -122,11 +129,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_QueryWithNotAndIncludeDisabled_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            Query query = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
-            Assert.NotNull(query);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position(), new Velocity());
+                Query query = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
+                Assert.NotNull(query);
+            }
         }
 
         /// <summary>
@@ -134,8 +143,10 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_DefaultArchetype_IsNotNull()
         {
-            using Scene scene = new();
-            Assert.NotNull(scene.DefaultArchetype);
+            using (Scene scene = new())
+            {
+                Assert.NotNull(scene.DefaultArchetype);
+            }
         }
 
         /// <summary>
@@ -145,7 +156,7 @@ namespace Alis.Core.Ecs.Test
         {
             Scene scene = new();
             scene.EnterDisallowState();
-            scene.Dispose();
+            
         }
 
         /// <summary>

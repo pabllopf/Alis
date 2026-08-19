@@ -89,18 +89,20 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Not_CanBeUsedInQuery()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Velocity {X = 1, Y = 1});
-            scene.Create();
-
-            Query query = scene.Query<Not<Position>>();
-            int count = 0;
-            foreach (GameObject _ in query.EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Velocity {X = 1, Y = 1});
+                scene.Create();
 
-            Assert.Equal(2, count);
+                Query query = scene.Query<Not<Position>>();
+                int count = 0;
+                foreach (GameObject _ in query.EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -108,19 +110,21 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Not_FiltersEntitiesCorrectly()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Velocity {X = 2, Y = 2});
-            scene.Create(new Velocity {X = 3, Y = 3}, new Health {Value = 10});
-
-            Query query = scene.Query<Not<Position>, With<Velocity>>();
-            int count = 0;
-            foreach (RefTuple<Velocity> _ in query.Enumerate<Velocity>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Velocity {X = 2, Y = 2});
+                scene.Create(new Velocity {X = 3, Y = 3}, new Health {Value = 10});
 
-            Assert.Equal(2, count);
+                Query query = scene.Query<Not<Position>, With<Velocity>>();
+                int count = 0;
+                foreach (RefTuple<Velocity> _ in query.Enumerate<Velocity>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -128,19 +132,21 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Not_CanBeCombinedWithWithRule()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
-            scene.Create(new Velocity {X = 2, Y = 2});
-            scene.Create(new Velocity {X = 3, Y = 3}, new Health {Value = 10});
-
-            Query query = scene.Query<With<Velocity>, Not<Position>>();
-            int count = 0;
-            foreach (RefTuple<Velocity> _ in query.Enumerate<Velocity>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
+                scene.Create(new Velocity {X = 2, Y = 2});
+                scene.Create(new Velocity {X = 3, Y = 3}, new Health {Value = 10});
 
-            Assert.Equal(2, count);
+                Query query = scene.Query<With<Velocity>, Not<Position>>();
+                int count = 0;
+                foreach (RefTuple<Velocity> _ in query.Enumerate<Velocity>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>

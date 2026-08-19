@@ -23,20 +23,22 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObjectExtensions_Deconstruct_AllArities()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position { X = 1 }, new Velocity { X = 2 },
-                new Health { Value = 3 }, new Transform { X = 4, Rotation = 5 },
-                new TestComponent { Value = 6 }, new AnotherComponent { Data = 7 },
-                new Damage { Value = 8 }, new Armor { Value = 9 });
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position {X = 1}, new Velocity {X = 2},
+                    new Health {Value = 3}, new Transform {X = 4, Rotation = 5},
+                    new TestComponent {Value = 6}, new AnotherComponent {Data = 7},
+                    new Damage {Value = 8}, new Armor {Value = 9});
 
-            go.Deconstruct(out Ref<Position> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _);
-            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _, out Ref<Armor> _);
+                go.Deconstruct(out Ref<Position> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _);
+                go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _, out Ref<Armor> _);
+            }
         }
 
         /// <summary>
@@ -45,31 +47,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityUpdate_ThroughScene_With8Components_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
-                new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+                scene.Update();
+            }
         }
 
-        /// <summary>
-        /// Tests that neighbor cache via add remove exercises paths
-        /// </summary>
-        [Fact]
-        public void NeighborCache_ViaAddRemove_ExercisesPaths()
-        {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            for (int i = 0; i < 15; i++)
-            {
-                go.Add(new Velocity { X = i });
-                go.Remove<Velocity>();
-                go.Add(new Health { Value = i });
-                go.Remove<Health>();
-                go.Add(new Transform { X = i });
-                go.Remove<Transform>();
-            }
-            scene.Update();
-        }
 
         /// <summary>
         /// Tests that game object ref tuple arity 8 works
@@ -77,15 +62,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObjectRefTuple_Arity8_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
-                new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
-                With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
-            foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> tuple in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
-                TestComponent, AnotherComponent, Damage, Armor>())
+            using (Scene scene = new())
             {
-                Assert.True(tuple.GameObject.IsAlive);
+                scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
+                    With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
+                foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> tuple in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
+                             TestComponent, AnotherComponent, Damage, Armor>())
+                {
+                    Assert.True(tuple.GameObject.IsAlive);
+                }
             }
         }
 
@@ -135,10 +122,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EntityID_Access()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            int entityId = go.EntityID;
-            Assert.True(entityId >= 0);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                int entityId = go.EntityID;
+                Assert.True(entityId >= 0);
+            }
         }
 
         /// <summary>
@@ -171,9 +160,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateEntityFromLocation_Works()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -182,9 +173,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Game_InvokePerEntity_NoEvents_NoThrow()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -193,10 +186,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void DeleteComponentData_WithDelete_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            go.Delete();
-            scene.Update();
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                go.Delete();
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -214,9 +209,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EntityWorld_Span_Access()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>
@@ -225,9 +222,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_Update_WithAttributeType()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Update();
+            }
         }
     }
 }

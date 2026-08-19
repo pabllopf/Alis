@@ -60,16 +60,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_ConstructorAndDispose_ToggleStructuralChanges()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            Query query = scene.Query<With<Position>>();
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                Query query = scene.Query<With<Position>>();
 
-            Assert.True(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
 
-            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
-            using Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
+                Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
 
-            Assert.False(scene.AllowStructualChanges);
+                using (enumerable.GetEnumerator())
+                {
+                    Assert.False(scene.AllowStructualChanges);
+                }
+            }
         }
 
         /// <summary>
@@ -77,20 +81,22 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_ForeachCompletes_ExitsDisallowState()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-
-            Assert.True(scene.AllowStructualChanges);
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _) in query.EnumerateWithEntities<Position, Velocity>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            Assert.Equal(1, count);
-            Assert.True(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
+
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _) in query.EnumerateWithEntities<Position, Velocity>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -98,20 +104,22 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_ForeachBreak_StillExitsDisallowState()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 2, Y = 2}, new Health {Value = 20});
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _) in query.EnumerateWithEntities<Position, Velocity, Health>())
+            using (Scene scene = new Scene())
             {
-                count++;
-                break;
-            }
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
+                scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 2, Y = 2}, new Health {Value = 20});
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            Assert.Equal(1, count);
-            Assert.True(scene.AllowStructualChanges);
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _) in query.EnumerateWithEntities<Position, Velocity, Health>())
+                {
+                    count++;
+                    break;
+                }
+
+                Assert.Equal(1, count);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -119,15 +127,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_MoveNext_EmptyQuery_ReturnsFalse()
         {
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>>();
-            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
+            using (Scene scene = new Scene())
+            {
+                Query query = scene.Query<With<Position>>();
+                Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
 
-            using Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
-            bool moved = enumerator.MoveNext();
+                using (Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator())
+                {
+                    bool moved = enumerator.MoveNext();
 
-            Assert.False(moved);
-            Assert.False(scene.AllowStructualChanges);
+                    Assert.False(moved);
+                    Assert.False(scene.AllowStructualChanges);
+                }
+            }
         }
 
         /// <summary>
@@ -135,18 +147,22 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_MoveNextAndCurrent_Arity1_WorksAsExpected()
         {
-            using Scene scene = new Scene();
-            GameObject created = scene.Create(new Position {X = 42, Y = 84});
-            Query query = scene.Query<With<Position>>();
-            using Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = query.EnumerateWithEntities<Position>().GetEnumerator();
+            using (Scene scene = new Scene())
+            {
+                GameObject created = scene.Create(new Position {X = 42, Y = 84});
+                Query query = scene.Query<With<Position>>();
 
-            Assert.True(enumerator.MoveNext());
-            Ecs.Systems.GameObjectRefTuple<Position> current = enumerator.Current;
-            Assert.True(current.GameObject.IsAlive);
-            Assert.Equal(created, current.GameObject);
-            Assert.Equal(42, current.Item1.Value.X);
-            Assert.Equal(84, current.Item1.Value.Y);
-            Assert.False(enumerator.MoveNext());
+                using (Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = query.EnumerateWithEntities<Position>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    Ecs.Systems.GameObjectRefTuple<Position> current = enumerator.Current;
+                    Assert.True(current.GameObject.IsAlive);
+                    Assert.Equal(created, current.GameObject);
+                    Assert.Equal(42, current.Item1.Value.X);
+                    Assert.Equal(84, current.Item1.Value.Y);
+                    Assert.False(enumerator.MoveNext());
+                }
+            }
         }
 
         /// <summary>
@@ -154,16 +170,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Current_Arity2_MapsEntityAndRefs()
         {
-            using Scene scene = new Scene();
-            GameObject created = scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 30, Y = 40});
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            using GameObjectQueryEnumerator<Position, Velocity> enumerator = query.EnumerateWithEntities<Position, Velocity>().GetEnumerator();
+            using (Scene scene = new Scene())
+            {
+                GameObject created = scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 30, Y = 40});
+                Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            Assert.True(enumerator.MoveNext());
-            GameObjectRefTuple<Position, Velocity> current = enumerator.Current;
-            Assert.Equal(created, current.GameObject);
-            Assert.Equal(10, current.Item1.Value.X);
-            Assert.Equal(30, current.Item2.Value.X);
+                using (GameObjectQueryEnumerator<Position, Velocity> enumerator = query.EnumerateWithEntities<Position, Velocity>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    GameObjectRefTuple<Position, Velocity> current = enumerator.Current;
+                    Assert.Equal(created, current.GameObject);
+                    Assert.Equal(10, current.Item1.Value.X);
+                    Assert.Equal(30, current.Item2.Value.X);
+                }
+            }
         }
 
         /// <summary>
@@ -171,22 +191,24 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Arity4_CurrentContainsAllComponents()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
-
-            foreach ((GameObject entity, Ref<Position> p, Ref<Velocity> v, Ref<Health> h, Ref<Transform> t) in query.EnumerateWithEntities<Position, Velocity, Health, Transform>())
+            using (Scene scene = new Scene())
             {
-                Assert.True(entity.IsAlive);
-                Assert.Equal(1, p.Value.X);
-                Assert.Equal(3, v.Value.X);
-                Assert.Equal(5, h.Value.Value);
-                Assert.Equal(8, t.Value.Rotation);
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
+
+                foreach ((GameObject entity, Ref<Position> p, Ref<Velocity> v, Ref<Health> h, Ref<Transform> t) in query.EnumerateWithEntities<Position, Velocity, Health, Transform>())
+                {
+                    Assert.True(entity.IsAlive);
+                    Assert.Equal(1, p.Value.X);
+                    Assert.Equal(3, v.Value.X);
+                    Assert.Equal(5, h.Value.Value);
+                    Assert.Equal(8, t.Value.Rotation);
+                }
             }
         }
 
@@ -195,24 +217,26 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Arity5_CanEnumerateAllComponents()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> test) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(9, test.Value.Value);
-                count++;
-            }
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> test) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent>())
+                {
+                    Assert.Equal(9, test.Value.Value);
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -220,25 +244,27 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Arity6_CanEnumerateAllComponents()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {Data = 10, Y = 11}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> another) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(10, another.Value.Data);
-                count++;
-            }
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"},
+                    new AnotherComponent {Data = 10, Y = 11}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> another) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+                {
+                    Assert.Equal(10, another.Value.Data);
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -246,26 +272,28 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Arity7_CanEnumerateAllComponents()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {Data = 10, Y = 11},
-                new Damage {Value = 12}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> _, Ref<Damage> damage) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(12, damage.Value.Value);
-                count++;
-            }
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"},
+                    new AnotherComponent {Data = 10, Y = 11},
+                    new Damage {Value = 12}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> _, Ref<Damage> damage) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>())
+                {
+                    Assert.Equal(12, damage.Value.Value);
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -273,27 +301,29 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_Arity8_CanEnumerateAllComponents()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {Data = 10, Y = 11},
-                new Damage {Value = 12},
-                new Armor {Value = 13}
-            );
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
-
-            int count = 0;
-            foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> _, Ref<Damage> _, Ref<Armor> armor) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            using (Scene scene = new Scene())
             {
-                Assert.Equal(13, armor.Value.Value);
-                count++;
-            }
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"},
+                    new AnotherComponent {Data = 10, Y = 11},
+                    new Damage {Value = 12},
+                    new Armor {Value = 13}
+                );
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
 
-            Assert.Equal(1, count);
+                int count = 0;
+                foreach ((GameObject _, Ref<Position> _, Ref<Velocity> _, Ref<Health> _, Ref<Transform> _, Ref<TestComponent> _, Ref<AnotherComponent> _, Ref<Damage> _, Ref<Armor> armor) in query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+                {
+                    Assert.Equal(13, armor.Value.Value);
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -301,21 +331,23 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectQueryEnumerator_IteratesAcrossMultipleArchetypes()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
-            Query query = scene.Query<With<Position>>();
-
-            int count = 0;
-            float sumX = 0;
-            foreach ((GameObject _, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-                sumX += pos.Value.X;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
+                Query query = scene.Query<With<Position>>();
 
-            Assert.Equal(2, count);
-            Assert.Equal(3, sumX);
+                int count = 0;
+                float sumX = 0;
+                foreach ((GameObject _, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+                {
+                    count++;
+                    sumX += pos.Value.X;
+                }
+
+                Assert.Equal(2, count);
+                Assert.Equal(3, sumX);
+            }
         }
     }
 }

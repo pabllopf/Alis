@@ -78,17 +78,19 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </remarks>
         [Fact] public void With_CanBeUsedInQuery()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
 
-            Assert.Equal(1, count);
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -99,18 +101,20 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </remarks>
         [Fact] public void With_FiltersEntitiesCorrectly()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Velocity {X = 1, Y = 1}); // No Position
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Velocity {X = 1, Y = 1}); // No Position
 
-            Assert.Equal(1, count);
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (RefTuple<Position> _ in query.Enumerate<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>
@@ -121,18 +125,20 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </remarks>
         [Fact] public void MultipleWithFilters_WorkTogether()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
-            scene.Create(new Position {X = 2, Y = 2});
-
-            Query query = scene.Query<With<Position>, With<Velocity>>();
-            int count = 0;
-            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
+                scene.Create(new Position {X = 2, Y = 2});
 
-            Assert.Equal(1, count);
+                Query query = scene.Query<With<Position>, With<Velocity>>();
+                int count = 0;
+                foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(1, count);
+            }
         }
 
         /// <summary>

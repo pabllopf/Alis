@@ -51,22 +51,24 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void EcsStress_RapidComponentCyclesDoNotCorrupt()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-
-            for (int cycle = 0; cycle < 100; cycle++)
+            using (Scene scene = new Scene())
             {
-                entity.Add(new Position());
-                entity.Add(new Velocity());
-                entity.Add(new Health());
-                entity.Remove<Health>();
-                entity.Remove<Velocity>();
-                entity.Remove<Position>();
-            }
+                GameObject entity = scene.Create();
 
-            Assert.False(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
+                for (int cycle = 0; cycle < 100; cycle++)
+                {
+                    entity.Add(new Position());
+                    entity.Add(new Velocity());
+                    entity.Add(new Health());
+                    entity.Remove<Health>();
+                    entity.Remove<Velocity>();
+                    entity.Remove<Position>();
+                }
+
+                Assert.False(entity.Has<Position>());
+                Assert.False(entity.Has<Velocity>());
+                Assert.False(entity.Has<Health>());
+            }
         }
     }
 }

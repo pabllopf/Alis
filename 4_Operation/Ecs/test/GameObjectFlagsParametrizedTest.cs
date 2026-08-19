@@ -42,11 +42,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectFlags_NewEntity_IsAlive()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            GameObject entity = scene.Create();
-
-            Assert.True(entity.IsAlive);
+                Assert.True(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -54,11 +55,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectFlags_NewEntity_IsNotNull()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            GameObject entity = scene.Create();
-
-            Assert.False(entity.IsNull);
+                Assert.False(entity.IsNull);
+            }
         }
 
         /// <summary>
@@ -66,12 +68,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectFlags_DeletedEntity_IsNotAlive()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.False(entity.IsAlive);
+                Assert.False(entity.IsAlive);
+            }
         }
 
     
@@ -103,14 +107,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObjectFlags_CompareDeletedWithNull_BothNotAlive()
         {
-            using Scene scene = new Scene();
-            GameObject created = scene.Create();
-            GameObject nullGo = GameObject.Null;
+            using (Scene scene = new Scene())
+            {
+                GameObject created = scene.Create();
+                GameObject nullGo = GameObject.Null;
 
-            created.Delete();
+                created.Delete();
 
-            Assert.False(created.IsAlive);
-            Assert.False(nullGo.IsAlive);
+                Assert.False(created.IsAlive);
+                Assert.False(nullGo.IsAlive);
+            }
         }
 
        

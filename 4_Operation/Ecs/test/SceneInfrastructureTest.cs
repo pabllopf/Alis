@@ -68,16 +68,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateFromObjects_WithSingleComponent_CreatesEntityWithComponent()
         {
-            using Scene scene = new Scene();
-            object[] components = [new Position {X = 9, Y = 11}];
+            using (Scene scene = new Scene())
+            {
+                object[] components = [new Position {X = 9, Y = 11}];
 
-            GameObject entity = scene.CreateFromObjects(components);
+                GameObject entity = scene.CreateFromObjects(components);
 
-            Assert.True(entity.IsAlive);
-            Assert.True(entity.Has<Position>());
-            Position p = entity.Get<Position>();
-            Assert.Equal(9, p.X);
-            Assert.Equal(11, p.Y);
+                Assert.True(entity.IsAlive);
+                Assert.True(entity.Has<Position>());
+                Position p = entity.Get<Position>();
+                Assert.Equal(9, p.X);
+                Assert.Equal(11, p.Y);
+            }
         }
 
         /// <summary>
@@ -86,14 +88,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateFromObjects_WithMultipleComponents_CreatesEntityWithAllComponents()
         {
-            using Scene scene = new Scene();
-            object[] components = [new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5}];
+            using (Scene scene = new Scene())
+            {
+                object[] components = [new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5}];
 
-            GameObject entity = scene.CreateFromObjects(components);
+                GameObject entity = scene.CreateFromObjects(components);
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -102,13 +106,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateFromObjects_WithEmptySpan_CreatesAliveEntity()
         {
-            using Scene scene = new Scene();
-            object[] components = [];
+            using (Scene scene = new Scene())
+            {
+                object[] components = [];
 
-            GameObject entity = scene.CreateFromObjects(components);
+                GameObject entity = scene.CreateFromObjects(components);
 
-            Assert.True(entity.IsAlive);
-            Assert.Equal(1, scene.EntityCount);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -117,14 +123,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreateFromObjects_WithMoreThan127Components_ThrowsArgumentException()
         {
-            using Scene scene = new Scene();
-            object[] components = new object[128];
-            for (int i = 0; i < components.Length; i++)
+            using (Scene scene = new Scene())
             {
-                components[i] = new TestComponent {Value = i};
-            }
+                object[] components = new object[128];
+                for (int i = 0; i < components.Length; i++)
+                {
+                    components[i] = new TestComponent {Value = i};
+                }
 
-            Assert.Throws<ArgumentException>(() => scene.CreateFromObjects(components));
+                Assert.Throws<ArgumentException>(() => scene.CreateFromObjects(components));
+            }
         }
 
         /// <summary>
@@ -133,14 +141,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CustomQuery_WithSameRules_ReturnsCachedQueryInstance()
         {
-            using Scene scene = new Scene();
-            Rule withPosition = new With<Position>().Rule;
-            Rule withVelocity = new With<Velocity>().Rule;
+            using (Scene scene = new Scene())
+            {
+                Rule withPosition = new With<Position>().Rule;
+                Rule withVelocity = new With<Velocity>().Rule;
 
-            Query q1 = scene.CustomQuery(withPosition, withVelocity);
-            Query q2 = scene.CustomQuery(withPosition, withVelocity);
+                Query q1 = scene.CustomQuery(withPosition, withVelocity);
+                Query q2 = scene.CustomQuery(withPosition, withVelocity);
 
-            Assert.Same(q1, q2);
+                Assert.Same(q1, q2);
+            }
         }
 
         /// <summary>
@@ -149,15 +159,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CustomQuery_WithDifferentRules_ReturnsDifferentQueryInstances()
         {
-            using Scene scene = new Scene();
-            Rule withPosition = new With<Position>().Rule;
-            Rule withVelocity = new With<Velocity>().Rule;
-            Rule withHealth = new With<Health>().Rule;
+            using (Scene scene = new Scene())
+            {
+                Rule withPosition = new With<Position>().Rule;
+                Rule withVelocity = new With<Velocity>().Rule;
+                Rule withHealth = new With<Health>().Rule;
 
-            Query q1 = scene.CustomQuery(withPosition, withVelocity);
-            Query q2 = scene.CustomQuery(withPosition, withHealth);
+                Query q1 = scene.CustomQuery(withPosition, withVelocity);
+                Query q2 = scene.CustomQuery(withPosition, withHealth);
 
-            Assert.NotSame(q1, q2);
+                Assert.NotSame(q1, q2);
+            }
         }
 
         /// <summary>
@@ -166,14 +178,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_InvokeEntityCreated_InvokesSubscribers()
         {
-            using Scene scene = new Scene();
-            bool invoked = false;
-            scene.EntityCreated += _ => invoked = true;
-            GameObject entity = scene.CreateEntityWithoutEvent();
+            using (Scene scene = new Scene())
+            {
+                bool invoked = false;
+                scene.EntityCreated += _ => invoked = true;
+                GameObject entity = scene.CreateEntityWithoutEvent();
 
-            scene.InvokeEntityCreated(entity);
+                scene.InvokeEntityCreated(entity);
 
-            Assert.True(invoked);
+                Assert.True(invoked);
+            }
         }
 
         /// <summary>
@@ -182,12 +196,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_UpdateArchetypeTable_ResizesBackingArray()
         {
-            using Scene scene = new Scene();
-            int initialLength = scene.WorldArchetypeTable.Length;
+            using (Scene scene = new Scene())
+            {
+                int initialLength = scene.WorldArchetypeTable.Length;
 
-            scene.UpdateArchetypeTable(initialLength + 8);
+                scene.UpdateArchetypeTable(initialLength + 8);
 
-            Assert.Equal(initialLength + 8, scene.WorldArchetypeTable.Length);
+                Assert.Equal(initialLength + 8, scene.WorldArchetypeTable.Length);
+            }
         }
 
         /// <summary>
@@ -196,15 +212,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EnterAndExitDisallowState_TracksAllowStructuralChanges()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Assert.True(scene.AllowStructualChanges);
 
-            Assert.True(scene.AllowStructualChanges);
+                scene.EnterDisallowState();
+                Assert.False(scene.AllowStructualChanges);
 
-            scene.EnterDisallowState();
-            Assert.False(scene.AllowStructualChanges);
-
-            scene.ExitDisallowState(null);
-            Assert.True(scene.AllowStructualChanges);
+                scene.ExitDisallowState(null);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -213,17 +230,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EnterDisallowState_IsReentrantAndRequiresMatchingExits()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.EnterDisallowState();
+                Assert.False(scene.AllowStructualChanges);
 
-            scene.EnterDisallowState();
-            scene.EnterDisallowState();
-            Assert.False(scene.AllowStructualChanges);
+                scene.ExitDisallowState(null);
+                Assert.False(scene.AllowStructualChanges);
 
-            scene.ExitDisallowState(null);
-            Assert.False(scene.AllowStructualChanges);
-
-            scene.ExitDisallowState(null);
-            Assert.True(scene.AllowStructualChanges);
+                scene.ExitDisallowState(null);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -232,29 +250,30 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MoveEntityToArchetypeIso_PreservesMovedEntityComponents()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype destination = CreateDestinationArchetype(scene);
 
-            Archetype destination = CreateDestinationArchetype(scene);
+                GameObject entity = scene.Create(
+                    new Position {X = 10, Y = 20},
+                    new Velocity {X = 3, Y = 4}
+                );
 
-            GameObject entity = scene.Create(
-                new Position {X = 10, Y = 20},
-                new Velocity {X = 3, Y = 4}
-            );
+                ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(entity.EntityID);
 
-            ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(entity.EntityID);
+                scene.MoveEntityToArchetypeIso(entity, ref lookup, destination);
 
-            scene.MoveEntityToArchetypeIso(entity, ref lookup, destination);
+                Position pos = entity.Get<Position>();
+                Velocity vel = entity.Get<Velocity>();
 
-            Position pos = entity.Get<Position>();
-            Velocity vel = entity.Get<Velocity>();
-
-            Assert.True(entity.IsAlive);
-            Assert.Equal(10, pos.X);
-            Assert.Equal(20, pos.Y);
-            Assert.Equal(3, vel.X);
-            Assert.Equal(4, vel.Y);
-            Assert.True(entity.Has<Health>());
-            Assert.Same(destination, lookup.Archetype);
+                Assert.True(entity.IsAlive);
+                Assert.Equal(10, pos.X);
+                Assert.Equal(20, pos.Y);
+                Assert.Equal(3, vel.X);
+                Assert.Equal(4, vel.Y);
+                Assert.True(entity.Has<Health>());
+                Assert.Same(destination, lookup.Archetype);
+            }
         }
 
         /// <summary>
@@ -263,35 +282,37 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MoveEntityToArchetypeIso_KeepsOtherEntitiesValidAfterSourceCompaction()
         {
-            using Scene scene = new Scene();
-            Archetype destination = CreateDestinationArchetype(scene);
+            using (Scene scene = new Scene())
+            {
+                Archetype destination = CreateDestinationArchetype(scene);
 
-            GameObject moved = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 6}
-            );
+                GameObject moved = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 5, Y = 6}
+                );
 
-            GameObject stays = scene.Create(
-                new Position {X = 100, Y = 200},
-                new Velocity {X = 7, Y = 8}
-            );
+                GameObject stays = scene.Create(
+                    new Position {X = 100, Y = 200},
+                    new Velocity {X = 7, Y = 8}
+                );
 
-            ref GameObjectLocation movedLookup = ref scene.EntityTable.UnsafeIndexNoResize(moved.EntityID);
-            Archetype sourceArchetype = movedLookup.Archetype;
+                ref GameObjectLocation movedLookup = ref scene.EntityTable.UnsafeIndexNoResize(moved.EntityID);
+                Archetype sourceArchetype = movedLookup.Archetype;
 
-            scene.MoveEntityToArchetypeIso(moved, ref movedLookup, destination);
+                scene.MoveEntityToArchetypeIso(moved, ref movedLookup, destination);
 
-            // Accessing the second entity validates that source archetype compaction updated its location correctly.
-            Position staysPos = stays.Get<Position>();
-            Velocity staysVel = stays.Get<Velocity>();
+                // Accessing the second entity validates that source archetype compaction updated its location correctly.
+                Position staysPos = stays.Get<Position>();
+                Velocity staysVel = stays.Get<Velocity>();
 
-            Assert.True(stays.IsAlive);
-            Assert.Equal(100, staysPos.X);
-            Assert.Equal(200, staysPos.Y);
-            Assert.Equal(7, staysVel.X);
-            Assert.Equal(8, staysVel.Y);
-            Assert.Same(sourceArchetype, scene.EntityTable.UnsafeIndexNoResize(stays.EntityID).Archetype);
-            Assert.Same(destination, scene.EntityTable.UnsafeIndexNoResize(moved.EntityID).Archetype);
+                Assert.True(stays.IsAlive);
+                Assert.Equal(100, staysPos.X);
+                Assert.Equal(200, staysPos.Y);
+                Assert.Equal(7, staysVel.X);
+                Assert.Equal(8, staysVel.Y);
+                Assert.Same(sourceArchetype, scene.EntityTable.UnsafeIndexNoResize(stays.EntityID).Archetype);
+                Assert.Same(destination, scene.EntityTable.UnsafeIndexNoResize(moved.EntityID).Archetype);
+            }
         }
 
         /// <summary>

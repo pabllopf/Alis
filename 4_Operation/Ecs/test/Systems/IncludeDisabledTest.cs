@@ -81,18 +81,20 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void IncludeDisabled_CanBeUsedAloneInQuery()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Velocity {X = 2, Y = 2});
-
-            Query query = scene.Query<IncludeDisabled>();
-            int count = 0;
-            foreach (GameObject _ in query.EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Velocity {X = 2, Y = 2});
 
-            Assert.Equal(2, count);
+                Query query = scene.Query<IncludeDisabled>();
+                int count = 0;
+                foreach (GameObject _ in query.EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -101,28 +103,30 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void IncludeDisabled_DoesNotChangeWithFilteringBehavior()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
-            scene.Create(new Velocity {X = 4, Y = 4});
-
-            Query withOnly = scene.Query<With<Position>>();
-            Query withIncludeDisabled = scene.Query<With<Position>, IncludeDisabled>();
-
-            int withOnlyCount = 0;
-            foreach (RefTuple<Position> _ in withOnly.Enumerate<Position>())
+            using (Scene scene = new Scene())
             {
-                withOnlyCount++;
-            }
+                scene.Create(new Position {X = 1, Y = 1});
+                scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 3, Y = 3});
+                scene.Create(new Velocity {X = 4, Y = 4});
 
-            int withIncludeDisabledCount = 0;
-            foreach (RefTuple<Position> _ in withIncludeDisabled.Enumerate<Position>())
-            {
-                withIncludeDisabledCount++;
-            }
+                Query withOnly = scene.Query<With<Position>>();
+                Query withIncludeDisabled = scene.Query<With<Position>, IncludeDisabled>();
 
-            Assert.Equal(2, withOnlyCount);
-            Assert.Equal(withOnlyCount, withIncludeDisabledCount);
+                int withOnlyCount = 0;
+                foreach (RefTuple<Position> _ in withOnly.Enumerate<Position>())
+                {
+                    withOnlyCount++;
+                }
+
+                int withIncludeDisabledCount = 0;
+                foreach (RefTuple<Position> _ in withIncludeDisabled.Enumerate<Position>())
+                {
+                    withIncludeDisabledCount++;
+                }
+
+                Assert.Equal(2, withOnlyCount);
+                Assert.Equal(withOnlyCount, withIncludeDisabledCount);
+            }
         }
 
         /// <summary>

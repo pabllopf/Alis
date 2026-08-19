@@ -53,10 +53,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void AddComponent_CanProcess()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            Assert.NotNull(scene);
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position(), new Velocity());
+                Assert.NotNull(scene);
+            }
         }
 
         /// <summary>
@@ -64,10 +66,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void DeleteComponent_CanProcess()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position(), new Velocity());
-            go.Remove<Velocity>();
-            Assert.True(go.IsAlive);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position(), new Velocity());
+                go.Remove<Velocity>();
+                Assert.True(go.IsAlive);
+            }
         }
 
         /// <summary>
@@ -75,9 +79,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void CreateCommand_CanProcess()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Update();
+            using (Scene scene = new())
+            {
+                scene.Create(new Position());
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -85,12 +91,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void Ref_CanCreateAndRead()
         {
-            using Scene scene = new();
-            scene.Create(new Position { X = 42 });
-            Query query = scene.Query<With<Position>>();
-            foreach (Ecs.Systems.GameObjectRefTuple<Position> tuple in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new())
             {
-                Assert.Equal(42, tuple.Item1.Value.X);
+                scene.Create(new Position {X = 42});
+                Query query = scene.Query<With<Position>>();
+                foreach (Ecs.Systems.GameObjectRefTuple<Position> tuple in query.EnumerateWithEntities<Position>())
+                {
+                    Assert.Equal(42, tuple.Item1.Value.X);
+                }
             }
         }
     }

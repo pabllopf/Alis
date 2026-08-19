@@ -56,10 +56,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void ArchetypeAdded_WhenAlreadyInGlobalTable_DoesNotDoublePush()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
-            scene.Create(new Position { X = 5, Y = 6 });
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Position {X = 3, Y = 4});
+                scene.Create(new Position {X = 5, Y = 6});
+            }
         }
 
         /// <summary>
@@ -68,9 +70,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CustomQuery_WithNoRules_ReturnsQuery()
         {
-            using Scene scene = new Scene();
-            Query q = scene.CustomQuery();
-            Assert.NotNull(q);
+            using (Scene scene = new Scene())
+            {
+                Query q = scene.CustomQuery();
+                Assert.NotNull(q);
+            }
         }
 
         /// <summary>
@@ -79,12 +83,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateEntityFromLocation_WithRecycledId_ReusesId()
         {
-            using Scene scene = new Scene();
-            GameObject go1 = scene.Create();
-            int firstId = go1.EntityID;
-            go1.Delete();
-            GameObject go2 = scene.Create();
-            Assert.Equal(firstId, go2.EntityID);
+            using (Scene scene = new Scene())
+            {
+                GameObject go1 = scene.Create();
+                int firstId = go1.EntityID;
+                go1.Delete();
+                GameObject go2 = scene.Create();
+                Assert.Equal(firstId, go2.EntityID);
+            }
         }
 
         /// <summary>
@@ -93,10 +99,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_Single_WithoutListener_ReturnsCorrectSpan()
         {
-            using Scene scene = new Scene();
-            ChunkTuple<Position> result = scene.CreateMany<Position>(5);
-            Assert.Equal(5, result.Span.Length);
-            Assert.Equal(5, scene.EntityCount);
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position> result = scene.CreateMany<Position>(5);
+                Assert.Equal(5, result.Span.Length);
+                Assert.Equal(5, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -105,12 +113,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityDeleted_WithPerEntityEvents_FiresIndividualEvents()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position { X = 1, Y = 2 });
-            bool entityDeletedFired = false;
-            go.OnDelete += _ => entityDeletedFired = true;
-            go.Delete();
-            Assert.True(entityDeletedFired);
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create(new Position {X = 1, Y = 2});
+                bool entityDeletedFired = false;
+                go.OnDelete += _ => entityDeletedFired = true;
+                go.Delete();
+                Assert.True(entityDeletedFired);
+            }
         }
 
         /// <summary>
@@ -119,12 +129,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void ComponentRemoved_WithPerEntityEvents_FiresGenericRemoveEvent()
         {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position { X = 1, Y = 2 }, new Health { Value = 10 });
-            bool genericRemoved = false;
-            go.OnComponentRemoved += (_, _) => genericRemoved = true;
-            go.Remove<Position>();
-            Assert.True(genericRemoved);
+            using (Scene scene = new Scene())
+            {
+                GameObject go = scene.Create(new Position {X = 1, Y = 2}, new Health {Value = 10});
+                bool genericRemoved = false;
+                go.OnComponentRemoved += (_, _) => genericRemoved = true;
+                go.Remove<Position>();
+                Assert.True(genericRemoved);
+            }
         }
 
         /// <summary>
@@ -133,12 +145,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_TwoComponents_VerifyValues()
         {
-            using Scene scene = new Scene();
-            ChunkTuple<Position, Health> result = scene.CreateMany<Position, Health>(3);
-            result.Span1[0] = new Position { X = 1, Y = 2 };
-            result.Span2[0] = new Health { Value = 10 };
-            Assert.Equal(1, result.Span1[0].X);
-            Assert.Equal(10, result.Span2[0].Value);
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Health> result = scene.CreateMany<Position, Health>(3);
+                result.Span1[0] = new Position {X = 1, Y = 2};
+                result.Span2[0] = new Health {Value = 10};
+                Assert.Equal(1, result.Span1[0].X);
+                Assert.Equal(10, result.Span2[0].Value);
+            }
         }
 
         /// <summary>
@@ -147,14 +161,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_ThreeComponents_VerifyValues()
         {
-            using Scene scene = new Scene();
-            ChunkTuple<Position, Health, Velocity> result = scene.CreateMany<Position, Health, Velocity>(2);
-            result.Span1[0] = new Position { X = 1, Y = 2 };
-            result.Span2[0] = new Health { Value = 10 };
-            result.Span3[0] = new Velocity { X = 3, Y = 4 };
-            Assert.Equal(1, result.Span1[0].X);
-            Assert.Equal(10, result.Span2[0].Value);
-            Assert.Equal(3, result.Span3[0].X);
+            using (Scene scene = new Scene())
+            {
+                ChunkTuple<Position, Health, Velocity> result = scene.CreateMany<Position, Health, Velocity>(2);
+                result.Span1[0] = new Position {X = 1, Y = 2};
+                result.Span2[0] = new Health {Value = 10};
+                result.Span3[0] = new Velocity {X = 3, Y = 4};
+                Assert.Equal(1, result.Span1[0].X);
+                Assert.Equal(10, result.Span2[0].Value);
+                Assert.Equal(3, result.Span3[0].X);
+            }
         }
 
         /// <summary>
@@ -163,23 +179,25 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Create_ManyArity_NonDeferred_AllAritiesWork()
         {
-            using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position());
-            Assert.True(e1.IsAlive);
-            GameObject e2 = scene.Create(new Position(), new Health());
-            Assert.True(e2.IsAlive);
-            GameObject e3 = scene.Create(new Position(), new Health(), new Velocity());
-            Assert.True(e3.IsAlive);
-            GameObject e4 = scene.Create(new Position(), new Health(), new Velocity(), new Damage());
-            Assert.True(e4.IsAlive);
-            GameObject e5 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor());
-            Assert.True(e5.IsAlive);
-            GameObject e6 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform());
-            Assert.True(e6.IsAlive);
-            GameObject e7 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform(), new TestComponent());
-            Assert.True(e7.IsAlive);
-            GameObject e8 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform(), new TestComponent(), new AnotherComponent());
-            Assert.True(e8.IsAlive);
+            using (Scene scene = new Scene())
+            {
+                GameObject e1 = scene.Create(new Position());
+                Assert.True(e1.IsAlive);
+                GameObject e2 = scene.Create(new Position(), new Health());
+                Assert.True(e2.IsAlive);
+                GameObject e3 = scene.Create(new Position(), new Health(), new Velocity());
+                Assert.True(e3.IsAlive);
+                GameObject e4 = scene.Create(new Position(), new Health(), new Velocity(), new Damage());
+                Assert.True(e4.IsAlive);
+                GameObject e5 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor());
+                Assert.True(e5.IsAlive);
+                GameObject e6 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform());
+                Assert.True(e6.IsAlive);
+                GameObject e7 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform(), new TestComponent());
+                Assert.True(e7.IsAlive);
+                GameObject e8 = scene.Create(new Position(), new Health(), new Velocity(), new Damage(), new Armor(), new Transform(), new TestComponent(), new AnotherComponent());
+                Assert.True(e8.IsAlive);
+            }
         }
 
         /// <summary>
@@ -188,13 +206,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void DeleteEntity_CalledMultipleTimes_HandlesVersionCorrectly()
         {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 5; i++)
+            using (Scene scene = new Scene())
             {
-                GameObject go = scene.Create(new Position { X = i });
-                go.Delete();
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject go = scene.Create(new Position {X = i});
+                    go.Delete();
+                }
+
+                Assert.Equal(0, scene.EntityCount);
             }
-            Assert.Equal(0, scene.EntityCount);
         }
 
         /// <summary>
@@ -203,17 +224,20 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void ArchetypeAdded_UpdatesQueryCacheAndFilters()
         {
-            using Scene scene = new Scene();
-            Rule withPos = new With<Position>().Rule;
-            Query q = scene.CustomQuery(withPos);
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
-            int count = 0;
-            foreach (GameObject _ in q.EnumerateWithEntities())
+            using (Scene scene = new Scene())
             {
-                count++;
+                Rule withPos = new With<Position>().Rule;
+                Query q = scene.CustomQuery(withPos);
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Position {X = 3, Y = 4});
+                int count = 0;
+                foreach (GameObject _ in q.EnumerateWithEntities())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
             }
-            Assert.Equal(2, count);
         }
     }
 

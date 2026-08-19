@@ -51,10 +51,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void IsAlive_ReturnsTrue_ForNewlyCreatedEntity()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-            Assert.True(gameObject.IsAlive);
+                Assert.True(gameObject.IsAlive);
+            }
         }
 
         /// <summary>
@@ -62,12 +64,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void IsAlive_ReturnsFalse_AfterDeletion()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
 
-            gameObject.Delete();
+                gameObject.Delete();
 
-            Assert.False(gameObject.IsAlive);
+                Assert.False(gameObject.IsAlive);
+            }
         }
 
         /// <summary>
@@ -96,13 +100,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void IsAlive_RemainsTrue_AfterAddAndRemoveComponents()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
 
-            gameObject.Add(new Velocity {X = 1, Y = 1});
-            gameObject.Remove<Velocity>();
+                gameObject.Add(new Velocity {X = 1, Y = 1});
+                gameObject.Remove<Velocity>();
 
-            Assert.True(gameObject.IsAlive);
+                Assert.True(gameObject.IsAlive);
+            }
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -140,10 +146,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void IsNull_ReturnsFalse_ForCreatedEntity()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 5});
 
-            Assert.False(gameObject.IsNull);
+                Assert.False(gameObject.IsNull);
+            }
         }
 
         /// <summary>
@@ -152,12 +160,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void IsNull_ReturnsFalse_EvenAfterDeletion()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent {Value = 7});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new TestComponent {Value = 7});
 
-            gameObject.Delete();
+                gameObject.Delete();
 
-            Assert.False(gameObject.IsNull);
+                Assert.False(gameObject.IsNull);
+            }
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -167,10 +177,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ReturnsSameSceneInstance_ThatCreatedEntity()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
 
-            Assert.Equal(scene, gameObject.Scene);
+                Assert.Equal(scene, gameObject.Scene);
+            }
         }
 
         /// <summary>
@@ -188,10 +200,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_IsNotNull_ForLiveEntity()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Velocity {X = 2, Y = 3});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Velocity {X = 2, Y = 3});
 
-            Assert.NotNull(gameObject.Scene);
+                Assert.NotNull(gameObject.Scene);
+            }
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -201,12 +215,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_ContainsSingleComponentType_WhenCreatedWithOneComponent()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 10, Y = 20});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 10, Y = 20});
 
-            FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
+                FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
 
-            Assert.Contains(Component<Position>.Id, types);
+                Assert.Contains(Component<Position>.Id, types);
+            }
         }
 
         /// <summary>
@@ -214,17 +230,19 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_ContainsAllComponentTypes_WhenCreatedWithMultiple()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 1, Y = 1},
-                new Health {Value = 100});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 1, Y = 1},
+                    new Health {Value = 100});
 
-            FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
+                FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
 
-            Assert.Contains(Component<Position>.Id, types);
-            Assert.Contains(Component<Velocity>.Id, types);
-            Assert.Contains(Component<Health>.Id, types);
+                Assert.Contains(Component<Position>.Id, types);
+                Assert.Contains(Component<Velocity>.Id, types);
+                Assert.Contains(Component<Health>.Id, types);
+            }
         }
 
         /// <summary>
@@ -232,12 +250,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_Updates_AfterComponentAdded()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
 
-            gameObject.Add(new Velocity {X = 1, Y = 1});
+                gameObject.Add(new Velocity {X = 1, Y = 1});
 
-            Assert.Contains(Component<Velocity>.Id, gameObject.ComponentTypes);
+                Assert.Contains(Component<Velocity>.Id, gameObject.ComponentTypes);
+            }
         }
 
         /// <summary>
@@ -245,15 +265,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_DoesNotContain_RemovedComponent()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4});
 
-            gameObject.Remove<Velocity>();
+                gameObject.Remove<Velocity>();
 
-            Assert.DoesNotContain(Component<Velocity>.Id, gameObject.ComponentTypes);
-            Assert.Contains(Component<Position>.Id, gameObject.ComponentTypes);
+                Assert.DoesNotContain(Component<Velocity>.Id, gameObject.ComponentTypes);
+                Assert.Contains(Component<Position>.Id, gameObject.ComponentTypes);
+            }
         }
 
         /// <summary>
@@ -261,11 +283,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentTypes_Throws_ForDeadEntity()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
-            gameObject.Delete();
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+                gameObject.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => { _ = gameObject.ComponentTypes; });
+                Assert.Throws<InvalidOperationException>(() => { _ = gameObject.ComponentTypes; });
+            }
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -275,12 +299,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_MatchesEntityTypeOf_ForSameComponentSet()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
 
-            GameObjectType expected = GameObject.EntityTypeOf([Component<Position>.Id]);
+                GameObjectType expected = GameObject.EntityTypeOf([Component<Position>.Id]);
 
-            Assert.Equal(expected, gameObject.Type);
+                Assert.Equal(expected, gameObject.Type);
+            }
         }
 
         /// <summary>
@@ -288,11 +314,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_IsSame_ForEntitiesWithIdenticalComponentSets()
         {
-            using Scene scene = new Scene();
-            GameObject a = scene.Create(new Velocity {X = 1, Y = 1});
-            GameObject b = scene.Create(new Velocity {X = 2, Y = 2});
+            using (Scene scene = new Scene())
+            {
+                GameObject a = scene.Create(new Velocity {X = 1, Y = 1});
+                GameObject b = scene.Create(new Velocity {X = 2, Y = 2});
 
-            Assert.Equal(a.Type, b.Type);
+                Assert.Equal(a.Type, b.Type);
+            }
         }
 
         /// <summary>
@@ -300,11 +328,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_IsDifferent_ForEntitiesWithDifferentComponentSets()
         {
-            using Scene scene = new Scene();
-            GameObject a = scene.Create(new Position {X = 1, Y = 1});
-            GameObject b = scene.Create(new Velocity {X = 1, Y = 1});
+            using (Scene scene = new Scene())
+            {
+                GameObject a = scene.Create(new Position {X = 1, Y = 1});
+                GameObject b = scene.Create(new Velocity {X = 1, Y = 1});
 
-            Assert.NotEqual(a.Type, b.Type);
+                Assert.NotEqual(a.Type, b.Type);
+            }
         }
 
         /// <summary>
@@ -312,13 +342,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_Changes_AfterComponentAdded()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
-            GameObjectType typeBefore = gameObject.Type;
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
+                GameObjectType typeBefore = gameObject.Type;
 
-            gameObject.Add(new Velocity {X = 1, Y = 1});
+                gameObject.Add(new Velocity {X = 1, Y = 1});
 
-            Assert.NotEqual(typeBefore, gameObject.Type);
+                Assert.NotEqual(typeBefore, gameObject.Type);
+            }
         }
 
         /// <summary>
@@ -326,16 +358,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Type_Changes_AfterComponentRemoved()
         {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(
-                new Position {X = 0, Y = 0},
-                new Velocity {X = 1, Y = 1});
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(
+                    new Position {X = 0, Y = 0},
+                    new Velocity {X = 1, Y = 1});
 
-            GameObjectType typeBefore = gameObject.Type;
+                GameObjectType typeBefore = gameObject.Type;
 
-            gameObject.Remove<Velocity>();
+                gameObject.Remove<Velocity>();
 
-            Assert.NotEqual(typeBefore, gameObject.Type);
+                Assert.NotEqual(typeBefore, gameObject.Type);
+            }
         }
 
     /// <summary>
@@ -343,11 +377,13 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Type_Throws_ForDeadEntity()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
-        gameObject.Delete();
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+            gameObject.Delete();
 
-        Assert.Throws<InvalidOperationException>(() => { _ = gameObject.Type; });
+            Assert.Throws<InvalidOperationException>(() => { _ = gameObject.Type; });
+        }
     }
 
     /// <summary>
@@ -355,10 +391,12 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Has_WithType_ReturnsTrue_WhenComponentExists()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        Assert.True(gameObject.Has(typeof(Position)));
+            Assert.True(gameObject.Has(typeof(Position)));
+        }
     }
 
     /// <summary>
@@ -366,10 +404,12 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Has_WithType_ReturnsFalse_WhenComponentDoesNotExist()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        Assert.False(gameObject.Has(typeof(Velocity)));
+            Assert.False(gameObject.Has(typeof(Velocity)));
+        }
     }
 
     /// <summary>
@@ -377,10 +417,12 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryHas_ReturnsTrue_WhenComponentExists()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        Assert.True(gameObject.TryHas<Position>());
+            Assert.True(gameObject.TryHas<Position>());
+        }
     }
 
     /// <summary>
@@ -388,11 +430,13 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryHas_ReturnsFalse_ForDeadEntity()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
-        gameObject.Delete();
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+            gameObject.Delete();
 
-        Assert.False(gameObject.TryHas<Position>());
+            Assert.False(gameObject.TryHas<Position>());
+        }
     }
 
     /// <summary>
@@ -400,10 +444,12 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryHas_WithType_ReturnsTrue_WhenComponentExists()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        Assert.True(gameObject.TryHas(typeof(Position)));
+            Assert.True(gameObject.TryHas(typeof(Position)));
+        }
     }
 
     /// <summary>
@@ -411,14 +457,16 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Get_WithComponentId_ReturnsBoxedComponent()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 5, Y = 10});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 5, Y = 10});
 
-        object result = gameObject.Get(Component<Position>.Id);
+            object result = gameObject.Get(Component<Position>.Id);
 
-        Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(5f, pos.X, 5);
-        Assert.Equal(10f, pos.Y, 5);
+            Position pos = Assert.IsType<Position>(result);
+            Assert.Equal(5f, pos.X, 5);
+            Assert.Equal(10f, pos.Y, 5);
+        }
     }
 
     /// <summary>
@@ -426,14 +474,16 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Get_WithType_ReturnsBoxedComponent()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 3, Y = 7});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 3, Y = 7});
 
-        object result = gameObject.Get(typeof(Position));
+            object result = gameObject.Get(typeof(Position));
 
-        Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(3f, pos.X, 5);
-        Assert.Equal(7f, pos.Y, 5);
+            Position pos = Assert.IsType<Position>(result);
+            Assert.Equal(3f, pos.X, 5);
+            Assert.Equal(7f, pos.Y, 5);
+        }
     }
 
     /// <summary>
@@ -441,10 +491,12 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Get_WithComponentId_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        Assert.Throws<ComponentNotFoundException>(() => gameObject.Get(Component<Velocity>.Id));
+            Assert.Throws<ComponentNotFoundException>(() => gameObject.Get(Component<Velocity>.Id));
+        }
     }
 
     /// <summary>
@@ -452,15 +504,17 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Set_WithComponentId_SetsComponentValue()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        gameObject.Set(Component<Position>.Id, new Position {X = 10, Y = 20});
+            gameObject.Set(Component<Position>.Id, new Position {X = 10, Y = 20});
 
-        object result = gameObject.Get(Component<Position>.Id);
-        Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(10f, pos.X, 5);
-        Assert.Equal(20f, pos.Y, 5);
+            object result = gameObject.Get(Component<Position>.Id);
+            Position pos = Assert.IsType<Position>(result);
+            Assert.Equal(10f, pos.X, 5);
+            Assert.Equal(20f, pos.Y, 5);
+        }
     }
 
     /// <summary>
@@ -468,14 +522,16 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void Set_WithType_SetsComponentValue()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
 
-        gameObject.Set(typeof(Position), new Position {X = 99, Y = 100});
+            gameObject.Set(typeof(Position), new Position {X = 99, Y = 100});
 
-        ref Position pos = ref gameObject.Get<Position>();
-        Assert.Equal(99f, pos.X, 5);
-        Assert.Equal(100f, pos.Y, 5);
+            ref Position pos = ref gameObject.Get<Position>();
+            Assert.Equal(99f, pos.X, 5);
+            Assert.Equal(100f, pos.Y, 5);
+        }
     }
 
     /// <summary>
@@ -483,14 +539,16 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryGet_ReturnsTrue_WhenComponentExists()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        bool result = gameObject.TryGet<Position>(out Ref<Position> value);
+            bool result = gameObject.TryGet<Position>(out Ref<Position> value);
 
-        Assert.True(result);
-        Assert.Equal(1f, value.Value.X, 5);
-        Assert.Equal(2f, value.Value.Y, 5);
+            Assert.True(result);
+            Assert.Equal(1f, value.Value.X, 5);
+            Assert.Equal(2f, value.Value.Y, 5);
+        }
     }
 
     /// <summary>
@@ -498,12 +556,14 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryGet_ReturnsFalse_WhenComponentDoesNotExist()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        bool result = gameObject.TryGet<Velocity>(out Ref<Velocity> _);
+            bool result = gameObject.TryGet<Velocity>(out Ref<Velocity> _);
 
-        Assert.False(result);
+            Assert.False(result);
+        }
     }
 
     /// <summary>
@@ -511,13 +571,15 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     [Fact] public void TryGet_ReturnsFalse_ForDeadEntity()
     {
-        using Scene scene = new Scene();
-        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
-        gameObject.Delete();
+        using (Scene scene = new Scene())
+        {
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+            gameObject.Delete();
 
-        bool result = gameObject.TryGet<Position>(out Ref<Position> _);
+            bool result = gameObject.TryGet<Position>(out Ref<Position> _);
 
-        Assert.False(result);
+            Assert.False(result);
+        }
     }
 }
 }

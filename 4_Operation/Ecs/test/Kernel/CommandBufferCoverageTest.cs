@@ -48,13 +48,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void RemoveComponent_ByType_AddsToBuffer()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.RemoveComponent(entity, typeof(TestComponent));
+                buffer.RemoveComponent(entity, typeof(TestComponent));
 
-            Assert.True(buffer.HasBufferItems);
+                Assert.True(buffer.HasBufferItems);
+            }
         }
 
         /// <summary>
@@ -63,13 +65,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void AddComponent_BoxedNoType_AddsToBuffer()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.AddComponent(entity, new AnotherComponent { Name = "boxed" });
+                buffer.AddComponent(entity, new AnotherComponent {Name = "boxed"});
 
-            Assert.True(buffer.HasBufferItems);
+                Assert.True(buffer.HasBufferItems);
+            }
         }
 
         /// <summary>
@@ -78,13 +82,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void AddComponent_ByComponentIdAndBoxed_AddsToBuffer()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.AddComponent(entity, Component<AnotherComponent>.Id, new AnotherComponent { Name = "id-boxed" });
+                buffer.AddComponent(entity, Component<AnotherComponent>.Id, new AnotherComponent {Name = "id-boxed"});
 
-            Assert.True(buffer.HasBufferItems);
+                Assert.True(buffer.HasBufferItems);
+            }
         }
 
         
@@ -93,13 +99,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Entity_With_End_CreatedEntityHasComponents()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity().With(new Position { X = 10, Y = 20 }).With(new Velocity { X = 1, Y = 2 }).End();
-            buffer.Playback();
+                buffer.Entity().With(new Position {X = 10, Y = 20}).With(new Velocity {X = 1, Y = 2}).End();
+                buffer.Playback();
 
-            scene.Update();
+                scene.Update();
+            }
         }
 
         /// <summary>
@@ -107,13 +115,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void WithBoxed_ByComponentId_WorksInEntityChain()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity()
-                .WithBoxed(Component<Position>.Id, new Position { X = 5, Y = 10 })
-                .End();
-            buffer.Playback();
+                buffer.Entity()
+                    .WithBoxed(Component<Position>.Id, new Position {X = 5, Y = 10})
+                    .End();
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -121,13 +131,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void WithBoxed_ByValue_WorksInEntityChain()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity()
-                .WithBoxed(new Position { X = 3, Y = 6 })
-                .End();
-            buffer.Playback();
+                buffer.Entity()
+                    .WithBoxed(new Position {X = 3, Y = 6})
+                    .End();
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -135,13 +147,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void WithBoxed_ByType_WorksInEntityChain()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity()
-                .WithBoxed(typeof(Position), new Position { X = 7, Y = 14 })
-                .End();
-            buffer.Playback();
+                buffer.Entity()
+                    .WithBoxed(typeof(Position), new Position {X = 7, Y = 14})
+                    .End();
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -150,13 +164,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void With_WithoutEntity_ThrowsInvalidOperation()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
-                buffer.With(new Position { X = 1, Y = 2 }));
+                InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
+                    buffer.With(new Position {X = 1, Y = 2}));
 
-            Assert.Contains("CommandBuffer.GameObject()", exception.Message);
+                Assert.Contains("CommandBuffer.GameObject()", exception.Message);
+            }
         }
 
         /// <summary>
@@ -165,11 +181,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void WithBoxed_WithoutEntity_ThrowsInvalidOperation()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            Assert.Throws<InvalidOperationException>(() =>
-                buffer.WithBoxed(Component<Position>.Id, new Position { X = 1, Y = 2 }));
+                Assert.Throws<InvalidOperationException>(() =>
+                    buffer.WithBoxed(Component<Position>.Id, new Position {X = 1, Y = 2}));
+            }
         }
 
         /// <summary>
@@ -178,15 +196,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Entity_CalledTwiceWithoutEnd_ThrowsInvalidOperation()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity();
+                buffer.Entity();
 
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
-                buffer.Entity());
+                InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
+                    buffer.Entity());
 
-            Assert.Contains("currently being created", exception.Message);
+                Assert.Contains("currently being created", exception.Message);
+            }
         }
         
         /// <summary>
@@ -224,13 +244,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Clear_WithCreatedEntities_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            buffer.Entity().With(new Position { X = 1, Y = 2 }).End();
-            buffer.Clear();
+                buffer.Entity().With(new Position {X = 1, Y = 2}).End();
+                buffer.Clear();
 
-            Assert.False(buffer.HasBufferItems);
+                Assert.False(buffer.HasBufferItems);
+            }
         }
 
         /// <summary>
@@ -239,13 +261,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void HasBufferItems_AfterDeleteEntity_ReturnsTrue()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.DeleteEntity(entity);
+                buffer.DeleteEntity(entity);
 
-            Assert.True(buffer.HasBufferItems);
+                Assert.True(buffer.HasBufferItems);
+            }
         }
 
         /// <summary>
@@ -254,14 +278,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void HasBufferItems_AfterClear_ReturnsFalse()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.DeleteEntity(entity);
-            buffer.Clear();
+                buffer.DeleteEntity(entity);
+                buffer.Clear();
 
-            Assert.False(buffer.HasBufferItems);
+                Assert.False(buffer.HasBufferItems);
+            }
         }
 
         /// <summary>
@@ -270,16 +296,18 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Playback_AfterClear_ReturnsFalse()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.DeleteEntity(entity);
-            buffer.Clear();
+                buffer.DeleteEntity(entity);
+                buffer.Clear();
 
-            bool result = buffer.Playback();
+                bool result = buffer.Playback();
 
-            Assert.False(result);
+                Assert.False(result);
+            }
         }
 
         /// <summary>
@@ -289,14 +317,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Entity_End_WithoutComponents_CreatesEntityOnPlayback()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            int initialCount = scene.EntityCount;
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                int initialCount = scene.EntityCount;
 
-            buffer.Entity().End();
-            buffer.Playback();
+                buffer.Entity().End();
+                buffer.Playback();
 
-            Assert.Equal(initialCount + 1, scene.EntityCount);
+                Assert.Equal(initialCount + 1, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -305,16 +335,18 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void DeleteEntity_VersionMismatch_SkipsOnPlayback()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.DeleteEntity(entity);
-            entity.Delete();
+                buffer.DeleteEntity(entity);
+                entity.Delete();
 
-            buffer.Playback();
+                buffer.Playback();
 
-            Assert.False(entity.IsAlive);
+                Assert.False(entity.IsAlive);
+            }
         }
 
         /// <summary>
@@ -323,14 +355,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void RemoveComponent_VersionMismatch_SkipsOnPlayback()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.RemoveComponent<TestComponent>(entity);
-            entity.Delete();
+                buffer.RemoveComponent<TestComponent>(entity);
+                entity.Delete();
 
-            buffer.Playback();
+                buffer.Playback();
+            }
         }
 
         /// <summary>
@@ -339,14 +373,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void AddComponent_VersionMismatch_SkipsOnPlayback()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
+                GameObject entity = scene.Create(new TestComponent {Value = 1});
 
-            buffer.AddComponent(entity, new AnotherComponent { Name = "test" });
-            entity.Delete();
+                buffer.AddComponent(entity, new AnotherComponent {Name = "test"});
+                entity.Delete();
 
-            buffer.Playback();
+                buffer.Playback();
+            }
         }
 
   
@@ -357,15 +393,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void Clear_WithStaleCreateEntity_VersionMismatch_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
+            using (Scene scene = new Scene())
+            {
+                CommandBuffer buffer = new CommandBuffer(scene);
 
-            GameObject entity = buffer.Entity().With(new TestComponent { Value = 1 }).End();
-            entity.Delete();
+                GameObject entity = buffer.Entity().With(new TestComponent {Value = 1}).End();
+                entity.Delete();
 
-            buffer.Clear();
+                buffer.Clear();
 
-            Assert.False(buffer.HasBufferItems);
+                Assert.False(buffer.HasBufferItems);
+            }
         }
     }
 }

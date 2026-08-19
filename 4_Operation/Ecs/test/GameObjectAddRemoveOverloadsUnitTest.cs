@@ -42,14 +42,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity1_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2});
+                entity.Add(new Position {X = 1, Y = 2});
 
-            Assert.True(entity.Has<Position>());
-            Assert.Equal(1, entity.Get<Position>().X);
-            Assert.Equal(2, entity.Get<Position>().Y);
+                Assert.True(entity.Has<Position>());
+                Assert.Equal(1, entity.Get<Position>().X);
+                Assert.Equal(2, entity.Get<Position>().Y);
+            }
         }
 
         /// <summary>
@@ -57,14 +59,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity2_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+                entity.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(3, entity.Get<Velocity>().X);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.Equal(3, entity.Get<Velocity>().X);
+            }
         }
 
         /// <summary>
@@ -72,18 +76,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity3_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.Equal(5, entity.Get<Health>().Value);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.Equal(5, entity.Get<Health>().Value);
+            }
         }
 
         /// <summary>
@@ -91,20 +97,22 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity4_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.Equal(6, entity.Get<Armor>().Value);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Armor>());
+                Assert.Equal(6, entity.Get<Armor>().Value);
+            }
         }
 
         /// <summary>
@@ -112,22 +120,24 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity5_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.True(entity.Has<Damage>());
-            Assert.Equal(7, entity.Get<Damage>().Value);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Armor>());
+                Assert.True(entity.Has<Damage>());
+                Assert.Equal(7, entity.Get<Damage>().Value);
+            }
         }
 
         /// <summary>
@@ -135,24 +145,26 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity6_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9, Rotation = 10});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9, Rotation = 10});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.True(entity.Has<Damage>());
-            Assert.True(entity.Has<Transform>());
-            Assert.Equal(10, entity.Get<Transform>().Rotation);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Armor>());
+                Assert.True(entity.Has<Damage>());
+                Assert.True(entity.Has<Transform>());
+                Assert.Equal(10, entity.Get<Transform>().Rotation);
+            }
         }
 
         /// <summary>
@@ -160,26 +172,28 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity7_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9, Rotation = 10},
-                new TestComponent {Value = 11});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9, Rotation = 10},
+                    new TestComponent {Value = 11});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.True(entity.Has<Damage>());
-            Assert.True(entity.Has<Transform>());
-            Assert.True(entity.Has<TestComponent>());
-            Assert.Equal(11, entity.Get<TestComponent>().Value);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Armor>());
+                Assert.True(entity.Has<Damage>());
+                Assert.True(entity.Has<Transform>());
+                Assert.True(entity.Has<TestComponent>());
+                Assert.Equal(11, entity.Get<TestComponent>().Value);
+            }
         }
 
         /// <summary>
@@ -187,29 +201,31 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Add_Arity8_UsesGenericOverload()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
 
-            entity.Add(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Armor {Value = 6},
-                new Damage {Value = 7},
-                new Transform {X = 8, Y = 9, Rotation = 10},
-                new TestComponent {Value = 11},
-                new AnotherComponent {Name = "eight", Data = 12, Y = 13});
+                entity.Add(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Armor {Value = 6},
+                    new Damage {Value = 7},
+                    new Transform {X = 8, Y = 9, Rotation = 10},
+                    new TestComponent {Value = 11},
+                    new AnotherComponent {Name = "eight", Data = 12, Y = 13});
 
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-            Assert.True(entity.Has<Damage>());
-            Assert.True(entity.Has<Transform>());
-            Assert.True(entity.Has<TestComponent>());
-            Assert.True(entity.Has<AnotherComponent>());
-            Assert.Equal("eight", entity.Get<AnotherComponent>().Name);
-            Assert.Equal(12, entity.Get<AnotherComponent>().Data);
+                Assert.True(entity.Has<Position>());
+                Assert.True(entity.Has<Velocity>());
+                Assert.True(entity.Has<Health>());
+                Assert.True(entity.Has<Armor>());
+                Assert.True(entity.Has<Damage>());
+                Assert.True(entity.Has<Transform>());
+                Assert.True(entity.Has<TestComponent>());
+                Assert.True(entity.Has<AnotherComponent>());
+                Assert.Equal("eight", entity.Get<AnotherComponent>().Name);
+                Assert.Equal(12, entity.Get<AnotherComponent>().Data);
+            }
         }
         
      

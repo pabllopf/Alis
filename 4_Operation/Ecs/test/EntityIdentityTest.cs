@@ -57,12 +57,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_EqualityWorks()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = entity1; // Same reference
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = entity1; // Same reference
 
-            Assert.Equal(entity1, entity2);
-            Assert.True(entity1 == entity2);
+                Assert.Equal(entity1, entity2);
+                Assert.True(entity1 == entity2);
+            }
         }
 
         /// <summary>
@@ -70,12 +72,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_DifferentEntitiesAreNotEqual()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
 
-            Assert.NotEqual(entity1, entity2);
-            Assert.False(entity1 == entity2);
+                Assert.NotEqual(entity1, entity2);
+                Assert.False(entity1 == entity2);
+            }
         }
 
         /// <summary>
@@ -83,12 +87,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_EntitiesFromDifferentScenesAreNotEqual()
         {
-            using Scene scene1 = new Scene();
-            using Scene scene2 = new Scene();
-            GameObject entity1 = scene1.Create();
-            GameObject entity2 = scene2.Create();
+            using (Scene scene1 = new Scene())
+            {
+                using (Scene scene2 = new Scene())
+                {
+                    GameObject entity1 = scene1.Create();
+                    GameObject entity2 = scene2.Create();
 
-            Assert.NotEqual(entity1, entity2);
+                    Assert.NotEqual(entity1, entity2);
+                }
+            }
         }
 
         /// <summary>
@@ -96,14 +104,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetHashCodeWorks()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = entity1;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = entity1;
 
-            int hash1 = entity1.GetHashCode();
-            int hash2 = entity2.GetHashCode();
+                int hash1 = entity1.GetHashCode();
+                int hash2 = entity2.GetHashCode();
 
-            Assert.Equal(hash1, hash2);
+                Assert.Equal(hash1, hash2);
+            }
         }
 
         /// <summary>
@@ -111,14 +121,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityIdsAreSequential()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObject entity1 = scene.Create();
+                GameObject entity2 = scene.Create();
+                GameObject entity3 = scene.Create();
 
-            GameObject entity1 = scene.Create();
-            GameObject entity2 = scene.Create();
-            GameObject entity3 = scene.Create();
-
-            Assert.True(entity2.EntityID > entity1.EntityID);
-            Assert.True(entity3.EntityID > entity2.EntityID);
+                Assert.True(entity2.EntityID > entity1.EntityID);
+                Assert.True(entity3.EntityID > entity2.EntityID);
+            }
         }
 
         /// <summary>
@@ -126,12 +137,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_IsNullCheck()
         {
-            using Scene scene = new Scene();
-            GameObject nullEntity = default(GameObject);
-            GameObject validEntity = scene.Create();
+            using (Scene scene = new Scene())
+            {
+                GameObject nullEntity = default(GameObject);
+                GameObject validEntity = scene.Create();
 
-            Assert.True(nullEntity.IsNull);
-            Assert.False(validEntity.IsNull);
+                Assert.True(nullEntity.IsNull);
+                Assert.False(validEntity.IsNull);
+            }
         }
 
         /// <summary>
@@ -139,15 +152,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_MaintainsIdentityAfterComponentChanges()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            int originalId = entity.EntityID;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create();
+                int originalId = entity.EntityID;
 
-            entity.Add(new Position {X = 1});
-            entity.Add(new Health {Value = 100});
-            entity.Remove<Position>();
+                entity.Add(new Position {X = 1});
+                entity.Add(new Health {Value = 100});
+                entity.Remove<Position>();
 
-            Assert.Equal(originalId, entity.EntityID);
+                Assert.Equal(originalId, entity.EntityID);
+            }
         }
     }
 }

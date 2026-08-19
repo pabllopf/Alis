@@ -117,13 +117,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Ref_CreatedFromComponentStorage_AccessValue()
         {
-            using ComponentStorage<TestStruct> storage = new Update<TestStruct>(8);
-            storage[0] = new TestStruct { X = 42, Y = 84 };
+            using (ComponentStorage<TestStruct> storage = new Update<TestStruct>(8))
+            {
+                storage[0] = new TestStruct {X = 42, Y = 84};
 
-            Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
+                Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
 
-            Assert.Equal(42, refValue.Value.X);
-            Assert.Equal(84, refValue.Value.Y);
+                Assert.Equal(42, refValue.Value.X);
+                Assert.Equal(84, refValue.Value.Y);
+            }
         }
 
         /// <summary>
@@ -132,14 +134,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Ref_CreatedFromComponentStorage_ModifyValue()
         {
-            using ComponentStorage<TestStruct> storage = new Update<TestStruct>(8);
-            storage[0] = new TestStruct { X = 10, Y = 20 };
+            using (ComponentStorage<TestStruct> storage = new Update<TestStruct>(8))
+            {
+                storage[0] = new TestStruct {X = 10, Y = 20};
 
-            Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
-            refValue.Value = new TestStruct { X = 100, Y = 200 };
+                Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
+                refValue.Value = new TestStruct {X = 100, Y = 200};
 
-            Assert.Equal(100, storage[0].X);
-            Assert.Equal(200, storage[0].Y);
+                Assert.Equal(100, storage[0].X);
+                Assert.Equal(200, storage[0].Y);
+            }
         }
 
         /// <summary>

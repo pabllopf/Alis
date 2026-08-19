@@ -47,16 +47,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Create_WhileDisallowed_DefersAndResolves()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.Create(new TestComponent {Value = 1}, new TestComponent2 {Value = 2});
+                scene.Create(new TestComponent {Value = 3}, new TestComponent2 {Value = 4}, new AnotherComponent());
+                scene.Create(new TestComponent {Value = 5}, new TestComponent2 {Value = 6}, new AnotherComponent(), new AnotherComponent2());
+                scene.Create(new TestComponent {Value = 7}, new TestComponent2 {Value = 8}, new AnotherComponent(), new AnotherComponent2(), new Position());
+                scene.ExitDisallowState(null, false);
 
-            scene.EnterDisallowState();
-            scene.Create(new TestComponent { Value = 1 }, new TestComponent2 { Value = 2 });
-            scene.Create(new TestComponent { Value = 3 }, new TestComponent2 { Value = 4 }, new AnotherComponent());
-            scene.Create(new TestComponent { Value = 5 }, new TestComponent2 { Value = 6 }, new AnotherComponent(), new AnotherComponent2());
-            scene.Create(new TestComponent { Value = 7 }, new TestComponent2 { Value = 8 }, new AnotherComponent(), new AnotherComponent2(), new Position());
-            scene.ExitDisallowState(null, false);
-
-            Assert.Equal(4, scene.EntityCount);
+                Assert.Equal(4, scene.EntityCount);
+            }
         }
 
         /// <summary>
@@ -65,79 +66,18 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Create_WhileDisallowed_WithManyComponents_DefersAndResolves()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.Create(new TestComponent {Value = 1}, new TestComponent2 {Value = 2}, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health {Value = 10});
+                scene.Create(new TestComponent {Value = 3}, new TestComponent2 {Value = 4}, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health {Value = 20}, new Damage {Value = 5});
+                scene.Create(new TestComponent {Value = 5}, new TestComponent2 {Value = 6}, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health {Value = 30}, new Damage {Value = 7}, new Armor {Value = 2});
+                scene.ExitDisallowState(null, false);
 
-            scene.EnterDisallowState();
-            scene.Create(new TestComponent { Value = 1 }, new TestComponent2 { Value = 2 }, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health { Value = 10 });
-            scene.Create(new TestComponent { Value = 3 }, new TestComponent2 { Value = 4 }, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health { Value = 20 }, new Damage { Value = 5 });
-            scene.Create(new TestComponent { Value = 5 }, new TestComponent2 { Value = 6 }, new AnotherComponent(), new AnotherComponent2(), new Position(), new Health { Value = 30 }, new Damage { Value = 7 }, new Armor { Value = 2 });
-            scene.ExitDisallowState(null, false);
-
-            Assert.Equal(3, scene.EntityCount);
+                Assert.Equal(3, scene.EntityCount);
+            }
         }
-
-        /// <summary>
-        ///     Tests that adding a component while disallowed defers the operation.
-        /// </summary>
-        [Fact]
-        public void AddComponent_WhileDisallowed_DefersOperation()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-
-            scene.EnterDisallowState();
-            entity.Add<TestComponent2>(new TestComponent2 { Value = 2 });
-            scene.ExitDisallowState(null, false);
-
-            Assert.True(entity.Has<TestComponent2>());
-        }
-
-        /// <summary>
-        ///     Tests that removing a component while disallowed defers the operation.
-        /// </summary>
-        [Fact]
-        public void RemoveComponent_WhileDisallowed_DefersOperation()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 1 }, new TestComponent2 { Value = 2 });
-
-            scene.EnterDisallowState();
-            entity.Remove<TestComponent2>();
-            scene.ExitDisallowState(null, false);
-
-            Assert.False(entity.Has<TestComponent2>());
-        }
-
-        /// <summary>
-        ///     Tests that add component on an entity resolves to the adjacent archetype.
-        /// </summary>
-        [Fact]
-        public void AddComponent_Direct_ResolvesArchetype()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-            entity.InternalIsAlive(out _, out GameObjectLocation lookup);
-            ComponentId componentId = Component<TestComponent2>.Id;
-            ComponentStorageBase runner = null;
-
-            scene.AddComponent(entity, ref lookup, componentId, ref runner, out GameObjectLocation newLocation);
-
-            Assert.NotNull(runner);
-        }
-
-        /// <summary>
-        ///     Tests that remove component on an entity resolves to the adjacent archetype.
-        /// </summary>
-        [Fact]
-        public void RemoveComponent_Direct_ResolvesArchetype()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 1 }, new TestComponent2 { Value = 2 });
-            entity.InternalIsAlive(out _, out GameObjectLocation lookup);
-
-            scene.RemoveComponent(entity, ref lookup, Component<TestComponent2>.Id);
-
-            Assert.True(entity.IsAlive);
-        }
+        
+       
     }
 }

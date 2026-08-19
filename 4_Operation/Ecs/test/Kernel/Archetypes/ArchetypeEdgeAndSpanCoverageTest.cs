@@ -49,13 +49,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetComponentSpan_WhenComponentNotPresent_ThrowsComponentNotFoundException()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
 
-            Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
 
-            ComponentNotFoundException ex = Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentSpan<Velocity>());
-            Assert.Contains("Component not found", ex.Message);
+                ComponentNotFoundException ex = Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentSpan<Velocity>());
+                Assert.Contains("Component not found", ex.Message);
+            }
         }
 
         /// <summary>
@@ -63,16 +65,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetComponentSpan_WhenComponentPresent_ReturnsSpanOfEntityCount()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
+                scene.Create(new Position());
 
-            Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
 
-            Span<Position> span = archetype.GetComponentSpan<Position>();
+                Span<Position> span = archetype.GetComponentSpan<Position>();
 
-            Assert.Equal(archetype.EntityCount, span.Length);
-            Assert.Equal(2, span.Length);
+                Assert.Equal(archetype.EntityCount, span.Length);
+                Assert.Equal(2, span.Length);
+            }
         }
 
         /// <summary>
@@ -81,12 +85,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetComponentSpan_OnEmptyDefaultArchetype_ThrowsComponentNotFoundException()
         {
-            using Scene scene = new Scene();
-            scene.Create();
+            using (Scene scene = new Scene())
+            {
+                scene.Create();
 
-            Archetype archetype = scene.DefaultArchetype;
+                Archetype archetype = scene.DefaultArchetype;
 
-            Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentSpan<Position>());
+                Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentSpan<Position>());
+            }
         }
 
         /// <summary>
@@ -95,14 +101,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_Update_WithRange_OnEmptyArchetype_ReturnsEarly()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype archetype = scene.DefaultArchetype;
+                Assert.Equal(0, archetype.EntityCount);
 
-            Archetype archetype = scene.DefaultArchetype;
-            Assert.Equal(0, archetype.EntityCount);
+                archetype.Update(scene, 0, 0);
 
-            archetype.Update(scene, 0, 0);
-
-            Assert.Equal(0, archetype.EntityCount);
+                Assert.Equal(0, archetype.EntityCount);
+            }
         }
 
         /// <summary>
@@ -110,14 +117,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_Update_WithRange_OnNonEmptyArchetype_RunsComponentStorages()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position());
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position());
 
-            Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                Archetype archetype = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
 
-            archetype.Update(scene, 0, archetype.EntityCount);
+                archetype.Update(scene, 0, archetype.EntityCount);
 
-            Assert.Equal(1, archetype.EntityCount);
+                Assert.Equal(1, archetype.EntityCount);
+            }
         }
 
         /// <summary>
@@ -126,16 +135,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetAdjacentArchetypeLookup_WhenEdgeCached_ReturnsCachedArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                Archetype expected = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
+                scene.ArchetypeGraphEdges[edge] = expected;
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            Archetype expected = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
-            scene.ArchetypeGraphEdges[edge] = expected;
+                Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
 
-            Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
-
-            Assert.Same(expected, result);
+                Assert.Same(expected, result);
+            }
         }
 
         /// <summary>
@@ -144,15 +154,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetAdjacentArchetypeLookup_WhenEdgeMissing_ResolvesColdPath()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
+                Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
 
-            Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+            }
         }
 
         /// <summary>
@@ -161,15 +172,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_GetAdjacentArchetypeLookup_WithRemoveComponentEdge_ResolvesColdPath()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.RemoveComponent);
 
-            Archetype from = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.RemoveComponent);
+                Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
 
-            Archetype result = Archetype.GetAdjacentArchetypeLookup(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+            }
         }
 
         /// <summary>
@@ -178,14 +190,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_CreateOrGetExistingArchetype_WithSpan_WhenMissing_CreatesAndRegisters()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ReadOnlySpan<ComponentId> types = new[] {Component<Position>.Id};
 
-            ReadOnlySpan<ComponentId> types = new[] { Component<Position>.Id };
+                Archetype result = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
 
-            Archetype result = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+            }
         }
 
         /// <summary>
@@ -194,14 +207,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_CreateOrGetExistingArchetype_WithSpan_WhenExisting_ReturnsSameArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                ReadOnlySpan<ComponentId> types = new[] {Component<Position>.Id};
 
-            ReadOnlySpan<ComponentId> types = new[] { Component<Position>.Id };
+                Archetype first = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
+                Archetype second = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
 
-            Archetype first = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
-            Archetype second = Archetype<Position>.CreateOrGetExistingArchetype(types, scene);
-
-            Assert.Same(first, second);
+                Assert.Same(first, second);
+            }
         }
 
         /// <summary>
@@ -209,13 +223,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_CreateOrGetExistingArchetype_WithId_ReturnsArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                GameObjectType id = Archetype<Position>.Id;
 
-            GameObjectType id = Archetype<Position>.Id;
+                Archetype result = Archetype<Position>.CreateOrGetExistingArchetype(id, scene);
 
-            Archetype result = Archetype<Position>.CreateOrGetExistingArchetype(id, scene);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+            }
         }
 
         /// <summary>
@@ -223,16 +238,17 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_GetAdjacentArchetypeLookup_WhenEdgeCached_ReturnsCachedArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                Archetype expected = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
+                scene.ArchetypeGraphEdges[edge] = expected;
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            Archetype expected = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
-            scene.ArchetypeGraphEdges[edge] = expected;
+                Archetype result = Archetype<Position>.GetAdjacentArchetypeLookup(scene, edge);
 
-            Archetype result = Archetype<Position>.GetAdjacentArchetypeLookup(scene, edge);
-
-            Assert.Same(expected, result);
+                Assert.Same(expected, result);
+            }
         }
 
         /// <summary>
@@ -240,15 +256,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_GetAdjacentArchetypeLookup_WhenEdgeMissing_ResolvesColdPath()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
+                Archetype result = Archetype<Position>.GetAdjacentArchetypeLookup(scene, edge);
 
-            Archetype result = Archetype<Position>.GetAdjacentArchetypeLookup(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+            }
         }
 
         /// <summary>
@@ -256,15 +273,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_GetAdjacentArchetypeCold_WithAddComponentEdge_CreatesArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddComponent);
+                Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
 
-            Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.True(result.GetComponentIndex(Component<Velocity>.Id) > 0);
+            }
         }
 
         /// <summary>
@@ -272,15 +290,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_GetAdjacentArchetypeCold_WithRemoveComponentEdge_CreatesArchetype()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.RemoveComponent);
 
-            Archetype from = Archetype<Position, Velocity>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.RemoveComponent);
+                Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
 
-            Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+            }
         }
 
         /// <summary>
@@ -289,15 +308,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// </summary>
         [Fact] public void Archetype_T_GetAdjacentArchetypeCold_WithAddTagEdge_KeepsComponentSet()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
+                ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddTag);
 
-            Archetype from = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene).Archetype;
-            ArchetypeEdgeKey edge = ArchetypeEdgeKey.Component(Component<Velocity>.Id, from.Id, ArchetypeEdgeType.AddTag);
+                Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
 
-            Archetype result = Archetype<Position>.GetAdjacentArchetypeCold(scene, edge);
-
-            Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
-            Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+                Assert.True(result.GetComponentIndex(Component<Position>.Id) > 0);
+                Assert.Equal(0, result.GetComponentIndex(Component<Velocity>.Id));
+            }
         }
     }
 }

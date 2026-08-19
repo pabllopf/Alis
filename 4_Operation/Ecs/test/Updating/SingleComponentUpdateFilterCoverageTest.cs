@@ -46,17 +46,19 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void UpdateSubset_WithDeferredComponentEntity_UpdatesNewEntity()
         {
-            using Scene scene = new Scene();
-            GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+                Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -65,14 +67,16 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void UpdateSubset_WithDeferredNonComponentEntity_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new UpdateComponent {CallCount = 0});
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.ExitDisallowState(filter, true);
+            }
         }
 
         /// <summary>
@@ -81,19 +85,21 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void UpdateSubset_WithMixedDeferredEntities_UpdatesOnlyMatching()
         {
-            using Scene scene = new Scene();
-            scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new UpdateComponent {CallCount = 0});
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject matched = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.Create(new Position {X = 1, Y = 2});
-            GameObject alsoMatched = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject matched = scene.Create(new UpdateComponent {CallCount = 0});
+                scene.Create(new Position {X = 1, Y = 2});
+                GameObject alsoMatched = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(1, matched.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, alsoMatched.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, matched.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, alsoMatched.Get<UpdateComponent>().CallCount);
+            }
         }
 
         /// <summary>
@@ -102,19 +108,21 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void UpdateSubset_WithMultipleDeferredEntities_UpdatesAll()
         {
-            using Scene scene = new Scene();
-            scene.Create(new UpdateComponent {CallCount = 0});
-            scene.Create(new UpdateComponent {CallCount = 0});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new UpdateComponent {CallCount = 0});
+                scene.Create(new UpdateComponent {CallCount = 0});
 
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
+                SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
 
-            scene.EnterDisallowState();
-            GameObject deferred1 = scene.Create(new UpdateComponent {CallCount = 0});
-            GameObject deferred2 = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.ExitDisallowState(filter, true);
+                scene.EnterDisallowState();
+                GameObject deferred1 = scene.Create(new UpdateComponent {CallCount = 0});
+                GameObject deferred2 = scene.Create(new UpdateComponent {CallCount = 0});
+                scene.ExitDisallowState(filter, true);
 
-            Assert.Equal(1, deferred1.Get<UpdateComponent>().CallCount);
-            Assert.Equal(1, deferred2.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, deferred1.Get<UpdateComponent>().CallCount);
+                Assert.Equal(1, deferred2.Get<UpdateComponent>().CallCount);
+            }
         }
     }
 }

@@ -45,13 +45,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EnterDisallowState_ShouldDisallowStructuralChanges()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                Assert.True(scene.AllowStructualChanges);
 
-            Assert.True(scene.AllowStructualChanges);
+                scene.EnterDisallowState();
 
-            scene.EnterDisallowState();
-
-            Assert.False(scene.AllowStructualChanges);
+                Assert.False(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -59,14 +60,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ExitDisallowState_WithNullFilter_ShouldRestoreStructuralChanges()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                Assert.False(scene.AllowStructualChanges);
 
-            scene.EnterDisallowState();
-            Assert.False(scene.AllowStructualChanges);
+                scene.ExitDisallowState(null, false);
 
-            scene.ExitDisallowState(null, false);
-
-            Assert.True(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -74,13 +76,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateArchetypeTable_ShouldResizeTable()
         {
-            using Scene scene = new Scene();
-            int originalSize = scene.WorldArchetypeTable.Length;
-            int newSize = originalSize + 50;
+            using (Scene scene = new Scene())
+            {
+                int originalSize = scene.WorldArchetypeTable.Length;
+                int newSize = originalSize + 50;
 
-            scene.UpdateArchetypeTable(newSize);
+                scene.UpdateArchetypeTable(newSize);
 
-            Assert.Equal(newSize, scene.WorldArchetypeTable.Length);
+                Assert.Equal(newSize, scene.WorldArchetypeTable.Length);
+            }
         }
 
         /// <summary>
@@ -88,12 +92,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateArchetypeTable_WithSmallerSize_ShouldShrinkTable()
         {
-            using Scene scene = new Scene();
-            int newSize = 10;
+            using (Scene scene = new Scene())
+            {
+                int newSize = 10;
 
-            scene.UpdateArchetypeTable(newSize);
+                scene.UpdateArchetypeTable(newSize);
 
-            Assert.Equal(newSize, scene.WorldArchetypeTable.Length);
+                Assert.Equal(newSize, scene.WorldArchetypeTable.Length);
+            }
         }
 
         /// <summary>
@@ -101,9 +107,10 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateGeneric_OnEmptyScene_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-
-            scene.Update<SceneCoverageUpdateAttribute>();
+            using (Scene scene = new Scene())
+            {
+                scene.Update<SceneCoverageUpdateAttribute>();
+            }
         }
 
         /// <summary>
@@ -111,10 +118,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateComponent_OnEmptyScene_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-            ComponentId componentId = default;
+            using (Scene scene = new Scene())
+            {
+                ComponentId componentId = default;
 
-            scene.UpdateComponent(componentId);
+                scene.UpdateComponent(componentId);
+            }
         }
 
         /// <summary>
@@ -122,13 +131,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EnterDisallowState_MultipleCalls_ShouldStayDisallowed()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.EnterDisallowState();
+                scene.EnterDisallowState();
 
-            scene.EnterDisallowState();
-            scene.EnterDisallowState();
-            scene.EnterDisallowState();
-
-            Assert.False(scene.AllowStructualChanges);
+                Assert.False(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -136,15 +146,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_DisallowState_PairedCalls_ShouldWorkCorrectly()
         {
-            using Scene scene = new Scene();
+            using (Scene scene = new Scene())
+            {
+                scene.EnterDisallowState();
+                scene.ExitDisallowState(null, false);
+                Assert.True(scene.AllowStructualChanges);
 
-            scene.EnterDisallowState();
-            scene.ExitDisallowState(null, false);
-            Assert.True(scene.AllowStructualChanges);
-
-            scene.EnterDisallowState();
-            scene.ExitDisallowState(null, false);
-            Assert.True(scene.AllowStructualChanges);
+                scene.EnterDisallowState();
+                scene.ExitDisallowState(null, false);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -152,14 +163,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ComponentAdded_Event_ShouldSupportSubscribeAndUnsubscribe()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            Action<GameObject, ComponentId> handler = (_, _) => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                Action<GameObject, ComponentId> handler = (_, _) => callCount++;
 
-            scene.ComponentAdded += handler;
-            scene.ComponentAdded -= handler;
+                scene.ComponentAdded += handler;
+                scene.ComponentAdded -= handler;
 
-            Assert.Equal(0, callCount);
+                Assert.Equal(0, callCount);
+            }
         }
 
         /// <summary>
@@ -167,14 +180,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_ComponentRemoved_Event_ShouldSupportSubscribeAndUnsubscribe()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            Action<GameObject, ComponentId> handler = (_, _) => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                Action<GameObject, ComponentId> handler = (_, _) => callCount++;
 
-            scene.ComponentRemoved += handler;
-            scene.ComponentRemoved -= handler;
+                scene.ComponentRemoved += handler;
+                scene.ComponentRemoved -= handler;
 
-            Assert.Equal(0, callCount);
+                Assert.Equal(0, callCount);
+            }
         }
 
         /// <summary>
@@ -182,14 +197,16 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityDeleted_Event_ShouldSupportSubscribeAndUnsubscribe()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            Action<GameObject> handler = _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                Action<GameObject> handler = _ => callCount++;
 
-            scene.EntityDeleted += handler;
-            scene.EntityDeleted -= handler;
+                scene.EntityDeleted += handler;
+                scene.EntityDeleted -= handler;
 
-            Assert.Equal(0, callCount);
+                Assert.Equal(0, callCount);
+            }
         }
 
         /// <summary>
@@ -197,9 +214,10 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_UpdateType_OnEmptyScene_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-
-            scene.Update(typeof(SceneCoverageUpdateAttribute));
+            using (Scene scene = new Scene())
+            {
+                scene.Update(typeof(SceneCoverageUpdateAttribute));
+            }
         }
 
         /// <summary>
@@ -207,13 +225,15 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_CreateMany_FiresEntityCreatedEvent()
         {
-            using Scene scene = new Scene();
-            int callCount = 0;
-            scene.EntityCreated += _ => callCount++;
+            using (Scene scene = new Scene())
+            {
+                int callCount = 0;
+                scene.EntityCreated += _ => callCount++;
 
-            _ = scene.CreateMany<Position>(3);
+                _ = scene.CreateMany<Position>(3);
 
-            Assert.Equal(3, callCount);
+                Assert.Equal(3, callCount);
+            }
         }
 
         /// <summary>
@@ -221,9 +241,10 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_CreateMany_WithoutListeners_DoesNotThrow()
         {
-            using Scene scene = new Scene();
-
-            _ = scene.CreateMany<Position>(2);
+            using (Scene scene = new Scene())
+            {
+                _ = scene.CreateMany<Position>(2);
+            }
         }
     }
 

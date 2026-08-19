@@ -47,16 +47,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_CanBeDeleted()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 10});
-            Assert.True(entity.IsAlive);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position {X = 10});
+                Assert.True(entity.IsAlive);
 
-            int entityDeletedCount = 0;
-            scene.EntityDeleted += _ => entityDeletedCount++;
-            entity.Delete();
+                int entityDeletedCount = 0;
+                scene.EntityDeleted += _ => entityDeletedCount++;
+                entity.Delete();
 
-            Assert.False(entity.IsAlive);
-            Assert.Equal(1, entityDeletedCount);
+                Assert.False(entity.IsAlive);
+                Assert.Equal(1, entityDeletedCount);
+            }
         }
 
         /// <summary>
@@ -64,21 +66,23 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Query_ExcludesDeletedEntities()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1});
-            GameObject entity2 = scene.Create(new Position {X = 2});
-            scene.Create(new Position {X = 3});
-
-            entity2.Delete();
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1});
+                GameObject entity2 = scene.Create(new Position {X = 2});
+                scene.Create(new Position {X = 3});
 
-            Assert.Equal(2, count);
+                entity2.Delete();
+
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -86,23 +90,25 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_CanDeleteMultipleEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1});
-            scene.Create(new Position {X = 2});
-            GameObject entity3 = scene.Create(new Position {X = 3});
-            scene.Create(new Position {X = 4});
-
-            entity1.Delete();
-            entity3.Delete();
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                GameObject entity1 = scene.Create(new Position {X = 1});
+                scene.Create(new Position {X = 2});
+                GameObject entity3 = scene.Create(new Position {X = 3});
+                scene.Create(new Position {X = 4});
 
-            Assert.Equal(2, count);
+                entity1.Delete();
+                entity3.Delete();
+
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(2, count);
+            }
         }
 
         /// <summary>
@@ -110,15 +116,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityDeletedEventFires()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            int eventCount = 0;
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
+                int eventCount = 0;
 
-            scene.EntityDeleted += _ => eventCount++;
+                scene.EntityDeleted += _ => eventCount++;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(1, eventCount);
+                Assert.Equal(1, eventCount);
+            }
         }
 
         /// <summary>
@@ -126,15 +134,17 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_EntityDeletedEventIncludesCorrectEntity()
         {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            GameObject deletedEntity = default(GameObject);
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(new Position());
+                GameObject deletedEntity = default(GameObject);
 
-            scene.EntityDeleted += go => deletedEntity = go;
+                scene.EntityDeleted += go => deletedEntity = go;
 
-            entity.Delete();
+                entity.Delete();
 
-            Assert.Equal(entity.EntityID, deletedEntity.EntityID);
+                Assert.Equal(entity.EntityID, deletedEntity.EntityID);
+            }
         }
 
         /// <summary>
@@ -142,23 +152,25 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void Scene_CanDeleteAllEntities()
         {
-            using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position());
-            GameObject entity2 = scene.Create(new Position());
-            GameObject entity3 = scene.Create(new Position());
-
-            entity1.Delete();
-            entity2.Delete();
-            entity3.Delete();
-
-            Query query = scene.Query<With<Position>>();
-            int count = 0;
-            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                GameObject entity1 = scene.Create(new Position());
+                GameObject entity2 = scene.Create(new Position());
+                GameObject entity3 = scene.Create(new Position());
 
-            Assert.Equal(0, count);
+                entity1.Delete();
+                entity2.Delete();
+                entity3.Delete();
+
+                Query query = scene.Query<With<Position>>();
+                int count = 0;
+                foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+                {
+                    count++;
+                }
+
+                Assert.Equal(0, count);
+            }
         }
     }
 }

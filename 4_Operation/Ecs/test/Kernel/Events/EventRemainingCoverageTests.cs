@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         public void Add_SingleListener_HasListeners()
         {
             Event<int> e = new Event<int>();
-            e.Add((go, arg) => { });
+            e.Add((_, _) => { });
 
             Assert.True(e.HasListeners);
         }
@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         {
             Event<int> e = new Event<int>();
             bool flag = false;
-            e.Add((go, arg) => flag = true);
+            e.Add((_, _) => flag = true);
             e.Invoke(default(GameObject), 42);
 
             Assert.True(flag);
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         {
             Event<int> e = new Event<int>();
             int counter = 0;
-            Action<GameObject, int> handler = (go, arg) => counter++;
+            Action<GameObject, int> handler = (_, _) => counter++;
             e.Add(handler);
             e.Add(handler);
             e.Add(handler);
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         public void Remove_OnlyListener_RemovesIt()
         {
             Event<int> e = new Event<int>();
-            Action<GameObject, int> handler = (go, arg) => { };
+            Action<GameObject, int> handler = (_, _) => { };
             e.Add(handler);
             e.Remove(handler);
 
@@ -114,9 +114,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         {
             Event<int> e = new Event<int>();
             int counter = 0;
-            Action<GameObject, int> handler1 = (go, arg) => counter++;
-            Action<GameObject, int> handler2 = (go, arg) => counter++;
-            Action<GameObject, int> handler3 = (go, arg) => counter++;
+            Action<GameObject, int> handler1 = (_, _) => counter++;
+            Action<GameObject, int> handler2 = (_, _) => counter++;
+            Action<GameObject, int> handler3 = (_, _) => counter++;
             e.Add(handler1);
             e.Add(handler2);
             e.Add(handler3);
@@ -134,9 +134,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         {
             Event<int> e = new Event<int>();
             int counter = 0;
-            Action<GameObject, int> handler1 = (go, arg) => counter++;
-            Action<GameObject, int> handler2 = (go, arg) => counter++;
-            Action<GameObject, int> handler3 = (go, arg) => counter++;
+            Action<GameObject, int> handler1 = (_, _) => counter++;
+            Action<GameObject, int> handler2 = (_, _) => counter++;
+            Action<GameObject, int> handler3 = (_, _) => counter++;
             e.Add(handler1);
             e.Add(handler2);
             e.Add(handler3);
@@ -153,8 +153,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         public void Remove_ListenerNotPresent_DoesNothing()
         {
             Event<int> e = new Event<int>();
-            Action<GameObject, int> handler1 = (go, arg) => { };
-            Action<GameObject, int> handler2 = (go, arg) => { };
+            Action<GameObject, int> handler1 = (_, _) => { };
+            Action<GameObject, int> handler2 = (_, _) => { };
             e.Add(handler1);
             e.Remove(handler2);
 
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         {
             Event<int> e = new Event<int>();
             bool flag = false;
-            e.Add((go, arg) => flag = true);
+            e.Add((_, _) => flag = true);
 
             e.InvokeInternal(default(GameObject), 0);
 

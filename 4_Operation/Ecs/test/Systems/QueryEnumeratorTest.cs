@@ -44,21 +44,25 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity1_IteratesMatchingEntities()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Velocity {X = 3, Y = 4});
-            scene.Create(new Position {X = 5, Y = 6}, new Velocity {X = 7, Y = 8});
-
-            Query query = scene.Query<With<Position>>();
-
-            int count = 0;
-            using QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator();
-            while (enumerator.MoveNext())
+            using (Scene scene = new Scene())
             {
-                count++;
-            }
+                scene.Create(new Position {X = 1, Y = 2});
+                scene.Create(new Velocity {X = 3, Y = 4});
+                scene.Create(new Position {X = 5, Y = 6}, new Velocity {X = 7, Y = 8});
 
-            Assert.Equal(2, count);
+                Query query = scene.Query<With<Position>>();
+
+                int count = 0;
+                using (QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator())
+                {
+                    while (enumerator.MoveNext())
+                    {
+                        count++;
+                    }
+
+                    Assert.Equal(2, count);
+                }
+            }
         }
 
         /// <summary>
@@ -66,11 +70,15 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_EmptyQuery_ReturnsFalse()
         {
-            using Scene scene = new Scene();
-            Query query = scene.Query<With<Position>>();
+            using (Scene scene = new Scene())
+            {
+                Query query = scene.Query<With<Position>>();
 
-            using QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator();
-            Assert.False(enumerator.MoveNext());
+                using (QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator())
+                {
+                    Assert.False(enumerator.MoveNext());
+                }
+            }
         }
 
         /// <summary>
@@ -78,17 +86,19 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Dispose_RestoresStructuralChanges()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            Query query = scene.Query<With<Position>>();
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2});
+                Query query = scene.Query<With<Position>>();
 
-            Assert.True(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
 
-            QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator();
-            Assert.False(scene.AllowStructualChanges);
-            enumerator.Dispose();
+                QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator();
+                Assert.False(scene.AllowStructualChanges);
+                enumerator.Dispose();
 
-            Assert.True(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
+            }
         }
 
         /// <summary>
@@ -96,17 +106,20 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity2_ReturnsCorrectComponentValues()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
-            Query query = scene.Query<With<Position>, With<Velocity>>();
+                Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            using QueryEnumerator<Position, Velocity> enumerator = query.Enumerate<Position, Velocity>().GetEnumerator();
-
-            Assert.True(enumerator.MoveNext());
-            RefTuple<Position, Velocity> current = enumerator.Current;
-            Assert.Equal(1, current.Item1.Value.X);
-            Assert.Equal(3, current.Item2.Value.X);
+                using (QueryEnumerator<Position, Velocity> enumerator = query.Enumerate<Position, Velocity>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    RefTuple<Position, Velocity> current = enumerator.Current;
+                    Assert.Equal(1, current.Item1.Value.X);
+                    Assert.Equal(3, current.Item2.Value.X);
+                }
+            }
         }
 
         /// <summary>
@@ -114,18 +127,21 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity3_ReturnsCorrectComponentValues()
         {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
 
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            using QueryEnumerator<Position, Velocity, Health> enumerator = query.Enumerate<Position, Velocity, Health>().GetEnumerator();
-
-            Assert.True(enumerator.MoveNext());
-            RefTuple<Position, Velocity, Health> current = enumerator.Current;
-            Assert.Equal(1, current.Item1.Value.X);
-            Assert.Equal(3, current.Item2.Value.X);
-            Assert.Equal(5, current.Item3.Value.Value);
+                using (QueryEnumerator<Position, Velocity, Health> enumerator = query.Enumerate<Position, Velocity, Health>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    RefTuple<Position, Velocity, Health> current = enumerator.Current;
+                    Assert.Equal(1, current.Item1.Value.X);
+                    Assert.Equal(3, current.Item2.Value.X);
+                    Assert.Equal(5, current.Item3.Value.Value);
+                }
+            }
         }
 
         /// <summary>
@@ -133,23 +149,26 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity4_ReturnsCorrectComponentValues()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8});
 
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
 
-            using QueryEnumerator<Position, Velocity, Health, Transform> enumerator = query.Enumerate<Position, Velocity, Health, Transform>().GetEnumerator();
-
-            Assert.True(enumerator.MoveNext());
-            RefTuple<Position, Velocity, Health, Transform> current = enumerator.Current;
-            Assert.Equal(1, current.Item1.Value.X);
-            Assert.Equal(3, current.Item2.Value.X);
-            Assert.Equal(5, current.Item3.Value.Value);
-            Assert.Equal(8, current.Item4.Value.Rotation);
+                using (QueryEnumerator<Position, Velocity, Health, Transform> enumerator = query.Enumerate<Position, Velocity, Health, Transform>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    RefTuple<Position, Velocity, Health, Transform> current = enumerator.Current;
+                    Assert.Equal(1, current.Item1.Value.X);
+                    Assert.Equal(3, current.Item2.Value.X);
+                    Assert.Equal(5, current.Item3.Value.Value);
+                    Assert.Equal(8, current.Item4.Value.Rotation);
+                }
+            }
         }
 
         /// <summary>
@@ -157,25 +176,28 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity5_ReturnsCorrectComponentValues()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"});
+            using (Scene scene = new Scene())
+            {
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"});
 
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
 
-            using QueryEnumerator<Position, Velocity, Health, Transform, TestComponent> enumerator = query.Enumerate<Position, Velocity, Health, Transform, TestComponent>().GetEnumerator();
-
-            Assert.True(enumerator.MoveNext());
-            RefTuple<Position, Velocity, Health, Transform, TestComponent> current = enumerator.Current;
-            Assert.Equal(1, current.Item1.Value.X);
-            Assert.Equal(3, current.Item2.Value.X);
-            Assert.Equal(5, current.Item3.Value.Value);
-            Assert.Equal(8, current.Item4.Value.Rotation);
-            Assert.Equal(9, current.Item5.Value.Value);
+                using (QueryEnumerator<Position, Velocity, Health, Transform, TestComponent> enumerator = query.Enumerate<Position, Velocity, Health, Transform, TestComponent>().GetEnumerator())
+                {
+                    Assert.True(enumerator.MoveNext());
+                    RefTuple<Position, Velocity, Health, Transform, TestComponent> current = enumerator.Current;
+                    Assert.Equal(1, current.Item1.Value.X);
+                    Assert.Equal(3, current.Item2.Value.X);
+                    Assert.Equal(5, current.Item3.Value.Value);
+                    Assert.Equal(8, current.Item4.Value.Rotation);
+                    Assert.Equal(9, current.Item5.Value.Value);
+                }
+            }
         }
 
         /// <summary>
@@ -183,42 +205,44 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void QueryEnumerator_Arity8_ReturnsCorrectValues_AndDisposeRestoresStructuralChanges()
         {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 3, Y = 4},
-                new Health {Value = 5},
-                new Transform {X = 6, Y = 7, Rotation = 8},
-                new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {Data = 10, Y = 11, Name = "a"},
-                new Damage {Value = 12},
-                new Armor {Value = 13});
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
-
-            Assert.True(scene.AllowStructualChanges);
-
-            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerator;
-            using (enumerator = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>().GetEnumerator())
+            using (Scene scene = new Scene())
             {
-                Assert.False(scene.AllowStructualChanges);
+                scene.Create(
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 3, Y = 4},
+                    new Health {Value = 5},
+                    new Transform {X = 6, Y = 7, Rotation = 8},
+                    new TestComponent {Value = 9, Name = "n"},
+                    new AnotherComponent {Data = 10, Y = 11, Name = "a"},
+                    new Damage {Value = 12},
+                    new Armor {Value = 13});
 
-                Assert.True(enumerator.MoveNext());
-                RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> current = enumerator.Current;
-                Assert.Equal(1, current.Item1.Value.X);
-                Assert.Equal(3, current.Item2.Value.X);
-                Assert.Equal(5, current.Item3.Value.Value);
-                Assert.Equal(8, current.Item4.Value.Rotation);
-                Assert.Equal(9, current.Item5.Value.Value);
-                Assert.Equal(10, current.Item6.Value.Data);
-                Assert.Equal(12, current.Item7.Value.Value);
-                Assert.Equal(13, current.Item8.Value.Value);
+                Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
 
-                Assert.False(enumerator.MoveNext());
-                Assert.False(scene.AllowStructualChanges);
+                Assert.True(scene.AllowStructualChanges);
+
+                QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerator;
+                using (enumerator = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>().GetEnumerator())
+                {
+                    Assert.False(scene.AllowStructualChanges);
+
+                    Assert.True(enumerator.MoveNext());
+                    RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> current = enumerator.Current;
+                    Assert.Equal(1, current.Item1.Value.X);
+                    Assert.Equal(3, current.Item2.Value.X);
+                    Assert.Equal(5, current.Item3.Value.Value);
+                    Assert.Equal(8, current.Item4.Value.Rotation);
+                    Assert.Equal(9, current.Item5.Value.Value);
+                    Assert.Equal(10, current.Item6.Value.Data);
+                    Assert.Equal(12, current.Item7.Value.Value);
+                    Assert.Equal(13, current.Item8.Value.Value);
+
+                    Assert.False(enumerator.MoveNext());
+                    Assert.False(scene.AllowStructualChanges);
+                }
+
+                Assert.True(scene.AllowStructualChanges);
             }
-
-            Assert.True(scene.AllowStructualChanges);
         }
     }
 }

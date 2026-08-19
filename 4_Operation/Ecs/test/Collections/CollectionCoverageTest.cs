@@ -36,9 +36,11 @@ namespace Alis.Core.Ecs.Test.Collections
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
             stack.Push(2);
-            using FastestStack<int>.Enumerator enumerator = stack.GetEnumerator();
-            Assert.True(enumerator.MoveNext());
-            Assert.Equal(2, enumerator.Current);
+            using (FastestStack<int>.Enumerator enumerator = stack.GetEnumerator())
+            {
+                Assert.True(enumerator.MoveNext());
+                Assert.Equal(2, enumerator.Current);
+            }
         }
 
         /// <summary>
@@ -47,8 +49,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void FastestStack_Enumerator_Empty_NoMove()
         {
             FastestStack<int> stack = new FastestStack<int>();
-            using FastestStack<int>.Enumerator enumerator = stack.GetEnumerator();
-            Assert.False(enumerator.MoveNext());
+            using (FastestStack<int>.Enumerator enumerator = stack.GetEnumerator())
+            {
+                Assert.False(enumerator.MoveNext());
+            }
         }
     }
 }

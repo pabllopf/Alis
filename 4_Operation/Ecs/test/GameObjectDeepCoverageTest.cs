@@ -16,9 +16,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Has_ReturnsTrueForExistingComponent()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position { X = 10 });
-            Assert.True(go.Has<Position>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position {X = 10});
+                Assert.True(go.Has<Position>());
+            }
         }
 
         /// <summary>
@@ -26,9 +28,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Has_ReturnsFalseForMissingComponent()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            Assert.False(go.Has<Velocity>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                Assert.False(go.Has<Velocity>());
+            }
         }
 
         /// <summary>
@@ -36,9 +40,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Add_ExistingComponent_Throws()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position { X = 5 });
-            Assert.Throws<InvalidOperationException>(() => go.Add(new Position { X = 10 }));
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position {X = 5});
+                Assert.Throws<InvalidOperationException>(() => go.Add(new Position {X = 10}));
+            }
         }
 
         /// <summary>
@@ -46,9 +52,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Remove_MissingComponent_Throws()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            Assert.Throws<ComponentNotFoundException>(() => go.Remove<Velocity>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                Assert.Throws<ComponentNotFoundException>(() => go.Remove<Velocity>());
+            }
         }
 
         /// <summary>
@@ -56,16 +64,18 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_AddAndRemove_MultipleComponents_Works()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            go.Add(new Velocity { X = 1, Y = 2 });
-            go.Add(new Health { Value = 100 });
-            Assert.True(go.Has<Position>());
-            Assert.True(go.Has<Velocity>());
-            Assert.True(go.Has<Health>());
-            go.Remove<Velocity>();
-            Assert.False(go.Has<Velocity>());
-            Assert.True(go.Has<Health>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                go.Add(new Velocity {X = 1, Y = 2});
+                go.Add(new Health {Value = 100});
+                Assert.True(go.Has<Position>());
+                Assert.True(go.Has<Velocity>());
+                Assert.True(go.Has<Health>());
+                go.Remove<Velocity>();
+                Assert.False(go.Has<Velocity>());
+                Assert.True(go.Has<Health>());
+            }
         }
 
         /// <summary>
@@ -73,11 +83,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Get_ReturnsCorrectValue()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position { X = 42, Y = 84 });
-            ref Position pos = ref go.Get<Position>();
-            Assert.Equal(42, pos.X);
-            Assert.Equal(84, pos.Y);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position {X = 42, Y = 84});
+                ref Position pos = ref go.Get<Position>();
+                Assert.Equal(42, pos.X);
+                Assert.Equal(84, pos.Y);
+            }
         }
 
         /// <summary>
@@ -85,9 +97,11 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_IsAlive_ReturnsTrueForActive()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            Assert.True(go.IsAlive);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                Assert.True(go.IsAlive);
+            }
         }
 
         /// <summary>
@@ -95,10 +109,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Delete_MakesEntityNotAlive()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            go.Delete();
-            Assert.False(go.IsAlive);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                go.Delete();
+                Assert.False(go.IsAlive);
+            }
         }
 
         /// <summary>
@@ -106,10 +122,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Equals_SameEntity_ReturnsTrue()
         {
-            using Scene scene = new();
-            GameObject go1 = scene.Create(new Position());
-            scene.Update();
-            Assert.True(go1.IsAlive);
+            using (Scene scene = new())
+            {
+                GameObject go1 = scene.Create(new Position());
+                scene.Update();
+                Assert.True(go1.IsAlive);
+            }
         }
 
         /// <summary>
@@ -117,10 +135,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Equals_DifferentEntity_ReturnsFalse()
         {
-            using Scene scene = new();
-            GameObject go1 = scene.Create(new Position());
-            GameObject go2 = scene.Create(new Position());
-            Assert.NotEqual(go1, go2);
+            using (Scene scene = new())
+            {
+                GameObject go1 = scene.Create(new Position());
+                GameObject go2 = scene.Create(new Position());
+                Assert.NotEqual(go1, go2);
+            }
         }
 
         /// <summary>
@@ -128,11 +148,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_GetHashCode_IsConsistent()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            int hash1 = go.GetHashCode();
-            int hash2 = go.GetHashCode();
-            Assert.Equal(hash1, hash2);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                int hash1 = go.GetHashCode();
+                int hash2 = go.GetHashCode();
+                Assert.Equal(hash1, hash2);
+            }
         }
 
         /// <summary>
@@ -140,11 +162,13 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_TryGet_WithComponent_ReturnsRef()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Velocity { X = 42 });
-            bool found = go.TryGet<Velocity>(out Ref<Velocity> velRef);
-            Assert.True(found);
-            Assert.Equal(42, velRef.Value.X);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Velocity {X = 42});
+                bool found = go.TryGet<Velocity>(out Ref<Velocity> velRef);
+                Assert.True(found);
+                Assert.Equal(42, velRef.Value.X);
+            }
         }
 
         /// <summary>
@@ -152,10 +176,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_TryGet_WithoutComponent_ReturnsFalse()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position());
-            bool found = go.TryGet<Velocity>(out _);
-            Assert.False(found);
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position());
+                bool found = go.TryGet<Velocity>(out _);
+                Assert.False(found);
+            }
         }
 
         /// <summary>
@@ -163,12 +189,14 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void GameObject_Has_AfterRemove_ReturnsFalse()
         {
-            using Scene scene = new();
-            GameObject go = scene.Create(new Position(), new Velocity());
-            Assert.True(go.Has<Velocity>());
-            go.Remove<Velocity>();
-            scene.Update();
-            Assert.False(go.Has<Velocity>());
+            using (Scene scene = new())
+            {
+                GameObject go = scene.Create(new Position(), new Velocity());
+                Assert.True(go.Has<Velocity>());
+                go.Remove<Velocity>();
+                scene.Update();
+                Assert.False(go.Has<Velocity>());
+            }
         }
     }
 }
