@@ -469,14 +469,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     ThreadPool.QueueUserWorkItem(SolveVelocityConstraintsCallback, SolveVelocityConstraintsState.Get(this, start, end));
                 }
 
-                Stopwatch waitStopwatch = Stopwatch.StartNew();
                 while (solveVelocityConstraintsWaitLock.CurrentCount > 0)
                 {
-                    if (waitStopwatch.ElapsedMilliseconds > LockAcquisitionTimeoutMilliseconds)
-                    {
-                        throw new InvalidOperationException("Timed out waiting for the velocity constraint workers.");
-                    }
-
                     Thread.Sleep(0);
                 }
 
@@ -1106,15 +1100,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             SolveVelocityConstraintsState svcState = (SolveVelocityConstraintsState) state;
 
-            try
-            {
-                svcState.ContactSolver.SolveVelocityConstraints(svcState.Start, svcState.End);
-            }
-            finally
-            {
-                SolveVelocityConstraintsState.Return(svcState);
-                svcState.ContactSolver.solveVelocityConstraintsWaitLock.Signal();
-            }
+            svcState.ContactSolver.SolveVelocityConstraints(svcState.Start, svcState.End);
+            SolveVelocityConstraintsState.Return(svcState);
+            svcState.ContactSolver.solveVelocityConstraintsWaitLock.Signal();
         }
 
         /// <summary>
