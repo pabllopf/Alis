@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.6] - 2026-08-19
+### :bug: Bug Fixes
+- [`663cf18`](https://github.com/pabllopf/Alis/commit/663cf18e1e3a5b3e1bdfcf05c5af632170854a1f) - delete reflection on unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f457ea5`](https://github.com/pabllopf/Alis/commit/f457ea5d75021a6ae5a9128052a56c226521ff3c) - locks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf4fbb0`](https://github.com/pabllopf/Alis/commit/bf4fbb019e0ff00848d345ade1da4d2106a17bcd) - UpdateManagerFlowCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`81e2181`](https://github.com/pabllopf/Alis/commit/81e2181c8ad30eb3454b00d020faa3f0afc551ad) - GraphicManagerBootstrapTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9038b60`](https://github.com/pabllopf/Alis/commit/9038b60a373f3f3d477c3ffe468092ed840c5d82) - UnixPlayerBaseFullCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`69a944b`](https://github.com/pabllopf/Alis/commit/69a944bc87eac45d78151159143928c48ece7155) - src code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`935eb12`](https://github.com/pabllopf/Alis/commit/935eb1284bc5a0c6a70522666bc8ae2e05fd47bf) - contacts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebb746f`](https://github.com/pabllopf/Alis/commit/ebb746fa4a826090a579314b8b473df04cbf099b) - locking physics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54159c4`](https://github.com/pabllopf/Alis/commit/54159c485487d5b2e5da1f148dc2409bbdcbac77) - delete theory test of ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bdb1b2a`](https://github.com/pabllopf/Alis/commit/bdb1b2af30c43e4f97c2dac2609cd0c0786f4f41) - unit tests of ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9fcd3e`](https://github.com/pabllopf/Alis/commit/c9fcd3ecea7fd5266d115ecd2b6d48c61955bb6e) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97a8cad`](https://github.com/pabllopf/Alis/commit/97a8cad127a6a5e8542e1a9cd97ddf4cab2a85ec) - ImDrawListPtrRemainingCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b575841`](https://github.com/pabllopf/Alis/commit/b575841227db779f4ff3b5d51767ef07046d5856) - RequireCImguiSystemFact *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`acb3ffa`](https://github.com/pabllopf/Alis/commit/acb3ffa3a38e57039a9205011d67e06fc8f1bee2) - replace Theory with Fact in AudioManagerTest, InputManagerTest, NetworkManagerTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.5] - 2026-08-19
 ### :bug: Bug Fixes
 - [`0a990b0`](https://github.com/pabllopf/Alis/commit/0a990b0e868fe4bef7b40bba91c89fe96c571dd7) - memory allocation *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10765,3 +10785,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.3]: https://github.com/pabllopf/Alis/compare/v1.2.2...v1.2.3
 [v1.2.4]: https://github.com/pabllopf/Alis/compare/v1.2.3...v1.2.4
 [v1.2.5]: https://github.com/pabllopf/Alis/compare/v1.2.4...v1.2.5
+[v1.2.6]: https://github.com/pabllopf/Alis/compare/v1.2.5...v1.2.6
