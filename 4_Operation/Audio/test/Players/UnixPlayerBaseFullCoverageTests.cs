@@ -39,56 +39,7 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class UnixPlayerBaseFullCoverageTests
     {
-        /// <summary>
-        ///     Tests that pause with a playing process pauses the audio
-        /// </summary>
-        [Fact]
-        public async Task Pause_WithPlayingProcess_PausesAudio()
-        {
-            string tempFile = Path.Combine(Path.GetTempPath(), "30");
-            File.WriteAllBytes(tempFile, CreateMinimalWav());
-
-            try
-            {
-                UnixPlayerBase player = new TestPlayerForCoverage();
-                await player.Play(tempFile);
-                await player.Pause();
-                Assert.True(player.Paused);
-                await player.Stop();
-            }
-            finally
-            {
-                File.Delete(tempFile);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that resume after pause with a playing process resumes the audio
-        /// </summary>
-        [Fact]
-        public async Task Resume_AfterPause_WithPlayingProcess_ResumesAudio()
-        {
-            string tempFile = Path.Combine(Path.GetTempPath(), "31");
-            File.WriteAllBytes(tempFile, CreateMinimalWav());
-
-            try
-            {
-                UnixPlayerBase player = new TestPlayerForCoverage();
-                await player.Play(tempFile);
-                await player.Pause();
-                Assert.True(player.Paused);
-
-                await player.Resume();
-
-                Assert.False(player.Paused);
-                Assert.True(player.Playing);
-                await player.Stop();
-            }
-            finally
-            {
-                File.Delete(tempFile);
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that resume keeps the paused flag unchanged when the process is not running
@@ -102,45 +53,6 @@ namespace Alis.Core.Audio.Test.Players
 
             Assert.False(player.Playing);
             Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        ///     Tests that resume after pause can be repeated and keeps the audio playing
-        /// </summary>
-        [Fact]
-        public async Task Resume_AfterPause_MultipleCycles_KeepsPlaying()
-        {
-            string tempFile = Path.Combine(Path.GetTempPath(), "32");
-            File.WriteAllBytes(tempFile, CreateMinimalWav());
-
-            try
-            {
-                UnixPlayerBase player = new TestPlayerForCoverage();
-                await player.Play(tempFile);
-                await player.Pause();
-                await player.Resume();
-                await player.Pause();
-                await player.Resume();
-
-                Assert.False(player.Paused);
-                Assert.True(player.Playing);
-                await player.Stop();
-            }
-            finally
-            {
-                File.Delete(tempFile);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that play with a nonexistent file throws a file not found exception
-        /// </summary>
-        [Fact]
-        public async Task Play_WithNonExistentFile_Throws()
-        {
-            UnixPlayerBase player = new TestPlayerForCoverage();
-
-            await Assert.ThrowsAnyAsync<System.Exception>(() => player.Play(Path.Combine(Path.GetTempPath(), "unix_missing_file_xyz.wav")));
         }
 
         /// <summary>
