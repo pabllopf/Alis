@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.5] - 2026-08-19
+### :bug: Bug Fixes
+- [`0a990b0`](https://github.com/pabllopf/Alis/commit/0a990b0e868fe4bef7b40bba91c89fe96c571dd7) - memory allocation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1b488b`](https://github.com/pabllopf/Alis/commit/a1b488ba813153439d9c4fab447e9c47d3152590) - csfml files *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.4] - 2026-08-18
 ### :bug: Bug Fixes
 - [`2e91a3e`](https://github.com/pabllopf/Alis/commit/2e91a3e6cfb3a7ba79b612b87b591954d0c1a5b4) - memory *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10758,3 +10764,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.2]: https://github.com/pabllopf/Alis/compare/v1.2.1...v1.2.2
 [v1.2.3]: https://github.com/pabllopf/Alis/compare/v1.2.2...v1.2.3
 [v1.2.4]: https://github.com/pabllopf/Alis/compare/v1.2.3...v1.2.4
+[v1.2.5]: https://github.com/pabllopf/Alis/compare/v1.2.4...v1.2.5
