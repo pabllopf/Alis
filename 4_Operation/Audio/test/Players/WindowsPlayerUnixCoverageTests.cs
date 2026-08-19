@@ -79,6 +79,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Throws<DllNotFoundException>(() => player.ExecuteMsiCommand("Status x Length"));
         }
 
+        
         /// <summary>
         ///     Verifies that pausing before playback starts is a safe no-op.
         /// </summary>
