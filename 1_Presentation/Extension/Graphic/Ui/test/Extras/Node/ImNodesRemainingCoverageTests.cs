@@ -888,7 +888,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     static attributes, link creation, selection queries and the MiniMap scope entry
         ///     points execute against the native library.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void NodeEditorFrame_WithNodeAttributesAndLink_Executes()
         {
             IntPtr imgui = CreateFramedImGuiContext();
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies ShowDemoWindow drives the whole node editor demo flow inside a real
         ///     ImGui frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ShowDemoWindow_ExecutesInsideFrame()
         {
             IntPtr imgui = CreateFramedImGuiContext();
