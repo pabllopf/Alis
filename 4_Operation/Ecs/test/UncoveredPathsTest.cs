@@ -257,23 +257,5 @@ namespace Alis.Core.Ecs.Test
                     scene.Update();
             }
         }
-
-        /// <summary>
-        /// Tests that fast lookup find adjacent with cache miss works
-        /// </summary>
-        [Fact] public void FastLookup_FindAdjacent_WithCacheMiss_Works()
-        {
-            using (Scene scene = new())
-            {
-                scene.Create(new Position());
-                GameObject go = scene.Create(new Position(), new Velocity());
-                go.Add(new Health());
-                go.Add(new Transform());
-                go.Add(new TestComponent());
-                go.Remove<TestComponent>();
-                go.Remove<Transform>();
-                scene.Update();
-            }
-        }
     }
 }

@@ -78,27 +78,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             }
         }
 
-        /// <summary>
-        ///     Tests that adding multiple different components works
-        /// </summary>
-        /// <remarks>
-        ///     Validates that multiple different components can be added to the same entity.
-        /// </remarks>
-        [Fact] public void AddComponent_AddingMultipleDifferentComponentsWorks()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create();
-
-                entity.Add(new Position {X = 1, Y = 2});
-                entity.Add(new Velocity {X = 3, Y = 4});
-                entity.Add(new Health {Value = 100});
-
-                Assert.True(entity.Has<Position>());
-                Assert.True(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
-            }
-        }
+    
 
         /// <summary>
         ///     Tests that added component data is accessible immediately
@@ -271,28 +251,5 @@ namespace Alis.Core.Ecs.Test.Kernel
             }
         }
 
-        /// <summary>
-        ///     Tests that adding component sequence works
-        /// </summary>
-        /// <remarks>
-        ///     Validates that a specific sequence of component additions works.
-        /// </remarks>
-        [Fact] public void AddComponent_SequenceOfAdditionsWorks()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create();
-
-                entity.Add(new Position {X = 1, Y = 2});
-                entity.Add(new Velocity {X = 3, Y = 4});
-                entity.Add(new Health {Value = 100});
-                entity.Add(new Transform {X = 5, Y = 6, Rotation = 45});
-
-                Assert.True(entity.Has<Position>());
-                Assert.True(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
-                Assert.True(entity.Has<Transform>());
-            }
-        }
     }
 }

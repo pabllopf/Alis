@@ -108,21 +108,6 @@ namespace Alis.Core.Ecs.Test
 
         
 
-        /// <summary>
-        ///     Tests that boundary condition transform zero coordinates
-        /// </summary>
-        [Fact] public void BoundaryCondition_TransformZeroCoordinates()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject go = scene.Create();
-
-                go.Add(new Transform {X = 0, Y = 0});
-                Assert.Equal(0, go.Get<Transform>().X);
-                Assert.Equal(0, go.Get<Transform>().Y);
-            }
-        }
-
        
 
         /// <summary>

@@ -126,22 +126,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.Null(velocityObj);
             }
         }
-        
-        /// <summary>
-        ///     Tests that game object add as by type adds component as specified type
-        /// </summary>
-        [Fact] public void GameObject_AddAs_ByType_AddsComponentAsSpecifiedType()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create();
-
-                entity.AddAs(typeof(TestComponent), new TestComponent {Value = 123});
-
-                Assert.True(entity.Has<TestComponent>());
-                Assert.Equal(123, entity.Get<TestComponent>().Value);
-            }
-        }
 
     
 

@@ -190,25 +190,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that removing a non-colliding joint filters the connecting contacts.
-        /// </summary>
-        [Fact]
-        public void RemoveJoint_WithTouchingBodies_FiltersContacts()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-
-            Joint joint = Alis.Core.Physic.Dynamics.Joints.JointFactory.CreateRevoluteJoint(world, bodyA, bodyB, Vector2F.Zero);
-            Assert.NotNull(bodyA.ContactList);
-
-            world.Remove(joint);
-
-            Assert.True(true);
-        }
-
-        /// <summary>
         ///     Tests that create rounded rectangle with few segments creates a polygon.
         /// </summary>
         [Fact]

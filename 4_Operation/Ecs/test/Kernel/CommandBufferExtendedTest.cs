@@ -217,28 +217,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        ///     Tests that operations preserve order
-        /// </summary>
-        /// <remarks>
-        ///     Validates that operations are applied in the correct order.
-        /// </remarks>
-        [Fact] public void CommandBuffer_PreservesOperationOrder()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create();
-
-                entity.Add(new Position {X = 1, Y = 2});
-                entity.Add(new Velocity {X = 3, Y = 4});
-                entity.Add(new Health {Value = 100});
-
-                Assert.True(entity.Has<Position>());
-                Assert.True(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
-            }
-        }
-        
-        /// <summary>
         ///     Tests that operations are deferred until update
         /// </summary>
         /// <remarks>

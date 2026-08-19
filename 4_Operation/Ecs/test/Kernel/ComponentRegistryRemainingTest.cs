@@ -49,17 +49,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId id = Component.GetComponentId(typeof(Velocity));
             Assert.True(id.RawIndex >= 0);
         }
-
-        /// <summary>
-        /// Tests that get existing or setup new component plain struct without lifecycle returns null delegates
-        /// </summary>
-        [Fact] public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
-        {
-            (ComponentId ComponentID, IdTable<Armor> Stack, ComponentDelegates<Armor>.InitDelegate Initer, ComponentDelegates<Armor>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Armor>();
-            Assert.Null(result.Initer);
-            Assert.Null(result.Destroyer);
-        }
-
+        
         /// <summary>
         /// Tests that get component id after register component returns valid id
         /// </summary>

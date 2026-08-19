@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent.Components;
+
 namespace Alis.Core.Ecs.Test.Models
 {
     /// <summary>
@@ -35,11 +37,16 @@ namespace Alis.Core.Ecs.Test.Models
     /// <remarks>
     ///     Test component for armor/defense values in tests.
     /// </remarks>
-    public struct Armor
+    public struct Armor : IOnInit
     {
         /// <summary>
         ///     Gets or sets the value of the defense
         /// </summary>
         public int Value { get; set; }
+
+        public void OnInit(IGameObject self)
+        {
+            
+        }
     }
 }

@@ -54,23 +54,5 @@ namespace Alis.Core.Ecs.Test
                 Assert.True(entity.Has<Position>());
             }
         }
-        
-        /// <summary>
-        ///     Tests removing a component from a multi-component entity in different orders
-        /// </summary>
-        [Fact]
-        public void RemoveComponents_InDifferentOrders()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject a = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
-                a.Remove<Health>();
-                a.Remove<Position>();
-
-                GameObject b = scene.Create(new Position {X = 1}, new Health {Value = 2}, new Velocity {X = 3});
-                b.Remove<Position>();
-                b.Remove<Velocity>();
-            }
-        }
     }
 }

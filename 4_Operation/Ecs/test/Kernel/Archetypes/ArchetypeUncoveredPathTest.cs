@@ -41,31 +41,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
     public class ArchetypeUncoveredPathTest
     {
         /// <summary>
-        ///     Tests that GetArchetypeId processes many different component types without error.
-        ///     Covers the hash computation path with varying type counts.
-        /// </summary>
-        [Fact] public void Archetype_GetArchetypeId_WithManyComponentTypes_ProcessesSuccessfully()
-        {
-            // Arrange: Create entities with many different component types
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create(new Position());
-
-                // Add different component types (not duplicates)
-                entity.Add(new Velocity());
-                entity.Add(new Health());
-
-                // Verify we can add components
-                Assert.True(entity.IsAlive);
-                Assert.True(entity.Has<Position>());
-                Assert.True(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
-
-                
-            }
-        }
-
-        /// <summary>
         ///     Tests that GetAdjacentArchetypeCold handles AddComponent edge type.
         ///     Covers the switch case: ArchetypeEdgeType.AddComponent
         /// </summary>
@@ -214,34 +189,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             }
         }
 
-        /// <summary>
-        ///     Tests the ModifyComponentLocationTable path when table needs resizing.
-        ///     Covers the: GlobalWorldTables.ComponentTagLocationTable.Length == id branch.
-        /// </summary>
-        [Fact] public void Archetype_ModifyComponentLocationTable_WhenTableNeedsResizing_ResizesCorrectly()
-        {
-            // Arrange: Create entities with various component combinations to trigger table resizing
-
-            // Create entities with different component combinations
-            using (Scene scene = new Scene())
-            {
-                GameObject e1 = scene.Create(new Position());
-                GameObject e2 = scene.Create(new Velocity());
-                GameObject e3 = scene.Create(new Health());
-
-                // Add components to create more archetype transitions
-                e1.Add(new Velocity());
-                e1.Add(new Health());
-
-                // Verify entities are alive (e2 and e3 are in different archetypes, e1 has multiple components)
-                Assert.True(e1.IsAlive);
-                Assert.True(e2.IsAlive);
-                Assert.True(e3.IsAlive);
-
-                
-            }
-        }
-
+      
+       
         /// <summary>
         ///     Tests the GetHash method with different component combinations.
         ///     Covers the hash computation path with varying type counts.

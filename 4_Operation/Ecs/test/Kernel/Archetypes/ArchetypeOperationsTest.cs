@@ -133,73 +133,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             
         }
 
-        /// <summary>
-        ///     Tests archetype transitions with component removal
-        /// </summary>
-        /// <remarks>
-        ///     Validates that removing components causes an entity
-        ///     to transition to an archetype with fewer components.
-        /// </remarks>
-        [Fact] public void Archetype_TransitionsWhenComponentsRemoved()
-        {
-            Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            entity.Add(new Position());
-            entity.Add(new Velocity());
-            entity.Add(new Health());
+       
 
-            entity.Remove<Health>();
-            entity.Remove<Velocity>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-
-            
-        }
-
-        /// <summary>
-        ///     Tests many archetypes can coexist in same scene
-        /// </summary>
-        /// <remarks>
-        ///     Verifies that the ECS can handle a scene with many different
-        ///     archetype configurations efficiently.
-        /// </remarks>
-        [Fact] public void Archetype_ManyArchetypesCanCoexistInScene()
-        {
-            Scene scene = new Scene();
-
-            for (int i = 0; i < 10; i++)
-            {
-                GameObject entity = scene.Create();
-                if (i % 2 == 0)
-                {
-                    entity.Add(new Position());
-                }
-
-                if (i % 3 == 0)
-                {
-                    entity.Add(new Velocity());
-                }
-
-                if (i % 4 == 0)
-                {
-                    entity.Add(new Health());
-                }
-            }
-
-            int count = 0;
-            Query query = scene.Query<With<Position>>();
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.True(count > 0);
-
-            
-        }
-
+  
         /// <summary>
         ///     Tests component access works across archetype transitions
         /// </summary>

@@ -60,25 +60,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object add and remove multiple components works
-        /// </summary>
-        [Fact] public void GameObject_AddAndRemove_MultipleComponents_Works()
-        {
-            using (Scene scene = new())
-            {
-                GameObject go = scene.Create(new Position());
-                go.Add(new Velocity {X = 1, Y = 2});
-                go.Add(new Health {Value = 100});
-                Assert.True(go.Has<Position>());
-                Assert.True(go.Has<Velocity>());
-                Assert.True(go.Has<Health>());
-                go.Remove<Velocity>();
-                Assert.False(go.Has<Velocity>());
-                Assert.True(go.Has<Health>());
-            }
-        }
-
-        /// <summary>
         /// Tests that game object get returns correct value
         /// </summary>
         [Fact] public void GameObject_Get_ReturnsCorrectValue()

@@ -27,16 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent.Components;
+
 namespace Alis.Core.Ecs.Test.Models
 {
     /// <summary>
     ///     The test component
     /// </summary>
-    internal struct TestComponent2
+    internal struct TestComponent2 : IOnInit
     {
         /// <summary>
         ///     The value
         /// </summary>
         public int Value;
+
+        public void OnInit(IGameObject self)
+        {
+            
+        }
     }
 }

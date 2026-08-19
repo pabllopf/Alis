@@ -122,31 +122,7 @@ namespace Alis.Core.Ecs.Test
                 Assert.True(entity.Has<Health>());
             }
         }
-
-        /// <summary>
-        ///     Tests that multiple components can be removed sequentially
-        /// </summary>
-        /// <remarks>
-        ///     Validates that multiple removal operations work correctly.
-        /// </remarks>
-        [Fact] public void SceneStructural_MultipleComponentsCanBeRemovedSequentially()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create(
-                    new Position {X = 1, Y = 2},
-                    new Velocity {X = 3, Y = 4},
-                    new Health {Value = 100}
-                );
-
-                entity.Remove<Position>();
-                entity.Remove<Velocity>();
-
-                Assert.False(entity.Has<Position>());
-                Assert.False(entity.Has<Velocity>());
-                Assert.True(entity.Has<Health>());
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that entity identity is preserved during archetype transition

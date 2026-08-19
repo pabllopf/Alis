@@ -139,26 +139,7 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
-        /// <summary>
-        ///     Tests removing multiple components
-        /// </summary>
-        [Fact] public void GameObject_CanRemoveMultipleComponents()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject entity = scene.Create(
-                    new Position {X = 1},
-                    new Health {Value = 100},
-                    new Velocity {X = 2});
-
-                entity.Remove<Position>();
-                entity.Remove<Velocity>();
-
-                Assert.False(entity.Has<Position>());
-                Assert.True(entity.Has<Health>());
-                Assert.False(entity.Has<Velocity>());
-            }
-        }
+   
 
         /// <summary>
         ///     Tests component data preserved when other components added

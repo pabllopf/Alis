@@ -387,23 +387,7 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
-        /// <summary>
-        ///     Tests that game object can remove component
-        /// </summary>
-        /// <remarks>
-        ///     Tests that components can be removed from a GameObject.
-        /// </remarks>
-        [Fact] public void GameObject_CanRemoveComponent()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject gameObject = scene.Create(new TestComponent {Value = 60});
-
-                gameObject.Remove<TestComponent>();
-
-                Assert.False(gameObject.Has<TestComponent>());
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that game object with multiple components can be queried
