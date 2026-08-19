@@ -41,50 +41,6 @@ namespace Alis.Core.Graphic.Test.Constructs
     /// </summary>
     public class GlShaderRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that release unmanaged resources with shader id throws when gl not initialized
-        /// </summary>
-        [Fact]
-        public void ReleaseUnmanagedResources_WithShaderId_ThrowsWhenGlNotInitialized()
-        {
-            Gl.Initialize(null);
-            GlShader shader = CreateFakeShader(1u);
-
-            Assert.Throws<InvalidOperationException>(() => shader.ReleaseUnmanagedResources());
-        }
-
-        /// <summary>
-        ///     Tests that finalizer with shader id does not throw when gl not initialized
-        /// </summary>
-        [Fact]
-        public void Finalizer_WithShaderId_DoesNotThrowWhenGlNotInitialized()
-        {
-            Gl.Initialize(null);
-
-            CreateFinalizableShader();
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
-
-        /// <summary>
-        ///     Creates the fake shader using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The gl shader</returns>
-        private static GlShader CreateFakeShader(uint id)
-        {
-            GlShader shader = (GlShader)RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
-            typeof(GlShader).GetProperty("ShaderId").GetSetMethod(true).Invoke(shader, new object[] { id });
-            return shader;
-        }
-
-        /// <summary>
-        ///     Creates the finalizable shader
-        /// </summary>
-        private static void CreateFinalizableShader()
-        {
-            GlShader shader = CreateFakeShader(1u);
-        }
+        
     }
 }

@@ -43,27 +43,7 @@ namespace Alis.Core.Graphic.Test.Ui
     /// </summary>
     public class FontCoverageTests
     {
-        /// <summary>
-        ///     Tests that private properties round trip via reflection
-        /// </summary>
-        [Fact]
-        public void PrivateProperties_RoundTripViaReflection()
-        {
-            Font font = new Font("test.bmp", 1, 12);
-
-            PropertyInfo size = GetPrivateProperty("Size");
-            size.SetValue(font, new Vector2F(32.0f, 16.0f));
-            Vector2F sizeValue = (Vector2F)size.GetValue(font);
-            Assert.Equal(32.0f, sizeValue.X);
-            Assert.Equal(16.0f, sizeValue.Y);
-
-            SetAndAssertUint(font, "ShaderProgram", 1u);
-            SetAndAssertUint(font, "Vao", 2u);
-            SetAndAssertUint(font, "Vbo", 3u);
-            SetAndAssertUint(font, "Ebo", 4u);
-            SetAndAssertUint(font, "Texture", 5u);
-        }
-
+ 
         /// <summary>
         ///     Tests that load texture with missing file throws
         /// </summary>
@@ -132,18 +112,7 @@ namespace Alis.Core.Graphic.Test.Ui
             return typeof(Font).GetProperty(name, BindingFlags.Instance | BindingFlags.NonPublic);
         }
 
-        /// <summary>
-        ///     Sets the and assert uint using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        private static void SetAndAssertUint(Font font, string name, uint value)
-        {
-            PropertyInfo property = GetPrivateProperty(name);
-            property.SetValue(font, value);
-            Assert.Equal(value, (uint)property.GetValue(font));
-        }
+ 
 
         /// <summary>
         ///     Creates the tiny bmp

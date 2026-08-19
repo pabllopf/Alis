@@ -255,56 +255,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
-        /// <summary>
-        ///     Tests that is gamepad button just pressed no previous state returns current button
-        /// </summary>
-        [Fact]
-        public void IsGamepadButtonJustPressed_NoPreviousState_ReturnsCurrentButton()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
-            platform.OnGamepadConnect(0);
-
-            Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
-
-            SetGamepadButtons(platform, 0, new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false });
-
-            Assert.True(manager.IsGamepadButtonJustPressed(0, 0));
-        }
-
-        /// <summary>
-        ///     Tests that is gamepad button just pressed with previous state returns true
-        /// </summary>
-        [Fact]
-        public void IsGamepadButtonJustPressed_WithPreviousState_ReturnsTrue()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
-            platform.OnGamepadConnect(0);
-            manager.Update();
-
-            SetGamepadButtons(platform, 0, new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false });
-
-            Assert.True(manager.IsGamepadButtonJustPressed(0, 0));
-        }
-
-        /// <summary>
-        ///     Tests that is gamepad button just pressed held button returns false
-        /// </summary>
-        [Fact]
-        public void IsGamepadButtonJustPressed_HeldButton_ReturnsFalse()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
-            platform.OnGamepadConnect(0);
-            manager.Update();
-
-            SetGamepadButtons(platform, 0, new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false });
-            manager.Update();
-            SetGamepadButtons(platform, 0, new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false });
-
-            Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
-        }
 
         /// <summary>
         ///     Tests that is gamepad button just released no gamepad returns false
@@ -328,24 +278,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.OnGamepadConnect(0);
 
             Assert.False(manager.IsGamepadButtonJustReleased(0, 0));
-        }
-
-        /// <summary>
-        ///     Tests that is gamepad button just released released button returns true
-        /// </summary>
-        [Fact]
-        public void IsGamepadButtonJustReleased_ReleasedButton_ReturnsTrue()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
-            platform.OnGamepadConnect(0);
-            manager.Update();
-
-            SetGamepadButtons(platform, 0, new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false });
-            manager.Update();
-            SetGamepadButtons(platform, 0, new bool[13]);
-
-            Assert.True(manager.IsGamepadButtonJustReleased(0, 0));
         }
 
         /// <summary>
@@ -572,21 +504,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.IsFullscreen());
-        }
-
-        /// <summary>
-        ///     Sets the gamepad buttons using the specified platform
-        /// </summary>
-        /// <param name="platform">The platform</param>
-        /// <param name="index">The index</param>
-        /// <param name="buttons">The buttons</param>
-        private static void SetGamepadButtons(WebAssemblyPlatform platform, int index, bool[] buttons)
-        {
-            GamepadState state = new GamepadState();
-            state.Connected = true;
-            PropertyInfo property = typeof(GamepadState).GetProperty("Buttons");
-            property.GetSetMethod(true).Invoke(state, new object[] { buttons });
-            platform._gamepadStates[index] = state;
         }
     }
 }

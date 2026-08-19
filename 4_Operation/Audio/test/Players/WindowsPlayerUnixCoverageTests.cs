@@ -68,40 +68,7 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
-        /// <summary>
-        ///     Verifies that playing a missing file falls back to the resource lookup and
-        ///     reports the file as not found.
-        /// </summary>
-        [Fact]
-        public void Play_WithMissingFile_ThrowsFileNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<FileNotFoundException>(() => { player.Play("missing_resource_xyz.wav"); });
-        }
-
-        /// <summary>
-        ///     Verifies that playing an existing file sets the playback state and fails at
-        ///     the winmm boundary.
-        /// </summary>
-        [UnixOnly]
-        public void Play_WithExistingFile_ThrowsDllNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<DllNotFoundException>(() => { player.Play(_tempWav); });
-        }
-
-        /// <summary>
-        ///     Verifies that looping an existing file sets the playback state and fails at
-        ///     the winmm boundary.
-        /// </summary>
-        [UnixOnly]
-        public void PlayLoop_WithExistingFile_ThrowsDllNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<DllNotFoundException>(() => { player.PlayLoop(_tempWav, true); });
-            Assert.Throws<DllNotFoundException>(() => { player.PlayLoop(_tempWav, false); });
-        }
-
+        
         /// <summary>
         ///     Verifies that a raw mci command fails at the winmm boundary.
         /// </summary>

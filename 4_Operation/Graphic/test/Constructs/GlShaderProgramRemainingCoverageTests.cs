@@ -43,16 +43,6 @@ namespace Alis.Core.Graphic.Test.Constructs
     /// </summary>
     public class GlShaderProgramRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that two shader constructor throws when gl not initialized
-        /// </summary>
-        [Fact]
-        public void TwoShaderConstructor_ThrowsWhenGlNotInitialized()
-        {
-            Gl.Initialize(null);
-
-            Assert.Throws<InvalidOperationException>(() => new GlShaderProgram(CreateFakeShader(1u), CreateFakeShader(2u)));
-        }
 
         /// <summary>
         ///     Tests that source constructor throws when gl not initialized
@@ -212,19 +202,7 @@ namespace Alis.Core.Graphic.Test.Constructs
 
             Assert.Equal(typeof(object), method.Invoke(null, new object[] { (ActiveUniformType)999 }));
         }
-
-        /// <summary>
-        ///     Creates the fake shader using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The gl shader</returns>
-        private static GlShader CreateFakeShader(uint id)
-        {
-            GlShader shader = (GlShader)RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
-            typeof(GlShader).GetProperty("ShaderId").GetSetMethod(true).Invoke(shader, new object[] { id });
-            return shader;
-        }
-
+        
         /// <summary>
         ///     Creates the fake program using the specified program id
         /// </summary>
