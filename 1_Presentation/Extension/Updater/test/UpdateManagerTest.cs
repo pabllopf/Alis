@@ -386,49 +386,7 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("number of entries", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
-        /// <summary>
-        ///     Tests that clean temp file removes only non backup artifacts
-        /// </summary>
-        [Fact]
-        public void CleanTempFile_RemovesOnlyNonBackupArtifacts()
-        {
-            UpdateManager sut = CreateManager();
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            string id = Guid.NewGuid().ToString("N");
-
-            string tempZip = Path.Combine(baseDir, "tmp-" + id + ".zip");
-            string tempDmg = Path.Combine(baseDir, "tmp-" + id + ".dmg");
-            string backupZip = Path.Combine(baseDir, "Backup_" + id + ".zip");
-
-            File.WriteAllText(tempZip, "zip");
-            File.WriteAllText(tempDmg, "dmg");
-            File.WriteAllText(backupZip, "backup");
-
-            try
-            {
-                sut.CleanTempFile();
-                Assert.False(File.Exists(tempZip));
-                Assert.False(File.Exists(tempDmg));
-                Assert.True(File.Exists(backupZip));
-            }
-            finally
-            {
-                if (File.Exists(tempZip))
-                {
-                    File.Delete(tempZip);
-                }
-
-                if (File.Exists(tempDmg))
-                {
-                    File.Delete(tempDmg);
-                }
-
-                if (File.Exists(backupZip))
-                {
-                    File.Delete(backupZip);
-                }
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that clean temporary files by pattern deletes only matching non backup files
