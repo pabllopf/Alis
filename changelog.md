@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.7] - 2026-08-20
+### :bug: Bug Fixes
+- [`391a260`](https://github.com/pabllopf/Alis/commit/391a260548816415296e74d84c4ebcfea3ceecab) - samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1583c2`](https://github.com/pabllopf/Alis/commit/b1583c2be50f79d7b3d8edf2060b14a98149a650) - SpriteRenderCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`78ba933`](https://github.com/pabllopf/Alis/commit/78ba933af5b1179340203b7fa85d81b09188bf5c) - SpriteRenderCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b75f983`](https://github.com/pabllopf/Alis/commit/b75f983c4841c811a352b77bec37ac6a4c995aa8) - dispose on tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`892aa24`](https://github.com/pabllopf/Alis/commit/892aa24a50824968c9bafa096236b6021647f72a) - Start_WithNoCompatiblePackage_ReturnsFalse *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a521c3`](https://github.com/pabllopf/Alis/commit/4a521c3f7d41551b9e8277da6d4dbb4a48b5ed1a) - build-and-analyze:     timeout-minutes: 20     permissions: *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`344a6c8`](https://github.com/pabllopf/Alis/commit/344a6c8bf0a479dd504aafd360d5c5e5c56ccbfd) - build-and-analyze:     timeout-minutes: 20     permissions: *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7edc8e9`](https://github.com/pabllopf/Alis/commit/7edc8e9a095a678a32650e8f784a8342c5d1d92a) - UpdateManagerTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5cd975`](https://github.com/pabllopf/Alis/commit/f5cd9750dac3ba6d3eb2d70a0f83df3d24b95804) - [RequireImNodesSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e68f10`](https://github.com/pabllopf/Alis/commit/9e68f10d2766c20c42d88641e2eae976960385e2) - [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f0f6d77`](https://github.com/pabllopf/Alis/commit/f0f6d7769273b6200d90e2f3cd39167f07a8d11a) - [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31ec014`](https://github.com/pabllopf/Alis/commit/31ec01435e4dab5fae8e2894724742b65d14fd44) - [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20ef8ac`](https://github.com/pabllopf/Alis/commit/20ef8ac495dba24ffd54a269be259fa865a37921) - [RequireCImguiSystemFact] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`59f9fd0`](https://github.com/pabllopf/Alis/commit/59f9fd0bb1062d4b9ebe5b07902dfe6f16bc5dd4) - windows compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4ba6ebb`](https://github.com/pabllopf/Alis/commit/4ba6ebbae77e0d175df8203e34fd7e6dfabc914a) - compilation on windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b90e05d`](https://github.com/pabllopf/Alis/commit/b90e05df75b3f84f8d63ebbd2b23f7e62f2fa5a6) - timeout to 35 mins *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.6] - 2026-08-19
 ### :bug: Bug Fixes
 - [`663cf18`](https://github.com/pabllopf/Alis/commit/663cf18e1e3a5b3e1bdfcf05c5af632170854a1f) - delete reflection on unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10786,3 +10806,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.4]: https://github.com/pabllopf/Alis/compare/v1.2.3...v1.2.4
 [v1.2.5]: https://github.com/pabllopf/Alis/compare/v1.2.4...v1.2.5
 [v1.2.6]: https://github.com/pabllopf/Alis/compare/v1.2.5...v1.2.6
+[v1.2.7]: https://github.com/pabllopf/Alis/compare/v1.2.6...v1.2.7
