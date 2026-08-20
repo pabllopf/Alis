@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <returns>True if the library can be loaded</returns>
         private static bool CanLoadCImguiLibrary()
         {
-            if (NativeLibrary.TryLoad("cimgui", out _))
+            if (NativeLibrary.TryLoad("imgui", out _))
             {
                 return true;
             }

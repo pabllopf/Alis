@@ -36,6 +36,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -83,7 +84,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that the constructor initializes the player successfully when OpenAL is available.
         /// </summary>
-        [Fact]
+        [BrowserOnly]
         public void Constructor_WithOpenAlAvailable_InitializesPlayer()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -97,7 +98,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that pause sets the paused flag and clears the playing flag.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public void Pause_WithInitializedPlayer_SetsPausedTrue()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -112,7 +113,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that resume sets the playing flag and clears the paused flag.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public void Resume_WithInitializedPlayer_SetsPlayingTrue()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -127,7 +128,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that stop clears both the playing and paused flags.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public void Stop_WithInitializedPlayer_SetsBothFalse()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -142,7 +143,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that set volume returns a completed task.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public void SetVolume_WithInitializedPlayer_ReturnsCompletedTask()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -155,7 +156,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with a valid wav asset buffers and plays the audio.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public async Task Play_WithValidWavAsset_PlaysAudio()
         {
             BrowserPlayer player = new BrowserPlayer();
@@ -172,7 +173,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play with an invalid wav asset throws an invalid operation exception.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public async Task Play_WithInvalidWavAsset_ThrowsInvalidOperationException()
         {
             byte[] garbage = Encoding.ASCII.GetBytes("this is not a wav file at all");
@@ -193,7 +194,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play loop delegates to play and plays the audio.
         /// </summary>
-        [Fact]
+         [BrowserOnly]
         public async Task PlayLoop_WithValidWavAsset_PlaysAudio()
         {
             BrowserPlayer player = new BrowserPlayer();

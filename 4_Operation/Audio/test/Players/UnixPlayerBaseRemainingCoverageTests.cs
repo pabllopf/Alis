@@ -34,6 +34,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -120,7 +121,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that handle playback finished with playing invokes the event.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task HandlePlaybackFinished_WithPlayingTrue_InvokesEvent()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -150,7 +151,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that handle playback finished when not playing does not invoke the event.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task HandlePlaybackFinished_WhenNotPlaying_DoesNotInvokeEvent()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();
@@ -180,7 +181,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that get audio duration with a real wav file parses the duration.
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public async Task PlayLoop_WithRealWavFile_ParsesDuration()
         {
             TestPlayerForCoverage player = new TestPlayerForCoverage();

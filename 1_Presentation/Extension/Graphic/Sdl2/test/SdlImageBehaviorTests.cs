@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sdl2.Sdl2Image;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that the compiled version is always the bundled 2.0.6 release
         /// </summary>
-        [Fact]
+        [UnixOnly]
         public void Version_ReturnsBundledCompiledVersion()
         {
             Version version = SdlImage.Version();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         ///     Tests that the linked version cannot be marshaled because system version is
         ///     not blittable or the native library is missing
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LinkedVersion_Throws_BecauseVersionIsNotMarshallableOrLibraryMissing()
         {
             try
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading a missing file returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadImg_MissingFile_ReturnsZero()
         {
             IntPtr surface = LoadOrZero(() => SdlImage.LoadImg("nonexistent_file_xyz.png"));
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading a typed rw with an invalid source returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadTypedRw_InvalidSource_ReturnsZero()
         {
             IntPtr surface = LoadOrZero(() => SdlImage.LoadTypedRw(IntPtr.Zero, 0, "PNG"));
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading a texture with an invalid renderer returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadTexture_InvalidRenderer_ReturnsZero()
         {
             IntPtr texture = LoadOrZero(() => SdlImage.LoadTexture(IntPtr.Zero, "test.png"));
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading a texture typed rw with invalid parameters returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadTextureTypedRw_InvalidParameters_ReturnsZero()
         {
             IntPtr texture = LoadOrZero(() => SdlImage.LoadTextureTypedRw(IntPtr.Zero, IntPtr.Zero, 0, "PNG"));
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that saving png with a valid surface writes the file successfully
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void SavePng_ValidSurface_SavesFile()
         {
             try
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that saving jpg with a valid surface writes the file successfully
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void SaveJpg_ValidSurface_SavesFile()
         {
             try
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that getting the error returns a non null string
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void GetError_ReturnsNonNullString()
         {
             try
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that the set error message is returned by the get error
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void SetError_ThenGetError_ContainsMessage()
         {
             try
@@ -237,7 +238,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading an animation with a missing file returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadAnimation_MissingFile_ReturnsZero()
         {
             IntPtr animation = LoadOrZero(() => SdlImage.LoadAnimation("nonexistent_file_xyz.gif"));
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading an animation rw with an invalid source returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadAnimationRw_InvalidSource_ReturnsZero()
         {
             IntPtr animation = LoadOrZero(() => SdlImage.LoadAnimationRw(IntPtr.Zero, 0));
@@ -257,7 +258,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading an animation typed rw with invalid parameters returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadAnimationTypedRw_InvalidParameters_ReturnsZero()
         {
             IntPtr animation = LoadOrZero(() => SdlImage.LoadAnimationTypedRw(IntPtr.Zero, 0, "GIF"));
@@ -267,7 +268,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that freeing a null animation does not throw
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void FreeAnimation_NullAnimation_DoesNotThrow()
         {
             InvokeIgnoringMissingLibrary(() => SdlImage.FreeAnimation(IntPtr.Zero));
@@ -276,7 +277,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading a gif animation rw with an invalid source returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadGifAnimationRw_InvalidSource_ReturnsZero()
         {
             IntPtr animation = LoadOrZero(() => SdlImage.LoadGifAnimationRw(IntPtr.Zero));
@@ -286,7 +287,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that init returns the requested flags and quit completes the round trip
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void Init_ReturnsRequestedFlags_AndQuitCompletes()
         {
             try
@@ -307,7 +308,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that quit alone does not throw
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void Quit_DoesNotThrow()
         {
             InvokeIgnoringMissingLibrary(SdlImage.Quit);
@@ -316,7 +317,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that loading an rw with an invalid source returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void LoadRw_InvalidSource_ReturnsZero()
         {
             IntPtr surface = LoadOrZero(() => SdlImage.LoadRw(IntPtr.Zero, 0));
@@ -326,7 +327,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that saving a jpg rw with invalid parameters returns an error code
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void SaveJpgRw_InvalidParameters_ReturnsError()
         {
             int result = SaveOrError(() => SdlImage.SaveJpgRw(IntPtr.Zero, IntPtr.Zero, 0, 90));
@@ -336,7 +337,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that saving a png rw with invalid parameters returns an error code
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void SavePngRw_InvalidParameters_ReturnsError()
         {
             int result = SaveOrError(() => SdlImage.SavePngRw(IntPtr.Zero, IntPtr.Zero, 0));
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that reading an xpm array with no entries returns zero
         /// </summary>
-        [Fact]
+         [UnixOnly]
         public void ReadXpmFromArray_EmptyArray_ReturnsZero()
         {
             IntPtr surface = LoadOrZero(() => SdlImage.ReadXpmFromArray(new string[0]));
