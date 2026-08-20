@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that default values are zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImGuiListClipper clipper = default;
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that integer properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IntegerProperties_RoundTrip()
         {
             ImGuiListClipper clipper = default;
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that float and pointer properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FloatAndPtr_RoundTrip()
         {
             ImGuiListClipper clipper = default;

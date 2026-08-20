@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer get negative index should throw
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Get_NegativeIndex_ShouldThrow()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer get index out of range should throw
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Get_IndexOutOfRange_ShouldThrow()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer set negative index should throw
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Set_NegativeIndex_ShouldThrow()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer set index out of range should throw
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Set_IndexOutOfRange_ShouldThrow()
         {
             ImGuiStyle style = new ImGuiStyle();

@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that valid default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Valid_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that valid set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Valid_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists count default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsCount_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists count set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsCount_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that total idx count default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TotalIdxCount_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that total idx count set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TotalIdxCount_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that total vtx count default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TotalVtxCount_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that total vtx count set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TotalVtxCount_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists ptr default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsPtr_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists ptr set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsPtr_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display pos default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DisplayPos_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display pos set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DisplayPos_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display size default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DisplaySize_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that display size set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DisplaySize_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that framebuffer scale default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FramebufferScale_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that framebuffer scale set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FramebufferScale_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that owner viewport ptr default value returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OwnerViewportPtr_DefaultValue_ReturnsZero()
         {
             ImDrawData data = default;
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that owner viewport ptr set value returns set value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OwnerViewportPtr_SetValue_ReturnsSetValue()
         {
             ImDrawData data = default;
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists range count matches cmd lists count
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsRange_CountMatchesCmdListsCount()
         {
             ImDrawData data = default;
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists range data matches cmd lists ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdListsRange_DataMatchesCmdListsPtr()
         {
             ImDrawData data = default;

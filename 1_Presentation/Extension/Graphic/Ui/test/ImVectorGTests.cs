@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that im vector constructor sets size
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImVectorConstructor_SetsSize()
         {
             ImVector vector = new ImVector {Size = 5, Capacity = 10, Data = IntPtr.Zero};
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that im vector constructor sets capacity
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImVectorConstructor_SetsCapacity()
         {
             ImVector vector = new ImVector {Size = 5, Capacity = 10, Data = IntPtr.Zero};
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that im vector constructor sets data
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImVectorConstructor_SetsData()
         {
             IntPtr data = new IntPtr(42);
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that direct constructor sets all fields
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DirectConstructor_SetsAllFields()
         {
             IntPtr data = new IntPtr(99);
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer with int data returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_WithIntData_ReturnsCorrectValue()
         {
             int[] data = {10, 20, 30, 40, 50};
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer with byte data returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_WithByteData_ReturnsCorrectValue()
         {
             byte[] data = {1, 2, 3, 4};
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer with float data returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_WithFloatData_ReturnsCorrectValue()
         {
             float[] data = {1.5f, 2.5f, 3.5f};
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer with null data throws exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_WithNullData_ThrowsException()
         {
             ImVectorG<int> imVectorG = new ImVectorG<int>(10, 20, IntPtr.Zero);

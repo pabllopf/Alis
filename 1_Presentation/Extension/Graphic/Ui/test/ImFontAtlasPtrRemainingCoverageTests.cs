@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddCustomRectFontGlyph throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddCustomRectFontGlyph_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddCustomRectFontGlyph throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddCustomRectFontGlyph_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddCustomRectRegular throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddCustomRectRegular_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFont throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFont_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontDefault throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontDefault_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontDefault throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontDefault_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromFileTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromFileTtf_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromFileTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromFileTtf_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromFileTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromFileTtf_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedBase85Ttf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedBase85Ttf_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedBase85Ttf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedBase85Ttf_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedBase85Ttf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedBase85Ttf_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedTtf_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedTtf_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryCompressedTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedTtf_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that AddFontFromMemoryTtf throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that Build throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Build_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that CalcCustomRectUv throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CalcCustomRectUv_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that Clear throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Clear_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ClearFonts throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClearFonts_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ClearInputData throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClearInputData_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ClearTexData throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClearTexData_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetCustomRectByIndex throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetCustomRectByIndex_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesChineseFull throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesChineseFull_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesChineseSimplifiedCommon throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesChineseSimplifiedCommon_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesCyrillic throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesCyrillic_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesDefault throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesDefault_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesGreek throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesGreek_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesJapanese throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesJapanese_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesKorean throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesKorean_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesThai throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesThai_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetGlyphRangesVietnamese throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetGlyphRangesVietnamese_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetMouseCursorTexData throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetMouseCursorTexData_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsAlpha8 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsAlpha8_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsAlpha8 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsAlpha8_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsAlpha8 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsAlpha8_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsAlpha8 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsAlpha8_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsRgba32 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsRgba32_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsRgba32 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsRgba32_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that GetTexDataAsRgba32 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexDataAsRgba32_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsBuilt throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsBuilt_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -601,7 +601,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that SetTexId throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SetTexId_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

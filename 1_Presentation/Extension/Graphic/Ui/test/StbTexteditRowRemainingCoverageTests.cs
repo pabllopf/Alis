@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default x 0 should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultX0_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default x 1 should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultX1_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default baseline y delta should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultBaselineYDelta_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default ymin should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultYmin_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default ymax should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultYmax_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default num chars should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultNumChars_ShouldBeZero()
         {
             StbTexteditRow row = default;
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that x 0 set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void X0_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that x 1 set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void X1_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that baseline y delta set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void BaselineYDelta_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ymin set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Ymin_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ymax set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Ymax_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that num chars set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void NumChars_SetAndGet_ReturnsCorrectValue()
         {
             StbTexteditRow row = default;

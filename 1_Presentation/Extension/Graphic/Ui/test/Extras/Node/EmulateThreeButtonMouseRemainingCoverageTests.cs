@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property round-trips a byte array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_RoundTrip()
         {
             EmulateThreeButtonMouse m = new EmulateThreeButtonMouse();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property is null by default.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultModifier_IsNull()
         {
             EmulateThreeButtonMouse m = new EmulateThreeButtonMouse();
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property accepts an empty byte array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_SetToEmptyArray()
         {
             EmulateThreeButtonMouse m = new EmulateThreeButtonMouse();

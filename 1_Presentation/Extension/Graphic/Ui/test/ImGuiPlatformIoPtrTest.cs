@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ImGuiPlatformIoPtr is a value type.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImGuiPlatformIoPtr_ShouldBeValueType()
         {
             Assert.True(typeof(ImGuiPlatformIoPtr).IsValueType);
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ImGuiPlatformIoPtr has sequential layout.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImGuiPlatformIoPtr_ShouldHaveSequentialLayout()
         {
             StructLayoutAttribute attribute = typeof(ImGuiPlatformIoPtr).StructLayoutAttribute;
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the constructor stores the native pointer.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_ShouldStoreNativePtr()
         {
             IntPtr expected = new IntPtr(12345);
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the implicit conversion from ImGuiPlatformIoPtr to IntPtr.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitConversion_ToIntPtr_ShouldReturnNativePtr()
         {
             IntPtr expected = new IntPtr(67890);
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the explicit conversion from IntPtr to ImGuiPlatformIoPtr.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ExplicitConversion_FromIntPtr_ShouldCreateInstance()
         {
             IntPtr expected = new IntPtr(11111);
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Equals compares NativePtr values.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Equals_SameNativePtr_ShouldReturnTrue()
         {
             IntPtr nativePtr = new IntPtr(33333);
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Equals returns false for different NativePtr values.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Equals_DifferentNativePtr_ShouldReturnFalse()
         {
             ImGuiPlatformIoPtr ptr1 = new ImGuiPlatformIoPtr(new IntPtr(44444));
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Equals with null returns false.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Equals_NullObject_ShouldReturnFalse()
         {
             ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(new IntPtr(66666));
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that GetHashCode is consistent across calls.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetHashCode_ShouldBeConsistent()
         {
             ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(new IntPtr(77777));

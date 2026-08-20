@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that input buf get when default returns null
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputBuf_Get_WhenDefault_ReturnsNull()
         {
             ImGuiTextFilter filter = default;
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that input buf set should store value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputBuf_Set_ShouldStoreValue()
         {
             ImGuiTextFilter filter = default;
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that filters get when default returns default
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Filters_Get_WhenDefault_ReturnsDefault()
         {
             ImGuiTextFilter filter = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that filters set should store value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Filters_Set_ShouldStoreValue()
         {
             ImGuiTextFilter filter = default;
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that count grep get when default returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CountGrep_Get_WhenDefault_ReturnsZero()
         {
             ImGuiTextFilter filter = default;
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that count grep set should store value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CountGrep_Set_ShouldStoreValue()
         {
             ImGuiTextFilter filter = default;

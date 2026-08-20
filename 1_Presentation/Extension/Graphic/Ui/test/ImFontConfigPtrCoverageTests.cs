@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with int ptr sets native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithIntPtr_SetsNativePtr()
         {
             IntPtr expected = new IntPtr(42);
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with int ptr zero sets native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithIntPtr_Zero_SetsNativePtr()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with im font config allocates and copies
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithImFontConfig_AllocatesAndCopies()
         {
             ImFontConfig config = new ImFontConfig
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with im font config zero fields returns defaults
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithImFontConfig_ZeroFields_ReturnsDefaults()
         {
             ImFontConfig config = new ImFontConfig();
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitConversion_ToIntPtr_ReturnsNativePtr()
         {
             IntPtr expected = new IntPtr(77);
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion from int ptr returns im font config ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitConversion_FromIntPtr_ReturnsImFontConfigPtr()
         {
             IntPtr nativePtr = new IntPtr(88);
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontData_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data size getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontDataSize_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data owned by atlas getter true returns true
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontDataOwnedByAtlas_Getter_True_ReturnsTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data owned by atlas getter false returns false
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontDataOwnedByAtlas_Getter_False_ReturnsFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font no getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontNo_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that size pixels getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SizePixels_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that oversample h getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OversampleH_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that oversample v getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OversampleV_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h getter when snap h is non zero returns true
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SnapH_Getter_WhenSnapHIsNonZero_ReturnsTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h getter when snap h is zero returns false
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SnapH_Getter_WhenSnapHIsZero_ReturnsFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h setter sets snap h to true
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SnapH_Setter_SetsSnapHToTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h setter sets snap h to false
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SnapH_Setter_SetsSnapHToFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph extra spacing getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphExtraSpacing_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph offset getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphOffset_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph ranges getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphRanges_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph ranges setter sets value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphRanges_Setter_SetsValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -504,7 +504,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph min advance x getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphMinAdvanceX_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -524,7 +524,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph min advance x setter sets value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphMinAdvanceX_Setter_SetsValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -547,7 +547,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph max advance x getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphMaxAdvanceX_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode getter when merge mode is non zero returns true
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MergeMode_Getter_WhenMergeModeIsNonZero_ReturnsTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode getter when merge mode is zero returns false
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MergeMode_Getter_WhenMergeModeIsZero_ReturnsFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode setter sets merge mode to true
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MergeMode_Setter_SetsMergeModeToTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -630,7 +630,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode setter sets merge mode to false
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MergeMode_Setter_SetsMergeModeToFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font builder flags getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontBuilderFlags_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -673,7 +673,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that rasterizer multiply getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RasterizerMultiply_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -693,7 +693,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ellipsis char getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void EllipsisChar_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that dst font getter returns expected
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DstFont_Getter_ReturnsExpected()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -733,7 +733,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that native ptr getter returns value passed to constructor
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void NativePtr_Getter_ReturnsValuePassedToConstructor()
         {
             IntPtr expected = new IntPtr(0xDEAD);
@@ -744,7 +744,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontData_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data size getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontDataSize_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -764,7 +764,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font data owned by atlas getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontDataOwnedByAtlas_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -774,7 +774,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font no getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontNo_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that size pixels getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SizePixels_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that oversample h getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OversampleH_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -804,7 +804,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that oversample v getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void OversampleV_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SnapH_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -824,7 +824,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph extra spacing getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphExtraSpacing_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph offset getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphOffset_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -844,7 +844,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph ranges getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphRanges_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -854,7 +854,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph min advance x getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphMinAdvanceX_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -864,7 +864,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph max advance x getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphMaxAdvanceX_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MergeMode_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -884,7 +884,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that font builder flags getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontBuilderFlags_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -894,7 +894,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that rasterizer multiply getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RasterizerMultiply_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -904,7 +904,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ellipsis char getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void EllipsisChar_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -914,7 +914,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that dst font getter on zero ptr throws null reference exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DstFont_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);

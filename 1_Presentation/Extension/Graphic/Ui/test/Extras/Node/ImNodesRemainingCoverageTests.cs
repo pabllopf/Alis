@@ -828,7 +828,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     the backing style struct contains an array field that cannot cross the interop
         ///     boundary by value.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void StyleColorsDark_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsDark());
@@ -840,7 +840,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     because the backing style struct contains an array field that cannot cross the
         ///     interop boundary by value.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void StyleColorsClassic_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsClassic());
@@ -852,7 +852,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     because the backing style struct contains an array field that cannot cross the
         ///     interop boundary by value.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void StyleColorsLight_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsLight());

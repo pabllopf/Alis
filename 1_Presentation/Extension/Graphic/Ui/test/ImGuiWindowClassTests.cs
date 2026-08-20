@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that class id default returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClassId_Default_ReturnsZero()
         {
             ImGuiWindowClass windowClass = default;
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that class id set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClassId_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that parent viewport id default returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ParentViewportId_Default_ReturnsZero()
         {
             ImGuiWindowClass windowClass = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that parent viewport id set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ParentViewportId_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that viewport flags override set default returns none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ViewportFlagsOverrideSet_Default_ReturnsNone()
         {
             ImGuiWindowClass windowClass = default;
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that viewport flags override set set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ViewportFlagsOverrideSet_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that viewport flags override clear default returns none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ViewportFlagsOverrideClear_Default_ReturnsNone()
         {
             ImGuiWindowClass windowClass = default;
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that viewport flags override clear set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ViewportFlagsOverrideClear_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that tab item flags override set default returns none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TabItemFlagsOverrideSet_Default_ReturnsNone()
         {
             ImGuiWindowClass windowClass = default;
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that tab item flags override set set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TabItemFlagsOverrideSet_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that dock node flags override set default returns none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockNodeFlagsOverrideSet_Default_ReturnsNone()
         {
             ImGuiWindowClass windowClass = default;
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that dock node flags override set set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockNodeFlagsOverrideSet_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that docking always tab bar default returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockingAlwaysTabBar_Default_ReturnsZero()
         {
             ImGuiWindowClass windowClass = default;
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that docking always tab bar set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockingAlwaysTabBar_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that docking allow unclassed default returns zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockingAllowUnclassed_Default_ReturnsZero()
         {
             ImGuiWindowClass windowClass = default;
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that docking allow unclassed set get works correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DockingAllowUnclassed_SetGet_WorksCorrectly()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that new instance has expected defaults
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void NewInstance_HasExpectedDefaults()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set all properties then read all matches
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SetAllProperties_ThenReadAll_Matches()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that struct value semantics copy preserves values
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void StructValueSemantics_CopyPreservesValues()
         {
             ImGuiWindowClass original = new ImGuiWindowClass

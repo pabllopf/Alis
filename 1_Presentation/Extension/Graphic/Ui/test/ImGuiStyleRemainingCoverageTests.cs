@@ -739,7 +739,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer set index 51 should set colors 51
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Set_Index51_ShouldSetColors51()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer set index 52 should set colors 52
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Set_Index52_ShouldSetColors52()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -763,7 +763,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that indexer set index 53 should set colors 53
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Set_Index53_ShouldSetColors53()
         {
             ImGuiStyle style = new ImGuiStyle();

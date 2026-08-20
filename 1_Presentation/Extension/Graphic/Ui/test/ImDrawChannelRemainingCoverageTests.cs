@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default cmd buffer and idx buffer are default
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_CmdBufferAndIdxBufferAreDefault()
         {
             ImDrawChannel channel = default;
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd buffer round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdBuffer_RoundTrip()
         {
             ImDrawChannel channel = default;
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx buffer round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IdxBuffer_RoundTrip()
         {
             ImDrawChannel channel = default;
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd buffer ptr returns new wrapper
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CmdBufferPtr_ReturnsNewWrapper()
         {
             ImDrawChannel channel = default;
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx buffer ptr returns new wrapper
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IdxBufferPtr_ReturnsNewWrapper()
         {
             ImDrawChannel channel = default;

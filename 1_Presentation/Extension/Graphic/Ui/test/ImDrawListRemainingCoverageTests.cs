@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that default values are zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImDrawList drawList = default;
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ImVector properties round-trip via default.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImVectorProperties_RoundTrip()
         {
             ImDrawList drawList = default;
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that integer and pointer properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IntPtrAndUint_RoundTrip()
         {
             ImDrawList drawList = default;
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Flags, FringeScale, CmdHeader, and Splitter round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Flags_FringeScale_CmdHeader_Splitter_RoundTrip()
         {
             ImDrawList drawList = default;

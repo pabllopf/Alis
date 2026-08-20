@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt2_6 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt2_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt3_6 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt3_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragInt4_6 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragInt4_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_6 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragIntRange2_7 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragIntRange2_7_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalar_6 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalar_6_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalarN_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalarN_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalarN_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalarN_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that DragScalarN_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DragScalarN_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default instance used chars should be default vector
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_UsedChars_ShouldBeDefaultVector()
         {
             ImFontGlyphRangesBuilder builder = default;
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that used chars should round trip assigned vector
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void UsedChars_ShouldRoundTripAssignedVector()
         {
             ImFontGlyphRangesBuilder builder = default;
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that used chars should remain zero after clear of untouched builder
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void UsedChars_ShouldRemainZeroOnUntouchedBuilder()
         {
             ImFontGlyphRangesBuilder builder = default;

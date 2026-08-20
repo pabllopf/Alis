@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImFontGlyph glyph = default;
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colored visible codepoint round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ColoredVisibleCodepoint_RoundTrip()
         {
             ImFontGlyph glyph = default;
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that advance x round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AdvanceX_RoundTrip()
         {
             ImFontGlyph glyph = default;
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x0 y0 x1 y1 round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void X0Y0X1Y1_RoundTrip()
         {
             ImFontGlyph glyph = default;
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that u0 v0 u1 v1 round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void U0V0U1V1_RoundTrip()
         {
             ImFontGlyph glyph = default;

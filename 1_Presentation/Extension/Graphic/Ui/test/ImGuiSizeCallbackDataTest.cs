@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user data should be initialized
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void UserData_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pos should be initialized
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Pos_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that current size should be initialized
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CurrentSize_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that desired size should be initialized
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DesiredSize_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that user data should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void UserData_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pos should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Pos_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that current size should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CurrentSize_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that desired size should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DesiredSize_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();

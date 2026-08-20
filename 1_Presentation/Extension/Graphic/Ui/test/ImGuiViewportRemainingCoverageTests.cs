@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default id should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultId_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default flags should be none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultFlags_ShouldBeNone()
         {
             ImGuiViewport viewport = default;
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default pos should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPos_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default size should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultSize_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default dpi scale should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultDpiScale_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that id set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Id_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Flags_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pos set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Pos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Size_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DpiScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default work pos should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultWorkPos_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default work size should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultWorkSize_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default parent viewport id should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultParentViewportId_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that parent viewport id set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ParentViewportId_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default draw data should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultDrawData_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that draw data set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DrawData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default renderer user data should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultRendererUserData_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer user data set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererUserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform user data should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformUserData_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform user data set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformUserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform handle should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformHandle_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformHandle_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform handle raw should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformHandleRaw_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle raw set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformHandleRaw_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform window created should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformWindowCreated_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform window created set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformWindowCreated_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform request move should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformRequestMove_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request move set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestMove_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform request resize should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformRequestResize_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request resize set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestResize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default platform request close should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultPlatformRequestClose_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
@@ -395,7 +395,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request close set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestClose_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport viewport = default;

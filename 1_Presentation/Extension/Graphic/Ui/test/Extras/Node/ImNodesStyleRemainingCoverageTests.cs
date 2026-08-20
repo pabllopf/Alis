@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that properties round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Properties_RoundTrip()
         {
             ImNodesStyle style = new ImNodesStyle
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that defaults are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Defaults_AreZero()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that flags with node outline round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Flags_WithNodeOutline_RoundTrip()
         {
             ImNodesStyle style = new ImNodesStyle();

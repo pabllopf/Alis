@@ -96,145 +96,145 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformCreateWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(1), ptr.PlatformCreateWindow);
 
         /// <summary>
         ///     Tests that platform destroy window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(2), ptr.PlatformDestroyWindow);
 
         /// <summary>
         ///     Tests that platform show window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformShowWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(3), ptr.PlatformShowWindow);
 
         /// <summary>
         ///     Tests that platform set window pos returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(4), ptr.PlatformSetWindowPos);
 
         /// <summary>
         ///     Tests that platform get window pos returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(5), ptr.PlatformGetWindowPos);
 
         /// <summary>
         ///     Tests that platform set window size returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(6), ptr.PlatformSetWindowSize);
 
         /// <summary>
         ///     Tests that platform get window size returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(7), ptr.PlatformGetWindowSize);
 
         /// <summary>
         ///     Tests that platform set window focus returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(8), ptr.PlatformSetWindowFocus);
 
         /// <summary>
         ///     Tests that platform get window focus returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(9), ptr.PlatformGetWindowFocus);
 
         /// <summary>
         ///     Tests that platform get window minimized returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(10), ptr.PlatformGetWindowMinimized);
 
         /// <summary>
         ///     Tests that platform set window title returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(11), ptr.PlatformSetWindowTitle);
 
         /// <summary>
         ///     Tests that platform set window alpha returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(12), ptr.PlatformSetWindowAlpha);
 
         /// <summary>
         ///     Tests that platform update window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(13), ptr.PlatformUpdateWindow);
 
         /// <summary>
         ///     Tests that platform render window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRenderWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(14), ptr.PlatformRenderWindow);
 
         /// <summary>
         ///     Tests that platform swap buffers returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(15), ptr.PlatformSwapBuffers);
 
         /// <summary>
         ///     Tests that platform get window dpi scale returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(16), ptr.PlatformGetWindowDpiScale);
 
         /// <summary>
         ///     Tests that platform on changed viewport returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(17), ptr.PlatformOnChangedViewport);
 
         /// <summary>
         ///     Tests that platform create vk surface returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(18), ptr.PlatformCreateVkSurface);
 
         /// <summary>
         ///     Tests that renderer create window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererCreateWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(19), ptr.RendererCreateWindow);
 
         /// <summary>
         ///     Tests that renderer destroy window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererDestroyWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(20), ptr.RendererDestroyWindow);
 
         /// <summary>
         ///     Tests that renderer set window size returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererSetWindowSize_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(21), ptr.RendererSetWindowSize);
 
         /// <summary>
         ///     Tests that renderer render window returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererRenderWindow_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(22), ptr.RendererRenderWindow);
 
         /// <summary>
         ///     Tests that renderer swap buffers returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererSwapBuffers_ShouldReturnExpectedValue() => Assert.Equal(new IntPtr(23), ptr.RendererSwapBuffers);
 
         /// <summary>
         ///     Tests that monitors returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Monitors_ShouldReturnExpectedValue()
         {
             ImVectorG<ImGuiPlatformMonitor> monitors = ptr.Monitors;
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that viewports returns expected value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Viewports_ShouldReturnExpectedValue()
         {
             ImVectorG<ImGuiViewportPtr> viewports = ptr.Viewports;

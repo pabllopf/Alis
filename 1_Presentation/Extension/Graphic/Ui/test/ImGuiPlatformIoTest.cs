@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ImGuiPlatformIo is a value type.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImGuiPlatformIo_ShouldBeValueType()
         {
             Assert.True(typeof(ImGuiPlatformIo).IsValueType);
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PlatformCreateWindow defaults to IntPtr.Zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformCreateWindow_Default_ShouldBeZero()
         {
             ImGuiPlatformIo io = default;
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PlatformCreateWindow can be set.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformCreateWindow_ShouldBeSettable()
         {
             ImGuiPlatformIo io = default;
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Monitors defaults to default ImVector.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Monitors_Default_ShouldBeDefault()
         {
             ImGuiPlatformIo io = default;
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Viewports defaults to default ImVector.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Viewports_Default_ShouldBeDefault()
         {
             ImGuiPlatformIo io = default;

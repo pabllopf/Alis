@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default size should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultSize_ShouldBeZero()
         {
             ImVector vector = default;
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default capacity should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultCapacity_ShouldBeZero()
         {
             ImVector vector = default;
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default data should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultData_ShouldBeZero()
         {
             ImVector vector = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor should set properties
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_ShouldSetProperties()
         {
             IntPtr data = new IntPtr(42);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that properties should be mutable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Properties_ShouldBeMutable()
         {
             ImVector vector = default;
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ref method should read int from allocated memory
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Ref_ShouldReadInt()
         {
             IntPtr data = Marshal.AllocHGlobal(sizeof(int));
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ref should read int at non zero index
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Ref_ShouldReadIntAtIndex()
         {
             IntPtr data = Marshal.AllocHGlobal(sizeof(int) * 3);
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ref should read byte
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Ref_ShouldReadByte()
         {
             IntPtr data = Marshal.AllocHGlobal(sizeof(byte));
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that address should return data pointer at index zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Address_ShouldReturnDataPointer()
         {
             IntPtr data = new IntPtr(123);
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that address should return advanced pointer at non zero index
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Address_ShouldReturnAdvancedPointer()
         {
             IntPtr data = new IntPtr(100);
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that address with byte type should advance by byte size
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Address_WithByteType_ShouldAdvanceByByteSize()
         {
             IntPtr data = new IntPtr(100);

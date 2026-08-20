@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that default values are zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImGuiKeyData keyData = default;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Down property round-trips.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Down_RoundTrip()
         {
             ImGuiKeyData keyData = default;
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that float properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FloatProperties_RoundTrip()
         {
             ImGuiKeyData keyData = default;

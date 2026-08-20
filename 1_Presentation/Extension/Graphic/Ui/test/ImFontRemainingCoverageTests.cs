@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that default values are zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImFont font = default;
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ImVector properties round-trip via default.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImVectorProperties_RoundTrip()
         {
             ImFont font = default;
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that numeric properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void NumericProperties_RoundTrip()
         {
             ImFont font = default;
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that pointer properties round-trip.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PointerProperties_RoundTrip()
         {
             ImFont font = default;
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Used4KPagesMap field round-trips.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Used4KPagesMap_RoundTrip()
         {
             ImFont font = new ImFont();

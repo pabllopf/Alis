@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that main pos set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MainPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that main size set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MainSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor();
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor();
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor();
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale set and get returns correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DpiScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor();
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that main pos default is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MainPos_Default_IsZero()
         {
             ImGuiPlatformMonitor monitor = default;
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale default is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DpiScale_Default_IsZero()
         {
             ImGuiPlatformMonitor monitor = default;

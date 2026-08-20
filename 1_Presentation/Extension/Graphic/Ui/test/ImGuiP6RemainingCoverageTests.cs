@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputFloat4_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputFloat4_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputFloat4_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputFloat4_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt2_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt2_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt2_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt2_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt3_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt3_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt3_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt3_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt4_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt4_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputInt4_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputInt4_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalar_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalar_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalar_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalar_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalar_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalar_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalar_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalar_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalar_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalar_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalarN_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalarN_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalarN_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalarN_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalarN_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalarN_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalarN_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalarN_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InputScalarN_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputScalarN_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InvisibleButton_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InvisibleButton_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that InvisibleButton_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InvisibleButton_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsAnyItemActive throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsAnyItemActive_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsAnyItemFocused throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsAnyItemFocused_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsAnyItemHovered throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsAnyItemHovered_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsAnyMouseDown throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsAnyMouseDown_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemActivated throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemActivated_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemActive throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemActive_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemClicked_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemClicked_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemClicked_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemClicked_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemDeactivated throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemDeactivated_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemDeactivatedAfterEdit throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemDeactivatedAfterEdit_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemEdited throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemEdited_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemFocused throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemFocused_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemHovered_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemHovered_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemHovered_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemHovered_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemToggledOpen throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemToggledOpen_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsItemVisible throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsItemVisible_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsKeyDown throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsKeyDown_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsKeyPressed_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsKeyPressed_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsKeyPressed_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsKeyPressed_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -601,7 +601,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsKeyReleased throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsKeyReleased_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -614,7 +614,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseClicked_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseClicked_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseClicked_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseClicked_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -640,7 +640,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseDoubleClicked throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseDoubleClicked_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseDown throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseDown_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseDragging_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseDragging_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseDragging_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseDragging_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -692,7 +692,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseHoveringRect_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseHoveringRect_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -705,7 +705,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseHoveringRect_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseHoveringRect_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMousePosValid_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMousePosValid_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -731,7 +731,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMousePosValid_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMousePosValid_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -744,7 +744,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsMouseReleased throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsMouseReleased_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -757,7 +757,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsPopupOpen_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsPopupOpen_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -770,7 +770,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsPopupOpen_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsPopupOpen_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -783,7 +783,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsRectVisible_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsRectVisible_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsRectVisible_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsRectVisible_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowAppearing throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowAppearing_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -822,7 +822,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowCollapsed throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowCollapsed_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -835,7 +835,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowDocked throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowDocked_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -848,7 +848,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowFocused_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowFocused_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -861,7 +861,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowFocused_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowFocused_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowHovered_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowHovered_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -887,7 +887,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that IsWindowHovered_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IsWindowHovered_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -900,7 +900,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LabelText throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LabelText_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -913,7 +913,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ListBox_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ListBox_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -926,7 +926,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that ListBox_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ListBox_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -939,7 +939,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LoadIniSettingsFromDisk throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LoadIniSettingsFromDisk_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -952,7 +952,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LoadIniSettingsFromMemory_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LoadIniSettingsFromMemory_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LoadIniSettingsFromMemory_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LoadIniSettingsFromMemory_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -978,7 +978,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogButtons throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogButtons_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -991,7 +991,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogFinish throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogFinish_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1004,7 +1004,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogText throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogText_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1017,7 +1017,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToClipboard_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToClipboard_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1030,7 +1030,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToClipboard_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToClipboard_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1043,7 +1043,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToFile_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToFile_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1056,7 +1056,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToFile_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToFile_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1069,7 +1069,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToFile_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToFile_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1082,7 +1082,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToTty_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToTty_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1095,7 +1095,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that LogToTty_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LogToTty_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1108,7 +1108,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MemAlloc throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MemAlloc_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1121,7 +1121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MemFree throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MemFree_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1134,7 +1134,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MenuItem_1 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MenuItem_1_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1147,7 +1147,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MenuItem_2 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MenuItem_2_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1160,7 +1160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MenuItem_3 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MenuItem_3_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1173,7 +1173,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MenuItem_4 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MenuItem_4_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())
@@ -1186,7 +1186,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that MenuItem_5 throws when native library is unavailable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MenuItem_5_WithoutNativeLibrary_Throws()
         {
             if (!CanLoadCImguiLibrary())

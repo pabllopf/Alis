@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b default should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_Default_ShouldBeZero()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b should handle max value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_Should_HandleMaxValue()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b should handle zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_Should_HandleZero()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b should handle negative value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_Should_HandleNegativeValue()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that e default should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void E_Default_ShouldBeZero()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that e should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void E_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that e should handle max value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void E_Should_HandleMaxValue()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that e should handle zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void E_Should_HandleZero()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that e should handle negative value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void E_Should_HandleNegativeValue()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that b and e should be independent
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void B_And_E_Should_BeIndependent()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that struct should be zeroed by default
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Struct_Should_BeZeroedByDefault()
         {
             ImGuiTextRange textRange = default;
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that struct should support value semantics
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Struct_Should_SupportValueSemantics()
         {
             ImGuiTextRange textRange1 = new ImGuiTextRange { B = new IntPtr(10), E = new IntPtr(20) };

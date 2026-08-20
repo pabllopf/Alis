@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default value is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Default_ShouldBeZero()
         {
             ImColor color = new ImColor();
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value can be set and read back
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_SetAndGet_ShouldMatch()
         {
             ImColor color = new ImColor();
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value can be overwritten
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Overwrite_ShouldStoreLatest()
         {
             ImColor color = new ImColor();

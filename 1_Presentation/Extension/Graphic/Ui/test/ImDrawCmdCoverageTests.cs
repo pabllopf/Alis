@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get tex id returns texture id when native library is available
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexId_ReturnsTextureId()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {TextureId = new IntPtr(123)};
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get tex id returns default texture id for default command
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GetTexId_Default_ReturnsDefaultTextureId()
         {
             ImDrawCmd drawCmd = default;

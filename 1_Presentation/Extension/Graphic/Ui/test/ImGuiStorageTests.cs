@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default data should be default im vector
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultData_ShouldBeDefaultImVector()
         {
             ImGuiStorage storage = default;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data property should be mutable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DataProperty_ShouldBeMutable()
         {
             ImGuiStorage storage = default;
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that setting data should return same values
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SettingData_ShouldReturnSameValues()
         {
             ImGuiStorage storage = default;

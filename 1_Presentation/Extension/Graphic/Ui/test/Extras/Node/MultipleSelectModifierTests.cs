@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property is null by default.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultModifier_IsNull()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property round-trips a byte array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_RoundTrip()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property accepts an empty byte array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_SetToEmptyArray()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property can be reassigned.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_Reassignment()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property handles a single-element array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_SingleElement()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property handles a large byte array.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Modifier_LargeArray()
         {
             MultipleSelectModifier m = new MultipleSelectModifier();

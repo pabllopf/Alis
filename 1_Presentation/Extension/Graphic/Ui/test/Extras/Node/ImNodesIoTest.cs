@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that ImNodesIo is a value type.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImNodesIo_ShouldBeValueType()
         {
             Assert.True(typeof(ImNodesIo).IsValueType);
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that default instance has default ThreeButtonMouse.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_ThreeButtonMouse_ShouldBeDefault()
         {
             ImNodesIo io = default;
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that default instance has default DetachWithModifierClick.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_DetachWithModifierClick_ShouldBeDefault()
         {
             ImNodesIo io = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that default instance has default SelectModifier.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_SelectModifier_ShouldBeDefault()
         {
             ImNodesIo io = default;
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that AltMouseButton defaults to zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_AltMouseButton_ShouldBeZero()
         {
             ImNodesIo io = default;
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that AutoPanningSpeed defaults to zero.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultInstance_AutoPanningSpeed_ShouldBeZero()
         {
             ImNodesIo io = default;
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that AltMouseButton can be set and read.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AltMouseButton_ShouldBeSettable()
         {
             ImNodesIo io = default;
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that AutoPanningSpeed can be set and read.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void AutoPanningSpeed_ShouldBeSettable()
         {
             ImNodesIo io = default;

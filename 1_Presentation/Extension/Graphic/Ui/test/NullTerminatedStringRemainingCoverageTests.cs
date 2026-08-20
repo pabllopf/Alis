@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with int ptr should set data
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ConstructorWithIntPtr_ShouldSetData()
         {
             IntPtr data = new IntPtr(123);
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string with zero data returns empty string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ToString_WithZeroData_ReturnsEmptyString()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator to string with zero data returns empty string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitOperator_WithZeroData_ReturnsEmptyString()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);

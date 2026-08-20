@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key default should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_Default_ShouldBeZero()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_Should_SetAndGetCorrectly()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key should handle max value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_Should_HandleMaxValue()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key should handle min value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_Should_HandleMinValue()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key should handle one
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_Should_HandleOne()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that value default should be default union value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Default_ShouldBeDefaultUnionValue()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that value should set and get with value i 32
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Should_SetAndGetWithValueI32()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that value should set and get with value f 32
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Should_SetAndGetWithValueF32()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that value should set and get with value ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Should_SetAndGetWithValuePtr()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that value should overwrite correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Should_OverwriteCorrectly()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that key and value should be independent
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_And_Value_Should_BeIndependent()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that struct should be zeroed by default
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Struct_Should_BeZeroedByDefault()
         {
             ImGuiStoragePair storagePair = default;

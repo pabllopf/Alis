@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that payload properties round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Payload_Properties_RoundTrip()
         {
             ImGuiPayload payload = new ImGuiPayload
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that payload defaults are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Payload_Defaults_AreZero()
         {
             ImGuiPayload payload = new ImGuiPayload();
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that table sort specs properties round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TableSortSpecs_Properties_RoundTrip()
         {
             ImGuiTableSortSpecs specs = new ImGuiTableSortSpecs
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that table sort specs defaults are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TableSortSpecs_Defaults_AreZero()
         {
             ImGuiTableSortSpecs specs = new ImGuiTableSortSpecs();

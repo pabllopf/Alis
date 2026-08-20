@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default column user id is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ColumnUserId_IsZero()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default column index is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ColumnIndex_IsZero()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default sort order is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_SortOrder_IsZero()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default sort direction is none
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_SortDirection_IsNone()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that column user id round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ColumnUserId_RoundTrip()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that column user id round trip max value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ColumnUserId_RoundTrip_MaxValue()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that column index round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ColumnIndex_RoundTrip()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that column index round trip negative
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ColumnIndex_RoundTrip_Negative()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that sort order round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SortOrder_RoundTrip()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that sort order round trip max value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SortOrder_RoundTrip_MaxValue()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that sort direction round trip ascending
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SortDirection_RoundTrip_Ascending()
         {
             ImGuiTableColumnSortSpecs specs = default;
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that sort direction round trip descending
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SortDirection_RoundTrip_Descending()
         {
             ImGuiTableColumnSortSpecs specs = default;

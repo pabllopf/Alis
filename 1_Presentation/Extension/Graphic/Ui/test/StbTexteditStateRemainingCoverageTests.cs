@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that properties round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Properties_RoundTrip()
         {
             StbTexteditState state = new StbTexteditState
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that defaults are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Defaults_AreZero()
         {
             StbTexteditState state = new StbTexteditState();

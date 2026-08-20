@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that the type is generated as a static class.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Type_ShouldBeStaticClass()
         {
             Type type = typeof(JetBrains);
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that all file names are valid TrueType font files.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontNames_ShouldBeValidTtfFiles()
         {
             Assert.False(string.IsNullOrWhiteSpace(JetBrains.NameRegular));
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that regular and light names currently map to the same file.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RegularAndLight_ShouldMatchCurrentDefinition()
         {
             Assert.Equal(JetBrains.NameRegular, JetBrains.NameLight);

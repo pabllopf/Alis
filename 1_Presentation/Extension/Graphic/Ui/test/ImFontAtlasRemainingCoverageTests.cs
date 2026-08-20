@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default im font atlas has representative zero values
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_Should_HaveZeroValues()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Flags_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex id should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexId_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex pixels alpha 8 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexPixelsAlpha8_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex pixels rgba 32 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexPixelsRgba32_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex desired width should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexDesiredWidth_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex glyph padding should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexGlyphPadding_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex width should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexWidth_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex height should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexHeight_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that locked should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Locked_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex ready should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexReady_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex pixels use colors should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexPixelsUseColors_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv scale should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvScale_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv white pixel should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvWhitePixel_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fonts should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Fonts_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that custom rects should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CustomRects_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ConfigData_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 0 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines0_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 5 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines5_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 10 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines10_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 20 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines20_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 30 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines30_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 39 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines39_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 50 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines50_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -379,7 +379,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 63 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines63_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font builder io should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontBuilderIo_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font builder flags should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void FontBuilderFlags_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pack id mouse cursors should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PackIdMouseCursors_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pack id lines should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PackIdLines_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 1 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines1_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 2 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines2_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 3 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines3_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -485,7 +485,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 4 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines4_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 6 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines6_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 7 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines7_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -521,7 +521,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 8 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines8_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -533,7 +533,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 9 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines9_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -545,7 +545,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 11 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines11_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 12 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines12_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 13 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines13_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 14 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines14_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -593,7 +593,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 15 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines15_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 16 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines16_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 17 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines17_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -629,7 +629,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 18 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines18_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -641,7 +641,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 19 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines19_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 21 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines21_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 22 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines22_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 23 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines23_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -689,7 +689,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 24 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines24_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -701,7 +701,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 25 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines25_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 26 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines26_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -725,7 +725,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 27 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines27_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 28 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines28_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -749,7 +749,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 29 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines29_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -761,7 +761,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 31 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines31_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -773,7 +773,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 32 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines32_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -785,7 +785,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 33 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines33_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -797,7 +797,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 34 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines34_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 35 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines35_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -821,7 +821,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 36 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines36_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 37 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines37_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -845,7 +845,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 38 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines38_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 40 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines40_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 41 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines41_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -881,7 +881,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 42 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines42_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -893,7 +893,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 43 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines43_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -905,7 +905,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 44 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines44_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -917,7 +917,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 45 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines45_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 46 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines46_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -941,7 +941,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 47 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines47_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -953,7 +953,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 48 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines48_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 49 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines49_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -977,7 +977,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 51 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines51_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -989,7 +989,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 52 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines52_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1001,7 +1001,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 53 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines53_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 54 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines54_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1025,7 +1025,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 55 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines55_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1037,7 +1037,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 56 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines56_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1049,7 +1049,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 57 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines57_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1061,7 +1061,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 58 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines58_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1073,7 +1073,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 59 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines59_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1085,7 +1085,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 60 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines60_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1097,7 +1097,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 61 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines61_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
@@ -1109,7 +1109,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tex uv lines 62 should set and get correctly
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TexUvLines62_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();

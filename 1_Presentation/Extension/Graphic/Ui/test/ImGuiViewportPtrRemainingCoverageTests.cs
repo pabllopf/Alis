@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with zero int ptr should set native ptr to zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithZeroIntPtr_ShouldSetNativePtrToZero()
         {
             ImGuiViewportPtr ptr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with im gui viewport should set native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithImGuiViewport_ShouldSetNativePtr()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator from int ptr should return correct instance
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitOperator_FromIntPtr_ShouldReturnCorrectInstance()
         {
             IntPtr nativePtr = new IntPtr(42);
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator to int ptr should return native pointer
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitOperator_ToIntPtr_ShouldReturnNativePointer()
         {
             IntPtr nativePtr = new IntPtr(99);
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that id should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Id_ShouldReadCorrectValue()
         {
             const uint expected = 42u;
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Flags_ShouldReadCorrectValue()
         {
             const ImGuiViewportFlags expected = ImGuiViewportFlags.TopMost;
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pos should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Pos_ShouldReadCorrectValue()
         {
             Vector2F expected = new Vector2F(1.5f, 2.5f);
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Size_ShouldReadCorrectValue()
         {
             Vector2F expected = new Vector2F(3.5f, 4.5f);
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkPos_ShouldReadCorrectValue()
         {
             Vector2F expected = new Vector2F(5.5f, 6.5f);
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WorkSize_ShouldReadCorrectValue()
         {
             Vector2F expected = new Vector2F(7.5f, 8.5f);
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DpiScale_ShouldReadCorrectValue()
         {
             const float expected = 2.0f;
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that parent viewport id should read correct value
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ParentViewportId_ShouldReadCorrectValue()
         {
             const uint expected = 99u;
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer user data get should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererUserData_Get_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer user data set should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RendererUserData_Set_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform user data get should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformUserData_Get_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform user data set should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformUserData_Set_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformHandle_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle raw should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformHandleRaw_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform window created should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformWindowCreated_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request move should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestMove_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request resize should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestResize_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request close should throw argument exception
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void PlatformRequestClose_ShouldThrowArgumentException()
         {
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(IntPtr.Zero);

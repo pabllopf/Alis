@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImGuiOnceUponAFrame onceUponAFrame = default;
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ref frame round trips
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void RefFrame_RoundTrip()
         {
             ImGuiOnceUponAFrame onceUponAFrame = default;

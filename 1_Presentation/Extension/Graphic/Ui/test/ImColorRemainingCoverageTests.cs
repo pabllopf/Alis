@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value property round trips
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Value_Property_RoundTrips()
         {
             ImColor color = new ImColor();
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default value is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultValue_IsZero()
         {
             ImColor color = new ImColor();

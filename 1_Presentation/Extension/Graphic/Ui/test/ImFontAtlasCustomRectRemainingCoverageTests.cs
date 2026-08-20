@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImFontAtlasCustomRect rect = default;
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that width height x y round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WidthHeightXY_RoundTrip()
         {
             ImFontAtlasCustomRect rect = default;
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph id round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphId_RoundTrip()
         {
             ImFontAtlasCustomRect rect = default;
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph advance x and glyph offset round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void GlyphAdvanceXAndGlyphOffset_RoundTrip()
         {
             ImFontAtlasCustomRect rect = default;
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Font_RoundTrip()
         {
             ImFontAtlasCustomRect rect = default;

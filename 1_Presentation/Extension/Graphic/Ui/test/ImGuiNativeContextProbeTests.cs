@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that create context and get version works natively
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CreateContext_AndGetVersion_Works()
         {
             IntPtr context = ImGui.CreateContext();
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that create context without font atlas works natively
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void CreateContext_WithoutFontAtlas_Works()
         {
             IntPtr context = ImGui.CreateContext();

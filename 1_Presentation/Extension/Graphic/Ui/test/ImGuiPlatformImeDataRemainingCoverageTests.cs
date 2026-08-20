@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreDefault()
         {
             ImGuiPlatformImeData data = default;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that want visible round trips
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void WantVisible_RoundTrip()
         {
             ImGuiPlatformImeData data = default;
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input pos and input line height round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputPosAndInputLineHeight_RoundTrip()
         {
             ImGuiPlatformImeData data = default;

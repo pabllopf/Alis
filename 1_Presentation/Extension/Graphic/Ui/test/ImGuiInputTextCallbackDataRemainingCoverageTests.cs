@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImGuiInputTextCallbackData data = default;
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input text flags round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void InputTextFlags_RoundTrip()
         {
             ImGuiInputTextCallbackData data = default;
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that key round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Key_RoundTrip()
         {
             ImGuiInputTextCallbackData data = default;
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that int ptr fields round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IntPtrFields_RoundTrip()
         {
             ImGuiInputTextCallbackData data = default;
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that int fields and event char round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void IntFieldsAndEventChar_RoundTrip()
         {
             ImGuiInputTextCallbackData data = default;
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf dirty round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void BufDirty_RoundTrip()
         {
             ImGuiInputTextCallbackData data = default;

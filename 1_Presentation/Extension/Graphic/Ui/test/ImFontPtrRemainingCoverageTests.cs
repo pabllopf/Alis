@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor assigns native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_AssignsNativePtr()
         {
             ImFontPtr fontPtr = new ImFontPtr(new IntPtr(1234));
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit cast to int ptr returns native ptr
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitCast_ToIntPtr_ReturnsNativePtr()
         {
             ImFontPtr fontPtr = new ImFontPtr(new IntPtr(5678));
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit cast from int ptr creates wrapper
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitCast_FromIntPtr_CreatesWrapper()
         {
             ImFontPtr fontPtr = new IntPtr(999);

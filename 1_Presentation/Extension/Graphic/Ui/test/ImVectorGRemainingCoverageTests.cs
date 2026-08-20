@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default size should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultSize_ShouldBeZero()
         {
             ImVectorG<int> vector = default;
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default capacity should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultCapacity_ShouldBeZero()
         {
             ImVectorG<int> vector = default;
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default data should be zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultData_ShouldBeZero()
         {
             ImVectorG<int> vector = default;
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor from im vector should copy fields
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ConstructorFromImVector_ShouldCopyFields()
         {
             IntPtr data = new IntPtr(42);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that direct constructor should set fields
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DirectConstructor_ShouldSetFields()
         {
             IntPtr data = new IntPtr(88);

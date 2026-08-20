@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImDrawListSplitter splitter = default;
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that current round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Current_RoundTrip()
         {
             ImDrawListSplitter splitter = default;
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that count round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Count_RoundTrip()
         {
             ImDrawListSplitter splitter = default;
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that channels round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Channels_RoundTrip()
         {
             ImDrawListSplitter splitter = default;

@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with int ptr should set data
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithIntPtr_ShouldSetData()
         {
             IntPtr expected = new IntPtr(123);
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with byte array should allocate and copy
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithByteArray_ShouldAllocateAndCopy()
         {
             byte[] data = Encoding.UTF8.GetBytes("Hello");
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor with empty byte array should allocate null terminator
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_WithEmptyByteArray_ShouldAllocateNullTerminator()
         {
             byte[] data = Array.Empty<byte>();
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string with zero data returns empty string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ToString_WithZeroData_ReturnsEmptyString()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string with valid null terminated string returns expected string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ToString_WithValidData_ReturnsString()
         {
             byte[] data = Encoding.UTF8.GetBytes("Hello World");
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string with data pointing to empty string returns empty string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ToString_WithEmptyNullTerminatedString_ReturnsEmptyString()
         {
             IntPtr ptr = Marshal.AllocHGlobal(1);
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string with data containing unicode characters returns expected string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ToString_WithUnicodeData_ReturnsString()
         {
             string expected = "Héllö Wörld 🌍";
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator to string with zero data returns empty string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitOperator_WithZeroData_ReturnsEmptyString()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator to string with valid data returns expected string
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ImplicitOperator_WithValidData_ReturnsString()
         {
             byte[] data = Encoding.UTF8.GetBytes("Test");

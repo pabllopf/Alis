@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImDrawVert vert = default;
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vector properties round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void VectorProperties_RoundTrip()
         {
             ImDrawVert vert = default;
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that col round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Col_RoundTrip()
         {
             ImDrawVert vert = default;

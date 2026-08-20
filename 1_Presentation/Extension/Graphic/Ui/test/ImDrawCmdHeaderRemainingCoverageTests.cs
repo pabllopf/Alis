@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default values are zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreZero()
         {
             ImDrawCmdHeader header = default;
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clip rect round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void ClipRect_RoundTrip()
         {
             ImDrawCmdHeader header = default;
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that texture id and vtx offset round trip
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void TextureIdAndVtxOffset_RoundTrip()
         {
             ImDrawCmdHeader header = default;

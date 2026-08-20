@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that default buf should be default im vector
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void DefaultBuf_ShouldBeDefaultImVector()
         {
             ImGuiTextBuffer textBuffer = default;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf property should be mutable
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void BufProperty_ShouldBeMutable()
         {
             ImGuiTextBuffer textBuffer = default;
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that setting buf should return same values
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void SettingBuf_ShouldReturnSameValues()
         {
             ImGuiTextBuffer textBuffer = default;
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that multiple instances should be independent
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void MultipleInstances_ShouldBeIndependent()
         {
             ImGuiTextBuffer first = default;

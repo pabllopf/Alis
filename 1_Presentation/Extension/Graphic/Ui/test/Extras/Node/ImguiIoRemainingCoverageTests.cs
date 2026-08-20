@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that default values are null for struct properties.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Default_ValuesAreNull()
         {
             ImguiIo io = default;
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that EmulateThreeButtonMouse round-trips.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void EmulateThreeButtonMouse_RoundTrip()
         {
             ImguiIo io = default;
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that LinkDetachWithModifierClick round-trips.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void LinkDetachWithModifierClick_RoundTrip()
         {
             ImguiIo io = default;
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that both properties can be set independently.
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void BothProperties_Independently()
         {
             ImguiIo io = default;

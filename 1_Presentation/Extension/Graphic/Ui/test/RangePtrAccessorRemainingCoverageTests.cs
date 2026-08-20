@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor should set data and count
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Constructor_ShouldSetDataAndCount()
         {
             IntPtr data = new IntPtr(42);
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer throws when index is out of range
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Throws_WhenIndexOutOfRange()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(1), 3);
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer throws when index is negative
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Throws_WhenIndexNegative()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(1), 3);
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer throws when count is zero
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_Throws_WhenCountZero()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(1), 0);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer returns correct value for int
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_ShouldReturnCorrectValue_ForInt()
         {
             int[] expected = { 10, 20, 30 };
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer returns correct value for byte
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_ShouldReturnCorrectValue_ForByte()
         {
             byte[] expected = { 0xAB, 0xCD, 0xEF };
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer reads from correct offset
         /// </summary>
-        [Fact]
+         [RequireCImguiSystemFact]
         public void Indexer_ShouldReadFromCorrectOffset()
         {
             int[] expected = { 100, 200, 300, 400, 500 };
