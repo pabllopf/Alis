@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
@@ -53,11 +54,12 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
 
         /// <summary>
         ///     Attempts to load the specified SDL2_image library by name, falling back to
-        ///     absolute path resolution from the test assembly output directory.
+        ///     absolute path resolution from the test assembly output directory. Verifies
+        ///     that the library is fully functional by resolving a known export symbol.
         /// </summary>
         private static bool TryLoadSfmlLibrary(string name)
         {
-            if (NativeLibrary.TryLoad(name, out _))
+            if (TryLoadAndVerify(name))
                 return true;
 
             string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
@@ -81,17 +83,37 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
                     Path.Combine(dir, name),
                     Path.Combine(dir, "lib" + name),
                     Path.Combine(dir, "lib" + name + ".dylib"),
+                    Path.Combine(dir, name + ".dylib"),
                     Path.Combine(dir, "lib" + name + ".so")
                 };
 
                 foreach (string candidate in candidates)
                 {
-                    if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                    if (File.Exists(candidate) && TryLoadAndVerify(candidate))
                         return true;
                 }
             }
 
             return false;
+        }
+
+        /// <summary>
+        ///     Attempts to load a native library and verify it is fully functional by resolving
+        ///     a known export symbol. This catches cases where the library file exists but has
+        ///     unresolvable transitive dependencies.
+        /// </summary>
+        private static bool TryLoadAndVerify(string pathOrName)
+        {
+            if (!NativeLibrary.TryLoad(pathOrName, out IntPtr handle))
+                return false;
+
+            bool verified = NativeLibrary.TryGetExport(handle, "IMG_Linked_Version", out _);
+            if (!verified)
+            {
+                NativeLibrary.Free(handle);
+            }
+
+            return verified;
         }
     }
 }

@@ -116,12 +116,12 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         }
 
         /// <summary>
-        /// Tests that isValid returns true for common resolution
+        /// Tests that isValid returns true for the current desktop resolution
         /// </summary>
         [RequireCSfmlWindowsFact]
         public void IsValid_WithCommonResolution_ReturnsTrue()
         {
-            VideoMode vm = new VideoMode(1920, 1080);
+            VideoMode vm = VideoMode.DesktopMode;
             Assert.True(vm.IsValid());
         }
 
