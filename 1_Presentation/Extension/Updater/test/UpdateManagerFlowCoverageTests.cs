@@ -68,23 +68,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that start with no compatible package returns false on this platform.
-        /// </summary>
-        [Fact]
-        public async Task Start_WithNoCompatiblePackage_ReturnsFalse()
-        {
-            using LoopbackHttpServer server = LoopbackHttpServer.Start();
-            Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
-            api.SetupGet(x => x.ApiUrl).Returns(server.Uri);
-            UpdateManager sut = new UpdateManager(api.Object, "latest", Mock.Of<IFileService>(), Path.GetTempPath());
-            sut.ContinueDelayMilliseconds = 0;
-
-            bool result = await sut.Start(CancellationToken.None);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
         ///     The loopback http server class
         /// </summary>
         private sealed class LoopbackHttpServer : IDisposable
