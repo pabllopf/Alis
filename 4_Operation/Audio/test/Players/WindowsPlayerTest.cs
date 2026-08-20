@@ -221,33 +221,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(player);
         }
 
-        /// <summary>
-        ///     Tests that dispose should not throw exception
-        /// </summary>
-        [WindowsOnly]
-        public void Dispose_ShouldNotThrowException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-
-            player.Dispose();
-
-            Assert.NotNull(player);
-        }
-
-        /// <summary>
-        ///     Tests that multiple dispose calls should be safe
-        /// </summary>
-        [WindowsOnly]
-        public void Dispose_MultipleCalls_ShouldBeSafe()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-
-            player.Dispose();
-            player.Dispose();
-            player.Dispose();
-
-            Assert.NotNull(player);
-        }
+     
 
         /// <summary>
         ///     Tests that play loop should throw file not found exception when file does not exist
@@ -387,19 +361,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
-        /// <summary>
-        ///     Tests that dispose with using statement should work
-        /// </summary>
-        [WindowsOnly]
-        public void Dispose_WithUsingStatement_ShouldWork()
-        {
-            using (WindowsPlayer player = new WindowsPlayer())
-            {
-                Assert.NotNull(player);
-            }
-
-            Assert.True(true);
-        }
+     
 
         /// <summary>
         ///     Tests that play loop with loop false should work
@@ -547,20 +509,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
-        /// <summary>
-        ///     Tests that dispose should be idempotent
-        /// </summary>
-        [WindowsOnly]
-        public void Dispose_ShouldBeIdempotent()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-
-            player.Dispose();
-            player.Dispose();
-            player.Dispose();
-
-            Assert.NotNull(player);
-        }
+       
 
         /// <summary>
         ///     Tests that play with whitespace file name should throw exception

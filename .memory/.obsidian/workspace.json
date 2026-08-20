@@ -203,6 +203,12 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/covertall/locks/Alis.Extension.Math.HighSpeedPriorityQueue.lock/info.txt",
+    "system/covertall/locks/Alis.Extension.Math.HighSpeedPriorityQueue.lock",
+    "system/covertall/Alis.Extension.Security/attempts/001.md",
+    "system/covertall/Alis.Extension.Security/state.md",
+    "system/covertall/locks/Alis.Extension.Security.lock/info.txt",
+    "system/covertall/locks/Alis.Extension.Security.lock",
     "system/cache/sonarcloud_cache_20260817_101136.json",
     "system/covertall/locks",
     "system/covertall",
@@ -232,13 +238,7 @@
     "system/results/PolygonGenerator.md",
     "system/results/FilePickerExecutor.md",
     "system/results/GameObject.md",
-    "system/results/GoogleDriveCloudManager.md",
-    "system/results/FastestStack.md",
     "system/cache/sonarcloud_cache_20260813_070241.json",
-    "system/state/processed_script.json",
-    "system/state/reanalyze_keys.json",
-    "system/state/reanalyze_candidates.json",
-    "system/state/deltas_all.json",
     "Sin título.canvas"
   ]
 }
