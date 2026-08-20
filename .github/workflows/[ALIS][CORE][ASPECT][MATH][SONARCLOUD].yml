@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-analyze:
-    timeout-minutes: 20
+    timeout-minutes: 35
     permissions:
       actions: write
       checks: write
