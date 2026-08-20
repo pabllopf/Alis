@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if osx
+
 using System;
 using Alis.Core.Graphic.Platforms.Osx.Native;
 using Alis.Core.Graphic.Test.Attributes;
@@ -115,3 +117,5 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
     }
 }
+
+#endif
