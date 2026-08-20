@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node

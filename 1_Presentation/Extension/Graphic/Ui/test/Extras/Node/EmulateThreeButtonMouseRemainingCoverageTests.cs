@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property is null by default.
         /// </summary>
-         [RequireCImguiSystemFact]
+        [Fact]
         public void DefaultModifier_IsNull()
         {
             EmulateThreeButtonMouse m = new EmulateThreeButtonMouse();
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the Modifier property accepts an empty byte array.
         /// </summary>
-         [RequireCImguiSystemFact]
+        [Fact]
         public void Modifier_SetToEmptyArray()
         {
             EmulateThreeButtonMouse m = new EmulateThreeButtonMouse();

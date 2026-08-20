@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
