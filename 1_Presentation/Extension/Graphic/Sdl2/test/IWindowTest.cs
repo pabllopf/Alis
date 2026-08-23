@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that IWindow interface can be implemented.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_CanBeImplemented_CreatesValidInstance()
         {
             IWindow window = new MockWindow();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Background property can be set and retrieved.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetBackground_RetrievesColorCorrectly()
         {
             IWindow window = new MockWindow();
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Resolution property can be set and retrieved.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetResolution_RetrievesVectorCorrectly()
         {
             IWindow window = new MockWindow();
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that IsWindowResizable property can be set and retrieved.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetIsWindowResizable_RetrievesBoolCorrectly()
         {
             IWindow window = new MockWindow();
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting IsWindowResizable to false.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetIsWindowResizableFalse_ReturnsFalse()
         {
             IWindow window = new MockWindow();
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests multiple property modifications.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_ModifyMultipleProperties_AllPropertiesUpdateCorrectly()
         {
             IWindow window = new MockWindow();
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that different window instances are independent.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_MultipleInstances_AreIndependent()
         {
             IWindow window1 = new MockWindow();
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting Background with various colors.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetBackground_WithBlackColor_StoresCorrectly()
         {
             IWindow window = new MockWindow();
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting Background with white color.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IWindow_SetBackground_WithWhiteColor_StoresCorrectly()
         {
             IWindow window = new MockWindow();

@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             InternalDirectfbWmInfo obj = new InternalDirectfbWmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign and retrieve properties
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignAndRetrieveProperties()
         {
             InternalDirectfbWmInfo obj = new InternalDirectfbWmInfo();

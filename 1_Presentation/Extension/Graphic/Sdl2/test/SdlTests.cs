@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio bit size additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioBitSize_AdditionalCases()
         {
             Assert.Equal((ushort)0x00, Sdl.SdlAudioBitSize(0x0000));
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is float additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsFloat_AdditionalCases()
         {
             Assert.True(Sdl.SdlAudioIsFloat(0x0100));
@@ -542,7 +542,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is big endian additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsBigEndian_AdditionalCases()
         {
             Assert.False(Sdl.SdlAudioIsBigEndian(0x0000));
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is signed additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsSigned_AdditionalCases()
         {
             Assert.True(Sdl.SdlAudioIsSigned(0x8000));
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is int additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsInt_AdditionalCases()
         {
             Assert.True(Sdl.SdlAudioIsInt(0x0000));
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is little endian additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsLittleEndian_AdditionalCases()
         {
             Assert.True(Sdl.SdlAudioIsLittleEndian(0x0000));
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio is unsigned additional cases
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioIsUnsigned_AdditionalCases()
         {
             Assert.True(Sdl.SdlAudioIsUnsigned(0x0000));
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl define pixel format constants are non zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlDefinePixelFormat_Constants_AreNonZero()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatIndex1Lsb);
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format argb 8888 and rgba 8888 are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormat_Argb8888_And_Rgba8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatRgba8888);
@@ -614,7 +614,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format argb 8888 and a bgr 8888 are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormat_Argb8888_And_ABgr8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatABgr8888);
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format rgb 24 and bgr 24 are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormat_Rgb24_And_Bgr24_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb24, Sdl.PixelFormatBgr24);
@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format rgb 565 and bgr 565 are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormat_Rgb565_And_Bgr565_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb565, Sdl.PixelFormatBgr565);
@@ -641,7 +641,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format yv 12 and iy are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormat_Yv12_And_Iy_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatYv12, Sdl.PixelFormatIy);
@@ -650,7 +650,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio constants are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioConstants_AreDistinct()
         {
             Assert.NotEqual(Sdl.AudioU8, Sdl.AudioS8);
@@ -663,7 +663,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format rgb 888 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatRgb888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb888, Sdl.PixelFormatRgb888);
@@ -672,7 +672,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format bgr 888 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatBgr888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr888, Sdl.PixelFormatBgr888);
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format rgb 444 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatRgb444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb444, Sdl.PixelFormatRgb444);
@@ -690,7 +690,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format bgr 444 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatBgr444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr444, Sdl.PixelFormatBgr444);
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format rgb 555 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatRgb555_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb1555, Sdl.PixelFormatRgb555);
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that pixel format bgr 555 alias matches gl format
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PixelFormatBgr555_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr1555, Sdl.PixelFormatBgr555);

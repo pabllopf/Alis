@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal sys wm driver union default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalSysWmDriverUnion_DefaultInitialization_FieldsHaveDefaultValues()
         {
             InternalSysWmDriverUnion u = new InternalSysWmDriverUnion();
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal sys wm driver union is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalSysWmDriverUnion_IsValueType_CopyIsIndependent()
         {
             InternalSysWmDriverUnion original = new InternalSysWmDriverUnion();

@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal game controller button bind hat default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalGameControllerButtonBindHat_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalGameControllerButtonBindHat hat = new InternalGameControllerButtonBindHat();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal game controller button bind hat set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalGameControllerButtonBindHat_SetProperties_StoresValuesCorrectly()
         {
             InternalGameControllerButtonBindHat hat = new InternalGameControllerButtonBindHat
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal game controller button bind hat is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalGameControllerButtonBindHat_IsValueType_CopyIsIndependent()
         {
             InternalGameControllerButtonBindHat original = new InternalGameControllerButtonBindHat { Hat = 5 };

@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the compiled SDL version constant.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GetGlCompiledVersion_ReturnsExpected()
         {
             Assert.Equal(2018, Sdl.GetGlCompiledVersion());
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the runtime version helper.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GetVersion_ReturnsExpected()
         {
             Sdl2.Structs.Version version = Sdl.GetVersion();
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the fourcc packer packs bytes in little endian order.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Fourcc_PacksBytes()
         {
             Assert.Equal(0x44434241u, Sdl.Fourcc(0x41, 0x42, 0x43, 0x44));
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the undefined window position helpers.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void WindowPosUndefined_Helpers()
         {
             int value = Sdl.WindowPosUndefinedDisplay(2);
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that scancodes convert to key codes with the scancode mask applied.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ScanCodeToKeyCode_AppliesMask()
         {
             KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the button index to mask helper.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Button_ShiftsMask()
         {
             Assert.Equal(1u, Sdl.Button(1));
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the pixel fourcc helper delegates to the fourcc packer.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlDefinePixelFourcc_PacksBytes()
         {
             Assert.Equal(0x44434241u, Sdl.SdlDefinePixelFourcc(0x41, 0x42, 0x43, 0x44));
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies the system audio format constants are reachable and platform consistent.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GlAudioConstants_AreConsistent()
         {
             Assert.True(Sdl.GlAudioS16Sys != 0);

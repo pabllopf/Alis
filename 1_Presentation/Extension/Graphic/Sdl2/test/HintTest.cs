@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should have non empty constants
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveNonEmptyConstants()
         {
             Assert.Equal("SDL_FRAMEBUFFER_ACCELERATION", Hint.HintFramebufferAcceleration);

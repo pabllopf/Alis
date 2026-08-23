@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             // Arrange

@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal android wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalAndroidWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalAndroidWmInfo info = new InternalAndroidWmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal android wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalAndroidWmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalAndroidWmInfo info = new InternalAndroidWmInfo
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal android wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalAndroidWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalAndroidWmInfo original = new InternalAndroidWmInfo { Window = new IntPtr(100) };

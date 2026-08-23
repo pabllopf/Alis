@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal os 2 wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalOs2WmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalOs2WmInfo info = new InternalOs2WmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal os 2 wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalOs2WmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalOs2WmInfo info = new InternalOs2WmInfo
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal os 2 wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalOs2WmInfo_IsValueType_CopyIsIndependent()
         {
             InternalOs2WmInfo original = new InternalOs2WmInfo { Hwnd = new IntPtr(77) };

@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that k scancode mask is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KScancodeMask_IsCorrect()
         {
             Assert.Equal(1 << 30, SdlInputConst.KScancodeMask);
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that button constants are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ButtonConstants_AreCorrect()
         {
             Assert.Equal(1u, SdlInputConst.ButtonLeft);
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that touch mouse id is max value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void TouchMouseId_IsMaxValue()
         {
             Assert.Equal(uint.MaxValue, SdlInputConst.TouchMouseId);
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that hat constants are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void HatConstants_AreCorrect()
         {
             Assert.Equal(0x00, SdlInputConst.HatCentered);
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that haptic effect constants are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void HapticEffectConstants_AreCorrect()
         {
             Assert.Equal(1u << 0, SdlInputConst.HapticConstant);
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that haptic direction constants are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void HapticDirectionConstants_AreCorrect()
         {
             Assert.Equal(0, SdlInputConst.HapticPolar);
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that iphone max g force is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void IphoneMaxGForce_IsCorrect()
         {
             Assert.Equal(5.0f, SdlInputConst.IphoneMaxGForce, 5);

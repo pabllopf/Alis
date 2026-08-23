@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that event default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Event_DefaultInitialization_FieldsHaveDefaultValues()
         {
             Event ev = new Event();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that event explicit layout type field is accessible
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Event_ExplicitLayout_TypeFieldIsAccessible()
         {
             Event ev = new Event();
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that event is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Event_IsValueType_CopyIsIndependent()
         {
             Event original = new Event();

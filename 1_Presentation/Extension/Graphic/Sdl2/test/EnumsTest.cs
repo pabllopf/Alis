@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)ArrayOrder.SdlArrayOrderNone);
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)Attr.SdlGlRedSize);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(1u, (uint)AudioAllow.AudioAllowFrequencyChange);
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)AudioStatus.SdlAudioStopped);
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)BitmapOrder.BitMapOrderNone);
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x1, (int)BlendFactor.SdlBlendFactorZero);
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)BlendModes.None);
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x1, (int)BlendOperation.SdlBlendOperationAdd);
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)DisplayEventId.SdlDisplayEventNone);
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)DisplayOrientation.SdlOrientationUnknown);
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)EventAction.SdlAddEvent);
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0u, (uint)EventType.FirstEvent);
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)FlashOperation.SdlFlashCancel);
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(-1, (int)GameControllerAxis.SdlControllerAxisInvalid);
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)GameControllerBindType.SdlControllerBindTypeNone);
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(-1, (int)GameControllerButton.SdlControllerButtonInvalid);
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)Haptic.HapticPolar);
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(1u, (ushort)HapticConstant.HapticConstant);
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x00, (int)Hat.Centered);
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that combined values are bitwise or
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void CombinedValues_AreBitwiseOr()
             {
                 Assert.Equal((int)Hat.RightUp, (int)Hat.Right | (int)Hat.Up);
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)HintPriority.SdlHintDefault);
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)HitTestResult.SdlHitTestNormal);
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x00000001u, (uint)InitSettings.InitTimer);
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that init everything includes all flags
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void InitEverything_IncludesAllFlags()
             {
                 InitSettings expected = InitSettings.InitTimer | InitSettings.InitAudio | InitSettings.InitVideo | InitSettings.InitJoystick | InitSettings.InitHaptic | InitSettings.InitGameController | InitSettings.InitEvents | InitSettings.InitSensor;
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(-1, (int)JoystickPowerLevel.SdlJoystickPowerUnknown);
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)JoystickType.SdlJoystickTypeUnknown);
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x0000, (int)KeyMods.None);
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that ctrl is l ctrl or r ctrl
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Ctrl_IsLCtrlOrRCtrl()
             {
                 Assert.Equal((int)(KeyMods.KModLCtrl | KeyMods.KModRCtrl), (int)KeyMods.KModCtrl);
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that shift is l shift or r shift
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Shift_IsLShiftOrRShift()
             {
                 Assert.Equal((int)(KeyMods.KModLShift | KeyMods.KModRShift), (int)KeyMods.KModShift);
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)LogCategory.SdlLogCategoryApplication);
@@ -595,7 +595,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(1, (int)LogPriority.SdlLogPriorityVerbose);
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0u, (uint)MouseWheelDirection.SdlMousewheelNormal);
@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)PackedLayout.PackedLayoutNone);
@@ -654,7 +654,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)PackedOrder.PackedOrderNone);
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)PowerState.SdlPowerStateUnknown);
@@ -696,7 +696,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x0001, (int)Profiles.SdlGlContextProfileCore);
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0u, (uint)Renderers.None);
@@ -732,7 +732,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)RendererFlips.None);
@@ -749,7 +749,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0u, (uint)RwOps.RwOpsUnknown);
@@ -767,7 +767,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)RwSeek.RwSeekSet);
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)ScaleMode.SdlScaleModeNearest);
@@ -801,7 +801,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x0001, (int)Sdl2Contexts.SdlGlContextDebugFlag);
@@ -819,7 +819,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(-1, (int)SensorType.SdlSensorInvalid);
@@ -837,7 +837,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)SysWmType.SdlSysWmUnknown);
@@ -855,7 +855,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)SystemCursor.SdlSystemCursorArrow);
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)TextureAccess.None);
@@ -891,7 +891,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)TextureModulates.None);
@@ -908,7 +908,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(-1, (int)TouchDeviceType.SdlTouchDeviceInvalid);
@@ -926,7 +926,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)TypePixel.TypeUnknown);
@@ -946,7 +946,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)WinRtDeviceFamily.SdlWinrtDeviceFamilyUnknown);
@@ -964,7 +964,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)WindowEventId.SdlWindowEventNone);
@@ -989,7 +989,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that window event id values match expected
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0, (int)WindowEventId.SdlWindowEventNone);
@@ -1011,7 +1011,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x1FFF0000, (int)WindowPos.WindowPosUndefinedMask);
@@ -1029,7 +1029,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that values are correct
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void Values_AreCorrect()
             {
                 Assert.Equal(0x00000000u, (uint)WindowSettings.None);
@@ -1048,7 +1048,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             /// <summary>
             ///     Tests that fullscreen desktop equals fullscreen or 0x1000
             /// </summary>
-            [Fact]
+            [RequireSdl2ImageFact]
             public void FullscreenDesktop_IsFullscreenOr0x1000()
             {
                 Assert.Equal((uint)(WindowSettings.WindowFullscreen | (WindowSettings)0x00001000), (uint)WindowSettings.WindowFullscreenDesktop);

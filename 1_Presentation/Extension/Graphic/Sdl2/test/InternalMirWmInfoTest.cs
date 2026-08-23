@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal mir wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalMirWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalMirWmInfo info = new InternalMirWmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal mir wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalMirWmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalMirWmInfo info = new InternalMirWmInfo
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal mir wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalMirWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalMirWmInfo original = new InternalMirWmInfo { Connection = new IntPtr(50) };

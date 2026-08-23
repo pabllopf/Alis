@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal x 11 wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalX11WmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalX11WmInfo info = new InternalX11WmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal x 11 wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalX11WmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalX11WmInfo info = new InternalX11WmInfo
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal x 11 wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalX11WmInfo_IsValueType_CopyIsIndependent()
         {
             InternalX11WmInfo original = new InternalX11WmInfo { Display = new IntPtr(3000) };

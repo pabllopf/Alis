@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlAudioCallback);
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl audio callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlAudioCallback_CanBeCreated()
         {
             void Callback(IntPtr userdata, IntPtr stream, int len) { }
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl event filter has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlEventFilter_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlEventFilter);
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl event filter can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlEventFilter_CanBeCreated()
         {
             int Filter(IntPtr userdata, IntPtr sdlEvent) => 0;
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl hit test has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlHitTest_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlHitTest);
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl hit test can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlHitTest_CanBeCreated()
         {
             HitTestResult HitTest(IntPtr win, IntPtr area, IntPtr data) => HitTestResult.SdlHitTestNormal;
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl i phone animation callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlIPhoneAnimationCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlIPhoneAnimationCallback);
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl i phone animation callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlIPhoneAnimationCallback_CanBeCreated()
         {
             void Callback(IntPtr p) { }
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl log output function has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlLogOutputFunction_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlLogOutputFunction);
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl log output function can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlLogOutputFunction_CanBeCreated()
         {
             void LogFunc(IntPtr userdata, int category, LogPriority priority, IntPtr message) { }
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl main func can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlMainFunc_CanBeCreated()
         {
             int MainFunc(int argc, IntPtr argv) => 0;
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl main func has no unmanaged function pointer attribute
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlMainFunc_HasNoUnmanagedFunctionPointerAttribute()
         {
             Type type = typeof(SdlMainFunc);
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl timer callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTimerCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlTimerCallback);
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl timer callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTimerCallback_CanBeCreated()
         {
             uint TimerCallback(uint interval, IntPtr param) => 0;
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl windows message hook has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWindowsMessageHook_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWindowsMessageHook);
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl windows message hook can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWindowsMessageHook_CanBeCreated()
         {
             IntPtr Hook(IntPtr userdata, IntPtr hWnd, uint message, ulong wParam, long lParam) => IntPtr.Zero;
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops close callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsCloseCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWopsCloseCallback);
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops close callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsCloseCallback_CanBeCreated()
         {
             int Close(IntPtr context) => 0;
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops read callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsReadCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWopsReadCallback);
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops read callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsReadCallback_CanBeCreated()
         {
             IntPtr Read(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum) => IntPtr.Zero;
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops seek callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsSeekCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWopsSeekCallback);
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops seek callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsSeekCallback_CanBeCreated()
         {
             long Seek(IntPtr context, long offset, int whence) => 0;
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops size callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsSizeCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWopsSizeCallback);
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops size callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsSizeCallback_CanBeCreated()
         {
             long Size(IntPtr context) => 0;
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops write callback has correct attribute and signature
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsWriteCallback_HasCorrectAttributeAndSignature()
         {
             Type type = typeof(SdlWopsWriteCallback);
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that sdl wops write callback can be created
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlWopsWriteCallback_CanBeCreated()
         {
             IntPtr Write(IntPtr context, IntPtr ptr, IntPtr size, IntPtr num) => IntPtr.Zero;

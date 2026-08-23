@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should have correct values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveCorrectValues()
         {
             Assert.Equal(0x00000001, (int)ImgInitFlags.ImgInitJpg);

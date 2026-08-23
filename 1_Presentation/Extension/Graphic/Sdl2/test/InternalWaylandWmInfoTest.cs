@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal wayland wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWaylandWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalWaylandWmInfo info = new InternalWaylandWmInfo();
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal wayland wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWaylandWmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalWaylandWmInfo info = new InternalWaylandWmInfo
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal wayland wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWaylandWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalWaylandWmInfo original = new InternalWaylandWmInfo { Display = new IntPtr(100) };

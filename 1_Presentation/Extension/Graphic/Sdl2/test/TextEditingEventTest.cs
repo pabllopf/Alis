@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return null text when ptr is zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnNullTextWhenPtrIsZero()
         {
             // Arrange -- default struct, textPtr is IntPtr.Zero

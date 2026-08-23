@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio device event default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioDeviceEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
             AudioDeviceEvent ev = new AudioDeviceEvent();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio device event set fields stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioDeviceEvent_SetFields_StoresValuesCorrectly()
         {
             AudioDeviceEvent ev = new AudioDeviceEvent
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio device event is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioDeviceEvent_IsValueType_CopyIsIndependent()
         {
             AudioDeviceEvent original = new AudioDeviceEvent { type = 1u, which = 2u };
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio device event with zero capture sets is capture to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioDeviceEvent_WithZeroCapture_SetsIsCaptureToZero()
         {
             AudioDeviceEvent ev = new AudioDeviceEvent { isCapture = 0 };
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio device event with max values stores correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioDeviceEvent_WithMaxValues_StoresCorrectly()
         {
             AudioDeviceEvent ev = new AudioDeviceEvent

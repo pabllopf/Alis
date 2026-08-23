@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should have correct constant values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveCorrectConstantValues()
         {
             Assert.Equal(0xFEFF, SdlTtf.UnicodeBomNative);
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GetVersion returns the compiled version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnCompiledVersion()
         {
             Version version = SdlTtf.GetVersion();

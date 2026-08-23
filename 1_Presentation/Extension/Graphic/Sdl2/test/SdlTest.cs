@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should have correct constant values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveCorrectConstantValues()
         {
             Assert.Equal(32, Sdl.TextEditingEventTextSize);
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should compute fourcc
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldComputeFourcc()
         {
             uint result = Sdl.Fourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return gl compiled version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnGlCompiledVersion()
         {
             int version = Sdl.GetGlCompiledVersion();
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return get version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnGetVersion()
         {
             Version version = Sdl.GetVersion();
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should compute window pos undefined display
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldComputeWindowPosUndefinedDisplay()
         {
             int pos = Sdl.WindowPosUndefinedDisplay(1);
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect window pos is undefined
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectWindowPosIsUndefined()
         {
             int pos = Sdl.WindowPosUndefinedDisplay(2);
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should compute window pos centered display
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldComputeWindowPosCenteredDisplay()
         {
             int pos = Sdl.WindowPosCenteredDisplay(1);
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect window pos is centered
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectWindowPosIsCentered()
         {
             int pos = Sdl.WindowPosCenteredDisplay(3);
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should compute audio bit size
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldComputeAudioBitSize()
         {
             Assert.Equal((ushort)0xFF, Sdl.SdlAudioBitSize(0x01FF));
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is float
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsFloat()
         {
             Assert.True(Sdl.SdlAudioIsFloat(0x0100));
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is big endian
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsBigEndian()
         {
             Assert.True(Sdl.SdlAudioIsBigEndian(0x1000));
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is signed
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsSigned()
         {
             Assert.True(Sdl.SdlAudioIsSigned(0x8000));
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is int
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsInt()
         {
             Assert.True(Sdl.SdlAudioIsInt(0x0000));
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is little endian
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsLittleEndian()
         {
             Assert.True(Sdl.SdlAudioIsLittleEndian(0x0000));
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should detect audio is unsigned
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDetectAudioIsUnsigned()
         {
             Assert.True(Sdl.SdlAudioIsUnsigned(0x0000));
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should define pixel fourcc
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefinePixelFourcc()
         {
             uint result = Sdl.SdlDefinePixelFourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that ScanCodeToKeyCode maps SDL scancode to keycode with mask applied
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldMapScanCodeToKeyCode()
         {
             KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that ScanCodeToKeyCode returns unknown for unknown scancode
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldMapScanCodeToKeyCodeUnknown()
         {
             KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeUnknown);
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that ScanCodeToKeyCode produces distinct values for different scancodes
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldMapScanCodeToKeyCodeDistinct()
         {
             KeyCodes resultA = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that MixMaxVolume constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveMixMaxVolumeConstant()
         {
             Assert.Equal(128, Sdl.MixMaxVolume);
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AndroidExternalStorageRead constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAndroidExternalStorageReadConstant()
         {
             Assert.Equal(0x01, Sdl.AndroidExternalStorageRead);
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AndroidExternalStorageWrite constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAndroidExternalStorageWriteConstant()
         {
             Assert.Equal(0x02, Sdl.AndroidExternalStorageWrite);
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlButtonLMask equals Button(ButtonLeft)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlButtonLMask()
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonLeft), Sdl.GlButtonLMask);
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlButtonMMask equals Button(ButtonMiddle)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlButtonMMask()
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonMiddle), Sdl.GlButtonMMask);
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlButtonRMask equals Button(ButtonRight)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlButtonRMask()
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonRight), Sdl.GlButtonRMask);
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlButtonX1Mask equals Button(ButtonX1)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlButtonX1Mask()
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonX1), Sdl.GlButtonX1Mask);
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlButtonX2Mask equals Button(ButtonX2)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlButtonX2Mask()
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonX2), Sdl.GlButtonX2Mask);
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlAudioU16Sys matches endianness
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlAudioU16Sys()
         {
             ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioU16Lsb : Sdl.AudioU16Msb;
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlAudioS16Sys matches endianness
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlAudioS16Sys()
         {
             ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioS16Lsb : Sdl.AudioS16Msb;
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlAudioS32Sys matches endianness
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlAudioS32Sys()
         {
             ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioS32Lsb : Sdl.AudioS32Msb;
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GlAudioF32Sys matches endianness
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveGlAudioF32Sys()
         {
             ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioF32Lsb : Sdl.AudioF32Msb;
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioU8 constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioU8Constant()
         {
             Assert.Equal((ushort)0x0008, Sdl.AudioU8);
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS8 constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS8Constant()
         {
             Assert.Equal((ushort)0x8008, Sdl.AudioS8);
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioU16Lsb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioU16LsbConstant()
         {
             Assert.Equal((ushort)0x0010, Sdl.AudioU16Lsb);
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS16Lsb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS16LsbConstant()
         {
             Assert.Equal((ushort)0x8010, Sdl.AudioS16Lsb);
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioU16Msb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioU16MsbConstant()
         {
             Assert.Equal((ushort)0x1010, Sdl.AudioU16Msb);
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS16Msb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS16MsbConstant()
         {
             Assert.Equal((ushort)0x9010, Sdl.AudioS16Msb);
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioU16 alias matches AudioU16Lsb
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioU16Alias()
         {
             Assert.Equal(Sdl.AudioU16Lsb, Sdl.AudioU16);
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS16 alias matches AudioS16Lsb
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS16Alias()
         {
             Assert.Equal(Sdl.AudioS16Lsb, Sdl.AudioS16);
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS32Lsb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS32LsbConstant()
         {
             Assert.Equal((ushort)0x8020, Sdl.AudioS32Lsb);
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS32Msb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS32MsbConstant()
         {
             Assert.Equal((ushort)0x9020, Sdl.AudioS32Msb);
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioS32 alias matches AudioS32Lsb
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioS32Alias()
         {
             Assert.Equal(Sdl.AudioS32Lsb, Sdl.AudioS32);
@@ -464,7 +464,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioF32Lsb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioF32LsbConstant()
         {
             Assert.Equal((ushort)0x8120, Sdl.AudioF32Lsb);
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioF32Msb constant has correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioF32MsbConstant()
         {
             Assert.Equal((ushort)0x9120, Sdl.AudioF32Msb);
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that AudioF32 alias matches AudioF32Lsb
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveAudioF32Alias()
         {
             Assert.Equal(Sdl.AudioF32Lsb, Sdl.AudioF32);

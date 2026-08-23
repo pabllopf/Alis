@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that unknown is zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Unknown_IsZero()
         {
             Assert.Equal(0, (int)KeyCodes.Unknown);
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that return is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Return_IsCorrect()
         {
             Assert.Equal(13, (int)KeyCodes.Return);
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that escape is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Escape_IsCorrect()
         {
             Assert.Equal(27, (int)KeyCodes.Escape);
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that backspace is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Backspace_IsCorrect()
         {
             Assert.Equal(8, (int)KeyCodes.Backspace);
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that tab is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Tab_IsCorrect()
         {
             Assert.Equal(9, (int)KeyCodes.Tab);
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that space is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Space_IsCorrect()
         {
             Assert.Equal(32, (int)KeyCodes.Space);
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that delete is correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Delete_IsCorrect()
         {
             Assert.Equal(127, (int)KeyCodes.Delete);
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that letter keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void LetterKeys_AreCorrect()
         {
             Assert.Equal('a', (int)KeyCodes.A);
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that number keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void NumberKeys_AreCorrect()
         {
             Assert.Equal('0', (int)KeyCodes.Num0);
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that function keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void FunctionKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that modifier keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ModifierKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that arrow keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ArrowKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that capslock has scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Capslock_HasScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that navigation keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void NavigationKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that punctuation keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void PunctuationKeys_AreCorrect()
         {
             Assert.Equal(33, (int)KeyCodes.Exclaim);
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that more punctuation keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void MorePunctuationKeys_AreCorrect()
         {
             Assert.Equal(':', (int)KeyCodes.Colon);
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that remaining number keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void RemainingNumberKeys_AreCorrect()
         {
             Assert.Equal('2', (int)KeyCodes.Num2);
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that all letter keys are correct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AllLetters_AreCorrect()
         {
             Assert.Equal('c', (int)KeyCodes.C);
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that extended function keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ExtendedFunctionKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that screen keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ScreenKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that application and system keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ApplicationSystemKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that audio volume keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioVolumeKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that basic keypad keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KeypadBasicKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that extended keypad keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ExtendedKeypadKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that keypad operator keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KeypadOperatorKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that keypad memory keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KeypadMemoryKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that legacy keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void LegacyKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that media keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void MediaKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -498,7 +498,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that web and mail keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void WebMailKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -511,7 +511,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that ac keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AcKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that hardware keys have scancode mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void HardwareKeys_HaveScancodeMask()
         {
             int mask = SdlInputConst.KScancodeMask;

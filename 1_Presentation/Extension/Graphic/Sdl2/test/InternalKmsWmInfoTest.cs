@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal kms wm info default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalKmsWmInfo_DefaultInitialization_FieldsHaveDefaultValues()
         {
             InternalKmsWmInfo info = new InternalKmsWmInfo();
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal kms wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalKmsWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalKmsWmInfo original = new InternalKmsWmInfo();

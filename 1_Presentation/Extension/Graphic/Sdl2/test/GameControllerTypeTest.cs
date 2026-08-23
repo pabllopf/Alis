@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests the GameControllerType struct default initialization.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GameControllerType_DefaultInitialization_CreatesValidStruct()
         {
             GameControllerType controllerType = new GameControllerType();
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that GameControllerType can be used as a value type.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GameControllerType_IsValueType_CanBeCopied()
         {
             GameControllerType original = new GameControllerType();
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that multiple GameControllerType instances are independent.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void GameControllerType_MultipleInstances_AreIndependent()
         {
             GameControllerType type1 = new GameControllerType();

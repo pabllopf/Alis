@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Surface is a value type.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Surface_ShouldBeValueType()
         {
             Assert.True(typeof(Surface).IsValueType);
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Surface has sequential layout.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Surface_ShouldHaveSequentialLayout()
         {
             StructLayoutAttribute attribute = typeof(Surface).StructLayoutAttribute;
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero flags.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_Flags_ShouldBeZero()
         {
             Surface surface = default;
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Format property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Format_ShouldBeSettable()
         {
             Surface surface = default;
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero width.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_W_ShouldBeZero()
         {
             Surface surface = default;
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero height.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_H_ShouldBeZero()
         {
             Surface surface = default;
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero pitch.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_Pitch_ShouldBeZero()
         {
             Surface surface = default;
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Pixels property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Pixels_ShouldBeSettable()
         {
             Surface surface = default;
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Userdata property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Userdata_ShouldBeSettable()
         {
             Surface surface = default;
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero locked.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_Locked_ShouldBeZero()
         {
             Surface surface = default;
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that ListBlitMap property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ListBlitMap_ShouldBeSettable()
         {
             Surface surface = default;
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that Map property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Map_ShouldBeSettable()
         {
             Surface surface = default;
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default Surface has zero refCount.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_RefCount_ShouldBeZero()
         {
             Surface surface = default;
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that ClipRect property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ClipRect_ShouldBeSettable()
         {
             Surface surface = default;

@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should set fields through constructor
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldSetFieldsThroughConstructor()
         {
             // Arrange
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             // Arrange
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should truncate values exceeding byte
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldTruncateValuesExceedingByte()
         {
             // Arrange: values > 255 will be truncated to byte

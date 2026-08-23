@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller sensor event default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerSensorEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
             ControllerSensorEvent ev = new ControllerSensorEvent();
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller sensor event is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerSensorEvent_IsValueType_CopyIsIndependent()
         {
             ControllerSensorEvent original = new ControllerSensorEvent();

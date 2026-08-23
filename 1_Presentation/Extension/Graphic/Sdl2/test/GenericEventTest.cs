@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             GenericEvent evt = new GenericEvent();
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign type and timestamp
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignTypeAndTimestamp()
         {
             GenericEvent evt = new GenericEvent { type = EventType.MouseButtonDown, timestamp = 42u };

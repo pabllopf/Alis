@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal vivante wm info default initialization properties have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalVivanteWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
             InternalVivanteWmInfo info = new InternalVivanteWmInfo();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal vivante wm info set properties stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalVivanteWmInfo_SetProperties_StoresValuesCorrectly()
         {
             InternalVivanteWmInfo info = new InternalVivanteWmInfo
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal vivante wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalVivanteWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalVivanteWmInfo original = new InternalVivanteWmInfo { Display = new IntPtr(3333) };

@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should have native lib name
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldHaveNativeLibName()
         {
             Assert.Equal("sdl2_image", NativeSdlImage.NativeLibName);

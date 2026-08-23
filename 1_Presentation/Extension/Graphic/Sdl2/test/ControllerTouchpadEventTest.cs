@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller touchpad event default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerTouchpadEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
             ControllerTouchpadEvent ev = new ControllerTouchpadEvent();
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller touchpad event set fields stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerTouchpadEvent_SetFields_StoresValuesCorrectly()
         {
             ControllerTouchpadEvent ev = new ControllerTouchpadEvent
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller touchpad event is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerTouchpadEvent_IsValueType_CopyIsIndependent()
         {
             ControllerTouchpadEvent original = new ControllerTouchpadEvent { type = 1u, finger = 4 };
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that controller touchpad event with negative coordinates stores correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ControllerTouchpadEvent_WithNegativeCoordinates_StoresCorrectly()
         {
             ControllerTouchpadEvent ev = new ControllerTouchpadEvent { x = -1.0f, y = -2.5f };

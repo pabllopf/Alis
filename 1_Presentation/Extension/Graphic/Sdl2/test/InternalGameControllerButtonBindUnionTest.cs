@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal game controller button bind union default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalGameControllerButtonBindUnion_DefaultInitialization_FieldsHaveDefaultValues()
         {
             InternalGameControllerButtonBindUnion u = new InternalGameControllerButtonBindUnion();
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal game controller button bind union is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalGameControllerButtonBindUnion_IsValueType_CopyIsIndependent()
         {
             InternalGameControllerButtonBindUnion original = new InternalGameControllerButtonBindUnion();

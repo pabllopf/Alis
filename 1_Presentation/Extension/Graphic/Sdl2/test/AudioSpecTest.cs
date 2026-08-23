@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests the AudioSpec struct default initialization.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_DefaultInitialization_CreatesValidStruct()
         {
             AudioSpec audioSpec = new AudioSpec();
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting AudioSpec properties.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_SetProperties_StoresValuesCorrectly()
         {
             AudioSpec audioSpec = new AudioSpec();
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests AudioSpec with various format values.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_WithDifferentFormats_StoresFormatCorrectly()
         {
             AudioSpec audioSpec = new AudioSpec {Format = Sdl.AudioF32Lsb};
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests AudioSpec userdata property.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_SetUserdata_StoresPointerCorrectly()
         {
             AudioSpec audioSpec = new AudioSpec();
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that AudioSpec is a value type (struct).
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_IsValueType_CanBeCopied()
         {
             AudioSpec original = new AudioSpec {Freq = 44100, Channels = 2};
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting and getting the Callback delegate property.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_SetCallback_StoresDelegateCorrectly()
         {
             AudioSpec audioSpec = new AudioSpec();
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that copying AudioSpec creates independent instances.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_CopyIsIndependent_ModifyingCopyDoesNotAffectOriginal()
         {
             AudioSpec original = new AudioSpec {Freq = 44100, Channels = 2};
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that AudioSpec readonly fields default to zero.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void AudioSpec_ReadonlyFields_DefaultToZero()
         {
             AudioSpec audioSpec = new AudioSpec();

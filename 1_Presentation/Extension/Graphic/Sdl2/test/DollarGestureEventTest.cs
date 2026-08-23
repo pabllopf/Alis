@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that dollar gesture event default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DollarGestureEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
             DollarGestureEvent ev = new DollarGestureEvent();
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that dollar gesture event set fields stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DollarGestureEvent_SetFields_StoresValuesCorrectly()
         {
             DollarGestureEvent ev = new DollarGestureEvent
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that dollar gesture event is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DollarGestureEvent_IsValueType_CopyIsIndependent()
         {
             DollarGestureEvent original = new DollarGestureEvent { touchId = 999L, gestureId = 888L };

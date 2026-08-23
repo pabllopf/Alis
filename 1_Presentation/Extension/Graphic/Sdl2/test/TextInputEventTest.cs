@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return all zeros when default
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnAllZerosWhenDefault()
         {
             // Arrange

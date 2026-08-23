@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             DisplayMode mode = new DisplayMode();
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign and retrieve fields
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignAndRetrieveFields()
         {
             DisplayMode mode = new DisplayMode

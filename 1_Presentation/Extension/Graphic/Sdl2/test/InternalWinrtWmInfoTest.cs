@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal winrt wm info default initialization property has default value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWinrtWmInfo_DefaultInitialization_PropertyHasDefaultValue()
         {
             InternalWinrtWmInfo info = new InternalWinrtWmInfo();
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal winrt wm info set property stores value correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWinrtWmInfo_SetProperty_StoresValueCorrectly()
         {
             InternalWinrtWmInfo info = new InternalWinrtWmInfo
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal winrt wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalWinrtWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalWinrtWmInfo original = new InternalWinrtWmInfo { Window = new IntPtr(111) };

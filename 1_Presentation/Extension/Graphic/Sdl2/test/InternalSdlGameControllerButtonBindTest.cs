@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal sdl game controller button bind default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalSdlGameControllerButtonBind_DefaultInitialization_FieldsHaveDefaultValues()
         {
             InternalSdlGameControllerButtonBind bind = new InternalSdlGameControllerButtonBind();
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal sdl game controller button bind is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalSdlGameControllerButtonBind_IsValueType_CopyIsIndependent()
         {
             InternalSdlGameControllerButtonBind original = new InternalSdlGameControllerButtonBind();

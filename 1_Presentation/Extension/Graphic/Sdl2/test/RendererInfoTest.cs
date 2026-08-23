@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             RendererInfo info = new RendererInfo();
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign name
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignName()
         {
             RendererInfo info = new RendererInfo();
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should get name from pointer
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldGetNameFromPointer()
         {
             RendererInfo info = new RendererInfo();

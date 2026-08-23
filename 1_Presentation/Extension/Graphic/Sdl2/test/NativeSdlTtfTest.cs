@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return compiled version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnCompiledVersion()
         {
             Version version = NativeSdlTtf.InternalGetTtfVersion();

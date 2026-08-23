@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Mapping
         /// <summary>
         ///     Tests that key codes enum has expected values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KeyCodes_Enum_HasExpectedValues()
         {
             Assert.Equal(0, (int) KeyCodes.Unknown);
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Mapping
         /// <summary>
         ///     Tests that key codes enum keys have expected values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void KeyCodes_Enum_KeysHaveExpectedValues()
         {
             Assert.True((int) KeyCodes.A >= 97);
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Mapping
         /// <summary>
         ///     Tests that input const has expected values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlInputConst_HasExpectedValues()
         {
             Assert.Equal(1 << 30, SdlInputConst.KScancodeMask);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Mapping
         /// <summary>
         ///     Tests that input const hat combinations have expected values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlInputConst_HatCombinations_HaveExpectedValues()
         {
             Assert.Equal(0x02 | 0x01, SdlInputConst.HatRightUp);

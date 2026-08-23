@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that DropEvent is a value type.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DropEvent_ShouldBeValueType()
         {
             Assert.True(typeof(DropEvent).IsValueType);
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that DropEvent has sequential layout.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DropEvent_ShouldHaveSequentialLayout()
         {
             StructLayoutAttribute attribute = typeof(DropEvent).StructLayoutAttribute;
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default DropEvent has zero type.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_Type_ShouldBeZero()
         {
             DropEvent dropEvent = default;
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default DropEvent has zero timestamp.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_Timestamp_ShouldBeZero()
         {
             DropEvent dropEvent = default;
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that File property can be set and read.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void File_ShouldBeSettable()
         {
             DropEvent dropEvent = default;
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Verifies that default DropEvent has zero windowID.
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void DefaultInstance_WindowID_ShouldBeZero()
         {
             DropEvent dropEvent = default;

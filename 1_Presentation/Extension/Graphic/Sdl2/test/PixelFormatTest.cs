@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should default to zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldDefaultToZero()
         {
             PixelFormat fmt = new PixelFormat();
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign palette
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignPalette()
         {
             PixelFormat fmt = new PixelFormat();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign next
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignNext()
         {
             PixelFormat fmt = new PixelFormat();

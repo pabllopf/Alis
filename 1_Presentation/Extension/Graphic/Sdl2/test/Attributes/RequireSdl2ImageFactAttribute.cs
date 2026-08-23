@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
         /// </summary>
         public RequireSdl2ImageFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("sdl2"))
+            if (!TryLoadSfmlLibrary("sdl"))
             {
                 Skip = "Test skipped because its not platform";
             }

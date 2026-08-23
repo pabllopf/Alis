@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should assign and retrieve all fields
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAssignAndRetrieveAllFields()
         {
             // Arrange
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should support default initialization
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldSupportDefaultInitialization()
         {
             // Arrange
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should allow modification of properties
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldAllowModificationOfProperties()
         {
             // Arrange

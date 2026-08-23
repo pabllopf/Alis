@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that test
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Test()
         {
             Assert.True(true);

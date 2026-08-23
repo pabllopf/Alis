@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal uikit wm info default initialization fields have default values
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalUikitWmInfo_DefaultInitialization_FieldsHaveDefaultValues()
         {
             InternalUikitWmInfo info = new InternalUikitWmInfo();
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal uikit wm info set fields stores values correctly
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalUikitWmInfo_SetFields_StoresValuesCorrectly()
         {
             InternalUikitWmInfo info = new InternalUikitWmInfo
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that internal uikit wm info is value type copy is independent
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void InternalUikitWmInfo_IsValueType_CopyIsIndependent()
         {
             InternalUikitWmInfo original = new InternalUikitWmInfo { framebuffer = 10u };

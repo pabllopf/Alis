@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that SdlImage.Version returns the expected hardcoded version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlImage_Version_ReturnsExpectedValue()
         {
             // Arrange & Act
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that UnicodeBomNative has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_UnicodeBomNative_HasCorrectValue()
         {
             Assert.Equal(0xFEFF, SdlTtf.UnicodeBomNative);
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that UnicodeBomSwapped has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_UnicodeBomSwapped_HasCorrectValue()
         {
             Assert.Equal(0xFFFE, SdlTtf.UnicodeBomSwapped);
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfStyleNormal has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfStyleNormal_HasCorrectValue()
         {
             Assert.Equal(0x00, SdlTtf.TtfStyleNormal);
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfStyleBold has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfStyleBold_HasCorrectValue()
         {
             Assert.Equal(0x01, SdlTtf.TtfStyleBold);
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfStyleItalic has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfStyleItalic_HasCorrectValue()
         {
             Assert.Equal(0x02, SdlTtf.TtfStyleItalic);
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfStyleUnderline has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfStyleUnderline_HasCorrectValue()
         {
             Assert.Equal(0x04, SdlTtf.TtfStyleUnderline);
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfStyleStrikethrough has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfStyleStrikethrough_HasCorrectValue()
         {
             Assert.Equal(0x08, SdlTtf.TtfStyleStrikethrough);
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfHintingNormal has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfHintingNormal_HasCorrectValue()
         {
             Assert.Equal(0, SdlTtf.TtfHintingNormal);
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfHintingLight has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfHintingLight_HasCorrectValue()
         {
             Assert.Equal(1, SdlTtf.TtfHintingLight);
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfHintingMono has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfHintingMono_HasCorrectValue()
         {
             Assert.Equal(2, SdlTtf.TtfHintingMono);
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfHintingNone has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfHintingNone_HasCorrectValue()
         {
             Assert.Equal(3, SdlTtf.TtfHintingNone);
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TtfHintingLightSubpixel has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_TtfHintingLightSubpixel_HasCorrectValue()
         {
             Assert.Equal(4, SdlTtf.TtfHintingLightSubpixel);
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that all TTF style constants are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_StyleConstants_AreDistinct()
         {
             Assert.NotEqual(SdlTtf.TtfStyleNormal, SdlTtf.TtfStyleBold);
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that TTF style constants form a bitmask pattern
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void SdlTtf_StyleConstants_FormBitmask()
         {
             // Each style is a power of 2, forming a bitmask
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Query has the correct value (-1)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Query_HasCorrectValue()
         {
             Assert.Equal(-1, Sdl.Query);
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Ignore has the correct value (0)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Ignore_HasCorrectValue()
         {
             Assert.Equal(0, Sdl.Ignore);
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Disable has the correct value (0)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Disable_HasCorrectValue()
         {
             Assert.Equal(0, Sdl.Disable);
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Enable has the correct value (1)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Enable_HasCorrectValue()
         {
             Assert.Equal(1, Sdl.Enable);
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.TextEditingEventTextSize has the correct value (32)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_TextEditingEventTextSize_HasCorrectValue()
         {
             Assert.Equal(32, Sdl.TextEditingEventTextSize);
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.TextInputEventTextSize has the correct value (32)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_TextInputEventTextSize_HasCorrectValue()
         {
             Assert.Equal(32, Sdl.TextInputEventTextSize);
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatUnknown has the correct value (0)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatUnknown_HasCorrectValue()
         {
             Assert.Equal(0u, Sdl.PixelFormatUnknown);
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatRgb888 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb888_HasCorrectValue()
         {
             // RGB888 is 0x162D6240 (SDL_PIXELFORMAT_RGB888)
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatBgr888 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr888_HasCorrectValue()
         {
             // BGR888 is 0x162C6240 (SDL_PIXELFORMAT_BGR888)
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatRgb565 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb565_HasCorrectValue()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatRgb565);
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatBgr565 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr565_HasCorrectValue()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatBgr565);
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatArgb4444 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatArgb4444_HasCorrectValue()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatArgb4444);
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatRgba4444 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgba4444_HasCorrectValue()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatRgba4444);
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatArgb1555 has the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatArgb1555_HasCorrectValue()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatArgb1555);
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatRgb565 and PixelFormatBgr565 are different
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb565AndBgr565_AreDifferent()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb565, Sdl.PixelFormatBgr565);
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.PixelFormatRgb888 and PixelFormatBgr888 are different
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb888AndBgr888_AreDifferent()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb888, Sdl.PixelFormatBgr888);
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Button(1) returns 1 (left button mask)
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Button_One_ReturnsOne()
         {
             Assert.Equal(1u, Sdl.Button(1));
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Button(0) returns 0x80000000 due to shift-by-negative behavior
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Button_Zero_ReturnsMaxInt()
         {
             // Button(0) = 1 << (0-1) = 1 << -1, which wraps to 1 << 31 = 0x80000000
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Fourcc with 'SDL ' produces the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Fourcc_SDLSpace_ReturnsCorrectValue()
         {
             uint result = Sdl.Fourcc((byte) 'S', (byte) 'D', (byte) 'L', (byte) ' ');
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Fourcc with 'IYUV' produces the correct value
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Fourcc_IYUV_ReturnsCorrectValue()
         {
             uint result = Sdl.Fourcc((byte) 'I', (byte) 'Y', (byte) 'U', (byte) 'V');
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Fourcc with all zeros produces zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Fourcc_AllZeros_ReturnsZero()
         {
             Assert.Equal(0u, Sdl.Fourcc(0, 0, 0, 0));
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Fourcc with all 0xFF produces 0xFFFFFFFF
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_Fourcc_AllFF_ReturnsFFFFFFFF()
         {
             Assert.Equal(0xFFFFFFFFu, Sdl.Fourcc(0xFF, 0xFF, 0xFF, 0xFF));
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that WindowPosUndefined and WindowPosCentered are mutually exclusive
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_WindowPosUndefinedAndCentered_AreMutuallyExclusive()
         {
             int undefinedPos = Sdl.WindowPosUndefinedDisplay(0);
@@ -493,7 +493,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.GetVersion returns a valid version structure
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_GetVersion_ReturnsValidStructure()
         {
             Version version = Sdl.GetVersion();
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.GetGlCompiledVersion matches GetVersion major.minor
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_GetGlCompiledVersion_MatchesGetVersion()
         {
             Version version = Sdl.GetVersion();
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatRgb888 alias matches GlFormatXRgb888
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb888, Sdl.PixelFormatRgb888);
@@ -531,7 +531,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatBgr888 alias matches GlFormatXBgr888
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr888, Sdl.PixelFormatBgr888);
@@ -540,7 +540,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatRgb444 alias matches GlFormatXRgb444
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb444, Sdl.PixelFormatRgb444);
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatBgr444 alias matches GlFormatXBgr444
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr444, Sdl.PixelFormatBgr444);
@@ -558,7 +558,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatRgb555 alias matches GlFormatXRgb1555
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb555_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb1555, Sdl.PixelFormatRgb555);
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatBgr555 alias matches GlFormatXBgr1555
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr555_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr1555, Sdl.PixelFormatBgr555);
@@ -576,7 +576,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Argb8888 and Abgr8888 pixel formats are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatArgb8888AndAbgr8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatABgr8888);
@@ -585,7 +585,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Argb8888 and Rgba8888 pixel formats are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatArgb8888AndRgba8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatRgba8888);
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Yv12 and Iyuv pixel formats are distinct
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatYv12AndIyuv_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatYv12, Sdl.PixelFormatIy);
@@ -603,7 +603,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatIndex8 is non-zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatIndex8_IsNonZero()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatIndex8);
@@ -612,7 +612,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatRgb332 is non-zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb332_IsNonZero()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatRgb332);
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatRgb24 is non-zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatRgb24_IsNonZero()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatRgb24);
@@ -630,7 +630,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatBgr24 is non-zero and different from Rgb24
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatBgr24_DiffersFromRgb24()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatBgr24);
@@ -640,7 +640,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that PixelFormatArgb2101010 is non-zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void Sdl_PixelFormatArgb2101010_IsNonZero()
         {
             Assert.NotEqual(0u, Sdl.PixelFormatArgb2101010);
