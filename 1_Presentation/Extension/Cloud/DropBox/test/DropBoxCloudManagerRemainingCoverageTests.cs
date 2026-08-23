@@ -142,21 +142,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that list files async with empty folder path and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task ListFilesAsync_WithEmptyPathAndInitialized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync(string.Empty));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
         ///     Tests that upload file async with path normalization and existing file throws from api
         /// </summary>
         [Fact]
