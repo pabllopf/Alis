@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
         /// </summary>
         public RequireCImguiSystemFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("imgui"))
+            if (!TryLoadSfmlLibrary("cimgui"))
             {
                 Skip = "Test skipped because its not platform";
             }

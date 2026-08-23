@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
     /// <summary>
     ///     Tests for MacOpenGLContext members executed on the process main thread via the startup hook bootstrap.
     /// </summary>
-    public class MacOpenGLContextExecutionTests
+    public class MacOpenGlContextExecutionTests
     {
         /// <summary>
         ///     Constructor_OnMainThread_CreatesViewContextAndPixelFormat
@@ -46,15 +46,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void Constructor_OnMainThread_CreatesViewContextAndPixelFormat()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.NotNull(MacOpenGLContextBootstrap.Context);
-            Assert.NotEqual(IntPtr.Zero, MacOpenGLContextBootstrap.View);
-            Assert.NotEqual(IntPtr.Zero, MacOpenGLContextBootstrap.ContextHandle);
-            Assert.NotEqual(IntPtr.Zero, MacOpenGLContextBootstrap.PixelFormat);
+            Assert.NotNull(MacOpenGlContextBootstrap.Context);
+            Assert.NotEqual(IntPtr.Zero, MacOpenGlContextBootstrap.View);
+            Assert.NotEqual(IntPtr.Zero, MacOpenGlContextBootstrap.ContextHandle);
+            Assert.NotEqual(IntPtr.Zero, MacOpenGlContextBootstrap.PixelFormat);
         }
 
         /// <summary>
@@ -63,12 +63,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void View_OnMainThread_MatchesRecordedHandle()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.Equal(MacOpenGLContextBootstrap.View, MacOpenGLContextBootstrap.Context.View);
+            Assert.Equal(MacOpenGlContextBootstrap.View, MacOpenGlContextBootstrap.Context.View);
         }
 
         /// <summary>
@@ -77,12 +77,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void Context_OnMainThread_MatchesRecordedHandle()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.Equal(MacOpenGLContextBootstrap.ContextHandle, MacOpenGLContextBootstrap.Context.Context);
+            Assert.Equal(MacOpenGlContextBootstrap.ContextHandle, MacOpenGlContextBootstrap.Context.Context);
         }
 
         /// <summary>
@@ -91,12 +91,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void PixelFormat_OnMainThread_MatchesRecordedHandle()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.Equal(MacOpenGLContextBootstrap.PixelFormat, MacOpenGLContextBootstrap.Context.PixelFormat);
+            Assert.Equal(MacOpenGlContextBootstrap.PixelFormat, MacOpenGlContextBootstrap.Context.PixelFormat);
         }
 
         /// <summary>
@@ -105,12 +105,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void MakeCurrent_OnMainThread_Executes()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.True(MacOpenGLContextBootstrap.MakeCurrentOk);
+            Assert.True(MacOpenGlContextBootstrap.MakeCurrentOk);
         }
 
         /// <summary>
@@ -119,12 +119,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         [MacOsOnly]
         public void SwapBuffers_OnMainThread_Executes()
         {
-            if (!MacOpenGLContextBootstrap.Ready)
+            if (!MacOpenGlContextBootstrap.Ready)
             {
                 return;
             }
 
-            Assert.True(MacOpenGLContextBootstrap.SwapOk);
+            Assert.True(MacOpenGlContextBootstrap.SwapOk);
         }
     }
 }

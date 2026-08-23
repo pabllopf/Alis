@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Test
         /// <summary>
         ///     The uniform matrix 2x3 fake delegate reference
         /// </summary>
-        private static readonly Gl.UniformMatrix2x3FvDel FakeUniformMatrix2x3FvDelegate = FakeUniformMatrix2x3Fv;
+        private static readonly Gl.UniformMatrix2x3FvDel FakeUniformMatrix2X3FvDelegate = FakeUniformMatrix2X3Fv;
 
         /// <summary>
         ///     The fake get active attrib delegate reference
@@ -421,7 +421,7 @@ namespace Alis.Core.Graphic.Test
         /// <param name="count">The count</param>
         /// <param name="transpose">The transpose</param>
         /// <param name="value">The value</param>
-        private static void FakeUniformMatrix2x3Fv(int location, int count, bool transpose, Span<float> value)
+        private static void FakeUniformMatrix2X3Fv(int location, int count, bool transpose, Span<float> value)
         {
         }
 
@@ -455,7 +455,7 @@ namespace Alis.Core.Graphic.Test
                 case "glLineWidth": return Marshal.GetFunctionPointerForDelegate(FakeLineWidthDelegate);
                 case "glActiveTexture": return Marshal.GetFunctionPointerForDelegate(FakeActiveTextureDelegate);
                 case "glGetIntegerv": return Marshal.GetFunctionPointerForDelegate(FakeGetIntegervDelegate);
-                case "glUniformMatrix2x3fv": return Marshal.GetFunctionPointerForDelegate(FakeUniformMatrix2x3FvDelegate);
+                case "glUniformMatrix2x3fv": return Marshal.GetFunctionPointerForDelegate(FakeUniformMatrix2X3FvDelegate);
                 default: return Marshal.GetFunctionPointerForDelegate(FakeClearDelegate);
             }
         }

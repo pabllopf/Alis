@@ -49,7 +49,7 @@ public static class StartupHook
             if (Environment.GetEnvironmentVariable("ALIS_MACWINDOW_HOOK") == "1")
             {
                 MacWindowBootstrap.Initialize();
-                MacOpenGLContextBootstrap.Initialize();
+                MacOpenGlContextBootstrap.Initialize();
                 MacNativePlatformBootstrap.Initialize();
             }
         }
@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
     ///         the main thread before the entry point.
     ///     </para>
     /// </summary>
-    internal static class MacOpenGLContextBootstrap
+    internal static class MacOpenGlContextBootstrap
     {
         /// <summary>
         ///     The context created on the main thread.

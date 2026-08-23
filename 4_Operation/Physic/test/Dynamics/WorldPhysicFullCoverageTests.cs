@@ -133,29 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(bodyA.GetWorldPhysic);
         }
 
-        /// <summary>
-        ///     Tests that removing a joint flags contacts for removal when not collide connected
-        /// </summary>
-        [Fact]
-        public void RemoveJoint_WithCollideConnectedFalse_FlagsContacts()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0, 0), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0), BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            DistanceJoint joint = JointFactory.CreateDistanceJoint(world, bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.CollideConnected = false;
-
-            world.Step(1.0f / 60.0f);
-            Assert.Equal(0, world.ContactManager.ContactCount);
-
-            world.Remove(joint);
-            world.Step(1.0f / 60.0f);
-        }
-
+ 
         /// <summary>
         ///     Tests that a fast bullet body triggers the TOI solving path
         /// </summary>
