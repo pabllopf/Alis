@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.8] - 2026-08-23
+### :bug: Bug Fixes
+- [`cc65916`](https://github.com/pabllopf/Alis/commit/cc65916b6472ec9c4cc85351fe7f8b3f2d05a80e) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47d1cef`](https://github.com/pabllopf/Alis/commit/47d1cef60339b6df594ddd356db328483ba3a49a) - RequireSdl2ImageFact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b5e57d`](https://github.com/pabllopf/Alis/commit/5b5e57dd6951241a7aeef0dd3fb24efc994c5b5b) - using imports *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.7] - 2026-08-20
 ### :bug: Bug Fixes
 - [`391a260`](https://github.com/pabllopf/Alis/commit/391a260548816415296e74d84c4ebcfea3ceecab) - samples *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10807,3 +10814,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.5]: https://github.com/pabllopf/Alis/compare/v1.2.4...v1.2.5
 [v1.2.6]: https://github.com/pabllopf/Alis/compare/v1.2.5...v1.2.6
 [v1.2.7]: https://github.com/pabllopf/Alis/compare/v1.2.6...v1.2.7
+[v1.2.8]: https://github.com/pabllopf/Alis/compare/v1.2.7...v1.2.8
