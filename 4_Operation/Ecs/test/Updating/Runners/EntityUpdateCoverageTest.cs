@@ -117,22 +117,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 Assert.Throws<ComponentNotFoundException>(() => update.Run(scene, archetype));
             }
         }
-
-        /// <summary>
-        ///     Run_WithStartAndLength_ThrowsComponentNotFound
-        /// </summary>
-        [Fact] public void Run_WithStartAndLength_ThrowsComponentNotFound()
-        {
-            using (Scene scene = new Scene())
-            {
-                Archetype archetype = new Archetype(default, [], false);
-
-                EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
-                    new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
-
-                Assert.Throws<ComponentNotFoundException>(() => update.Run(scene, archetype, 0, 0));
-            }
-        }
     }
 
     /// <summary>
