@@ -30,6 +30,8 @@
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test

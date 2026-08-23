@@ -27,10 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sdl2.Delegates;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
+using System.Runtime.InteropServices;
+using System;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test

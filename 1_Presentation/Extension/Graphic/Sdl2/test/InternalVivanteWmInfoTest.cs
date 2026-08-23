@@ -27,8 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
+using System;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test

@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test

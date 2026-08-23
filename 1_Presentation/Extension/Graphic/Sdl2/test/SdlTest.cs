@@ -27,10 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Graphic.Sdl2.Mapping;
-using Xunit;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
+using System;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {

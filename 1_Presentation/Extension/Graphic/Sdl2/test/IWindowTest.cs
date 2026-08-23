@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_CanBeImplemented_CreatesValidInstance()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
 
             Assert.NotNull(window);
         }
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetBackground_RetrievesColorCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Color color = new Color(255, 128, 64, 255);
 
             window.Background = color;
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetResolution_RetrievesVectorCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Vector2F resolution = new Vector2F(1920, 1080);
 
             window.Resolution = resolution;
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetIsWindowResizable_RetrievesBoolCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
 
             window.IsWindowResizable = true;
             bool isResizable = window.IsWindowResizable;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetIsWindowResizableFalse_ReturnsFalse()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
 
             window.IsWindowResizable = false;
             bool isResizable = window.IsWindowResizable;
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_ModifyMultipleProperties_AllPropertiesUpdateCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Color expectedColor = new Color(100, 150, 200, 255);
             Vector2F expectedResolution = new Vector2F(800, 600);
 
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_MultipleInstances_AreIndependent()
         {
-            IWindow window1 = new MockWindow();
+            IWindow window1 = new IWindowTest.MockWindow();
             IWindow window2 = new MockWindow();
             Color color1 = new Color(255, 0, 0, 255);
             Color color2 = new Color(0, 255, 0, 255);
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Theory, InlineData(640, 480), InlineData(1024, 768), InlineData(1920, 1080), InlineData(2560, 1440)]
         public void IWindow_SetResolution_WithVariousSizes_StoresCorrectly(float width, float height)
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Vector2F resolution = new Vector2F(width, height);
 
             window.Resolution = resolution;
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetBackground_WithBlackColor_StoresCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Color blackColor = new Color(0, 0, 0, 255);
 
             window.Background = blackColor;
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [RequireSdl2ImageFact]
         public void IWindow_SetBackground_WithWhiteColor_StoresCorrectly()
         {
-            IWindow window = new MockWindow();
+            IWindow window = new IWindowTest.MockWindow();
             Color whiteColor = new Color(255, 255, 255, 255);
 
             window.Background = whiteColor;

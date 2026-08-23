@@ -29,8 +29,9 @@
 
 using Alis.Extension.Graphic.Sdl2.Sdl2Image;
 using Alis.Extension.Graphic.Sdl2.Sdl2Ttf;
-using Xunit;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {

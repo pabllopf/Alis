@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
