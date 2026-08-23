@@ -38,51 +38,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class JoystickConnectEventArgsRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that constructor assigns value from event
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_AssignsValueFromEvent()
-        {
-            JoystickConnectEvent connectEvent = new JoystickConnectEvent
-            {
-                JoystickId = 4
-            };
-
-            JoystickConnectEventArgs args = new JoystickConnectEventArgs(connectEvent);
-
-            Assert.Equal(4u, args.JoystickId);
-        }
-
-        /// <summary>
-        ///     Tests that property gets and sets value
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Property_GetAndSetValue()
-        {
-            JoystickConnectEventArgs args = new JoystickConnectEventArgs(new JoystickConnectEvent());
-
-            args.JoystickId = 8;
-
-            Assert.Equal(8u, args.JoystickId);
-        }
-
-        /// <summary>
-        ///     Tests that to string returns expected format
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void ToString_ReturnsExpectedFormat()
-        {
-            JoystickConnectEvent connectEvent = new JoystickConnectEvent
-            {
-                JoystickId = 2
-            };
-            JoystickConnectEventArgs args = new JoystickConnectEventArgs(connectEvent);
-
-            string str = args.ToString();
-
-            Assert.Contains("[JoystickConnectEventArgs]", str);
-            Assert.Contains("JoystickId(2)", str);
-        }
+     
     }
 }

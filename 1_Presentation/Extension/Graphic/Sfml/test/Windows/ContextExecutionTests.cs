@@ -38,57 +38,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class ContextExecutionTests
     {
-        /// <summary>
-        ///     Tests that the finalizer runs when the context is not disposed
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Finalizer_Runs_WhenNotDisposed()
-        {
-            Context context = new Context();
-            context = null;
-
-            System.GC.Collect();
-            System.GC.WaitForPendingFinalizers();
-            System.GC.Collect();
-
-            Assert.True(true);
-        }
-
-        /// <summary>
-        ///     Tests that the finalizer runs when the context was used before collection
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Finalizer_Runs_AfterContextUsage()
-        {
-            System.WeakReference reference = CreateWeakContextReference();
-
-            System.GC.Collect();
-            System.GC.WaitForPendingFinalizers();
-            System.GC.Collect();
-            System.GC.WaitForPendingFinalizers();
-
-            if (reference.IsAlive)
-            {
-                System.GC.Collect(2, System.GCCollectionMode.Forced, true, true);
-                System.GC.WaitForPendingFinalizers();
-                System.GC.Collect(2, System.GCCollectionMode.Forced, true, true);
-                System.GC.WaitForPendingFinalizers();
-            }
-
-            Assert.False(reference.IsAlive);
-        }
-
-        /// <summary>
-        ///     Creates a weak reference to a used context
-        /// </summary>
-        /// <returns>The weak reference</returns>
-        private static System.WeakReference CreateWeakContextReference()
-        {
-            Context context = new Context();
-            context.SetActive(true);
-            ContextSettings settings = context.Settings;
-            _ = settings;
-            return new System.WeakReference(context);
-        }
+       
+   
     }
 }

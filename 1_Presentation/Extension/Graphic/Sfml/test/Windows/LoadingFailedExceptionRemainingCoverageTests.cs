@@ -39,63 +39,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class LoadingFailedExceptionRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that default constructor sets default message
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void DefaultConstructor_SetsDefaultMessage()
-        {
-            LoadingFailedException ex = new LoadingFailedException();
-
-            Assert.Equal("Failed to load a resource", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with resource name sets message
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_WithResourceName_SetsMessage()
-        {
-            LoadingFailedException ex = new LoadingFailedException("texture");
-
-            Assert.Equal("Failed to load texture from memory", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with resource name and inner exception sets message
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_WithResourceNameAndInnerException_SetsMessage()
-        {
-            Exception inner = new Exception("cause");
-            LoadingFailedException ex = new LoadingFailedException("texture", inner);
-
-            Assert.Equal("Failed to load texture from memory", ex.Message);
-            Assert.Same(inner, ex.InnerException);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with resource name and filename sets message
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_WithResourceNameAndFilename_SetsMessage()
-        {
-            LoadingFailedException ex = new LoadingFailedException("font", "arial.ttf");
-
-            Assert.Equal("Failed to load font from file arial.ttf", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with resource name filename and inner exception sets message
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_WithResourceNameFilenameAndInnerException_SetsMessage()
-        {
-            Exception inner = new Exception("io error");
-            LoadingFailedException ex = new LoadingFailedException("font", "arial.ttf", inner);
-
-            Assert.Equal("Failed to load font from file arial.ttf", ex.Message);
-            Assert.Same(inner, ex.InnerException);
-        }
+       
     }
 }

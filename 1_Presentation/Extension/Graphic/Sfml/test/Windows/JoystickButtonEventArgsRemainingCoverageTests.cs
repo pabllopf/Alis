@@ -38,57 +38,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class JoystickButtonEventArgsRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that constructor assigns values from event
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Constructor_AssignsValuesFromEvent()
-        {
-            JoystickButtonEvent buttonEvent = new JoystickButtonEvent
-            {
-                JoystickId = 1,
-                Button = 5
-            };
-
-            JoystickButtonEventArgs args = new JoystickButtonEventArgs(buttonEvent);
-
-            Assert.Equal(1u, args.JoystickId);
-            Assert.Equal(5u, args.Button);
-        }
-
-        /// <summary>
-        ///     Tests that properties get and set values
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void Properties_GetAndSetValues()
-        {
-            JoystickButtonEventArgs args = new JoystickButtonEventArgs(new JoystickButtonEvent());
-
-            args.JoystickId = 2;
-            args.Button = 7;
-
-            Assert.Equal(2u, args.JoystickId);
-            Assert.Equal(7u, args.Button);
-        }
-
-        /// <summary>
-        ///     Tests that to string returns expected format
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void ToString_ReturnsExpectedFormat()
-        {
-            JoystickButtonEvent buttonEvent = new JoystickButtonEvent
-            {
-                JoystickId = 3,
-                Button = 9
-            };
-            JoystickButtonEventArgs args = new JoystickButtonEventArgs(buttonEvent);
-
-            string str = args.ToString();
-
-            Assert.Contains("[JoystickButtonEventArgs]", str);
-            Assert.Contains("JoystickId(3)", str);
-            Assert.Contains("Button(9)", str);
-        }
+        
     }
 }

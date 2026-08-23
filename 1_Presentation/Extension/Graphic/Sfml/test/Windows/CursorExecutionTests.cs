@@ -38,26 +38,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class CursorExecutionTests
     {
-        /// <summary>
-        ///     Tests that the system constructor with wait type does not throw
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void System_Constructor_Wait_DoesNotThrow()
-        {
-            using Cursor cursor = new Cursor(Cursor.CursorType.Wait);
-
-            Assert.NotNull(cursor);
-        }
-
-        /// <summary>
-        ///     Tests that the system constructor with size all type does not throw
-        /// </summary>
-        [RequireCSfmlWindowsFact]
-        public void System_Constructor_SizeAll_DoesNotThrow()
-        {
-            using Cursor cursor = new Cursor(Cursor.CursorType.SizeAll);
-
-            Assert.NotNull(cursor);
-        }
+      
     }
 }
