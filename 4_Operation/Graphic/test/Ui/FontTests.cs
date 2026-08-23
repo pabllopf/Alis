@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Core.Graphic.Ui;
 using Xunit;
 

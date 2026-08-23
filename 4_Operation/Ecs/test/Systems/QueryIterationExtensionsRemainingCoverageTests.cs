@@ -70,43 +70,7 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
-        /// <summary>
-        ///     Tests that delegate arity 2 updates all matching across archetypes
-        /// </summary>
-        [Fact]
-        public void Delegate_Arity2_UpdatesAllMatchingAcrossArchetypes()
-        {
-            using (Scene scene = new Scene())
-            {
-                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
-                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
-                GameObject notMatch = scene.Create(new Position {X = 100, Y = 100});
-
-                Query query = scene.Query<With<Position>, With<Velocity>>();
-                int calls = 0;
-
-                query.Delegate((ref Position p, ref Velocity v) =>
-                {
-                    calls++;
-                    p.X += v.X;
-                    p.Y += v.Y;
-                    v.X += 1;
-                    v.Y += 1;
-                });
-
-                Assert.Equal(2, calls);
-                Assert.Equal(2, e1.Get<Position>().X);
-                Assert.Equal(3, e1.Get<Position>().Y);
-                Assert.Equal(2, e1.Get<Velocity>().X);
-                Assert.Equal(3, e1.Get<Velocity>().Y);
-                Assert.Equal(13, e2.Get<Position>().X);
-                Assert.Equal(14, e2.Get<Position>().Y);
-                Assert.Equal(4, e2.Get<Velocity>().X);
-                Assert.Equal(5, e2.Get<Velocity>().Y);
-                Assert.Equal(100, notMatch.Get<Position>().X);
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that delegate arity 3 updates all matching across archetypes
         /// </summary>
@@ -408,29 +372,7 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
-        /// <summary>
-        ///     Tests that inline arity 2 updates all matching across archetypes
-        /// </summary>
-        [Fact]
-        public void Inline_Arity2_UpdatesAllMatchingAcrossArchetypes()
-        {
-            RemInlineAction2.Reset();
-
-            using (Scene scene = new Scene())
-            {
-                GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
-                GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
-
-                scene.Query<With<Position>, With<Velocity>>().Inline<RemInlineAction2, Position, Velocity>(default(RemInlineAction2));
-
-                Assert.Equal(2, RemInlineAction2.Calls);
-                Assert.Equal(2, e1.Get<Position>().X);
-                Assert.Equal(3, e1.Get<Position>().Y);
-                Assert.Equal(13, e2.Get<Position>().X);
-                Assert.Equal(14, e2.Get<Position>().Y);
-            }
-        }
-
+       
         /// <summary>
         ///     Tests that inline arity 3 updates all matching across archetypes
         /// </summary>

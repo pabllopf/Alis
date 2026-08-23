@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Test.Updating.Runners;
 using Alis.Core.Ecs.Updating;

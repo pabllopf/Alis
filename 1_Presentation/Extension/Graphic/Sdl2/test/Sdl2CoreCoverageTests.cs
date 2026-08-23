@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Sdl2.Test.Attributes;

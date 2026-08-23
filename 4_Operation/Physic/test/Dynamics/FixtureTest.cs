@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
-using Moq;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics

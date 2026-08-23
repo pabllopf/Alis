@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
 

@@ -30,7 +30,6 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Delegates;

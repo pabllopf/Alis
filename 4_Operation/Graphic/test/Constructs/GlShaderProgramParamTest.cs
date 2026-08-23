@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Xunit;
 

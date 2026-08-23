@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Sfml.Windows;
-using Alis.Extension.Graphic.Sfml.Test.Attributes;
-using Xunit;
-
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
     /// <summary>

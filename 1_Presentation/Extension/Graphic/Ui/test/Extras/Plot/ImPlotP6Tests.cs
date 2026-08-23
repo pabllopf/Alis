@@ -31,7 +31,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
-using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {

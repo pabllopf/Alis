@@ -29,9 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics

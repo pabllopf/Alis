@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test

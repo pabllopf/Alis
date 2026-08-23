@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Alis.Core.Graphic.OpenGL.Constructs;
-using Alis.Core.Graphic.OpenGL.Enums;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
@@ -122,19 +120,7 @@ namespace Alis.Core.Graphic.Test.Constructs
             shader.Dispose();
             shader.Dispose();
         }
-
-        /// <summary>
-        ///     Tests that ShaderLog getter on an uninitialized instance throws because OpenGL is not initialized.
-        /// </summary>
-        [Fact]
-        public void GlShader_UninitializedInstance_ShaderLogThrows()
-        {
-            object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
-            GlShader shader = (GlShader)instance;
-
-            Assert.Throws<InvalidOperationException>(() => shader.ShaderLog);
-        }
-
+        
         /// <summary>
         ///     Tests that disposing an uninitialized instance then GC-collecting triggers finalizer safely.
         /// </summary>

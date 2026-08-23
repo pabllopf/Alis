@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows;
 using Alis.App.Hub.Windows.Sections;

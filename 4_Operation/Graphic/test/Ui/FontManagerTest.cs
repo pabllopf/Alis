@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Ui;
 using Xunit;
 

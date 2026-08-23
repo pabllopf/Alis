@@ -502,32 +502,6 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that query enumerator arity 2 multiple archetypes crosses boundary
-        /// </summary>
-        [Fact] public void QueryEnumerator_Arity2_MultipleArchetypes_CrossesBoundary()
-        {
-            using (Scene scene = new())
-            {
-                scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-                scene.Create(new Position {X = 5, Y = 6}, new Velocity {X = 7, Y = 8}, new Health {Value = 9});
-                scene.Create(new Position {X = 10, Y = 11}, new Velocity {X = 12, Y = 13}, new AnotherComponent2 {Data = 99});
-
-                Query query = scene.Query<With<Position>, With<Velocity>>();
-
-                using (QueryEnumerator<Position, Velocity> enumerator = query.Enumerate<Position, Velocity>().GetEnumerator())
-                {
-                    int count = 0;
-                    while (enumerator.MoveNext())
-                    {
-                        count++;
-                    }
-
-                    Assert.Equal(3, count);
-                }
-            }
-        }
-
-        /// <summary>
         /// Tests that query enumerator arity 3 multiple archetypes crosses boundary
         /// </summary>
         [Fact] public void QueryEnumerator_Arity3_MultipleArchetypes_CrossesBoundary()

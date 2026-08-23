@@ -29,7 +29,6 @@
 
 using System;
 using System.Reflection;
-using Alis.Core.Aspect.Memory;
 using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test

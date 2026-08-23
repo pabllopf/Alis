@@ -27,12 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetypes;
-using Alis.Core.Ecs.Test.Models;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
     /// <summary>

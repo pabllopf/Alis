@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using System.Reflection;

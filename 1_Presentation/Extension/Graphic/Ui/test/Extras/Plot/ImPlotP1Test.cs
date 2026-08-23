@@ -30,12 +30,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 
 // Type alias to disambiguate between Alis.Extension.Graphic.Ui.ImGuiDragDropFlags and Alis.Extension.Graphic.Ui.Extras.Plot.ImGuiDragDropFlags
-using DragDropFlags = Alis.Extension.Graphic.Ui.Extras.Plot.ImGuiDragDropFlags;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot

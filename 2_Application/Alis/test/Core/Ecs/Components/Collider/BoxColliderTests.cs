@@ -28,17 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
 using Moq;
 using Xunit;
 

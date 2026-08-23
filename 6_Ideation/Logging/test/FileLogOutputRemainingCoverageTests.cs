@@ -31,7 +31,6 @@ using System;
 using System.IO;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Outputs;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Core;
 using Xunit;
 

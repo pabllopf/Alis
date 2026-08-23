@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
-using Alis.Extension.Updater.Services.Files;
-using Xunit;
-
 namespace Alis.Extension.Updater.Test
 {
     /// <summary>

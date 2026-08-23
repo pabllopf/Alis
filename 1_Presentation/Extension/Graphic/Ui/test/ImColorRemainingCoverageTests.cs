@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 

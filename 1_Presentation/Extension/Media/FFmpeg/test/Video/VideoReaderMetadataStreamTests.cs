@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Alis.Extension.Media.FFmpeg.Video;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;

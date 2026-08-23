@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Ecs.Exceptions;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Exceptions

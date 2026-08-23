@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using Alis.Core.Ecs.Collections;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>

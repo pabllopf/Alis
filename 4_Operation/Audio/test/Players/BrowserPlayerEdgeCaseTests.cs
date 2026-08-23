@@ -1,6 +1,4 @@
 using System;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Xunit;
 

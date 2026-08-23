@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Linq;
 using Alis.App.Engine.Menus;
 using Xunit;
 

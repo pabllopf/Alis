@@ -1,6 +1,3 @@
-using System;
-using System.Diagnostics;
-using System.IO;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Alis.Core.Audio.Test.Players.Samples;

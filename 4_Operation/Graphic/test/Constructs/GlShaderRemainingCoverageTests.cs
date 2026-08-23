@@ -27,13 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Constructs;
-using Xunit;
-
 namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>

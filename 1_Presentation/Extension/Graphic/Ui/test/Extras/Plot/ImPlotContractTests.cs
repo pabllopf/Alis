@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Linq;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
-using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {

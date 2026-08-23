@@ -31,7 +31,6 @@ using System;
 using System.IO;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.Ui;
 using Xunit;

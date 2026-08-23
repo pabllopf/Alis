@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Configuration;

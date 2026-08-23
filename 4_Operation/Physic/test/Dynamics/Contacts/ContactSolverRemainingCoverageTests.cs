@@ -30,7 +30,6 @@
 using System;
 using System.Buffers;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;

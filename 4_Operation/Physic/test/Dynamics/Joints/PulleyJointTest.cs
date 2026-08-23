@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
-using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints

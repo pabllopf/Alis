@@ -33,8 +33,6 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Systems.Configuration;
-using Alis.Core.Ecs.Systems.Manager;
-using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 

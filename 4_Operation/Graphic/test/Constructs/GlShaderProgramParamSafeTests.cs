@@ -1,6 +1,3 @@
-using System;
-using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Xunit;
 

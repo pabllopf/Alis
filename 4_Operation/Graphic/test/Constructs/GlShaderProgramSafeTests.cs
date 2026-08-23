@@ -1,6 +1,5 @@
 using System;
 using Alis.Core.Graphic.OpenGL.Constructs;
-using Alis.Core.Graphic.OpenGL.Enums;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs

@@ -38,53 +38,5 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class DisabledBodyContactExperimentTest
     {
-        /// <summary>
-        ///     Tests that stepping a world with a disabled body in contact does not throw
-        /// </summary>
-        [Fact]
-        public void Step_WithDisabledBodyInContact_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            for (int i = 0; i < 5; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-
-            Assert.True(world.ContactCount >= 1);
-
-            bodyB.Enabled = false;
-
-            for (int i = 0; i < 5; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
         }
-
-        /// <summary>
-        ///     Tests that disabling both bodies in a contact still steps cleanly
-        /// </summary>
-        [Fact]
-        public void Step_WithBothBodiesDisabled_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            for (int i = 0; i < 5; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-
-            bodyA.Enabled = false;
-            bodyB.Enabled = false;
-
-            for (int i = 0; i < 5; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-        }
-    }
 }

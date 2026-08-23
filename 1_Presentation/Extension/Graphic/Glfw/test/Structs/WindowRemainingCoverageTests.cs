@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Extension.Graphic.Glfw.Structs;
-using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {

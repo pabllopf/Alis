@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 

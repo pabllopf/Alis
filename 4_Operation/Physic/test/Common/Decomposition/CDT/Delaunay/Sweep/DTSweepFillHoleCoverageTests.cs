@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
-using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Xunit;

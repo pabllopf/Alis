@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 

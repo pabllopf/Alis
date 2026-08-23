@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using Alis.Extension.Io.FileDialog;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test

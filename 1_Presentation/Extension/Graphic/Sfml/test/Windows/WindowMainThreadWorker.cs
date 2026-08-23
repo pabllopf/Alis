@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows

@@ -29,7 +29,6 @@
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
-using System.Collections.Generic;
 using Alis.Core.Graphic.Platforms.Osx;
 using Xunit;
 

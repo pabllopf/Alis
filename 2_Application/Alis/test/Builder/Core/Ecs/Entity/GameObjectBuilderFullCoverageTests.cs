@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;

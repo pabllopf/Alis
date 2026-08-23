@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Security;
-using Alis.App.Engine.Menus;
-using Xunit;
-
 namespace Alis.App.Engine.Test.Menus
 {
     /// <summary>

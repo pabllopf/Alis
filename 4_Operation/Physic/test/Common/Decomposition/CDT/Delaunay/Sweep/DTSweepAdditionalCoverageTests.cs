@@ -28,11 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.Decomposition.CDT;
-using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Xunit;

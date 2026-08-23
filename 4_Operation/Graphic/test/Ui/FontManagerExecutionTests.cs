@@ -32,7 +32,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
