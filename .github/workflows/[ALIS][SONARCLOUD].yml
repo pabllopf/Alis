@@ -70,3 +70,4 @@ jobs:
       - name: show logs/log.txt
         run: |
           cat logs/log.txt
+
