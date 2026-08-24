@@ -544,6 +544,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="indexB">The index</param>
         internal void AcquireContactLocks(int indexA, int indexB)
         {
+            if (indexA == indexB)
+            {
+                return;
+            }
+
             while (true)
             {
                 if (Interlocked.CompareExchange(ref Locks[indexA], 1, 0) == 0)
