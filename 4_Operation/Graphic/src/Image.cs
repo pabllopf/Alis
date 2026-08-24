@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.IO;
 using Alis.Core.Aspect.Memory;
