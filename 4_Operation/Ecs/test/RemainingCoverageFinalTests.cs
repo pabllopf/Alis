@@ -119,6 +119,9 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         internal sealed class HugeEnumerator : System.Collections.Generic.IEnumerator<int>
         {
+            /// <summary>
+            /// The index
+            /// </summary>
             private int _index = -1;
 
             /// <summary>

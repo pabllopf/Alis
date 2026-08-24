@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Aspect
 {
+    /// <summary>
+    /// The aspect core class
+    /// </summary>
     public class AspectCore
     {
         

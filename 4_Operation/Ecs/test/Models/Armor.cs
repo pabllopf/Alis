@@ -44,6 +44,10 @@ namespace Alis.Core.Ecs.Test.Models
         /// </summary>
         public int Value { get; set; }
 
+        /// <summary>
+        /// Ons the init using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnInit(IGameObject self)
         {
             
