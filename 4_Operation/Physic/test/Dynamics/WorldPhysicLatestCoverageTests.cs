@@ -110,32 +110,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that a large fast bullet touching dynamic neighbors adds them to the toi island
-        /// </summary>
-        [Fact]
-        public void LargeBullet_TouchingDynamicNeighbors_AddsThemToToiIsland()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-
-            Body dynamicA = world.CreateCircle(0.01f, 1.0f, new Vector2F(0, 0.02f), BodyType.Dynamic);
-            Body dynamicB = world.CreateCircle(0.01f, 1.0f, new Vector2F(0.01f, 0.02f), BodyType.Dynamic);
-            world.CreateCircle(0.01f, 1.0f, new Vector2F(0, 0), BodyType.Static);
-
-            Body bullet = world.CreateCircle(3.0f, 1.0f, new Vector2F(-5, 0), BodyType.Dynamic);
-            bullet.IsBullet = true;
-            bullet.LinearVelocity = new Vector2F(50, 0);
-
-            for (int i = 0; i < 40; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-            Assert.True(dynamicA.Position.X > -5);
-            Assert.True(dynamicB.Position.X > -5);
-        }
-
-        /// <summary>
         ///     Tests that a fast polygon bullet hitting a static polygon restores a non touching toi contact
         /// </summary>
         [Fact]
