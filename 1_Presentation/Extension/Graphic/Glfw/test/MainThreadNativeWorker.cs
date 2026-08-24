@@ -281,6 +281,41 @@ namespace Alis.Extension.Graphic.Glfw.Test
         internal static bool ExtraWindowEqualsShared;
 
         /// <summary>
+        ///     The read back title value after assigning a null title.
+        /// </summary>
+        internal static string TitleNullResult;
+
+        /// <summary>
+        ///     Indicates whether a window constructed with a null title produced a valid handle.
+        /// </summary>
+        internal static bool NullTitleCtorValidHandle;
+
+        /// <summary>
+        ///     The video mode width read while the window is fullscreen.
+        /// </summary>
+        internal static int VideoModeFullscreenWidthResult;
+
+        /// <summary>
+        ///     The video mode height read while the window is fullscreen.
+        /// </summary>
+        internal static int VideoModeFullscreenHeightResult;
+
+        /// <summary>
+        ///     Indicates whether the disposed event was raised when a window was disposed.
+        /// </summary>
+        internal static bool DisposedEventRaised;
+
+        /// <summary>
+        ///     Indicates whether every managed event fired without subscribers completed without throwing.
+        /// </summary>
+        internal static bool EventsNoSubscribersSucceeded;
+
+        /// <summary>
+        ///     Indicates whether a window created with no client API produced a valid handle.
+        /// </summary>
+        internal static bool NoContextCtorValidHandle;
+
+        /// <summary>
         ///     Runs every native step on the main thread and records the results.
         /// </summary>
         public static void Run()
@@ -570,6 +605,96 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 window.Visible = false;
                 VisibleOffResult = window.Visible;
+            });
+            Execute("TitleNull", () =>
+            {
+                NativeWindow nativeWindow = new NativeWindow(32, 32, "title-null");
+                try
+                {
+                    nativeWindow.Title = null;
+                    TitleNullResult = nativeWindow.Title;
+                }
+                finally
+                {
+                    nativeWindow.Dispose();
+                }
+            });
+            Execute("NullTitleCtor", () =>
+            {
+                NativeWindow nativeWindow = new NativeWindow(32, 32, null);
+                try
+                {
+                    NullTitleCtorValidHandle = nativeWindow.Handle != IntPtr.Zero;
+                }
+                finally
+                {
+                    nativeWindow.Dispose();
+                }
+            });
+            Execute("VideoModeFullscreen", () =>
+            {
+                window.Fullscreen(GlfwNative.PrimaryMonitor);
+                try
+                {
+                    VideoMode mode = window.VideoMode;
+                    VideoModeFullscreenWidthResult = mode.Width;
+                    VideoModeFullscreenHeightResult = mode.Height;
+                }
+                finally
+                {
+                    window.Fullscreen(Monitor.None);
+                }
+            });
+            Execute("DisposedEvent", () =>
+            {
+                NativeWindow nativeWindow = new NativeWindow(32, 32, "dispose-event");
+                bool raised = false;
+                nativeWindow.Disposed += (object sender, EventArgs args) => raised = true;
+                nativeWindow.Dispose();
+                DisposedEventRaised = raised;
+            });
+            Execute("FireEventsNoSubscribers", () =>
+            {
+                TestableNativeWindow fresh = new TestableNativeWindow(32, 32, "no-subs");
+                try
+                {
+                    fresh.FireOnContentScaleChanged(1.0f, 1.0f);
+                    fresh.FireOnCharacterInput(65, ModifierKeys.None);
+                    fresh.FireOnFileDrop(new[] { "a.txt" });
+                    fresh.FireOnFocusChanged(true);
+                    fresh.FireOnKey(Keys.A, 0, InputState.Press, ModifierKeys.None);
+                    fresh.FireOnKey(Keys.A, 0, InputState.Release, ModifierKeys.None);
+                    fresh.FireOnMouseButton(MouseButton.Left, InputState.Press, ModifierKeys.None);
+                    fresh.FireOnMouseEnter(true);
+                    fresh.FireOnMouseEnter(false);
+                    fresh.FireOnMouseMove(1.0, 2.0);
+                    fresh.FireOnMouseScroll(0.0, 1.0);
+                    EventsNoSubscribersSucceeded = true;
+                }
+                finally
+                {
+                    fresh.Dispose();
+                }
+            });
+            Execute("NoContextCtor", () =>
+            {
+                GlfwNative.WindowHint(Hint.ClientApi, (int) ClientApi.None);
+                try
+                {
+                    NativeWindow nativeWindow = new NativeWindow(32, 32, "no-context");
+                    try
+                    {
+                        NoContextCtorValidHandle = nativeWindow.Handle != IntPtr.Zero;
+                    }
+                    finally
+                    {
+                        nativeWindow.Dispose();
+                    }
+                }
+                finally
+                {
+                    GlfwNative.WindowHint(Hint.ClientApi, (int) ClientApi.OpenGl);
+                }
             });
         }
 
