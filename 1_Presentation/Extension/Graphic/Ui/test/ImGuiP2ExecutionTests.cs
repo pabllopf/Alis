@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every DragInt overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragInt_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every DragInt2 overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragInt2_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every DragInt3 overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragInt3_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every DragInt4 overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragInt4_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every DragIntRange2 overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragIntRange2_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragScalar overload executes inside a framed window against a pinned
         ///     int payload, using pinned bounds where the signature provides them.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragScalar_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragScalarN overload executes inside a framed window against a pinned
         ///     int array, using pinned bounds where the signature provides them.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragScalarN_Overloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

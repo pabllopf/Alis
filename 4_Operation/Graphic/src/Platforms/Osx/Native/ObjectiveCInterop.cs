@@ -97,7 +97,15 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// </summary>
         /// <param name="view">The NSView pointer.</param>
         /// <returns>The frame rectangle.</returns>
-        public static NsRect NSViewGetFrame(IntPtr view) => objc_msgSend_NSRect(view, Sel("frame"));
+        public static NsRect NSViewGetFrame(IntPtr view)
+        {
+#if osxarm64 || osxarm
+            return objc_msgSend_NSRect(view, Sel("frame"));
+#else
+            objc_msgSend_stret(out NsRect frame, view, Sel("frame"));
+            return frame;
+#endif
+        }
 
         /// <summary>
         ///     Gets the frame rectangle of an NSWindow in screen coordinates.

@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies MemAlloc returns a usable allocation and MemFree releases it against a
         ///     live context, without needing a frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void MemAlloc_And_MemFree_Execute()
         {
             IntPtr ctx = CreateContext();
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both LoadIniSettingsFromMemory overloads parse in-memory ini data against
         ///     fresh contexts before any frame runs, satisfying the native FrameCount == 0 rule.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void LoadIniSettingsFromMemory_ExecuteBeforeFrame()
         {
             IntPtr first = CreateContext();
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputInt overload executes inside one framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputInt_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both InputInt2 overloads execute inside one framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputInt2_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     EntryPointNotFoundException because the native binding declares the entry point
         ///     with a leading underscore, which the runtime resolves as a doubled underscore.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputInt3_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both InputInt4 overloads execute inside one framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputInt4_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both InputFloat4 overloads execute inside one framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputFloat4_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputScalar overload executes inside one framed window against a
         ///     pinned float payload without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputScalar_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputScalarN overload executes inside one framed window against a
         ///     pinned float payload without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputScalarN_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     their wrapper bodies, because the native binding cannot marshal jagged string
         ///     arrays.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ListBox_ThrowsMarshalDirective_InsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     throwing. The bool-pointer overload is called with false so the native pointer
         ///     argument stays NULL, since the binding marshals the bool by value.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void MenuItem_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both InvisibleButton overloads and LabelText execute inside one framed
         ///     window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InvisibleButton_And_LabelText_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every IsItem and IsAnyItem state query executes inside one framed window
         ///     after an item has been placed, without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void IsItemQueries_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every IsWindow state query executes inside one framed window, asserting
         ///     the window is appearing on its first frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void IsWindowQueries_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -580,7 +580,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every IsKey state query executes inside one framed window against the A
         ///     key without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void IsKeyQueries_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every IsMouse state query executes inside one framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void IsMouseQueries_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -638,7 +638,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both IsPopupOpen overloads report false for an unopened popup and both
         ///     IsRectVisible overloads execute inside one framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void IsPopupOpen_And_IsRectVisible_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -663,7 +663,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the clipboard, tty and window logging functions execute inside one framed
         ///     window without creating files on disk.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void LogFunctions_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Clear initializes the used chars vector with a zeroed, allocated backing buffer.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Clear_Then_UsedCharsVector_IsAllocatedAndZeroed()
         {
             IntPtr ctx = CreateContext();
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AddChar sets the bit of the given character so GetBit reports it as used.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddChar_Then_GetBit_ReturnsTrue()
         {
             IntPtr ctx = CreateContext();
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SetBit marks the requested bit so GetBit reports it as set.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SetBit_Then_GetBit_ReturnsTrue()
         {
             IntPtr ctx = CreateContext();
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that GetBit returns false for a character never added to the builder.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void GetBit_ForUnsetChar_ReturnsFalse()
         {
             IntPtr ctx = CreateContext();
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that a second Clear wipes every previously set bit while keeping the vector usable.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Clear_Then_PreviouslySetBits_AreReset()
         {
             IntPtr ctx = CreateContext();
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the UsedChars property can be assigned and read back on a live builder.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void UsedChars_Setter_RoundTripsValue()
         {
             IntPtr ctx = CreateContext();

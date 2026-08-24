@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the context, time, frame, io, style, font, key, mouse, color, viewport,
         ///     draw list and allocator getters execute against a live context without a frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ContextGetters_ExecuteWithoutFrame()
         {
             IntPtr ctx = CreateContext();
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the string getters that cannot marshal the native const char return value
         ///     throw MarshalDirectiveException while still executing the wrapper bodies.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void StringGetters_ThatFailMarshalling_Throw()
         {
             IntPtr ctx = CreateContext();
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     GetIo initializes the cached IO pointer from the native context. The context is
         ///     deliberately leaked so the static IO cache stays valid for the host process.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void GetDrawData_And_GetIo_Execute()
         {
             IntPtr ctx = CreateContext();
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     draw list getters execute inside a framed window, together with Dummy, Indent and
         ///     the viewport-scoped draw list getters.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void WindowGetters_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputFloat, InputDouble, InputFloat2, InputFloat3, InputFloat4 and
         ///     DragScalarN overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputWidgets_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every Image and ImageButton overload executes inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ImageWidgets_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies EndGroup, EndChild, EndChildFrame and EndDisabled execute when paired with
         ///     their Begin* counterparts inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Ends_ChildAndGroup_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies EndListBox executes when paired with BeginListBox inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndListBox_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies EndTooltip executes when paired with BeginTooltip inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndTooltip_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies EndTabBar executes when paired with BeginTabBar inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndTabBar_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies EndTable executes when paired with BeginTable inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndTable_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies EndPopup executes after OpenPopup and a successful BeginPopup inside a
         ///     framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndPopup_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies EndMenuBar, EndMenu and EndMainMenuBar execute when paired with their
         ///     Begin* counterparts inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Ends_Menus_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -610,7 +610,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies EndFrame closes a real frame and GetDragDropPayload returns the context
         ///     payload produced by the frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndFrame_And_GetDragDropPayload_Execute()
         {
             IntPtr ctx = CreateFramedContext();

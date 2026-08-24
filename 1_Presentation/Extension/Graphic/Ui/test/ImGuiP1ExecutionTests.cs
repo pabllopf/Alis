@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both CreateContext overloads execute against the native library: the
         ///     plain one and the one sharing the font atlas of an existing context.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void CreateContext_Overloads_Execute()
         {
             IntPtr ctx = ImGui.CreateContext();
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies DebugCheckVersionAndDataLayout executes against the native library with
         ///     the version reported by the library itself and plausible structure sizes.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DebugCheckVersionAndDataLayout_Execute()
         {
             IntPtr ctx = CreateContext();
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DebugTextEncoding executes inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DebugTextEncoding_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DockSpace overload executes inside a framed window with docking
         ///     enabled, using zero-initialized window classes.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DockSpace_AllOverloads_ExecuteInsideFrame()
         {
             IntPtr ctx = CreateFramedContext();
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DockSpaceOverViewport overload executes inside a framed window with
         ///     docking enabled, using the main viewport and zero-initialized window classes.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DockSpaceOverViewport_AllOverloads_ExecuteInsideFrame()
         {
             IntPtr ctx = CreateFramedContext();
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragFloat overload executes inside a framed window with real
         ///     values, speed, bounds, format and flags.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragFloat_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragFloat2 overload executes inside a framed window with real
         ///     values, speed, bounds, format and flags.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragFloat2_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragFloat3 overload executes inside a framed window with real
         ///     values, speed, bounds, format and flags.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragFloat3_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every DragFloatRange2 overload executes inside a framed window with real
         ///     values, speed, bounds, formats and flags.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragFloatRange2_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the DragInt overload executes inside a framed window with a real value.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragInt_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every Combo overload executes inside a framed window with a zero
         ///     separated item list and a valid current item index.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Combo_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

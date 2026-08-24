@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the pure color conversion helpers and CalcItemWidth execute against a live
         ///     context, and that the float4/u32 and hsv/rgb round trips produce sane values.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ColorConvertHelpers_And_CalcItemWidth_Execute()
         {
             IntPtr ctx = CreateContext();
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     with AlignTextToFramePadding, ArrowButton, Bullet, BulletText and CalcItemWidth, all
         ///     inside a frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void BeginEndWindows_ExecuteInsideFrame()
         {
             IntPtr ctx = CreateFramedContext();
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every BeginChild and BeginChildFrame overload paired with its End, plus the
         ///     group, disabled and tooltip begin/end pairs, all inside one framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ChildGroupDisabledTooltip_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     header and combo array wrappers execute inside one framed window. The Combo array
         ///     overloads cannot marshal nested arrays and throw, which still executes their bodies.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ComboListBoxTabBarTableColumns_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the popup, popup modal, popup context and menu wrappers execute inside one
         ///     framed window. Popup context calls return false without a right click, which is fine.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PopupsAndMenus_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the drag drop source and target wrappers execute inside one framed window
         ///     without an active drag, returning false but never throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DragDrop_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the ColorEdit4 and ColorButton wrappers execute inside one framed window,
         ///     together with the CollapsingHeader flags overloads not already exercised.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ColorWidgets_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

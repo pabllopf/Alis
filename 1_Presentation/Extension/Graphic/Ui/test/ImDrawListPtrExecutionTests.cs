@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every shape primitive executes inside a framed window without throwing
         ///     and produces vertices in the window draw list.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DrawPrimitives_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every polyline and convex polygon overload executes inside a framed
         ///     window against a pinned point array.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Polyline_And_ConvexPoly_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every image overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddImage_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies both AddText overloads execute inside a framed window with a real font.
         ///     The text carries an embedded null terminator so the native scan terminates safely.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddText_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every path building method executes inside a framed window without
         ///     throwing and populates the native path vector.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PathBuilding_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every primitive write method executes inside a framed window after a
         ///     PrimReserve and that the write pointers become valid.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Primitives_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the channel split, selection and merge cycle executes inside a framed
         ///     window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Channels_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the clip rect stack round trips through GetClipRectMin and
         ///     GetClipRectMax inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ClipStack_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the struct state getters read sensible values from the live window draw
         ///     list after primitives have been reserved.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void StateGetters_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     because the native frame machinery dereferences the cleared path stacks when the
         ///     frame is closed.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DrawCommands_Clone_And_Internal_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     frame is not closed afterwards because the native frame machinery dereferences
         ///     the freed buffers and would segfault.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ClearFreeMemory_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -628,7 +628,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the constructor from a managed ImDrawList struct allocates and copies a
         ///     native mirror that exposes a non-zero pointer and consistent buffers.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ManagedStructConstructor_Executes()
         {
             IntPtr ctx = CreateContext();

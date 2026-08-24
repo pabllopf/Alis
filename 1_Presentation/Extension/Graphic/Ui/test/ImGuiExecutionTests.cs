@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every StyleColors overload executes against a live context without a frame.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void StyleColors_ExecuteWithoutFrame()
         {
             IntPtr ctx = CreateContext();
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     a live context, following the add, split, dock, size and finish sequence used by
         ///     the docking demo.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DockBuilder_ExecuteWithContext()
         {
             IntPtr ctx = CreateContext();
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SliderInt, SliderInt2, SliderInt3, SliderInt4, SliderScalar and
         ///     SliderScalarN overload executes inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Sliders_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SmallButton, Spacing and MenuItem execute inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ButtonAndSpacing_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every TabItemButton overload executes inside a tab bar within a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void TabItemButton_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the whole table family of wrappers executes inside a framed window with an
         ///     open table and returns sane values.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void TableFamily_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ImFontConfig creates a native font config with a valid pointer.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ImFontConfig_CreatesNativeConfig()
         {
             IntPtr ctx = CreateContext();
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     C wrapper export is absent from the shipped cimgui build so the call is expected
         ///     to fail with EntryPointNotFoundException.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void DockBuilderSetNodeFlags_Execute()
         {
             IntPtr ctx = CreateFramedContext();

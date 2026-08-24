@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the PushStyleColor, PushStyleVar and PushTextWrapPos wrappers paired with
         ///     their Pop counterparts execute inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PushAndPopStyle_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     and the three PushId overloads paired with their Pop counterparts execute inside a
         ///     framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PushAndPopItemState_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies PushFont executes with the font resolved from the live context and pairs
         ///     with PopFont inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PushFont_And_PopFont_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SetNextWindow* wrapper executes before a window begins, followed by a
         ///     real Begin/End/EndFrame cycle that consumes the stacked next-window data.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SetNextWindowState_BeforeBegin_Execute()
         {
             IntPtr ctx = CreateFramedContext();
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     NewLine, Separator, Selectable, ProgressBar, RadioButton, MenuItem and the SetItem,
         ///     SetCursor, SetScroll and SetTooltip family.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Items_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SetWindow* wrapper executes against the active window inside a framed
         ///     window, including the named overloads that resolve the window by name.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void WindowSetters_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every OpenPopup and OpenPopupOnItemClick overload executes inside a framed
         ///     window, together with NextColumn.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void OpenPopup_And_OpenPopupOnItemClick_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies SetColumnOffset, SetColumnWidth and NextColumn execute inside a real legacy
         ///     column group opened with the native igBeginColumns entry point.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Columns_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -511,7 +511,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     context. The memory helpers throw MarshalDirectiveException because the native
         ///     const char return value cannot be marshalled to a byte array.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Render_And_Misc_Execute()
         {
             IntPtr ctx = CreateFramedContext();
@@ -542,7 +542,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetStateStorage and SetCurrentContext execute against a live context.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void StateStorage_And_CurrentContext_Execute()
         {
             IntPtr ctx = CreateFramedContext();

@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every Show window wrapper without a pOpen argument and every Show window
         ///     wrapper with a ref bool pOpen argument executes inside a framed host window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ShowWindows_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the ShowDemoWindow wrappers execute inside a framed host window and the
         ///     ref bool argument round-trips through the native pointer.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ShowDemoWindow_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies ShowStyleEditor with and without a style argument and the ShowStyleSelector
         ///     and ShowFontSelector label wrappers execute inside a framed host window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void StyleAndFontSelectors_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SliderAngle overload executes inside a framed host window with the
         ///     value passed by reference and the returned bool discarded.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SliderAngle_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SliderFloat overload executes inside a framed host window with the
         ///     value passed by reference and the returned bool discarded.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SliderFloat_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SliderFloat2 overload executes inside a framed host window with the
         ///     value passed by reference and the returned bool discarded.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SliderFloat2_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every SliderFloat3 overload executes inside a framed host window with the
         ///     value passed by reference and the returned bool discarded.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void SliderFloat3_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

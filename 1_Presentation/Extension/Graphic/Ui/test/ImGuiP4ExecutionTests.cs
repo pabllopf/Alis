@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every Text family wrapper executes inside a framed window without
         ///     throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void TextFamily_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every TreeNode, TreeNodeEx, TreePush, TreePop and Unindent wrapper
         ///     executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void TreeFamily_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputTextMultiline and InputTextWithHint overload executes inside a
         ///     framed window against a real managed buffer without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputTextMultiline_And_InputTextWithHint_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every TableSetupColumn and TableSetupScrollFreeze overload executes inside
         ///     a BeginTable/EndTable block of a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void TableFamily_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every VSliderFloat and VSliderInt overload executes inside a framed
         ///     window against ref values without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void VSliderFloat_And_VSliderInt_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every VSliderScalar overload executes inside a framed window against
         ///     pinned float payload, min and max pointers without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void VSliderScalar_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every Value overload executes inside a framed window without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Value_AllOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the Begin wrapper taking window flags returns true and pairs with End
         ///     inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Begin_WithFlags_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies UpdatePlatformWindows executes after a rendered frame without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void UpdatePlatformWindows_ExecuteAfterFrame()
         {
             IntPtr ctx = CreateFramedContext();
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every CalcTextSize overload executes and returns a non-zero size.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void CalcTextSize_AllOverloads_Execute()
         {
             IntPtr ctx = CreateFramedContext();
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every InputText overload taking an IntPtr buffer executes inside a framed
         ///     window against a real allocated buffer without throwing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void InputText_IntPtrOverloads_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();

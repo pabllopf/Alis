@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the constructors and the implicit pointer conversions execute.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Constructors_And_ImplicitOperators_Execute()
         {
             ImFontAtlasPtr managed = new ImFontAtlasPtr(new ImFontAtlas());
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every GetGlyphRanges accessor returns a non-zero pointer to a static range.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void GlyphRanges_AllAccessors_ReturnNonZero()
         {
             IntPtr context = CreateContext();
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     overloads return valid font pointers. The native AddFont asserts on missing font
         ///     data, so a malloc backed buffer is referenced by the managed config.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFont_And_AddFontDefault_ReturnValidFonts()
         {
             IntPtr context = CreateContext();
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     path, and the path is resolved from the test output directory up to the sample
         ///     fonts shipped with the Ui extension.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromFileTtf_ExistingFile_ReturnsValidFont()
         {
             IntPtr context = CreateContext();
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies every AddFontFromMemoryTtf overload accepts an invalid font buffer without
         ///     crashing. The buffer is malloc allocated so the atlas can release it on destroy.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_InvalidData_DoesNotCrash()
         {
             IntPtr context = CreateContext();
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the remaining AddFontFromMemoryTtf overloads accept an invalid font
         ///     buffer without crashing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_InvalidData_ConfigOverloads_DoNotCrash()
         {
             IntPtr context = CreateContext();
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the glyph-ranged AddFontFromMemoryTtf overload accepts an invalid font
         ///     buffer without crashing.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromMemoryTtf_InvalidData_GlyphRangesOverload_DoesNotCrash()
         {
             IntPtr context = CreateContext();
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     buffer without crashing. The first four bytes of the header encode the decompressed
         ///     size, so a tiny size is written to keep the decompression work trivial.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedTtf_InvalidData_DoesNotCrash()
         {
             IntPtr context = CreateContext();
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     base85 payload without crashing. The third five-char block decodes into the header
         ///     bytes holding the decompressed size, so that block is crafted to decode to four.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void AddFontFromMemoryCompressedBase85Ttf_InvalidData_DoesNotCrash()
         {
             IntPtr context = CreateContext();
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     the custom rects are looked up by index and the uv coordinates are calculated
         ///     after the atlas has been built.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void CustomRects_And_CalcCustomRectUv_Execute()
         {
             IntPtr context = CreateContext();
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies Build, IsBuilt, SetTexId, the TexId setter and every IntPtr texture data
         ///     accessor execute against a built atlas.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Build_TextureData_And_MouseCursor_Execute()
         {
             IntPtr context = CreateContext();
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the whole clear family executes at the end of the atlas lifetime.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void Clear_Operations_Execute()
         {
             IntPtr context = CreateContext();
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies every pointer-backed field accessor executes against a live atlas.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void PointerBackedProperties_Execute()
         {
             IntPtr context = CreateContext();

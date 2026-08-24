@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the EndCombo wrapper executes when the combo popup is forced open through a
         ///     prior-frame OpenPopup call inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndCombo_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     Verifies the EndMenu wrapper executes when the menu popup is forced open through a
         ///     prior-frame OpenPopup call inside a framed menu bar window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void EndMenu_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies the column query wrappers execute inside a framed window.
         /// </summary>
-        [MacOsOnly]
+        [RequireCImguiSystemFact]
         public void ColumnQueries_ExecuteInsideWindow()
         {
             IntPtr ctx = CreateFramedContext();
