@@ -57,7 +57,7 @@ Baseline commit:
 2734a0dfa7afe77a9827bef131b66a5c5ab2784e
 
 Last commit:
-PENDING
+a7a49a235 test: cover null-handler branches of NativeWindow.cs
 
 Attempts:
 1
