@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging.Abstractions;
@@ -49,6 +50,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// </summary>
         /// <param name="fd">The fd</param>
         /// <returns>The int</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libc")]
         private static extern int close(int fd);
 
@@ -57,6 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// </summary>
         /// <param name="fd">The fd</param>
         /// <returns>The int</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libc")]
         private static extern int dup(int fd);
 
@@ -66,6 +69,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <param name="oldfd">The oldfd</param>
         /// <param name="newfd">The newfd</param>
         /// <returns>The int</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libc")]
         private static extern int dup2(int oldfd, int newfd);
 

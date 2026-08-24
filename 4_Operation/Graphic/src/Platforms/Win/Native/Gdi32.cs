@@ -47,6 +47,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hdc"></param>
         /// <param name="ppfd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "ChoosePixelFormat")]
         
         public static extern int ChoosePixelFormat(IntPtr hdc, ref Pixelformatdescriptor ppfd);
@@ -57,6 +58,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="format"></param>
         /// <param name="ppfd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetPixelFormat")]
         
         public static extern bool SetPixelFormat(IntPtr hdc, int format, ref Pixelformatdescriptor ppfd);
@@ -65,6 +67,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="hdc"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "SwapBuffers")]
         
         public static extern bool SwapBuffers(IntPtr hdc);

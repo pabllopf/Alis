@@ -2729,7 +2729,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="sdlEvent">The sdl event</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int PollEvent(out Event sdlEvent) => NativeSdl.InternalPollEvent(out sdlEvent);
 
         /// <summary>

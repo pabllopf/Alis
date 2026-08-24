@@ -29,6 +29,7 @@
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Core.Graphic.Platforms.Osx.Native;
@@ -70,6 +71,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
         /// <param name="virtualKey">The virtual key</param>
         /// <param name="keyDown">The key down</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(CoreGraphicsPath)]
         private static extern IntPtr CGEventCreateKeyboardEvent(IntPtr source, ushort virtualKey, bool keyDown);
 
@@ -80,6 +82,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
         /// <param name="stringLength">The string length</param>
         /// <param name="unicodeString">The unicode string</param>
         /// <param name="flags">The flags</param>
+        [ExcludeFromCodeCoverage]
         [DllImport(CoreGraphicsPath)]
         private static extern void CGEventKeyboardSetUnicodeString(IntPtr eventRef, ulong stringLength, IntPtr unicodeString, ulong flags);
 

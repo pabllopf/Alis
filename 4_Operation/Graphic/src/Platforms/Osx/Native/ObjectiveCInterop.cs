@@ -62,7 +62,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_getClass", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_getClass", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_getClass(string name);
 
         /// <summary>
@@ -70,7 +71,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr sel_registerName(string name);
         /// <summary>
         ///     objc_msgSend_NSRect
@@ -79,7 +81,9 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="selector">The selector</param>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern NsRect objc_msgSend_NSRect(IntPtr receiver, IntPtr selector);
         /// <summary>
         ///     objc_msgSend_stret
@@ -88,7 +92,9 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="receiver">The receiver</param>
         /// <param name="selector">The selector</param>
 
-        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend_stret"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend_stret")]
         public static extern void objc_msgSend_stret(out NsRect ret, IntPtr receiver, IntPtr selector);
 
 
@@ -128,14 +134,18 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="selector">The selector</param>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern NsPoint objc_msgSend_NSPoint(IntPtr receiver, IntPtr selector);
         /// <summary>
         ///     objc_msgSend_NSPoint_NSPoint_IntPtr
         /// </summary>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern NsPoint objc_msgSend_NSPoint_NSPoint_IntPtr(
             IntPtr receiver,
             IntPtr selector,
@@ -149,7 +159,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_msgSend(IntPtr recv, IntPtr sel);
 
         /// <summary>
@@ -159,7 +170,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="sel">The sel</param>
         /// <param name="arg1">The arg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_msgSend_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
 
         /// <summary>
@@ -167,7 +179,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern void objc_msgSend_void(IntPtr recv, IntPtr sel);
 
         /// <summary>
@@ -176,7 +189,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <param name="arg1">The arg</param>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern void objc_msgSend_void_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
 
         /// <summary>
@@ -185,7 +199,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <param name="arg1">The arg</param>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern void objc_msgSend_void_Bool(IntPtr recv, IntPtr sel, bool arg1);
 
         /// <summary>
@@ -194,7 +209,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <param name="value">The value</param>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern void objc_msgSend_void_Long(IntPtr recv, IntPtr sel, long value);
 
         /// <summary>
@@ -210,7 +226,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="backing">The backing</param>
         /// <param name="defer">The defer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_msgSend_NSRect_UL_UL_Bool(
             IntPtr recv, IntPtr sel,
             double x, double y, double w, double h,
@@ -227,7 +244,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="h">The </param>
         /// <param name="arg1">The arg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_msgSend_NSRect_IntPtr(
             IntPtr recv, IntPtr sel,
             double x, double y, double w, double h,
@@ -243,7 +261,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="inMode">The in mode</param>
         /// <param name="dequeue">The dequeue</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr objc_msgSend_UL_IntPtr_IntPtr_Bool(
             IntPtr recv, IntPtr sel, ulong mask, IntPtr untilDate, IntPtr inMode, bool dequeue);
 
@@ -254,13 +273,15 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="str">The str</param>
         /// <param name="enc">The enc</param>
         /// <returns>The int ptr</returns>
-        [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
         public static extern IntPtr CFStringCreateWithCString(IntPtr alloc, string str, uint enc);
 
         /// <summary>
         ///     Nses the application load
         /// </summary>
-        [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
         public static extern void NSApplicationLoad();
 
         /// <summary>
@@ -299,7 +320,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <returns>The int</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern int objc_msgSend_Int(IntPtr recv, IntPtr sel);
 
         /// <summary>
@@ -308,7 +330,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <returns>The ulong</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
         /// <summary>
         ///     CGEventGetLocation
@@ -316,7 +339,9 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="eventRef">The eventRef</param>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
         public static extern CGPoint CGEventGetLocation(IntPtr eventRef);
         /// <summary>
         ///     CGEventCreate
@@ -324,14 +349,18 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="source">The source</param>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
         public static extern IntPtr CGEventCreate(IntPtr source);
         /// <summary>
         ///     CFRelease
         /// </summary>
         /// <param name="cf">The cf</param>
 
-        [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
         public static extern void CFRelease(IntPtr cf);
 
         /// <summary>
@@ -340,7 +369,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="selector"></param>
         /// <param name="arg1"></param>
         /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
         /// <summary>
         ///     objc_msgSend_double
@@ -349,7 +379,9 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="selector">The selector</param>
         /// <returns>A value indicating the result of the operation</returns>
 
-        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
 
         /// <summary>
@@ -357,7 +389,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="handle"></param>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Dlsym(IntPtr handle, string symbol);
 
         /// <summary>
@@ -365,7 +398,8 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="path"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Dlopen(string path, int mode);
     }
 }

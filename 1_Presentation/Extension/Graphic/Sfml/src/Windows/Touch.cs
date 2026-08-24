@@ -82,7 +82,8 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="finger">The finger</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTouch_isDown(uint finger);
 
         /// <summary>
@@ -91,7 +92,8 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="finger">The finger</param>
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2F sfTouch_getPosition(uint finger, IntPtr relativeTo);
     }
 }

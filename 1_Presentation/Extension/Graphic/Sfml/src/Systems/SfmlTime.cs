@@ -247,7 +247,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfSeconds(float amount);
 
         /// <summary>
@@ -255,7 +256,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfMilliseconds(int amount);
 
         /// <summary>
@@ -263,7 +265,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfMicroseconds(long amount);
 
         /// <summary>
@@ -271,7 +274,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="sfmlTime">The time</param>
         /// <returns>The float</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfTime_asSeconds(SfmlTime sfmlTime);
 
         /// <summary>
@@ -279,7 +283,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="sfmlTime">The time</param>
         /// <returns>The int</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern int sfTime_asMilliseconds(SfmlTime sfmlTime);
 
         /// <summary>
@@ -287,7 +292,8 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="sfmlTime">The time</param>
         /// <returns>The long</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(SfmlTime sfmlTime);
     }
 }

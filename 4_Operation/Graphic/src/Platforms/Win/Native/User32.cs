@@ -58,6 +58,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hInstance"></param>
         /// <param name="lpParam"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "CreateWindowExW")]
         
         public static extern IntPtr CreateWindowEx(
@@ -80,6 +81,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hWnd"></param>
         /// <param name="lpString"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowTextA")]
         
         public static extern bool SetWindowTextA(IntPtr hWnd, string lpString);
@@ -87,6 +89,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <summary>
         ///     CreateWindowExA (ANSI version)
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "CreateWindowExA")]
         
         public static extern IntPtr CreateWindowExA(
@@ -107,6 +110,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "DestroyWindow")]
         
         public static extern bool DestroyWindow(IntPtr hWnd);
@@ -116,6 +120,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hWnd"></param>
         /// <param name="nCmdShow"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "ShowWindow")]
         
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -124,6 +129,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "UpdateWindow")]
         
         public static extern bool UpdateWindow(IntPtr hWnd);
@@ -133,6 +139,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hWnd"></param>
         /// <param name="lpString"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowTextW")]
         
         public static extern bool SetWindowText(IntPtr hWnd, string lpString);
@@ -147,6 +154,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="cy"></param>
         /// <param name="uFlags"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowPos")]
         
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
@@ -158,6 +166,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="wParam"></param>
         /// <param name="lParam"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "DefWindowProcW")]
         
         public static extern IntPtr DefWindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
@@ -166,6 +175,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="lpWndClass"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "RegisterClassW")]
         
         public static extern ushort RegisterClass(ref Wndclass lpWndClass);
@@ -174,6 +184,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetDC")]
         
         public static extern IntPtr GetDC(IntPtr hWnd);
@@ -183,6 +194,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hWnd"></param>
         /// <param name="hDc"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "ReleaseDC")]
         
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
@@ -195,6 +207,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="wMsgFilterMax"></param>
         /// <param name="wRemoveMsg"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "PeekMessageW")]
         
         public static extern bool PeekMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint wRemoveMsg);
@@ -203,6 +216,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "TranslateMessage")]
         
         public static extern bool TranslateMessage(ref Msg lpMsg);
@@ -211,6 +225,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "DispatchMessageW")]
         
         public static extern IntPtr DispatchMessage(ref Msg lpMsg);
@@ -222,6 +237,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="wMsgFilterMin"></param>
         /// <param name="wMsgFilterMax"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetMessageW")]
         
         public static extern int GetMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
@@ -232,6 +248,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="lpString"></param>
         /// <param name="nMaxCount"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetWindowTextW")]
         
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
@@ -242,6 +259,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hWnd"></param>
         /// <param name="lpRect"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetWindowRect")]
         
         public static extern int GetWindowRect(IntPtr hWnd, out Rect lpRect);
@@ -250,6 +268,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "IsWindowVisible")]
         
         public static extern bool IsWindowVisible(IntPtr hWnd);

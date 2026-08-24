@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
@@ -56,6 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         ///     The dyld image count
         /// </summary>
         /// <returns>The int</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libSystem.dylib", EntryPoint = "_dyld_image_count")]
         private static extern int DyldImageCount();
 
@@ -64,6 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libSystem.dylib", EntryPoint = "_dyld_get_image_name")]
         private static extern IntPtr DyldGetImageName(int index);
 
@@ -73,6 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <param name="path">The image path</param>
         /// <param name="mode">The open mode</param>
         /// <returns>The library handle</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libSystem.dylib", EntryPoint = "dlopen")]
         private static extern IntPtr DlOpen(string path, int mode);
 
@@ -82,6 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <param name="handle">The library handle</param>
         /// <param name="symbol">The symbol name</param>
         /// <returns>The symbol address</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libSystem.dylib", EntryPoint = "dlsym")]
         private static extern IntPtr Dlsym(IntPtr handle, string symbol);
 
@@ -91,6 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <param name="address">The address to resolve</param>
         /// <param name="info">The image information</param>
         /// <returns>The result</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libSystem.dylib", EntryPoint = "dladdr")]
         private static extern int DlAddr(IntPtr address, ref DlInfo info);
 

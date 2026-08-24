@@ -60,7 +60,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="allocator">A pointer to the allocator to use, or <see cref="IntPtr.Zero" /> to use default allocator.</param>
         /// <param name="surface">The handle to the created Vulkan surface.</param>
         /// <returns>VK_SUCCESS if successful, or a Vulkan error code if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwCreateWindowSurface", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwCreateWindowSurface", CallingConvention = CallingConvention.Cdecl)]
         public static extern int
             CreateWindowSurface(IntPtr vulkan, IntPtr window, IntPtr allocator, out ulong surface);
 
@@ -72,8 +73,9 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="device">The physical device that the queue family belongs to.</param>
         /// <param name="family">The index of the queue family to query.</param>
         /// <returns><c>true</c> if the queue family supports presentation, or <c>false</c> otherwise.</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetPhysicalDevicePresentationSupport",
-             CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+             CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetPhysicalDevicePresentationSupport(IntPtr instance, IntPtr device, uint family);
 
         /// <summary>
@@ -82,8 +84,9 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="vulkan">The vulkan</param>
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetInstanceProcAddress",
-             CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+             CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetInstanceProcAddress(IntPtr vulkan, byte[] procName);
 
         /// <summary>
@@ -91,15 +94,17 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetRequiredInstanceExtensions",
-             CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+             CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetRequiredInstanceExtensions(out uint count);
 
         /// <summary>
         ///     Vulkans the supported
         /// </summary>
         /// <returns>The bool</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool VulkanSupported();
 
 

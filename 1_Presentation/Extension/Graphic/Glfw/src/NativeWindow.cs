@@ -552,7 +552,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
         /// <returns>The CGDirectDisplayID of the specified monitor, or if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaMonitor", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint GetCocoaMonitor(Monitor monitor);
 
         /// <summary>
@@ -560,7 +561,8 @@ namespace Alis.Extension.Graphic.Glfw
         ///     <para>The pointer is to a native <c>Display</c> struct defined by X11..</para>
         /// </summary>
         /// <returns>A pointer to the X11 display struct.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Display", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Display", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetX11Display();
 
         /// <summary>
@@ -569,7 +571,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <returns>A pointer to the Wayland display struct.</returns>
         /// <seealso href="https://github.com/msteinert/wayland/blob/master/src/wayland-client.c" />
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandDisplay", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandDisplay", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetWaylandDisplay();
 
         /// <summary>
@@ -578,7 +581,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <returns>A pointer to the Wayland output struct.</returns>
         /// <seealso href="https://github.com/msteinert/wayland/blob/master/src/wayland-client.c" />
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandMonitor", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetWaylandMonitor(Monitor monitor);
 
         /// <summary>
@@ -586,7 +590,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>A pointer to a Wayland window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandWindow", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetWaylandWindow(Window window);
 
         /// <summary>
@@ -594,7 +599,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>A pointer to a GLX window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXWindow", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetGLXWindow(Window window);
 
         /// <summary>
@@ -602,7 +608,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>A pointer to an X11 window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Window", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Window", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetX11Window(Window window);
 
         /// <summary>
@@ -610,7 +617,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
         /// <returns>The RROutput of the specified monitor, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Monitor", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Monitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetX11Monitor(Monitor monitor);
 
         /// <summary>
@@ -618,7 +626,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
         /// <returns>The RRCrtc of the specified monitor, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Adapter", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Adapter", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetX11Adapter(Monitor monitor);
 
         /// <summary>
@@ -626,7 +635,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>A pointer to a Cocoa window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaWindow", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetCocoaWindow(Window window);
 
         /// <summary>
@@ -634,7 +644,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The NSOpenGLContext of the specified window, or <see cref="NSOpenGLContext.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetNSGLContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetNSGLContext", CallingConvention = CallingConvention.Cdecl)]
         public static extern NSOpenGLContext GetNSGLContext(Window window);
 
         /// <summary>
@@ -642,7 +653,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The OSMesaContext of the specified window, or <see cref="OSMesaContext.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaContext", CallingConvention = CallingConvention.Cdecl)]
         public static extern OSMesaContext GetOSMesaContext(Window window);
 
         /// <summary>
@@ -650,7 +662,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The GlxContext of the specified window, or <see cref="GlxContext.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXContext", CallingConvention = CallingConvention.Cdecl)]
         public static extern GlxContext GetGLXContext(Window window);
 
         /// <summary>
@@ -658,14 +671,16 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The EglContext of the specified window, or <see cref="EglContext.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLContext", CallingConvention = CallingConvention.Cdecl)]
         public static extern EglContext GetEglContext(Window window);
 
         /// <summary>
         ///     Returns the EGLDisplay used by GLFW.
         /// </summary>
         /// <returns>The EGLDisplay used by GLFW, or <see cref="EglDisplay.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLDisplay", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLDisplay", CallingConvention = CallingConvention.Cdecl)]
         public static extern EglDisplay GetEglDisplay();
 
         /// <summary>
@@ -673,7 +688,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The EGLSurface of the specified window, or <see cref="EglSurface.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLSurface", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLSurface", CallingConvention = CallingConvention.Cdecl)]
         public static extern EglSurface GetEglSurface(Window window);
 
         /// <summary>
@@ -681,7 +697,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The WGL context of the specified window, or <see cref="EglContext.None" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWGLContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWGLContext", CallingConvention = CallingConvention.Cdecl)]
         public static extern Hglrc GetWglContext(Window window);
 
         /// <summary>
@@ -689,7 +706,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The HWND of the specified window, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Window", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Window", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetWin32Window(Window window);
 
         /// <summary>
@@ -720,7 +738,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="format">The pixel format of the color buffer.</param>
         /// <param name="buffer">A pointer to the first element in the buffer.</param>
         /// <returns><c>true</c> if operation was successful, otherwise <c>false</c>.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaColorBuffer", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaColorBuffer", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool
             GetOSMesaColorBuffer(Window window, out int width, out int height, out int format, out IntPtr buffer);
 
@@ -733,7 +752,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="bytesPerValue">The number of bytes per element in the buffer.</param>
         /// <param name="buffer">A pointer to the first element in the buffer.</param>
         /// <returns><c>true</c> if operation was successful, otherwise <c>false</c>.</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaDepthBuffer", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaDepthBuffer", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool
             GetOSMesaDepthBuffer(Window window, out int width, out int height, out int bytesPerValue,
                 out IntPtr buffer);
@@ -743,14 +763,16 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Sets the x 11 selection string using the specified str
         /// </summary>
         /// <param name="str">The str</param>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwSetX11SelectionString", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwSetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetX11SelectionString(byte[] str);
 
         /// <summary>
         ///     Gets the x 11 selection string internal
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11SelectionString", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetX11SelectionStringInternal();
 
         /// <summary>
@@ -758,7 +780,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Adapter", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Adapter", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetWin32AdapterInternal(Monitor monitor);
 
         /// <summary>
@@ -766,7 +789,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
-        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Monitor", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Monitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetWin32MonitorInternal(Monitor monitor);
 
 

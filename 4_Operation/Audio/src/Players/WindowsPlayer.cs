@@ -284,7 +284,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="returnLength">The size of the return buffer.</param>
         /// <param name="hwndCallback">The callback window handle, or IntPtr.Zero if not used.</param>
         /// <returns>Zero if successful, or an error code otherwise.</returns>
-        [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("winmm.dll")]
         private static extern int mciSendString(string command, StringBuilder stringReturn, int returnLength, IntPtr hwndCallback);
 
         /// <summary>
@@ -294,7 +295,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="errorText">The string builder to receive the error description.</param>
         /// <param name="errorTextSize">The size of the error text buffer.</param>
         /// <returns>Zero if successful, or an error code otherwise.</returns>
-        [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("winmm.dll")]
         private static extern int mciGetErrorString(int errorCode, StringBuilder errorText, int errorTextSize);
 
         /// <summary>
@@ -303,7 +305,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="hwo">The handle to the waveform-audio output device.</param>
         /// <param name="dwVolume">The new volume setting (low word = left channel, high word = right channel).</param>
         /// <returns>MMSYSERR_NOERROR (0) if successful, or an error code otherwise.</returns>
-        [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         /// <summary>

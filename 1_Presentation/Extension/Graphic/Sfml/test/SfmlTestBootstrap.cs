@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Extension.Graphic.Sfml.Render;
@@ -139,6 +141,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <param name="state">The state</param>
         /// <param name="settings">The settings</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("csfml-graphics", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, IntPtr title, uint style, uint state, ref ContextSettings settings);
 
@@ -147,6 +150,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("csfml-window", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr sfWindow_getNativeHandle(IntPtr window);
 

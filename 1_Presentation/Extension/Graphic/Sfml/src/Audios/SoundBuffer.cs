@@ -231,7 +231,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromFile(string filename);
 
         /// <summary>
@@ -239,7 +240,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -248,7 +250,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -259,7 +262,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="channelsCount">The channels count</param>
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromSamples(short[] samples, uint sampleCount, uint channelsCount, uint sampleRate);
 
         /// <summary>
@@ -270,7 +274,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="channelsCount">The channels count</param>
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sfSoundBuffer_createFromSamples"), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sfSoundBuffer_createFromSamples"), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromSamples(IntPtr samples, uint sampleCount, uint channelsCount, uint sampleRate);
 
         /// <summary>
@@ -278,14 +283,16 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_copy(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer destroy using the specified sound buffer
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundBuffer_destroy(IntPtr soundBuffer);
 
         /// <summary>
@@ -294,7 +301,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="soundBuffer">The sound buffer</param>
         /// <param name="filename">The filename</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundBuffer_saveToFile(IntPtr soundBuffer, string filename);
 
         /// <summary>
@@ -302,7 +310,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_getSamples(IntPtr soundBuffer);
 
         /// <summary>
@@ -310,7 +319,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleCount(IntPtr soundBuffer);
 
         /// <summary>
@@ -318,7 +328,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleRate(IntPtr soundBuffer);
 
         /// <summary>
@@ -326,7 +337,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getChannelCount(IntPtr soundBuffer);
 
         /// <summary>
@@ -334,7 +346,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfSoundBuffer_getDuration(IntPtr soundBuffer);
     }
 }

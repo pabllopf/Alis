@@ -43,7 +43,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="devicename">The name of the device to open, or null for the default device.</param>
         /// <returns>A handle to the opened device, or IntPtr.Zero if the device could not be opened.</returns>
-        [DllImport("openal32", EntryPoint = "alcOpenDevice"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alcOpenDevice")]
         public static extern IntPtr alcOpenDevice(string devicename);
 
         /// <summary>
@@ -52,7 +53,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="device">The handle to the OpenAL device.</param>
         /// <param name="attrlist">A pointer to the attribute list, or IntPtr.Zero for default attributes.</param>
         /// <returns>A handle to the created context, or IntPtr.Zero if the context could not be created.</returns>
-        [DllImport("openal32", EntryPoint = "alcCreateContext"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alcCreateContext")]
         public static extern IntPtr alcCreateContext(IntPtr device, IntPtr attrlist);
 
         /// <summary>
@@ -60,7 +62,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="context">The handle to the context to make current.</param>
         /// <returns>True if the context was successfully made current; otherwise false.</returns>
-        [DllImport("openal32", EntryPoint = "alcMakeContextCurrent"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alcMakeContextCurrent")]
         public static extern bool alcMakeContextCurrent(IntPtr context);
 
         /// <summary>
@@ -68,7 +71,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="device">The handle to the device to close.</param>
         /// <returns>True if the device was successfully closed; otherwise false.</returns>
-        [DllImport("openal32", EntryPoint = "alcCloseDevice"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alcCloseDevice")]
         public static extern bool alcCloseDevice(IntPtr device);
 
         /// <summary>
@@ -76,7 +80,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="n">The number of sources to generate.</param>
         /// <param name="sources">The generated source handles.</param>
-        [DllImport("openal32", EntryPoint = "alGenSources"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alGenSources")]
         public static extern void alGenSources(int n, out uint sources);
 
         /// <summary>
@@ -84,21 +89,24 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="n">The number of sources to delete.</param>
         /// <param name="sources">A reference to the source handles to delete.</param>
-        [DllImport("openal32", EntryPoint = "alDeleteSources"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alDeleteSources")]
         public static extern void alDeleteSources(int n, ref uint sources);
 
         /// <summary>
         ///     Als the source play using the specified source
         /// </summary>
         /// <param name="source">The handle of the source to play.</param>
-        [DllImport("openal32", EntryPoint = "alSourcePlay"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alSourcePlay")]
         public static extern void alSourcePlay(uint source);
 
         /// <summary>
         ///     Als the source stop using the specified source
         /// </summary>
         /// <param name="source">The handle of the source to stop.</param>
-        [DllImport("openal32", EntryPoint = "alSourceStop"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alSourceStop")]
         public static extern void alSourceStop(uint source);
 
         /// <summary>
@@ -106,7 +114,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="n">The number of buffers to generate.</param>
         /// <param name="buffers">The generated buffer handles.</param>
-        [DllImport("openal32", EntryPoint = "alGenBuffers"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alGenBuffers")]
         public static extern void alGenBuffers(int n, out uint buffers);
 
         /// <summary>
@@ -114,7 +123,8 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="n">The number of buffers to delete.</param>
         /// <param name="buffers">A reference to the buffer handles to delete.</param>
-        [DllImport("openal32", EntryPoint = "alDeleteBuffers"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alDeleteBuffers")]
         public static extern void alDeleteBuffers(int n, ref uint buffers);
 
         /// <summary>
@@ -125,7 +135,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="data">A pointer to the audio data.</param>
         /// <param name="size">The size of the audio data in bytes.</param>
         /// <param name="freq">The frequency (sample rate) of the audio data.</param>
-        [DllImport("openal32", EntryPoint = "alBufferData"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alBufferData")]
         public static extern void alBufferData(uint buffer, int format, IntPtr data, int size, int freq);
 
         /// <summary>
@@ -134,7 +145,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="source">The handle of the source to configure.</param>
         /// <param name="param">The parameter identifier to set.</param>
         /// <param name="value">The integer value to assign to the parameter.</param>
-        [DllImport("openal32", EntryPoint = "alSourcei"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alSourcei")]
         public static extern void alSourcei(uint source, int param, int value);
 
         /// <summary>
@@ -143,7 +155,8 @@ namespace Alis.Core.Audio.Players
         /// <param name="source">The handle of the source to queue buffers on.</param>
         /// <param name="nb">The number of buffers to queue.</param>
         /// <param name="buffers">A reference to the buffer handles to queue.</param>
-        [DllImport("openal32", EntryPoint = "alSourceQueueBuffers"), ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
+        [DllImport("openal32", EntryPoint = "alSourceQueueBuffers")]
         public static extern void alSourceQueueBuffers(uint source, int nb, ref uint buffers);
     }
 }

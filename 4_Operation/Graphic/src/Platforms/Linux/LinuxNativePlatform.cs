@@ -210,6 +210,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Gets the keyboard translation for the specified key event.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern int XLookupString(ref XKeyEvent keyEvent, byte[] buffer, int bytesBuffer, out IntPtr keysymReturn, IntPtr statusInOut);
@@ -217,6 +218,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Gets the geometry for the specified drawable.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern int XGetGeometry(IntPtr display, IntPtr drawable, out IntPtr rootReturn, out int xReturn, out int yReturn, out uint widthReturn, out uint heightReturn, out uint borderWidthReturn, out uint depthReturn);
@@ -224,6 +226,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Translates window coordinates into the destination coordinate space.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern int XTranslateCoordinates(IntPtr display, IntPtr srcWindow, IntPtr destWindow, int srcX, int srcY, out int destX, out int destY, out IntPtr childReturn);
@@ -231,6 +234,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Interns the specified X11 atom name.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern IntPtr XInternAtom(IntPtr display, string atomName, bool onlyIfExists);
@@ -238,6 +242,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Registers the WM protocols for the specified window.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern int XSetWMProtocols(IntPtr display, IntPtr window, IntPtr[] protocols, int count);
@@ -245,6 +250,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Flushes pending X11 requests.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so.6")]
         
         private static extern int XFlush(IntPtr display);
@@ -1338,6 +1344,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="display">The display</param>
         /// <param name="window">The window</param>
         /// <param name="hints">The hints</param>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so")]
         
         private static extern void XSetWMHints(IntPtr display, IntPtr window, ref XWMHints hints);
@@ -1351,6 +1358,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <returns>The int ptr</returns>
+        [ExcludeFromCodeCoverage]
         [DllImport("libX11.so")]
         
         private static extern IntPtr XCreatePixmapFromBitmapData(IntPtr display, IntPtr window, byte[] data, int width, int height);

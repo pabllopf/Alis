@@ -46,6 +46,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         /// <param name="lpFileName"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "LoadLibrary")]
         
         public static extern IntPtr LoadLibrary(string lpFileName);
@@ -55,6 +56,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hModule"></param>
         /// <param name="lpProcName"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetProcAddress")]
         
         public static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
