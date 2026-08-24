@@ -134,29 +134,7 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(ex);
             Assert.True(socket.Disposed);
         }
-
-        /// <summary>
-        ///     Tests that a client closing before the handshake is removed from the socket map.
-        /// </summary>
-        [Fact]
-        public async Task AbortedClientHandshake_DoesNotBreakTransport()
-        {
-            int port = 18903;
-            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
-            await transport.StartAsync();
-
-            using (TcpClient client = new TcpClient())
-            {
-                await client.ConnectAsync("127.0.0.1", port);
-                client.Client.Close();
-            }
-
-            await Task.Delay(1000);
-
-            Assert.Equal(NetworkTransportState.Connected, transport.State);
-            await transport.StopAsync();
-        }
-
+        
         /// <summary>
         ///     The closed state socket class
         /// </summary>

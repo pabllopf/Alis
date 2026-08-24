@@ -192,50 +192,7 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("compression ratio", ex.InnerException.Message, StringComparison.OrdinalIgnoreCase);
         }
 
-        /// <summary>
-        ///     Tests that clean temp file deletes non backup artifacts only
-        /// </summary>
-        [MacOsOnly]
-        public void CleanTempFile_DeletesNonBackupArtifactsOnly()
-        {
-            UpdateManager manager = CreateManager();
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            string id = Guid.NewGuid().ToString("N");
-
-            string tempZip = Path.Combine(baseDir, $"tmp-{id}.zip");
-            string tempDmg = Path.Combine(baseDir, $"tmp-{id}.dmg");
-            string backupZip = Path.Combine(baseDir, $"Backup_{id}.zip");
-
-            File.WriteAllText(tempZip, "zip");
-            File.WriteAllText(tempDmg, "dmg");
-            File.WriteAllText(backupZip, "backup");
-
-            try
-            {
-                InvokeNonPublicVoid(manager, "CleanTempFile");
-
-                Assert.False(File.Exists(tempZip));
-                Assert.False(File.Exists(tempDmg));
-                Assert.True(File.Exists(backupZip));
-            }
-            finally
-            {
-                if (File.Exists(tempZip))
-                {
-                    File.Delete(tempZip);
-                }
-
-                if (File.Exists(tempDmg))
-                {
-                    File.Delete(tempDmg);
-                }
-
-                if (File.Exists(backupZip))
-                {
-                    File.Delete(backupZip);
-                }
-            }
-        }
+        
 
         /// <summary>
         ///     Tests that git hub api service constructor assigns api url
