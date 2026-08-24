@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.9] - 2026-08-24
+### :bug: Bug Fixes
+- [`03280b4`](https://github.com/pabllopf/Alis/commit/03280b4073a0f40dfb29304c91d8d6d66712b224) - names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6680871`](https://github.com/pabllopf/Alis/commit/6680871a73fd47a2aeee9aa100ed5ac96a3bf9a5) - delete Run_WithStartAndLength_ThrowsComponentNotFound *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aac7599`](https://github.com/pabllopf/Alis/commit/aac7599a5e7d209faaf53b0333b91845d4472c03) - delete unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3142370`](https://github.com/pabllopf/Alis/commit/314237074e013f415b7c4afb66fae4f14e73b33e) - JoyAxisEventTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d56046`](https://github.com/pabllopf/Alis/commit/9d560469f7d4d775f81e612989a98c91f1025cc8) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`102f571`](https://github.com/pabllopf/Alis/commit/102f5712c6097df928c4a65ac162fc7d2126a09b) - ImGuizMoExecutionTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b18b723`](https://github.com/pabllopf/Alis/commit/b18b723ac9a0402d5d7a436c284ecf54aee4cd67) - dotnet tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e037209`](https://github.com/pabllopf/Alis/commit/e0372099a36f7598c196ede55333671b1638198b) - delete 2 unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`562709b`](https://github.com/pabllopf/Alis/commit/562709bd5a9692c393e24d278423f8889169ec8b) - runner *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6a1111`](https://github.com/pabllopf/Alis/commit/e6a1111eeb992d03b650d30059d65144d79affcc) - logs/log.txt *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0332b1d`](https://github.com/pabllopf/Alis/commit/0332b1dd2d9d1730f6774217bf942e3a41f95ee6) - @v7 artifact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`825b2d4`](https://github.com/pabllopf/Alis/commit/825b2d46eac1acd80a301a278779d800f5e53ec5) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f149882`](https://github.com/pabllopf/Alis/commit/f149882c3305a343043820dc563f8b86ad1db86f) - build-and-analyze:     timeout-minutes: 35 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1439867`](https://github.com/pabllopf/Alis/commit/1439867d6ab7479c619d84c620f1d516a68fa0d1) - GetPaymentIntentAsync_WithValidId_ReturnsPaymentIntentResponse *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.8] - 2026-08-23
 ### :bug: Bug Fixes
 - [`cc65916`](https://github.com/pabllopf/Alis/commit/cc65916b6472ec9c4cc85351fe7f8b3f2d05a80e) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10815,3 +10833,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.6]: https://github.com/pabllopf/Alis/compare/v1.2.5...v1.2.6
 [v1.2.7]: https://github.com/pabllopf/Alis/compare/v1.2.6...v1.2.7
 [v1.2.8]: https://github.com/pabllopf/Alis/compare/v1.2.7...v1.2.8
+[v1.2.9]: https://github.com/pabllopf/Alis/compare/v1.2.8...v1.2.9
