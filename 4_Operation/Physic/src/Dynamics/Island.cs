@@ -185,6 +185,8 @@ namespace Alis.Core.Physic.Dynamics
                 Locks = ArrayPool<int>.Shared.Rent(newBodyBufferCapacity);
             }
 
+            Array.Clear(Locks, 0, BodyCapacity);
+
             if (_contacts == null || _contacts.Length < contactCapacity)
             {
                 ReturnContactsArray();
