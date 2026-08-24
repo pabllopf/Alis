@@ -696,5 +696,58 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImGuiNative.igDestroyContext(ctx);
             }
         }
+
+        /// <summary>
+        ///     Verifies the LogToFile overloads execute against the native library inside a live
+        ///     frame. Logging to a file only opens a text file, so the calls are side effect free
+        ///     within the test run.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void LogToFile_AllOverloads_Execute()
+        {
+            IntPtr ctx = CreateFramedContext();
+            try
+            {
+                ImGuiNative.igNewFrame();
+                ImGui.Begin("p6-log-file-window");
+                ImGui.LogToFile();
+                ImGui.LogText("p6-log-file-entry-a");
+                ImGui.LogFinish();
+                ImGui.LogToFile(1);
+                ImGui.LogText("p6-log-file-entry-b");
+                ImGui.LogFinish();
+                ImGui.LogToFile(1, "p6-log-file.txt");
+                ImGui.LogText("p6-log-file-entry-c");
+                ImGui.LogFinish();
+                ImGui.End();
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(ctx);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies LoadIniSettingsFromDisk executes against the native library using a
+        ///     non-existent ini path, which the native function tolerates by failing silently.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void LoadIniSettingsFromDisk_Executes()
+        {
+            IntPtr ctx = CreateFramedContext();
+            try
+            {
+                ImGuiNative.igNewFrame();
+                ImGui.Begin("p6-load-ini-window");
+                ImGui.LoadIniSettingsFromDisk("non-existent-settings.ini");
+                ImGui.End();
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(ctx);
+            }
+        }
     }
 }
