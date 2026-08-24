@@ -56,7 +56,17 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
 
           dotnet build -c Debug --verbosity quiet -f net8.0 ./alis_design.slnx
-          dotnet test --no-build -m:1 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test --no-build -m:1 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test --diag:logs/log.txt
       
           dotnet sonarscanner end \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          
+      - name: Upload logs/log.txt
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: logs/log.txt
+          
+      - name: show logs/log.txt
+        run: |
+          cat logs/log.txt
