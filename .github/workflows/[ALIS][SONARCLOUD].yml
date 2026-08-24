@@ -56,7 +56,7 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
 
           dotnet build -c Debug --verbosity quiet -f net8.0 ./alis_design.slnx
-          dotnet test --no-build -m:4 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test --no-build -m:2 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
       
           dotnet sonarscanner end \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
