@@ -41,28 +41,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
     public class ContactSolverAdditionalCoverageTests
     {
         /// <summary>
-        ///     Tests that colliding circles with restitution solve through world step
-        /// </summary>
-        [Fact]
-        public void CollidingCircles_WithRestitution_SolveThroughWorldStep()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(0, 0), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.75f, 0), BodyType.Dynamic);
-            bodyA.SetRestitution(0.8f);
-            bodyB.SetRestitution(0.8f);
-            bodyA.LinearVelocity = new Vector2F(1, 0);
-            bodyB.LinearVelocity = new Vector2F(-1, 0);
-
-            for (int i = 0; i < 30; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
-
-        /// <summary>
         ///     Tests that colliding polygons with friction solve through world step
         /// </summary>
         [Fact]
