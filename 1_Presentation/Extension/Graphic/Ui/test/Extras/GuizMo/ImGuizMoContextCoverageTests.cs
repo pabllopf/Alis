@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
@@ -48,6 +49,24 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
             ImGuiNative.igSetCurrentContext(imgui);
             ImGuizMo.SetImGuiContext(imgui);
+            return imgui;
+        }
+
+        /// <summary>
+        ///     Creates an ImGui context, binds it to the gizmo and prepares a real frame so that
+        ///     native gizmo calls that need an active frame scope can run without asserting.
+        /// </summary>
+        private static IntPtr CreateFramedContext()
+        {
+            IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
+            ImGuiNative.igSetCurrentContext(imgui);
+            IntPtr ioPtr = ImGuiNative.igGetIO();
+            System.Runtime.InteropServices.Marshal.StructureToPtr(1280.0f, IntPtr.Add(ioPtr, 8), false);
+            System.Runtime.InteropServices.Marshal.StructureToPtr(720.0f, IntPtr.Add(ioPtr, 12), false);
+            IntPtr fontsPtr = System.Runtime.InteropServices.Marshal.ReadIntPtr(ioPtr, 80);
+            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(fontsPtr, out IntPtr _, out int _, out int _, out int _);
+            ImGuizMo.SetImGuiContext(imgui);
+            ImGuiNative.igNewFrame();
             return imgui;
         }
 
@@ -198,6 +217,101 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
                 float[] scale = {1, 1, 1};
                 ImGuizMo.RecomposeMatrixFromComponents(ref translation, ref rotation, ref scale, ref matrix);
                 Assert.Equal(1.0f, matrix[0]);
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies BeginFrame, SetId, SetDrawList and SetGizmoSizeClipSpace execute against
+        ///     the native library inside a live frame without throwing.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginFrame_And_DrawList_And_Id_Execute()
+        {
+            IntPtr imgui = CreateFramedContext();
+            try
+            {
+                ImGuizMo.BeginFrame();
+                ImGuizMo.SetId(1);
+                ImGuizMo.SetDrawList();
+                ImGuizMo.SetDrawList(new ImDrawList());
+                ImGuizMo.SetGizmoSizeClipSpace(0.5f);
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies DrawGrid and ViewManipulate execute against the native library using
+        ///     unit matrices inside a live frame without throwing.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void DrawGrid_And_ViewManipulate_Execute()
+        {
+            IntPtr imgui = CreateFramedContext();
+            try
+            {
+                float[] view = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                float[] projection = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                float[] matrix = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                bool gridOpen = true;
+                ImGuizMo.BeginFrame();
+                _ = ImGui.Begin("p1-gizmo-grid", ref gridOpen);
+                ImGuizMo.DrawGrid(ref view, ref projection, ref matrix, 10.0f);
+                ImGuizMo.ViewManipulate(ref view, 2.5f, new Vector2F(0, 0), new Vector2F(100, 100), 0x10101010);
+                ImGui.End();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies Manipulate executes against the native library using unit view and
+        ///     projection matrices inside a live frame and returns a byte result.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Manipulate_Executes_ReturnsByte()
+        {
+            IntPtr imgui = CreateFramedContext();
+            try
+            {
+                float[] view = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                float[] projection = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                float[] matrix = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                bool manipulateOpen = true;
+                ImGuizMo.BeginFrame();
+                _ = ImGui.Begin("p1-gizmo-manipulate", ref manipulateOpen);
+                byte result = ImGuizMo.Manipulate(view, projection, Operations.Translate, Mode.Local, matrix);
+                Assert.InRange(result, (byte) 0, (byte) 255);
+                ImGui.End();
+                ImGuiNative.igEndFrame();
+            }
+            finally
+            {
+                ImGuiNative.igDestroyContext(imgui);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies ShowDemoWindow executes its demo body against the native library inside a
+        ///     live frame and closes the window it opened.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowDemoWindow_Executes_InsideFrame()
+        {
+            IntPtr imgui = CreateFramedContext();
+            try
+            {
+                ImGuizMo.ShowDemoWindow();
+                ImGuiNative.igEndFrame();
             }
             finally
             {
