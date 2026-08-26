@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.0] - 2026-08-26
+### :bug: Bug Fixes
+- [`d895c78`](https://github.com/pabllopf/Alis/commit/d895c7892fc2141762dc72cd33c4e20ed0f045af) - unit tests of   if (indexA == indexB) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`01f9499`](https://github.com/pabllopf/Alis/commit/01f949947729a9fe5a4214c2f1a335342075cf88) - Alis.Core.Audio *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6f73f0`](https://github.com/pabllopf/Alis/commit/e6f73f0d29099e17b33d09d0ab5fb5adcc43e400) - exclude native code [ExcludeFromCodeCoverage] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8f3a4be`](https://github.com/pabllopf/Alis/commit/8f3a4beda17e013bd4fdf1832b2ef7fc3329fbf3) - new data tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`a7a49a2`](https://github.com/pabllopf/Alis/commit/a7a49a2356c69b34e35ccf17bbf45b91d79f82e6) - cover null-handler branches of NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`def1d59`](https://github.com/pabllopf/Alis/commit/def1d59f90a126839f061c241411bebb3f4e1fbb) - cover native frame execution of ImGuizMo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e381906`](https://github.com/pabllopf/Alis/commit/e381906bb936b8c38c47f233810abfea030edc89) - cover LogToFile and LoadIniSettingsFromDisk of ImGuiP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bc4694b`](https://github.com/pabllopf/Alis/commit/bc4694b950b17ebd4d63813e6623e975b16e3f9c) - cover context settings and finalizer of Context.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dae2ec`](https://github.com/pabllopf/Alis/commit/4dae2ec3e3b65e3ff1821bebe27fd072a6d2d3b8) - cover draw state marshaling of Shape.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`a252d2e`](https://github.com/pabllopf/Alis/commit/a252d2e2aa7677cf0dd76edbda9d1bb3feb1ad41) - update xmls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd7cd61`](https://github.com/pabllopf/Alis/commit/cd7cd6137a40c9aa65c2e7194b3cdc7fd00d48e6) - record Glfw coverage state *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.2.9] - 2026-08-24
 ### :bug: Bug Fixes
 - [`03280b4`](https://github.com/pabllopf/Alis/commit/03280b4073a0f40dfb29304c91d8d6d66712b224) - names *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10834,3 +10853,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.7]: https://github.com/pabllopf/Alis/compare/v1.2.6...v1.2.7
 [v1.2.8]: https://github.com/pabllopf/Alis/compare/v1.2.7...v1.2.8
 [v1.2.9]: https://github.com/pabllopf/Alis/compare/v1.2.8...v1.2.9
+[v1.3.0]: https://github.com/pabllopf/Alis/compare/v1.2.9...v1.3.0
