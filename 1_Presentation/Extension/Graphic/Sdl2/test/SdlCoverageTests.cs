@@ -27,23 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
-    ///     Behavioral coverage tests for the remaining thin Sdl wrapper members
+    ///     Coverage tests for the sdl wrapper class
     /// </summary>
     public class SdlCoverageTests
     {
         /// <summary>
-        ///     Tests that a missing touch device is reported as zero
+        ///     Tests that the event polling returns a valid event status
         /// </summary>
         [RequireSdl2Fact]
-        public void TouchDeviceQuery_WithMissingDevice_ReturnsZero()
+        public void PollEvent_ReturnsValidEventStatus()
         {
-            Assert.Equal(0L, Sdl.GetTouchDevice(-1));
+            Event sdlEvent;
+            int result = Sdl.PollEvent(out sdlEvent);
+
+            Assert.True(result == 0 || result == 1);
         }
     }
 }

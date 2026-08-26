@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -46,55 +45,20 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
         /// </summary>
         public RequireSdl2ImageFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("sdl"))
+            if (!TryLoadSfmlLibrary("sdl2_image"))
             {
                 Skip = "Test skipped because its not platform";
             }
         }
 
         /// <summary>
-        ///     Attempts to load the specified SDL2_image library by name, falling back to
-        ///     absolute path resolution from the test assembly output directory. Verifies
-        ///     that the library is fully functional by resolving a known export symbol.
+        ///     Attempts to load the specified SDL2_image library by name and verifies that
+        ///     it is fully functional by resolving a known export symbol. Only name-based
+        ///     resolution is used because the native DllImports resolve the library by name.
         /// </summary>
         private static bool TryLoadSfmlLibrary(string name)
         {
-            if (TryLoadAndVerify(name))
-                return true;
-
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
-            if (assemblyDir == null)
-                return false;
-
-            string[] searchDirs = new[]
-            {
-                assemblyDir,
-                "/opt/homebrew/lib",
-                "/usr/local/lib",
-                "/usr/lib",
-                "/usr/lib/x86_64-linux-gnu",
-                "/usr/lib/aarch64-linux-gnu"
-            };
-
-            foreach (string dir in searchDirs)
-            {
-                string[] candidates = new[]
-                {
-                    Path.Combine(dir, name),
-                    Path.Combine(dir, "lib" + name),
-                    Path.Combine(dir, "lib" + name + ".dylib"),
-                    Path.Combine(dir, name + ".dylib"),
-                    Path.Combine(dir, "lib" + name + ".so")
-                };
-
-                foreach (string candidate in candidates)
-                {
-                    if (File.Exists(candidate) && TryLoadAndVerify(candidate))
-                        return true;
-                }
-            }
-
-            return false;
+            return TryLoadAndVerify(name);
         }
 
         /// <summary>
