@@ -5,7 +5,7 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    19
+    16
 
     ### Uncovered Branches
     0
 
     ### Method
-    ImVector
+    MouseWheelScrollEventArgs
 
     ### Complexity / LOC
-    9 / 32 lines
+    10 / 23 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImVector.cs
+//  File:MouseWheelScrollEventArgs.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     The im vector
+    ///     Mouse wheel scroll event parameters
     /// </summary>
-    public struct ImVector
+    public class MouseWheelScrollEventArgs : EventArgs
     {
         /// <summary>
-        ///     Gets or sets the size
+        ///     Gets or sets the scroll amount
         /// </summary>
-        public int Size { get; set; }
+        public float Delta { get; set; }
 
         /// <summary>
-        ///     Gets or sets the capacity
+        ///     Gets or sets the mouse wheel which triggered the event
         /// </summary>
-        public int Capacity { get; set; }
+        public Mouse.Wheel Wheel { get; set; }
 
         /// <summary>
-        ///     Gets or sets the data
+        ///     Gets or sets the X coordinate of the mouse cursor
         /// </summary>
-        public IntPtr Data { get; set; }
+        public int X { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImVector" /> class
+        ///     Gets or sets the Y coordinate of the mouse cursor
         /// </summary>
-        /// <param name="size">The size</param>
-        /// <param name="capacity">The capacity</param>
-        /// <param name="data">The data</param>
+        public int Y { get; set; }
+
+        /// <summary>
+        ///     Construct the mouse wheel scroll arguments from a mouse wheel scroll event
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImVectorTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelScrollEventArgsTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImVector.cs
+    Commit format: test: coverage MouseWheelScrollEventArgs.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
