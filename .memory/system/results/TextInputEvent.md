@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sdl2/src/Structs/TextInputEvent.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: Not measured locally (cobertura generation disabled per pipeline rules); all public members exercised via 6 new tests (type, timestamp, windowID, Text length/content, field round-trip). Internal byte0..byte31 fields are not testable via public API and excluded from coverage claims.
 TestsAdded: 6 (TextInputEventTests.cs)
-Commit: f438e3890655be90948d251fc9f0625f78e65bf8
+Commit: 1a4dc6d65483e746f4d3d4ec4af3a33592fee0bd
 Status: COMPLETED
 
 ## Summary
