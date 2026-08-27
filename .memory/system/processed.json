@@ -41,6 +41,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vertex.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs",

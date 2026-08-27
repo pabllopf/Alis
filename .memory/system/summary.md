@@ -4391,3 +4391,21 @@ test: ImVector.cs
 
 Status:
 COMPLETED
+
+File:
+1_Presentation/Extension/Graphic/Sfml/src/Render/Vertex.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — default value, 4 constructors, mutable Position/Color/TexCoords fields, ToString; 8/8 VertexTests pass
+
+TestsAdded:
+8 (VertexTests.cs)
+
+Commit:
+test: Vertex.cs
+
+Status:
+COMPLETED
