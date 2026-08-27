@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: 9 tests added; all constructors/getter/setter/Dispose branches covered locally (no coverlet measurement run)
 TestsAdded: 9
-Commit: c0bcd4d6e006fc1b3b0d5b4ed46f690659673229
+Commit: 6bf34a63e23f4044f9dc4fea401e9e07f53ffdc7
 Status: COMPLETED
 
 ## Summary
