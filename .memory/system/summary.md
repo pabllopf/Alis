@@ -4117,7 +4117,7 @@ TestsAdded:
 104 (StbUndoStateTests.cs: 99 UndoRecN set/get round-trips + UndoChar list + UndoPoint/RedoPoint/UndoCharPoint/RedoCharPoint + default values)
 
 Commit:
-PENDING_HASH
+807b0b51ab266e2f5b2be240b21a7633db3ec5b2
 
 Status:
 COMPLETED
