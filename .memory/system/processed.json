@@ -91,6 +91,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlas.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGui.cs",
