@@ -4139,3 +4139,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/FloatRect.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+Not measured locally (cobertura generation disabled per pipeline rules); all 63 lines / 18 branches exercised via 36 new + 45 pre-existing FloatRect tests (81/81 pass)
+
+TestsAdded:
+36 (FloatRectTests.cs: constructors, Contains, Intersects x2, ToString, Equals, GetHashCode, operators, IntRect cast)
+
+Commit:
+test: FloatRect.cs
+
+Status:
+COMPLETED
