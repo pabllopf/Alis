@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sfml/src/Render/BlendMode.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: Not measured locally (cobertura generation disabled per pipeline rules); all public members exercised via 19 new public-API tests + 44 pre-existing BlendModeTest/BlendModeRemainingCoverageTests (63/63 pass with BlendMode filter). Struct is a pure value type: constructors, nested enums, static modes, Equals, GetHashCode, operators, both branches.
 TestsAdded: 19
-Commit: <pending>
+Commit: 18230c5698336cccd049bd9db32066db8ab92f0f
 Status: COMPLETED
 
 ## Summary
