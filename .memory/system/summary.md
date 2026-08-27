@@ -4373,3 +4373,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+1_Presentation/Extension/Graphic/Ui/src/ImVector.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — default values, constructor, Size/Capacity/Data round-trips, Ref<T>/Address<T>; 11/11 ImVectorTests pass
+
+TestsAdded:
+11 (ImVectorTests.cs)
+
+Commit:
+test: ImVector.cs
+
+Status:
+COMPLETED
