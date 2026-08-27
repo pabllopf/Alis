@@ -4409,3 +4409,21 @@ test: Vertex.cs
 
 Status:
 COMPLETED
+
+File:
+1_Presentation/Extension/Graphic/Ui/src/ImFont.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — default zero-initialized values and float/integer/ushort/byte/pointer/ImVector/byte[] round-trips; 10/10 ImFontTests pass
+
+TestsAdded:
+10 (ImFontTests.cs)
+
+Commit:
+test: ImFont.cs
+
+Status:
+COMPLETED
