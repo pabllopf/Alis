@@ -4461,3 +4461,20 @@ test: Style.cs
 
 Status:
 COMPLETED
+File:
+1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact — gated tests skipped without native csfml-window)
+
+CoverageAfter:
+100.0% executable lines (constructor, 4 properties, ToString); cobertura disabled per pipeline rules
+
+TestsAdded:
+8 (SensorEventArgsTests.cs, plain [Fact] DTO suite)
+
+Commit:
+test: coverage SensorEventArgs.cs
+
+Status:
+REMEDIATED

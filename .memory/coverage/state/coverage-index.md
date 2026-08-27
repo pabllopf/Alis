@@ -44,6 +44,7 @@ _No previous state available — fresh start after memory cleanup._
 | `ImPlotP2.cs` (Ui/Plot) | 1.6% | 84.1% (380/452 local) | 89 |
 | `Mouse.cs` (Sfml/Windows) | 0.0% | 55.0% | 6 |
 | `NativeWindow.cs` (Glfw) | 0.0% (SonarCloud) | 98.63% (718/728, hook-enabled local run) | 1 + existing worker suite wiring |
+| `SensorEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 8 |
 
 ## Notable Files with Low Coverage (Filtered)
 

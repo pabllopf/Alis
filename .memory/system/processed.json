@@ -242,6 +242,7 @@
   "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs",
   "pabllopf-official_alis:6_Ideation/Math/src/CryptoRandomNumberGenerator.cs",
   "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
-  "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs"
+  "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs"
  ]
 }
