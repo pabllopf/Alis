@@ -4546,3 +4546,20 @@ test: coverage StbTexteditState.cs
 
 Status:
 REMEDIATED
+File:
+1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact — gated tests skipped without native csfml-window)
+
+CoverageAfter:
+100.0% executable lines (constructor, 3 properties, ToString); cobertura disabled per pipeline rules
+
+TestsAdded:
+7 (JoystickMoveEventArgsCoverageTests.cs, plain [Fact] DTO suite)
+
+Commit:
+test: coverage JoystickMoveEventArgs.cs
+
+Status:
+REMEDIATED

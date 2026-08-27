@@ -247,6 +247,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawList.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/LoadingFailedException.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditState.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditState.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs"
  ]
 }
