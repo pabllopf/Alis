@@ -4211,3 +4211,21 @@ test: ImFontConfigPtr.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/TextInputEvent.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+Not measured locally (cobertura generation disabled per pipeline rules); all public members exercised via 6 new tests. Internal byte0..byte31 excluded (untestable via public API).
+
+TestsAdded:
+6 (TextInputEventTests.cs)
+
+Commit:
+<pending>
+
+Status:
+COMPLETED
