@@ -51,6 +51,7 @@ _No previous state available — fresh start after memory cleanup._
 | `StbTexteditState.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 5 |
 | `JoystickMoveEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 7 |
 | `MouseButtonEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 7 |
+| `MouseWheelEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 7 |
 
 ## Notable Files with Low Coverage (Filtered)
 

@@ -1,0 +1,138 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MouseWheelEventArgsCoverageTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using Alis.Extension.Graphic.Sfml.Windows;
+using Xunit;
+
+namespace Alis.Extension.Graphic.Sfml.Test.Windows
+{
+    /// <summary>
+    ///     Tests for MouseWheelEventArgs.
+    /// </summary>
+    public class MouseWheelEventArgsCoverageTests
+    {
+        /// <summary>
+        ///     Tests that constructor sets delta from event
+        /// </summary>
+        [Fact]
+        public void Constructor_SetsDeltaFromEvent()
+        {
+            MouseWheelEvent e = new MouseWheelEvent { Delta = 3 };
+
+            MouseWheelEventArgs args = new MouseWheelEventArgs(e);
+
+            Assert.Equal(3, args.Delta);
+        }
+
+        /// <summary>
+        ///     Tests that constructor sets x from event
+        /// </summary>
+        [Fact]
+        public void Constructor_SetsXFromEvent()
+        {
+            MouseWheelEvent e = new MouseWheelEvent { X = 42 };
+
+            MouseWheelEventArgs args = new MouseWheelEventArgs(e);
+
+            Assert.Equal(42, args.X);
+        }
+
+        /// <summary>
+        ///     Tests that constructor sets y from event
+        /// </summary>
+        [Fact]
+        public void Constructor_SetsYFromEvent()
+        {
+            MouseWheelEvent e = new MouseWheelEvent { Y = 84 };
+
+            MouseWheelEventArgs args = new MouseWheelEventArgs(e);
+
+            Assert.Equal(84, args.Y);
+        }
+
+        /// <summary>
+        ///     Tests that default event produces default arguments
+        /// </summary>
+        [Fact]
+        public void DefaultEvent_ProducesDefaultArgs()
+        {
+            MouseWheelEventArgs args = new MouseWheelEventArgs(new MouseWheelEvent());
+
+            Assert.Equal(0, args.Delta);
+            Assert.Equal(0, args.X);
+            Assert.Equal(0, args.Y);
+        }
+
+        /// <summary>
+        ///     Tests that properties get and set values
+        /// </summary>
+        [Fact]
+        public void Properties_GetAndSetValues()
+        {
+            MouseWheelEventArgs args = new MouseWheelEventArgs(new MouseWheelEvent());
+
+            args.Delta = -2;
+            args.X = 300;
+            args.Y = 400;
+
+            Assert.Equal(-2, args.Delta);
+            Assert.Equal(300, args.X);
+            Assert.Equal(400, args.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mouse wheel event args inherits from event args
+        /// </summary>
+        [Fact]
+        public void MouseWheelEventArgs_InheritsFromEventArgs()
+        {
+            MouseWheelEventArgs args = new MouseWheelEventArgs(new MouseWheelEvent());
+
+            Assert.IsAssignableFrom<EventArgs>(args);
+        }
+
+        /// <summary>
+        ///     Tests that to string returns expected format
+        /// </summary>
+        [Fact]
+        public void ToString_ReturnsExpectedFormat()
+        {
+            MouseWheelEvent e = new MouseWheelEvent { Delta = 1, X = 10, Y = 20 };
+            MouseWheelEventArgs args = new MouseWheelEventArgs(e);
+
+            string str = args.ToString();
+
+            Assert.Contains("[MouseWheelEventArgs]", str);
+            Assert.Contains("Delta(1)", str);
+            Assert.Contains("X(10)", str);
+            Assert.Contains("Y(20)", str);
+        }
+    }
+}
