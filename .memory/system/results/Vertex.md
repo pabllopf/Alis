@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sfml/src/Render/Vertex.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: Not measured locally (cobertura generation disabled per pipeline rules); all 18 lines / 5 methods exercised via 8 new public-API tests (8/8 pass with Vertex filter). Struct is a pure value type: default value, 4 constructors, mutable Position/Color/TexCoords fields, ToString.
 TestsAdded: 8
-Commit: 1b0244435b842d1a857efe7319c2aee0fef37c98
+Commit: fb5bbf4d2c81297c42086853a1ce9b45ec09e55c
 Status: COMPLETED
 
 ## Summary
