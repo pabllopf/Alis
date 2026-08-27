@@ -47,6 +47,7 @@ _No previous state available — fresh start after memory cleanup._
 | `SensorEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 8 |
 | `ImDrawList.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 5 |
 | `LoadingFailedException.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] exception suite) | 6 |
+| `LoadingFailedException.cs` (Sfml/Systems) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] exception suite) | 6 |
 
 ## Notable Files with Low Coverage (Filtered)
 
