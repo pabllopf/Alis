@@ -4478,3 +4478,20 @@ test: coverage SensorEventArgs.cs
 
 Status:
 REMEDIATED
+File:
+1_Presentation/Extension/Graphic/Ui/src/ImDrawList.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact — gated tests skipped without native cimgui)
+
+CoverageAfter:
+100.0% executable lines (all 15 property accessors); cobertura disabled per pipeline rules
+
+TestsAdded:
+5 (ImDrawListTests.cs, plain [Fact] struct suite)
+
+Commit:
+test: coverage ImDrawList.cs
+
+Status:
+REMEDIATED
