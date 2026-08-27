@@ -54,6 +54,7 @@ _No previous state available — fresh start after memory cleanup._
 | `MouseWheelEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 7 |
 | `TouchEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] DTO suite) | 7 |
 | `ImGuiInputTextCallbackData.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 2 |
+| `ImFontGlyph.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 2 |
 
 ## Notable Files with Low Coverage (Filtered)
 

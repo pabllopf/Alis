@@ -252,6 +252,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiInputTextCallbackData.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiInputTextCallbackData.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs"
  ]
 }

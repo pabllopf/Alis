@@ -4631,3 +4631,20 @@ test: coverage ImGuiInputTextCallbackData.cs
 
 Status:
 REMEDIATED
+File:
+1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact — gated tests skipped without native cimgui)
+
+CoverageAfter:
+100.0% executable lines (all 12 property accessors); cobertura disabled per pipeline rules
+
+TestsAdded:
+2 (ImFontGlyphCoverageTests.cs, plain [Fact] struct suite)
+
+Commit:
+test: coverage ImFontGlyph.cs
+
+Status:
+REMEDIATED
