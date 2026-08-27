@@ -4175,3 +4175,21 @@ test: IntRect.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Color.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+Not measured locally (cobertura generation disabled per pipeline rules); all 48 lines / 8 branches exercised via 31 new public-API tests + 18 pre-existing ColorTest tests (102/102 pass with Color filter)
+
+TestsAdded:
+31 (ColorTests.cs: constructors x4, default value, ToInteger, ToString, Equals, GetHashCode, operators +/= branches, static colors)
+
+Commit:
+test: Color.cs
+
+Status:
+COMPLETED
