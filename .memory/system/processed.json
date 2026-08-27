@@ -45,6 +45,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs",

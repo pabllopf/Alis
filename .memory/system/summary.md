@@ -4283,3 +4283,21 @@ test: ImGuiPlatformIO.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+9 tests added; constructor/CPointer/Dispose branches covered via concrete subclass with plain Facts (no CSFML lib needed)
+
+TestsAdded:
+9 (ObjectBaseTests.cs)
+
+Commit:
+c0bcd4d6e006fc1b3b0d5b4ed46f690659673229
+
+Status:
+COMPLETED
