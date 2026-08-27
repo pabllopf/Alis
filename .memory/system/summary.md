@@ -4355,3 +4355,21 @@ test: ImVectorG.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+12 tests added covering all members; exact % pending SonarCloud re-scan
+
+TestsAdded:
+12
+
+Commit:
+<filled after commit>
+
+Status:
+COMPLETED
