@@ -4121,3 +4121,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlas.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100.0% (local coverlet: line-rate 1.0, branch-rate 1.0; all 84 previously-uncovered lines exercised)
+
+TestsAdded:
+85 (ImFontAtlasTests.cs: default values + set/get round-trips for all 84 auto-properties)
+
+Commit:
+383974519
+
+Status:
+COMPLETED
