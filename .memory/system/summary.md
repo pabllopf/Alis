@@ -4301,3 +4301,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — both ctors (IntPtr, byte[]), Data field, ToString empty/terminator/ascii/unicode paths, implicit string operator; 33/33 NullTerminatedString-filtered tests pass
+
+TestsAdded:
+9 (NullTerminatedStringCoreTests.cs)
+
+Commit:
+test: NullTerminatedString.cs
+
+Status:
+COMPLETED
