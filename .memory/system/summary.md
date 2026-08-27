@@ -4427,3 +4427,20 @@ test: ImFont.cs
 
 Status:
 COMPLETED
+File:
+1_Presentation/Extension/Graphic/Ui/src/RangePtrAccessor.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100% locally (17/17 lines, branch-rate 1.0, coverlet net8.0)
+
+TestsAdded:
+13 (RangePtrAccessorTests.cs)
+
+Commit:
+test: RangePtrAccessor.cs
+
+Status:
+COMPLETED

@@ -119,6 +119,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVectorG.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/RangePtrAccessor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs",
