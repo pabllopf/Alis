@@ -4193,3 +4193,21 @@ test: Color.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100% (92/92 lines, 100% branches; local coverlet, ImFontConfigPtr filter)
+
+TestsAdded:
+25 (ImFontConfigPtrTests.cs: constructors x3, implicit conversions x2, and all property getters/setters + zero-ptr throw)
+
+Commit:
+test: ImFontConfigPtr.cs
+
+Status:
+COMPLETED
