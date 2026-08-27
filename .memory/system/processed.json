@@ -113,6 +113,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIO.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVectorG.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs",

@@ -4337,3 +4337,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+1_Presentation/Extension/Graphic/Ui/src/ImVectorG.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — default values, both ctors (ImVector copy and size/capacity/data), element indexer for int/byte/float; 10/10 ImVectorGCoverageTests pass
+
+TestsAdded:
+10 (ImVectorGCoverageTests.cs)
+
+Commit:
+test: ImVectorG.cs
+
+Status:
+COMPLETED
