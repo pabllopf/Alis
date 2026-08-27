@@ -4229,3 +4229,21 @@ a5e1a811e7b5bc3eafe806193601e43c394538d7
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/BlendMode.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+Not measured locally (cobertura generation disabled per pipeline rules); all public members exercised via 19 new public-API tests + 44 pre-existing BlendMode-filtered tests (63/63 pass)
+
+TestsAdded:
+19 (BlendModeTests.cs)
+
+Commit:
+<pending>
+
+Status:
+COMPLETED
