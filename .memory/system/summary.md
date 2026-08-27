@@ -4319,3 +4319,21 @@ test: NullTerminatedString.cs
 
 Status:
 COMPLETED
+
+File:
+1_Presentation/Extension/Graphic/Sfml/src/Windows/ContextSettings.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+All observable public API exercised — default ctor, 2/3/7-param ctors, direct field mutation, ToString component names/values, Attributes enum values; 9/9 ContextSettingsTests-filtered tests pass
+
+TestsAdded:
+9 (ContextSettingsTests.cs)
+
+Commit:
+649db5d9c3b2a4706f80291b5ede82e2408908fa
+
+Status:
+COMPLETED

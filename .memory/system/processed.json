@@ -50,6 +50,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/ContextSettings.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/FilePickerExecutor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs",
