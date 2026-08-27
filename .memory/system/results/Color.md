@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sfml/src/Render/Color.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: Not measured locally (cobertura generation disabled per pipeline rules); all 48 lines / 8 branches exercised via 31 new public-API tests + 18 pre-existing ColorTest tests (102/102 pass with Color filter). Struct is a pure value type: constructors, ToInteger, ToString, Equals, GetHashCode, operators, static colors.
 TestsAdded: 31
-Commit: <pending>
+Commit: d72fcc99f06f6379fd04c50030335cee71f2255f
 Status: COMPLETED
 
 ## Summary
