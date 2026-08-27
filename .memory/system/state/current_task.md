@@ -2,7 +2,7 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs
 
     ### Language
     cs
@@ -11,16 +11,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    15
+    12
 
     ### Uncovered Branches
     0
 
     ### Method
-    LoadingFailedException
+    ImFontGlyph
 
     ### Complexity / LOC
-    5 / 28 lines
+    24 / 18 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:LoadingFailedException.cs
+//  File:ImFontGlyph.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -53,51 +53,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Extension.Graphic.Sfml.Windows
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     Exception thrown by SFML whenever loading a resource fails
+    ///     The im font glyph
     /// </summary>
-    public class LoadingFailedException : Exception
+    public struct ImFontGlyph
     {
         /// <summary>
-        /// The failed prefix
+        ///     The colored
         /// </summary>
-        private const string FailedPrefix = "Failed to load ";
+        public uint Colored { get; set; }
 
         /// <summary>
-        ///     Default constructor (unknown error)
+        ///     The visible
         /// </summary>
-        public LoadingFailedException() :
-            base("Failed to load a resource")
-        {
-        }
-
+        public uint Visible { get; set; }
 
         /// <summary>
-        ///     Failure to load a resource from memory
+        ///     The codepoint
         /// </summary>
-        /// <param name="resourceName">Name of the resource</param>
-        public LoadingFailedException(string resourceName) :
-            base(FailedPrefix + resourceName + " from memory")
-        {
-        }
+        public uint Codepoint { get; set; }
+
+        /// <summary>
+        ///     The advance
+        /// </summary>
+        public float AdvanceX { get; set; }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float X0 { get; set; }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/LoadingFailedExceptionTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImFontGlyphTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage LoadingFailedException.cs
+    Commit format: test: coverage ImFontGlyph.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
