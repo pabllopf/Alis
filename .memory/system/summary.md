@@ -4103,3 +4103,21 @@ Commit:
 (none)
 Status:
 NO_REMAINING_COVERAGE_TASKS
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing suite gated behind RequireCImguiSystemFact and skipped)
+
+CoverageAfter:
+100.0% (local coverlet: line-rate 1.0, branch-rate 1.0; all 104 previously-uncovered lines exercised)
+
+TestsAdded:
+104 (StbUndoStateTests.cs: 99 UndoRecN set/get round-trips + UndoChar list + UndoPoint/RedoPoint/UndoCharPoint/RedoCharPoint + default values)
+
+Commit:
+PENDING_HASH
+
+Status:
+COMPLETED
