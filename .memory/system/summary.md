@@ -4444,3 +4444,20 @@ test: RangePtrAccessor.cs
 
 Status:
 COMPLETED
+File:
+1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100% locally (line-rate 1.0, branch-rate 1.0, coverlet net8.0)
+
+TestsAdded:
+18 (StyleTest.cs)
+
+Commit:
+test: Style.cs
+
+Status:
+COMPLETED
