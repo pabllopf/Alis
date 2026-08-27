@@ -4495,3 +4495,20 @@ test: coverage ImDrawList.cs
 
 Status:
 REMEDIATED
+File:
+1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
+
+CoverageBefore:
+0.0% (SonarCloud; stale artifact — gated tests skipped without native csfml-system)
+
+CoverageAfter:
+100.0% executable lines (all 5 constructors); cobertura disabled per pipeline rules
+
+TestsAdded:
+6 (LoadingFailedExceptionTests.cs, plain [Fact] suite)
+
+Commit:
+test: coverage LoadingFailedException.cs
+
+Status:
+REMEDIATED
