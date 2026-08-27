@@ -4265,3 +4265,21 @@ test: ImGuiPlatformIOPtr.cs
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIO.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100% (line-rate 1, branch-rate 1; local coverlet, ImGuiPlatformIOTests filter)
+
+TestsAdded:
+26 (ImGuiPlatformIOTests.cs)
+
+Commit:
+test: ImGuiPlatformIO.cs
+
+Status:
+COMPLETED
