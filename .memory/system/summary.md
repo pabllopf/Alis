@@ -4247,3 +4247,21 @@ Commit:
 
 Status:
 COMPLETED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs
+
+CoverageBefore:
+0.0% (SonarCloud)
+
+CoverageAfter:
+100% (58/58 lines, 100% branches; local coverlet, ImGuiPlatformIOPtr filter)
+
+TestsAdded:
+0 (already remediated — ImGuiPlatformIOPtrTests.cs committed in 5bdb5ebff, cimgui gating fixed in f0f6d7769; 25 property-accessor tests verified this session)
+
+Commit:
+test: ImGuiPlatformIOPtr.cs
+
+Status:
+COMPLETED
