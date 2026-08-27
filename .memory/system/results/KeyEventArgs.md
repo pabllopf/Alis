@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: 12 tests added covering all members (properties get/set, ctor mapping, ToString); exact % pending SonarCloud re-scan
 TestsAdded: 12
-Commit: <pending>
+Commit: 93786398362e5bf911c3dc5de8ff2f3b513d7687
 Status: COMPLETED
 
 ## Summary
