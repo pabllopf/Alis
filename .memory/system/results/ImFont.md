@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Ui/src/ImFont.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: All observable public API exercised via ImFontTests — default zero-initialized scalar/pointer/pages-map values and round-trips of float, integer, ushort, byte, pointer, ImVector and byte[] members; 10/10 ImFontTests pass
 TestsAdded: 10 (ImFontTests.cs)
-Commit: bacda52aaf4daad67fd49ae1ce5ebfc87d7281ed
+Commit: a8560ed14f0f000ec211c24994662297e2b3b926
 Status: COMPLETED
 
 ## Summary
