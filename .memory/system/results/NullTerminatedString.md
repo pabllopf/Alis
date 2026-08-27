@@ -4,7 +4,7 @@ File: `1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs`
 CoverageBefore: 0.0% (SonarCloud)
 CoverageAfter: All observable public API exercised — both ctors (IntPtr, byte[]), Data field, ToString empty/terminator/ascii/unicode paths, implicit string operator; 33/33 NullTerminatedString-filtered tests pass
 TestsAdded: 9 (NullTerminatedStringCoreTests.cs)
-Commit: 107e6f874dd0b9fafd17ac8feb5f376f3a45d4ec
+Commit: d5b53b655d9773dfadccca7e51ffa9d01494e48f
 Status: COMPLETED
 
 ## Summary
