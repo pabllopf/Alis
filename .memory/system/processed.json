@@ -244,6 +244,7 @@
   "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
   "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawList.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawList.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs"
  ]
 }

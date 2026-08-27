@@ -1,11 +1,8 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
-
-
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
 
     ### Language
     cs
@@ -14,16 +11,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    16
+    15
 
     ### Uncovered Branches
     0
 
     ### Method
-    MouseWheelScrollEventArgs
+    LoadingFailedException
 
     ### Complexity / LOC
-    10 / 23 lines
+    5 / 28 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:MouseWheelScrollEventArgs.cs
+//  File:LoadingFailedException.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -61,46 +58,46 @@ using System;
 namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     Mouse wheel scroll event parameters
+    ///     Exception thrown by SFML whenever loading a resource fails
     /// </summary>
-    public class MouseWheelScrollEventArgs : EventArgs
+    public class LoadingFailedException : Exception
     {
         /// <summary>
-        ///     Gets or sets the scroll amount
+        /// The failed prefix
         /// </summary>
-        public float Delta { get; set; }
+        private const string FailedPrefix = "Failed to load ";
 
         /// <summary>
-        ///     Gets or sets the mouse wheel which triggered the event
+        ///     Default constructor (unknown error)
         /// </summary>
-        public Mouse.Wheel Wheel { get; set; }
+        public LoadingFailedException() :
+            base("Failed to load a resource")
+        {
+        }
+
 
         /// <summary>
-        ///     Gets or sets the X coordinate of the mouse cursor
+        ///     Failure to load a resource from memory
         /// </summary>
-        public int X { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Y coordinate of the mouse cursor
-        /// </summary>
-        public int Y { get; set; }
-
-        /// <summary>
-        ///     Construct the mouse wheel scroll arguments from a mouse wheel scroll event
+        /// <param name="resourceName">Name of the resource</param>
+        public LoadingFailedException(string resourceName) :
+            base(FailedPrefix + resourceName + " from memory")
+        {
+        }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/MouseWheelScrollEventArgsTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/LoadingFailedExceptionTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/LoadingFailedException.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MouseWheelScrollEventArgs.cs
+    Commit format: test: coverage LoadingFailedException.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
