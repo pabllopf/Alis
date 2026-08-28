@@ -4774,3 +4774,21 @@ test: coverage SizeEventArgs.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (9/9, local coverlet, Ivec2-filtered run)
+
+TestsAdded:
+0 (already covered by committed Ivec2Test.cs + Ivec2RemainingCoverageTests.cs)
+
+Commit:
+test: coverage Ivec2.cs
+
+Status:
+ALREADY_REMEDIATED

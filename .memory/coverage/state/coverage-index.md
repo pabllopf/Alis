@@ -62,6 +62,7 @@ _No previous state available — fresh start after memory cleanup._
 | `JoystickButtonEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% (10/10 local coverlet, existing JoystickButtonEventTest) | 0 (already remediated) |
 | `MouseMoveEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% (10/10 local coverlet, existing MouseMoveEventTest/ArgsRemaining) | 0 (already remediated) |
 | `SizeEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% (10/10 local coverlet, existing SizeEventTest/ArgsRemaining) | 0 (already remediated) |
+| `Ivec2.cs` (Sfml/Render) | 0.0% (SonarCloud, stale) | 100.0% (9/9 local coverlet, existing Ivec2Test/ArgsRemaining) | 0 (already remediated) |
 
 ## Notable Files with Low Coverage (Filtered)
 
