@@ -4738,3 +4738,21 @@ test: coverage JoystickButtonEventArgs.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, MouseMove-filtered run)
+
+TestsAdded:
+0 (already covered by committed MouseMoveEventTest.cs + MouseMoveEventArgsRemainingCoverageTests.cs)
+
+Commit:
+test: coverage MouseMoveEventArgs.cs
+
+Status:
+ALREADY_REMEDIATED

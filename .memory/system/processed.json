@@ -258,6 +258,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs"
  ]
 }
