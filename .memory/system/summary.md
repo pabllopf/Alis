@@ -4828,3 +4828,21 @@ test: coverage ImFontAtlasCustomRect.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiWindowClass.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImGuiWindowClass-filtered run)
+
+TestsAdded:
+0 (already covered by committed ImGuiWindowClassTest.cs + ImGuiWindowClassTests.cs)
+
+Commit:
+test: coverage ImGuiWindowClass.cs
+
+Status:
+ALREADY_REMEDIATED
