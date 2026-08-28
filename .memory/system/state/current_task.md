@@ -1,8 +1,11 @@
 
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 102 files) Outputting AI-ready tasks:
+
+
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
 
     ### Language
     cs
@@ -11,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    12
+    10
 
     ### Uncovered Branches
     0
 
     ### Method
-    ImFontGlyph
+    SizeEventArgs
 
     ### Complexity / LOC
-    24 / 18 lines
+    6 / 17 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImFontGlyph.cs
+//  File:SizeEventArgs.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -53,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Ui
+using System;
+
+namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     The im font glyph
+    ///     Size event parameters
     /// </summary>
-    public struct ImFontGlyph
+    public class SizeEventArgs : EventArgs
     {
         /// <summary>
-        ///     The colored
+        ///     Gets or sets the new height of the window
         /// </summary>
-        public uint Colored { get; set; }
+        public uint Height { get; set; }
 
         /// <summary>
-        ///     The visible
+        ///     Gets or sets the new width of the window
         /// </summary>
-        public uint Visible { get; set; }
+        public uint Width { get; set; }
 
         /// <summary>
-        ///     The codepoint
+        ///     Construct the size arguments from a size event
         /// </summary>
-        public uint Codepoint { get; set; }
+        /// <param name="e">Size event</param>
+        public SizeEventArgs(SizeEvent e)
+        {
+            Width = e.Width;
+            Height = e.Height;
+        }
+
 
         /// <summary>
-        ///     The advance
-        /// </summary>
-        public float AdvanceX { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float X0 { get; set; }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImFontGlyphTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/SizeEventArgsTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImFontGlyph.cs
+    Commit format: test: coverage SizeEventArgs.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
