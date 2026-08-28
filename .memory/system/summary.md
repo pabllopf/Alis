@@ -4756,3 +4756,21 @@ test: coverage MouseMoveEventArgs.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, SizeEvent-filtered run)
+
+TestsAdded:
+0 (already covered by committed SizeEventTest.cs + SizeEventArgsRemainingCoverageTests.cs)
+
+Commit:
+test: coverage SizeEventArgs.cs
+
+Status:
+ALREADY_REMEDIATED
