@@ -4666,3 +4666,21 @@ test: coverage ImPlotInputMap.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (12/12, local coverlet, Ivec4-filtered run)
+
+TestsAdded:
+0 (already covered by committed Ivec4Test.cs / Ivec4RemainingCoverageTests.cs)
+
+Commit:
+test: coverage Ivec4.cs
+
+Status:
+ALREADY_REMEDIATED

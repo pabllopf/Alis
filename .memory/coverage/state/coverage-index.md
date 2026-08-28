@@ -56,6 +56,7 @@ _No previous state available — fresh start after memory cleanup._
 | `ImGuiInputTextCallbackData.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 2 |
 | `ImFontGlyph.cs` (Ui) | 0.0% (SonarCloud, stale) | 100.0% executable lines (plain-[Fact] struct suite) | 2 |
 | `ImPlotInputMap.cs` (Ui/Plot) | 0.0% (SonarCloud, stale) | 100.0% (24/24 local coverlet, existing ImPlotInputMapTests/ImPlotInputMapTest) | 0 (already remediated) |
+| `Ivec4.cs` (Sfml/Render) | 0.0% (SonarCloud, stale) | 100.0% (12/12 local coverlet, existing Ivec4Test/Ivec4RemainingCoverageTests) | 0 (already remediated) |
 
 ## Notable Files with Low Coverage (Filtered)
 
