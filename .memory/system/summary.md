@@ -4720,3 +4720,21 @@ test: coverage Vec3.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, JoystickButton-filtered run)
+
+TestsAdded:
+0 (already covered by committed JoystickButtonEventTest.cs)
+
+Commit:
+test: coverage JoystickButtonEventArgs.cs
+
+Status:
+ALREADY_REMEDIATED

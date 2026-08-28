@@ -59,6 +59,7 @@ _No previous state available — fresh start after memory cleanup._
 | `Ivec4.cs` (Sfml/Render) | 0.0% (SonarCloud, stale) | 100.0% (12/12 local coverlet, existing Ivec4Test/Ivec4RemainingCoverageTests) | 0 (already remediated) |
 | `Vec4.cs` (Sfml/Render) | 0.0% (SonarCloud, stale) | 100.0% (12/12 local coverlet, existing Vec4Test/Vec4RemainingCoverageTests) | 0 (already remediated) |
 | `Vec3.cs` (Sfml/Render) | 0.0% (SonarCloud, stale) | 100.0% (11/11 local coverlet, existing Vec3Test/Vec3RemainingCoverageTests) | 0 (already remediated) |
+| `JoystickButtonEventArgs.cs` (Sfml/Windows) | 0.0% (SonarCloud, stale) | 100.0% (10/10 local coverlet, existing JoystickButtonEventTest) | 0 (already remediated) |
 
 ## Notable Files with Low Coverage (Filtered)
 
