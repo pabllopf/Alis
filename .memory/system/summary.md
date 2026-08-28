@@ -4792,3 +4792,21 @@ test: coverage Ivec2.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (9/9, local coverlet, Vec2-filtered run)
+
+TestsAdded:
+0 (already covered by committed Vec2Test.cs + Vec2RemainingCoverageTests.cs)
+
+Commit:
+test: coverage Vec2.cs
+
+Status:
+ALREADY_REMEDIATED
