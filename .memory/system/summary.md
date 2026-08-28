@@ -4810,3 +4810,21 @@ test: coverage Vec2.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImFontAtlasCustomRect-filtered run)
+
+TestsAdded:
+0 (already covered by committed ImFontAtlasCustomRectTest.cs + ImFontAtlasCustomRectRemainingCoverageTests.cs)
+
+Commit:
+test: coverage ImFontAtlasCustomRect.cs
+
+Status:
+ALREADY_REMEDIATED

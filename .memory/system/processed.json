@@ -262,6 +262,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs"
  ]
 }
