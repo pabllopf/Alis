@@ -4648,3 +4648,21 @@ test: coverage ImFontGlyph.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs
+
+CoverageBefore:
+0.0% (SonarCloud, stale artifact)
+
+CoverageAfter:
+100.0% (24/24, local coverlet, ImPlotInputMap-filtered run)
+
+TestsAdded:
+0 (already covered by committed ImPlotInputMapTests.cs / ImPlotInputMapTest.cs)
+
+Commit:
+test: coverage ImPlotInputMap.cs
+
+Status:
+ALREADY_REMEDIATED
