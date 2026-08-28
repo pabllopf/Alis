@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.2] - 2026-08-28
+### :bug: Bug Fixes
+- [`e0ee223`](https://github.com/pabllopf/Alis/commit/e0ee223a0dfec86dde0e69b8ffe588724c4193b6) - version stable of loading *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`427ebcf`](https://github.com/pabllopf/Alis/commit/427ebcf10ea9f08ab812584e1a4a98933f7a7819) - uni tets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`7853dd0`](https://github.com/pabllopf/Alis/commit/7853dd097550bf0f28aff456dca6df994911cee3) - coverage SensorEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`610004b`](https://github.com/pabllopf/Alis/commit/610004b6213a59cdc4fb2a143b9a137ac14781d5) - coverage ImDrawList.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa31906`](https://github.com/pabllopf/Alis/commit/aa3190672f2b5ed7ba835325b08d7a46a8d36cf6) - coverage LoadingFailedException.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ec31c9`](https://github.com/pabllopf/Alis/commit/2ec31c96bc52fbe5177fa0b9f95d1968092fa886) - coverage LoadingFailedException.cs (Systems) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a315410`](https://github.com/pabllopf/Alis/commit/a315410f7c4eeddd0a03d665be3284e6ceac862c) - coverage StbTexteditState.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a13f144`](https://github.com/pabllopf/Alis/commit/a13f144f945fa5493796a4f7ae21a9239764a88f) - coverage JoystickMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`11d0a3d`](https://github.com/pabllopf/Alis/commit/11d0a3ddeab0b87378f80ea095450ff82e07e07e) - coverage MouseButtonEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`365bead`](https://github.com/pabllopf/Alis/commit/365beade3886192af90485775048a0a38d8e3ddf) - coverage MouseWheelEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2e7498`](https://github.com/pabllopf/Alis/commit/c2e7498a803004a73ebcc94ee1efaaae3d5e670b) - coverage TouchEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02c6ddb`](https://github.com/pabllopf/Alis/commit/02c6ddb915f1982823799243c168b84e4d3978fc) - coverage ImGuiInputTextCallbackData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d16f73`](https://github.com/pabllopf/Alis/commit/8d16f7333d80387245a0d022abf96a9b206652cd) - coverage ImFontGlyph.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1d767fc`](https://github.com/pabllopf/Alis/commit/1d767fcc03f17a2fda6629d8c6a60400cb67bd11) - coverage ImPlotInputMap.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cda3fcd`](https://github.com/pabllopf/Alis/commit/cda3fcd80f574e06eace4ca8a616b48f1207c335) - coverage Ivec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc8dc62`](https://github.com/pabllopf/Alis/commit/dc8dc6253be06a3ca91e5f735f1e74d199024a4c) - coverage Vec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05ea352`](https://github.com/pabllopf/Alis/commit/05ea3526e9e0acfd698f2c1c6b800c56f55e88e0) - coverage Vec3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1e9c04`](https://github.com/pabllopf/Alis/commit/d1e9c04a19785cf9a379ecc9aa2f54d70c302b49) - coverage JoystickButtonEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9673149`](https://github.com/pabllopf/Alis/commit/967314919c7d90d67e614d191d87e86163842084) - coverage MouseMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f004d2f`](https://github.com/pabllopf/Alis/commit/f004d2f15339eb8278465642305783237ef3b080) - coverage SizeEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b97af6e`](https://github.com/pabllopf/Alis/commit/b97af6eda0ac2320f5a487b1c37014d139f7bb8c) - coverage Ivec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a0bd76`](https://github.com/pabllopf/Alis/commit/8a0bd76e427ea9726b34c7c2dfbb11288c49f779) - coverage Vec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.1] - 2026-08-27
 ### :bug: Bug Fixes
 - [`a7dcd4c`](https://github.com/pabllopf/Alis/commit/a7dcd4c51dc41e7130ca7f13bbc2e9ff4f188e79) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10901,3 +10929,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.9]: https://github.com/pabllopf/Alis/compare/v1.2.8...v1.2.9
 [v1.3.0]: https://github.com/pabllopf/Alis/compare/v1.2.9...v1.3.0
 [v1.3.1]: https://github.com/pabllopf/Alis/compare/v1.3.0...v1.3.1
+[v1.3.2]: https://github.com/pabllopf/Alis/compare/v1.3.1...v1.3.2
