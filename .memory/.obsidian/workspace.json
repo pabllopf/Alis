@@ -203,6 +203,9 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/results/ImGuiPlatformMonitor.md",
+    "system/results/Bvec4.md",
+    "system/results/StbTexteditRow.md",
     "system/results/ImGuiWindowClass.md",
     "system/results/ImFontAtlasCustomRect.md",
     "system/results/Vec2.md",
@@ -236,9 +239,6 @@
     "system/results/FilePickerValidator.md",
     "system/results/DialogManager.md",
     "system/results/NetworkServerManager.md",
-    "system/results/DistanceJoint.md",
-    "system/results/WebSocketImplementation.md",
-    "system/results/DelaunayTriangle.md",
     "Sin título.canvas"
   ]
 }
