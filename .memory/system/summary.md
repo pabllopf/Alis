@@ -5314,3 +5314,21 @@ test: coverage ImDrawListSplitter.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Fonts/JetBrains.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (3/3, local coverlet, JetBrains-filtered run)
+
+TestsAdded:
+3 (JetBrainsCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage JetBrains.cs
+
+Status:
+REMEDIATED
