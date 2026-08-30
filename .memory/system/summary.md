@@ -5404,3 +5404,21 @@ test: coverage InternalOs2WmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalVivanteWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, InternalVivanteWmInfo-filtered run)
+
+TestsAdded:
+3 (InternalVivanteWmInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalVivanteWmInfo.cs
+
+Status:
+REMEDIATED
