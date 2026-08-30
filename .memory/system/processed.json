@@ -286,6 +286,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec2.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Vertex.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalDirectfbWmInfo.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWindowsWmInfo.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWindowsWmInfo.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmdHeader.cs"
  ]
 }
