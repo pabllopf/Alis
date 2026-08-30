@@ -5044,3 +5044,21 @@ test: coverage ImgAnimation.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiKeyData.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImGuiKeyData-filtered run)
+
+TestsAdded:
+3 (ImGuiKeyDataCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiKeyData.cs
+
+Status:
+REMEDIATED
