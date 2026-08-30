@@ -5026,3 +5026,21 @@ test: coverage ImGuiSizeCallbackData.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImgAnimation-filtered run)
+
+TestsAdded:
+3 (ImgAnimationCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImgAnimation.cs
+
+Status:
+REMEDIATED
