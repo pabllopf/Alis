@@ -290,6 +290,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmdHeader.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawVert.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformImeData.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableSortSpecs.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableSortSpecs.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListSplitter.cs"
  ]
 }
