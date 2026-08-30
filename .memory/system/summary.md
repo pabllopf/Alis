@@ -5440,3 +5440,21 @@ test: coverage InternalX11WmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalGameControllerButtonBindHat.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, InternalGameControllerButtonBindHat-filtered run)
+
+TestsAdded:
+3 (InternalGameControllerButtonBindHatCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalGameControllerButtonBindHat.cs
+
+Status:
+REMEDIATED
