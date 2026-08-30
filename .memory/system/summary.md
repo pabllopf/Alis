@@ -5098,3 +5098,21 @@ test: coverage ImGuiTextFilter.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawChannel.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, ImDrawChannel-filtered run)
+
+TestsAdded:
+4 (ImDrawChannelCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImDrawChannel.cs
+
+Status:
+REMEDIATED
