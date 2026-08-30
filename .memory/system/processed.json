@@ -280,6 +280,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiKeyData.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableColumnSortSpecs.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawChannel.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawChannel.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs"
  ]
 }

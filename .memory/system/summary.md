@@ -5116,3 +5116,21 @@ test: coverage ImDrawChannel.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, JoystickConnectEventArgs-filtered run)
+
+TestsAdded:
+4 (JoystickConnectEventArgsCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage JoystickConnectEventArgs.cs
+
+Status:
+REMEDIATED
