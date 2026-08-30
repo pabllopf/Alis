@@ -5458,3 +5458,21 @@ test: coverage InternalGameControllerButtonBindHat.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextRange.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, ImGuiTextRange-filtered run)
+
+TestsAdded:
+3 (ImGuiTextRangeCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiTextRange.cs
+
+Status:
+REMEDIATED
