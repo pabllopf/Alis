@@ -5260,3 +5260,21 @@ test: coverage ImDrawVert.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformImeData.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (3/3, local coverlet, ImGuiPlatformImeData-filtered run)
+
+TestsAdded:
+3 (ImGuiPlatformImeDataCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiPlatformImeData.cs
+
+Status:
+REMEDIATED
