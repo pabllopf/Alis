@@ -5170,3 +5170,21 @@ test: coverage Bvec2.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Vertex.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (3/3, local coverlet, Vertex-filtered run)
+
+TestsAdded:
+3 (VertexCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage Vertex.cs
+
+Status:
+REMEDIATED
