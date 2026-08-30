@@ -298,6 +298,7 @@
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalAndroidWminfo.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalMirWmInfo.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalOs2WmInfo.cs",
-        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalVivanteWmInfo.cs"
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalVivanteWmInfo.cs",
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalX11WmInfo.cs"
     ]
 }
