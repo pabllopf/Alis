@@ -4990,3 +4990,21 @@ test: coverage Ivec3.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Version.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 5 uncovered lines)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, Version-filtered run)
+
+TestsAdded:
+5 (VersionCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage Version.cs
+
+Status:
+REMEDIATED
