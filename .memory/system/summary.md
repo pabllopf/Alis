@@ -5206,3 +5206,21 @@ test: coverage InternalDirectfbWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWindowsWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (3/3, local coverlet, InternalWindowsWmInfo-filtered run)
+
+TestsAdded:
+3 (InternalWindowsWmInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalWindowsWmInfo.cs
+
+Status:
+REMEDIATED
