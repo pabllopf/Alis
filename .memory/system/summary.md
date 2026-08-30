@@ -5332,3 +5332,21 @@ test: coverage JetBrains.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/PixelFormat.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (2/2, local coverlet, PixelFormat-filtered run)
+
+TestsAdded:
+3 (PixelFormatCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage PixelFormat.cs
+
+Status:
+REMEDIATED
