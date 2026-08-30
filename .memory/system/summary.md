@@ -5152,3 +5152,21 @@ test: coverage TextEventArgs.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec2.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, Bvec2-filtered run)
+
+TestsAdded:
+3 (Bvec2CoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage Bvec2.cs
+
+Status:
+REMEDIATED
