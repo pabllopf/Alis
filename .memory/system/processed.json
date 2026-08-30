@@ -304,6 +304,7 @@
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextRange.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImguiIo.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStoragePair.cs",
-        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotPoint.cs"
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotPoint.cs",
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotRange.cs"
     ]
 }
