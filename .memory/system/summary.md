@@ -5062,3 +5062,21 @@ test: coverage ImGuiKeyData.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableColumnSortSpecs.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImGuiTableColumnSortSpecs-filtered run)
+
+TestsAdded:
+3 (ImGuiTableColumnSortSpecsCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiTableColumnSortSpecs.cs
+
+Status:
+REMEDIATED
