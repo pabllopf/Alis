@@ -4864,3 +4864,21 @@ test: coverage InternalWaylandWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiListClipper.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 6 uncovered lines)
+
+CoverageAfter:
+100.0% (12/12, local coverlet, ImGuiListClipper-filtered run)
+
+TestsAdded:
+4 (ImGuiListClipperCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiListClipper.cs
+
+Status:
+REMEDIATED
