@@ -4846,3 +4846,21 @@ test: coverage ImGuiWindowClass.cs
 
 Status:
 ALREADY_REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWaylandWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 6 uncovered lines)
+
+CoverageAfter:
+100.0% (12/12, local coverlet, InternalWaylandWmInfo-filtered run)
+
+TestsAdded:
+3 (InternalWaylandWmInfoRemainingCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalWaylandWmInfo.cs
+
+Status:
+REMEDIATED
