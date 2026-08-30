@@ -5188,3 +5188,21 @@ test: coverage Vertex.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalDirectfbWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (3/3, local coverlet, InternalDirectfbWmInfo-filtered run)
+
+TestsAdded:
+3 (InternalDirectfbWmInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalDirectfbWmInfo.cs
+
+Status:
+REMEDIATED
