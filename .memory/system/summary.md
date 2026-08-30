@@ -4882,3 +4882,21 @@ test: coverage ImGuiListClipper.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditRow.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 6 uncovered lines)
+
+CoverageAfter:
+100.0% (12/12, local coverlet, StbTexteditRow-filtered run)
+
+TestsAdded:
+3 (StbTexteditRowCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage StbTexteditRow.cs
+
+Status:
+REMEDIATED
