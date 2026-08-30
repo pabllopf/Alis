@@ -5008,3 +5008,21 @@ test: coverage Version.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiSizeCallbackData.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 4 uncovered lines)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImGuiSizeCallbackData-filtered run)
+
+TestsAdded:
+3 (ImGuiSizeCallbackDataCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiSizeCallbackData.cs
+
+Status:
+REMEDIATED

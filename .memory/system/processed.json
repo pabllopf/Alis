@@ -274,6 +274,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesIO.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec3.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec3.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Version.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Version.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiSizeCallbackData.cs"
  ]
 }
