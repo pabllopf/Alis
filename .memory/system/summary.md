@@ -5512,3 +5512,21 @@ test: coverage ImGuiStoragePair.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotPoint.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, ImPlotPoint-filtered run)
+
+TestsAdded:
+3 (ImPlotPointCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImPlotPoint.cs
+
+Status:
+REMEDIATED
