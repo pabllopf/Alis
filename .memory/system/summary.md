@@ -4900,3 +4900,21 @@ test: coverage StbTexteditRow.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 6 uncovered lines)
+
+CoverageAfter:
+100.0% (12/12, local coverlet, Bvec4-filtered run)
+
+TestsAdded:
+4 (Bvec4CoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage Bvec4.cs
+
+Status:
+REMEDIATED
