@@ -295,6 +295,7 @@
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Fonts/JetBrains.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/PixelFormat.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/UserEvent.cs",
-        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalAndroidWminfo.cs"
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalAndroidWminfo.cs",
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalMirWmInfo.cs"
     ]
 }

@@ -5368,3 +5368,21 @@ test: coverage InternalAndroidWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalMirWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, InternalMirWmInfo-filtered run)
+
+TestsAdded:
+3 (InternalMirWmInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalMirWmInfo.cs
+
+Status:
+REMEDIATED
