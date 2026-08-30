@@ -5566,3 +5566,21 @@ test: coverage ImPlotRect.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/RendererInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, RendererInfo-filtered run)
+
+TestsAdded:
+4 (RendererInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage RendererInfo.cs
+
+Status:
+REMEDIATED
