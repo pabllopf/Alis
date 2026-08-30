@@ -5080,3 +5080,21 @@ test: coverage ImGuiTableColumnSortSpecs.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (8/8, local coverlet, ImGuiTextFilter-filtered run)
+
+TestsAdded:
+3 (ImGuiTextFilterCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiTextFilter.cs
+
+Status:
+REMEDIATED

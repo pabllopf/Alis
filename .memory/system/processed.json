@@ -278,6 +278,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiSizeCallbackData.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiKeyData.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableColumnSortSpecs.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTableColumnSortSpecs.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs"
  ]
 }
