@@ -4936,3 +4936,21 @@ test: coverage ImGuiPlatformMonitor.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesIO.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 5 uncovered lines)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, ImNodesIO-filtered run)
+
+TestsAdded:
+3 (ImNodesIOCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImNodesIO.cs
+
+Status:
+REMEDIATED
