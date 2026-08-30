@@ -5602,3 +5602,21 @@ test: coverage KeyboardEvent.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DisplayMode.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 1 uncovered lines)
+
+CoverageAfter:
+100.0% (2/2, local coverlet, DisplayMode-filtered run)
+
+TestsAdded:
+3 (DisplayModeCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage DisplayMode.cs
+
+Status:
+REMEDIATED

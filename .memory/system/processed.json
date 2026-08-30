@@ -308,6 +308,7 @@
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotRange.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotRect.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/RendererInfo.cs",
-        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/KeyboardEvent.cs"
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/KeyboardEvent.cs",
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DisplayMode.cs"
     ]
 }
