@@ -5494,3 +5494,21 @@ test: coverage ImguiIo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStoragePair.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, ImGuiStoragePair-filtered run)
+
+TestsAdded:
+3 (ImGuiStoragePairCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiStoragePair.cs
+
+Status:
+REMEDIATED
