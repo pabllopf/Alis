@@ -203,6 +203,11 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/results/ImGuiWindowClass.md",
+    "system/results/ImFontAtlasCustomRect.md",
+    "system/results/Vec2.md",
+    "system/results/Ivec2.md",
+    "system/results/SizeEventArgs.md",
     "system/results/MouseMoveEventArgs.md",
     "system/results/JoystickButtonEventArgs.md",
     "system/results/Vec3.md",
@@ -234,11 +239,6 @@
     "system/results/DistanceJoint.md",
     "system/results/WebSocketImplementation.md",
     "system/results/DelaunayTriangle.md",
-    "system/results/FilePickerResult.md",
-    "system/results/SimplePriorityQueue.md",
-    "system/results/WheelJoint.md",
-    "system/results/WindowsFilePicker.md",
-    "system/results/Collision.md",
     "Sin título.canvas"
   ]
 }
