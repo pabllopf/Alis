@@ -4972,3 +4972,21 @@ test: coverage Bvec3.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec3.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 5 uncovered lines)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, Ivec3-filtered run)
+
+TestsAdded:
+4 (Ivec3CoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage Ivec3.cs
+
+Status:
+REMEDIATED
