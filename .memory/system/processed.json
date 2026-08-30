@@ -269,6 +269,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWaylandWmInfo.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiListClipper.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditRow.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Bvec4.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformMonitor.cs"
  ]
 }

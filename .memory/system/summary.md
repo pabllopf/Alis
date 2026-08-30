@@ -4918,3 +4918,21 @@ test: coverage Bvec4.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformMonitor.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 6 uncovered lines)
+
+CoverageAfter:
+100.0% (10/10, local coverlet, ImGuiPlatformMonitor-filtered run)
+
+TestsAdded:
+3 (ImGuiPlatformMonitorCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImGuiPlatformMonitor.cs
+
+Status:
+REMEDIATED
