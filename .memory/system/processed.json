@@ -301,6 +301,7 @@
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalVivanteWmInfo.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalX11WmInfo.cs",
         "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalGameControllerButtonBindHat.cs",
-        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextRange.cs"
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextRange.cs",
+        "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImguiIo.cs"
     ]
 }

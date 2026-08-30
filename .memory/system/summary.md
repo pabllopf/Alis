@@ -5476,3 +5476,21 @@ test: coverage ImGuiTextRange.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImguiIo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, ImguiIo-filtered run)
+
+TestsAdded:
+3 (ImguiIoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage ImguiIo.cs
+
+Status:
+REMEDIATED
