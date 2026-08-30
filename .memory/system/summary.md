@@ -5134,3 +5134,21 @@ test: coverage JoystickConnectEventArgs.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 3 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, TextEventArgs-filtered run)
+
+TestsAdded:
+4 (TextEventArgsCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage TextEventArgs.cs
+
+Status:
+REMEDIATED
