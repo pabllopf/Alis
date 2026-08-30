@@ -5386,3 +5386,21 @@ test: coverage InternalMirWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalOs2WmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; 2 uncovered lines)
+
+CoverageAfter:
+100.0% (4/4, local coverlet, InternalOs2WmInfo-filtered run)
+
+TestsAdded:
+3 (InternalOs2WmInfoCoverageTests.cs, plain [Fact])
+
+Commit:
+test: coverage InternalOs2WmInfo.cs
+
+Status:
+REMEDIATED
