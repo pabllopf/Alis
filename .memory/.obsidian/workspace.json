@@ -203,6 +203,7 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260831_123603.json",
     "system/results/ImGuiPlatformMonitor.md",
     "system/results/Bvec4.md",
     "system/results/StbTexteditRow.md",
@@ -238,7 +239,6 @@
     "system/results/GravityController.md",
     "system/results/FilePickerValidator.md",
     "system/results/DialogManager.md",
-    "system/results/NetworkServerManager.md",
     "Sin título.canvas"
   ]
 }
