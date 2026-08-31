@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.3] - 2026-08-31
+### :bug: Bug Fixes
+- [`445e3df`](https://github.com/pabllopf/Alis/commit/445e3dfa4d1d69fda15eaea9021b4f3d512a4635) - memory *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`6108948`](https://github.com/pabllopf/Alis/commit/610894809f3c33edb6525f2d9a34e9178766feb1) - coverage ImFontAtlasCustomRect.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79eccb0`](https://github.com/pabllopf/Alis/commit/79eccb02c6923a5c9fa4cd11ff646613805459c7) - coverage ImGuiWindowClass.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a2cd0e`](https://github.com/pabllopf/Alis/commit/2a2cd0ec0dc310c6ed990c6c1464c20d02efab0e) - coverage InternalWaylandWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e48153`](https://github.com/pabllopf/Alis/commit/6e481539f56f713845bb5bfb67b2af7b932ccd6b) - coverage ImGuiListClipper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`71a6d11`](https://github.com/pabllopf/Alis/commit/71a6d11db443b3f68130682ae40520049a6380e2) - coverage StbTexteditRow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9967a46`](https://github.com/pabllopf/Alis/commit/9967a46ab0763f2d61a6414e737930ca40bb78ae) - coverage Bvec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6a863c8`](https://github.com/pabllopf/Alis/commit/6a863c85b34b99fbb2999381b39bba879a8348a7) - coverage ImGuiPlatformMonitor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c411304`](https://github.com/pabllopf/Alis/commit/c4113041f20fe26a0d566328c30d8adcce88bc90) - coverage ImNodesIO.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`86fb0d3`](https://github.com/pabllopf/Alis/commit/86fb0d3f09ff18db9f7ab6b4534e8fe93bedce90) - coverage Bvec3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7a7dff`](https://github.com/pabllopf/Alis/commit/c7a7dff4ef508171e2f876e58a57a23f0b8f1476) - coverage Ivec3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a4e0db`](https://github.com/pabllopf/Alis/commit/4a4e0db0e6c0a2251b4d1c12afa77ec503aac20f) - coverage Version.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3eddfa`](https://github.com/pabllopf/Alis/commit/f3eddfa2ea6a414fbc9ccfbe541ed4da796b5f5c) - coverage ImGuiSizeCallbackData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2c62931`](https://github.com/pabllopf/Alis/commit/2c62931a03e6599093d3fefa1d7c8285f54aa838) - coverage ImgAnimation.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`123862f`](https://github.com/pabllopf/Alis/commit/123862ff1887905114cc47d8d23ac2f0825c873b) - coverage ImGuiKeyData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0904cb0`](https://github.com/pabllopf/Alis/commit/0904cb0a63dd792ae816d20cd65a086e2bc2c8bc) - coverage ImGuiTableColumnSortSpecs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4b2700b`](https://github.com/pabllopf/Alis/commit/4b2700bd21f8c18e915d0c87492fb4e741db68be) - coverage ImGuiTextFilter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d67299c`](https://github.com/pabllopf/Alis/commit/d67299c550501754f3261a03fec9fd8f9919e3ac) - coverage ImDrawChannel.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e720843`](https://github.com/pabllopf/Alis/commit/e7208439e59434a0f479f3ed7cfebe8b23822828) - coverage JoystickConnectEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d84db19`](https://github.com/pabllopf/Alis/commit/d84db19ae040d0b028085be263db7945cdd462ca) - coverage TextEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14ad25d`](https://github.com/pabllopf/Alis/commit/14ad25d50c598d7323f401db1d58a7c0eead90b6) - coverage Bvec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e88fdc9`](https://github.com/pabllopf/Alis/commit/e88fdc9bb3018bf483d4ad7e1b5fe6a0057b9a77) - coverage Vertex.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d474527`](https://github.com/pabllopf/Alis/commit/d47452791290c4a14e6868cf1fd35187ec98c22c) - coverage InternalDirectfbWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5175d4a`](https://github.com/pabllopf/Alis/commit/5175d4a6a940961956b79a9d0549ea30af2c6027) - coverage InternalWindowsWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7b8bdf`](https://github.com/pabllopf/Alis/commit/e7b8bdfb8630b8e1510afe76b0107a1023b6fa63) - coverage ImDrawCmdHeader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b82cac`](https://github.com/pabllopf/Alis/commit/6b82cac0e62ed553f4424431c5d0f2b13cc6a8be) - coverage ImDrawVert.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3937aa5`](https://github.com/pabllopf/Alis/commit/3937aa529d289479025adff5fb8b3de9b391e767) - coverage ImGuiPlatformImeData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea6b152`](https://github.com/pabllopf/Alis/commit/ea6b1526cdf5d2c97b86704f3d6eb0a068f6d5b9) - coverage ImGuiTableSortSpecs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad6ef9b`](https://github.com/pabllopf/Alis/commit/ad6ef9b7e3c5e8e225a5d705744fe70b1340d82e) - coverage ImDrawListSplitter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e315b7a`](https://github.com/pabllopf/Alis/commit/e315b7a0bf4fedaf114949430fb0d7e92b06965b) - coverage JetBrains.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`efb27be`](https://github.com/pabllopf/Alis/commit/efb27be99479b0bcccbf6c8b4a143994247a8591) - coverage PixelFormat.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6538e43`](https://github.com/pabllopf/Alis/commit/6538e43ff4190ab3a09cc8461337782ce04a4fe5) - coverage InternalAndroidWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`852d07f`](https://github.com/pabllopf/Alis/commit/852d07f8ad9bc12dcfa4af9c7642c4f6fd6c62b9) - coverage InternalMirWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a9ff81`](https://github.com/pabllopf/Alis/commit/3a9ff81783cee810f94f09ba51534745e67aa337) - coverage InternalOs2WmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7bdcc20`](https://github.com/pabllopf/Alis/commit/7bdcc206d3100636255607fb7e8a9223bcdf9f44) - coverage InternalVivanteWmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e99a0d9`](https://github.com/pabllopf/Alis/commit/e99a0d9c2cc7a1f7e482857de96e1f864312c3e0) - coverage InternalX11WmInfo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20c7269`](https://github.com/pabllopf/Alis/commit/20c72697736a83ccdc44edf0de16119b93533a3e) - coverage InternalGameControllerButtonBindHat.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29e2f32`](https://github.com/pabllopf/Alis/commit/29e2f32d96ed2a31b3472970a968d838ac6e53ac) - coverage ImGuiTextRange.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.2] - 2026-08-28
 ### :bug: Bug Fixes
 - [`e0ee223`](https://github.com/pabllopf/Alis/commit/e0ee223a0dfec86dde0e69b8ffe588724c4193b6) - version stable of loading *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -10930,3 +10974,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.0]: https://github.com/pabllopf/Alis/compare/v1.2.9...v1.3.0
 [v1.3.1]: https://github.com/pabllopf/Alis/compare/v1.3.0...v1.3.1
 [v1.3.2]: https://github.com/pabllopf/Alis/compare/v1.3.1...v1.3.2
+[v1.3.3]: https://github.com/pabllopf/Alis/compare/v1.3.2...v1.3.3
