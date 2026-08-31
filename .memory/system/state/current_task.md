@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 135 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 152 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/UserEvent.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    2
+    1
 
     ### Uncovered Branches
     0
 
     ### Method
-    UserEvent
+    DropEvent
 
     ### Complexity / LOC
-    4 / 15 lines
+    2 / 14 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:UserEvent.cs
+//  File:DropEvent.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -58,49 +58,49 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl user event
+    ///     The sdl drop event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct UserEvent
+    public struct DropEvent
     {
         /// <summary>
         ///     The type
         /// </summary>
-        public uint type;
+        public readonly EventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
+
+        /// <summary>
+        ///     The file
+        /// </summary>
+        public IntPtr File { get; set; }
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
-
-        /// <summary>
-        ///     The code
-        /// </summary>
-        public int code;
-
+        public readonly uint windowID;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/Structs/UserEventTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/Structs/DropEventTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/UserEvent.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage UserEvent.cs
+    Commit format: test: coverage DropEvent.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

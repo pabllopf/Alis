@@ -1,20 +1,28 @@
-# Result: ImGuiIO.cs
+# Result: ImguiIo.cs
 
-File: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 100.0% (741/741 lines, local coverlet)
-TestsAdded: 0 (already covered by the committed ImGuiIo test surface)
-Commit: test: coverage ImGuiIO.cs
-Status: ALREADY_REMEDIATED
+File: `1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImguiIo.cs`
+CoverageBefore: 0.0% (SonarCloud; 2 uncovered lines)
+CoverageAfter: 100.0% (4/4, local coverlet, ImguiIo-filtered run)
+TestsAdded: 3 (ImguiIoCoverageTests.cs, plain [Fact])
+Commit: test: coverage ImguiIo.cs
+Status: REMEDIATED
 
 ## Summary
 
-ImGuiIO.cs is the `ImGuiIo` struct (managed auto-properties mirroring the native ImGuiIO
-layout). A clean local coverlet run (net8.0, Debug, ImGuiIo filter — 1750 tests from the
-committed Ui suite, including ImGuiIoTest/ImGuiIoPtrTest/ImGuiIoPtrTests and the IOPtr
-coverage suites) measures 741/741 lines (100.0%).
+ImguiIo.cs is a struct with 2 auto-properties (an `EmulateThreeButtonMouse` struct holding
+a `byte[] Modifier`, and a `LinkDetachWithModifierClick` struct holding a `byte[] Modifier`).
+Only the property getter/setter lines are instrumented.
+
+Committed `ImguiIoTest.cs` / `ImguiIoRemainingCoverageTests.cs` already covered the type but
+all tests use `[RequireCImguiSystemFact]`, which skips when the native cimgui library cannot
+be resolved (CI/SonarCloud run), hence 0.0%.
+
+Added `ImguiIoCoverageTests.cs` (3 plain `[Fact]`, namespace Alis.Extension.Graphic.Ui.Test):
+default (null Modifier) values, set/store round trip on both properties, and value-type copy
+reference sharing. The run also exercises the sibling `EmulateThreeButtonMouse` (2/2) and
+`LinkDetachWithModifierClick` (2/2) structs.
 
 ## Verification
 
-- ImGuiIo filter (net8.0, Debug): 1750 passed, 0 failed, 0 skipped.
-- Local coverlet: ImGuiIO.cs 741/741 lines (100.0%), no uncovered lines.
+- ImguiIo-filtered run: 3 passed / 0 failed (net8.0).
+- Local coverlet: ImguiIo.cs 100.0% (4/4 instrumented lines, line-rate 1.0, branch-rate 1.0).
