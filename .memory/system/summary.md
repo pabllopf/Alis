@@ -5710,3 +5710,21 @@ test: coverage InternalWinrtWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiOnceUponAFrame.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireCImguiSystemFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+4 (ImGuiOnceUponAFrameExecutionTests.cs: RefFrame round-trip/overwrite/default + copy independence)
+
+Commit:
+test: coverage ImGuiOnceUponAFrame.cs
+
+Status:
+REMEDIATED
