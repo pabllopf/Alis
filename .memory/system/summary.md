@@ -5692,3 +5692,21 @@ test: coverage InternalCocoaWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalWinrtWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+4 (InternalWinrtWmInfoCoverageTests.cs: Window round-trip/overwrite/default + copy independence)
+
+Commit:
+test: coverage InternalWinrtWmInfo.cs
+
+Status:
+REMEDIATED
