@@ -1,7 +1,7 @@
 {
   "project_key": "pabllopf-official_alis",
   "branch": "master",
-  "cached_at": "2026-08-28T07:13:55.810250+00:00",
+  "cached_at": "2026-08-31T20:01:49.867559+00:00",
   "total_files": 1473,
   "components": [
     {
@@ -17195,13 +17195,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -17209,8 +17209,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "12",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -17676,13 +17676,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -17690,8 +17690,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "12",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -24734,13 +24734,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -24748,8 +24748,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "13",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -26079,13 +26079,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -26093,8 +26093,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "15",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -28029,13 +28029,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -28043,8 +28043,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "13",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -28254,13 +28254,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -28268,8 +28268,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "13",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -37327,13 +37327,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -37341,8 +37341,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "14",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
@@ -38959,13 +38959,13 @@
         },
         {
           "metric": "coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "line_coverage",
-          "value": "0.0",
-          "bestValue": false
+          "value": "100.0",
+          "bestValue": true
         },
         {
           "metric": "ncloc",
@@ -38973,8 +38973,8 @@
         },
         {
           "metric": "uncovered_lines",
-          "value": "13",
-          "bestValue": false
+          "value": "0",
+          "bestValue": true
         }
       ]
     },
