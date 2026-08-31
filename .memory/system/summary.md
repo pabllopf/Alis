@@ -5890,3 +5890,21 @@ none
 
 Status:
 BLOCKED_BY_PRODUCTION_CODE (System.Numerics.BitOperations collides with BCL type: CS0433; disambiguation requires csproj extern alias, forbidden)
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs
+
+CoverageBefore:
+33.3% (SonarCloud)
+
+CoverageAfter:
+100.0% (all 9 generic factory classes line-rate=1, local coverlet)
+
+TestsAdded:
+27 (UpdateRunnerFactoryCoverageTests.cs: Create/CreateStack/CreateStronglyTyped for arities 0-8)
+
+Commit:
+test: coverage UpdateRunnerFactory.cs
+
+Status:
+REMEDIATED
