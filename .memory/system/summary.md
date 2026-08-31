@@ -5656,3 +5656,21 @@ test: coverage InternalUikitWmInfo.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/SysWmEvent.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+4 (SysWmEventCoverageTests.cs: Msg round-trip/overwrite/default + copy independence)
+
+Commit:
+test: coverage SysWmEvent.cs
+
+Status:
+REMEDIATED
