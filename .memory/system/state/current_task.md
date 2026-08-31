@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 152 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 178 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    33.3% (Line: 33.3%, Branch: None%)
 
     ### Uncovered Lines
-    1
+    18
 
     ### Uncovered Branches
     0
 
     ### Method
-    DropEvent
+    UpdateRunnerFactory
 
     ### Complexity / LOC
-    2 / 14 lines
+    27 / 78 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:DropEvent.cs
+//  File:UpdateRunnerFactory.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Sdl2.Enums;
+using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Extension.Graphic.Sdl2.Structs
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
-    ///     The sdl drop event
+    ///     The update runner factory class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct DropEvent
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
+    public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
+        where TComp : IOnUpdate
     {
         /// <summary>
-        ///     The type
+        ///     Creates the capacity
         /// </summary>
-        public readonly EventType type;
+        /// <param name="capacity">The capacity</param>
+        /// <returns>The component storage base</returns>
+        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp>(capacity);
 
         /// <summary>
-        ///     The timestamp
+        ///     Creates the stack
         /// </summary>
-        public readonly uint timestamp;
+        /// <returns>The id table</returns>
+        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
 
         /// <summary>
-        ///     The file
+        ///     Creates the strongly typed using the specified capacity
         /// </summary>
-        public IntPtr File { get; set; }
-
-        /// <summary>
-        ///     The window id
-        /// </summary>
-        public readonly uint windowID;
+        /// <param name="capacity">The capacity</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/Structs/DropEventTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/Updating/Runners/UpdateRunnerFactoryTests.cs
 
     Priority
-    CRITICAL (NEW)
+    HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DropEvent.cs
+    Commit format: test: coverage UpdateRunnerFactory.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
