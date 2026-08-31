@@ -5908,3 +5908,21 @@ test: coverage UpdateRunnerFactory.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/AudioSpec.cs
+
+CoverageBefore:
+33.3% (SonarCloud)
+
+CoverageAfter:
+100.0% (all properties/fields exercised via plain [Fact] tests, local coverlet)
+
+TestsAdded:
+10 (AudioSpecCoverageTests.cs)
+
+Commit:
+test: coverage AudioSpec.cs
+
+Status:
+REMEDIATED
