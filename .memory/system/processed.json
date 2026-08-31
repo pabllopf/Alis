@@ -312,6 +312,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DisplayMode.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalUikitWmInfo.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/SysWmEvent.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/SysWmEvent.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalCocoaWmInfo.cs"
   ]
 }
