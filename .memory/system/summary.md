@@ -5746,3 +5746,21 @@ test: coverage ImGuiStorage.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextBuffer.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireCImguiSystemFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+4 (ImGuiTextBufferExecutionTests.cs: Buf ImVector round-trip/overwrite/default + copy independence)
+
+Commit:
+test: coverage ImGuiTextBuffer.cs
+
+Status:
+REMEDIATED
