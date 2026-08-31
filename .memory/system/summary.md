@@ -5872,3 +5872,21 @@ test: coverage ImGuiViewport.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs
+
+CoverageBefore:
+31.0% (SonarCloud)
+
+CoverageAfter:
+UNCHANGED
+
+TestsAdded:
+0
+
+Commit:
+none
+
+Status:
+BLOCKED_BY_PRODUCTION_CODE (System.Numerics.BitOperations collides with BCL type: CS0433; disambiguation requires csproj extern alias, forbidden)
