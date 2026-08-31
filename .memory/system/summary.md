@@ -5854,3 +5854,21 @@ test: coverage ImGuiViewportPtr.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewport.cs
+
+CoverageBefore:
+11.8% (SonarCloud; existing tests skipped by RequireCImguiSystemFact)
+
+CoverageAfter:
+100.0% (local coverlet, line/branch 1.0)
+
+TestsAdded:
+18 (ImGuiViewportExecutionTests.cs: round-trip + default for all 17 properties)
+
+Commit:
+test: coverage ImGuiViewport.cs
+
+Status:
+REMEDIATED
