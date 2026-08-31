@@ -5818,3 +5818,21 @@ test: coverage NativeSdlTtf.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/TextEditingEvent.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+2 (TextEditingEventCoverageTests.cs: Text getter null-on-zero-ptr + readonly field defaults)
+
+Commit:
+test: coverage TextEditingEvent.cs
+
+Status:
+REMEDIATED
