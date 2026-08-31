@@ -5836,3 +5836,21 @@ test: coverage TextEditingEvent.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewportPtr.cs
+
+CoverageBefore:
+3.8% (SonarCloud; existing tests skipped by RequireCImguiSystemFact)
+
+CoverageAfter:
+100.0% (26/26 instrumented lines, local coverlet)
+
+TestsAdded:
+22 (ImGuiViewportPtrExecutionTests.cs: ctors, implicit ops, Marshal getters/setters via pinned buffer)
+
+Commit:
+test: coverage ImGuiViewportPtr.cs
+
+Status:
+REMEDIATED
