@@ -5638,3 +5638,21 @@ test: coverage DropEvent.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/InternalUikitWmInfo.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+5 (InternalUikitWmInfoCoverageTests.cs: Window round-trip/overwrite/default + buffer field defaults + copy independence)
+
+Commit:
+test: coverage InternalUikitWmInfo.cs
+
+Status:
+REMEDIATED
