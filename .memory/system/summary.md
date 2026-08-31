@@ -5782,3 +5782,21 @@ test: coverage LinkDetachWithModifierClick.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireCImguiSystemFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+3 (MultipleSelectModifierCoverageTests.cs: Modifier byte[] round-trip/overwrite/default)
+
+Commit:
+test: coverage MultipleSelectModifier.cs
+
+Status:
+REMEDIATED
