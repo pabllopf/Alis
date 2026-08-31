@@ -5800,3 +5800,21 @@ test: coverage MultipleSelectModifier.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/NativeSdlTtf.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+1 (NativeSdlTtfCoverageTests.cs: InternalGetTtfVersion returns compiled version)
+
+Commit:
+test: coverage NativeSdlTtf.cs
+
+Status:
+REMEDIATED

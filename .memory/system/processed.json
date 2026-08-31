@@ -319,6 +319,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStorage.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextBuffer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/LinkDetachWithModifierClick.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/NativeSdlTtf.cs"
   ]
 }
