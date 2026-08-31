@@ -5926,3 +5926,21 @@ test: coverage AudioSpec.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs
+
+CoverageBefore:
+78.4% (SonarCloud, 64 uncovered lines / 12 branches)
+
+CoverageAfter:
+100.0% line + branch (local coverlet: line-rate=1, branch-rate=1)
+
+TestsAdded:
+4 (QueryIterationExtensionsCoverageTests.cs: Delegate/Inline arity 2 and 8 non-empty)
+
+Commit:
+test: coverage QueryIterationExtensions.cs
+
+Status:
+REMEDIATED
