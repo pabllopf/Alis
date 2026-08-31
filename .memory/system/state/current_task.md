@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 178 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 179 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/AudioSpec.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     33.3% (Line: 33.3%, Branch: None%)
 
     ### Uncovered Lines
-    18
+    4
 
     ### Uncovered Branches
     0
 
     ### Method
-    UpdateRunnerFactory
+    AudioSpec
 
     ### Complexity / LOC
-    27 / 78 lines
+    12 / 18 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:UpdateRunnerFactory.cs
+//  File:AudioSpec.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Collections;
+using System;
+using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sdl2.Delegates;
 
-namespace Alis.Core.Ecs.Updating.Runners
+namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The update runner factory class
+    ///     The sdl audio spec
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory" />
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
-    public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IOnUpdate
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct AudioSpec
     {
         /// <summary>
-        ///     Creates the capacity
+        ///     The freq
         /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>The component storage base</returns>
-        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp>(capacity);
+        public int Freq { get; set; }
 
         /// <summary>
-        ///     Creates the stack
+        ///     The SDL_AudioFormat
         /// </summary>
-        /// <returns>The id table</returns>
-        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
+        public ushort Format { get; set; }
 
         /// <summary>
-        ///     Creates the strongly typed using the specified capacity
+        ///     The channels
         /// </summary>
-        /// <param name="capacity">The capacity</param>
+        public byte Channels { get; set; }
+
+        /// <summary>
+        ///     The silence
+        /// </summary>
+        public readonly byte silence;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Updating/Runners/UpdateRunnerFactoryTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/test/Structs/AudioSpecTests.cs
 
     Priority
     HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/AudioSpec.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage UpdateRunnerFactory.cs
+    Commit format: test: coverage AudioSpec.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
