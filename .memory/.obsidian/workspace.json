@@ -203,6 +203,8 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/state/skip_probe.md",
+    "system/cache/sonarcloud_cache_20260831_195909.json",
     "system/cache/sonarcloud_cache_20260831_123603.json",
     "system/results/ImGuiPlatformMonitor.md",
     "system/results/Bvec4.md",
@@ -228,8 +230,6 @@
     "system/cache/sonarcloud_cache_20260817_101136.json",
     "system/covertall/locks",
     "system/covertall",
-    "system/cache/sonarcloud_cache_20260816_181433.json",
-    "system/cache/sonarcloud_cache_20260816_141803.json",
     "system/results/DynamicTree.md",
     "system/results/GearJoint.md",
     "system/results/CommandBuffer.md",
