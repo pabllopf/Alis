@@ -5620,3 +5620,21 @@ test: coverage DisplayMode.cs
 
 Status:
 REMEDIATED
+
+File:
+pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs
+
+CoverageBefore:
+0.0% (SonarCloud; existing tests skipped by RequireSdl2ImageFact)
+
+CoverageAfter:
+100.0% (1/1 instrumented line, local coverlet)
+
+TestsAdded:
+4 (DropEventCoverageTests.cs: File round-trip/overwrite/default + struct copy independence)
+
+Commit:
+test: coverage DropEvent.cs
+
+Status:
+REMEDIATED
