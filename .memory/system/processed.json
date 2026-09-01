@@ -7,6 +7,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP3.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP5.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP6.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP6.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs"
   ]
 }
