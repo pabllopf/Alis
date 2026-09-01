@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.6] - 2026-09-01
+### :bug: Bug Fixes
+- [`152b4f2`](https://github.com/pabllopf/Alis/commit/152b4f29eebfab7edc03decf7e77c86270a400ee) - currents tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd442fd`](https://github.com/pabllopf/Alis/commit/cd442fdc0eef1c1bc7128ba78809406574247955) - render unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`1297415`](https://github.com/pabllopf/Alis/commit/1297415a1435e65eecf51b641b48f46456523e26) - coverage ImGuiIO.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed5133f`](https://github.com/pabllopf/Alis/commit/ed5133f2ae4c4a2eb1aa5885ae780aa018aa7a95) - coverage ImGuiIOPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31b9921`](https://github.com/pabllopf/Alis/commit/31b9921a6de7e65f238198844ca79698d90fa49d) - coverage ImPlot.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee84d8b`](https://github.com/pabllopf/Alis/commit/ee84d8b8994ba858c1caaf7e60cc63eaaab53cc4) - coverage ImPlotP2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`edcd828`](https://github.com/pabllopf/Alis/commit/edcd82878dac5ba0aeb2a1a208aee08ad8a612b8) - coverage ImGuiP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`65d8297`](https://github.com/pabllopf/Alis/commit/65d8297c55b664d0f489c0ac80957640f26f3c86) - coverage ImGuiP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d03a3db`](https://github.com/pabllopf/Alis/commit/d03a3db49dcab10c131b394a1801368f435d60b4) - coverage ImGuiP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`28fd858`](https://github.com/pabllopf/Alis/commit/28fd8582326e8a76d502630eddd1116d8eb140f0) - coverage ImDrawListPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`75e8437`](https://github.com/pabllopf/Alis/commit/75e843774f207b264f5e34ec58c129625d75f855) - coverage ImPlotP10.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.5] - 2026-09-01
 ### :bug: Bug Fixes
 - [`7ecdb0c`](https://github.com/pabllopf/Alis/commit/7ecdb0c427d4c721b5307c873cfbf50d43747806) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11018,3 +11035,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.3]: https://github.com/pabllopf/Alis/compare/v1.3.2...v1.3.3
 [v1.3.4]: https://github.com/pabllopf/Alis/compare/v1.3.3...v1.3.4
 [v1.3.5]: https://github.com/pabllopf/Alis/compare/v1.3.4...v1.3.5
+[v1.3.6]: https://github.com/pabllopf/Alis/compare/v1.3.5...v1.3.6
