@@ -28,6 +28,12 @@ _No previous state available — fresh start after memory cleanup._
 | `EnumerableHelpers.cs` | 80.5% | 11 | 7 |
 | `GameObject.cs` | 85.9% | 95 | 40+ |
 | `Update.cs` | 87.6% | 28 | 5 |
+
+## Remediation Log
+
+| File | Before | After | Tests Added | Status |
+|------|--------|-------|-------------|--------|
+| `1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs` | 0.0% | 100.0% | 747 (ImGuiIOTests.cs) | REMEDIATED |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |
