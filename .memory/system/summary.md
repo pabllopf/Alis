@@ -48,3 +48,10 @@ CoverageAfter: 17.3%
 TestsAdded: 60
 Commit: test: coverage ImGuiP5.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiP6.cs
+CoverageBefore: 0.0%
+CoverageAfter: 11.7%
+TestsAdded: 39
+Commit: test: coverage ImGuiP6.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
