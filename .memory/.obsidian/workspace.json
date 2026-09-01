@@ -203,6 +203,7 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260901_075832.json",
     "system/state/current_task.md",
     "system/cache/sonarcloud_cache_20260831_200149.json",
     "system/state/skip_probe.md",
@@ -238,7 +239,6 @@
     "system/results/BreakableBody.md",
     "system/results/WeldJoint.md",
     "system/results/GravityController.md",
-    "system/results/FilePickerValidator.md",
     "Sin título.canvas"
   ]
 }
