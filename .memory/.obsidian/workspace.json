@@ -203,6 +203,7 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/state/current_task.md",
     "system/cache/sonarcloud_cache_20260831_200149.json",
     "system/state/skip_probe.md",
     "system/cache/sonarcloud_cache_20260831_195909.json",
@@ -230,7 +231,6 @@
     "system/covertall/locks/Alis.Extension.Security.lock",
     "system/cache/sonarcloud_cache_20260817_101136.json",
     "system/covertall/locks",
-    "system/covertall",
     "system/results/DynamicTree.md",
     "system/results/GearJoint.md",
     "system/results/CommandBuffer.md",
