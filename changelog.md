@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.5] - 2026-09-01
+### :bug: Bug Fixes
+- [`7ecdb0c`](https://github.com/pabllopf/Alis/commit/7ecdb0c427d4c721b5307c873cfbf50d43747806) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3762c29`](https://github.com/pabllopf/Alis/commit/3762c299ab0227519f5382fe90efb7eafd90b0e4) - cache info *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`fd58e80`](https://github.com/pabllopf/Alis/commit/fd58e80b93f7a09405414e2d547942ed0e8b7906) - coverage AudioSpec.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c4a7502`](https://github.com/pabllopf/Alis/commit/c4a7502b03e4855ef44ef9ff8129f09ee89f1e2d) - coverage QueryIterationExtensions.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.4] - 2026-08-31
 ### :bug: Bug Fixes
 - [`6e746eb`](https://github.com/pabllopf/Alis/commit/6e746ebbc1c437a68828a176ec36a25a9e2429e5) - same version *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11007,3 +11017,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.2]: https://github.com/pabllopf/Alis/compare/v1.3.1...v1.3.2
 [v1.3.3]: https://github.com/pabllopf/Alis/compare/v1.3.2...v1.3.3
 [v1.3.4]: https://github.com/pabllopf/Alis/compare/v1.3.3...v1.3.4
+[v1.3.5]: https://github.com/pabllopf/Alis/compare/v1.3.4...v1.3.5
