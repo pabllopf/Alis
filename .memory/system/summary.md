@@ -20,3 +20,10 @@ CoverageAfter: 89.1%
 TestsAdded: 101
 Commit: test: coverage ImGuiIOPtr.cs
 Status: REMEDIATED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs
+CoverageBefore: 0.0%
+CoverageAfter: 8.3%
+TestsAdded: 38
+Commit: test: coverage ImPlot.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
