@@ -1,6 +1,7 @@
 {
   "processed": [
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs"
   ]
 }

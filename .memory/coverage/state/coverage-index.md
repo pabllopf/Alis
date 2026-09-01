@@ -34,6 +34,7 @@ _No previous state available — fresh start after memory cleanup._
 | File | Before | After | Tests Added | Status |
 |------|--------|-------|-------------|--------|
 | `1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs` | 0.0% | 100.0% | 747 (ImGuiIOTests.cs) | REMEDIATED |
+| `1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs` | 0.0% | 89.1% | 101 (ImGuiIOPtrTests.cs) | REMEDIATED |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |

@@ -28,193 +28,1227 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+using Alis.Core.Aspect.Math.Vector;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
     ///     The im gui io ptr tests class
     /// </summary>
-    public class ImGuiIOPtrTests : IDisposable
+    public class ImGuiIOPtrTests
     {
         /// <summary>
-        ///     The native ptr
+        ///     Tests that keys data getter throws when the field is absent
         /// </summary>
-        internal readonly IntPtr _nativePtr;
-
-        /// <summary>
-        ///     The io ptr
-        /// </summary>
-        private ImGuiIoPtr _ioPtr;
-
-        /// <summary>
-        ///     The context
-        /// </summary>
-        internal readonly IntPtr _context;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIOPtrTests" /> class
-        /// </summary>
-        public ImGuiIOPtrTests()
+        [Fact]
+        public void KeysData_Getter_ThrowsForMissingField()
         {
-            _context = ImGuiNative.igCreateContext(IntPtr.Zero);
-            ImGuiNative.igSetCurrentContext(_context);
-
-            IntPtr ioPtr = ImGuiNative.igGetIO();
-            _nativePtr = ioPtr;
-            _ioPtr = new ImGuiIoPtr(_nativePtr);
+            ImGuiIoPtr ptr = CreatePtr();
+            Assert.Throws<ArgumentException>(() => { List<ImGuiKeyData> data = ptr.KeysData; });
         }
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Tests that mouse clicked pos getter throws when the field is absent
         /// </summary>
-        public void Dispose()
+        [Fact]
+        public void MouseClickedPos_Getter_ThrowsForMissingField()
         {
-            if (_context != IntPtr.Zero)
-            {
-                ImGuiNative.igDestroyContext(_context);
-            }
+            ImGuiIoPtr ptr = CreatePtr();
+            Assert.Throws<ArgumentException>(() => { List<Vector2F> pos = ptr.MouseClickedPos; });
         }
 
         /// <summary>
-        ///     Tests that add focus event should not throw
+        ///     Tests that mouse drag max distance abs getter throws when the field is absent
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddFocusEvent_ShouldNotThrow()
+        [Fact]
+        public void MouseDragMaxDistanceAbs_Getter_ThrowsForMissingField()
         {
-            _ioPtr.AddFocusEvent(true);
-            _ioPtr.AddFocusEvent(false);
+            ImGuiIoPtr ptr = CreatePtr();
+            Assert.Throws<ArgumentException>(() => { List<Vector2F> abs = ptr.MouseDragMaxDistanceAbs; });
         }
 
         /// <summary>
-        ///     Tests that add input character should not throw
+        ///     Creates a source instance
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddInputCharacter_ShouldNotThrow()
+        private static ImGuiIo CreateSource()
         {
-            _ioPtr.AddInputCharacter(65);
+            ImGuiIo io = new ImGuiIo();
+            io.KeyMap = new int[652];
+            io.KeysDown = new byte[652];
+            io.NavInputs = new float[16];
+            io.MouseDown = new byte[5];
+            io.MouseClickedTime = new double[5];
+            io.MouseClicked = new byte[5];
+            io.MouseDoubleClicked = new byte[5];
+            io.MouseClickedCount = new ushort[5];
+            io.MouseClickedLastCount = new ushort[5];
+            io.MouseReleased = new byte[5];
+            io.MouseDownOwned = new byte[5];
+            io.MouseDownOwnedUnlessPopupClose = new byte[5];
+            io.MouseDownDuration = new float[5];
+            io.MouseDownDurationPrev = new float[5];
+            io.MouseDragMaxDistanceSqr = new float[5];
+            return io;
         }
 
         /// <summary>
-        ///     Tests that add input characters utf 8 should not throw
+        ///     Creates a pointer instance
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddInputCharactersUtf8_ShouldNotThrow()
+        private static ImGuiIoPtr CreatePtr()
         {
-            _ioPtr.AddInputCharactersUtf8("hello");
+            return new ImGuiIoPtr(CreateSource());
         }
 
         /// <summary>
-        ///     Tests that add input character utf 16 should not throw
+        ///     Allocates a native string pointer
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddInputCharacterUtf16_ShouldNotThrow()
+        private static IntPtr StrPtr(string s)
         {
-            _ioPtr.AddInputCharacterUtf16(65);
+            byte[] b = Encoding.UTF8.GetBytes(s + "\0");
+            IntPtr p = Marshal.AllocHGlobal(b.Length);
+            Marshal.Copy(b, 0, p, b.Length);
+            return p;
         }
 
         /// <summary>
-        ///     Tests that add key analog event should not throw
+        ///     ConfigFlags_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddKeyAnalogEvent_ShouldNotThrow()
+        [Fact]
+        public void ConfigFlags_SetAndGet_RoundTrips()
         {
-            _ioPtr.AddKeyAnalogEvent(ImGuiKey.A, true, 0.5f);
-            _ioPtr.AddKeyAnalogEvent(ImGuiKey.A, false, 0.0f);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.ConfigFlags = (ImGuiConfigFlags)1;
+            Assert.Equal((ImGuiConfigFlags)1, ptr.ConfigFlags);
         }
 
         /// <summary>
-        ///     Tests that add key event should not throw
+        ///     BackendFlags_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddKeyEvent_ShouldNotThrow()
+        [Fact]
+        public void BackendFlags_SetAndGet_RoundTrips()
         {
-            _ioPtr.AddKeyEvent(ImGuiKey.A, true);
-            _ioPtr.AddKeyEvent(ImGuiKey.A, false);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendFlags = (ImGuiBackendFlags)2;
+            Assert.Equal((ImGuiBackendFlags)2, ptr.BackendFlags);
         }
 
         /// <summary>
-        ///     Tests that add mouse button event should not throw
+        ///     DeltaTime_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddMouseButtonEvent_ShouldNotThrow()
+        [Fact]
+        public void DeltaTime_SetAndGet_RoundTrips()
         {
-            _ioPtr.AddMouseButtonEvent(0, true);
-            _ioPtr.AddMouseButtonEvent(0, false);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.DeltaTime = 1.5f;
+            Assert.Equal(1.5f, ptr.DeltaTime);
         }
 
         /// <summary>
-        ///     Tests that add mouse pos event should not throw
+        ///     UserData_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddMousePosEvent_ShouldNotThrow()
+        [Fact]
+        public void UserData_SetAndGet_RoundTrips()
         {
-            _ioPtr.AddMousePosEvent(100.0f, 200.0f);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.UserData = new IntPtr(7);
+            Assert.Equal(new IntPtr(7), ptr.UserData);
         }
 
         /// <summary>
-        ///     Tests that add mouse viewport event should not throw
+        ///     FontGlobalScale_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddMouseViewportEvent_ShouldNotThrow()
+        [Fact]
+        public void FontGlobalScale_SetAndGet_RoundTrips()
         {
-            _ioPtr.BackendFlags |= ImGuiBackendFlags.HasMouseHoveredViewport;
-            _ioPtr.AddMouseViewportEvent(1u);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.FontGlobalScale = 2.5f;
+            Assert.Equal(2.5f, ptr.FontGlobalScale);
         }
 
         /// <summary>
-        ///     Tests that add mouse wheel event should not throw
+        ///     BackendPlatformUserData_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AddMouseWheelEvent_ShouldNotThrow()
+        [Fact]
+        public void BackendPlatformUserData_SetAndGet_RoundTrips()
         {
-            _ioPtr.AddMouseWheelEvent(1.0f, 2.0f);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendPlatformUserData = new IntPtr(8);
+            Assert.Equal(new IntPtr(8), ptr.BackendPlatformUserData);
         }
 
         /// <summary>
-        ///     Tests that clear input characters should not throw
+        ///     BackendRendererUserData_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void ClearInputCharacters_ShouldNotThrow()
+        [Fact]
+        public void BackendRendererUserData_SetAndGet_RoundTrips()
         {
-            _ioPtr.ClearInputCharacters();
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendRendererUserData = new IntPtr(9);
+            Assert.Equal(new IntPtr(9), ptr.BackendRendererUserData);
         }
 
         /// <summary>
-        ///     Tests that clear input keys should not throw
+        ///     BackendLanguageUserData_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void ClearInputKeys_ShouldNotThrow()
+        [Fact]
+        public void BackendLanguageUserData_SetAndGet_RoundTrips()
         {
-            _ioPtr.ClearInputKeys();
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendLanguageUserData = new IntPtr(10);
+            Assert.Equal(new IntPtr(10), ptr.BackendLanguageUserData);
         }
 
         /// <summary>
-        ///     Tests that set app accepting events should not throw
+        ///     GetClipboardTextFn_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void SetAppAcceptingEvents_ShouldNotThrow()
+        [Fact]
+        public void GetClipboardTextFn_SetAndGet_RoundTrips()
         {
-            _ioPtr.SetAppAcceptingEvents(true);
-            _ioPtr.SetAppAcceptingEvents(false);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.GetClipboardTextFn = new IntPtr(11);
+            Assert.Equal(new IntPtr(11), ptr.GetClipboardTextFn);
         }
 
         /// <summary>
-        ///     Tests that set key event native data should not throw
+        ///     SetClipboardTextFn_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void SetKeyEventNativeData_ShouldNotThrow()
+        [Fact]
+        public void SetClipboardTextFn_SetAndGet_RoundTrips()
         {
-            _ioPtr.SetKeyEventNativeData(ImGuiKey.A, 65, 4);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.SetClipboardTextFn = new IntPtr(12);
+            Assert.Equal(new IntPtr(12), ptr.SetClipboardTextFn);
         }
 
         /// <summary>
-        ///     Tests that set key event native data with legacy index should not throw
+        ///     ClipboardUserData_SetAndGet_RoundTrips
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void SetKeyEventNativeData_WithLegacyIndex_ShouldNotThrow()
+        [Fact]
+        public void ClipboardUserData_SetAndGet_RoundTrips()
         {
-            _ioPtr.SetKeyEventNativeData(ImGuiKey.A, 65, 4, 0);
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.ClipboardUserData = new IntPtr(13);
+            Assert.Equal(new IntPtr(13), ptr.ClipboardUserData);
         }
+
+        /// <summary>
+        ///     SetPlatformImeDataFn_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void SetPlatformImeDataFn_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.SetPlatformImeDataFn = new IntPtr(14);
+            Assert.Equal(new IntPtr(14), ptr.SetPlatformImeDataFn);
+        }
+
+        /// <summary>
+        ///     UnusedPadding_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void UnusedPadding_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.UnusedPadding = new IntPtr(15);
+            Assert.Equal(new IntPtr(15), ptr.UnusedPadding);
+        }
+
+        /// <summary>
+        ///     ConfigDockingWithShift_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void ConfigDockingWithShift_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.ConfigDockingWithShift = true;
+            Assert.True(ptr.ConfigDockingWithShift);
+        }
+
+        /// <summary>
+        ///     WantCaptureMouse_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantCaptureMouse_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantCaptureMouse = true;
+            Assert.True(ptr.WantCaptureMouse);
+        }
+
+        /// <summary>
+        ///     WantCaptureKeyboard_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantCaptureKeyboard_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantCaptureKeyboard = true;
+            Assert.True(ptr.WantCaptureKeyboard);
+        }
+
+        /// <summary>
+        ///     WantTextInput_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantTextInput_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantTextInput = true;
+            Assert.True(ptr.WantTextInput);
+        }
+
+        /// <summary>
+        ///     WantSetMousePos_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantSetMousePos_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantSetMousePos = true;
+            Assert.True(ptr.WantSetMousePos);
+        }
+
+        /// <summary>
+        ///     WantSaveIniSettings_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantSaveIniSettings_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantSaveIniSettings = true;
+            Assert.True(ptr.WantSaveIniSettings);
+        }
+
+        /// <summary>
+        ///     NavActive_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void NavActive_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.NavActive = true;
+            Assert.True(ptr.NavActive);
+        }
+
+        /// <summary>
+        ///     NavVisible_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void NavVisible_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.NavVisible = true;
+            Assert.True(ptr.NavVisible);
+        }
+
+        /// <summary>
+        ///     Framerate_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void Framerate_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.Framerate = 60f;
+            Assert.Equal(60f, ptr.Framerate);
+        }
+
+        /// <summary>
+        ///     MetricsRenderVertices_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MetricsRenderVertices_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MetricsRenderVertices = 100;
+            Assert.Equal(100, ptr.MetricsRenderVertices);
+        }
+
+        /// <summary>
+        ///     MetricsRenderIndices_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MetricsRenderIndices_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MetricsRenderIndices = 101;
+            Assert.Equal(101, ptr.MetricsRenderIndices);
+        }
+
+        /// <summary>
+        ///     MetricsRenderWindows_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MetricsRenderWindows_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MetricsRenderWindows = 102;
+            Assert.Equal(102, ptr.MetricsRenderWindows);
+        }
+
+        /// <summary>
+        ///     MetricsActiveWindows_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MetricsActiveWindows_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MetricsActiveWindows = 103;
+            Assert.Equal(103, ptr.MetricsActiveWindows);
+        }
+
+        /// <summary>
+        ///     MetricsActiveAllocations_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MetricsActiveAllocations_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MetricsActiveAllocations = 104;
+            Assert.Equal(104, ptr.MetricsActiveAllocations);
+        }
+
+        /// <summary>
+        ///     MouseWheel_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseWheel_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MouseWheel = 1.5f;
+            Assert.Equal(1.5f, ptr.MouseWheel);
+        }
+
+        /// <summary>
+        ///     MouseWheelH_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseWheelH_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MouseWheelH = 2.5f;
+            Assert.Equal(2.5f, ptr.MouseWheelH);
+        }
+
+        /// <summary>
+        ///     MouseHoveredViewport_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseHoveredViewport_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.MouseHoveredViewport = 3u;
+            Assert.Equal(3u, ptr.MouseHoveredViewport);
+        }
+
+        /// <summary>
+        ///     KeyCtrl_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeyCtrl_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.KeyCtrl = true;
+            Assert.True(ptr.KeyCtrl);
+        }
+
+        /// <summary>
+        ///     KeyShift_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeyShift_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.KeyShift = true;
+            Assert.True(ptr.KeyShift);
+        }
+
+        /// <summary>
+        ///     KeyAlt_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeyAlt_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.KeyAlt = true;
+            Assert.True(ptr.KeyAlt);
+        }
+
+        /// <summary>
+        ///     KeySuper_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeySuper_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.KeySuper = true;
+            Assert.True(ptr.KeySuper);
+        }
+
+        /// <summary>
+        ///     KeyMods_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeyMods_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.KeyMods = (ImGuiKey)1;
+            Assert.Equal((ImGuiKey)1, ptr.KeyMods);
+        }
+
+        /// <summary>
+        ///     PenPressure_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void PenPressure_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.PenPressure = 0.5f;
+            Assert.Equal(0.5f, ptr.PenPressure);
+        }
+
+        /// <summary>
+        ///     AppFocusLost_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void AppFocusLost_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.AppFocusLost = true;
+            Assert.True(ptr.AppFocusLost);
+        }
+
+        /// <summary>
+        ///     AppAcceptingEvents_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void AppAcceptingEvents_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.AppAcceptingEvents = true;
+            Assert.True(ptr.AppAcceptingEvents);
+        }
+
+        /// <summary>
+        ///     BackendUsingLegacyKeyArrays_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void BackendUsingLegacyKeyArrays_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendUsingLegacyKeyArrays = 3;
+            Assert.Equal(3, ptr.BackendUsingLegacyKeyArrays);
+        }
+
+        /// <summary>
+        ///     BackendUsingLegacyNavInputArray_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void BackendUsingLegacyNavInputArray_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.BackendUsingLegacyNavInputArray = true;
+            Assert.True(ptr.BackendUsingLegacyNavInputArray);
+        }
+
+        /// <summary>
+        ///     InputQueueSurrogate_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void InputQueueSurrogate_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.InputQueueSurrogate = 9;
+            Assert.Equal((ushort)9, ptr.InputQueueSurrogate);
+        }
+
+        /// <summary>
+        ///     WantCaptureMouseUnlessPopupClose_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void WantCaptureMouseUnlessPopupClose_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ptr.WantCaptureMouseUnlessPopupClose = true;
+            Assert.True(ptr.WantCaptureMouseUnlessPopupClose);
+        }
+
+        /// <summary>
+        ///     IniSavingRate_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void IniSavingRate_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.IniSavingRate;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     MouseDoubleClickTime_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void MouseDoubleClickTime_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.MouseDoubleClickTime;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     MouseDoubleClickMaxDist_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void MouseDoubleClickMaxDist_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.MouseDoubleClickMaxDist;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     MouseDragThreshold_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void MouseDragThreshold_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.MouseDragThreshold;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     KeyRepeatDelay_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void KeyRepeatDelay_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.KeyRepeatDelay;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     KeyRepeatRate_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void KeyRepeatRate_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.KeyRepeatRate;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     HoverDelayNormal_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void HoverDelayNormal_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.HoverDelayNormal;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     HoverDelayShort_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void HoverDelayShort_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.HoverDelayShort;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigMemoryCompactTimer_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigMemoryCompactTimer_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigMemoryCompactTimer;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     FontAllowUserScaling_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void FontAllowUserScaling_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.FontAllowUserScaling;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigDockingNoSplit_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigDockingNoSplit_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigDockingNoSplit;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigDockingAlwaysTabBar_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigDockingAlwaysTabBar_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigDockingAlwaysTabBar;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigDockingTransparentPayload_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigDockingTransparentPayload_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigDockingTransparentPayload;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigViewportsNoAutoMerge_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigViewportsNoAutoMerge_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigViewportsNoAutoMerge;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigViewportsNoTaskBarIcon_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigViewportsNoTaskBarIcon_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigViewportsNoTaskBarIcon;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigViewportsNoDecoration_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigViewportsNoDecoration_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigViewportsNoDecoration;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigViewportsNoDefaultParent_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigViewportsNoDefaultParent_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigViewportsNoDefaultParent;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     MouseDrawCursor_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void MouseDrawCursor_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.MouseDrawCursor;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigMacOsxBehaviors_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigMacOsxBehaviors_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigMacOsxBehaviors;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigInputTrickleEventQueue_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigInputTrickleEventQueue_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigInputTrickleEventQueue;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigInputTextCursorBlink_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigInputTextCursorBlink_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigInputTextCursorBlink;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigInputTextEnterKeepActive_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigInputTextEnterKeepActive_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigInputTextEnterKeepActive;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigDragClickToInputText_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigDragClickToInputText_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigDragClickToInputText;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigWindowsResizeFromEdges_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigWindowsResizeFromEdges_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigWindowsResizeFromEdges;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     ConfigWindowsMoveFromTitleBarOnly_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void ConfigWindowsMoveFromTitleBarOnly_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.ConfigWindowsMoveFromTitleBarOnly;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     DisplaySize_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void DisplaySize_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            Vector2F value = new Vector2F(3f, 4f);
+            ptr.DisplaySize = value;
+            Assert.Equal(3f, ptr.DisplaySize.X);
+            Assert.Equal(4f, ptr.DisplaySize.Y);
+        }
+
+        /// <summary>
+        ///     DisplayFramebufferScale_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void DisplayFramebufferScale_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            Vector2F value = new Vector2F(3f, 4f);
+            ptr.DisplayFramebufferScale = value;
+            Assert.Equal(3f, ptr.DisplayFramebufferScale.X);
+            Assert.Equal(4f, ptr.DisplayFramebufferScale.Y);
+        }
+
+        /// <summary>
+        ///     MousePos_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MousePos_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            Vector2F value = new Vector2F(3f, 4f);
+            ptr.MousePos = value;
+            Assert.Equal(3f, ptr.MousePos.X);
+            Assert.Equal(4f, ptr.MousePos.Y);
+        }
+
+        /// <summary>
+        ///     MousePosPrev_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MousePosPrev_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            Vector2F value = new Vector2F(3f, 4f);
+            ptr.MousePosPrev = value;
+            Assert.Equal(3f, ptr.MousePosPrev.X);
+            Assert.Equal(4f, ptr.MousePosPrev.Y);
+        }
+
+        /// <summary>
+        ///     MouseDelta_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDelta_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            Vector2F value = new Vector2F(3f, 4f);
+            ptr.MouseDelta = value;
+            Assert.Equal(3f, ptr.MouseDelta.X);
+            Assert.Equal(4f, ptr.MouseDelta.Y);
+        }
+
+        /// <summary>
+        ///     BackendPlatformName_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void BackendPlatformName_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            IntPtr p = StrPtr("platform");
+            ptr.BackendPlatformName = new NullTerminatedString(p);
+            Assert.NotEqual(IntPtr.Zero, ptr.BackendPlatformName.Data);
+        }
+
+        /// <summary>
+        ///     BackendRendererName_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void BackendRendererName_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.BackendRendererName;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     IniFilename_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void IniFilename_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.IniFilename;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     LogFilename_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void LogFilename_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.LogFilename;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     Fonts_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void Fonts_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.Fonts;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     FontDefault_Getter_SeeksNativeMemory
+        /// </summary>
+        [Fact]
+        public void FontDefault_Getter_SeeksNativeMemory()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            _ = ptr.FontDefault;
+            Assert.True(ptr.NativePtr != IntPtr.Zero);
+        }
+
+        /// <summary>
+        ///     KeyMap_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeyMap_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<int> value = new List<int> { 1, 2, 3 };
+            ptr.KeyMap = value;
+            Assert.Equal(1, ptr.KeyMap[0]);
+            Assert.Equal(3, ptr.KeyMap[2]);
+        }
+
+        /// <summary>
+        ///     KeysDown_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void KeysDown_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, true };
+            ptr.KeysDown = value;
+            Assert.True(ptr.KeysDown[0]);
+            Assert.False(ptr.KeysDown[1]);
+            Assert.True(ptr.KeysDown[2]);
+        }
+
+        /// <summary>
+        ///     NavInputs_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void NavInputs_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<float> value = new List<float> { 1f, 2f, 3f };
+            ptr.NavInputs = value;
+            List<float> read = ptr.NavInputs;
+            Assert.Equal(16, read.Count);
+            Assert.Equal(1f, read[0]);
+            Assert.Equal(3f, read[2]);
+        }
+
+        /// <summary>
+        ///     MouseDown_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDown_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, true, false, true };
+            ptr.MouseDown = value;
+            List<bool> read = ptr.MouseDown;
+            Assert.Equal(5, read.Count);
+            Assert.True(read[0]);
+            Assert.False(read[1]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseClickedTime_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseClickedTime_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<double> value = new List<double> { 1.0, 0, 0, 0, 5.0 };
+            ptr.MouseClickedTime = value;
+            List<double> read = ptr.MouseClickedTime;
+            Assert.Equal(1.0, read[0]);
+            Assert.Equal(5.0, read[4]);
+        }
+
+        /// <summary>
+        ///     MouseClicked_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseClicked_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, false, false, true };
+            ptr.MouseClicked = value;
+            List<bool> read = ptr.MouseClicked;
+            Assert.True(read[0]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDoubleClicked_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDoubleClicked_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, false, false, true };
+            ptr.MouseDoubleClicked = value;
+            List<bool> read = ptr.MouseDoubleClicked;
+            Assert.True(read[0]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseClickedCount_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseClickedCount_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<ushort> value = new List<ushort> { 3, 0, 0, 0, 5 };
+            ptr.MouseClickedCount = value;
+            List<ushort> read = ptr.MouseClickedCount;
+            Assert.Equal((ushort)3, read[0]);
+            Assert.Equal((ushort)5, read[4]);
+        }
+
+        /// <summary>
+        ///     MouseClickedLastCount_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseClickedLastCount_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<ushort> value = new List<ushort> { 3, 0, 0, 0, 5 };
+            ptr.MouseClickedLastCount = value;
+            List<ushort> read = ptr.MouseClickedLastCount;
+            Assert.Equal((ushort)3, read[0]);
+            Assert.Equal((ushort)5, read[4]);
+        }
+
+        /// <summary>
+        ///     MouseReleased_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseReleased_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, false, false, true };
+            ptr.MouseReleased = value;
+            List<bool> read = ptr.MouseReleased;
+            Assert.True(read[0]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDownOwned_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDownOwned_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, false, false, true };
+            ptr.MouseDownOwned = value;
+            List<bool> read = ptr.MouseDownOwned;
+            Assert.True(read[0]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDownOwnedUnlessPopupClose_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDownOwnedUnlessPopupClose_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<bool> value = new List<bool> { true, false, false, false, true };
+            ptr.MouseDownOwnedUnlessPopupClose = value;
+            List<bool> read = ptr.MouseDownOwnedUnlessPopupClose;
+            Assert.True(read[0]);
+            Assert.True(read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDownDuration_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDownDuration_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<float> value = new List<float> { 1f, 0, 0, 0, 5f };
+            ptr.MouseDownDuration = value;
+            List<float> read = ptr.MouseDownDuration;
+            Assert.Equal(1f, read[0]);
+            Assert.Equal(5f, read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDownDurationPrev_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDownDurationPrev_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<float> value = new List<float> { 1f, 0, 0, 0, 5f };
+            ptr.MouseDownDurationPrev = value;
+            List<float> read = ptr.MouseDownDurationPrev;
+            Assert.Equal(1f, read[0]);
+            Assert.Equal(5f, read[4]);
+        }
+
+        /// <summary>
+        ///     MouseDragMaxDistanceSqr_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceSqr_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            List<float> value = new List<float> { 1f, 0, 0, 0, 5f };
+            ptr.MouseDragMaxDistanceSqr = value;
+            List<float> read = ptr.MouseDragMaxDistanceSqr;
+            Assert.Equal(1f, read[0]);
+            Assert.Equal(5f, read[4]);
+        }
+
+        /// <summary>
+        ///     InputQueueCharacters_SetAndGet_RoundTrips
+        /// </summary>
+        [Fact]
+        public void InputQueueCharacters_SetAndGet_RoundTrips()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            ImVectorG<ushort> value = new ImVectorG<ushort>(3, 5, IntPtr.Zero);
+            ptr.InputQueueCharacters = value;
+            Assert.Equal(3, ptr.InputQueueCharacters.Size);
+        }
+
+        /// <summary>
+        ///     IntPtrCtor_StoresNativePointer
+        /// </summary>
+        [Fact]
+        public void IntPtrCtor_StoresNativePointer()
+        {
+            IntPtr raw = new IntPtr(0x1234);
+            ImGuiIoPtr ptr = new ImGuiIoPtr(raw);
+            Assert.Equal(raw, ptr.NativePtr);
+        }
+
+        /// <summary>
+        ///     ImplicitToIntPtr_ReturnsNativePointer
+        /// </summary>
+        [Fact]
+        public void ImplicitToIntPtr_ReturnsNativePointer()
+        {
+            ImGuiIoPtr ptr = CreatePtr();
+            IntPtr raw = ptr;
+            Assert.Equal(ptr.NativePtr, raw);
+        }
+
+        /// <summary>
+        ///     ImplicitFromIntPtr_WrapsPointer
+        /// </summary>
+        [Fact]
+        public void ImplicitFromIntPtr_WrapsPointer()
+        {
+            IntPtr raw = new IntPtr(0x1234);
+            ImGuiIoPtr ptr = raw;
+            Assert.Equal(raw, ptr.NativePtr);
+        }
+
+        /// <summary>
+        ///     ImGuiIoCtor_AllocatesNativeMemory
+        /// </summary>
+        [Fact]
+        public void ImGuiIoCtor_AllocatesNativeMemory()
+        {
+            ImGuiIoPtr ptr = new ImGuiIoPtr(CreateSource());
+            Assert.NotEqual(IntPtr.Zero, ptr.NativePtr);
+        }
+
     }
 }
