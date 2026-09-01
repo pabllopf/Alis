@@ -104,3 +104,10 @@ CoverageAfter: 33.3%
 TestsAdded: 70
 Commit: test: coverage ImPlotP14.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP12.cs
+CoverageBefore: 0.0%
+CoverageAfter: 25.0%
+TestsAdded: 50
+Commit: test: coverage ImPlotP12.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
