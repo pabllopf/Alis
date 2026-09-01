@@ -203,6 +203,8 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/results/ImGuiIO-src.md",
+    "system/cache/sonarcloud_cache_20260901_080755.json",
     "system/cache/sonarcloud_cache_20260901_075832.json",
     "system/state/current_task.md",
     "system/cache/sonarcloud_cache_20260831_200149.json",
@@ -230,8 +232,6 @@
     "system/covertall/Alis.Extension.Security/state.md",
     "system/covertall/locks/Alis.Extension.Security.lock/info.txt",
     "system/covertall/locks/Alis.Extension.Security.lock",
-    "system/cache/sonarcloud_cache_20260817_101136.json",
-    "system/covertall/locks",
     "system/results/DynamicTree.md",
     "system/results/GearJoint.md",
     "system/results/CommandBuffer.md",

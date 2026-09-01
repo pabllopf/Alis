@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 10 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP1.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    741
+    240
 
     ### Uncovered Branches
-    0
+    14
 
     ### Method
-    ImGuiIO
+    ImPlotP1
 
     ### Complexity / LOC
-    1481 / 781 lines
+    66 / 308 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIO.cs
+//  File:ImPlotP1.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im gui io
+    ///     The im plot class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct ImGuiIo
+    public static partial class ImPlot
     {
         /// <summary>
-        ///     The config flags
+        ///     Adds the colormap using the specified name
         /// </summary>
-        public ImGuiConfigFlags ConfigFlags { get; set; }
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <returns>The im plot colormap</returns>
+        public static ImPlotColormap AddColormap(string name, ref Vector4F cols, int size)
+        {
+            ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_Vec4Ptr(Encoding.UTF8.GetBytes(name), cols, size, 0);
+            return ret;
+        }
 
         /// <summary>
-        ///     The backend flags
+        ///     Adds the colormap using the specified name
         /// </summary>
-        public ImGuiBackendFlags BackendFlags { get; set; }
-
-        /// <summary>
-        ///     The display size
-        /// </summary>
-        public Vector2F DisplaySize { get; set; }
-
-        /// <summary>
-        ///     The delta time
-        /// </summary>
-        public float DeltaTime { get; set; }
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="qual">The qual</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiIOTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP1Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP1.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiIO.cs
+    Commit format: test: coverage ImPlotP1.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
