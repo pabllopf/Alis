@@ -45,6 +45,7 @@ _No previous state available — fresh start after memory cleanup._
 | `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP1.cs` | 0.0% | 13.5% | 31 (ImPlotP1NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP9.cs` | 0.0% | 36.5% | 39 (ImPlotP9NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP11.cs` | 0.0% | 36.2% | 42 (ImPlotP11NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
+| `1_Presentation/Extension/Graphic/Ui/src/ImGuiP4.cs` | 0.0% | 30.6% | 60 (ImGuiP4NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |
