@@ -125,3 +125,10 @@ CoverageAfter: 19.6%
 TestsAdded: 36
 Commit: test: coverage ImGuiP1.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+CoverageBefore: 0.0%
+CoverageAfter: 14.1%
+TestsAdded: 9
+Commit: test: coverage Shader.cs
+Status: PARTIAL_BLOCKED_BY_NATIVE

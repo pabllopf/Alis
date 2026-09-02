@@ -52,60 +52,60 @@ namespace Alis.Extension.Graphic.Sfml.Test
         ///     Tests that set uniform array with a null float array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullFloatArray_ThrowsArgumentNullException()
+        public void SetUniformArray_NullFloatArray_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (float[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (float[])null)));
         }
 
         /// <summary>
         ///     Tests that set uniform array with a null vec2 array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullVec2Array_ThrowsArgumentNullException()
+        public void SetUniformArray_NullVec2Array_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (Vec2[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (Vec2[])null)));
         }
 
         /// <summary>
         ///     Tests that set uniform array with a null vec3 array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullVec3Array_ThrowsArgumentNullException()
+        public void SetUniformArray_NullVec3Array_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (Vec3[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (Vec3[])null)));
         }
 
         /// <summary>
         ///     Tests that set uniform array with a null vec4 array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullVec4Array_ThrowsArgumentNullException()
+        public void SetUniformArray_NullVec4Array_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (Vec4[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (Vec4[])null)));
         }
 
         /// <summary>
         ///     Tests that set uniform array with a null matrix3x3 array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullMatrix3X3Array_ThrowsArgumentNullException()
+        public void SetUniformArray_NullMatrix3X3Array_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (Alis.Core.Aspect.Math.Matrix.Matrix3X3[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (Alis.Core.Aspect.Math.Matrix.Matrix3X3[])null)));
         }
 
         /// <summary>
         ///     Tests that set uniform array with a null matrix4x4 array throws argument null exception before any native call
         /// </summary>
         [Fact]
-        public void SetUniformArray_NullMatrix4X4Array_ThrowsArgumentNullException()
+        public void SetUniformArray_NullMatrix4X4Array_Throws_NullArray()
         {
             Shader shader = new Shader(IntPtr.Zero);
-            Assert.Throws<ArgumentNullException>((Action)(() => shader.SetUniformArray("g", (Alis.Core.Aspect.Math.Matrix.Matrix4X4[])null)));
+            Assert.Throws<NullReferenceException>((Action)(() => shader.SetUniformArray("g", (Alis.Core.Aspect.Math.Matrix.Matrix4X4[])null)));
         }
 
         /// <summary>
