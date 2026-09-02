@@ -53,6 +53,7 @@ _No previous state available — fresh start after memory cleanup._
 | `1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs` | 0.0% | 14.1% | 9 (ShaderDeterministicCoverageTests.cs) | PARTIAL_BLOCKED_BY_NATIVE |
 | `1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs` | 0.0% | 11.5% | 27 (ImFontAtlasPtrNullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs` | 0.0% | 0.0% | 0 (none) | BLOCKED_BY_NATIVE |
+| `1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs` | 0.0% | 23.5% | 15 (AudioVideoWriterConstructorCoverageTests.cs) | PARTIAL_BLOCKED_BY_NATIVE |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |
