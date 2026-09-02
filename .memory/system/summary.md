@@ -153,3 +153,10 @@ CoverageAfter: 23.5%
 TestsAdded: 15
 Commit: test: coverage AudioVideoWriter.cs
 Status: PARTIAL_BLOCKED_BY_NATIVE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
+Commit: (none)
+Status: BLOCKED_BY_NATIVE
