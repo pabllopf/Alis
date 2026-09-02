@@ -59,6 +59,7 @@ _No previous state available — fresh start after memory cleanup._
 | `1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs` | 0.0% | 0.0% | 0 (none) | NO_EXECUTABLE_CODE |
 | `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP22.cs` | 0.0% | 33.3% | 55 (ImPlotP22NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP19.cs` | 0.0% | 33.3% | 54 (ImPlotP19NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
+| `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP6.cs` | 0.0% | 33.3% | 54 (ImPlotP6NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |
