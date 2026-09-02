@@ -55,6 +55,7 @@ _No previous state available — fresh start after memory cleanup._
 | `1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs` | 0.0% | 0.0% | 0 (none) | BLOCKED_BY_NATIVE |
 | `1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs` | 0.0% | 23.5% | 15 (AudioVideoWriterConstructorCoverageTests.cs) | PARTIAL_BLOCKED_BY_NATIVE |
 | `1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs` | 0.0% | 0.0% | 0 (none) | BLOCKED_BY_NATIVE |
+| `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP15.cs` | 0.0% | 25.4% | 43 (ImPlotP15NullLabelCoverageTests.cs) | PARTIAL_BLOCKED_BY_PRODUCTION_CODE |
 | `QueryEnumerator.cs` | 93.2% | 16 | 2 |
 | `GameObjectExtensions.cs` | 94.1% | 4 | 1 |
 | `ComponentRegistry.cs` | 97.0% | 3 | 8 |
