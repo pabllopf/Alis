@@ -209,3 +209,10 @@ CoverageAfter: 0.0%
 TestsAdded: 0
 Commit: test: coverage RenderWindow.cs
 Status: BLOCKED_BY_NATIVE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiP2.cs
+CoverageBefore: 0.0%
+CoverageAfter: 25.8%
+TestsAdded: 39
+Commit: test: coverage ImGuiP2.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
