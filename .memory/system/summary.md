@@ -272,3 +272,10 @@ CoverageAfter: 0.0%
 TestsAdded: 0
 Commit: test: coverage Texture.cs
 Status: BLOCKED_BY_NATIVE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs
+CoverageBefore: 0.0%
+CoverageAfter: 33.3%
+TestsAdded: 42
+Commit: test: coverage ImPlotP5.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
