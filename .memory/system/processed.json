@@ -28,6 +28,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP22.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP19.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP6.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP7.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP7.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs"
   ]
 }

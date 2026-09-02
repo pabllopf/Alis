@@ -202,3 +202,10 @@ CoverageAfter: 33.3%
 TestsAdded: 54
 Commit: test: coverage ImPlotP7.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
+Commit: test: coverage RenderWindow.cs
+Status: BLOCKED_BY_NATIVE
