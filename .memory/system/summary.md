@@ -167,3 +167,10 @@ CoverageAfter: 25.4%
 TestsAdded: 43
 Commit: test: coverage ImPlotP15.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
+Commit: (none)
+Status: NO_EXECUTABLE_CODE
