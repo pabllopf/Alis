@@ -132,3 +132,10 @@ CoverageAfter: 14.1%
 TestsAdded: 9
 Commit: test: coverage Shader.cs
 Status: PARTIAL_BLOCKED_BY_NATIVE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs
+CoverageBefore: 0.0%
+CoverageAfter: 11.5%
+TestsAdded: 27
+Commit: test: coverage ImFontAtlasPtr.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
