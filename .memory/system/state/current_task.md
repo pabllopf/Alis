@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 18 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 40 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    189
+    121
 
     ### Uncovered Branches
-    24
+    10
 
     ### Method
-    Shader
+    ImGuiP8
 
     ### Complexity / LOC
-    54 / 394 lines
+    36 / 161 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Shader.cs
+//  File:ImGuiP8.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Aspect.Math.Matrix;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
-using Alis.Extension.Graphic.Sfml.Windows;
-using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
 
-namespace Alis.Extension.Graphic.Sfml.Render
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     Wrapper for pixel shaders
+    ///     The im gui class
     /// </summary>
-    public class Shader : ObjectBase
+    public static partial class ImGui
     {
         /// <summary>
-        ///     Special value that can be passed to SetParameter,
-        ///     and that represents the texture of the object being drawn
+        ///     Shows the about window
         /// </summary>
-        public static readonly CurrentTextureType CurrentTexture = null;
+        public static void ShowAboutWindow()
+        {
+            ImGuiNative.igShowAboutWindow(IntPtr.Zero);
+        }
 
         /// <summary>
-        ///     The texture
+        ///     Shows the about window using the specified p open
         /// </summary>
-        internal readonly Dictionary<string, Texture> myTextures = new Dictionary<string, Texture>();
+        /// <param name="pOpen">The open</param>
+        public static void ShowAboutWindow(ref bool pOpen)
+        {
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            ImGuiNative.igShowAboutWindow(new IntPtr(nativePOpenVal));
+            pOpen = nativePOpenVal != 0;
+        }
 
-
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/ShaderTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP8Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Shader.cs
+    Commit format: test: coverage ImGuiP8.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
