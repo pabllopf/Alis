@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.7] - 2026-09-02
+### :white_check_mark: Tests
+- [`5755f9c`](https://github.com/pabllopf/Alis/commit/5755f9c6f264387bf3ea61614a64736bed0fd876) - coverage ImPlotP1.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6b21ce`](https://github.com/pabllopf/Alis/commit/e6b21cebefc8334d9283b7bb30c0637da9c5ecef) - coverage ImPlotP9.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`33641f3`](https://github.com/pabllopf/Alis/commit/33641f3bea7c703a7bd98d1ee7d5bbff09acfc8b) - coverage ImPlotP11.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b94559`](https://github.com/pabllopf/Alis/commit/2b94559e351824e0b4036f3a30f75eb9cfe2bfb5) - coverage ImGuiP4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`688a6b5`](https://github.com/pabllopf/Alis/commit/688a6b570cdc09fbaa254c4363e2765b647aefb1) - coverage ImPlotP14.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`112ac18`](https://github.com/pabllopf/Alis/commit/112ac186743bb6a1b8510927af8dff6dc8809e05) - coverage ImPlotP12.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a7613b9`](https://github.com/pabllopf/Alis/commit/a7613b9bcad4227e9977890345c7bc5763f9228f) - coverage ImGui.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a37fc9`](https://github.com/pabllopf/Alis/commit/2a37fc913220e9ff48cf7aa6b04f122fd00d083f) - coverage ImGuiP1.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.6] - 2026-09-01
 ### :bug: Bug Fixes
 - [`152b4f2`](https://github.com/pabllopf/Alis/commit/152b4f29eebfab7edc03decf7e77c86270a400ee) - currents tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11036,3 +11048,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.4]: https://github.com/pabllopf/Alis/compare/v1.3.3...v1.3.4
 [v1.3.5]: https://github.com/pabllopf/Alis/compare/v1.3.4...v1.3.5
 [v1.3.6]: https://github.com/pabllopf/Alis/compare/v1.3.5...v1.3.6
+[v1.3.7]: https://github.com/pabllopf/Alis/compare/v1.3.6...v1.3.7
