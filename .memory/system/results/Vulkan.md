@@ -1,31 +1,12 @@
-# Result: Vulkan.cs
-
-File: `1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 50.0% (8/16 lines, local coverlet; unchanged)
-TestsAdded: 0 (extension-list loop requires a Vulkan loader absent on this machine)
-Commit: test: coverage Vulkan.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
-
-## Summary
-
-Vulkan.cs is the static GLFW Vulkan facade (IsSupported, CreateWindowSurface,
-GetPhysicalDevicePresentationSupport, GetInstanceProcAddress, GetRequiredInstanceExtensions;
-the P/Invoke externs are `[ExcludeFromCodeCoverage]`). The committed `VulkanTests.cs`
-(8 tests) covers 8/16 instrumented lines: the `GetRequiredInstanceExtensions` call, the empty
-allocation and the return all execute, and a direct probe confirmed the method completes
-(`returned count=0`) without exceptions.
-
-## Remaining uncovered lines (8) — BLOCKED_BY_PRODUCTION_CODE
-
-Lines 138-145 — the `if ((count > 0) && (ptr != IntPtr.Zero))` block and the extension-name
-marshalling loop. `glfwGetRequiredInstanceExtensions` returns count=0 whenever no Vulkan
-loader is installed; this machine has no `libvulkan` anywhere under /opt/homebrew or
-/usr/local, so the branch is unreachable here. On CI/machines with a Vulkan loader the loop
-would execute, but no deterministic test can force it locally without the loader.
-
-## Verification
-
-- Vulkan filter (net8.0, Debug, with and without GLFW hook): 8 passed, 0 failed, 0 skipped.
-- Local coverlet: Vulkan.cs 8/16 lines (50.0%); lines 138-145 unreachable (no Vulkan loader).
-- Probe: `Vulkan.GetRequiredInstanceExtensions()` returns an empty array (count=0).
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 50.0% (16/32 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: PARTIAL_BLOCKED_BY_NATIVE
+Details:
+- Missed lines 143-150: the populated-array loop inside GetRequiredInstanceExtensions (reads extension names when count>0 and ptr!=zero).
+- That branch is reachable ONLY when GLFW reports Vulkan support (glfwGetRequiredInstanceExtensions returns a non-null, non-empty list). This machine has no Vulkan loader (no vulkaninfo, no libvulkan in /opt/homebrew or /usr/local) so glfw returns count=0/zero pointer; the while-loop never runs.
+- Existing VulkanTests already call GetRequiredInstanceExtensions under try/catch (ReturnsArray, DoesNotThrow) plus IsSupported guards; no further local coverage is possible without installing a Vulkan runtime. On Vulkan-capable CI these tests naturally exercise the missed branch.
+- Environment dependency, not a code defect; guarded safe tests are already committed.

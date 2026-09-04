@@ -1,17 +1,10 @@
-# Result: ImDrawData.cs
-
-File: `1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs`
-CoverageBefore: 52.6% (SonarCloud stale; local coverlet 38/38 = 100.0%)
-CoverageAfter: 100.0% (38/38 lines, local coverlet; unchanged)
-TestsAdded: 0 (already fully covered)
-Commit: test: coverage ImDrawData.cs
-Status: COMPLETE_ALREADY_COVERED
-
-## Summary
-
-ImDrawData.cs is the ImGui draw-data struct wrapper (22 complexity / 30 LOC per SonarCloud).
-The committed suite (`ImDrawDataTest.cs` / `ImDrawDataTests.cs` /
-`ImDrawDataRemainingCoverageTests.cs`) covers 38/38 instrumented lines locally: 100.0% line
-coverage, verified via coverlet on `Alis.Extension.Graphic.Ui.Test` (net8.0). SonarCloud's
-52.6% reading is a stale artifact predating the committed tests; no further tests can add
-measurable coverage.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 100.0% (38/38 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: ALREADY_COVERED_LOCALLY
+Details:
+- ImDrawData exposes the ImGui DrawData marshaled-layer type (DrawList accessors, scale/position, total indices/vertices, Valid flag).
+- Existing Ui suite hits it fully, 38/38 lines.

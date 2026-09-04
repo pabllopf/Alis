@@ -1,21 +1,10 @@
-# Result: Categories.cs
-
-File: `4_Operation/Physic/src/Dynamics/Categories.cs`
-CoverageBefore: 0.0% (SonarCloud; enum LOC artifact)
-CoverageAfter: Not measurable (0 instrumented lines; coverlet emits no coverage for pure enums)
-TestsAdded: 0 (already covered by committed CategoriesTest.cs, 85 tests in filter)
-Commit: test: coverage Categories.cs
-Status: ALREADY_REMEDIATED
-
-## Summary
-
-Categories.cs is a pure `[Flags]` enum (None + Cat1..Cat31 + All). It contains no executable
-statements, so coverlet produces no `<class>` entry for it and line coverage is not a
-meaningful metric (SonarCloud's "uncovered lines" are enum declaration lines that can never be
-hit). The committed `Dynamics/CategoriesTest.cs` already asserts the flag values and
-combinations; the full Physic suite (85 tests in the Categories filter) passes.
-
-## Verification
-
-- Categories filter (net8.0, Debug): 85 passed, 0 failed, 0 skipped.
-- Coverlet: no `<class>` entry for Categories.cs → not instrumentable, nothing to remediate.
+# Coverage Worker Result
+File: 4_Operation/Physic/src/Dynamics/Categories.cs
+CoverageBefore: 0.0% (SonarCloud CI, 1 line-hit)
+CoverageAfter: N/A — no executable lines exist (by-construction)
+TestsAdded: 0
+Commit: (none)
+Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+Details:
+- Categories.cs is a `[Flags] public enum` (None, Cat1..Cat16, ...). Enum members emit no executable IL.
+- The single SonarCloud line-hit is a sequence point over an enum member; not coverable by tests. Local cobertura confirms the class is absent (no instrumentable code).
