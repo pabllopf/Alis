@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.8] - 2026-09-02
+### :white_check_mark: Tests
+- [`c92d8c7`](https://github.com/pabllopf/Alis/commit/c92d8c7b30e91bb71471eb383f4128e15a67c59e) - coverage Shader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`15f661f`](https://github.com/pabllopf/Alis/commit/15f661f275d55231e2bc68a7561f398a9ecc1b56) - coverage ImFontAtlasPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b30e4d`](https://github.com/pabllopf/Alis/commit/3b30e4de0e5be5041dfee9d7f57e2e0584e1d7ce) - coverage SdlTtf.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7b24d2`](https://github.com/pabllopf/Alis/commit/b7b24d2ab1501fe76cc534d18634c34742d49cc0) - coverage AudioVideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61a38a3`](https://github.com/pabllopf/Alis/commit/61a38a32cfceef708e59a05eff3bd88fb00782b8) - coverage Window.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`495c006`](https://github.com/pabllopf/Alis/commit/495c006444af53fc51645f0cde832e6022d321a7) - coverage ImPlotP15.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc35fc5`](https://github.com/pabllopf/Alis/commit/cc35fc539be5da7a3b5ce0f5eddb94f01b6d1797) - coverage KeyCodes.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a6dcada`](https://github.com/pabllopf/Alis/commit/a6dcada857d162b9a9ee35facea49336dbb64b7d) - coverage ImPlotP22.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2bd989`](https://github.com/pabllopf/Alis/commit/d2bd98927e4903dca55d6bdddb6edf740b06d721) - coverage ImPlotP19.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`712ac95`](https://github.com/pabllopf/Alis/commit/712ac954821e6d18f0527dd8bf0b521a49136739) - coverage ImPlotP6.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6aeb549`](https://github.com/pabllopf/Alis/commit/6aeb54956a8a521794404cc9cdcdd3bb93bff521) - coverage ImPlotP7.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8f477a`](https://github.com/pabllopf/Alis/commit/e8f477a3619ea72802a33239f53dfc275a8cde0b) - coverage RenderWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e640b72`](https://github.com/pabllopf/Alis/commit/e640b72780ba8c3d0af33f05396eb04794abaf5d) - coverage ImGuiP2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9efb3b2`](https://github.com/pabllopf/Alis/commit/9efb3b292e89229c4fd7a28c47dfa8fc32cc1343) - coverage ImPlotP13.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`743b568`](https://github.com/pabllopf/Alis/commit/743b568d926235229de78fbbcd3bc682f82e5f21) - coverage ImPlotP17.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4664297`](https://github.com/pabllopf/Alis/commit/4664297fd5888d950372e2ab32a96e16af85d9e0) - coverage ImPlotP8.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6394ac3`](https://github.com/pabllopf/Alis/commit/6394ac3796439281ea81e9de78c07061de05a9ad) - coverage ImPlotP16.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9b58710`](https://github.com/pabllopf/Alis/commit/9b587106b445b149bb4837e68305f5d07473af71) - coverage ImPlotP21.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`299f731`](https://github.com/pabllopf/Alis/commit/299f7316e5f9fce1fde72c36e6d5de4678a03725) - coverage ImGuizMo.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a0c236`](https://github.com/pabllopf/Alis/commit/4a0c236a57606395432cf5a5c419dfde7b5d8948) - coverage ImPlotP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad66734`](https://github.com/pabllopf/Alis/commit/ad6673496726a7c0b3f2911a1a229173b9e759bb) - coverage Texture.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2a90e5`](https://github.com/pabllopf/Alis/commit/c2a90e5ee4eb795a5180157d454cdbbe84b37782) - coverage ImPlotP5.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.7] - 2026-09-02
 ### :white_check_mark: Tests
 - [`5755f9c`](https://github.com/pabllopf/Alis/commit/5755f9c6f264387bf3ea61614a64736bed0fd876) - coverage ImPlotP1.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11049,3 +11075,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.5]: https://github.com/pabllopf/Alis/compare/v1.3.4...v1.3.5
 [v1.3.6]: https://github.com/pabllopf/Alis/compare/v1.3.5...v1.3.6
 [v1.3.7]: https://github.com/pabllopf/Alis/compare/v1.3.6...v1.3.7
+[v1.3.8]: https://github.com/pabllopf/Alis/compare/v1.3.7...v1.3.8
