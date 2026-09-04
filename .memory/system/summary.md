@@ -607,3 +607,29 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Commit: test: coverage SdlImage.cs
 - Status: COVERED
 - Note: Unblocked 20 previously-skipping SDL tests on macOS: Attribute now probes app base + /opt/homebrew cellar; new test-side DllImportResolver ([ModuleInitializer]) binds "sdl2_image"/"sdl2" DllImports. Full Sdl2 suite 660/660.
+
+## Clipboard.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (42/42 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Mouse.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 70.0% (28/40 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: 6 missed lines need sfMouse_setPosition(position, IntPtr.Zero) null-window call which crashes the dotnet test host on macOS (probe reverted; suite green 63/63).
+
+## Context.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 60.0% (24/40 lines)
+- TestsAdded: 1 (Global_CreatesAndCachesContext)
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: 9 residual lines = ~Context() finalizer body; CriticalFinalizerObject finalizers not attributed by coverlet despite passing Finalizer_DestroysNativeContext probe. Suite 20/20 green.

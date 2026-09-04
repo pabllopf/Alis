@@ -1,24 +1,11 @@
-# Result: Sprite.cs (Application)
-
-File: `2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 100.0% (216/216 lines, local coverlet)
-TestsAdded: 2 (SpriteRenderCoverageTests.cs: resource-load fallback + render empty-path branch)
-Commit: test: coverage Sprite.cs
-Status: PARTIALLY_REMEDIATED
-
-## Summary
-
-Sprite.cs is the ECS render sprite component (record struct; 216 instrumented lines). The
-committed suite already covered 214/216 (99.1%); the two remaining lines were the closing
-braces of the embedded-resource texture-load fallback (line 323) and the render-time
-empty-path shared-resource branch (line 357). This session added two tests to
-`SpriteRenderCoverageTests.cs` (reusing its fake-OpenGL delegate infrastructure) that drive
-`LoadTexture(string.Empty)` with `NameFile = "dino_assets.bmp"` (loaded from the packed test
-assets via AssetRegistry) and `Render` with an empty Path, covering both lines. Local coverlet
-(net8.0, Debug, Sprite filter — 70 tests) measures 216/216 lines (100.0%).
-
-## Verification
-
-- Sprite filter (net8.0, Debug): 70 passed, 0 failed, 0 skipped.
-- Local coverlet: Sprite.cs 216/216 lines (100.0%), no uncovered lines.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 0.0% (0/86 lines executable in this environment; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: BLOCKED_BY_NATIVE
+Details:
+- Sprite.cs wraps sfSprite natives (default/texture/texture+rect/copy ctors, Color, Texture, TextureRect, GetLocalBounds/GetGlobalBounds, ToString, Destroy, and the Draw switch). 26 existing committed tests (SpriteTests.cs) are reflection-only (member existence/type checks) and never construct a Sprite, so local coverage is 0%.
+- CSFML 3.0 changed sfSprite_create() to sfSprite_create(const sfTexture* texture). The wrapper's no-arg P/Invoke passes a garbage texture register. Attempted execution suite (built from a live Texture created from tile000.bmp, verifying the Texture path works): the minimal `new Sprite()` probe alone blocked the test host ("Serie de pruebas anulada"), identical to the sfSound_create garbage-buffer crash. Every Sprite ctor routes through sfSprite_create, so no member is reachable. Tests reverted.
+- Not coverable without src changes (production fix: pass IntPtr.Zero explicitly to sfSprite_create).

@@ -55,6 +55,20 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+                /// <summary>
+        /// Tests that the global context is created and cached
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Global_CreatesAndCachesContext()
+        {
+            Context first = Context.Global;
+            Context second = Context.Global;
+
+            Assert.NotNull(first);
+            Assert.Same(first, second);
+            System.GC.SuppressFinalize(first);
+        }
+
         /// <summary>
         /// Tests that the string description identifies a context
         /// </summary>

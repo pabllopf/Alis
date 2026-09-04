@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 200 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 77 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs
 
     ### Language
     cs
 
     ### Coverage
-    99.1% (Line: 100.0%, Branch: 90.9%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    0
+    20
 
     ### Uncovered Branches
     2
 
     ### Method
-    WeldJoint
+    Context
 
     ### Complexity / LOC
-    32 / 241 lines
+    7 / 51 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:WeldJoint.cs
+//  File:Context.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
+using System.Security;
+using Alis.Extension.Graphic.Sfml.Systems;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Extension.Graphic.Sfml.Windows
 {
+    //////////////////////////////////////////////////////////////////
     /// <summary>
-    ///     A weld joint essentially glues two bodies together. A weld joint may
-    ///     distort somewhat because the island constraint solver is approximate.
-    ///     The joint is soft constraint based, which means the two bodies will move
-    ///     relative to each other, when a force is applied. To combine two bodies
-    ///     in a rigid fashion, combine the fixtures to a single body instead.
+    ///     This class defines a .NET interface to an SFML OpenGL Context
     /// </summary>
-    /// <remarks>
-    ///     Point-to-point constraint
-    ///     C = p2 - p1
-    ///     Cdot = v2 - v1
-    ///     = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    ///     J = [-I -r1_skew I r2_skew ]
-    ///     Identity used:
-    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
-    ///     Angle constraint
-    ///     C = angle2 - angle1 - referenceAngle
-    ///     Cdot = w2 - w1
-    ///     J = [0 0 -1 0 0 1]
-    ///     K = invI1 + invI2
-    /// </remarks>
-    public class WeldJoint : Joint
+    //////////////////////////////////////////////////////////////////
+    public class Context : CriticalFinalizerObject
     {
         /// <summary>
-        ///     The bias
+        ///     The our global context
+        /// </summary>
+        private static Context _ourGlobalContext;
+
+        /// <summary>
+        ///     The zero
+        /// </summary>
+        internal readonly IntPtr myThis = IntPtr.Zero;
+
+        /// <summary>
+        ///     Default constructor
+        /// </summary>
+        public Context() => myThis = sfContext_create();
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WeldJointTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/ContextTests.cs
 
     Priority
-    LOW (NEW)
+    CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage WeldJoint.cs
+    Commit format: test: coverage Context.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

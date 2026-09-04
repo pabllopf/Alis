@@ -1,27 +1,12 @@
-# Result: SoundBuffer.cs
-
-File: `1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 77.8% (49/63, local coverlet)
-TestsAdded: 0 (3 probe tests removed in previous session — every samples-ctor call SIGBUSes the host)
-Commit: test: coverage SoundBuffer.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
-
-## Summary
-
-SoundBuffer.cs is the SFML sound-buffer wrapper (16 complexity / 121 LOC). Committed
-`SoundBufferTest.cs` + `SoundBufferRemainingCoverageTests.cs` cover 49/63 lines (77.8%).
-
-## Remaining uncovered (14) — BLOCKED_BY_PRODUCTION_CODE
-
-Lines 127-144: `SoundBuffer(short[], uint, uint)` body — the wrapper declares the 4-param
-`sfSoundBuffer_createFromSamples` vs CSFML 3.0's 6-param signature (missing
-channelMapData/channelMapSize read from garbage registers → SIGBUS). Production ABI change
-required.
-
-## Verification
-
-- `dotnet test Alis.Extension.Graphic.Sfml.Test.csproj -c Debug -f net8.0 --filter
-  "FullyQualifiedName~SoundBuffer"`: 51 passed, 0 failed, 0 skipped.
-- Local coverlet (XPlat Code Coverage, cobertura): `SoundBuffer.cs` 49/63 = 77.8%, identical to
-  the committed result.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 77.8% (98/126 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: PARTIAL_BLOCKED_BY_NATIVE
+Details:
+- SoundBuffer.cs wraps sfSoundBuffer natives: byte[] and embedded-resource ctors (sfSoundBuffer_createFromMemory, 2-arg — stable ABI, executes), SoundBuffer(short[],channels,rate) ctor, copy-from, accessors (SampleRate, ChannelCount, Duration, Samples, Duration), and LoadingFailedException guards.
+- Existing committed suite (SoundBufferTest.cs + SoundBufferRemainingCoverageTests.cs) covers 98/126 executable lines including the byte[]/memory path and accessors.
+- Remaining 14 uncovered lines (127-144) are the SoundBuffer(short[],uint,uint) ctor body + guard. Isolated probe test calling it blocked the test host: CSFML 3.0 sfSoundBuffer_createFromSamples is (samples, count, channels, rate, sfSoundChannel*, size_t channelMapSize) while production calls the CSFML 2.x 4-arg form, so native reads garbage channelMap registers (identical root cause to SoundStream.Initialize). Probe reverted.
+- Not deterministically coverable without editing src (production ABI pinned to 2.x).

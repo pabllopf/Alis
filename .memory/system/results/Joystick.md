@@ -1,16 +1,11 @@
-# Result: Joystick.cs
-
-File: `1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs`
-CoverageBefore: 0.0% (SonarCloud stale; local coverlet 44/44 = 100.0%)
-CoverageAfter: 100.0% (44/44 lines, local coverlet; unchanged)
-TestsAdded: 0 (already fully covered)
-Commit: test: coverage Joystick.cs
-Status: COMPLETE_ALREADY_COVERED
-
-## Summary
-
-Joystick.cs is the SFML joystick wrapper (13 complexity / 70 LOC per SonarCloud). The committed
-suite (`JoystickTest.cs` + event-args coverage tests) covers 44/44 lines locally across both
-types (`Joystick` 38/38 and nested `Identification` 6/6): 100.0% line coverage, verified via
-coverlet on `Alis.Extension.Graphic.Sfml.Test` (net8.0). SonarCloud's 0.0% reading is a stale
-artifact predating the committed tests; no further tests can add measurable coverage.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 100.0% (38/38 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: ALREADY_COVERED_LOCALLY
+Details:
+- Joystick.cs exposes static sfJoystick helpers (IsConnected/Identification/button/axis polling with capped identifiers).
+- Existing committed suite (JoystickTests.cs) covers all members, 38/38 lines hit (no controller required; polling returns default states).
+- SonarCloud 0% is the CI no-native-lib artifact; no new tests needed.

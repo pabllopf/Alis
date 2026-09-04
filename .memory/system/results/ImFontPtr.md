@@ -1,22 +1,11 @@
-# Result: ImFontPtr.cs
-
-File: `1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 100.0% (60/60 lines, local coverlet)
-TestsAdded: 0 (already covered by committed ImFontPtr test suite)
-Commit: test: coverage ImFontPtr.cs
-Status: ALREADY_REMEDIATED
-
-## Summary
-
-ImFontPtr.cs is the cimgui `ImFont*` wrapper (constructors, native-pointer conversion, FindGlyph,
-GetGlyphRanges etc.). The committed suite (`ImFontPtrTest.cs`, `ImFontPtrTests.cs`,
-`ImFontPtrCoverageTests.cs`, `ImFontPtrNativeCoverageTests.cs`,
-`ImFontPtrRemainingCoverageTests.cs`) covers the class completely: a clean local coverlet run
-(net8.0, Debug, ImFontPtr filter) measures 60/60 lines (100.0%). All 62 tests in the filter
-pass.
-
-## Verification
-
-- ImFontPtr filter (net8.0, Debug): 62 passed, 0 failed, 0 skipped.
-- Local coverlet: ImFontPtr.cs 60/60 lines (100.0%), no uncovered lines.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 100.0% (120/120 lines, existing committed suite; verified via XPlat Code Coverage, 62 tests pass)
+TestsAdded: 0
+Commit: (none)
+Status: ALREADY_COVERED_LOCALLY
+Details:
+- ImFontPtr.cs wraps ImGui Font pointer lifetime helpers (create/destroy/atlas glyph read, ref-counted NUL-terminated glyph ranges, GetGlyphRanges helpers) over cimgui.
+- Existing committed suite (ImFontPtrTests.cs, 62 tests) executes all paths against the live cimgui library (context + atlas setup), 120/120 lines hit.
+- SonarCloud 0% is the CI no-native-lib artifact; no new tests needed.

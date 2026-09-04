@@ -1,27 +1,11 @@
-# Result: MacOpenGLContext.cs
-
-File: `4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs`
-CoverageBefore: 0.0% (SonarCloud stale; also 0/66 without the macOS startup hook)
-CoverageAfter: 100.0% (66/66 lines, local coverlet, hook-enabled run)
-TestsAdded: 0 (already fully covered by committed hook-gated suite)
-Commit: test: coverage MacOpenGLContext.cs
-Status: COMPLETE_ALREADY_COVERED
-
-## Summary
-
-MacOpenGLContext.cs is the internal macOS OpenGL context wrapper (10 complexity / 44 LOC per
-SonarCloud; `#if osxarm64 || osxarm || osxx64 || osx` guarded). The committed
-`MacOpenGLContextExecutionTests.cs` + `test/StartupHook.cs` (`MacOpenGLContextBootstrap` —
-main-thread ObjC bootstrap, `ALIS_MACWINDOW_HOOK=1` env-gated for CI) cover 66/66 lines:
-100.0% line coverage, verified via coverlet with the hook enabled on
-`Alis.Core.Graphic.Test` (net8.0). Targeted run: 6 passed / 0 failed.
-
-Without the hook (plain CI-equivalent run) the 6 tests are guarded no-ops and coverlet reads
-0/66; the SonarCloud 0.0% reading is that stale no-hook artifact. No further tests can add
-measurable coverage — construction requires a live AppKit window on the process main thread,
-which the committed hook infra already performs (same pattern as MacWindow.cs, 100%).
-
-## Verification
-
-- Hook-enabled run: 6 passed / 0 failed; MacOpenGLContext.cs 66/66 = 100.0%.
-- No-hook (CI-equivalent) run: 6 passed as guarded no-ops.
+# Coverage Worker Result
+File: 4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 0.0% (0/33 lines executable in this environment; transitive via MacWindow)
+TestsAdded: 0
+Commit: (none)
+Status: BLOCKED_BY_NATIVE
+Details:
+- MacOpenGLContext.cs creates an NSOpenGLPixelFormat (with a zero-terminated attribute array, GCHandle-pinned) and an NSOpenGLView for the window's frame, attaches it via setContentView, grabs openGLContext and exposes MakeCurrent/SwapBuffers.
+- The single ctor MacOpenGLContext(MacWindow) requires a valid live MacWindow and calls window.GetFrame(); both MacWindow construction (sfSprite-like native garbage arg crash class) and GetFrame (objc_msgSend struct return as IntPtr -> AccessViolation) are confirmed host blockers off the AppKit main thread. The repo's only runnable path is the StartupHook bootstrap (MacWindowExecutionTests/MacOpenGlContextBootstrap), which requires DOTNET_STARTUP_HOOKS in an arch-matching (x64/Rosetta) shell that is unavailable here (see MacWindow.md).
+- No probe added: the direct-construction attempts on the sibling MacWindow already crashed the test host; this type is additionally blocked by GetFrame and AppKit view creation on the worker thread. Requires production-side or main-thread-hook fix.

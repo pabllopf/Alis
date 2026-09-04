@@ -1,25 +1,11 @@
-# Result: SoundRecorder.cs
-
-File: `1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 98.0% (50/51, local coverlet)
-TestsAdded: 0 (already remediated, committed SoundRecorderTest.cs)
-Commit: test: coverage SoundRecorder.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
-
-## Summary
-
-SoundRecorder.cs is the SFML sound-recorder wrapper (19 complexity / 111 LOC). Committed
-`SoundRecorderTest.cs` covers 50/51 lines (98.0%).
-
-## Remaining uncovered (1 line) — BLOCKED_BY_PRODUCTION_CODE
-
-Line 221: `SetProcessingInterval` body — `sfSoundRecorder_setProcessingInterval` symbol is
-missing in CSFML 3.0 (always EntryPointNotFoundException). Production ABI change required.
-
-## Verification
-
-- `dotnet test Alis.Extension.Graphic.Sfml.Test.csproj -c Debug -f net8.0 --filter
-  "FullyQualifiedName~SoundRecorder"`: 23 passed, 0 failed, 0 skipped.
-- Local coverlet (XPlat Code Coverage, cobertura): `SoundRecorder.cs` 50/51 = 98.0%, identical
-  to the committed result.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs
+CoverageBefore: 0.0% (SonarCloud CI)
+CoverageAfter: 98.0% (100/102 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: PARTIAL_BLOCKED_BY_NATIVE
+Details:
+- SoundRecorder.cs is the abstract audio capture source (Start/Stop/Start-with-rate, available devices, sample rate/channel count, OnStart/OnProcessSamples/OnStop overrides, SetDevice, SetProcessingInterval) over sfSoundRecorder natives. CSFML 3.0 sfSoundRecorder_create(onStart,onProcess,onStop,userData) matches the 2.x form, so the recorder executes locally.
+- Existing committed suite (SoundRecorderTest.cs + accessor) covers 100/102 executable lines, including guarded Start/Stop and the callback overrides.
+- Sole missed line 221: SetProcessingInterval body. sfSoundRecorder_setProcessingInterval does not exist in CSFML 3.0 (absent from SoundRecorder.h and the installed dylib); existing test SetProcessingInterval_ThrowsEntryPointNotFound asserts the resulting EntryPointNotFoundException. The line cannot be hit. Not deterministically coverable.

@@ -1,26 +1,12 @@
-# Result: Image.cs
-
-File: `1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs`
-CoverageBefore: 0.0% (SonarCloud; stale artifact)
-CoverageAfter: 95.6% (87/91, local coverlet)
-TestsAdded: 0 (already remediated in commit e2ce3efd5)
-Commit: test: coverage Image.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
-
-## Summary
-
-Image.cs is the SFML image wrapper (27 complexity / 162 LOC). Committed `ImageTest.cs` /
-`ImageExecutionTests.cs` / `ImageRemainingCoverageTests.cs` cover 87/91 lines (95.6%).
-
-## Remaining uncovered (4 lines) — BLOCKED_BY_PRODUCTION_CODE
-
-Lines 73-74 / 153-154: `LoadingFailedException` throw paths in `Image(uint, uint, Color)` and
-`Image(uint, uint, byte[])`. CSFML never returns IntPtr.Zero for these (zero-size accepted; only
-native OOM produces null), so the paths are unreachable without a production change.
-
-## Verification
-
-- `dotnet test Alis.Extension.Graphic.Sfml.Test.csproj -c Debug -f net8.0 --filter
-  "FullyQualifiedName~Image"`: 46 passed, 0 failed, 0 skipped.
-- Local coverlet (XPlat Code Coverage, cobertura): `Image.cs` 87/91 = 95.6%, identical to the
-  committed result.
+# Coverage Worker Result
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs
+CoverageBefore: 0.0% (SonarCloud)
+CoverageAfter: 95.6% (87/91 lines, existing committed suite; verified via XPlat Code Coverage)
+TestsAdded: 0
+Commit: (none)
+Status: PARTIAL_BLOCKED_BY_NATIVE
+Details:
+- CSFML 3.0 (brew) present. Existing committed suite (ImageRemainingCoverageTests/ImageExecutionTests, 62 tests) covers 87/91 executable lines (constructors, Pixels, Size, SaveToFile, CreateMaskFromColor, Copy, GetPixel, SetPixel, Flip*, ToString, Destroy).
+- Remaining 4 uncovered lines are defensive LoadingFailedException throw guards in Image(uint,uint,Color) (lines 73-74) and Image(uint,uint,byte[]) (lines 153-154) when native create returns IntPtr.Zero.
+- Attempted to trigger via zero-size constructor args (new Image(0,0,Color.Black) / new Image(0,0,byte[4])): CSFML 3.0 sfImage_createFromColor/sfImage_createFromPixels always return a non-null wrapper even for empty images; guard branches require native allocation failure, not deterministically producible. Tests reverted.
+- Production wrapper uses CSFML 2.x 3-arg signatures while installed CSFML 3.0 uses 2-arg (sfVector2u, ...), but tolerated by native.
