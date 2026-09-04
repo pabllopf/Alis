@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 40 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 200 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    99.1% (Line: 100.0%, Branch: 90.9%)
 
     ### Uncovered Lines
-    121
+    0
 
     ### Uncovered Branches
-    10
+    2
 
     ### Method
-    ImGuiP8
+    WeldJoint
 
     ### Complexity / LOC
-    36 / 161 lines
+    32 / 241 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiP8.cs
+//  File:WeldJoint.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    ///     The im gui class
+    ///     A weld joint essentially glues two bodies together. A weld joint may
+    ///     distort somewhat because the island constraint solver is approximate.
+    ///     The joint is soft constraint based, which means the two bodies will move
+    ///     relative to each other, when a force is applied. To combine two bodies
+    ///     in a rigid fashion, combine the fixtures to a single body instead.
     /// </summary>
-    public static partial class ImGui
+    /// <remarks>
+    ///     Point-to-point constraint
+    ///     C = p2 - p1
+    ///     Cdot = v2 - v1
+    ///     = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+    ///     J = [-I -r1_skew I r2_skew ]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     Angle constraint
+    ///     C = angle2 - angle1 - referenceAngle
+    ///     Cdot = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = invI1 + invI2
+    /// </remarks>
+    public class WeldJoint : Joint
     {
         /// <summary>
-        ///     Shows the about window
-        /// </summary>
-        public static void ShowAboutWindow()
-        {
-            ImGuiNative.igShowAboutWindow(IntPtr.Zero);
-        }
-
-        /// <summary>
-        ///     Shows the about window using the specified p open
-        /// </summary>
-        /// <param name="pOpen">The open</param>
-        public static void ShowAboutWindow(ref bool pOpen)
-        {
-            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowAboutWindow(new IntPtr(nativePOpenVal));
-            pOpen = nativePOpenVal != 0;
-        }
-
-        /// <summary>
+        ///     The bias
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP8Tests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/WeldJointTests.cs
 
     Priority
-    CRITICAL (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiP8.cs
+    Commit format: test: coverage WeldJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
