@@ -958,5 +958,25 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
                 ImGuiNative.igDestroyContext(imgui);
             }
         }
+
+        /// <summary>
+        ///     Verifies the non-null current-context ini file save reaches the native call against
+        ///     the default context.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void CurrentContextSaveFile_Executes()
+        {
+            IntPtr imgui = CreateImGuiContext();
+            try
+            {
+                ImNodes.CreateContext();
+                ImNodes.SaveCurrentEditorStateToIniFile("/tmp/alis_imnodes_current_save.ini");
+            }
+            finally
+            {
+                ImNodes.DestroyContext();
+                ImGuiNative.igDestroyContext(imgui);
+            }
+        }
     }
 }

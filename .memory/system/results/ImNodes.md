@@ -1,30 +1,26 @@
-# Result: ImNodes.cs
+# ImNodes.cs — Coverage Remediation Report
 
-File: `1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs`
-CoverageBefore: 3.3% (SonarCloud; stale artifact)
-CoverageAfter: 83.0% (332/400, local coverlet)
-TestsAdded: 0 (already remediated in commit 99c54b57b)
-Commit: test: coverage ImNodes.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
+## Baseline (this session, pre-change)
+- 332/400 instrumentable lines covered (83%); 68 missed
 
-## Summary
+## Change
+- Added `CurrentContextSaveFile_Executes` to `1_Presentation/Extension/Graphic/Ui/test/Extras/Node/ImNodesRemainingCoverageTests.cs`
+- Exercises the non-null branch of `SaveCurrentEditorStateToIniFile(string)` against the default editor context (writes `/tmp/alis_imnodes_current_save.ini`)
+- Result: 339/400 covered (84.8%), +7 lines (src 830-836)
 
-ImNodes.cs is the ImNodes wrapper (105 complexity / 513 LOC). Committed suite
-(ImNodesTest.cs + ImNodesRemainingCoverageTests.cs, 34 tests: 31 native execution + 3
-StyleColors marshaling guards) covers 332/400 lines (83.0%).
+## Remaining 61 lines — PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 
-## Remaining uncovered (68) — BLOCKED_BY_PRODUCTION_CODE
+### Evidence of host in-safety (each family was attempted and aborts the test host)
+- `EditorContextFree` (206-208), editor-variant load/save (`LoadEditorStateFromIni*` 641-651, 660-670; `SaveEditorStateToIniFile` 888-898), and `Save*ToIniString` return conversions (854, 860, 874, 880, 909-910, 922-923)
+  - Root cause: `ImNodesEditorContext` is an EMPTY struct. `ImNodes_EditorContextCreate()` P/Invoke returns a pointer but the wrapper discards it (`new ImNodesEditorContext()`), so the binding can never supply a real editor handle; native paths assert on `editor == NULL`.
+- Null-string ini branches (612-614 load-file, 630-632 load-string, 837-839 save-file null branch): null `byte[]` reaches `fopen((const char*)NULL)` / null-size load → native abort.
 
-- `MiniMap` (5 overloads): node-hovering callback delegate unmarshalable → MarshalDirectiveException at JIT.
-- `StyleColors*` (6 overloads): backing struct has an array field → TypeLoadException at JIT.
-- `SaveCurrentEditorStateToIniFile` / `SaveEditorStateToIniFile`: forbidden filesystem side effects.
-- `LoadEditorStateFromIniFile` / `LoadEditorStateFromIniString` / `EditorContextFree` (empty
-  struct): wrapper forwards struct by value as garbage pointer → native deref (process abort).
-- Closing braces behind the above JIT/abort paths.
+### Marshal-throw (existing tests already assert these exceptions)
+- MiniMap overload closers (682, 694, 706, 718, 730): `ImNodes_MiniMap` delegate parameter is unmarshalable → MarshalDirectiveException/TypeLoadException before the closing brace.
+- StyleColors Classic/Dark/Light overload closers (1017, 1026, 1034, 1043, 1051, 1060): struct with array field is unmarshalable → TypeLoadException before the closing brace.
 
-## Verification
+## TestsAdded
+- 1 (`CurrentContextSaveFile_Executes`)
 
-- `dotnet test Alis.Extension.Graphic.Ui.Test.csproj -c Debug -f net8.0 --filter
-  "FullyQualifiedName~ImNodes"`: 118 passed, 8 skipped, 0 failed.
-- Local coverlet (XPlat Code Coverage, cobertura): `ImNodes.cs` 332/400 = 83.0%, identical to
-  the committed result.
+## Commit
+- (pending commit: test: coverage ImNodes.cs)

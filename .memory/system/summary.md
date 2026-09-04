@@ -922,3 +922,12 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: ALREADY_REMEDIATED (remaining: joystick loop bodies need hardware; private GlfwError unreachable)
+
+## ImNodes.cs
+- Covered: 400 instrumentable lines, 339 covered (84.8%), 61 missed
+- Baseline (this session): 332/400 (83%); added ImNodesRemainingCoverageTests.CurrentContextSaveFile_Executes (+7 lines: non-null SaveCurrentEditorStateToIniFile)
+- Attempted covers for the 61 missed lines: editor-variant load/save (LoadEditorStateFromIni*, SaveEditorStateToIniFile), EditorContextFree/Create/Set, null-string ini branches, Save*ToIniString return conversions — every one aborts the test host (host-unsafe). Root cause: ImNodesEditorContext is an EMPTY struct (native P/Invoke returns the pointer but the wrapper discards it), so the binding can never supply a real editor handle; null-byte[] ini args and EditorContextFree(empty) hit native asserts/fopen(NULL)
+- MiniMap (682-730) and StyleColors (1017-1060) closing braces unreachable: P/Invoke marshal throws (MarshalDirectiveException/TypeLoadException) before the closing brace
+- TestsAdded: 1
+- Commit: (pending)
+- Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE (61 remaining lines host-unsafe)
