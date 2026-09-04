@@ -633,3 +633,188 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Commit: (none)
 - Status: PARTIAL_BLOCKED_BY_NATIVE
 - Note: 9 residual lines = ~Context() finalizer body; CriticalFinalizerObject finalizers not attributed by coverlet despite passing Finalizer_DestroysNativeContext probe. Suite 20/20 green.
+
+## ImDrawData.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (38/38 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## RectangleShape.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (38/38 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Cursor.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (36/36 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImNodesStyle.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (34/34 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImDrawCmd.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (32/32 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Vulkan.cs
+- File: 1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 50.0% (16/32 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: 143-150 (populated-extensions loop) needs a Vulkan loader; this Mac has none. Guards already in VulkanTests; CI-with-Vulkan covers.
+
+## SoundBufferRecorder.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 81.25% (26/32 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: OnStop (97-99) builds SoundBuffer -> 6-arg sfSoundBuffer_createFromSamples crash (CSFML 3.0 channelMap).
+
+## ImFontGlyphRangesBuilder.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (28/28 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImGuiPayload.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (26/26 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImPlotInputMap.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (24/24 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Ivec4.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (24/24 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Vec4.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (24/24 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Vec3.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (22/22 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## JoystickButtonEventArgs.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (20/20 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## MouseMoveEventArgs.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (20/20 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## SizeEventArgs.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (20/20 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Clock.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (18/18 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Ivec2.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (18/18 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Vec2.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (18/18 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImFontAtlasCustomRect.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (16/16 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImGuiWindowClass.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiWindowClass.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (16/16 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Listener.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/Listener.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (16/16 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Touch.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (16/16 lines)
+- TestsAdded: 1 (TouchTest.cs: GetPosition_WithWindow_DelegatesToWindow + MockTouchWindow)
+- Status: COVERED
