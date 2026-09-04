@@ -914,3 +914,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0 (reverted probe methods)
 - Commit: (none)
 - Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+## GlfwNative.cs
+- Covered: 140 lines (instrumentable), 128 covered (91.43%), 12 missed
+- Already remediated (commit f95d84630); re-issued due to processed.json reset
+- Re-verified this session: full no-hook suite 604 passed / 3 skipped / 0 failed
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED (remaining: joystick loop bodies need hardware; private GlfwError unreachable)
