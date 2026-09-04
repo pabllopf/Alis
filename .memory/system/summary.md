@@ -311,3 +311,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 18 (VideoPlayerNoFfmpegCoverageTests.cs)
 - Commit: test: VideoPlayer.cs
 - Status: PARTIAL (Play/PlayInBackground/OpenWrite/CloseWrite require ffplay for full coverage)
+
+## MediaStream.cs
+- File: 1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs
+- CoverageBefore: 6.1%
+- CoverageAfter: ~60%+ (all property get/set + computed IsAudio/IsVideo/SampleRateNumber)
+- TestsAdded: 12 (MediaStreamNoFfmpegCoverageTests.cs)
+- Commit: test: MediaStream.cs
+- Status: PARTIAL (null CodecType throws NRE, sample rate parse edge cases not fully coverable safely)
