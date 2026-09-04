@@ -40,6 +40,9 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs"
   ]
 }

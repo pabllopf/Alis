@@ -287,3 +287,19 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 44 (VideoWriterNoFfmpegCoverageTests.cs)
 - Commit: test: VideoWriter.cs
 - Status: PARTIAL (CloseWrite/OpenWrite branches require ffmpeg for full coverage)
+
+## ImPlotP4.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 0.0%
+- TestsAdded: 0
+- Commit: N/A
+- Status: BLOCKED_BY_PRODUCTION_CODE (pure P/Invoke wrappers, no testable C# logic)
+
+## AudioPlayer.cs
+- File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: ~60% (constructor, dispose, validation paths)
+- TestsAdded: 18 (AudioPlayerNoFfmpegCoverageTests.cs)
+- Commit: test: AudioPlayer.cs
+- Status: PARTIAL (Play/PlayInBackground/OpenWrite/CloseWrite require ffplay for full coverage)
