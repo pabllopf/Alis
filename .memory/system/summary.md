@@ -279,3 +279,11 @@ CoverageAfter: 33.3%
 TestsAdded: 42
 Commit: test: coverage ImPlotP5.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+## VideoWriter.cs
+- File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: ~20% (constructor/property/dispose paths)
+- TestsAdded: 44 (VideoWriterNoFfmpegCoverageTests.cs)
+- Commit: test: VideoWriter.cs
+- Status: PARTIAL (CloseWrite/OpenWrite branches require ffmpeg for full coverage)

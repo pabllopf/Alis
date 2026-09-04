@@ -39,6 +39,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP3.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP5.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs"
   ]
 }
