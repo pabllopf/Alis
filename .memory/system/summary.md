@@ -319,3 +319,12 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 12 (MediaStreamNoFfmpegCoverageTests.cs)
 - Commit: test: MediaStream.cs
 - Status: PARTIAL (null CodecType throws NRE, sample rate parse edge cases not fully coverable safely)
+
+## BitOperations.cs
+- File: 4_Operation/Ecs/src/Redifinition/BitOperations.cs
+- CoverageBefore: 31.0%
+- CoverageAfter: ~100% (Log2, RoundUpToPowerOf2, RotateLeft)
+- TestsAdded: 3 (BitOperationsRemainingCoverageTests.cs)
+- Commit: test: BitOperations.cs
+- Status: COMPLETE
+- Note: Type collides with framework System.Numerics.BitOperations; invoked via assembly-qualified Type.GetType("System.Numerics.BitOperations, Alis.Core.Ecs") + public method reflection in tests
