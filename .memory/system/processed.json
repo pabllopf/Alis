@@ -46,6 +46,15 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs",
-    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs"
   ]
 }

@@ -328,3 +328,84 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Commit: test: BitOperations.cs
 - Status: COMPLETE
 - Note: Type collides with framework System.Numerics.BitOperations; invoked via assembly-qualified Type.GetType("System.Numerics.BitOperations, Alis.Core.Ecs") + public method reflection in tests
+
+## ImGuiP8.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 93.4% (113/121 lines, existing committed suite when cimgui loads)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+- Note: SliderFloat4 overloads (8 lines) cannot be executed: ImGuiNative.igSliderFloat4 marshals Vector4F by value while native expects float*; executing crashes native host (imgui_widgets.cpp:2880). Attempted test reverted.
+
+## RenderTexture.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 2.2% (2/93 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+- Note: CSFML 3.0 ABI mismatch in production wrapper: sfRenderTexture_create 2.x (w,h,depthBuffer) form vs 3.0 (sfVector2u,sfBool); constructing SIGSEGVs host. Only static MaximumAntialiasingLevel + ContextSettings ctor base() reachable (both throw EntryPointNotFound).
+
+## Image.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 95.6% (87/91 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: 4 uncovered lines are defensive LoadingFailedException guard branches in Image(uint,uint,Color) and Image(uint,uint,byte[]) that require native allocation failure; CSFML 3.0 always returns non-null wrapper for empty/zero-size images. Not deterministically triggerable.
+
+## ImPlotP20.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (174/174 lines, existing committed suite when cimgui loads)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: All PlotHeatmap (int/uint/long/ulong) and PlotHistogram (float/double/sbyte/byte) wrapper overloads executed by existing ImPlotP20ExecutionTests inside live cimgui context; 49 tests pass, zero missed lines. SonarCloud 0% is a CI-no-native-lib artifact.
+
+## SfmlText.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 95.2% (160/168 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: All properties/ctors/bounds execute (38 tests pass). Only Draw() switch bodies missed: sfRenderWindow_drawText crashes host (RenderStates stencil ABI, per RenderWindowMainThreadWorker doc) and sfRenderTexture_drawText unreachable (RenderTexture ctor SIGSEGV).
+
+## Music.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (164/164 lines, existing committed suite when csfml-audio loads)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: libcsfml-audio.dylib present; 50 tests exercise all ctors (file/stream/memory), guard branches, properties and Destroy. CI 0% is a no-native-lib artifact.
+
+## Transform.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (152/152 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: SFML 3x3 matrix struct; is trivial bool dst; sfTransform ABI unchanged in CSFML 3.0 so all native ops execute; 105 tests cover ctor, inverse, point/rect transform, combine, translate/rotate/scale (+ center variants), equality/hashcode, operators, identity, ToString.
+
+## Transformable.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (144/144 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Base transformable (position/rotation/scale/origin + transforms); sfTransformable ABI stable; 56 tests cover everything.
+
+## SoundStream.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs
+- CoverageBefore: 4.3% (6/138)
+- CoverageAfter: 29.0% (40/138)
+- TestsAdded: 3 (SoundStreamManagedCallbackTests.cs)
+- Commit: test: coverage SoundStream.cs
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: New tests cover private GetData (fill+EOF branches, pins OnGetData buffer into Chunk) and Seek forwarding. Native Initialize blocked: CSFML 3.0 sfSoundStream_create needs channelMap args the 2.x-ABI call omits; isolated probe blocked the test host. All native accessors/controls/Destroy unreachable without a live stream.
