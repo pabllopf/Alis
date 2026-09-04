@@ -68,8 +68,15 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
         /// </summary>
         private static bool TryLoadAndVerify(string pathOrName)
         {
-            if (!NativeLibrary.TryLoad(pathOrName, out IntPtr handle))
-                return false;
+            IntPtr handle = IntPtr.Zero;
+
+            if (!NativeLibrary.TryLoad(pathOrName, out handle))
+            {
+                if (!TryLoadFromBaseDirectory(pathOrName, out handle))
+                {
+                    return false;
+                }
+            }
 
             bool verified = NativeLibrary.TryGetExport(handle, "IMG_Linked_Version", out _);
             if (!verified)
@@ -78,6 +85,34 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
             }
 
             return verified;
+        }
+
+        /// <summary>
+        ///     Resolves the native library from the executing assembly directory, where the build
+        ///     pipeline drops the redistributable dylib, because name-based dlopen resolution does
+        ///     not probe the application directory on macOS.
+        /// </summary>
+        private static bool TryLoadFromBaseDirectory(string pathOrName, out IntPtr handle)
+        {
+            handle = IntPtr.Zero;
+            string directory = System.IO.Path.GetDirectoryName(typeof(RequireSdl2ImageFactAttribute).Assembly.Location);
+
+            foreach (string candidate in new[] { pathOrName + ".dylib", "lib" + pathOrName + ".dylib" })
+            {
+                string fullPath = System.IO.Path.Combine(directory, candidate);
+                if (System.IO.File.Exists(fullPath) && NativeLibrary.TryLoad(fullPath, out handle))
+                {
+                    return true;
+                }
+            }
+
+            string cellar = "/opt/homebrew/lib/lib" + pathOrName + ".dylib";
+            if (System.IO.File.Exists(cellar) && NativeLibrary.TryLoad(cellar, out handle))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

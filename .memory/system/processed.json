@@ -55,6 +55,27 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs",
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs"
   ]
 }

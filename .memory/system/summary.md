@@ -409,3 +409,201 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Commit: test: coverage SoundStream.cs
 - Status: PARTIAL_BLOCKED_BY_NATIVE
 - Note: New tests cover private GetData (fill+EOF branches, pins OnGetData buffer into Chunk) and Seek forwarding. Native Initialize blocked: CSFML 3.0 sfSoundStream_create needs channelMap args the 2.x-ABI call omits; isolated probe blocked the test host. All native accessors/controls/Destroy unreachable without a live stream.
+
+## SoundBuffer.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 77.8% (98/126 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: byte[]/memory path + accessors covered. short[] samples ctor (lines 127-144) blocked: CSFML 3.0 createFromSamples needs channelMap args; isolated probe blocked the test host.
+
+## ImFontPtr.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (120/120 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Font pointer lifetime helpers; 62 tests execute glyph-range atlas helpers against live cimgui.
+
+## Shape.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 93.3% (112/120 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: Only Draw() switch bodies missed (RenderWindow draw crashes host; RenderTexture ctor SIGSEGV) — same pattern as SfmlText.cs.
+
+## Font.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (116/116 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Font create/glyph/kerning/spacing/underline/texture all covered via embedded font execution tests.
+
+## Sound.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 0.0% (0/106 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+- Note: Every ctor calls sfSound_create() (2.x) which under CSFML 3.0 expects (const sfSoundBuffer*); isolated probes of default/buffer/copy ctors each blocked the test host. No executable path exists.
+
+## ImPlotStyle.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (104/104 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Style push/pop helpers all executed in live ImPlot context.
+
+## SoundRecorder.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 98.0% (100/102 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: Recorder executes locally (create ABI stable). Sole missed line: SetProcessingInterval — symbol absent from CSFML 3.0; existing test asserts EntryPointNotFoundException.
+
+## View.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 97.9% (94/96 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: Sole missed line Reset() — sfView_reset absent in CSFML 3.0; existing tests assert EntryPointNotFoundException.
+
+## MacWindow.cs
+- File: 4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 0.0% (0/94 lines executable here)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+- Note: AppKit NSWindow wrapper needs main-thread + startup hook; hook dll is PE x64 (testhost output osx-x64) so arm64 dotnet test driver aborts loading it, and no x64 Rosetta dotnet is installed. Direct worker-thread creation crashes host (AccessViolation / aborted run). Probe reverted.
+
+## ImFontConfigPtr.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (92/92 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Font config struct accessors all executed in live ImGui context.
+
+## VertexArray.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 91.3% (84/92 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: Missed Draw switch RenderWindow/RenderTexture cases - same RenderStates stencil ABI / RenderTexture SIGSEGV blockers as SfmlText.cs, Shape.cs.
+
+## Sprite.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 0.0% (0/86 lines executable here)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+- Note: All 4 ctors call sfSprite_create() (2.x no-arg); CSFML 3.0 signature is (const sfTexture*) -> garbage texture register blocks host on `new Sprite()`. Existing 26 tests are reflection-only. Reverted execution probe.
+
+## VertexBuffer.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 90.0% (72/80 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_NATIVE
+- Note: Missed Draw switch RenderWindow/RenderTexture cases - same RenderStates/ RenderTexture blockers as SfmlText/Shape/VertexArray.
+
+## RenderStates.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (74/74 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Draw-state bundle + Marshal fully exercised; no render target needed.
+
+## MacOpenGLContext.cs
+- File: 4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 0.0% (0/33 lines executable here)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+- Note: Requires live MacWindow + GetFrame + NSOpenGLView on AppKit main thread; all confirmed host blockers (see MacWindow.md). Only via arch-matching startup-hook shell, unavailable.
+
+## CircleShape.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (64/64 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: sfCircleShape_create ABI stable; full shape accessors exercised.
+
+## ImGuiPlatformIOPtr.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (58/58 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Platform IO accessors exercised in live ImGui context.
+
+## SfmlTime.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (52/52 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Pure managed sfTime value wrapper, full conversion coverage.
+
+## ConvexShape.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (52/52 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: sfConvexShape_create ABI stable; full shape accessors exercised.
+
+## VideoMode.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (50/50 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Pure managed sfVideoMode value type, full coverage.
+
+## Joystick.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (38/38 lines, existing committed suite)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+- Note: Joystick static control-state helpers fully exercised by committed suite.
+
+## SdlImage.cs
+- File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (42/42 lines)
+- TestsAdded: 2 (SdlImageCoverageTests.cs)
+- Commit: test: coverage SdlImage.cs
+- Status: COVERED
+- Note: Unblocked 20 previously-skipping SDL tests on macOS: Attribute now probes app base + /opt/homebrew cellar; new test-side DllImportResolver ([ModuleInitializer]) binds "sdl2_image"/"sdl2" DllImports. Full Sdl2 suite 660/660.
