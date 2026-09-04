@@ -303,3 +303,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 18 (AudioPlayerNoFfmpegCoverageTests.cs)
 - Commit: test: AudioPlayer.cs
 - Status: PARTIAL (Play/PlayInBackground/OpenWrite/CloseWrite require ffplay for full coverage)
+
+## VideoPlayer.cs
+- File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: ~60% (constructor, dispose, validation paths)
+- TestsAdded: 18 (VideoPlayerNoFfmpegCoverageTests.cs)
+- Commit: test: VideoPlayer.cs
+- Status: PARTIAL (Play/PlayInBackground/OpenWrite/CloseWrite require ffplay for full coverage)
