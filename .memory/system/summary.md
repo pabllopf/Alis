@@ -818,3 +818,99 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - CoverageAfter: 100.0% (16/16 lines)
 - TestsAdded: 1 (TouchTest.cs: GetPosition_WithWindow_DelegatesToWindow + MockTouchWindow)
 - Status: COVERED
+
+## Surface.cs
+- File: 1_Presentation/Extension/Graphic/Sdl2/src/Structs/Surface.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (12/12 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Sensor.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Sensor.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (10/10 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Constant.cs
+- File: 6_Ideation/Math/src/Util/Constant.cs
+- CoverageBefore: 0.0% (5 line-hits)
+- CoverageAfter: N/A (by-construction: const literals emit no IL)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+
+## Keyboard.cs
+- File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (8/8 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImColor.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/ImColor.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (6/6 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Constant.cs (Physic)
+- File: 4_Operation/Physic/src/Common/Constant.cs
+- CoverageBefore: 0.0% (2 line-hits)
+- CoverageAfter: N/A (by-construction: const literals emit no IL)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+
+## ImNodesMiniMapNodeHoveringCallback.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (2/2 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## ImNodesMiniMapNodeHoveringCallbackUserData.cs
+- File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs
+- CoverageBefore: 0.0%
+- CoverageAfter: 100.0% (2/2 lines)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_COVERED_LOCALLY
+
+## Categories.cs
+- File: 4_Operation/Physic/src/Dynamics/Categories.cs
+- CoverageBefore: 0.0% (1 line-hit)
+- CoverageAfter: N/A (by-construction: enum members emit no IL)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+
+## ControllerCategories.cs
+- File: 4_Operation/Physic/src/Common/Logic/ControllerCategories.cs
+- CoverageBefore: 0.0% (1 line-hit)
+- CoverageAfter: N/A (by-construction: enum members emit no IL)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+
+## SdlInputConst.cs
+- File: 1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs
+- CoverageBefore: 0.0% (1 line-hit)
+- CoverageAfter: N/A (by-construction: const literals emit no IL)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (by-construction)
+
+## ImGuiP7.cs
+- Covered: 978 lines, 914 covered (93.5%), 32 missed
+- Prior: null-label probes already committed (ImGuiP7Test.cs); re-verified this session
+- Attempted real framed-context calls (Plot×7, PlotLines×7, Selectable×3, SetAllocatorFunctions×2, SetDragDropPayload×2) — every one aborts the test host (native SEGV; by-value P/Invoke marshaling mismatch in ImGuiNative.cs: FloatPtr/igSelectable_BoolPtr/SetAllocatorFunctions/setDragDropPayload)
+- TestsAdded: 0 (reverted probe methods)
+- Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
