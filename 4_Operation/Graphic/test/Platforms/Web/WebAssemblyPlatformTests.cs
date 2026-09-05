@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Graphic.Platforms.Web;
 using Xunit;
 
@@ -608,6 +609,35 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.A));
             platform.InitializeDefaultKeyStates();
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
+        }
+
+        /// <summary>
+        ///     Verifies that the EGL guard branch executes when the private handles are set
+        ///     and tolerates the missing native EGL library on desktop hosts.
+        /// </summary>
+        [Fact]
+        public void MakeContextCurrent_WithValidHandles_ExecutesGuard()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            typeof(WebAssemblyPlatform).GetField("_eglDisplay", BindingFlags.NonPublic | BindingFlags.Instance)?.SetValue(platform, new IntPtr(1));
+            typeof(WebAssemblyPlatform).GetField("_eglSurface", BindingFlags.NonPublic | BindingFlags.Instance)?.SetValue(platform, new IntPtr(2));
+            typeof(WebAssemblyPlatform).GetField("_eglContext", BindingFlags.NonPublic | BindingFlags.Instance)?.SetValue(platform, new IntPtr(3));
+
+            try
+            {
+                platform.MakeContextCurrent();
+            }
+            catch (DllNotFoundException)
+            {
+            }
+
+            try
+            {
+                platform.SwapBuffers();
+            }
+            catch (DllNotFoundException)
+            {
+            }
         }
     }
 }

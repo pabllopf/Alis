@@ -1095,3 +1095,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 261/261 + BoxColliderSettings 17/17 (100.0%) — fake-GL resolver (15 entry points) + real physics + direct OnCollision/OnSeparation dispatch (both directions) — results/BoxCollider.md
 - TestsAdded: 8; Commit: test: coverage BoxCollider.cs
 - Status: COMPLETE
+
+## WebAssemblyPlatform.cs
+- Covered: 307/416 (73.8%) local — re-issue; +guard-path test (MakeContextCurrent/SwapBuffers via reflection-set EGL handles). Remaining 109 lines blocked: libEGL native absent (Initialize/InitializeEglContext/Cleanup), double-swallowed EmscriptenWeb catches (dead by construction), gamepad-data loops, IsKeyDown miss (all keys pre-registered) — results/WebAssemblyPlatform.md
+- TestsAdded: 1; Commit: test: coverage WebAssemblyPlatform.cs
+- Status: BLOCKED_BY_NATIVE_CONSTRUCTION
