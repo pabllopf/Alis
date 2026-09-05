@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.0] - 2026-09-05
+### :white_check_mark: Tests
+- [`f1d1006`](https://github.com/pabllopf/Alis/commit/f1d10066d941aea88bb70f1dea766e31a070005c) - coverage SoundStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ba9a87a`](https://github.com/pabllopf/Alis/commit/ba9a87a46287c11b23515bddb69bfa8f68b074a2) - coverage SdlImage.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`870b017`](https://github.com/pabllopf/Alis/commit/870b0175f0fa843933c21a96dce2daae5286bfec) - coverage Context.cs; docs: results *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cf088ff`](https://github.com/pabllopf/Alis/commit/cf088ff5cde9566ce80b357b694f6a0d2a4b8115) - coverage Touch.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc52ca5`](https://github.com/pabllopf/Alis/commit/cc52ca575bf23fe99f818f62ba189540fa70cbce) - coverage ImNodes.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`1948511`](https://github.com/pabllopf/Alis/commit/19485112fdfe25c65a85d6dfd648fd546fe0f505) - results ImGuiP7.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`564644a`](https://github.com/pabllopf/Alis/commit/564644a1df0620d910a503e1a1150875b2a18e94) - results GlfwNative.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cca4aa8`](https://github.com/pabllopf/Alis/commit/cca4aa80768e1f4a79a3d2a358a8567219fa55f9) - results sweep (previous coverage tasks) *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.9] - 2026-09-04
 ### :white_check_mark: Tests
 - [`761f711`](https://github.com/pabllopf/Alis/commit/761f711b68a215e53bf76eecd6c24aef4f14bc87) - VideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11086,3 +11100,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.7]: https://github.com/pabllopf/Alis/compare/v1.3.6...v1.3.7
 [v1.3.8]: https://github.com/pabllopf/Alis/compare/v1.3.7...v1.3.8
 [v1.3.9]: https://github.com/pabllopf/Alis/compare/v1.3.8...v1.3.9
+[v1.4.0]: https://github.com/pabllopf/Alis/compare/v1.3.9...v1.4.0
