@@ -146,6 +146,21 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs",
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs",
+  "pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/EnumerableHelpers.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/BufferPool.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentRegistry.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs",
+  "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs"
  ]
 }

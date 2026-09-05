@@ -1120,3 +1120,21 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 86.6% line / 79.6% branch (local, 659 lines) — re-issue, already remediated (DTSweepRemainingCoverageTests.cs, commit test: coverage DTSweep.cs). SonarCloud stale 62.4%; remaining hard (infinite-loop / degenerate triangulations) — results/DTSweep.md
 - TestsAdded: 0 this pass; Commit: docs: results batch (146,148)
 - Status: PARTIALLY_REMEDIATED
+
+## Batch (150-164) — re-issues with prior result docs
+- ObjectBase.cs: COMPLETED (9 tests, SFML getters/Dispose/ctors) — results/ObjectBase.md
+- UpdateManager.cs: PARTIALLY_REMEDIATED 92.4% (437/473) — results/UpdateManager.md
+- Events.cs (Network): BLOCKED_BY_PRODUCTION_CODE 83.7% (400/478) — results/Events.md
+- TimeOfImpact.cs: BLOCKED_BY_PRODUCTION_CODE 90.5%/85.7% — results/TimeOfImpact.md
+- Window.cs (Glfw Structs → GameWindow.md): ALREADY_REMEDIATED 100% (10/10 hook) — results/GameWindow.md
+- UnixPlayerBase.cs: PARTIALLY_REMEDIATED 86.9% (73/84) — results/UnixPlayerBase.md
+- Logger.cs: ALREADY_REMEDIATED 100% (96/96) — results/Logger.md
+- WebAssemblyConfiguration.cs: PARTIAL_BLOCKED_BY_PRODUCTION_CODE 90.8% (330/358) — results/WebAssemblyConfiguration.md
+- EnumerableHelpers.cs: no new tests; 94.9% (112/118) branch 83.3% — results/EnumerableHelpers.md
+- BufferPool.cs: BLOCKED_BY_PRODUCTION_CODE 91.9% (129/140) — results/BufferPool.md
+- ComponentRegistry.cs: BLOCKED_BY_PRODUCTION_CODE 94.1% (224/238) — results/ComponentRegistry.md
+- VideoGameBuilder.cs: BLOCKED_BY_PRODUCTION_CODE 93.8% (104/111) — results/VideoGameBuilder.md
+- FileLogOutput.cs: BLOCKED_BY_PRODUCTION_CODE 91.9% (136/148) — results/FileLogOutput.md
+- GameObjectExtensions.cs: BLOCKED_BY_PRODUCTION_CODE 94.1% (128/136) — results/GameObjectExtensions.md
+- StripeGatewayClient.cs: REMEDIATED 100% (310/310; class 106/106) — results/StripeGatewayClient.md
+- TestsAdded: 0 this pass; Commit: docs: results batch (150-164)
