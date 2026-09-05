@@ -117,5 +117,6 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs": true,
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs": true
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs": true
 }
