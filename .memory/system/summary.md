@@ -990,3 +990,10 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: ALREADY_REMEDIATED
+
+## VideoReader.cs
+- Covered: 162/200 instrumentable lines (81.0%): VideoReader class 124/124 (100%) / async LoadMetadataAsync state machine 36/74 — blocked by production deserialization defect (`JsonNativeAot.Deserialize` fails to populate Streams; unreachable mapping block 144-169)
+- Re-issued (SonarCloud stale 38.4%); already remediated at commit "test: coverage VideoReader.cs" (results/VideoReader.md; 38 targeted tests green)
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (remaining 38 lines)

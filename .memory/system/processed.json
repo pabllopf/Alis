@@ -121,5 +121,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs": true,
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs": true,
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs": true,
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs": true
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs": true
 }
