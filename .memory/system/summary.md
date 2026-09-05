@@ -966,3 +966,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: BLOCKED_BY_PRODUCTION_CODE
+
+## BitOperations.cs
+- Covered: UNCHANGED (SonarCloud 31%); already documented BLOCKED_BY_PRODUCTION_CODE in results/BitOperations.md
+- Non-remediable: full name System.Numerics.BitOperations collides with BCL type (CS0433) on net8.0; disambiguation needs extern alias → csproj edit (forbidden); reflection (forbidden)
+- A coverage test file was attempted before, removed after CS0433
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (non-remediable)
