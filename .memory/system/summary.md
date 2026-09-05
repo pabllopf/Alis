@@ -1100,3 +1100,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 307/416 (73.8%) local — re-issue; +guard-path test (MakeContextCurrent/SwapBuffers via reflection-set EGL handles). Remaining 109 lines blocked: libEGL native absent (Initialize/InitializeEglContext/Cleanup), double-swallowed EmscriptenWeb catches (dead by construction), gamepad-data loops, IsKeyDown miss (all keys pre-registered) — results/WebAssemblyPlatform.md
 - TestsAdded: 1; Commit: test: coverage WebAssemblyPlatform.cs
 - Status: BLOCKED_BY_NATIVE_CONSTRUCTION
+
+## EmscriptenWeb.cs
+- Covered: 273/332 (82.2% ratio) — re-issue, already remediated (EmscriptenWebExecutionTests.cs un-gated). Remaining 59-60 lines blocked: post-native-call code reachable only with working libemscripten (WebAssembly-only; no desktop build exists); wrapper catch/fallback paths fully covered — results/EmscriptenWeb.md
+- TestsAdded: 0; Commit: docs: results EmscriptenWeb.cs
+- Status: BLOCKED_BY_NATIVE

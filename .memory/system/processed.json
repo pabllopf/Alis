@@ -142,6 +142,7 @@
  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs": true,
  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs": true,
  "__order__": [
-  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs"
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs"
  ]
 }
