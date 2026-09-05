@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 115 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 122 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
 
     ### Language
     cs
 
     ### Coverage
-    3.5% (Line: 3.6%, Branch: 3.4%)
+    38.4% (Line: 39.0%, Branch: 36.8%)
 
     ### Uncovered Lines
-    351
+    61
 
     ### Uncovered Branches
-    85
+    24
 
     ### Method
-    NativeWindow
+    VideoReader
 
     ### Complexity / LOC
-    134 / 618 lines
+    35 / 135 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeWindow.cs
+//  File:VideoReader.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Text;
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
-using Microsoft.Win32.SafeHandles;
-using Image = Alis.Core.Graphic.Image;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Video.Models;
 
-namespace Alis.Extension.Graphic.Glfw
+namespace Alis.Extension.Media.FFmpeg.Video
 {
     /// <summary>
-    ///     Provides a simplified interface for creating and using a GLFW window with properties, events, etc.
+    ///     The video reader class
     /// </summary>
-    /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
-    // S3897: Static fields are inherited from SafeHandle base class; ISerializable is not applicable for native handles
-    // S4035: No unsafe methods in this class; base SafeHandle inherits from unsafe contexts
-    [SuppressMessage("SonarAnalyzer.CSharp", "S3897", Justification = "Inherited static fields from SafeHandle base class")]
-    [SuppressMessage("SonarAnalyzer.CSharp", "S4035", Justification = "No unsafe methods in this class")]
-    public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
+    /// <seealso cref="MediaReader{Frame,Writer}" />
+    /// <seealso cref="IDisposable" />
+    public class VideoReader : MediaReader<VideoFrame, MediaWriter<VideoFrame>>, IDisposable
     {
         /// <summary>
-        ///     The window instance this object wraps.
+        ///     The compiled
         /// </summary>
-        protected readonly Window Window;
+        private static readonly Regex BitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
 
         /// <summary>
-        ///     Roots GLFW callback delegates to prevent GC collection while they are registered with unmanaged code.
+        ///     The ffprobe
+        /// </summary>
+        internal readonly string ffmpeg;
+
+        /// <summary>
+        ///     The ffprobe
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/NativeWindowTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Video/VideoReaderTests.cs
 
     Priority
-    CRITICAL (NEW)
+    HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage NativeWindow.cs
+    Commit format: test: coverage VideoReader.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

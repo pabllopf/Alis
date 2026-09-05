@@ -139,5 +139,6 @@
   "pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs": true,
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs": true,
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs": true,
-  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs": true
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs": true,
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs": true
 }

@@ -1090,3 +1090,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 116/166 (69.9%) — BLOCKED_BY_PRODUCTION_CODE (real GL context + leaked-pin paths) — results/GLShaderProgram.md
 - TestsAdded: 0; Commit: (none)
 - Status: BLOCKED_BY_PRODUCTION_CODE
+
+## BoxCollider.cs
+- Covered: 261/261 + BoxColliderSettings 17/17 (100.0%) — fake-GL resolver (15 entry points) + real physics + direct OnCollision/OnSeparation dispatch (both directions) — results/BoxCollider.md
+- TestsAdded: 8; Commit: test: coverage BoxCollider.cs
+- Status: COMPLETE
