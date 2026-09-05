@@ -931,3 +931,14 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 1
 - Commit: (pending)
 - Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE (61 remaining lines host-unsafe)
+
+## NativeWindow.cs
+- Covered: 728 lines, 718 covered (98.63%) per committed results/NativeWindow.md (hook-enabled local coverlet)
+- Re-issued (SonarCloud cache 3.5%, CI has no GLFW startup hook); re-verified this session
+- No-hook CI-equivalent suite: 604 passed / 3 skipped / 0 failed
+- Rebuilt scratch reflection hook (temp dir, not committed): hook-enabled NativeWindowExecutionTests run 64/64 green (bootstrap Ready=true)
+- hook + coverlet profiler together segfault on this host (environment-dependence already documented in results/NativeWindow.md); committed 98.63% value stands
+- Remaining 10 lines BLOCKED_BY_PRODUCTION_CODE (X11 selection native exports missing on macOS, SetIcons marshal defect, ReleaseHandle defensive catch, OnKey KeyRepeat dead branch)
+- TestsAdded: 0 (this pass)
+- Commit: (none)
+- Status: ALREADY_REMEDIATED (PARTIAL_BLOCKED_BY_PRODUCTION_CODE remainder)

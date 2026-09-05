@@ -50,3 +50,13 @@ both with and without the hook (the no-hook run keeps them as guarded no-ops).
   (loaded from a scratch directory, not committed) was used to validate the wiring; the committed
   hook matches the repo's existing design and takes effect when the runtime can resolve it
   (e.g. running the Exe directly in a CI image that sets the env vars).
+
+## Re-verification (2026-09-05, this session)
+
+- No-hook CI-equivalent full Glfw suite: 604 passed / 3 skipped / 0 failed.
+- Rebuilt a dependency-free scratch reflection hook (temp dir, not committed) replicating the
+  validated wiring; hook-enabled `NativeWindowExecutionTests`: 64/64 green, bootstrap `Ready=true`.
+- hook + coverlet profiler simultaneously segfault the test host on this machine (SIGSEGV, exit
+  139 before any output). This is the same environment-dependence documented above; the committed
+  98.63% hook-enabled coverlet number stands as the measured value.
+- No production-code or test changes in this pass. Status retained: ALREADY_REMEDIATED.
