@@ -1105,3 +1105,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 273/332 (82.2% ratio) — re-issue, already remediated (EmscriptenWebExecutionTests.cs un-gated). Remaining 59-60 lines blocked: post-native-call code reachable only with working libemscripten (WebAssembly-only; no desktop build exists); wrapper catch/fallback paths fully covered — results/EmscriptenWeb.md
 - TestsAdded: 0; Commit: docs: results EmscriptenWeb.cs
 - Status: BLOCKED_BY_NATIVE
+
+## VideoFrame.cs
+- Covered: 67/67 (100.0% local, line 1.0 / branch 1.0) — re-issue; SonarCloud 78.3% stale. Already fully remediated (VideoFrameTest / VideoFrameCoverageTests / VideoFrameRemainingCoverageTests) — results/VideoFrame.md
+- TestsAdded: 0; Commit: docs: results VideoFrame.cs
+- Status: REMEDIATED (NO-OP — stale SonarCloud delta)

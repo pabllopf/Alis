@@ -143,6 +143,7 @@
  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs": true,
  "__order__": [
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
-  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs"
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs"
  ]
 }
