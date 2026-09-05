@@ -1110,3 +1110,13 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 67/67 (100.0% local, line 1.0 / branch 1.0) — re-issue; SonarCloud 78.3% stale. Already fully remediated (VideoFrameTest / VideoFrameCoverageTests / VideoFrameRemainingCoverageTests) — results/VideoFrame.md
 - TestsAdded: 0; Commit: docs: results VideoFrame.cs
 - Status: REMEDIATED (NO-OP — stale SonarCloud delta)
+
+## Update.cs
+- Covered: 668/668 (100.0% local) — re-issue, already remediated (UpdateArity9CoverageTests.cs, commit test: coverage Update.cs) — results/Update.md
+- TestsAdded: 0 this pass; Commit: docs: results batch (146,148)
+- Status: REMEDIATED
+
+## DTSweep.cs
+- Covered: 86.6% line / 79.6% branch (local, 659 lines) — re-issue, already remediated (DTSweepRemainingCoverageTests.cs, commit test: coverage DTSweep.cs). SonarCloud stale 62.4%; remaining hard (infinite-loop / degenerate triangulations) — results/DTSweep.md
+- TestsAdded: 0 this pass; Commit: docs: results batch (146,148)
+- Status: PARTIALLY_REMEDIATED
