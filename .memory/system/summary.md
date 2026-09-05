@@ -958,3 +958,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: ALREADY_REMEDIATED (PARTIAL_BLOCKED_BY_PRODUCTION_CODE remainder)
+
+## WebAssemblyGameExamples.cs
+- Covered: 32/378 (8.5%) net8.0 full suite this session (commit doc measured 73/419 = 17.4%; drift is a multi-target instrumentation artifact)
+- Re-issued (SonarCloud 17.5%); already remediated at commit 94f2b490a — classifier suite unchanged: 34 passed / 78 skipped / 0 failed
+- Remaining ~346 lines require WASM browser runtime / EGL → unreachable on host
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
