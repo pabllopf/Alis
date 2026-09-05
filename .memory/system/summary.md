@@ -974,3 +974,12 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: BLOCKED_BY_PRODUCTION_CODE (non-remediable)
+
+## Sprite.cs (ECS)
+- Covered: 214/214 instrumentable lines (100.0% line, 100.0% branch) — up from 74/216 (34.3%)
+- Closed all real-GL happy paths via a fake OpenGL function-pointer table injected through Gl.Initialize (33 entry points): InitializeSharedResources (both PreviewMode variants + early-return + compile/link failure throws), LoadTexture (file + embedded-resource "dino_assets.bmp"), Render (live Scene entity + Transform draw path + init-in-Render + flip + bind), OnExit release
+- Method: Marshal.GetFunctionPointerForDelegate per-request resolver; reflection on private statics/members; invoke on boxed struct copies
+- TestsAdded: 11 (SpriteGlCoverageTests.cs)
+- Full suite: 943 passed / 4 skipped / 0 failed
+- Commit: (see git log)
+- Status: COVERED
