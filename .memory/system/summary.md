@@ -942,3 +942,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0 (this pass)
 - Commit: (none)
 - Status: ALREADY_REMEDIATED (PARTIAL_BLOCKED_BY_PRODUCTION_CODE remainder)
+
+## MediaStream.cs
+- Covered: 47/47 instrumentable lines (100.0%) — re-verified this session (local coverlet, MediaStream filter)
+- Re-issued (SonarCloud stale 6.1%); already remediated at commit 093c7db78 (0 test changes needed)
+- Suite: 125 tests green (compatible with results/MediaStream.md)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED
