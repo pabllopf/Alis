@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.9] - 2026-09-04
+### :white_check_mark: Tests
+- [`761f711`](https://github.com/pabllopf/Alis/commit/761f711b68a215e53bf76eecd6c24aef4f14bc87) - VideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cbc4e6b`](https://github.com/pabllopf/Alis/commit/cbc4e6b373b60318ff893b685e08e2363898818e) - AudioPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a4c315`](https://github.com/pabllopf/Alis/commit/8a4c315b6a4238cf772713627f4f71bee9193dcb) - VideoPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`88a4e51`](https://github.com/pabllopf/Alis/commit/88a4e5158948481957d17f50c7764a52339c214c) - MediaStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f88f24a`](https://github.com/pabllopf/Alis/commit/f88f24aa20e254ed54339184a15b2fc141628b9c) - BitOperations.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.3.8] - 2026-09-02
 ### :white_check_mark: Tests
 - [`c92d8c7`](https://github.com/pabllopf/Alis/commit/c92d8c7b30e91bb71471eb383f4128e15a67c59e) - coverage Shader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11076,3 +11085,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.6]: https://github.com/pabllopf/Alis/compare/v1.3.5...v1.3.6
 [v1.3.7]: https://github.com/pabllopf/Alis/compare/v1.3.6...v1.3.7
 [v1.3.8]: https://github.com/pabllopf/Alis/compare/v1.3.7...v1.3.8
+[v1.3.9]: https://github.com/pabllopf/Alis/compare/v1.3.8...v1.3.9
