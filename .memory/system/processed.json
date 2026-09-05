@@ -122,5 +122,13 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs": true,
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs": true,
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs": true,
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs": true
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs": true,
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs": true,
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs": true,
+  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs": true,
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs": true,
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs": true
 }

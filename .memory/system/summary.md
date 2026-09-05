@@ -997,3 +997,51 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: BLOCKED_BY_PRODUCTION_CODE (remaining 38 lines)
+
+## GameWindow.cs
+- Covered: 688/697 (99.0% hook-enabled) / 10/10 core lines local coverlet — re-verified; ALREADY_REMEDIATED at commit "test: coverage GameWindow.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED
+
+## WindowsPlayer.cs
+- Covered: 140/290 (48.3%); BLOCKED_BY_PRODUCTION_CODE — Windows-only P/Invoke, multi-target TFM drift; already committed at "test: coverage WindowsPlayer.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## GameObject.cs
+- Covered: 1944/1946 (99.9%); PARTIALLY_REMEDIATED — 2 unreachable branch edges in Equals-type comparisons; already committed at "test: coverage GameObject.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE (remaining 2 lines)
+
+## ImVector.cs
+- Covered: ~100% observable lines (10 tests passing); COMPLETED — already committed at "test: coverage ImVector.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED
+
+## Gen2GcCallback.cs
+- Covered: 78/150 (52.0%); BLOCKED_BY_PRODUCTION_CODE — GC internals, conditional compilation for platform-specific regimens; already committed at "test: coverage Gen2GcCallback.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## WebAssemblyGameContext.cs
+- Covered: 80/270 (29.6%); BLOCKED_BY_PRODUCTION_CODE — WASM runtime required; already committed at "test: coverage WebAssemblyGameContext.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## WebAssemblyPlatformIntegration.cs
+- Covered: 166/304 (54.6%); BLOCKED_BY_PRODUCTION_CODE — WASM runtime required; already committed at "test: coverage WebAssemblyPlatformIntegration.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## StreamAdaptor.cs
+- Covered: 157/168 (93.6%); BLOCKED_BY_PRODUCTION_CODE — CSFML native crashes, conditional compilation; already committed at "test: coverage StreamAdaptor.cs"
+- TestsAdded: 0
+- Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
