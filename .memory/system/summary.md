@@ -1138,3 +1138,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - GameObjectExtensions.cs: BLOCKED_BY_PRODUCTION_CODE 94.1% (128/136) — results/GameObjectExtensions.md
 - StripeGatewayClient.cs: REMEDIATED 100% (310/310; class 106/106) — results/StripeGatewayClient.md
 - TestsAdded: 0 this pass; Commit: docs: results batch (150-164)
+
+## DynamicTree.cs (final queue item, skip 208)
+- Covered: 100.0% line / 99.9% branch (local coverlet, DynamicTree filter) — re-issue, already remediated (DynamicTreeLatestCoverageTests.cs: RayCast separation-axis + Balance double-right-rotation). SonarCloud branch 99.2% (1 remaining = unreachable leaf&&height>=2 combo) — results/DynamicTree.md
+- TestsAdded: 0 this pass; Commit: docs: results DynamicTree.cs
+- Status: REMEDIATED — scan confirmed "No coverage delta detected. STOP IMMEDIATELY" at skip 209 (queue exhausted)
