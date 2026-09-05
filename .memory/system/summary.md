@@ -950,3 +950,11 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: ALREADY_REMEDIATED
+
+## Sdl.cs
+- Covered: no-hook 819/835 (98.1%) — re-verified this session (local coverlet, full SDL2 suite)
+- Re-issued (SonarCloud stale 8.4%); already remediated at commit "test: coverage Sdl.cs" (hook-enabled 826/834 = 99.0% per results/Sdl.md)
+- Remaining 16 lines: main-thread hooks needed (CreateWindow 658-662, CreateWindowAndRenderer 673, CreateContext 1038, CreateCursor 3038, GetTouchDevice 3099) or BLOCKED_BY_PRODUCTION_CODE (GetGrabbedWindow dylib crash 1466-1470, touch zero-ID deref crashes 3106/3114/3121, MapRgb no export 4106)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED (PARTIAL_BLOCKED_BY_PRODUCTION_CODE remainder)
