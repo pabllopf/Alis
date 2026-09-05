@@ -130,5 +130,14 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs": true,
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs": true,
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs": true,
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs": true
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs": true,
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs": true,
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs": true,
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs": true,
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs": true,
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs": true
 }

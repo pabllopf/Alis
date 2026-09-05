@@ -1045,3 +1045,48 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - TestsAdded: 0
 - Commit: (none)
 - Status: BLOCKED_BY_PRODUCTION_CODE
+
+## GLShader.cs
+- Covered: 24/32 (75.0%); BLOCKED_BY_PRODUCTION_CODE (GLShader uses real GL or anonymous GC pins; unconvertible without GL context) — results/GLShader.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## MacNativePlatform.cs
+- Covered: PARTIAL_BLOCKED_BY_PRODUCTION_CODE (AppKit/arm64 native window APIs unavailable on host) — results/MacNativePlatform.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_NATIVE
+
+## MediaReader.cs
+- Covered: 24/24 (100.0%) — verified this session in full FFmpeg suite (1668 green); already covered by committed MediaReader tests, no dedicated doc existed
+- TestsAdded: 0; Commit: (none)
+- Status: ALREADY_REMEDIATED
+
+## AudioWriter.cs
+- Covered: BLOCKED_BY_PRODUCTION_CODE (unconvertible waveform writes to real devices) — results/AudioWriter.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## Monitor.cs
+- Covered: 100.0% (hook-enabled, real GLFW primary monitor) — results/Monitor.md, committed "test: coverage Monitor.cs"
+- TestsAdded: 0; Commit: (none)
+- Status: ALREADY_REMEDIATED
+
+## BrowserPlayer.cs
+- Covered: 77.9% line / 89.3% branch — PARTIAL_BLOCKED_BY_PRODUCTION_CODE (WASM audio device required) — results/BrowserPlayer.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## GraphicManager.cs
+- Covered: 215/221 (97.3%, hook-enabled) — PARTIALLY_REMEDIATED; 6 residual lines blocked (native GLFW context) — results/GraphicManager.md
+- TestsAdded: 0; Commit: (none)
+- Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+## AudioReader.cs
+- Covered: 202/238 (84.9%): class 164/164, LoadMetadataAsync state machine 36/72 — blocked by same Streams deserialization defect as VideoReader — results/AudioReader.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+## GLShaderProgram.cs
+- Covered: 116/166 (69.9%) — BLOCKED_BY_PRODUCTION_CODE (real GL context + leaked-pin paths) — results/GLShaderProgram.md
+- TestsAdded: 0; Commit: (none)
+- Status: BLOCKED_BY_PRODUCTION_CODE
