@@ -983,3 +983,10 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Full suite: 943 passed / 4 skipped / 0 failed
 - Commit: (see git log)
 - Status: COVERED
+
+## FFMpegWrapper.cs
+- Covered: 346/346 instrumentable lines (100.0%) — re-verified this session (local coverlet, FFMpegWrapper filter, 49/49 tests)
+- Re-issued (SonarCloud stale 36.4%); already remediated at commit "test: coverage FFMpegWrapper.cs" (results/FFMpegWrapper.md)
+- TestsAdded: 0
+- Commit: (none)
+- Status: ALREADY_REMEDIATED
