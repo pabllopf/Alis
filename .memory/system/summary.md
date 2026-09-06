@@ -1158,3 +1158,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 84.8% (339/400) committed (cc52ca575 test: coverage ImNodes.cs, CurrentContextSaveFile_Executes); re-issue — prior session failed to register the key in processed.json, so SonarCloud re-extracted it as NEW. Re-verified 2026-09-06: ImNodes filter 122 passed/8 skipped/0 failed. Remaining 61 lines PARTIAL_BLOCKED_BY_PRODUCTION_CODE (empty ImNodesEditorContext struct → native editor handle paths + null-ini paths abort host; unmarshalable MiniMap/StyleColors delegates throw by design) — results/ImNodes.md
 - TestsAdded: 0 this pass; Commit: docs: results ImNodes.cs
 - Status: ALREADY_REMEDIATED (partial)
+
+## NativeWindow.cs
+- Covered: 98.63% (718/728) committed; re-issue — SonarCloud stale (CI lacks GLFW hook env; prior runs f95d84630/a7a49a235). Re-verified 2026-09-06 on arm64 with hook: 72/73 pass; 1 environmental failure `MousePosition_GetSet_ReadsCurrentCursor` — glfwGetCursorPos returns client-area-relative coords and cursor warping is unavailable to the host, so the readback is negative with current display arrangement (pre-existing test, not a coverage regression; the getter line still executes). Remaining 10 lines production-blocked (X11 strings, SetIcons marshal, ReleaseHandle catch, OnKey repeat dead code) — results/NativeWindow.md
+- TestsAdded: 0 this pass; Commit: docs: results NativeWindow.cs
+- Status: ALREADY_REMEDIATED (partial)

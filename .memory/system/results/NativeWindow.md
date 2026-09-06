@@ -60,3 +60,11 @@ both with and without the hook (the no-hook run keeps them as guarded no-ops).
   139 before any output). This is the same environment-dependence documented above; the committed
   98.63% hook-enabled coverlet number stands as the measured value.
 - No production-code or test changes in this pass. Status retained: ALREADY_REMEDIATED.
+## Re-verification (2026-09-06, auto loop)
+Hook-enabled NativeWindow filter: 72/73 pass. Deterministic single failure on this host:
+`MousePosition_GetSet_ReadsCurrentCursor` — glfwGetCursorPos returns coordinates relative to the
+window content origin; macOS cursor warping (glfwSetCursorPos) needs accessibility permissions the
+host lacks, so MousePositionResult reflects the physical cursor which currently sits left/above the
+window → negative X. Environment/display-arrangement dependent, pre-existing committed test, asserts
+only X>=0/Y>=0, not the set value. Production getter line 386 executes (not a coverage regression).
+No test/production changes. Committed 98.63% (718/728) stands; 10 lines remain production-blocked.
