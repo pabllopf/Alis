@@ -1163,3 +1163,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 98.63% (718/728) committed; re-issue — SonarCloud stale (CI lacks GLFW hook env; prior runs f95d84630/a7a49a235). Re-verified 2026-09-06 on arm64 with hook: 72/73 pass; 1 environmental failure `MousePosition_GetSet_ReadsCurrentCursor` — glfwGetCursorPos returns client-area-relative coords and cursor warping is unavailable to the host, so the readback is negative with current display arrangement (pre-existing test, not a coverage regression; the getter line still executes). Remaining 10 lines production-blocked (X11 strings, SetIcons marshal, ReleaseHandle catch, OnKey repeat dead code) — results/NativeWindow.md
 - TestsAdded: 0 this pass; Commit: docs: results NativeWindow.cs
 - Status: ALREADY_REMEDIATED (partial)
+
+## WebAssemblyGameExamples.cs
+- Covered: 17.4% (73/419) committed (94f2b490a); re-issue — SonarCloud 11.1% stale. Re-verified 2026-09-06: WebAssemblyGameExamples filter 34 passed/78 skipped (WebOnly-gated)/0 failed; no regressions. Remaining 346 lines production-blocked (libemscripten / native WEB platform absent on desktop host) — results/WebAssemblyGameExamples.md
+- TestsAdded: 0 this pass; Commit: docs: results WebAssemblyGameExamples.cs
+- Status: BLOCKED_BY_PRODUCTION_CODE (partial, committed baseline stands)

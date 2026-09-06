@@ -19,3 +19,7 @@ lines are unreachable on a non-browser host (require running WASM runtime / EGL)
   "FullyQualifiedName~WebAssemblyGameExamples"`: 34 passed, 78 skipped, 0 failed.
 - Local coverlet (XPlat Code Coverage, cobertura): 73/419 = 17.4%, identical to the committed
   result.
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (11.1%, stale CI delta). Filter re-run on this host: 34 passed / 78 skipped
+(WebOnly-gated) / 0 failed. No test/production changes; committed 17.4% (73/419) baseline stands.
+Remaining 346 lines remain blocked by the absent WEB/native-libemscripten platform.
