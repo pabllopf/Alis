@@ -24,3 +24,8 @@
 
 ## Commit
 - (pending commit: test: coverage ImNodes.cs)
+## Re-verification (2026-09-06, auto loop)
+ImNodes.cs was NOT present in processed.json when re-extracted (prior session committed cc52ca575 but
+omitted the state registration). Key now registered. ImNodes filter re-run: 122 passed / 8 skipped /
+0 failed on this host; committed 84.8% (339/400) stands. Marked ALREADY_REMEDIATED (partial); remaining
+61 lines production/native-blocked as documented above.

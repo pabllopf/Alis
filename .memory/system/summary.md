@@ -1153,3 +1153,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 91.43% (128/140) committed; re-issue — SonarCloud 1.9% stale (CI runs without the GLFW main-thread hook env). Re-verified 2026-09-06 on arm64: hook-enabled GlfwNative filter 48/48 passed (no flakes this run). Remaining 12 lines production-blocked (joystick loops 384-387 + private GlfwError callback 2002-2003) — results/GlfwNative.md
 - TestsAdded: 0 this pass (already remediated in f95d84630); Commit: docs: results GlfwNative.cs
 - Status: ALREADY_REMEDIATED
+
+## ImNodes.cs
+- Covered: 84.8% (339/400) committed (cc52ca575 test: coverage ImNodes.cs, CurrentContextSaveFile_Executes); re-issue — prior session failed to register the key in processed.json, so SonarCloud re-extracted it as NEW. Re-verified 2026-09-06: ImNodes filter 122 passed/8 skipped/0 failed. Remaining 61 lines PARTIAL_BLOCKED_BY_PRODUCTION_CODE (empty ImNodesEditorContext struct → native editor handle paths + null-ini paths abort host; unmarshalable MiniMap/StyleColors delegates throw by design) — results/ImNodes.md
+- TestsAdded: 0 this pass; Commit: docs: results ImNodes.cs
+- Status: ALREADY_REMEDIATED (partial)
