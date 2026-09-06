@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.1] - 2026-09-06
+### :white_check_mark: Tests
+- [`1f319d5`](https://github.com/pabllopf/Alis/commit/1f319d59a611d02bec4388138ad6dfca17527869) - coverage Sprite.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1cf8dd`](https://github.com/pabllopf/Alis/commit/d1cf8dddf3ee9b9d265a6701daa93801a7919836) - coverage BoxCollider.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07ece6f`](https://github.com/pabllopf/Alis/commit/07ece6feca9083385f22b502b97f371ce3ca8a4d) - coverage WebAssemblyPlatform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`64a3e60`](https://github.com/pabllopf/Alis/commit/64a3e6075dd01f42b75885e2267063a2b0a6c7a3) - results NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09b7807`](https://github.com/pabllopf/Alis/commit/09b780721b84291307f840ec7b0fb5352c2051e1) - results MediaStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`30b2d05`](https://github.com/pabllopf/Alis/commit/30b2d05d9a4c214e1bd35c510b30e0c17fae07b3) - results Sdl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06151e1`](https://github.com/pabllopf/Alis/commit/06151e12eebfa6b5a8dbfcb8223309c21718e665) - results WebAssemblyGameExamples.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f04b4f7`](https://github.com/pabllopf/Alis/commit/f04b4f7f2d6c548118a3a49025ea566c950decf7) - results BitOperations.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed472ed`](https://github.com/pabllopf/Alis/commit/ed472edf03299a4cc2f590a1c185df14f046f83d) - results FFMpegWrapper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`821b89c`](https://github.com/pabllopf/Alis/commit/821b89ceaac14cfae027174ea0492fcf4b032cd9) - results VideoReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9956ce8`](https://github.com/pabllopf/Alis/commit/9956ce8f6f5c7eff1f75888c37dd36c82e009100) - results batch (123-130) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7acefaf`](https://github.com/pabllopf/Alis/commit/7acefaf22bbf589b1da8f8d7460bfa86f9c1a319) - results batch (131-140) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ba653e`](https://github.com/pabllopf/Alis/commit/2ba653e28569d3f38860a4b98ca30c3cc242b2e8) - results EmscriptenWeb.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac38a37`](https://github.com/pabllopf/Alis/commit/ac38a376ffe5728ad45aff996985ef2ea4220217) - results VideoFrame.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2236812`](https://github.com/pabllopf/Alis/commit/2236812a1a4f7e95c7a9982864c112f1263d7e24) - results batch (146,148) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3bd8fc6`](https://github.com/pabllopf/Alis/commit/3bd8fc68405d3539a24f27cf22c622d86031e047) - results batch (150-164) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3d7f608`](https://github.com/pabllopf/Alis/commit/3d7f608b6afbf9d5246159f0fb90a5ab28e17ff1) - results DynamicTree.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.0] - 2026-09-05
 ### :white_check_mark: Tests
 - [`f1d1006`](https://github.com/pabllopf/Alis/commit/f1d10066d941aea88bb70f1dea766e31a070005c) - coverage SoundStream.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11101,3 +11124,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.8]: https://github.com/pabllopf/Alis/compare/v1.3.7...v1.3.8
 [v1.3.9]: https://github.com/pabllopf/Alis/compare/v1.3.8...v1.3.9
 [v1.4.0]: https://github.com/pabllopf/Alis/compare/v1.3.9...v1.4.0
+[v1.4.1]: https://github.com/pabllopf/Alis/compare/v1.4.0...v1.4.1
