@@ -1193,3 +1193,10 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 48.3% (140/290) committed, unchanged; SonarCloud 38.1% stale. Re-verified 2026-09-06: WindowsPlayer filter 50 passed / 57 platform-skipped / 0 failed. Remaining lines require winmm.dll (Windows-only host absent) — results/WindowsPlayer.md
 - TestsAdded: 0 this pass; Commit: docs: results WindowsPlayer.cs
 - Status: BLOCKED_BY_PRODUCTION_CODE (unchanged)
+
+File: 4_Operation/Ecs/src/GameObject.cs
+CoverageBefore: 42.0%
+CoverageAfter: 99.9% (filtered per-project); GATE-FLAKY (engine defect, see results/GameObject.md)
+TestsAdded: 5 (committed 0c0f2cf86); union tests fully built/validated then removed — engine first-touch order instability
+Commit: Update GameObjectMultiArityCoverageTests.cs (prior session)
+Status: FLAGGED_ENGINE_DEFECT (full CI-suite flake ~30-70% from pre-existing lazy global component-id order-sensitivity; coverage tests are correct but re-perturb order)
