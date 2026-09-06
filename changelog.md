@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.2] - 2026-09-06
+### :memo: Documentation Changes
+- [`8ae6005`](https://github.com/pabllopf/Alis/commit/8ae600588403bbd38828e41a11a0ae6ea79745e6) - results MacOpenGLContext.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e68fd72`](https://github.com/pabllopf/Alis/commit/e68fd72f55e0bbef9369dbfd2ce127f3d4e3adfb) - results GlfwNative.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fcb7ed6`](https://github.com/pabllopf/Alis/commit/fcb7ed67f0d2d83f4321b73e5e6a7437f13f3bb2) - results ImNodes.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b472114`](https://github.com/pabllopf/Alis/commit/b472114e7073cd312d625585ba8de024a53f211d) - results NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0410591`](https://github.com/pabllopf/Alis/commit/04105910e99348eca888a838bfa71cfb20b6ae1c) - results WebAssemblyGameExamples.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b85f15d`](https://github.com/pabllopf/Alis/commit/b85f15d00475b68be7c9375b304d323f7ea420fb) - results Sprite.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`03d12f6`](https://github.com/pabllopf/Alis/commit/03d12f65441b482287590b3c5774102c2a3bd5b3) - results FFMpegWrapper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`63f28b4`](https://github.com/pabllopf/Alis/commit/63f28b49cec02163e7cc14d89b2452af5df24d6f) - results VideoReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27e09ed`](https://github.com/pabllopf/Alis/commit/27e09edb4aacc24609e782997c991dd4c0e2800a) - results GameWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aadca55`](https://github.com/pabllopf/Alis/commit/aadca559a807a03d2d947688eb13eae8baf3b919) - results WindowsPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.1] - 2026-09-06
 ### :white_check_mark: Tests
 - [`1f319d5`](https://github.com/pabllopf/Alis/commit/1f319d59a611d02bec4388138ad6dfca17527869) - coverage Sprite.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11125,3 +11139,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.9]: https://github.com/pabllopf/Alis/compare/v1.3.8...v1.3.9
 [v1.4.0]: https://github.com/pabllopf/Alis/compare/v1.3.9...v1.4.0
 [v1.4.1]: https://github.com/pabllopf/Alis/compare/v1.4.0...v1.4.1
+[v1.4.2]: https://github.com/pabllopf/Alis/compare/v1.4.1...v1.4.2
