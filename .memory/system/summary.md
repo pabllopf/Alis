@@ -1178,3 +1178,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 100.0% (346/346) committed; SonarCloud stale (36.4%). Re-verified 2026-09-06: FFMpegWrapper filter 49/49 green. No changes — results/FFMpegWrapper.md
 - TestsAdded: 0 this pass; Commit: docs: results FFMpegWrapper.cs
 - Status: COMPLETE_ALREADY_COVERED
+
+## VideoReader.cs (re-issue)
+- Covered: 81.0% (162/200) committed, unchanged; SonarCloud 38.4% stale. Re-verified 2026-09-06: VideoReader filter 38/38 green. VideoReader class 124/124 (100%); LoadMetadataAsync mapping block still blocked by production deserializer defect — results/VideoReader.md
+- TestsAdded: 0 this pass; Commit: docs: results VideoReader.cs
+- Status: BLOCKED_BY_PRODUCTION_CODE (unchanged)

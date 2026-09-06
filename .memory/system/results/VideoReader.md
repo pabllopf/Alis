@@ -39,3 +39,7 @@ the serialization generator output (production code); out of scope for coverage 
 - Targeted run: 38 passed / 0 failed (net8.0).
 - Local coverlet: VideoReader.cs 162/200 lines (81.0%).
 - Probe: `Streams=0` after LoadMetadata on a real video file.
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (38.4% stale CI delta). VideoReader filter re-run: 38/38 green, build clean.
+Committed 162/200 (81.0%) baseline unchanged; LoadMetadataAsync 36/74 blocked by production
+JsonNativeAot serialization defect (Streams never populated).
