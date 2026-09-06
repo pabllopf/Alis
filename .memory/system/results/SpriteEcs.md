@@ -37,3 +37,6 @@ Private statics/members reached via reflection: `Gl._getProcAddress` (save/resto
 - 3 changed-lines attempted first hit reflection-invoke wrapping (`TargetInvocationException`) and struct-by-value mutation loss; fixed via `ExceptionDispatchInfo` unwrap and invoking on the boxed box.
 - The fragment-fail branch required a per-resolver captured counter (vertex OK → fragment fail), not the single shared delegate.
 - No `.csproj`, `src` edits, or third-party dependencies introduced.
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (36.3%, stale CI delta). SpriteGlCoverageTests re-run: 11/11 green,
+Alis.Test build clean. No test/production changes; committed 100% line/branch baseline stands.

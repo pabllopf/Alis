@@ -1168,3 +1168,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 17.4% (73/419) committed (94f2b490a); re-issue — SonarCloud 11.1% stale. Re-verified 2026-09-06: WebAssemblyGameExamples filter 34 passed/78 skipped (WebOnly-gated)/0 failed; no regressions. Remaining 346 lines production-blocked (libemscripten / native WEB platform absent on desktop host) — results/WebAssemblyGameExamples.md
 - TestsAdded: 0 this pass; Commit: docs: results WebAssemblyGameExamples.cs
 - Status: BLOCKED_BY_PRODUCTION_CODE (partial, committed baseline stands)
+
+## Sprite.cs (ECS, re-issue)
+- Covered: 214/214 (100.0% line, 100.0% branch) committed (1f319d59a test: coverage Sprite.cs, SpriteGlCoverageTests 11 tests via fake GL table); SonarCloud 36.3% stale. Re-verified 2026-09-06: SpriteGlCoverageTests 11/11 green, full Alis.Test build clean. Supersedes the older "Sprite.md BLOCKED_BY_NATIVE" verdict — results/SpriteEcs.md
+- TestsAdded: 0 this pass; Commit: docs: results Sprite.cs
+- Status: ALREADY_REMEDIATED (COVERED)
