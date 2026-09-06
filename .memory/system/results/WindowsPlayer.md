@@ -46,3 +46,7 @@ coverage work.
 
 - Targeted run: 53 passed / 61 platform-gated not-run (net8.0).
 - Local coverlet: WindowsPlayer.cs 140/290 lines (48.3%).
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (38.1% stale CI delta). WindowsPlayer filter re-run: 50 passed / 57 skipped /
+0 failed, build clean. Committed 140/290 (48.3%) baseline unchanged; remaining lines Windows-only
+(winmm.dll / mci*).

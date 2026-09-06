@@ -123,7 +123,8 @@
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs",
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs"
  ],
  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs": true,
  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs": true,
