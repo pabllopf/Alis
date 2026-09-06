@@ -17,3 +17,7 @@ GameWindow instances via the main-thread hook pattern) cover 10/10 lines = 100.0
 
 - Hook-enabled run (`ALIS_GLFW_HOOK=1` + scratch reflection `DOTNET_STARTUP_HOOKS`): 5 passed,
   0 failed; `GameWindow.cs` 10/10 = 100.0%.
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (40%, stale CI delta). No-hook GameWindow filter: 5/5 pass + 3 guarded skips,
+clean. Hook-enabled run of the GameWindow filter SIGSEGVs (exit 139, no output) — machine instability
+documented in NativeWindow.md (hook+GLFW init). Committed hook-run coverage 10/10 (100%) stands.

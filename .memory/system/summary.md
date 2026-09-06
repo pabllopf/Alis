@@ -1183,3 +1183,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 81.0% (162/200) committed, unchanged; SonarCloud 38.4% stale. Re-verified 2026-09-06: VideoReader filter 38/38 green. VideoReader class 124/124 (100%); LoadMetadataAsync mapping block still blocked by production deserializer defect — results/VideoReader.md
 - TestsAdded: 0 this pass; Commit: docs: results VideoReader.cs
 - Status: BLOCKED_BY_PRODUCTION_CODE (unchanged)
+
+## GameWindow.cs
+- Covered: 100.0% (10/10) committed (ba1e711e6); re-issue — SonarCloud 40% stale. Re-verified 2026-09-06: no-hook GameWindow filter 5 passed/3 skipped, clean. Hook-enabled run for this filter SIGSEGVs (exit 139 before output) — documented host instability (see NativeWindow.md), same as hook+coverlet; the execution tests are guarded no-ops without the hook. Committed hook-run baseline 10/10 stands — results/GameWindow.md
+- TestsAdded: 0 this pass; Commit: docs: results GameWindow.cs
+- Status: ALREADY_REMEDIATED
