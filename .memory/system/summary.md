@@ -1148,3 +1148,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 33/33 (100.0% line, hook-enabled local coverlet) — SonarCloud 0.0% stale. Production blocker verdict from prior session REVERSED on arm64: scratch reflection hook (dependency-free StartupHook → Assembly.LoadFrom test dll → invoke test StartupHook.Initialize with ALIS_MACWINDOW_HOOK=1) drives MacWindowBootstrap + MacOpenGlContextBootstrap on the true process main thread; Ready=true, all handles non-zero, MakeCurrent/SwapBuffers execute. Existing committed MacOpenGLContextExecutionTests.cs fully covers the class when the hook env is set; without the hook they are guarded no-ops. Committed hook path remains env-dependent (test-assembly-as-hook cannot resolve module-init dep under dotnet test). No new test file this pass (infra pre-exists); probe test removed. run_tests.sh/CI unaffected. — results/MacOpenGLContext.md
 - TestsAdded: 0 this pass; Commit: docs: results MacOpenGLContext.cs
 - Status: REMEDIATED
+
+## GlfwNative.cs
+- Covered: 91.43% (128/140) committed; re-issue — SonarCloud 1.9% stale (CI runs without the GLFW main-thread hook env). Re-verified 2026-09-06 on arm64: hook-enabled GlfwNative filter 48/48 passed (no flakes this run). Remaining 12 lines production-blocked (joystick loops 384-387 + private GlfwError callback 2002-2003) — results/GlfwNative.md
+- TestsAdded: 0 this pass (already remediated in f95d84630); Commit: docs: results GlfwNative.cs
+- Status: ALREADY_REMEDIATED

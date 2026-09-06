@@ -29,3 +29,9 @@ lines (91.43%).
   title readback differs; both are no-op guarded on CI). Uncovered lines match the committed
   set: joystick loops (384-387) + GlfwError callback (2002-2003).
 - No-hook (CI-equivalent) run: all pass as guarded no-ops.
+
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (1.9%, stale CI delta). Hook-enabled `--filter FullyQualifiedName~GlfwNative` on arm64:
+48/48 passed (0 failed — the previously observed clipboard/title flakes did not reproduce). No test changes:
+infra already committed (f95d84630). Production-blocked set unchanged: joystick loops (384-387) + private
+GlfwError callback (2002-2003), 12 lines, 91.43% committed coverage.
