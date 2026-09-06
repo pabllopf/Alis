@@ -1173,3 +1173,8 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Covered: 214/214 (100.0% line, 100.0% branch) committed (1f319d59a test: coverage Sprite.cs, SpriteGlCoverageTests 11 tests via fake GL table); SonarCloud 36.3% stale. Re-verified 2026-09-06: SpriteGlCoverageTests 11/11 green, full Alis.Test build clean. Supersedes the older "Sprite.md BLOCKED_BY_NATIVE" verdict — results/SpriteEcs.md
 - TestsAdded: 0 this pass; Commit: docs: results Sprite.cs
 - Status: ALREADY_REMEDIATED (COVERED)
+
+## FFMpegWrapper.cs (re-issue)
+- Covered: 100.0% (346/346) committed; SonarCloud stale (36.4%). Re-verified 2026-09-06: FFMpegWrapper filter 49/49 green. No changes — results/FFMpegWrapper.md
+- TestsAdded: 0 this pass; Commit: docs: results FFMpegWrapper.cs
+- Status: COMPLETE_ALREADY_COVERED

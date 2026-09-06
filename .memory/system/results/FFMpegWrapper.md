@@ -16,3 +16,6 @@ committed suite (`FFMpegWrapperTest.cs` / `FFMpegWrapperAdditionalTest.cs` /
 `Alis.Extension.Media.FFmpeg.Test` (net8.0). Targeted run: 49 passed / 0 failed. SonarCloud's
 36.4% reading is a stale artifact predating the committed tests; no further tests can add
 measurable coverage.
+## Re-verification (2026-09-06, auto loop)
+Re-issued by SonarCloud (stale CI delta). FFMpegWrapper filter re-run: 49/49 green, build clean.
+Committed 346/346 (100.0%) baseline unchanged.
