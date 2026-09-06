@@ -37,299 +37,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Coverage-focused tests for the multi-arity structural change and event
-    ///     invocation paths of <see cref="GameObject" />.
+    ///     Coverage-focused tests for <see cref="GameObject" /> boxed and by-type structural
+    ///     changes, per entity event emission and the multi-arity per entity event helpers.
+    ///     The multi-arity add and remove unions are exercised by the pre-existing suite.
     /// </summary>
     public class GameObjectMultiArityCoverageTests
     {
-        /// <summary>
-        ///     Pre-creates every multi-arity union used by these tests so that first-touch global
-        ///     archetype creation happens in a single sequential block at class load.
-        /// </summary>
-        static GameObjectMultiArityCoverageTests()
-        {
-            Prewarm();
-        }
-
-        /// <summary>
-        ///     Creates and removes each component union exercised by these tests on a throwaway
-        ///     entity so the global archetype tables are warmed deterministically.
-        /// </summary>
-        private static void Prewarm()
-        {
-            GameObject pre = scene.Create();
-
-            pre.Add(new Position {X = 1, Y = 2});
-            pre.Remove<Position>();
-
-            pre.Add(new Velocity {X = 1, Y = 2}, new Health {Value = 3});
-            pre.Remove<Velocity, Health>();
-
-            pre.Add(new Armor {Value = 4}, new Damage {Value = 5}, new Transform {X = 6, Y = 7, Rotation = 8});
-            pre.Remove<Armor, Damage, Transform>();
-
-            pre.Add(new TestComponent {Value = 1, Name = "a"}, new TestComponent2 {Value = 2},
-                new AnotherComponent {Name = "b", Data = 3, Y = 4}, new AnotherComponent2 {Name = "c", Data = 5});
-            pre.Remove<TestComponent, TestComponent2, AnotherComponent, AnotherComponent2>();
-
-            pre.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                new Armor {Value = 20}, new Damage {Value = 30});
-            pre.Remove<Position, Velocity, Health, Armor, Damage>();
-
-            pre.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-            pre.Remove<Position, Velocity, Health, Armor, Damage, Transform>();
-
-            pre.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                new TestComponent {Value = 7, Name = "seven"});
-            pre.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>();
-
-            pre.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                new TestComponent {Value = 7, Name = "seven"}, new AnotherComponent2 {Name = "eight", Data = 8});
-            pre.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent2>();
-        }
-        private static readonly Scene scene = new Scene();
-        /// <summary>
-        ///     Tests that multi-arity <see cref="GameObject.Add{T1,T2}" /> style calls add every
-        ///     component and fire both the world and per entity listeners for arities 1 through 8.
-        /// </summary>
-        [Fact]
-        public void Add_AritiesOneThroughEight_FireWorldAndEntityListeners()
-        {
-            {
-                int worldCount = 0;
-                int entityCount = 0;
-                Action<GameObject, ComponentId> worldHandler = (gameObject, componentId) => worldCount++;
-                Action<GameObject, ComponentId> entityHandler = (gameObject, componentId) => entityCount++;
-                scene.ComponentAddedEvent.Add(worldHandler);
-
-                GameObject e1 = scene.Create();
-                e1.OnComponentAdded += entityHandler;
-                e1.Add(new Position {X = 1, Y = 2});
-                Assert.Equal(1f, e1.Get<Position>().X);
-
-                GameObject e2 = scene.Create();
-                e2.OnComponentAdded += entityHandler;
-                e2.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 10});
-                Assert.Equal(3f, e2.Get<Velocity>().X);
-                Assert.Equal(10, e2.Get<Health>().Value);
-
-                GameObject e3 = scene.Create();
-                e3.OnComponentAdded += entityHandler;
-                e3.Add(new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                Assert.Equal(20, e3.Get<Armor>().Value);
-                Assert.Equal(30, e3.Get<Damage>().Value);
-                Assert.Equal(40f, e3.Get<Transform>().X);
-
-                GameObject e4 = scene.Create();
-                e4.OnComponentAdded += entityHandler;
-                e4.Add(new TestComponent {Value = 1, Name = "a"}, new TestComponent2 {Value = 2},
-                    new AnotherComponent {Name = "b", Data = 3, Y = 4}, new AnotherComponent2 {Name = "c", Data = 5});
-                Assert.Equal(1, e4.Get<TestComponent>().Value);
-                Assert.Equal(2, e4.Get<TestComponent2>().Value);
-                Assert.Equal(3f, e4.Get<AnotherComponent>().Data);
-                Assert.Equal(5, e4.Get<AnotherComponent2>().Data);
-
-                GameObject e5 = scene.Create();
-                e5.OnComponentAdded += entityHandler;
-                e5.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30});
-                Assert.True(e5.Has<Damage>());
-
-                GameObject e6 = scene.Create();
-                e6.OnComponentAdded += entityHandler;
-                e6.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                Assert.True(e6.Has<Transform>());
-
-                GameObject e7 = scene.Create();
-                e7.OnComponentAdded += entityHandler;
-                e7.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"});
-                Assert.True(e7.Has<TestComponent>());
-
-                GameObject e8 = scene.Create();
-                e8.OnComponentAdded += entityHandler;
-                e8.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"}, new AnotherComponent2 {Name = "eight", Data = 8});
-                Assert.True(e8.Has<AnotherComponent2>());
-                Assert.Equal(8, e8.Get<AnotherComponent2>().Data);
-
-                Assert.Equal(36, worldCount);
-                Assert.Equal(8, entityCount);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that multi-arity <see cref="GameObject.Remove{T1,T2}" /> style calls remove
-        ///     every component for arities 1 through 8.
-        /// </summary>
-        [Fact]
-        public void Remove_AritiesOneThroughEight_RemoveEveryComponent()
-        {
-            {
-                GameObject e1 = scene.Create();
-                e1.Add(new Position {X = 1, Y = 2});
-                e1.Remove<Position>();
-                Assert.False(e1.Has<Position>());
-
-                GameObject e2 = scene.Create();
-                e2.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 10});
-                e2.Remove<Velocity, Health>();
-                Assert.False(e2.Has<Velocity>());
-                Assert.False(e2.Has<Health>());
-
-                GameObject e3 = scene.Create();
-                e3.Add(new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                e3.Remove<Armor, Damage, Transform>();
-                Assert.False(e3.Has<Armor>());
-                Assert.False(e3.Has<Transform>());
-
-                GameObject e4 = scene.Create();
-                e4.Add(new TestComponent {Value = 1, Name = "a"}, new TestComponent2 {Value = 2},
-                    new AnotherComponent {Name = "b", Data = 3, Y = 4}, new AnotherComponent2 {Name = "c", Data = 5});
-                e4.Remove<TestComponent, TestComponent2, AnotherComponent, AnotherComponent2>();
-                Assert.False(e4.Has<TestComponent>());
-                Assert.False(e4.Has<AnotherComponent2>());
-
-                GameObject e5 = scene.Create();
-                e5.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30});
-                e5.Remove<Position, Velocity, Health, Armor, Damage>();
-                Assert.False(e5.Has<Position>());
-                Assert.False(e5.Has<Damage>());
-
-                GameObject e6 = scene.Create();
-                e6.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                e6.Remove<Position, Velocity, Health, Armor, Damage, Transform>();
-                Assert.False(e6.Has<Transform>());
-
-                GameObject e7 = scene.Create();
-                e7.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"});
-                e7.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>();
-                Assert.False(e7.Has<TestComponent>());
-
-                GameObject e8 = scene.Create();
-                e8.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"}, new AnotherComponent2 {Name = "eight", Data = 8});
-                e8.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent2>();
-                Assert.False(e8.Has<Position>());
-                Assert.False(e8.Has<AnotherComponent2>());
-            }
-        }
-
-        /// <summary>
-        ///     Tests that multi-arity <see cref="GameObject.Add{T1,T2}" /> style calls made while
-        ///     structural changes are disallowed are queued and applied on exit.
-        /// </summary>
-        [Fact]
-        public void Add_WhileDisallowed_AppliesWhenStructuralChangesResume()
-        {
-            {
-                GameObject e1 = scene.Create();
-                GameObject e2 = scene.Create();
-                GameObject e3 = scene.Create();
-                GameObject e4 = scene.Create();
-                GameObject e5 = scene.Create();
-                GameObject e6 = scene.Create();
-                GameObject e7 = scene.Create();
-                GameObject e8 = scene.Create();
-
-                scene.EnterDisallowState();
-                e1.Add(new Position {X = 1, Y = 2});
-                e2.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 10});
-                e3.Add(new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                e4.Add(new TestComponent {Value = 1, Name = "a"}, new TestComponent2 {Value = 2},
-                    new AnotherComponent {Name = "b", Data = 3, Y = 4}, new AnotherComponent2 {Name = "c", Data = 5});
-                e5.Add(new Position {X = 5, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30});
-                e6.Add(new Position {X = 6, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                e7.Add(new Position {X = 7, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"});
-                e8.Add(new Position {X = 8, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"}, new AnotherComponent2 {Name = "eight", Data = 8});
-                scene.ExitDisallowState(null, false);
-
-                Assert.Equal(1f, e1.Get<Position>().X);
-                Assert.True(e2.Has<Velocity>());
-                Assert.True(e2.Has<Health>());
-                Assert.True(e3.Has<Transform>());
-                Assert.True(e4.Has<AnotherComponent2>());
-                Assert.True(e5.Has<Damage>());
-                Assert.True(e6.Has<Transform>());
-                Assert.True(e7.Has<TestComponent>());
-                Assert.Equal(8, e8.Get<Position>().X);
-                Assert.True(e8.Has<AnotherComponent2>());
-            }
-        }
-
-        /// <summary>
-        ///     Tests that multi-arity <see cref="GameObject.Remove{T1,T2}" /> style calls made while
-        ///     structural changes are disallowed are queued and applied on exit.
-        /// </summary>
-        [Fact]
-        public void Remove_WhileDisallowed_AppliesWhenStructuralChangesResume()
-        {
-            {
-                GameObject e1 = scene.Create();
-                e1.Add(new Position {X = 1, Y = 2});
-                GameObject e2 = scene.Create();
-                e2.Add(new Velocity {X = 3, Y = 4}, new Health {Value = 10});
-                GameObject e3 = scene.Create();
-                e3.Add(new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                GameObject e4 = scene.Create();
-                e4.Add(new TestComponent {Value = 1, Name = "a"}, new TestComponent2 {Value = 2},
-                    new AnotherComponent {Name = "b", Data = 3, Y = 4}, new AnotherComponent2 {Name = "c", Data = 5});
-                GameObject e5 = scene.Create();
-                e5.Add(new Position {X = 5, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30});
-                GameObject e6 = scene.Create();
-                e6.Add(new Position {X = 6, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60});
-                GameObject e7 = scene.Create();
-                e7.Add(new Position {X = 7, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"});
-                GameObject e8 = scene.Create();
-                e8.Add(new Position {X = 8, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 10},
-                    new Armor {Value = 20}, new Damage {Value = 30}, new Transform {X = 40, Y = 50, Rotation = 60},
-                    new TestComponent {Value = 7, Name = "seven"}, new AnotherComponent2 {Name = "eight", Data = 8});
-
-                scene.EnterDisallowState();
-                e1.Remove<Position>();
-                e2.Remove<Velocity, Health>();
-                e3.Remove<Armor, Damage, Transform>();
-                e4.Remove<TestComponent, TestComponent2, AnotherComponent, AnotherComponent2>();
-                e5.Remove<Position, Velocity, Health, Armor, Damage>();
-                e6.Remove<Position, Velocity, Health, Armor, Damage, Transform>();
-                e7.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>();
-                e8.Remove<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent2>();
-                scene.ExitDisallowState(null, false);
-
-                Assert.False(e1.Has<Position>());
-                Assert.False(e2.Has<Velocity>());
-                Assert.False(e2.Has<Health>());
-                Assert.False(e3.Has<Transform>());
-                Assert.False(e4.Has<AnotherComponent2>());
-                Assert.False(e5.Has<Damage>());
-                Assert.False(e6.Has<Transform>());
-                Assert.False(e7.Has<TestComponent>());
-                Assert.False(e8.Has<Position>());
-                Assert.False(e8.Has<AnotherComponent2>());
-            }
-        }
-
         /// <summary>
         ///     Tests that <see cref="GameObject.AddBoxed(object)" /> and <see cref="GameObject.AddAs(Type, object)" />
         ///     add boxed components through their runtime type, explicit type and component id overloads.
@@ -337,6 +50,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AddBoxed_And_AddAs_AddComponents()
         {
+            using (Scene scene = new Scene())
             {
                 GameObject entity = scene.Create();
 
@@ -358,6 +72,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AddAs_RemoveByIdentity_Delete_WhileDisallowed_ApplyOnExit()
         {
+            using (Scene scene = new Scene())
             {
                 GameObject entity = scene.Create();
                 entity.Add(new Position {X = 1, Y = 2});
@@ -387,6 +102,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Get_OnDeadEntity_ThrowsInvalidOperation()
         {
+            using (Scene scene = new Scene())
             {
                 GameObject entity = scene.Create();
                 entity.Add(new Position {X = 1, Y = 2});
@@ -403,6 +119,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Events_FireOnAddRemove_UnsubscribeAndInitalizeGeneric()
         {
+            using (Scene scene = new Scene())
             {
                 int added = 0;
                 int removed = 0;
@@ -448,6 +165,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void InvokePerEntityEvents_AritiesTwoThroughEight_WithoutGenericEvent()
         {
+            using (Scene scene = new Scene())
             {
                 GameObject entity = scene.Create();
 
