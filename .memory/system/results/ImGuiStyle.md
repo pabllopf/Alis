@@ -1,28 +1,36 @@
 # Result: ImGuiStyle.cs
 
 File: `1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs`
-CoverageBefore: 86.9% (SonarCloud, stale); local coverlet 99.1% line (663/669)
-CoverageAfter: 99.1% line (663/669, local coverlet, net8.0 — unchanged)
-TestsAdded: 0 (both remaining lines verified to be dead code)
-Commit: test: coverage ImGuiStyle.cs
+CoverageBefore: 99.1% line / 98.3% branch (local coverlet, net8.0)
+CoverageAfter: 99.1% line / 98.3% branch (no change — unreachable dead code)
+TestsAdded: 0
+Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
 
 ## Summary
 
-ImGuiStyle.cs (669 LOC, ImGui style wrapper with 55 named color properties + indexer). The
-committed suite (4 test files) already covers 99.1% locally — SonarCloud's 86.9% is stale. The
-only uncovered lines are 589 and 656, the `_ => throw new CustomIndexOutOfRangeException(...)`
-defaults of the indexer's switch getter/setter.
+ImGuiStyle.cs is a plain data struct (670 LOC) with 55 `Vector4F` color properties,
+scalar/vector style properties, an indexer (get/set) over the color array, and a
+`ScaleAllSizes` method that delegates to native ImGui interop.
 
-## Analysis
+The existing test suite (ImGuiStyleTest.cs, ImGuiStyleTests.cs, ImGuiStyleRemainingCoverageTests.cs)
+covers 444 of 446 instrumented lines (99.1%). All property getters/setters, all 55
+indexer branches (get and set), boundary throw paths, and edge-case values are exercised.
 
-Both switch defaults are DEAD CODE: the indexer's getter and setter both start with an explicit
-bounds guard (`if (index < 0 || index >= 55) throw ...` at lines 527-529 / 594-596) that
-precedes the switch, so the switch default is unreachable for any input. Verified empirically:
-the committed tests `Indexer_Get_IndexOutOfRange_ShouldThrow` / `Indexer_Set_IndexOutOfRange_ShouldThrow`
-pass (the guard throws) while coverlet confirms 589/656 remain at 0 hits.
+## Unreachable lines
+
+Two lines remain uncovered (dead code):
+
+- **Line 589** — `_ => throw new CustomIndexOutOfRangeException(...)` in the indexer getter
+  switch expression.
+- **Line 656** — `default: throw new CustomIndexOutOfRangeException(...)` in the indexer
+  setter switch statement.
+
+Both are unreachable because the guard clause (`if (index < 0 || index >= 55) throw`)
+on lines 527/594 catches all invalid indices before the switch executes, and the switch
+covers every valid case (0–54). No test can reach these branches without modifying
+production code.
 
 ## Verification
 
-- Targeted run: all ImGuiStyle tests pass (net8.0).
-- Local coverlet: 663/669 = 99.1% line; only the two dead switch-default lines remain.
+- Targeted run: 354 passed / 0 failed (net8.0, ImGuiStyle filter).

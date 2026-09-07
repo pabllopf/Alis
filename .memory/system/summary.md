@@ -1228,3 +1228,10 @@ CoverageAfter: 94.5%
 TestsAdded: 3
 Commit: test: Update.cs
 Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
+CoverageBefore: 99.1%
+CoverageAfter: 99.1%
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
