@@ -1392,3 +1392,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - TestsAdded: 1 (FilePickerExecutorOverrideTest.cs) — ExecuteCommandOverride branch (65-68), 50%→100%
 - Commit: test: coverage FilePickerExecutor.cs
 - Status: COMPLETED (3 remaining branches at 154/158/159 are Windows-only arms of IsOSPlatform ternaries, unreachable on darwin host)
+
+## WorldPhysic.cs
+- File: 4_Operation/Physic/src/Dynamics/WorldPhysic.cs
+- CoverageBefore: 97.1% (Line 97.5%, Branch 95.6%) SonarCloud
+- CoverageAfter: 98.29% line / 96.64% branch (local coverlet, 170 tests)
+- TestsAdded: 4 (WorldPhysicJointFilterCoverageTest.cs)
+- Commit: test: coverage WorldPhysic.cs
+- Status: PARTIAL_BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
+- Note: 16 lines remain uncovered. All dead by construction: _stepComplete never false (646-647), ToiFlag never true (729-730), CreateRoundedRectangle always ≥8 verts (1717), TOI contact-expiration guards (581-587, 830-833) require minContact to become disabled/non-touching after advancing to its own computed TOI alpha (impossible by construction). Partial branches at 580/645/728/800/816/829/1711/1959/1969 are one-sided due to constant config values or same dead conditions.

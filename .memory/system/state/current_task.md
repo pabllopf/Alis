@@ -1,47 +1,26 @@
+## COVERAGE TASK — COMPLETED
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 175 files) Outputting AI-ready tasks:
+### File
+pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs
 
+### Status
+COMPLETED (PARTIAL_BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE)
 
-    ## COVERAGE TASK
+### Coverage
+- SonarCloud: 97.1% (Line 97.5%, Branch 95.6%)
+- Local after: 98.29% line / 96.64% branch (170 tests, net8.0)
 
-    ### File
-    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
+### Tests Added
+- `AddNonCollideJoint_OverlappingBodies_FlagsExistingContact`
+- `RemoveNonCollideJoint_OverlappingBodies_FlagsContacts`
+- `Step_WithZeroDeltaTime_DoesNotThrow`
+- `Bullet_HittingSensorBody_ProcessesToiSensorContact`
 
-    ### Language
-    cs
+### Commit
+test: coverage WorldPhysic.cs
 
-    ### Coverage
-    97.0% (Line: 100.0%, Branch: 87.5%)
-
-    ### Uncovered Lines
-    0
-
-    ### Uncovered Branches
-    3
-
-    ### Method
-    FilePickerExecutor
-
-    ### Complexity / LOC
-    18 / 103 lines
-
-    ### Source Code
-    ```csharp
-    // [Source code omitted. Use --fetch-source to extract.]
-    ```
-    
-    ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/test/FilePickerExecutorTests.cs
-
-    Priority
-    LOW (NEW)
-
-    AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
-    Follow Arrange/Act/Assert pattern
-    Use real objects first, Moq ONLY if interface/external dependency
-    Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FilePickerExecutor.cs
-    Update ./.memory/coverage/state/coverage-index.md after completion
-            
-==================================================
+### Remaining Uncovered (all dead/unreachable)
+- Lines 646-647: `_stepComplete` never false
+- Lines 729-730: `ToiFlag` never true
+- Line 1717: `CreateRoundedRectangle` always ≥8 verts
+- Lines 581-587, 830-833: TOI contact-expiration guards (algorithm-inherent)
