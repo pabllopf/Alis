@@ -1273,3 +1273,15 @@ CoverageAfter: 90.5%
 TestsAdded: 0
 Commit: docs: results TimeOfImpact.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+## Window.cs (Glfw Structs)
+- Re-verified: Window.cs (Glfw Structs) ALREADY_REMEDIATED. Standard `dotnet test -f net8.0 --filter Structs.Window`: 14/14 pass; line-rate 87.5% (28/32). Only uncovered lines 112-113 are the native Opacity accessor bodies, reachable only via `ALIS_GLFW_HOOK=1` main-thread GLFW bootstrap (already covered to 100.0% by committed WindowOpacityExecutionTests). No new tests applicable — results/Window.md
+- TestsAdded: 0 this pass; Commit: docs: results Window.cs
+- Status: ALREADY_REMEDIATED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+CoverageBefore: 87.5% (local, standard test command)
+CoverageAfter: 87.5% (standard command); 100.0% hook-enabled
+TestsAdded: 0
+Commit: docs: results Window.cs
+Status: ALREADY_REMEDIATED

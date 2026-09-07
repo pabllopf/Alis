@@ -7,6 +7,16 @@ TestsAdded: 0 (already remediated — committed WindowOpacityExecutionTests cove
 Commit: test: coverage Window.cs
 Status: ALREADY_REMEDIATED
 
+## Re-verified (2026-09)
+
+Local `dotnet test -f net8.0 --filter Structs.Window` run (standard, no GLFW startup hook):
+14 tests passed / 0 failed; Window.cs line-rate 87.5% (28/32). The only uncovered lines are
+112-113 (the `Opacity` getter/setter body: `GlfwNative.GetWindowOpacity` / `SetWindowOpacity`
++ `Math.Min/Max` clamp). These reachable lines require a real native GLFW window created by the
+`ALIS_GLFW_HOOK=1` + `DOTNET_STARTUP_HOOKS` main-thread bootstrap; they cannot be exercised by the
+standard test command. The committed `WindowOpacityExecutionTests` already target them and yield
+100.0% under the hook-enabled run. No new tests applicable. Status remains ALREADY_REMEDIATED.
+
 ## Summary
 
 Window.cs is the GLFW window-handle wrapper struct (10 complexity / 32 LOC). The committed
