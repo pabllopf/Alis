@@ -1285,3 +1285,15 @@ CoverageAfter: 87.5% (standard command); 100.0% hook-enabled
 TestsAdded: 0
 Commit: docs: results Window.cs
 Status: ALREADY_REMEDIATED
+
+## UnixPlayerBase.cs
+- Covered 92.85% line (156/168, net8.0 coverlet; was 80.95%). Pause live-process body (189-193) and afinfo estimated-duration parse (276-280) now covered via two new test files. Resume live-process body (204-208) BLOCKED_BY_PRODUCTION_CODE: `kill -STOP` leaves the process in T state and the follow-up `Process.Start()` for `kill -CONT` hangs at 100% CPU on macOS (verified standalone repro). Closing brace 282 is a cobertura artifact (early return at 280). — results/UnixPlayerBase.md
+- TestsAdded: 2 this pass (UnixPlayerBasePauseResumeCoverageTests.cs, UnixPlayerBaseGetAudioDurationCoverageTests.cs); Commit: test: UnixPlayerBase.cs
+- Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
+
+File: 4_Operation/Audio/src/Players/UnixPlayerBase.cs
+CoverageBefore: 80.95%
+CoverageAfter: 92.85%
+TestsAdded: 2
+Commit: test: UnixPlayerBase.cs
+Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
