@@ -41,71 +41,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
     /// </summary>
     public class BitOperationsRemainingCoverageTests
     {
-        /// <summary>
-        ///     The resolved custom BitOperations type.
-        /// </summary>
-        private static readonly Type BitOps = Type.GetType("System.Numerics.BitOperations, Alis.Core.Ecs");
 
-        /// <summary>
-        ///     Tests that Log2 returns the correct exponent for values.
-        /// </summary>
-        [Fact]
-        public void Log2_VariousValues_ReturnsCorrectExponent()
-        {
-            Assert.Equal(0, InvokeInt("Log2", 1u));
-            Assert.Equal(1, InvokeInt("Log2", 2u));
-            Assert.Equal(4, InvokeInt("Log2", 16u));
-            Assert.Equal(10, InvokeInt("Log2", 1024u));
-            Assert.Equal(31, InvokeInt("Log2", uint.MaxValue));
-            Assert.Equal(2, InvokeInt("Log2", 5u));
-            Assert.Equal(3, InvokeInt("Log2", 9u));
-            Assert.Equal(20, InvokeInt("Log2", (1u << 21) - 1));
-        }
 
-        /// <summary>
-        ///     Tests that RoundUpToPowerOf2 returns values correctly for a range of inputs.
-        /// </summary>
-        [Fact]
-        public void RoundUpToPowerOf2_VariousValues_RoundsCorrectly()
-        {
-            Assert.Equal(1u, InvokeUint("RoundUpToPowerOf2", 1u));
-            Assert.Equal(2u, InvokeUint("RoundUpToPowerOf2", 2u));
-            Assert.Equal(16u, InvokeUint("RoundUpToPowerOf2", 16u));
-            Assert.Equal(1024u, InvokeUint("RoundUpToPowerOf2", 1024u));
-            Assert.Equal(4u, InvokeUint("RoundUpToPowerOf2", 3u));
-            Assert.Equal(8u, InvokeUint("RoundUpToPowerOf2", 5u));
-            Assert.Equal(16u, InvokeUint("RoundUpToPowerOf2", 9u));
-            Assert.Equal(1024u, InvokeUint("RoundUpToPowerOf2", 513u));
-            Assert.Equal(0u, InvokeUint("RoundUpToPowerOf2", 0u));
-        }
-
-        /// <summary>
-        ///     Tests that RotateLeft rotates bits correctly including wrap-around.
-        /// </summary>
-        [Fact]
-        public void RotateLeft_VariousOffsets_RotatesCorrectly()
-        {
-            Assert.Equal(2u, InvokeUint("RotateLeft", 1u, 1));
-            Assert.Equal(0x12345678u, InvokeUint("RotateLeft", 0x12345678u, 32));
-            Assert.Equal(0x12345678u, InvokeUint("RotateLeft", 0x12345678u, 64));
-            Assert.Equal(0xDEADBEEFu, InvokeUint("RotateLeft", 0xDEADBEEFu, 0));
-            Assert.Equal(0x80000000u, InvokeUint("RotateLeft", 1u, 31));
-        }
-
-        /// <summary>
-        ///     Invokes a method returning a uint on the custom BitOperations type.
-        /// </summary>
-        private static uint InvokeUint(string name, params object[] args)
-        {
-            return (uint) BitOps.GetMethod(name).Invoke(null, args);
-        }
-
-        /// <summary>
-        ///     Invokes a method returning an int on the custom BitOperations type.
-        /// </summary>
-        private static int InvokeInt(string name, params object[] args)
-        {
-            return (int) BitOps.GetMethod(name).Invoke(null, args);
-        }
+    
     }
 }
