@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 150 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 151 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
+    pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    88.0% (Line: 87.0%, Branch: 100.0%)
+    88.9% (Line: 92.4%, Branch: 73.1%)
 
     ### Uncovered Lines
-    3
+    36
 
     ### Uncovered Branches
-    0
+    28
 
     ### Method
-    ObjectBase
+    UpdateManager
 
     ### Complexity / LOC
-    7 / 38 lines
+    102 / 578 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ObjectBase.cs
+//  File:UpdateManager.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
+using Alis.Extension.Updater.Events;
+using Alis.Extension.Updater.Services.Api;
+using Alis.Extension.Updater.Services.Files;
 
-namespace Alis.Extension.Graphic.Sfml.Systems
+namespace Alis.Extension.Updater
 {
     /// <summary>
-    ///     The ObjectBase class is an abstract base for every
-    ///     SFML object. It's meant for internal use only
+    ///     The update manager class
     /// </summary>
-    public abstract class ObjectBase : IDisposable
+    public sealed class UpdateManager
     {
         /// <summary>
-        ///     The zero
+        ///     The threshold entries
         /// </summary>
-        private IntPtr myCPointer = IntPtr.Zero;
+        private const int ThresholdEntries = 10000;
 
         /// <summary>
-        ///     Construct the object from a pointer to the C library object
+        ///     The threshold size
         /// </summary>
-        /// <param name="cPointer">Internal pointer to the object in the C libraries</param>
-        protected ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
-
-
-        /// <summary>
-        ///     Access to the internal pointer of the object.
-        ///     For internal use only
-        /// </summary>
-
-        public IntPtr CPointer
-        {
-            get => myCPointer;
-            protected set => myCPointer = value;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/ObjectBaseTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Updater/test/UpdateManagerTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ObjectBase.cs
+    Commit format: test: coverage UpdateManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
