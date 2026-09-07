@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 146 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 147 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
 
     ### Language
     cs
 
     ### Coverage
-    84.1% (Line: 83.1%, Branch: 92.9%)
+    84.6% (Line: 79.0%, Branch: 95.0%)
 
     ### Uncovered Lines
-    43
+    47
 
     ### Uncovered Branches
-    2
+    6
 
     ### Method
-    Update
+    ImGuiStyle
 
     ### Complexity / LOC
-    35 / 394 lines
+    308 / 243 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Update.cs
+//  File:ImGuiStyle.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetypes;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Ecs.Updating.Runners
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The update loop class
+    ///     The imgui style
     /// </summary>
-    internal static class UpdateLoop
+    public struct ImGuiStyle
     {
         /// <summary>
-        ///     Runs the entity ids
+        /// The index out of range message
         /// </summary>
-        /// <typeparam name="TComp">The comp</typeparam>
-        /// <param name="entityIds">The entity ids</param>
-        /// <param name="comp">The comp</param>
-        /// <param name="length">The length</param>
-        /// <param name="gameObject">The game object</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static void Run<TComp>(ref GameObjectIdOnly entityIds, ref TComp comp, int length, GameObject gameObject)
-            where TComp : IOnUpdate
-        {
-            if (length <= 0)
-            {
-                return;
-            }
+        private const string IndexOutOfRangeMessage = "Index out of range. Valid range is [0, 54].";
 
-            do
+        /// <summary>
+        ///     The alpha
+        /// </summary>
+        public float Alpha { get; set; }
+
+        /// <summary>
+        ///     The disabled alpha
+        /// </summary>
+        public float DisabledAlpha { get; set; }
+
+        /// <summary>
+        ///     The window padding
+        /// </summary>
+        public Vector2F WindowPadding { get; set; }
+
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Updating/Runners/UpdateTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiStyleTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Update.cs
+    Commit format: test: coverage ImGuiStyle.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
