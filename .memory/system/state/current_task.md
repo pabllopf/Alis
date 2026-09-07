@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 144 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 145 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
 
     ### Language
     cs
 
     ### Coverage
-    78.3% (Line: 76.1%, Branch: 87.5%)
+    81.7% (Line: 82.9%, Branch: 78.3%)
 
     ### Uncovered Lines
-    16
+    85
 
     ### Uncovered Branches
-    2
+    39
 
     ### Method
-    VideoFrame
+    MarchingSquares
 
     ### Complexity / LOC
-    18 / 88 lines
+    137 / 603 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoFrame.cs
+//  File:MarchingSquares.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using Alis.Core.Aspect.Logging;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
 
-namespace Alis.Extension.Media.FFmpeg.Video
+namespace Alis.Core.Physic.Common.TextureTools
 {
     /// <summary>
-    ///     Video frame containing pixel data in RGB24 format.
+    ///     The marching squares class
     /// </summary>
-    public class VideoFrame : IDisposable, IMediaFrame
+    public static class MarchingSquares
     {
-        /// <summary>
-        ///     The offset
-        /// </summary>
-        internal readonly int size;
+        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 
         /// <summary>
-        ///     The frame buffer
+        ///     The look march
         /// </summary>
-        private byte[] frameBuffer;
-
-        /// <summary>
-        ///     Creates an empty video frame with given dimensions using the RGB24 pixel format.
-        /// </summary>
-        /// <param name="w">Width in pixels</param>
-        /// <param name="h">Height in pixels</param>
-        public VideoFrame(int w, int h)
+        internal static readonly int[] LookMarch =
         {
-            if (w <= 0 || h <= 0)
-            {
+            0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
+            0x6D, 0xB5, 0x55
+        };
+
+        /// <summary>
+        ///     Marching squares over the given domain using the mesh defined via the dimensions
+        ///     (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
+        ///     'bin' for recursive linear inteprolation along cell boundaries.
+        ///     if 'comb' is true, then the polygons will also be composited into larger possible concave
+        ///     polygons.
+        /// </summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Video/VideoFrameTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/TextureTools/MarchingSquaresTests.cs
 
     Priority
-    MEDIUM (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage VideoFrame.cs
+    Commit format: test: coverage MarchingSquares.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
