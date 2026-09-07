@@ -38,3 +38,12 @@ skipped.
 
 - WebAssemblyDisplayManager filter (net8.0, Debug): 90 passed, 0 failed, 41 skipped.
 - Local coverlet: 142/157 lines (90.4%); new tests cover lines 204-206.
+
+## Re-verification (worker pass)
+
+Re-measured with `--collect:"XPlat Code Coverage"` (net8.0, Debug). Uncovered lines are
+exactly 231-234, 245-248, 342-344, 377-380 (15 lines). All require a native
+libemscripten/WebAssembly runtime or are dead code (SaveScreenshot try body is
+unconditionally `return true`), so no units are reachable on the macOS desktop host.
+No new tests added; coverage unchanged at 90.4%. Status re-confirmed
+BLOCKED_BY_PRODUCTION_CODE for the remaining 15 lines.

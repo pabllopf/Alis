@@ -1242,3 +1242,10 @@ CoverageAfter: 86.6%
 TestsAdded: 0
 Commit: docs: results DTSweep.cs
 Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
+
+File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyDisplayManager.cs
+CoverageBefore: 90.4%
+CoverageAfter: 90.4%
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
