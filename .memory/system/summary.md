@@ -1384,3 +1384,11 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Attempted/reverted: malformed-token test proved InitializeAsync catch (138-142) unreachable (GoogleCredential.FromAccessToken doesn't validate)
 - Commit: test: coverage GoogleDriveCloudManager.cs
 - Status: COMPLETED (138-142 defensive catch, non-injectable; API-response branches need live Drive HTTP)
+
+## FilePickerExecutor.cs
+- File: 1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
+- CoverageBefore: 97.0% (Line 100.0%, Branch 87.5%); local line 0.974 branch 0.833
+- CoverageAfter: line 100%; branch 0.875 (up from 0.833)
+- TestsAdded: 1 (FilePickerExecutorOverrideTest.cs) — ExecuteCommandOverride branch (65-68), 50%→100%
+- Commit: test: coverage FilePickerExecutor.cs
+- Status: COMPLETED (3 remaining branches at 154/158/159 are Windows-only arms of IsOSPlatform ternaries, unreachable on darwin host)
