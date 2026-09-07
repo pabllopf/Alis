@@ -1306,3 +1306,29 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: none
 - Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 - Note: 3 uncovered lines (119, 121, 125) are the inner catch block in the finally that handles Console.ForegroundColor = originalColor throwing. .NET's ConsolePal caches s_out at first access; closing stdout fd or redirecting Console.Out does not make the setter throw. Defensive code unreachable in any test harness.
+
+## BayazitDecomposer.cs
+- File: 4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
+- CoverageBefore: 94.2% (SonarCloud)
+- CoverageAfter: 94.2% (unchanged; 10 unreachable lines)
+- TestsAdded: 10 (BayazitDecomposerTargetedCoverageTests.cs)
+- Commit: test: BayazitDecomposer.cs
+- Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
+- Note: 10 uncovered lines (71-78: adjacent-split branch where lowerIndex == (upperIndex+1)%n; 213-215: score+=3 branch for reflex candidate in wedge). These are geometric conditions that require very specific polygon vertex configurations. Existing 40 tests cover all other code paths. 10 new targeted tests added but could not trigger these branches.
+
+## ThreadManager.cs
+- File: 1_Presentation/Extension/Thread/src/ThreadManager.cs
+- CoverageBefore: 100.0% line (SonarCloud)
+- CoverageAfter: 100.0% line (re-verified locally)
+- TestsAdded: 0
+- Commit: none
+- Status: ALREADY_REMEDIATED
+- Note: 1 uncovered branch is parallelExecutor?.Clear() — the `?.` null check on an internal readonly field guaranteed non-null by the constructor. Unreachable defensive code by construction.
+## WebSocketFrameReader.cs
+- File: 1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs
+- CoverageBefore: 96.2% (SonarCloud) / 86.0% line (local coverlet)
+- CoverageAfter: 100.0% line and branch (local coverlet)
+- TestsAdded: 2 (WebSocketFrameReaderCoverageTest.cs)
+- Commit: test: coverage WebSocketFrameReader.cs
+- Status: COMPLETED
+- Note: The 5 uncovered lines (131-135) were the catch (InternalBufferOverflowException) rethrow in ReadAsync. Reached via fault-injecting Stream subclasses (BufferOverflowInjectingStream, BufferOverflowInjectingStreamAfterBytes) that throw InternalBufferOverflowException during the payload read.
