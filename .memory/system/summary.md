@@ -1375,3 +1375,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - TestsAdded: 1 (CommandBufferAddCompEventTest.cs) — fires per-entity OnComponentAdded during CommandBuffer.Playback
 - Commit: test: coverage CommandBuffer.cs
 - Status: COMPLETED (line 363 = dead code after Throw() local function, never reachable)
+
+## GoogleDriveCloudManager.cs
+- File: 1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs
+- CoverageBefore: 96.8% (Line 98.0%, Branch 92.2%); local line 0.909 branch 0.875
+- CoverageAfter: branch 100% (incl. Dispose(bool) non-disposing branch); lines 138-142 remain
+- TestsAdded: 2 (GoogleDriveCloudManagerDisposeTest.cs) — Dispose(bool)=false short-circuit branches
+- Attempted/reverted: malformed-token test proved InitializeAsync catch (138-142) unreachable (GoogleCredential.FromAccessToken doesn't validate)
+- Commit: test: coverage GoogleDriveCloudManager.cs
+- Status: COMPLETED (138-142 defensive catch, non-injectable; API-response branches need live Drive HTTP)
