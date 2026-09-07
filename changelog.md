@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.3] - 2026-09-07
+### :white_check_mark: Tests
+- [`c7779aa`](https://github.com/pabllopf/Alis/commit/c7779aa786c144047172f46073a680b370f3d3b3) - Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3055990`](https://github.com/pabllopf/Alis/commit/30559900442d5341f5df49ee648df7d5b98d71c5) - UpdateManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6cdb3f0`](https://github.com/pabllopf/Alis/commit/6cdb3f0addec9c2263ba7d88bff4281b368a2b88) - UnixPlayerBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`b6cf683`](https://github.com/pabllopf/Alis/commit/b6cf683e76efff4a364b94ef6ac0e2e21a4489dc) - results GameObject.cs (flagged engine-defect) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3545dc3`](https://github.com/pabllopf/Alis/commit/3545dc33fdc3d895b35de9a39736339a3fc734c2) - results EmscriptenWeb.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6bcde18`](https://github.com/pabllopf/Alis/commit/6bcde1814d82abfac5706d7273be705d37fc7466) - results ContextHandler.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f86a7f`](https://github.com/pabllopf/Alis/commit/7f86a7fb6fadce509205fc0cf34329d19919be91) - results WebAssemblyPlatform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`989095c`](https://github.com/pabllopf/Alis/commit/989095c889afc3dff592b95973169a809820e6fa) - results VideoFrame.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`10f71c8`](https://github.com/pabllopf/Alis/commit/10f71c81bcf14f2116dd8361b7f5e4b97183bb9f) - results MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`36d82fe`](https://github.com/pabllopf/Alis/commit/36d82fed083d6ee9009fd047f9322e43c60cb38a) - results ImGuiStyle.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2feb0b4`](https://github.com/pabllopf/Alis/commit/2feb0b4315a29d14a5705d94f3dc8be3f30ec196) - results DTSweep.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`11e06ba`](https://github.com/pabllopf/Alis/commit/11e06ba4a837f21d4059b718052a649bb878e1f0) - results WebAssemblyDisplayManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec138d6`](https://github.com/pabllopf/Alis/commit/ec138d6cb6d8f7f95d2d6960c20cad1838d3aeac) - results ObjectBase.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c481056`](https://github.com/pabllopf/Alis/commit/c48105601af910b070472a33e15f522600178cee) - results Events.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5789464`](https://github.com/pabllopf/Alis/commit/5789464478e53533c7e26a172d83eeef498614a2) - results TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`81d854d`](https://github.com/pabllopf/Alis/commit/81d854d5cb0103923ad6d513c1c6134f61c5dcaa) - results Window.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.2] - 2026-09-06
 ### :memo: Documentation Changes
 - [`8ae6005`](https://github.com/pabllopf/Alis/commit/8ae600588403bbd38828e41a11a0ae6ea79745e6) - results MacOpenGLContext.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11140,3 +11162,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.0]: https://github.com/pabllopf/Alis/compare/v1.3.9...v1.4.0
 [v1.4.1]: https://github.com/pabllopf/Alis/compare/v1.4.0...v1.4.1
 [v1.4.2]: https://github.com/pabllopf/Alis/compare/v1.4.1...v1.4.2
+[v1.4.3]: https://github.com/pabllopf/Alis/compare/v1.4.2...v1.4.3
