@@ -1,28 +1,55 @@
 # Result: Update.cs
 
 File: `4_Operation/Ecs/src/Updating/Runners/Update.cs`
-CoverageBefore: 93.6% (SonarCloud; Line: 95.3%, Branch: 78.6%, 12 uncovered lines)
-CoverageAfter: 100.0% (668/668, local coverlet, Update-filtered Ecs run)
-TestsAdded: 1 (UpdateArity9CoverageTests.cs: arity-9 non-range Run)
-Commit: test: coverage Update.cs
-Status: REMEDIATED
+CoverageBefore: 83.1% (424/510, local coverlet, Runners-filtered Ecs run)
+CoverageAfter: 94.5% (482/510, local coverlet, Runners-filtered Ecs run)
+TestsAdded: 3 (UpdateArity9CoverageTests.cs: arity-9 non-range Run via scene.Update)
+Commit: test: Update.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 
 ## Summary
 
-Update.cs contains the UpdateLoop runner and the generic Update<TComp, ...> runner classes
-(35 complexity / 394 LOC). The committed suite covered every runner except the 9-arity
-non-range `Run(Scene, Archetype)` (Update<TComp, TArg1..TArg8>), which fetches eight component
-references and dispatches the update loop.
+Update.cs defines `UpdateLoop.Run<...>` overloads (arities 0..8) and the generic
+`Update<TComp, TArg1..TArg8>` runner classes. Prior to this pass the arity-8
+`UpdateLoop.Run` loop body (lines 360-376) and the whole `Update<...9 generics>`
+runner (lines 680-723, 3.4% covered) were uncovered.
 
 ## Tests added (UpdateArity9CoverageTests.cs)
 
-`Update_Arity9_NonRangeRun_ProcessesEntities`: creates an entity with `Update9Comp`
-(`IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>`)
-plus the eight argument components (`Create<T1..T8>` caps at eight components, so the eighth
-argument is added via `entity.Add`), then invokes the storage's non-range internal
-`Run(scene, archetype)` and asserts the component update ran.
+Three tests build a 9-component entity (`Update8Component` + Position, Velocity,
+Health, Armor, Damage, Transform, TestComponent, AnotherComponent). The main
+component plus seven args are created via `Scene.Create<T1..T8>`; the eighth
+argument (`AnotherComponent`) is attached via `GameObject.Add`, which moves the
+entity into the 9-component archetype. Then `scene.Update()` drives the
+non-range `Update<TComp, TArg1..TArg8>.Run(Scene, Archetype)` which delegates to
+`UpdateLoop.Run<TComp, TArg1..TArg8>`, covering the previously-uncovered
+do-while loop body.
+
+- `Update_Arity9_SceneUpdate_ProcessesAllEntities`: two 9-component entities, asserts per-entity counts and mutations.
+- `Update_Arity9_SceneUpdate_MutatesAllArgs`: verifies all eight argument components mutate by reference.
+- `Update_Arity9_TwoFrames_AccumulatesChanges`: two update frames confirm loop iteration is correct.
+
+## Blocked lines (707-723)
+
+The range-based `Update<TComp, TArg1..TArg8>.Run(Scene, Archetype, int, int)`
+(lines 707-723) is unreachable from the public API:
+
+- `Archetype.Update(scene, start, length)` is only invoked from
+  `Scene.ResolveUpdateDeferredCreationEntities` (Scene.cs:673), processing
+  `DeferredCreationArchetypes`.
+- `Scene.Create<T1..T8>` (Scene.cs:1477) is the highest-arity generic creation
+  API (8 component types). The only way to reach 9 component types is a
+  `GameObject.Add<T>` call, which during disallow state is buffered into
+  `WorldUpdateCommandBuffer` (GameObject.cs:315-319) and replayed only after
+  `UpdateSubset`/deferred resolution (Scene.cs:632).
+- Therefore no 9-component archetype can ever appear in
+  `DeferredCreationArchetypes`, so the arity-9 range-based Run can never be
+  dispatched. `CreateFromObjects` (Scene.cs:695) creates entities immediately
+  via `CreateEntityLocation` (it does not defer), so it cannot seed the
+  deferred-creation path either.
 
 ## Verification
 
-- Update-filtered run: 265 passed / 0 failed (net8.0).
-- Local coverlet: Update.cs 668/668 = 100.0% (before: 95.3% line; Update`9 was 30/58).
+- Runners-filtered run: 112 passed / 0 failed (net8.0).
+- Local coverlet: `UpdateLoop` 100.0% (216/216); `Update`9 51.7% (30/58);
+  all other Update.cs classes already 100%. Whole file 94.5% (was 83.1%).

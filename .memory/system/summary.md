@@ -1221,3 +1221,10 @@ CoverageAfter: 75.3% (unchanged)
 TestsAdded: 0
 Commit: docs: results MarchingSquares.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Ecs/src/Updating/Runners/Update.cs
+CoverageBefore: 83.1%
+CoverageAfter: 94.5%
+TestsAdded: 3
+Commit: test: Update.cs
+Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
