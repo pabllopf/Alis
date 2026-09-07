@@ -1410,3 +1410,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: docs: results PolygonGenerator.cs
 - Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
 - Note: 100% line coverage. The 2 residual branches (lines 85, 124) are the loop-continuation arms of the do-while exit condition `radius < scale/10 || radius > scale/2`. Radius is always clamped via Math.Min(Math.Max(...)) immediately before the condition, so it is provably always in range and the loop always exits on first iteration. Branch-true path unreachable by construction.
+
+## GitHubApiService.cs
+- File: 1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs
+- CoverageBefore: 97.1% (Line 100.0%, Branch 83.3%) SonarCloud
+- CoverageAfter: 100% line / 83.3% branch (local coverlet)
+- TestsAdded: 0 (existing GitHubApiServiceTest / RemainingTest / RemainingCoverageTests cover all lines + async state machine)
+- Commit: docs: results GitHubApiService.cs
+- Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
+- Note: 100% line coverage. The 1 residual branch (line 86) is `_httpClient?.Dispose()` null-guard false-side. `_httpClient` is readonly and always non-null (both ctors guarantee it; null arg replaced by `new HttpClient()`), so `_httpClient == null` is unreachable by construction. Defensive dead code.

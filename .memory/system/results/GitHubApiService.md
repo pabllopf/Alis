@@ -1,20 +1,30 @@
-# Result: GitHubApiService.cs
-
-File: `1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs`
-CoverageBefore: 97.1% (SonarCloud; Line: 100.0%, Branch: 83.3%, 0 uncovered lines)
-CoverageAfter: 100.0% (58/58, local coverlet, full Updater suite)
-TestsAdded: 0 (already fully covered — SonarCloud reports 0 uncovered lines)
-Commit: test: coverage GitHubApiService.cs
-Status: ALREADY_REMEDIATED
+# GitHubApiService.cs
 
 ## Summary
+- File: `1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs`
+- Lines: ~109
+- Complexity: 9
+- Access: `public class` implements `IGitHubApiService, IDisposable`
 
-GitHubApiService.cs is the GitHub release API client (9 complexity / 43 LOC). SonarCloud
-reports 0 uncovered lines (Line 100.0%; only the branch metric is below 100%). Local coverlet
-on the committed suite (401 passed / 0 failed): GitHubApiService.cs 42/42 + GetLatestRelease
-state machine 16/16 = 100.0%.
+## SonarCloud
+- Line: 100.0%, Branch: 83.3%
+- Uncovered: 0 lines, 1 branch
 
-## Verification
+## Local (verified by existing committed suite)
+- Line: 100.0%
+- Branch: 83.3%
+- Includes the async `GetLatestReleaseAsync` state machine at 100%/100%
 
-- Full Updater suite: 401 passed / 0 failed (net8.0).
-- Local coverlet: GitHubApiService.cs 58/58 = 100.0%.
+## Tests Added
+- None — existing suite (`GitHubApiServiceTest.cs`, `GitHubApiServiceRemainingTest.cs`, `GitHubApiServiceRemainingCoverageTests.cs`) already covers all lines and the async state machine.
+
+## Unreachable / Blocked Branch
+
+| Line | Reason |
+|---|---|
+| 86 | `_httpClient?.Dispose()` null-conditional false-side (`_httpClient == null`). `_httpClient` is `internal readonly` and always assigned non-null in both constructors — in the `(Uri, HttpClient)` ctor a null argument is replaced by `new HttpClient()` (line 65). The false branch is unreachable by construction. |
+
+The sole uncovered branch is the null-guard of `_httpClient?.Dispose()`. Because the field can never be null (both constructor paths guarantee a non-null `HttpClient`), only the non-null (dispose) path is exercised. This is defensive dead code.
+
+## Status
+**BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE** — 100% line coverage; the 1 residual branch is the `?.` null-guard made unreachable by constructor invariants.

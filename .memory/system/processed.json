@@ -202,5 +202,6 @@
     "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTree.cs"
   ],
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs": true,
-  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs": true
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs": true,
+  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs": true
 }
