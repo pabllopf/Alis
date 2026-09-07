@@ -1340,3 +1340,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: test: coverage WebAssemblyInputManager.cs
 - Status: COMPLETED
 - Note: 5 uncovered lines (242-247, 265) were in IsGamepadButtonJustPressed/IsGamepadButtonJustReleased for the state.PreviousState null branch and the prev/current button comparisons. Tests seed platform._gamepadStates and manager._previousGamepadStates directly to exercise both branches of each comparison.
+
+## AssetRegistry.cs
+- File: 6_Ideation/Memory/src/AssetRegistry.cs
+- CoverageBefore: 96.5% line / 94.1% branch (SonarCloud); local branch 94.11%, line 98.5%
+- CoverageAfter: line 98.5% (526/534), branch 96.08% (196/204) (local coverlet, filtered suite)
+- TestsAdded: 3 (AssetRegistryFallbackCoverageTest.cs)
+- Commit: test: coverage AssetRegistry.cs
+- Status: COMPLETED (remaining lines defensively dead)
+- Note: FindZipEntryInfo fallback EndsWith branch (line 624) covered via bare-file-name duplicate lookup. Remaining uncovered lines 500-501 (ToLowerHex empty-span return; SHA-256 always 32 bytes) and 541-542 (EnsureZipCachedForActiveAssembly loader-missing throw; pre-checked at 184/654 with identical message) are unreachable defensive code. Partial 50% conditions at 377 (`?? Path.GetTempPath()`), 434 (`?? string.Empty`), 540 (loader guard) are defensively dead.

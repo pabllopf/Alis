@@ -1,33 +1,33 @@
-# Result: AssetRegistry.cs
+# AssetRegistry.cs
 
-File: `6_Ideation/Memory/src/AssetRegistry.cs`
-CoverageBefore: 90.2% (SonarCloud; Line: 92.1%, Branch: 85.3%, 21 uncovered lines)
-CoverageAfter: 98.5% (526/534, local coverlet, full Memory suite)
-TestsAdded: 0 (existing suite covers every reachable line; the 4 remaining lines are dead guards)
-Commit: test: coverage AssetRegistry.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
+## File
+`6_Ideation/Memory/src/AssetRegistry.cs` (6_Ideation/Memory)
 
-## Summary
+## Coverage Before
+- SonarCloud: 96.5% line / 94.1% branch (7 lines uncovered, 6 branches uncovered)
+- Local coverlet (net8.0): line 0.985 / branch 0.9411
 
-AssetRegistry.cs is the embedded-assets pack registry (66 complexity / 334 LOC). The committed
-suite (AssetRegistryTest/AssetRegistryCoverageTest/AssetRegistryExtendedCoverageTest/
-AssetRegistryFinalCoverageTests/AssetRegistryMissingCoverageTest/AssetRegistryPureLogicTest/
-AssetRegistryRemainingCoverageTests, 94 tests) covers registration, resource lookup by name and
-by path, zip extraction, temp-path validation and every exception path.
+## Coverage After (local coverlet, filtered AssetRegistry suite)
+- line 0.9850 (526/534)
+- branch 0.9608 (196/204)
+- 60 tests run, all passed, filtered `FullyQualifiedName~AssetRegistry`
 
-## Remaining uncovered lines (4) — BLOCKED_BY_PRODUCTION_CODE
+## Tests Added
+`test/AssetRegistryFallbackCoverageTest.cs` — 3 tests (collection-scoped, state-save/restore via reflection like existing tests):
+1. `GetResourceMemoryStreamByName_BareFileNameUnique_ResolvesThroughFileNameIndex` — single-entry file-name index match.
+2. `GetResourceMemoryStreamByName_BareFileNameAmbiguous_ResolvesViaEndsWithFallback` — duplicate file names (`dir1/data.xml`, `dir2/data.xml`) looked up by bare `data.xml` forces the full-path `EndsWith` fallback branch in `FindZipEntryInfo`.
+3. `GetResourcePathByName_BareFileNameMixedDirs_ExtractsContent` — bare-name extraction across mixed directories.
 
-- 500-501 — `ToLowerHex` empty-bytes branch: only reachable with a zero-length hash input;
-  both callers pass SHA256 outputs (always 32 bytes) or the UTF8 bytes of a non-empty resource
-  key. Defensive branch.
-- 541-542 — `EnsureZipCachedForActiveAssembly`'s "no assets.pack loader" throw: `GetResource
-  MemoryStreamByName`/`GetResourcePathByName` already validate `RegisteredAssetLoaders.
-  ContainsKey(ActiveAssemblyName)` immediately before calling it, so the second guard can never
-  fire (duplicate guard). A test targeting it (setting an unregistered ActiveAssemblyName via
-  the backing-field helper) was written, verified to only hit the pre-check, and reverted.
+Impact: branch coverage 94.11% → 96.08%; the `FindZipEntryInfo` fallback condition line (624) went from 4/6 → 6/6.
 
-## Verification
+## Remaining uncovered (4 lines, all unreachable defensive code)
+- **Lines 500-501** (`ToLowerHex`: `if (bytes.Length == 0) return string.Empty;`): SHA-256 over the normalized resource key always produces 32 bytes; empty-span return is dead defensive code. Line 499 condition stays at 50% (null/empty path never taken).
+- **Lines 541-542** (`EnsureZipCachedForActiveAssembly`: `throw new InvalidOperationException(...)` when loader missing): all public entry points (`GetResourceMemoryStreamByName` line 184, `GetResourcePathByName` via `ValidateActiveAssembly` line 654) pre-check `RegisteredAssetLoaders.ContainsKey` and throw the identical message before the cache ensures; the throw is reachable only through an artificial race (loader removed between the pre-check and the cache ensure). Defensive double-guard.
 
-- Full Memory suite: passes with the same pre-existing order-dependent failure set as without
-  any new test (AssetRegistryTest.GetResourcePathByName_ExistingResource_ReturnsValidFilePath).
-- Local coverlet: AssetRegistry.cs 526/534 = 98.5% (before: 92.1% line).
+## Dead/partial conditions (documented, not forced)
+- Line 377 50%: `Path.GetDirectoryName(tempFilePath) ?? Path.GetTempPath()` — `tempFilePath` always has a parent dir; `?? ` fallback unreachable.
+- Line 434 50%: `Path.GetExtension(normalizedResourceKey) ?? string.Empty` — `Path.GetExtension` returns `""` (never null) for non-null input.
+- Line 540 50%: loader-missing guard (see lines 541-542).
+
+## Status
+COMPLETED (reachable code fully covered; remaining lines are defensively dead / not reachable via public API without artificial races)
