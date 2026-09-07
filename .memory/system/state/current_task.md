@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 154 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 155 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+    pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
 
     ### Language
     cs
 
     ### Coverage
-    90.0% (Line: 87.5%, Branch: 100.0%)
+    90.3% (Line: 92.7%, Branch: 82.6%)
 
     ### Uncovered Lines
-    2
+    11
 
     ### Uncovered Branches
-    0
+    8
 
     ### Method
-    Window
+    UnixPlayerBase
 
     ### Complexity / LOC
-    10 / 32 lines
+    36 / 188 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Window.cs
+//  File:UnixPlayerBase.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Extension.Graphic.Glfw.Structs
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     Wrapper around a GLFW window pointer.
+    ///     The unix player base class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct Window : IEquatable<Window>
+    /// <seealso cref="IPlayer" />
+    public abstract class UnixPlayerBase : IPlayer
     {
         /// <summary>
-        ///     Describes a default/null instance.
+        ///     The pause process command
         /// </summary>
-        public static readonly Window None;
+        internal const string PauseProcessCommand = "kill -STOP {0}";
 
         /// <summary>
-        ///     Internal pointer.
+        ///     The resume process command
         /// </summary>
-        internal readonly IntPtr handle;
+        internal const string ResumeProcessCommand = "kill -CONT {0}";
 
         /// <summary>
-        ///     Performs an implicit conversion from <see cref="Window" /> to <see cref="IntPtr" />.
+        ///     The last extracted file
         /// </summary>
-        /// <param name="window">The window.</param>
-        /// <returns>
-        ///     The result of the conversion.
-        /// </returns>
-        public static implicit operator IntPtr(Window window) => window.handle;
+        internal string _lastExtractedFile;
 
-        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/WindowTests.cs
+    pabllopf-official_alis:4_Operation/Audio/test/Players/UnixPlayerBaseTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Window.cs
+    Commit format: test: coverage UnixPlayerBase.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
