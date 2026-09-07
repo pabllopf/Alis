@@ -1214,3 +1214,10 @@ CoverageAfter: 100.0% (re-verified; VideoFrame filter 77 passed / 0 skipped, zer
 TestsAdded: 0
 Commit: none
 Status: ALREADY_COVERED (NO-OP — no uncovered lines; RequireFfmpegFact executes on host, Save/GetPixels/Load/Dispose all hit)
+
+File: 4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+CoverageBefore: 75.3% (259/344 unique instrumentable lines)
+CoverageAfter: 75.3% (unchanged)
+TestsAdded: 0
+Commit: docs: results MarchingSquares.cs
+Status: BLOCKED_BY_PRODUCTION_CODE

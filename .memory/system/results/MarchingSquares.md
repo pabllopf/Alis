@@ -2,7 +2,7 @@
 
 File: `4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs`
 CoverageBefore: 79.9% (SonarCloud); local coverlet baseline 74.4% line / 70.6% branch
-CoverageAfter: 74.4% line / 70.6% branch (local coverlet, net8.0 — unchanged)
+CoverageAfter: 75.3% (259/344 unique instrumentable lines) line / ~70% branch (local coverlet, net8.0 — unchanged)
 TestsAdded: 0 (13 candidate strip-geometry tests verified to add zero coverage; not committed)
 Commit: test: coverage MarchingSquares.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
@@ -37,3 +37,17 @@ production change:
   unchanged by the candidates.
 - Fixing the remaining lines requires a production change (`ps` must be indexed by the scan
   row in `ProcessCell`); the 13 candidate tests were removed to keep the repo coverage-honest.
+
+## Re-verification (2026-09-07)
+
+- Re-ran the MarchingSquares filter with XPlat Code Coverage (net8.0): 39 existing tests
+  passed / 0 failed; MarchingSquares class 344 unique instrumentable lines, 259 covered
+  (75.3%), 85 missed.
+- All 85 missed lines are exclusively in lines 299-463 (CombineScanLines family + CanCombine,
+  FindStartingPoint, HasValidStart, HasMatchingVertex, MergePolygons, UpdatePolygonReferences).
+- Confirmed with additional probe fields (solid square, dumbbell, overlapping rectangles,
+  slope, annulus): `CanCombine` never returns true because `ProcessCell` hardcodes the write
+  target as `ctx.Ps[x, 0]`; `CombineScanLines` then reads `ps[x, y]`/`ps[x, y-1]` for `y >= 1`
+  which are all null. The merge body is DEAD CODE.
+- No new tests added (all candidate fields cover zero of the 85 lines). Status unchanged:
+  BLOCKED_BY_PRODUCTION_CODE.
