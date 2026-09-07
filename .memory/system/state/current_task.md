@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 147 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 148 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
 
     ### Language
     cs
 
     ### Coverage
-    84.6% (Line: 79.0%, Branch: 95.0%)
+    85.0% (Line: 86.6%, Branch: 79.6%)
 
     ### Uncovered Lines
-    47
+    88
 
     ### Uncovered Branches
-    6
+    42
 
     ### Method
-    ImGuiStyle
+    DTSweep
 
     ### Complexity / LOC
-    308 / 243 lines
+    141 / 766 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiStyle.cs
+//  File:DTSweep.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>
-    ///     The imgui style
+    ///     The dt sweep class
     /// </summary>
-    public struct ImGuiStyle
+    internal static class DtSweep
     {
         /// <summary>
-        /// The index out of range message
+        ///     The pi
         /// </summary>
-        private const string IndexOutOfRangeMessage = "Index out of range. Valid range is [0, 54].";
+        private const double PiDiv2 = Math.PI / 2;
 
         /// <summary>
-        ///     The alpha
+        ///     The pi
         /// </summary>
-        public float Alpha { get; set; }
+        private const double Pi3Div4 = 3 * Math.PI / 4;
 
         /// <summary>
-        ///     The disabled alpha
+        ///     Triangulate simple polygon with holes
         /// </summary>
-        public float DisabledAlpha { get; set; }
+        public static void Triangulate(DtSweepContext tcx)
+        {
+            tcx.CreateAdvancingFront();
 
-        /// <summary>
-        ///     The window padding
-        /// </summary>
-        public Vector2F WindowPadding { get; set; }
+            Sweep(tcx);
 
-        /// <summary>
+            if (tcx.TriangulationMode == TriangulationMode.Polygon)
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiStyleTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiStyle.cs
+    Commit format: test: coverage DTSweep.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
