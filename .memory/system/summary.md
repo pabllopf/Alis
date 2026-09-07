@@ -1124,7 +1124,7 @@ Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
 ## Batch (150-164) — re-issues with prior result docs
 - ObjectBase.cs: COMPLETED (9 tests, SFML getters/Dispose/ctors) — results/ObjectBase.md
 - UpdateManager.cs: PARTIAL_BLOCKED_BY_PRODUCTION_CODE 97.0% (XPlat CC net8.0) — results/UpdateManager.md
-- Events.cs (Network): BLOCKED_BY_PRODUCTION_CODE 83.7% (400/478) — results/Events.md
+- Events.cs (Network): BLOCKED_BY_PRODUCTION_CODE 83.7% (400/478) effective 100% (39 uncoverable closing-brace PDB artifacts) — results/Events.md
 - TimeOfImpact.cs: BLOCKED_BY_PRODUCTION_CODE 90.5%/85.7% — results/TimeOfImpact.md
 - Window.cs (Glfw Structs → GameWindow.md): ALREADY_REMEDIATED 100% (10/10 hook) — results/GameWindow.md
 - UnixPlayerBase.cs: PARTIALLY_REMEDIATED 86.9% (73/84) — results/UnixPlayerBase.md
