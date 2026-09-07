@@ -138,7 +138,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs",
-    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs"
+    "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs": true,
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs": true,

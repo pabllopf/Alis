@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 153 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 154 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
 
     ### Language
     cs
 
     ### Coverage
-    89.7% (Line: 90.5%, Branch: 85.7%)
+    90.0% (Line: 87.5%, Branch: 100.0%)
 
     ### Uncovered Lines
-    14
+    2
 
     ### Uncovered Branches
-    4
+    0
 
     ### Method
-    TimeOfImpact
+    Window
 
     ### Complexity / LOC
-    30 / 183 lines
+    10 / 32 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeOfImpact.cs
+//  File:Window.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Dynamics;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Physic.Collisions
+namespace Alis.Extension.Graphic.Glfw.Structs
 {
     /// <summary>
-    ///     Computes the Time of Impact (TOI) between two moving convex shapes using continuous collision detection (CCD).
+    ///     Wrapper around a GLFW window pointer.
     /// </summary>
-    /// <remarks>
-    ///     This class implements the local separating axis method for CCD. It seeks progression
-    ///     by computing the largest time at which separation is maintained between two shapes.
-    ///     
-    ///     The algorithm uses a swept separating axis and may miss some intermediate, non-tunneling collisions.
-    ///     For contact point and normal information at the time of impact, use <see cref="Distance"/> after calling this method.
-    ///     
-    ///     Diagnostics can be enabled via <see cref="SettingEnv.EnableDiagnostics"/> to track TOI computation statistics.
-    /// </remarks>
-    public static class TimeOfImpact
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Window : IEquatable<Window>
     {
-        // by computing the largest time at which separation is maintained.
+        /// <summary>
+        ///     Describes a default/null instance.
+        /// </summary>
+        public static readonly Window None;
 
         /// <summary>
-        ///     Gets or sets the total number of TOI computation calls made (diagnostics only).
+        ///     Internal pointer.
         /// </summary>
-        /// <remarks>
-        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
-        /// </remarks>
-        [ThreadStatic] public static int ToiCalls;
+        internal readonly IntPtr handle;
+
+        /// <summary>
+        ///     Performs an implicit conversion from <see cref="Window" /> to <see cref="IntPtr" />.
+        /// </summary>
+        /// <param name="window">The window.</param>
+        /// <returns>
+        ///     The result of the conversion.
+        /// </returns>
+        public static implicit operator IntPtr(Window window) => window.handle;
 
         /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Collisions/TimeOfImpactTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/WindowTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Window.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage TimeOfImpact.cs
+    Commit format: test: coverage Window.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
