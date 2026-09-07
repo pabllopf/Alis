@@ -1,30 +1,29 @@
-# Result: FastestStack.cs
+# FastestStack.cs
 
-File: `4_Operation/Ecs/src/Collections/FastestStack.cs`
-CoverageBefore: 96.7% (SonarCloud; Line: 97.4%, Branch: 94.4%, 7 uncovered lines)
-CoverageAfter: 97.4% (528/542, local coverlet, FastestStack-filtered run; unchanged)
-TestsAdded: 0 (remaining lines are dead version guards + allocation-limit clamp)
-Commit: test: coverage FastestStack.cs
-Status: BLOCKED_BY_PRODUCTION_CODE
+## File
+`4_Operation/Ecs/src/Collections/FastestStack.cs`
 
-## Summary
+## Coverage Before
+- SonarCloud: 96.7% line / 94.4% branch (7 uncovered lines, 5 uncovered branches)
+- Local coverlet (net8.0, filtered suite): FastestStack line 0.9864 (6 lines uncovered: 465-467); Enumerator line 0.9216 (8 lines uncovered: 576-577, 646-647)
 
-FastestStack.cs is the struct-based fast stack (87 complexity / 361 LOC). The committed suite
-(142 filtered tests) covers push/pop/peek/grow/clear/enumeration and the ICollection members.
+## Coverage After (local coverlet, filtered 118-test suite)
+- FastestStack: line 0.9863, branch 0.9864 (only lines 465-467 uncovered)
+- Enumerator: line 0.9215, branch 0.875 (only lines 576-577, 646-647 + the 2 guard conditions)
 
-## Remaining uncovered lines (8) — BLOCKED_BY_PRODUCTION_CODE
+## Tests Added
+`test/Collections/FastestStackVersioningCoverageTest.cs` — 4 tests:
+1. `Contains_OnEmptyStack_ReturnsFalse` — covers the `_size != 0` short-circuit in `Contains` (line 160 went 50%→100%).
+2. `GetEnumerator_EmptyStack_ReturnsEmptyEnumerator` — covers the `Count == 0` branch of `IEnumerable<T>.GetEnumerator` (line 253 went 50%→100%).
+3. `GetEnumerator_DisposedStack_ReturnsEmptyEnumerator` — same branch after `Dispose`.
+4. `Enumerator_EmptyStack_MoveNextReturnsFalse` — empty-enumerator cycling through `MoveNext`.
 
-- 576-577, 646-647 — the enumerator's `InvalidOperation_EnumFailedVersion` guards in MoveNext
-  and `IEnumerator.Reset`. `FastestStack<T>` is a struct and `GetEnumerator()` captures it by
-  value (`new Enumerator(this)`), so the enumerator's `_version` (readonly, captured at
-  construction) can never differ from its private `_fastestStack` copy's `_version` — the
-  guards are dead by design. Verified: mutating the stack through a local after obtaining the
-  enumerator never triggers the throw in either the testhost or a standalone probe.
-- 465-467 — `Grow`'s `MaxArrayLength` clamp: only fires when the doubling growth exceeds the
-  array-length limit (requires a pre-existing array of ~1 billion elements), unreachable in
-  any process.
+## Attempted but reverted (unreachable behavior confirmed)
+Three tests asserted the enumerator version-mismatch throws (`MoveNext`/`Reset` after `Push`/`Pop`/`Clear`). All three **passed without throwing**: `FastestStack<T>` is a struct and `GetEnumerator()` copies the stack, so `_version` and `_fastestStack._version` inside the `Enumerator` are always equal. Removed; documented as dead code.
 
-## Verification
+## Remaining uncovered (dead defensive guards, unreachable)
+- **Lines 465-467 / condition 464** (`Grow`): `if ((uint) newcapacity > MaxArrayLength)` guard. Reaching it requires an internal array of >2.1 billion elements (~8.6 GB for `int`), beyond feasible allocation and never produced by doubling from any sane capacity. Defensive upper-bound guard; unreachable in tests.
+- **Lines 576-577 / condition 575 and 646-647 / condition 645** (Enumerator `MoveNext`/`Reset`): `InvalidOperationException` version-mutation guards. Since the enumerator holds a struct copy of the stack, the version can never differ from the copy it captured. Dead by construction.
 
-- FastestStack-filtered run: 142 passed / 0 failed (net8.0).
-- Local coverlet: FastestStack.cs 528/542 = 97.4% (Enumerator 94/102, the 8 lines above).
+## Status
+COMPLETED (all reachable lines and branches covered; remaining 6 lines are structurally/memory-bound unreachable defensive guards)

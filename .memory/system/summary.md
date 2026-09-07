@@ -1358,3 +1358,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: none (memory state committed)
 - Status: ALREADY_REMEDIATED
 - Note: All lines covered. The only uncovered branches are the BitConverter.IsLittleEndian false-side of `IsLittleEndian && !isLittleEndian` — unreachable on a little-endian host (macOS test platform). Platform-guard defensive branch; cannot be exercised by any test.
+
+## FastestStack.cs
+- File: 4_Operation/Ecs/src/Collections/FastestStack.cs
+- CoverageBefore: 96.7% line / 94.4% branch (SonarCloud); local line rate ~0.986 (FastestStack) / 0.922 (Enumerator)
+- CoverageAfter: all reachable lines/branches covered; Contains line 160 and GetEnumerator line 253 conditions 50%→100%
+- TestsAdded: 4 (FastestStackVersioningCoverageTest.cs); 3 version-mismatch tests attempted and reverted (proved dead by struct-copy semantics)
+- Commit: test: coverage FastestStack.cs
+- Status: COMPLETED (remaining lines dead defensive guards)
+- Note: Uncovered lines 465-467 (Grow MaxArrayLength guard, needs >2.1B element array ~8.6GB, memory-bound) and enumerator 576-577/646-647 (version-mismatch throws; Enumerator holds a struct copy of the stack so versions can never differ — dead by construction).
