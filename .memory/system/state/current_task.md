@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 148 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 150 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
 
     ### Language
     cs
 
     ### Coverage
-    85.0% (Line: 86.6%, Branch: 79.6%)
+    88.0% (Line: 87.0%, Branch: 100.0%)
 
     ### Uncovered Lines
-    88
+    3
 
     ### Uncovered Branches
-    42
+    0
 
     ### Method
-    DTSweep
+    ObjectBase
 
     ### Complexity / LOC
-    141 / 766 lines
+    7 / 38 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:DTSweep.cs
+//  File:ObjectBase.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
+namespace Alis.Extension.Graphic.Sfml.Systems
 {
     /// <summary>
-    ///     The dt sweep class
+    ///     The ObjectBase class is an abstract base for every
+    ///     SFML object. It's meant for internal use only
     /// </summary>
-    internal static class DtSweep
+    public abstract class ObjectBase : IDisposable
     {
         /// <summary>
-        ///     The pi
+        ///     The zero
         /// </summary>
-        private const double PiDiv2 = Math.PI / 2;
+        private IntPtr myCPointer = IntPtr.Zero;
 
         /// <summary>
-        ///     The pi
+        ///     Construct the object from a pointer to the C library object
         /// </summary>
-        private const double Pi3Div4 = 3 * Math.PI / 4;
+        /// <param name="cPointer">Internal pointer to the object in the C libraries</param>
+        protected ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
+
 
         /// <summary>
-        ///     Triangulate simple polygon with holes
+        ///     Access to the internal pointer of the object.
+        ///     For internal use only
         /// </summary>
-        public static void Triangulate(DtSweepContext tcx)
+
+        public IntPtr CPointer
         {
-            tcx.CreateAdvancingFront();
-
-            Sweep(tcx);
-
-            if (tcx.TriangulationMode == TriangulationMode.Polygon)
+            get => myCPointer;
+            protected set => myCPointer = value;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Systems/ObjectBaseTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DTSweep.cs
+    Commit format: test: coverage ObjectBase.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

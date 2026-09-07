@@ -1,17 +1,17 @@
-# Result: ObjectBase.cs
+# ObjectBase.cs — Coverage Remediation Result
 
-File: `1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs`
-CoverageBefore: 0.0% (SonarCloud)
-CoverageAfter: 9 tests added; all constructors/getter/setter/Dispose branches covered locally (no coverlet measurement run)
-TestsAdded: 9
-Commit: 6bf34a63e23f4044f9dc4fea401e9e07f53ffdc7
-Status: COMPLETED
+## File
+`1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs`
 
-## Summary
+## Coverage
+- SonarCloud: 88.0% (stale)
+- Local (XPlat coverage, `FullyQualifiedName~ObjectBase`, 39 tests): 100.0% line
 
-`ObjectBase` is the abstract SFML base class storing a single `IntPtr` and exposing `CPointer`, `Dispose()`, `Dispose(bool)` and the abstract `Destroy(bool)`. The existing suite (`ObjectBaseTest.cs`, `ObjectBaseRemainingCoverageTests.cs`) is gated behind `RequireCSfmlSystemFact`/`RequireCSfmlWindowsFact`, which skip without native CSFML libraries — hence 0.0% coverage. This new `ObjectBaseTests.cs` uses a concrete `TestObjectBase` subclass with plain `[Fact]` tests that require no native libraries, covering the constructor pointer assignment, the `CPointer` getter and protected setter, `Dispose()` idempotency (Destroy invoked exactly once, pointer zeroed), the zero-pointer early-exit branch, and the `Dispose(bool)` overload with both `true`/`false` and zero-pointer paths.
+## Analysis Date
+2026-09-07
 
-## Verification
+## Result
+Already fully covered. All lines (constructor `IntPtr` ctor, `CPointer` get/set, `Dispose()`, finalizer try/catch, `Dispose(bool)` null-guard, abstract `Destroy`) are exercised by the existing suite (`ObjectBaseTest.cs`, `ObjectBaseTests.cs`, `ObjectBaseRemainingCoverageTests.cs`). 39 tests pass.
 
-- `dotnet build 1_Presentation/Extension/Graphic/Sfml/test/Alis.Extension.Graphic.Sfml.Test.csproj -c Debug` — 0 errors, 0 warnings.
-- `dotnet test 1_Presentation/Extension/Graphic/Sfml/test/Alis.Extension.Graphic.Sfml.Test.csproj --filter FullyQualifiedName~ObjectBaseTests -c Debug -f net8.0` — 9 passed, 0 failed, 0 skipped.
+No new tests needed. SonarCloud 88.0% is stale relative to local measurement.
+Status: ALREADY_REMEDIATED (COVERED)

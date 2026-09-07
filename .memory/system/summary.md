@@ -1249,3 +1249,15 @@ CoverageAfter: 90.4%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+## ObjectBase.cs
+- Covered: 100.0% (line) committed, local XPlat 39 tests pass (SonarCloud 88.0% stale). No new tests needed — results/ObjectBase.md
+- TestsAdded: 0 this pass; Commit: docs: results ObjectBase.cs
+- Status: ALREADY_REMEDIATED (COVERED)
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Systems/ObjectBase.cs
+CoverageBefore: 88.0%
+CoverageAfter: 100.0%
+TestsAdded: 0
+Commit: docs: results ObjectBase.cs
+Status: ALREADY_REMEDIATED (COVERED)
