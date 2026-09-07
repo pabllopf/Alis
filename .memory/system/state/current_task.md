@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 145 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 146 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
 
     ### Language
     cs
 
     ### Coverage
-    81.7% (Line: 82.9%, Branch: 78.3%)
+    84.1% (Line: 83.1%, Branch: 92.9%)
 
     ### Uncovered Lines
-    85
+    43
 
     ### Uncovered Branches
-    39
+    2
 
     ### Method
-    MarchingSquares
+    Update
 
     ### Complexity / LOC
-    137 / 603 lines
+    35 / 394 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:MarchingSquares.cs
+//  File:Update.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 
-namespace Alis.Core.Physic.Common.TextureTools
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
-    ///     The marching squares class
+    ///     The update loop class
     /// </summary>
-    public static class MarchingSquares
+    internal static class UpdateLoop
     {
-        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
         /// <summary>
-        ///     The look march
+        ///     Runs the entity ids
         /// </summary>
-        internal static readonly int[] LookMarch =
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp>(ref GameObjectIdOnly entityIds, ref TComp comp, int length, GameObject gameObject)
+            where TComp : IOnUpdate
         {
-            0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
-            0x6D, 0xB5, 0x55
-        };
+            if (length <= 0)
+            {
+                return;
+            }
 
-        /// <summary>
-        ///     Marching squares over the given domain using the mesh defined via the dimensions
-        ///     (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
-        ///     'bin' for recursive linear inteprolation along cell boundaries.
-        ///     if 'comb' is true, then the polygons will also be composited into larger possible concave
-        ///     polygons.
-        /// </summary>
+            do
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/TextureTools/MarchingSquaresTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/Updating/Runners/UpdateTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MarchingSquares.cs
+    Commit format: test: coverage Update.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
