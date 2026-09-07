@@ -49,3 +49,27 @@ Earlier blocked-verified items (per prior doc) remain: none re-opened.
 - Targeted `WebAssemblyPlatformTests`: 35 passed, 0 failed.
 - Full Graphic suite: 1535 passed / 613 skipped / 0 failed.
 - Committed: `test: coverage WebAssemblyPlatform.cs`
+
+---
+
+## Re-verification (fresh run, 2026-09-07)
+
+Clean re-run of the WebAssemblyPlatform-filter coverage on macOS (net8.0):
+- Local coverlet: **614/832 (73.8%)**, 218 uncovered executable lines.
+- Filter `FullyQualifiedName~WebAssemblyPlatform`: 97 passed / 181 skipped / 0 failed.
+
+The uncovered set is unchanged and every line remains **BLOCKED_BY_PRODUCTION_CODE** — each
+requires a usable native `libEGL` / `emscripten` browser runtime or a production change:
+
+- **159-160, 169-171, 184-246** — `Initialize` early-return/success and `InitializeEglContext`
+  body (all `EGL.*` native calls + failure throws).
+- **262-338 catches** — `Register*Events` dead catches (`EmscriptenWeb` swallows natively).
+- **532-543** — `UpdateGamepadStates` foreach + catch (`GetConnectedGamepads()` returns empty).
+- **563-578** — `UpdateSingleGamepadState` axes/buttons branches (native getters return empty).
+- **628, 639** — coverlet closing-brace attribute of the executed guard native calls.
+- **669-691** — `Cleanup` body, gated on `_isInitialized` (only after successful EGL init).
+- **742** — `IsKeyDown` dict-miss `return false;` (all `ConsoleKey` values pre-registered).
+- **755, 757, 761** — `SetWindowIcon` dead catch.
+
+No reachable uncovered branch exists on a headless macOS host without production changes.
+No new tests were added this run; no commit made.
