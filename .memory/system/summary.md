@@ -1235,3 +1235,10 @@ CoverageAfter: 99.1%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs
+CoverageBefore: 86.6%
+CoverageAfter: 86.6%
+TestsAdded: 0
+Commit: docs: results DTSweep.cs
+Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
