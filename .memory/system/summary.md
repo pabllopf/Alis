@@ -1261,3 +1261,15 @@ CoverageAfter: 100.0%
 TestsAdded: 0
 Commit: docs: results ObjectBase.cs
 Status: ALREADY_REMEDIATED (COVERED)
+
+## TimeOfImpact.cs
+- Covered: 90.5% (line) local, SonarCloud 89.7% stale. 14 residual lines are defensive non-convergence / max-iteration guard exits unreachable via deterministic inputs (algorithm always converges). 11 probe tests added zero new coverage, reverted — results/TimeOfImpact.md
+- TestsAdded: 0 this pass; Commit: docs: results TimeOfImpact.cs
+- Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 4_Operation/Physic/src/Collisions/TimeOfImpact.cs
+CoverageBefore: 89.7%
+CoverageAfter: 90.5%
+TestsAdded: 0
+Commit: docs: results TimeOfImpact.cs
+Status: BLOCKED_BY_PRODUCTION_CODE

@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 152 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 153 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs
 
     ### Language
     cs
 
     ### Coverage
-    89.1% (Line: 83.7%, Branch: 100.0%)
+    89.7% (Line: 90.5%, Branch: 85.7%)
 
     ### Uncovered Lines
-    39
+    14
 
     ### Uncovered Branches
-    0
+    4
 
     ### Method
-    Events
+    TimeOfImpact
 
     ### Complexity / LOC
-    98 / 333 lines
+    30 / 183 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Events.cs
+//  File:TimeOfImpact.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.Tracing;
-using System.Net.Security;
-using System.Net.WebSockets;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Extension.Network.Internal
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Use the Guid to locate this EventSource in PerfView using the Additional Providers box (without wildcard
-    ///     characters)
+    ///     Computes the Time of Impact (TOI) between two moving convex shapes using continuous collision detection (CCD).
     /// </summary>
-    [EventSource(Name = "Ninja-WebSockets")]
-    internal sealed class Events : EventSource
+    /// <remarks>
+    ///     This class implements the local separating axis method for CCD. It seeks progression
+    ///     by computing the largest time at which separation is maintained between two shapes.
+    ///     
+    ///     The algorithm uses a swept separating axis and may miss some intermediate, non-tunneling collisions.
+    ///     For contact point and normal information at the time of impact, use <see cref="Distance"/> after calling this method.
+    ///     
+    ///     Diagnostics can be enabled via <see cref="SettingEnv.EnableDiagnostics"/> to track TOI computation statistics.
+    /// </remarks>
+    public static class TimeOfImpact
     {
-        /// <summary>
-        ///     The events
-        /// </summary>
-        public static readonly Events Log = new Events();
+        // by computing the largest time at which separation is maintained.
 
         /// <summary>
-        ///     Clients the connecting to ip address using the specified guid
+        ///     Gets or sets the total number of TOI computation calls made (diagnostics only).
         /// </summary>
-        /// <param name="guid">The guid</param>
-        /// <param name="ipAddress">The ip address</param>
-        /// <param name="port">The port</param>
-        [Event(1, Level = EventLevel.Informational)]
-        public void ClientConnectingToIpAddress(Guid guid, string ipAddress, int port)
-        {
-            if (IsEnabled())
-            {
-                WriteEvent(1, guid, ipAddress, port);
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
+        [ThreadStatic] public static int ToiCalls;
+
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Network/test/Internal/EventsTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Collisions/TimeOfImpactTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Events.cs
+    Commit format: test: coverage TimeOfImpact.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
