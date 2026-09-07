@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 172 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 173 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CommandBuffer.cs
 
     ### Language
     cs
 
     ### Coverage
-    96.7% (Line: 97.4%, Branch: 94.4%)
+    96.8% (Line: 96.7%, Branch: 97.4%)
 
     ### Uncovered Lines
-    7
+    6
 
     ### Uncovered Branches
-    5
+    1
 
     ### Method
-    FastestStack
+    CommandBuffer
 
     ### Complexity / LOC
-    87 / 361 lines
+    44 / 226 lines
 
     ### Source Code
     ```csharp
@@ -31,17 +31,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/Collections/FastestStackTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/Kernel/CommandBufferTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestStack.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CommandBuffer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FastestStack.cs
+    Commit format: test: coverage CommandBuffer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

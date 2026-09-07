@@ -1367,3 +1367,11 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: test: coverage FastestStack.cs
 - Status: COMPLETED (remaining lines dead defensive guards)
 - Note: Uncovered lines 465-467 (Grow MaxArrayLength guard, needs >2.1B element array ~8.6GB, memory-bound) and enumerator 576-577/646-647 (version-mismatch throws; Enumerator holds a struct copy of the stack so versions can never differ — dead by construction).
+
+## CommandBuffer.cs
+- File: 4_Operation/Ecs/src/Kernel/CommandBuffer.cs
+- CoverageBefore: 96.8% overall (Line 96.7%, Branch 97.4%); local line 0.9673 branch 0.9736
+- CoverageAfter: line 0.9945, branch 100% (all conditions 100%); only structurally dead line 363 remains
+- TestsAdded: 1 (CommandBufferAddCompEventTest.cs) — fires per-entity OnComponentAdded during CommandBuffer.Playback
+- Commit: test: coverage CommandBuffer.cs
+- Status: COMPLETED (line 363 = dead code after Throw() local function, never reachable)
