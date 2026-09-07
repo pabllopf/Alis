@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 170 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 171 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
 
     ### Language
     cs
 
     ### Coverage
-    96.5% (Line: 97.4%, Branch: 94.1%)
+    96.6% (Line: 100.0%, Branch: 86.7%)
 
     ### Uncovered Lines
-    7
+    0
 
     ### Uncovered Branches
-    6
+    4
 
     ### Method
-    AssetRegistry
+    BinaryReaderWriter
 
     ### Complexity / LOC
-    66 / 334 lines
+    28 / 119 lines
 
     ### Source Code
     ```csharp
@@ -31,17 +31,17 @@
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:6_Ideation/Memory/test/AssetRegistryTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/test/Internal/BinaryReaderWriterTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AssetRegistry.cs
+    Commit format: test: coverage BinaryReaderWriter.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

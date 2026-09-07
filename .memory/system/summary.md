@@ -1349,3 +1349,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: test: coverage AssetRegistry.cs
 - Status: COMPLETED (remaining lines defensively dead)
 - Note: FindZipEntryInfo fallback EndsWith branch (line 624) covered via bare-file-name duplicate lookup. Remaining uncovered lines 500-501 (ToLowerHex empty-span return; SHA-256 always 32 bytes) and 541-542 (EnsureZipCachedForActiveAssembly loader-missing throw; pre-checked at 184/654 with identical message) are unreachable defensive code. Partial 50% conditions at 377 (`?? Path.GetTempPath()`), 434 (`?? string.Empty`), 540 (loader guard) are defensively dead.
+
+## BinaryReaderWriter.cs
+- File: 1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
+- CoverageBefore: 96.6% / Line 100% / Branch 86.7% (SonarCloud)
+- CoverageAfter: 100% line (98/98); 4 branches at 75% (lines 191, 218, 235, 252)
+- TestsAdded: 0
+- Commit: none (memory state committed)
+- Status: ALREADY_REMEDIATED
+- Note: All lines covered. The only uncovered branches are the BitConverter.IsLittleEndian false-side of `IsLittleEndian && !isLittleEndian` — unreachable on a little-endian host (macOS test platform). Platform-guard defensive branch; cannot be exercised by any test.

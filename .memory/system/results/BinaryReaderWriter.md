@@ -1,20 +1,28 @@
-# Result: BinaryReaderWriter.cs
+# BinaryReaderWriter.cs
 
-File: `1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs`
-CoverageBefore: 96.6% (SonarCloud; Line: 100.0%, Branch: 86.7%, 0 uncovered lines)
-CoverageAfter: 100.0% (178/178, local coverlet, BinaryReaderWriter-filtered run)
-TestsAdded: 0 (already fully covered — SonarCloud reports 0 uncovered lines)
-Commit: test: coverage BinaryReaderWriter.cs
-Status: ALREADY_REMEDIATED
+## File
+`1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs`
 
-## Summary
+## Coverage Before
+- SonarCloud: 96.6% (Line: 100.0%, Branch: 86.7%), 4 uncovered branches
 
-BinaryReaderWriter.cs is the frame I/O helper (28 complexity / 119 LOC). SonarCloud reports 0
-uncovered lines (Line 100.0%; only the branch metric is below 100%). Local coverlet on the
-committed suite (41 filtered tests): class 98/98 + ReadExactly/ReadUShortExactly/
-ReadULongExactly/ReadLongExactly state machines all 100%.
+## Coverage After (local coverlet, filtered BinaryReaderWriter suite)
+- line 100.0% (98/98)
+- branch: 4 conditions remain at 75% (3/4) — lines 191, 218, 235, 252
+- 41 tests run, all passed, filtered `FullyQualifiedName~BinaryReaderWriter`
 
-## Verification
+## Tests Added
+None. Line coverage is already 100%. Existing tests (BinaryReaderWriterTest.cs, BinaryReaderWriterCoverageTest.cs, BinaryReaderWriterBranchCoverageTests.cs) already exercise both `isLittleEndian` values on every write/read method.
 
-- BinaryReaderWriter-filtered run: 41 passed / 0 failed (net8.0).
-- Local coverlet: BinaryReaderWriter.cs 178/178 = 100.0%.
+## Remaining uncovered branches (4, inherently unreachable)
+All four partial conditions are the same pattern at lines 191, 218, 235, 252:
+
+```csharp
+if (BitConverter.IsLittleEndian && !isLittleEndian)
+```
+
+- cond jump #1 (the `BitConverter.IsLittleEndian` operand) = 50%: the test host is little-endian, so `BitConverter.IsLittleEndian` is always `true` and its short-circuit `false` outcome is never produced. No test can flip a fixed platform constant.
+- cond jump #2 (`!isLittleEndian`) = 100%: covered with both `true` and `false` by existing tests.
+
+## Status
+ALREADY_REMEDIATED (line 100%). The remaining 4 branch sub-outcomes are unreachable defensive platform-guard branches (`BitConverter.IsLittleEndian` false path) that cannot be exercised on a little-endian host.
