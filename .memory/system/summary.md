@@ -1207,3 +1207,10 @@ CoverageAfter: 82.22%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
+CoverageBefore: 100.0% (local coverlet line-rate 1.0 / branch-rate 1.0; SonarCloud 78.3% stale)
+CoverageAfter: 100.0% (re-verified; VideoFrame filter 77 passed / 0 skipped, zero hits="0" lines)
+TestsAdded: 0
+Commit: none
+Status: ALREADY_COVERED (NO-OP — no uncovered lines; RequireFfmpegFact executes on host, Save/GetPixels/Load/Dispose all hit)
