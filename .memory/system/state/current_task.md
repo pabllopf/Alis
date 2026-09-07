@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 151 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 152 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
 
     ### Language
     cs
 
     ### Coverage
-    88.9% (Line: 92.4%, Branch: 73.1%)
+    89.1% (Line: 83.7%, Branch: 100.0%)
 
     ### Uncovered Lines
-    36
+    39
 
     ### Uncovered Branches
-    28
+    0
 
     ### Method
-    UpdateManager
+    Events
 
     ### Complexity / LOC
-    102 / 578 lines
+    98 / 333 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:UpdateManager.cs
+//  File:Events.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
-using Alis.Extension.Updater.Events;
-using Alis.Extension.Updater.Services.Api;
-using Alis.Extension.Updater.Services.Files;
+using System.Diagnostics.Tracing;
+using System.Net.Security;
+using System.Net.WebSockets;
 
-namespace Alis.Extension.Updater
+namespace Alis.Extension.Network.Internal
 {
     /// <summary>
-    ///     The update manager class
+    ///     Use the Guid to locate this EventSource in PerfView using the Additional Providers box (without wildcard
+    ///     characters)
     /// </summary>
-    public sealed class UpdateManager
+    [EventSource(Name = "Ninja-WebSockets")]
+    internal sealed class Events : EventSource
     {
         /// <summary>
-        ///     The threshold entries
+        ///     The events
         /// </summary>
-        private const int ThresholdEntries = 10000;
+        public static readonly Events Log = new Events();
 
         /// <summary>
-        ///     The threshold size
+        ///     Clients the connecting to ip address using the specified guid
         /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="ipAddress">The ip address</param>
+        /// <param name="port">The port</param>
+        [Event(1, Level = EventLevel.Informational)]
+        public void ClientConnectingToIpAddress(Guid guid, string ipAddress, int port)
+        {
+            if (IsEnabled())
+            {
+                WriteEvent(1, guid, ipAddress, port);
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Updater/test/UpdateManagerTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/test/Internal/EventsTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage UpdateManager.cs
+    Commit format: test: coverage Events.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
