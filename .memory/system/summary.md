@@ -1297,3 +1297,12 @@ CoverageAfter: 92.85%
 TestsAdded: 2
 Commit: test: UnixPlayerBase.cs
 Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
+
+## ConsoleLogOutput.cs
+- File: 6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs
+- CoverageBefore: 92.9% (SonarCloud)
+- CoverageAfter: 92.9% (unchanged; 3 unreachable lines)
+- TestsAdded: 0
+- Commit: none
+- Status: PARTIAL_BLOCKED_BY_PRODUCTION_CODE
+- Note: 3 uncovered lines (119, 121, 125) are the inner catch block in the finally that handles Console.ForegroundColor = originalColor throwing. .NET's ConsolePal caches s_out at first access; closing stdout fd or redirecting Console.Out does not make the setter throw. Defensive code unreachable in any test harness.
