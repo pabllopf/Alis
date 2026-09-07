@@ -1200,3 +1200,10 @@ CoverageAfter: 99.9% (filtered per-project); GATE-FLAKY (engine defect, see resu
 TestsAdded: 5 (committed 0c0f2cf86); union tests fully built/validated then removed — engine first-touch order instability
 Commit: Update GameObjectMultiArityCoverageTests.cs (prior session)
 Status: FLAGGED_ENGINE_DEFECT (full CI-suite flake ~30-70% from pre-existing lazy global component-id order-sensitivity; coverage tests are correct but re-perturb order)
+
+File: 4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs
+CoverageBefore: 82.22%
+CoverageAfter: 82.22%
+TestsAdded: 0
+Commit: none
+Status: BLOCKED_BY_PRODUCTION_CODE
