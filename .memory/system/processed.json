@@ -128,7 +128,8 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs",
     "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs": true,
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs": true,
