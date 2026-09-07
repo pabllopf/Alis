@@ -1332,3 +1332,11 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: test: coverage WebSocketFrameReader.cs
 - Status: COMPLETED
 - Note: The 5 uncovered lines (131-135) were the catch (InternalBufferOverflowException) rethrow in ReadAsync. Reached via fault-injecting Stream subclasses (BufferOverflowInjectingStream, BufferOverflowInjectingStreamAfterBytes) that throw InternalBufferOverflowException during the payload read.
+## WebAssemblyInputManager.cs
+- File: 4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs
+- CoverageBefore: 96.3% / Line 97.4% Branch 95.1% (SonarCloud)
+- CoverageAfter: 100.0% line and branch (local coverlet)
+- TestsAdded: 7 (WebAssemblyInputManagerGamepadEdgeCoverageTests.cs)
+- Commit: test: coverage WebAssemblyInputManager.cs
+- Status: COMPLETED
+- Note: 5 uncovered lines (242-247, 265) were in IsGamepadButtonJustPressed/IsGamepadButtonJustReleased for the state.PreviousState null branch and the prev/current button comparisons. Tests seed platform._gamepadStates and manager._previousGamepadStates directly to exercise both branches of each comparison.

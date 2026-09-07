@@ -1,19 +1,22 @@
-# Result: WebAssemblyInputManager.cs
-
-File: `4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs`
-CoverageBefore: 30.7% (SonarCloud stale; local coverlet 386/386 = 100.0%)
-CoverageAfter: 100.0% (386/386 lines, local coverlet; unchanged)
-TestsAdded: 0 (already fully covered)
-Commit: test: coverage WebAssemblyInputManager.cs
-Status: COMPLETE_ALREADY_COVERED
+# WebAssemblyInputManager.cs
 
 ## Summary
+- Status: COMPLETED
+- CoverageBefore: 96.3% / Line 97.4% Branch 95.1% (SonarCloud)
+- CoverageAfter: 100.0% line and branch (local coverlet)
+- TestsAdded: WebAssemblyInputManagerGamepadEdgeCoverageTests.cs (7 tests)
 
-WebAssemblyInputManager.cs hosts five types (101 complexity / 262 LOC per SonarCloud):
-`WebAssemblyInputManager` (296/296), `KeyBinding` (24/24), `GamepadInputState` (12/12),
-`TouchPoint` (20/20) and `WebAssemblyInputContext` (34/34). The committed suite
-(`WebAssemblyInputManagerTest.cs` / `WebAssemblyInputManagerCoverageTests.cs` /
-`WebAssemblyInputManagerRemainingCoverageTests.cs`) covers 386/386 instrumented lines locally:
-100.0% line coverage, verified via coverlet on `Alis.Core.Graphic.Test` (net8.0). Targeted run:
-122 passed / 52 platform-gated not-run / 174 total. SonarCloud's 30.7% reading is a stale
-artifact; no further tests can add measurable coverage.
+## Approach
+The 5 uncovered lines (242-247, 265) lived in `IsGamepadButtonJustPressed` and `IsGamepadButtonJustReleased`. Existing tests only exercised the no-gamepad early-return path.
+
+The remaining branches required:
+- `state.PreviousState == null` with button pressed/released (line 244)
+- `CurrentState.GetButton && !PreviousState.GetButton` for both truth values (line 247)
+- `!CurrentState.GetButton && PreviousState.GetButton` for both truth values (line 265)
+
+Because `TryGetGamepadState` returns the live `_gamepadStates[index]` object and `_previousGamepadStates` entries the test must seed these internal dictionaries directly (InternalsVisibleTo is configured for the Test assembly) to control previous vs current button states.
+
+## Verification
+- 7 new tests pass.
+- Full Graphic suite: 1542 passed, 613 skipped (WebOnly), 0 failed.
+- coverage.cobertura.xml shows WebAssemblyInputManager at line-rate=1, branch-rate=1.
