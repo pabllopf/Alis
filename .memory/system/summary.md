@@ -1401,3 +1401,12 @@ Status: PARTIALLY_REMEDIATED (BLOCKED_BY_PRODUCTION_CODE)
 - Commit: test: coverage WorldPhysic.cs
 - Status: PARTIAL_BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
 - Note: 16 lines remain uncovered. All dead by construction: _stepComplete never false (646-647), ToiFlag never true (729-730), CreateRoundedRectangle always ≥8 verts (1717), TOI contact-expiration guards (581-587, 830-833) require minContact to become disabled/non-touching after advancing to its own computed TOI alpha (impossible by construction). Partial branches at 580/645/728/800/816/829/1711/1959/1969 are one-sided due to constant config values or same dead conditions.
+
+## PolygonGenerator.cs
+- File: 4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs
+- CoverageBefore: 97.1% (Line 100.0%, Branch 87.5%) SonarCloud
+- CoverageAfter: 100% line / 87.5% branch (local coverlet)
+- TestsAdded: 0 (existing PolygonGeneratorTest.cs already covers all lines)
+- Commit: docs: results PolygonGenerator.cs
+- Status: BLOCKED_BY_ALGORITHM_INHERENTLY_DEAD_CODE
+- Note: 100% line coverage. The 2 residual branches (lines 85, 124) are the loop-continuation arms of the do-while exit condition `radius < scale/10 || radius > scale/2`. Radius is always clamped via Math.Min(Math.Max(...)) immediately before the condition, so it is provably always in range and the loop always exits on first iteration. Branch-true path unreachable by construction.
