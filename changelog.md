@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.4] - 2026-09-08
+### :bug: Bug Fixes
+- [`f9580a3`](https://github.com/pabllopf/Alis/commit/f9580a3214437c4a3d916144ba2b52bfe3b5b731) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`333a2a3`](https://github.com/pabllopf/Alis/commit/333a2a3513fae842c21132e3b7f293fdf4851b0a) - BayazitDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e365fc`](https://github.com/pabllopf/Alis/commit/5e365fc8735c7fb7040117a13619dba7ea4b9d2d) - coverage WebSocketFrameReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce2b219`](https://github.com/pabllopf/Alis/commit/ce2b2194d7e8cbc7e321e88aae8d074e3a0de091) - coverage WebAssemblyInputManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e58a5d8`](https://github.com/pabllopf/Alis/commit/e58a5d8caafa671cdc32baa02a5f209132124731) - coverage AssetRegistry.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e20a0e`](https://github.com/pabllopf/Alis/commit/6e20a0edf011d8e7913171aa9efdb6a5def58c3e) - coverage BinaryReaderWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8824202`](https://github.com/pabllopf/Alis/commit/882420205d1114d1ee646e9c7b008bcf02e96c7e) - coverage FastestStack.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d15628`](https://github.com/pabllopf/Alis/commit/2d156280b4f494f0ad1555f137be00a4aa9092eb) - coverage CommandBuffer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd26a5d`](https://github.com/pabllopf/Alis/commit/cd26a5dfaf4ca545bf0ffeac83a838d7fe90e6d3) - coverage GoogleDriveCloudManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`acb51ec`](https://github.com/pabllopf/Alis/commit/acb51ec0697624d34689ecc360f082f152d8d166) - coverage GoogleDriveCloudManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43c65a8`](https://github.com/pabllopf/Alis/commit/43c65a85e1a0b1751e0b28689849ef3a98ec9cc8) - coverage FilePickerExecutor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aed89d1`](https://github.com/pabllopf/Alis/commit/aed89d1ea4584088fc45af7a255c894a21967a6f) - coverage WorldPhysic.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`b729776`](https://github.com/pabllopf/Alis/commit/b72977660f8db02cc9883dbdc05200e468e13747) - results PolygonGenerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8d30e3`](https://github.com/pabllopf/Alis/commit/d8d30e3001afeb480cdafa4f31e8bc8a2f2950cb) - results GitHubApiService.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.3] - 2026-09-07
 ### :white_check_mark: Tests
 - [`c7779aa`](https://github.com/pabllopf/Alis/commit/c7779aa786c144047172f46073a680b370f3d3b3) - Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11163,3 +11185,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.1]: https://github.com/pabllopf/Alis/compare/v1.4.0...v1.4.1
 [v1.4.2]: https://github.com/pabllopf/Alis/compare/v1.4.1...v1.4.2
 [v1.4.3]: https://github.com/pabllopf/Alis/compare/v1.4.2...v1.4.3
+[v1.4.4]: https://github.com/pabllopf/Alis/compare/v1.4.3...v1.4.4
