@@ -35,9 +35,9 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
     /// <summary>
-    ///     Tests the archetype id overflow guard by creating the maximum number of unique
-    ///     archetypes and verifying the throw. The global counter is restored afterwards so
-    ///     subsequent tests are unaffected.
+    ///     Tests the archetype id overflow guard. The global counter is advanced directly so the
+    ///     guard can be exercised without allocating tens of thousands of archetypes (which would
+    ///     permanently pollute the process-wide archetype tables), and it is restored afterwards.
     /// </summary>
     public class ArchetypeOverflowCoverageTests
     {
@@ -48,57 +48,23 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void GetArchetypeId_WhenExceedingMaxArchetypeCount_Throws()
         {
             int original = Archetype.NextArchetypeId;
-            int originalBufferSize = GlobalWorldTables.ComponentTagTableBufferSize;
-            bool threw = false;
             try
             {
-                GlobalWorldTables.ComponentTagTableBufferSize = 128;
-                int created = 0;
-                int limit = 66000;
-                for (int i = 0; i < 126 && created < limit; i++)
+                Archetype.NextArchetypeId = ushort.MaxValue - 1;
+
+                ComponentId[] types =
                 {
-                    for (int j = i + 1; j < 127 && created < limit; j++)
-                    {
-                        for (int k = j + 1; k < 128 && created < limit; k++)
-                        {
-                            ComponentId[] types =
-                            {
-                                new ComponentId((ushort) i),
-                                new ComponentId((ushort) j),
-                                new ComponentId((ushort) k)
-                            };
-                            try
-                            {
-                                Archetype.GetArchetypeId(types);
-                            }
-                            catch (InvalidOperationException ex)
-                            {
-                                threw = true;
-                                Assert.Contains("65535", ex.Message);
-                                break;
-                            }
+                    new ComponentId((ushort) (ushort.MaxValue - 3)),
+                    new ComponentId((ushort) (ushort.MaxValue - 2)),
+                    new ComponentId((ushort) (ushort.MaxValue - 1))
+                };
 
-                            created++;
-                        }
-
-                        if (threw)
-                        {
-                            break;
-                        }
-                    }
-
-                    if (threw)
-                    {
-                        break;
-                    }
-                }
-
-                Assert.True(threw, "Expected the archetype overflow guard to throw");
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => Archetype.GetArchetypeId(types));
+                Assert.Contains("65535", ex.Message);
             }
             finally
             {
                 Archetype.NextArchetypeId = original;
-                GlobalWorldTables.ComponentTagTableBufferSize = originalBufferSize;
             }
         }
     }
