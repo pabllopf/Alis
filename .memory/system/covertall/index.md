@@ -1,7 +1,7 @@
 # Coverage Remediation Progress
 
 Last update:
-2026-08-16T23:20:00Z
+2026-09-10T21:00:00Z
 
 ## Projects
 
@@ -19,6 +19,11 @@ Last update:
 | CircleShape.cs | IN_PROGRESS | - | - | other-agent | - |
 | Clock.cs | IN_PROGRESS | - | - | other-agent | - |
 | AudioPlayer.cs | AVAILABLE | - | - | - | - |
+| Alis.Core (3_Structuration) | COMPLETED (empty meta package, no source) | - | - | covertall-agent-AlisCore | - |
+| Alis.App.Hub | BLOCKED | - | - | covertall-agent-hub | - |
+| Alis.Extension.Io.FileDialog | COMPLETED | 100.00% | 100.00% | covertall-agent-filedialog | - |
+| Alis.Extension.Cloud.DropBox | COMPLETED | 98.16% | 98.16% | covertall-agent-dropbox | - |
+| Alis.App.Engine | PARTIAL | 17.22% | 19.18% | covertall-agent-engine | ab820ae95, d7e5d0b5d |
 | AudioVideoWriter.cs | AVAILABLE | - | - | - | - |
 | AudioWriter.cs | AVAILABLE | - | - | - | - |
 
