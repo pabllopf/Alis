@@ -5,7 +5,7 @@
       <DataCollector friendlyName="XPlat code coverage">
         <Configuration>
           <Format>cobertura</Format>
-          <Include>[Alis.Core.Graphic]*,[Alis.Extension.Graphic.Sfml]*</Include>
+          <Include>[Alis.Core.Graphic]*,[Alis.Extension.Graphic.Sfml]*,[Alis.Extension.Graphic.Ui]*</Include>
           <ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
         </Configuration>
       </DataCollector>
