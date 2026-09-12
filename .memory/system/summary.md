@@ -14,3 +14,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs | 0.0% | Creation ABI mismatch kills host; instance members unreachable | 0 | test: RenderTexture.cs | BLOCKED_BY_PRODUCTION_CODE |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs | 0.0% | Existing tests cover full surface (45 pass) | 0 | test: Image.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs | 0.0% | Existing tests cover all overloads (49 pass) | 0 | test: ImPlotP20.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs | 0.0% | Local coverlet shows 100% (existing 50 tests pass; CI skips w/o csfml-audio) | 0 | test: Music.cs | COMPLETED |
