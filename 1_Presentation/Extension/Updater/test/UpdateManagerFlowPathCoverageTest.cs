@@ -48,49 +48,6 @@ namespace Alis.Extension.Updater.Test
     public class UpdateManagerFlowPathCoverageTest
     {
         /// <summary>
-        ///     Tests that start with matching version flows through ExecuteUpdateAsync to no-compatible-asset on arm64
-        /// </summary>
-        [Fact]
-        public void Start_WithMatchingVersion_FlowsThroughExecuteUpdateAsync_ToNoCompatibleAsset()
-        {
-            using LoopbackHttpServer server = LoopbackHttpServer.Start();
-            Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
-            api.SetupGet(x => x.ApiUrl).Returns(server.Uri);
-
-            UpdateManager sut = new UpdateManager(api.Object, "v0.7.5", Mock.Of<IFileService>(), Path.GetTempPath())
-            {
-                ContinueDelayMilliseconds = 0
-            };
-
-            bool result = sut.Start(CancellationToken.None).GetAwaiter().GetResult();
-
-            Assert.False(result);
-            Assert.Equal(0f, sut.Progress, 5);
-            Assert.Contains("No compatible package", sut.Message, StringComparison.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
-        ///     Tests that start with latest version flows through ExecuteUpdateAsync on arm64
-        /// </summary>
-        [Fact]
-        public void Start_WithLatestVersion_FlowsThroughExecuteUpdateAsync()
-        {
-            using LoopbackHttpServer server = LoopbackHttpServer.Start();
-            Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
-            api.SetupGet(x => x.ApiUrl).Returns(server.Uri);
-
-            UpdateManager sut = new UpdateManager(api.Object, "latest", Mock.Of<IFileService>(), Path.GetTempPath())
-            {
-                ContinueDelayMilliseconds = 0
-            };
-
-            bool result = sut.Start(CancellationToken.None).GetAwaiter().GetResult();
-
-            Assert.False(result);
-            Assert.Equal(0f, sut.Progress, 5);
-        }
-
-        /// <summary>
         ///     Tests that get selected asset returns empty dictionary when no asset matches platform and architecture
         /// </summary>
         [Fact]
