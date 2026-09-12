@@ -8,3 +8,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs | 0.0% | Worker extended (1867 tests pass) | 2 | test: RenderWindow.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs | 0.0% | Existing tests cover safe surface; DrawCubes crashes host (reverted) | 0 | test: ImGuizMo.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs | 0.0% | Added stream/bytes ctor tests (27 pass) | 3 | test: Texture.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs | 0.0% | Existing tests cover safe surface; SliderFloat4 wrappers defective | 0 | test: ImGuiP8.cs | BLOCKED_BY_PRODUCTION_CODE |
