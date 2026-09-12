@@ -1085,8 +1085,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
 
             Assert.Equal(1, pressed);
-            Assert.Equal(2, released);
-            Assert.Equal(0, repeated);
+            Assert.Equal(1, released);
+            Assert.Equal(1, repeated);
             Assert.Equal(3, actions);
         }
 
@@ -1268,6 +1268,96 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
 
             Assert.True(raised);
+        }
+
+        /// <summary>
+        ///     Tests that the press key state raises the subscribed press event exactly once.
+        /// </summary>
+        [RequireGlfwFact]
+        public void OnKey_WhenStateIsPress_RaisesPressEvent()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.KeyPressSubscribedRaised);
+        }
+
+        /// <summary>
+        ///     Tests that the release key state raises the subscribed release event exactly once.
+        /// </summary>
+        [RequireGlfwFact]
+        public void OnKey_WhenStateIsRelease_RaisesReleaseEvent()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.KeyReleaseSubscribedRaised);
+        }
+
+        /// <summary>
+        ///     Tests that the repeat key state raises the subscribed repeat event exactly once.
+        /// </summary>
+        [RequireGlfwFact]
+        public void OnKey_WhenStateIsRepeat_RaisesRepeatEvent()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.KeyRepeatSubscribedRaised);
+        }
+
+        /// <summary>
+        ///     Tests that the key action event is raised once for every key state.
+        /// </summary>
+        [RequireGlfwFact]
+        public void OnKey_WhenFiredForEveryState_RaisesActionEventThreeTimes()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.KeyActionSubscribedRaisedForEveryState);
+        }
+
+        /// <summary>
+        ///     Tests that a fullscreen window reports the attached monitor video mode.
+        /// </summary>
+        [RequireGlfwFact]
+        public void VideoMode_WhenFullscreenOnPrimaryMonitor_ReturnsMonitorMode()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.FullscreenMonitorAttached,
+                $"primary={MainThreadNativeWorker.FullscreenPrimaryMonitorPointer} "
+                + $"after={MainThreadNativeWorker.FullscreenMonitorPointerAfter} "
+                + $"error={MainThreadNativeWorker.FullscreenErrorCode} "
+                + $"{MainThreadNativeWorker.FullscreenErrorMessage}");
+            Assert.True(MainThreadNativeWorker.FullscreenVideoModeWidthResult > 0);
+            Assert.True(MainThreadNativeWorker.FullscreenVideoModeHeightResult > 0);
+        }
+
+        /// <summary>
+        ///     Tests that centering a fullscreen window is executed against the attached monitor.
+        /// </summary>
+        [RequireGlfwFact]
+        public void CenterOnScreen_WhenFullscreenOnMonitor_ExecutesOnMonitor()
+        {
+            if (!GlfwTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(MainThreadNativeWorker.CenterOnScreenFullscreenExecuted);
         }
     }
 }

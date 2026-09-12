@@ -1319,7 +1319,7 @@ namespace Alis.Extension.Graphic.Glfw
             {
                 KeyPress?.Invoke(this, args);
             }
-            else if (state.HasFlag(InputState.Release))
+            else if (state == InputState.Release)
             {
                 KeyRelease?.Invoke(this, args);
             }

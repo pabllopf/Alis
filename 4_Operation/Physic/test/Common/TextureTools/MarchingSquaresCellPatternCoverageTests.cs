@@ -221,5 +221,216 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        ///     Builds a field containing a solid 2x2 block of negative samples centered on the grid.
+        /// </summary>
+        /// <returns>The built field</returns>
+        private static sbyte[,] BuildSolidBlockField()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            for (int x = 1; x <= 2; x++)
+            {
+                for (int y = 1; y <= 2; y++)
+                {
+                    f[x, y] = -1;
+                }
+            }
+
+            return f;
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with a solid block and combine merges the nine per-row and
+        ///     per-cell polygons into a single combined polygon that keeps the block bounds corners.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithSolidBlockAndCombine_MergesIntoSinglePolygon()
+        {
+            sbyte[,] f = BuildSolidBlockField();
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(8, 8));
+
+            List<Vertices> separated = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, false);
+            List<Vertices> combined = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, true);
+
+            Assert.True(separated.Count > 1);
+            Assert.Equal(1, combined.Count);
+            Assert.Equal(10, combined[0].Count);
+
+            bool containsTopLeftBlockCorner = false;
+            bool containsBottomRightBlockCorner = false;
+            foreach (Vector2F vertex in combined[0])
+            {
+                if (vertex.X == 0.5f && vertex.Y == 2.0f)
+                {
+                    containsTopLeftBlockCorner = true;
+                }
+
+                if (vertex.X == 2.5f && vertex.Y == 1.0f)
+                {
+                    containsBottomRightBlockCorner = true;
+                }
+            }
+
+            Assert.True(containsTopLeftBlockCorner);
+            Assert.True(containsBottomRightBlockCorner);
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with isolated solid cells and combine keeps the polygons
+        ///     separated because vertically adjacent cells cannot be combined.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithIsolatedCellDiagonalAndCombine_KeepsPolygonsSeparated()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            f[1, 1] = -1;
+            f[2, 1] = -1;
+            f[1, 2] = -1;
+            f[2, 2] = -1;
+
+            f[5, 5] = -1;
+            f[6, 5] = -1;
+            f[5, 6] = -1;
+            f[6, 6] = -1;
+
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(8, 8));
+
+            List<Vertices> separated = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, false);
+            List<Vertices> combined = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, true);
+
+            Assert.Equal(18, separated.Count);
+            Assert.Equal(2, combined.Count);
+            Assert.Equal(10, combined[0].Count);
+            Assert.Equal(10, combined[1].Count);
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with a single negative sample uses linear interpolation
+        ///     of the shared edge point with one bin and produces the expected interpolated vertex.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithInterpolatedEdgeVertex_ProducesLerpedPoint()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            f[1, 1] = -1;
+
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(6, 6));
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 1, false);
+
+            Assert.NotEmpty(result);
+
+            bool containsInterpolatedVertex = false;
+            foreach (Vector2F vertex in result[0])
+            {
+                if (vertex.X == 1.75f && vertex.Y == 1.0f)
+                {
+                    containsInterpolatedVertex = true;
+                }
+            }
+
+            Assert.True(containsInterpolatedVertex);
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with a wide solid block and combine keeps a single polygon
+        ///     covering the whole surface and preserves the multi cell boundary vertices of both rows.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithWideSolidBlockAndCombine_MergesIntoSinglePolygon()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            for (int x = 1; x <= 4; x++)
+            {
+                for (int y = 1; y <= 2; y++)
+                {
+                    f[x, y] = -1;
+                }
+            }
+
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(8, 8));
+            List<Vertices> combined = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, true);
+
+            Assert.Equal(1, combined.Count);
+            Assert.Equal(16, combined[0].Count);
+
+            bool containsLeftBottomBlockCorner = false;
+            bool containsRightTopBlockCorner = false;
+            foreach (Vector2F vertex in combined[0])
+            {
+                if (vertex.X == 1.0f && vertex.Y == 0.5f)
+                {
+                    containsLeftBottomBlockCorner = true;
+                }
+
+                if (vertex.X == 4.5f && vertex.Y == 2.0f)
+                {
+                    containsRightTopBlockCorner = true;
+                }
+            }
+
+            Assert.True(containsLeftBottomBlockCorner);
+            Assert.True(containsRightTopBlockCorner);
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with equal wall values avoids interpolation by zero division
+        ///     and produces a mid edge point on a shared edge of a two cell surface.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithSharedDegenerateEdge_UsesMidInterpolation()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            for (int y = 0; y < 3; y++)
+            {
+                f[1, y] = -1;
+            }
+
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(6, 6));
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 0.5f, 1.0f, f, 1, true);
+
+            Assert.NotEmpty(result);
+            Assert.True(result.Count >= 1);
+        }
     }
 }

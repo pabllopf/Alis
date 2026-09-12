@@ -155,6 +155,26 @@ namespace Alis.Extension.Graphic.Sfml.Test
         private static extern IntPtr sfWindow_getNativeHandle(IntPtr window);
 
         /// <summary>
+        ///     Sfs the render window destroy using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [ExcludeFromCodeCoverage]
+        [DllImport("csfml-graphics", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sfRenderWindow_destroy(IntPtr window);
+
+        /// <summary>
+        ///     Destroys a native window created through <see cref="Create" />.
+        /// </summary>
+        /// <param name="window">The native window pointer</param>
+        internal static void Destroy(IntPtr window)
+        {
+            if (window != IntPtr.Zero)
+            {
+                sfRenderWindow_destroy(window);
+            }
+        }
+
+        /// <summary>
         ///     Creates a native window with the correct CSFML 3.0 ABI and returns its platform handle.
         /// </summary>
         /// <param name="width">The width</param>
@@ -182,6 +202,13 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        internal static IntPtr GetNativeHandle(IntPtr window) => sfWindow_getNativeHandle(window);
+        internal static IntPtr GetNativeHandle(IntPtr window) => NativeWindowFactory.GetNativeHandle(window);
+
+        /// <summary>
+        ///     Destroys a native window created by <see cref="CreateExtraNativeWindow" />.
+        /// </summary>
+        /// <param name="nativeWindow">The native window pointer</param>
+        internal static void DestroyExtraNativeWindow(IntPtr nativeWindow) => NativeWindowFactory.Destroy(nativeWindow);
     }
+}
 }

@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Rooted non-throwing error callback that records GLFW errors without crashing the test host.
         /// </summary>
-        private static readonly ErrorCallback SilentErrorCallback = (code, message) => { };
+        internal static readonly ErrorCallback SilentErrorCallback = (code, message) => { };
 
         /// <summary>
         ///     The persistent native window created on the main thread.
