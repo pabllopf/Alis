@@ -49,3 +49,4 @@
 | 1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs | 0.0% | 8 VulkanTests pass; externs are ExcludeFromCodeCoverage | 0 | test: Vulkan.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs | 0.0% | Local coverlet 100% lines (16/16 hit) | 0 | test: SoundBufferRecorder.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs | 0.0% | Local coverlet 100% lines (13/13 hit) | 0 | test: ImFontGlyphRangesBuilder.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs | 0.0% | Local coverlet 100% lines (6/6 hit) | 0 | test: ImGuiPayload.cs | COMPLETED |
