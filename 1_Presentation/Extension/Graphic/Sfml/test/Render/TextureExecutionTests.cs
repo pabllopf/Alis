@@ -103,6 +103,39 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
+        ///     Tests that the byte array constructor creates a texture from file contents held in memory
+        /// </summary>
+        [RequireCSfmlSystemFact]
+        public void Ctor_Bytes_CreatesTexture()
+        {
+            byte[] bytes = File.ReadAllBytes(BitmapSamplePath);
+            using Texture texture = new Texture(bytes);
+            Assert.NotEqual(IntPtr.Zero, texture.CPointer);
+        }
+
+        /// <summary>
+        ///     Tests that the stream constructor creates a texture from a file stream
+        /// </summary>
+        [RequireCSfmlSystemFact]
+        public void Ctor_Stream_CreatesTexture()
+        {
+            using FileStream stream = new FileStream(BitmapSamplePath, FileMode.Open, FileAccess.Read);
+            using Texture texture = new Texture(stream);
+            Assert.NotEqual(IntPtr.Zero, texture.CPointer);
+        }
+
+        /// <summary>
+        ///     Tests that the stream constructor with a full area creates a texture
+        /// </summary>
+        [RequireCSfmlSystemFact]
+        public void Ctor_StreamWithArea_CreatesTexture()
+        {
+            using FileStream stream = new FileStream(BitmapSamplePath, FileMode.Open, FileAccess.Read);
+            using Texture texture = new Texture(stream, new IntRect(0, 0, 0, 0));
+            Assert.NotEqual(IntPtr.Zero, texture.CPointer);
+        }
+
+        /// <summary>
         ///     Tests that the image constructor creates a texture from an in memory image
         /// </summary>
         [RequireCSfmlSystemFact]
