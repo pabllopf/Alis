@@ -6,3 +6,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs | 0.0% | Main-thread worker extended (40 tests pass) | 2 | 924b8a20c | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sdl2/src/Mapping/KeyCodes.cs | 0.0% | All 228 enum members asserted | 1 | test: KeyCodes.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs | 0.0% | Worker extended (1867 tests pass) | 2 | test: RenderWindow.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs | 0.0% | Existing tests cover safe surface; DrawCubes crashes host (reverted) | 0 | test: ImGuizMo.cs | COMPLETED |
