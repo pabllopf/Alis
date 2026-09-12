@@ -43,3 +43,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs | 0.0% | Local coverlet 100% lines (20/20 hit) | 0 | test: Context.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/ImDrawData.cs | 0.0% | Local coverlet 100% lines (10/10 hit) | 0 | test: ImDrawData.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RectangleShape.cs | 0.0% | Local coverlet 100% lines (19/19 hit) | 0 | test: RectangleShape.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs | 0.0% | Local coverlet 100% lines (18/18 hit) | 0 | test: Cursor.cs | COMPLETED |
