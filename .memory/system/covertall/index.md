@@ -26,6 +26,7 @@ Last update:
 | Alis.App.Engine | PARTIAL | 17.22% | 19.18% | covertall-agent-engine | ab820ae95, d7e5d0b5d |
 | AudioVideoWriter.cs | AVAILABLE | - | - | - | - |
 | AudioWriter.cs | AVAILABLE | - | - | - | - |
+| NativeWindow.cs | BLOCKED (98.08% lines / 95.45% branches; X11 + interop + ReleaseHandle catch + fullscreen-monitor crash blockers documented) | 97.25% | 98.08% | covertall-nativewindow | 3613840b9 |
 
 ## Notes
 
