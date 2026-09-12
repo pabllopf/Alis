@@ -37,3 +37,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs | 0.0% | Local coverlet 100% lines (26/26 hit) | 0 | test: ConvexShape.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs | 0.0% | Local coverlet 100% lines (25/25 hit) | 0 | test: VideoMode.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Joystick.cs | 0.0% | Local coverlet 100% lines (incl. EventArgs types) | 0 | test: Joystick.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs | 0.0% | Local coverlet 100% lines (21/21 hit, 22 tests) | 0 | test: SdlImage.cs | COMPLETED |
