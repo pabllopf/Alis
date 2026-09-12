@@ -12,3 +12,4 @@
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs | 0.0% | Existing tests cover all PlotHeatmap overloads (76 pass) | 0 | test: ImPlotP4.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs | 0.0% | Existing tests cover all overloads (56 pass) | 0 | test: ImPlotP18.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs | 0.0% | Creation ABI mismatch kills host; instance members unreachable | 0 | test: RenderTexture.cs | BLOCKED_BY_PRODUCTION_CODE |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs | 0.0% | Existing tests cover full surface (45 pass) | 0 | test: Image.cs | COMPLETED |
