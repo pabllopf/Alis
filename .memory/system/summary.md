@@ -24,3 +24,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs | 0.0% | Local coverlet 100% lines (53/53 hit) | 0 | test: Sound.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs | 0.0% | Local 115/115 ImPlotStyle tests pass, full property surface | 0 | test: ImPlotStyle.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs | 0.0% | Local coverlet 100% lines (51/51 hit) | 0 | test: SoundRecorder.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs | 0.0% | Local coverlet 100% lines (48/48 hit) | 0 | test: View.cs | COMPLETED |

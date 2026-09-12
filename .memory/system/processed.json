@@ -23,6 +23,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundRecorder.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs"
   ]
 }
