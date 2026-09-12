@@ -46,3 +46,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs | 0.0% | Local coverlet 100% lines (18/18 hit) | 0 | test: Cursor.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs | 0.0% | Local 43/43 ImNodesStyle tests pass, full property surface | 0 | test: ImNodesStyle.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs | 0.0% | Local coverlet 100% lines (9/9 hit) | 0 | test: ImDrawCmd.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs | 0.0% | 8 VulkanTests pass; externs are ExcludeFromCodeCoverage | 0 | test: Vulkan.cs | COMPLETED |
