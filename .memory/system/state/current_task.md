@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 12 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    741
+    84
 
     ### Uncovered Branches
-    0
+    10
 
     ### Method
-    ImGuiIO
+    SfmlText
 
     ### Complexity / LOC
-    1481 / 781 lines
+    30 / 225 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIO.cs
+//  File:SfmlText.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Security;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Systems;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     The im gui io
+    ///     This class defines a graphical 2D text, that can be drawn on screen
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct ImGuiIo
+    /// <remarks>
+    ///     See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
+    /// </remarks>
+    public class SfmlText : Transformable, IDrawable
     {
         /// <summary>
-        ///     The config flags
+        ///     The my font
         /// </summary>
-        public ImGuiConfigFlags ConfigFlags { get; set; }
+        private Font myFont;
+
 
         /// <summary>
-        ///     The backend flags
+        ///     Default constructor
         /// </summary>
-        public ImGuiBackendFlags BackendFlags { get; set; }
-
-        /// <summary>
-        ///     The display size
-        /// </summary>
-        public Vector2F DisplaySize { get; set; }
-
-        /// <summary>
-        ///     The delta time
-        /// </summary>
-        public float DeltaTime { get; set; }
+        public SfmlText() :
+            this("", null)
+        {
+        }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiIOTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/SfmlTextTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiIO.cs
+    Commit format: test: coverage SfmlText.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
