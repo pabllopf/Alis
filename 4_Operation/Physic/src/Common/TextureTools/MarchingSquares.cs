@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 GeomPoly pre = null;
                 for (int x = 0; x < xn; x++)
                 {
-                    ProcessCell(x, y0, y1, ref pre, ctx);
+                    ProcessCell(x, y, y0, y1, ref pre, ctx);
                 }
             }
 
@@ -248,18 +248,19 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         /// Processes the cell using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y0">The </param>
-        /// <param name="y1">The </param>
+        /// <param name="x">The cell column index</param>
+        /// <param name="ay">The cell row index</param>
+        /// <param name="y0">The world y0</param>
+        /// <param name="y1">The world y1</param>
         /// <param name="pre">The pre</param>
         /// <param name="ctx">The ctx</param>
-        private static void ProcessCell(int x, float y0, float y1, ref GeomPoly pre, MarchCellContext ctx)
+        private static void ProcessCell(int x, int ay, float y0, float y1, ref GeomPoly pre, MarchCellContext ctx)
         {
             float x0 = x * ctx.CellWidth + ctx.Domain.LowerBound.X;
             float x1 = x == ctx.Xn - 1 ? ctx.Domain.UpperBound.X : x0 + ctx.CellWidth;
 
             GeomPoly gp = new GeomPoly();
-            int key = MarchSquare(ctx.F, ctx.Fs, ref gp, x, 0, x0, y0, x1, y1, ctx.LerpCount);
+            int key = MarchSquare(ctx.F, ctx.Fs, ref gp, x, ay, x0, y0, x1, y1, ctx.LerpCount);
 
             if (gp.Length != 0)
             {
@@ -273,7 +274,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     ctx.Ret.Add(gp);
                 }
 
-                ctx.Ps[x, 0] = new GeomPolyVal(gp, key);
+                ctx.Ps[x, ay] = new GeomPolyVal(gp, key);
             }
 
             pre = gp.Length != 0 ? gp : null;
