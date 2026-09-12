@@ -11,3 +11,4 @@
 | 1_Presentation/Extension/Graphic/Ui/src/ImGuiP8.cs | 0.0% | Existing tests cover safe surface; SliderFloat4 wrappers defective | 0 | test: ImGuiP8.cs | BLOCKED_BY_PRODUCTION_CODE |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP4.cs | 0.0% | Existing tests cover all PlotHeatmap overloads (76 pass) | 0 | test: ImPlotP4.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs | 0.0% | Existing tests cover all overloads (56 pass) | 0 | test: ImPlotP18.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderTexture.cs | 0.0% | Creation ABI mismatch kills host; instance members unreachable | 0 | test: RenderTexture.cs | BLOCKED_BY_PRODUCTION_CODE |
