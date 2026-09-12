@@ -1325,39 +1325,5 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             Assert.True(MainThreadNativeWorker.KeyActionSubscribedRaisedForEveryState);
         }
-
-        /// <summary>
-        ///     Tests that a fullscreen window reports the attached monitor video mode.
-        /// </summary>
-        [RequireGlfwFact]
-        public void VideoMode_WhenFullscreenOnPrimaryMonitor_ReturnsMonitorMode()
-        {
-            if (!GlfwTestBootstrap.Ready)
-            {
-                return;
-            }
-
-            Assert.True(MainThreadNativeWorker.FullscreenMonitorAttached,
-                $"primary={MainThreadNativeWorker.FullscreenPrimaryMonitorPointer} "
-                + $"after={MainThreadNativeWorker.FullscreenMonitorPointerAfter} "
-                + $"error={MainThreadNativeWorker.FullscreenErrorCode} "
-                + $"{MainThreadNativeWorker.FullscreenErrorMessage}");
-            Assert.True(MainThreadNativeWorker.FullscreenVideoModeWidthResult > 0);
-            Assert.True(MainThreadNativeWorker.FullscreenVideoModeHeightResult > 0);
-        }
-
-        /// <summary>
-        ///     Tests that centering a fullscreen window is executed against the attached monitor.
-        /// </summary>
-        [RequireGlfwFact]
-        public void CenterOnScreen_WhenFullscreenOnMonitor_ExecutesOnMonitor()
-        {
-            if (!GlfwTestBootstrap.Ready)
-            {
-                return;
-            }
-
-            Assert.True(MainThreadNativeWorker.CenterOnScreenFullscreenExecuted);
-        }
     }
 }

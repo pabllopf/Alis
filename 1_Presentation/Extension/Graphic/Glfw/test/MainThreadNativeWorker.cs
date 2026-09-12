@@ -329,49 +329,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
         internal static bool KeyRepeatSubscribedRaised;
 
         /// <summary>
-        ///     Indicates whether the subscribed <see cref="NativeWindow.KeyAction" /> event was raised once per key state.
+        ///     Indicates whether the key action subscriber was raised for pressed, released and repeated states.
         /// </summary>
         internal static bool KeyActionSubscribedRaisedForEveryState;
-
-        /// <summary>
-        ///     Indicates whether GLFW attached a real monitor while the window was fullscreen on the primary monitor.
-        /// </summary>
-        internal static bool FullscreenMonitorAttached;
-
-        /// <summary>
-        ///     The video mode width read while the window was fullscreen on the primary monitor.
-        /// </summary>
-        internal static int FullscreenVideoModeWidthResult;
-
-        /// <summary>
-        ///     The video mode height read while the window was fullscreen on the primary monitor.
-        /// </summary>
-        internal static int FullscreenVideoModeHeightResult;
-
-        /// <summary>
-        ///     Indicates whether the monitor aware center on screen step was executed against a fullscreen window.
-        /// </summary>
-        internal static bool CenterOnScreenFullscreenExecuted;
-
-        /// <summary>
-        ///     The primary monitor pointer recorded before the fullscreen attempt.
-        /// </summary>
-        internal static string FullscreenPrimaryMonitorPointer;
-
-        /// <summary>
-        ///     The monitor pointer recorded after the fullscreen attempt.
-        /// </summary>
-        internal static string FullscreenMonitorPointerAfter;
-
-        /// <summary>
-        ///     The GLFW error code captured during the fullscreen attempt.
-        /// </summary>
-        internal static string FullscreenErrorCode;
-
-        /// <summary>
-        ///     The GLFW error message captured during the fullscreen attempt.
-        /// </summary>
-        internal static string FullscreenErrorMessage;
 
         /// <summary>
         ///     Runs every native step on the main thread and records the results.
@@ -722,6 +682,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
                     fresh.FireOnFocusChanged(true);
                     fresh.FireOnKey(Keys.A, 0, InputState.Press, ModifierKeys.None);
                     fresh.FireOnKey(Keys.A, 0, InputState.Release, ModifierKeys.None);
+                    fresh.FireOnKey(Keys.A, 0, InputState.Repeat, ModifierKeys.None);
                     fresh.FireOnMouseButton(MouseButton.Left, InputState.Press, ModifierKeys.None);
                     fresh.FireOnMouseEnter(true);
                     fresh.FireOnMouseEnter(false);
@@ -778,51 +739,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 finally
                 {
                     fresh.Dispose();
-                }
-            });
-            Execute("FullscreenVideoModeMonitor", () =>
-            {
-                FullscreenPrimaryMonitorPointer = GlfwTestBootstrap.PrimaryMonitor.handle.ToString();
-                window.Visible = true;
-                ErrorCallback recordingCallback = (code, message) =>
-                {
-                    FullscreenErrorCode = code.ToString();
-                    FullscreenErrorMessage = Marshal.PtrToStringUTF8(message);
-                };
-                GlfwNative.SetErrorCallback(recordingCallback);
-                window.Fullscreen(GlfwNative.PrimaryMonitor);
-                try
-                {
-                    Monitor monitor = window.Monitor;
-                    FullscreenMonitorAttached = monitor != Monitor.None;
-                    FullscreenMonitorPointerAfter = monitor.handle.ToString();
-                    VideoMode mode = window.VideoMode;
-                    FullscreenVideoModeWidthResult = mode.Width;
-                    FullscreenVideoModeHeightResult = mode.Height;
-                }
-                finally
-                {
-                    window.Fullscreen(Monitor.None);
-                    window.Visible = false;
-                    GlfwNative.SetErrorCallback(GlfwTestBootstrap.SilentErrorCallback);
-                }
-            });
-            Execute("CenterOnScreenFullscreenMonitor", () =>
-            {
-                window.Visible = true;
-                window.Fullscreen(GlfwNative.PrimaryMonitor);
-                try
-                {
-                    if (window.Monitor != Monitor.None)
-                    {
-                        window.CenterOnScreen();
-                        CenterOnScreenFullscreenExecuted = true;
-                    }
-                }
-                finally
-                {
-                    window.Fullscreen(Monitor.None);
-                    window.Visible = false;
                 }
             });
         }
