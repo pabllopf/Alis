@@ -432,5 +432,78 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotEmpty(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        ///     Builds a field with dense scattered negative samples that exercises the scan line
+        ///     combining walk, polygon reference updates and repeated merge attempts.
+        /// </summary>
+        /// <returns>The built field</returns>
+        private static sbyte[,] BuildScatteredField()
+        {
+            sbyte[,] f = new sbyte[40, 40];
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    f[x, y] = 1;
+                }
+            }
+
+            f[0, 1] = -1;
+            f[0, 2] = -1;
+            f[1, 2] = -1;
+            f[3, 2] = -1;
+            f[4, 2] = -1;
+            f[7, 3] = -1;
+            f[0, 3] = -1;
+            f[1, 4] = -1;
+            f[2, 4] = -1;
+            f[3, 4] = -1;
+            f[5, 4] = -1;
+            f[6, 4] = -1;
+            f[0, 5] = -1;
+            f[4, 5] = -1;
+            f[0, 6] = -1;
+            f[3, 6] = -1;
+            f[6, 6] = -1;
+            f[0, 7] = -1;
+            f[1, 7] = -1;
+            f[2, 7] = -1;
+            f[6, 7] = -1;
+            f[7, 7] = -1;
+
+            return f;
+        }
+
+        /// <summary>
+        ///     Tests that detect squares with scattered negative samples combines the merged scan line
+        ///     polygons without losing vertices and skips cells whose polygons are already merged.
+        /// </summary>
+        [Fact]
+        public void DetectSquares_WithScatteredSamplesAndCombine_MergesAdjacentScanLines()
+        {
+            sbyte[,] f = BuildScatteredField();
+            Aabb domain = new Aabb(new Vector2F(0, 0), new Vector2F(8, 8));
+
+            List<Vertices> separated = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, false);
+            List<Vertices> combined = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, f, 0, true);
+
+            Assert.True(combined.Count < separated.Count);
+
+            int totalCombinedVertices = 0;
+            foreach (Vertices polygon in combined)
+            {
+                Assert.True(polygon.Count > 2);
+                totalCombinedVertices += polygon.Count;
+            }
+
+            int totalSeparatedVertices = 0;
+            foreach (Vertices polygon in separated)
+            {
+                totalSeparatedVertices += polygon.Count;
+            }
+
+            Assert.True(totalCombinedVertices < totalSeparatedVertices);
+        }
     }
 }
