@@ -17,3 +17,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs | 0.0% | Local coverlet shows 100% (existing 50 tests pass; CI skips w/o csfml-audio) | 0 | test: Music.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs | 0.0% | Local coverlet shows 100% lines/branches (existing 40 tests) | 0 | test: Transform.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs | 0.0% | Local coverlet 100% lines/branches | 0 | test: Transformable.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs | 0.0% | Local coverlet 100% lines (69/69 hit) | 0 | test: SoundStream.cs | COMPLETED |
