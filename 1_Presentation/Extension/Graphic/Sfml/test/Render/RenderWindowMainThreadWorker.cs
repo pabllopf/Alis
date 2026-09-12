@@ -268,6 +268,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Execute("SetKeyRepeatEnabled", () => window.SetKeyRepeatEnabled(true));
             Execute("SetFramerateLimit", () => window.SetFramerateLimit(0));
             Execute("SetJoystickThreshold", () => window.SetJoystickThreshold(0.1f));
+            Execute("SetIcon", () => window.SetIcon(1, 1, new byte[] { 255, 255, 255, 255 }));
+            Execute("DispatchEvents", () => window.DispatchEvents());
             Execute("RequestFocus", () =>
             {
                 window.RequestFocus();
