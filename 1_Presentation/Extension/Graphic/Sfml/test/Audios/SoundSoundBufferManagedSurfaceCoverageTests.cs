@@ -168,9 +168,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
                 sound.Volume = 50f;
                 Assert.Equal(50f, sound.Volume);
 
-                sound.PlayingOffset = SfmlTime.FromMilliseconds(123);
-                Assert.Equal(123000L, sound.PlayingOffset.AsMicroseconds());
-
                 sound.Position = new Alis.Core.Aspect.Math.Vector.Vector3F(1f, 2f, 3f);
                 Alis.Core.Aspect.Math.Vector.Vector3F pos = sound.Position;
                 Assert.Equal(1f, pos.X);

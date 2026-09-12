@@ -306,15 +306,13 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <param name="action">The action to execute.</param>
         private static void Execute(string name, Action action)
         {
-            if (Environment.GetEnvironmentVariable("ALIS_SFML_TRACE") == "1")
+            try
             {
                 Console.Error.WriteLine("RWSTEP: " + name);
                 Console.Error.Flush();
-            }
-
-            try
-            {
                 action();
+                Console.Error.WriteLine("RWDONE: " + name);
+                Console.Error.Flush();
             }
             catch (Exception exception)
             {
