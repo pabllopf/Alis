@@ -18,3 +18,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs | 0.0% | Local coverlet shows 100% lines/branches (existing 40 tests) | 0 | test: Transform.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs | 0.0% | Local coverlet 100% lines/branches | 0 | test: Transformable.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs | 0.0% | Local coverlet 100% lines (69/69 hit) | 0 | test: SoundStream.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs | 0.0% | Local coverlet 100% lines (63/63 hit) | 0 | test: SoundBuffer.cs | COMPLETED |
