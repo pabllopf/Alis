@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 //
 //  --------------------------------------------------------------------------
-//  File:VertexArrayDrawExecutionTests.cs
+//  File:VertexBufferDrawExecutionTests.cs
 //
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,13 +39,13 @@ using Xunit;
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
     /// <summary>
-    ///     Verifies the <see cref="VertexArray.Draw(IRenderTarget, RenderStates)" /> native
+    ///     Verifies the <see cref="VertexBuffer.Draw(IRenderTarget, RenderStates)" /> native
     ///     dispatch against a real render window.
     /// </summary>
-    public class VertexArrayDrawExecutionTests
+    public class VertexBufferDrawExecutionTests
     {
         /// <summary>
-        ///     Tests that drawing to a real render window executes the native draw call.
+        ///     Tests that drawing a vertex buffer to a real render window executes the native draw call.
         /// </summary>
         [RequireCSfmlGraphicsFact]
         public void Draw_ToRenderWindow_ExecutesNativeDraw()
@@ -57,13 +57,12 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
                 Assert.NotEqual(IntPtr.Zero, handle);
 
                 using RenderWindow renderWindow = new RenderWindow(handle, new ContextSettings(0, 0));
-                using VertexArray vertexArray = new VertexArray(PrimitiveType.Triangles);
-                vertexArray.Append(new Vertex(new Vector2F(1f, 1f)));
-                vertexArray.Append(new Vertex(new Vector2F(10f, 1f)));
-                vertexArray.Append(new Vertex(new Vector2F(5f, 10f)));
+                using VertexBuffer vertexBuffer = new VertexBuffer(1u, PrimitiveType.Triangles, VertexBuffer.UsageSpecifier.Stream);
+                bool updated = vertexBuffer.Update(new Vertex[] { new Vertex(new Vector2F(1f, 1f)) }, 0u);
+                Assert.True(updated);
+                Assert.Equal(1u, vertexBuffer.VertexCount);
 
-                vertexArray.Draw(renderWindow, new RenderStates());
-                Assert.Equal(3u, vertexArray.VertexCount);
+                vertexBuffer.Draw(renderWindow, new RenderStates());
             }
             finally
             {

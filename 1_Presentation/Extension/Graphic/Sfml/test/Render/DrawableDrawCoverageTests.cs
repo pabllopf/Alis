@@ -30,7 +30,9 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
+using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -140,6 +142,73 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             using CircleShape shape = new CircleShape(10.0f);
             StubRenderTarget target = new StubRenderTarget();
             Exception result = Record.Exception(() => shape.Draw(target, new RenderStates()));
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        /// Tests that drawing a text to a real render texture executes the native draw dispatch
+        /// for the render texture case.
+        /// </summary>
+        [RequireCSfmlGraphicsFact]
+        public void SfmlText_Draw_ToRenderTexture_ExecutesNativeDraw()
+        {
+            using Font font = new Font("/System/Library/Fonts/Symbol.ttf");
+            using SfmlText text = new SfmlText("hello", font, 16);
+            using RenderTexture target = new RenderTexture(64, 64);
+            Exception result = Record.Exception(() => text.Draw(target, new RenderStates()));
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        /// Tests that drawing a text to a real render window executes the native draw dispatch
+        /// for the render window case.
+        /// </summary>
+        [RequireCSfmlGraphicsFact]
+        public void SfmlText_Draw_ToRenderWindow_ExecutesNativeDraw()
+        {
+            using Font font = new Font("/System/Library/Fonts/Symbol.ttf");
+            using SfmlText text = new SfmlText("hello", font, 16);
+            IntPtr nativeWindow = SfmlTestBootstrap.CreateExtraNativeWindow();
+            try
+            {
+                IntPtr handle = SfmlTestBootstrap.GetExtraNativeHandle(nativeWindow);
+                using RenderWindow renderWindow = new RenderWindow(handle, new ContextSettings(0, 0));
+                Exception result = Record.Exception(() => text.Draw(renderWindow, new RenderStates()));
+                Assert.Null(result);
+            }
+            finally
+            {
+                NativeWindowFactory.DestroyExtraNativeWindow(nativeWindow);
+            }
+        }
+
+        /// <summary>
+        /// Tests that drawing a vertex array to a real render texture executes the native draw dispatch
+        /// for the render texture case.
+        /// </summary>
+        [RequireCSfmlGraphicsFact]
+        public void VertexArray_Draw_ToRenderTexture_ExecutesNativeDraw()
+        {
+            using VertexArray vertexArray = new VertexArray(PrimitiveType.Triangles);
+            vertexArray.Append(new Vertex(new Vector2F(1f, 1f)));
+            vertexArray.Append(new Vertex(new Vector2F(10f, 1f)));
+            vertexArray.Append(new Vertex(new Vector2F(5f, 10f)));
+            using RenderTexture target = new RenderTexture(64, 64);
+            Exception result = Record.Exception(() => vertexArray.Draw(target, new RenderStates()));
+            Assert.Null(result);
+            Assert.Equal(3u, vertexArray.VertexCount);
+        }
+
+        /// <summary>
+        /// Tests that drawing a vertex buffer to a real render texture executes the native draw dispatch
+        /// for the render texture case.
+        /// </summary>
+        [RequireCSfmlGraphicsFact]
+        public void VertexBuffer_Draw_ToRenderTexture_ExecutesNativeDraw()
+        {
+            using VertexBuffer vertexBuffer = new VertexBuffer(3u, PrimitiveType.Triangles, VertexBuffer.UsageSpecifier.Stream);
+            using RenderTexture target = new RenderTexture(64, 64);
+            Exception result = Record.Exception(() => vertexBuffer.Draw(target, new RenderStates()));
             Assert.Null(result);
         }
     }

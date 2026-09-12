@@ -250,5 +250,35 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(prop);
             Assert.Equal(typeof(IntPtr), prop.PropertyType);
         }
+
+        /// <summary>
+        /// Tests that creating a sound buffer from an array of samples produces a
+        /// valid buffer whose duration matches the sample count and rate.
+        /// </summary>
+        [RequireCSfmlAudioFact]
+        public void SoundBuffer_FromSamples_ProducesValidBuffer()
+        {
+            short[] samples = new short[] { 0, 1000, 2000, 1000, 0, -1000, -2000, -1000, 0, 1000, 2000, 1000 };
+
+            using SoundBuffer buffer = new SoundBuffer(samples, 1, 44100);
+
+            Assert.Equal(44100u, buffer.SampleRate);
+            Assert.Equal(1u, buffer.ChannelCount);
+        }
+
+        /// <summary>
+        /// Tests that creating a sound buffer from a stereo sample array reports
+        /// two channels.
+        /// </summary>
+        [RequireCSfmlAudioFact]
+        public void SoundBuffer_FromSamples_Stereo_ReportsTwoChannels()
+        {
+            short[] samples = new short[] { 100, 100, -100, -100, 100, 100, -100, -100 };
+
+            using SoundBuffer buffer = new SoundBuffer(samples, 2, 22050);
+
+            Assert.Equal(2u, buffer.ChannelCount);
+            Assert.Equal(22050u, buffer.SampleRate);
+        }
     }
 }

@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        internal static IntPtr GetNativeHandle(IntPtr window) => NativeWindowFactory.GetNativeHandle(window);
+        internal static IntPtr GetNativeHandle(IntPtr window) => sfWindow_getNativeHandle(window);
 
         /// <summary>
         ///     Destroys a native window created by <see cref="CreateExtraNativeWindow" />.
@@ -211,4 +211,4 @@ namespace Alis.Extension.Graphic.Sfml.Test
         internal static void DestroyExtraNativeWindow(IntPtr nativeWindow) => NativeWindowFactory.Destroy(nativeWindow);
     }
 }
-}
+
