@@ -31,3 +31,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs | 0.0% | Local coverlet 100% lines (40/40 hit) | 0 | test: VertexBuffer.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs | 0.0% | Local coverlet 100% lines (33/33 hit) | 0 | test: RenderStates.cs | COMPLETED |
 | 4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs | 0.0% | MacOpenGlContextExecutionTests exist; #if osx* excluded on Linux CI | 0 | test: MacOpenGLContext.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs | 0.0% | Local coverlet 100% lines (32/32 hit) | 0 | test: CircleShape.cs | COMPLETED |
