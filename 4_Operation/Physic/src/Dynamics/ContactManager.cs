@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
         ///     Typical values are {128 or 256}.
         /// </summary>
-        public readonly int CollideMultithreadThreshold = int.MaxValue;
+        public int CollideMultithreadThreshold = int.MaxValue;
 
         /// <summary>
         ///     The contact list

@@ -310,5 +310,80 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, bodyA.Lock);
             Assert.Equal(0, bodyB.Lock);
         }
+
+        /// <summary>
+        ///     Tests that add pair does not insert the contact when the contact factory returns null.
+        /// </summary>
+        [Fact]
+        public void AddPair_WhenContactCreateReturnsNull_DoesNotInsertContact()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            CreateStandaloneContactSetup(contactManager, broadPhase, bodyA, bodyB);
+
+            Contact.ReturnNullOverride = true;
+            try
+            {
+                contactManager.AddPair(bodyA.FixtureList[0].Proxies[0].ProxyId, bodyB.FixtureList[0].Proxies[0].ProxyId);
+
+                Assert.Equal(0, contactManager.ContactCount);
+                Assert.Same(contactManager.ContactList, contactManager.ContactList.Next);
+            }
+            finally
+            {
+                Contact.ReturnNullOverride = false;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that collide switches to the multi core pipeline when the contact count exceeds the threshold.
+        /// </summary>
+        [Fact]
+        public void Collide_WhenContactCountExceedsMultithreadThreshold_UsesMultiCorePipeline()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Body bodyC = new Body();
+            Body bodyD = new Body();
+
+            CreateStandaloneContact(contactManager, broadPhase, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.0f));
+            CreateStandaloneContact(contactManager, broadPhase, bodyC, bodyD, new Vector2F(10.0f, 0.0f), new Vector2F(10.5f, 0.0f));
+
+            contactManager.CollideMultithreadThreshold = 1;
+            try
+            {
+                contactManager.Collide();
+
+                Assert.Equal(2, contactManager.ContactCount);
+                Assert.Equal(0, bodyA.Lock);
+                Assert.Equal(0, bodyB.Lock);
+                Assert.Equal(0, bodyC.Lock);
+                Assert.Equal(0, bodyD.Lock);
+            }
+            finally
+            {
+                contactManager.CollideMultithreadThreshold = int.MaxValue;
+            }
+        }
+
+        /// <summary>
+        ///     Creates the fixture and proxy setup for a standalone pair on two bodies without inserting the contact.
+        /// </summary>
+        private static void CreateStandaloneContactSetup(ContactManager contactManager, DynamicTreeBroadPhase broadPhase, Body bodyA, Body bodyB)
+        {
+            Fixture fixtureA = new Fixture(new CircleShape(1.0f, 1.0f));
+            Fixture fixtureB = new Fixture(new CircleShape(1.0f, 1.0f));
+            bodyA.Add(fixtureA);
+            bodyB.Add(fixtureB);
+            bodyA.GetBodyType = BodyType.Dynamic;
+            bodyB.GetBodyType = BodyType.Dynamic;
+            fixtureA.CreateProxies(broadPhase, ref bodyA.Xf);
+            fixtureB.CreateProxies(broadPhase, ref bodyB.Xf);
+        }
     }
 }
