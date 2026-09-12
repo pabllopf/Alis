@@ -40,3 +40,4 @@
 | 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/SdlImage.cs | 0.0% | Local coverlet 100% lines (21/21 hit, 22 tests) | 0 | test: SdlImage.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs | 0.0% | Local coverlet 100% lines (21/21 hit) | 0 | test: Clipboard.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Mouse.cs | 0.0% | Local coverlet 100% lines (20/20 hit) | 0 | test: Mouse.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs | 0.0% | Local coverlet 100% lines (20/20 hit) | 0 | test: Context.cs | COMPLETED |
