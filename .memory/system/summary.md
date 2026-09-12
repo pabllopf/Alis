@@ -22,3 +22,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs | 0.0% | Local coverlet 100% lines (60/60 hit) | 0 | test: Shape.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs | 0.0% | Local coverlet 100% lines (58/58 hit) | 0 | test: Font.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/Sound.cs | 0.0% | Local coverlet 100% lines (53/53 hit) | 0 | test: Sound.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs | 0.0% | Local 115/115 ImPlotStyle tests pass, full property surface | 0 | test: ImPlotStyle.cs | COMPLETED |
