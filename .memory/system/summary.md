@@ -27,3 +27,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs | 0.0% | Local coverlet 100% lines (48/48 hit) | 0 | test: View.cs | COMPLETED |
 | 4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs | 0.0% | 6 MacWindowExecutionTests exist; #if osx* excluded on Linux CI | 0 | test: MacWindow.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs | 0.0% | Local coverlet 100% lines (46/46 hit) | 0 | test: VertexArray.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs | 0.0% | Local coverlet 100% lines (43/43 hit) | 0 | test: Sprite.cs | COMPLETED |
