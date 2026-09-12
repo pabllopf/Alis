@@ -118,6 +118,16 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         internal static bool PollEventExecuted;
 
         /// <summary>
+        ///     Indicates whether the blocking wait event call completed without throwing.
+        /// </summary>
+        internal static bool WaitEventExecuted;
+
+        /// <summary>
+        ///     Indicates whether the wait and dispatch events call completed without throwing.
+        /// </summary>
+        internal static bool WaitAndDispatchExecuted;
+
+        /// <summary>
         ///     Indicates whether closing the window made it report closed.
         /// </summary>
         internal static bool ClosedOk;
@@ -220,6 +230,17 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
                 Event eventToFill;
                 window.PollEvent(out eventToFill);
                 PollEventExecuted = true;
+            });
+            Execute("WaitEvent", () =>
+            {
+                Event waitEventToFill;
+                window.WaitEvent(out waitEventToFill);
+                WaitEventExecuted = true;
+            });
+            Execute("WaitAndDispatchEvents", () =>
+            {
+                window.WaitAndDispatchEvents();
+                WaitAndDispatchExecuted = true;
             });
             Execute("Close", () =>
             {

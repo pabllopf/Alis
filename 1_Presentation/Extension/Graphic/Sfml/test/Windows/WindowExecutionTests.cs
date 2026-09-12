@@ -238,6 +238,34 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         }
 
         /// <summary>
+        ///     Tests that the blocking wait event call completed without throwing.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void WaitEvent_DoesNotThrow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(WindowMainThreadWorker.WaitEventExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that the wait and dispatch events call completed without throwing.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void WaitAndDispatchEvents_DoesNotThrow()
+        {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
+            Assert.True(WindowMainThreadWorker.WaitAndDispatchExecuted);
+        }
+
+        /// <summary>
         ///     Tests that closing the window made it report closed.
         /// </summary>
         [RequireCSfmlWindowsFact]
