@@ -29,3 +29,4 @@
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs | 0.0% | Local coverlet 100% lines (46/46 hit) | 0 | test: VertexArray.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs | 0.0% | Local coverlet 100% lines (43/43 hit) | 0 | test: Sprite.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs | 0.0% | Local coverlet 100% lines (40/40 hit) | 0 | test: VertexBuffer.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs | 0.0% | Local coverlet 100% lines (33/33 hit) | 0 | test: RenderStates.cs | COMPLETED |
