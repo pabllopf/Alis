@@ -33,3 +33,4 @@
 | 4_Operation/Graphic/src/Platforms/Osx/Native/MacOpenGLContext.cs | 0.0% | MacOpenGlContextExecutionTests exist; #if osx* excluded on Linux CI | 0 | test: MacOpenGLContext.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs | 0.0% | Local coverlet 100% lines (32/32 hit) | 0 | test: CircleShape.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs | 0.0% | Local coverlet 100% lines (28/28 hit) | 0 | test: ImGuiPlatformIOPtr.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Systems/SfmlTime.cs | 0.0% | Local coverlet 100% lines (26/26 hit) | 0 | test: SfmlTime.cs | COMPLETED |
