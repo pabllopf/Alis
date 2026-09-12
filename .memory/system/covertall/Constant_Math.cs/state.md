@@ -14,8 +14,7 @@ Tests added: 0
 Commits: none (no file changes; tests already existed and everything is covered)
 Remaining uncovered lines: 0
 Remaining uncovered branches: 0
-Status: NEEDS_GLOBAL_CHANGE
+Status: BLOCKED
 Last update: 2026-09-12T17:57:07Z
 
-SonarCloud finding: 9 uncovered lines (alis-extension-graphic-sfml). Cause: CI workflow does not install csfml, so [RequireCSfml*] tests skip. Locally (csfml present): 100% line+branch verified via OpenCover.
-Remedy (needs global/shared change): add to [ALIS][EXTENSION][GRAPHIC][SFML][SONARCLOUD].yml before dotnet test: brew install csfml sfml ffmpeg
+SonarCloud finding: 5 uncovered lines (alis-core-aspect-math). BLOCKED permanently: const-only class has no IL. Tests asserting every constant exist and pass (1135 tests).

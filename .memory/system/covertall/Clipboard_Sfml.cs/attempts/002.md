@@ -17,5 +17,4 @@ Remaining uncovered branches: 0
 Status: NEEDS_GLOBAL_CHANGE
 Last update: 2026-09-12T17:57:07Z
 
-SonarCloud finding: 9 uncovered lines (alis-extension-graphic-sfml). Cause: CI workflow does not install csfml, so [RequireCSfml*] tests skip. Locally (csfml present): 100% line+branch verified via OpenCover.
-Remedy (needs global/shared change): add to [ALIS][EXTENSION][GRAPHIC][SFML][SONARCLOUD].yml before dotnet test: brew install csfml sfml ffmpeg
+SonarCloud finding: 21 uncovered lines + 2 uncovered conditions. Same csfml-in-CI root cause. Locally both Contents getter and setter branches covered 100%.
