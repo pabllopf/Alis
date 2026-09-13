@@ -233,3 +233,11 @@ TestsAdded: 5
 Commit: (this commit)
 Status: SUCCESS
 | 4_Operation/Physic/src/Common/Logic/ControllerCategories.cs | 0.0% | 36/36 ControllerCategoriesCoverageTests pass (all members asserted) | 36 | test: ControllerCategories.cs | COMPLETED |
+
+## MediaReader.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs
+CoverageBefore: 55.2%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 6
+Commit: (this commit)
+Status: SUCCESS
