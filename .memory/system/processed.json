@@ -50,6 +50,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Structs/Surface.cs"
   ]
 }

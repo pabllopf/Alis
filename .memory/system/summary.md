@@ -51,3 +51,4 @@
 | 1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs | 0.0% | Local coverlet 100% lines (13/13 hit) | 0 | test: ImFontGlyphRangesBuilder.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs | 0.0% | Local coverlet 100% lines (6/6 hit) | 0 | test: ImGuiPayload.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs | 0.0% | Local 38/38 ImPlotInputMap tests pass | 0 | test: ImPlotInputMap.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec4.cs | 0.0% | 4/4 Ivec4CoverageTests pass (both ctors + X/Y/Z/W) | 4 | test: Ivec4.cs | COMPLETED |
