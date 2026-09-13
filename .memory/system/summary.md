@@ -106,3 +106,10 @@ CoverageAfter: existing coverage
 TestsAdded: 0 (11 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (11 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
