@@ -249,3 +249,11 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 12
 Commit: (this commit)
 Status: SUCCESS
+
+## AudioWriter.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
+CoverageBefore: 55.4%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 9
+Commit: (this commit)
+Status: SUCCESS
