@@ -60,6 +60,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs"
   ]
 }

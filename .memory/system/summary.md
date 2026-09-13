@@ -90,3 +90,11 @@ CoverageAfter: 100% (local run)
 TestsAdded: 4
 Commit: test: SizeEventArgs.cs
 Status: PASSED
+
+## FFMpegWrapper.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+CoverageBefore: 36.4%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 7
+Commit: (this commit)
+Status: SUCCESS
