@@ -98,3 +98,4 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 7
 Commit: (this commit)
 Status: SUCCESS
+| 1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs | 0.0% | 7/7 SizeEventArgsCoverageTests pass (ctor variants + properties + ToString) | 7 | test: SizeEventArgs.cs | COMPLETED |
