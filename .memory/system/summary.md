@@ -151,3 +151,10 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 18
 Commit: (this commit)
 Status: SUCCESS
+
+File: Sdl.cs
+CoverageBefore: 8.4%
+CoverageAfter: ~20% (estimated; native-gated P/Invoke paths remain uncovered in CI)
+TestsAdded: 24
+Commit: test: Sdl.cs
+Status: OK

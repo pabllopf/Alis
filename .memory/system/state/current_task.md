@@ -1,26 +1,29 @@
 
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 62 files) Outputting AI-ready tasks:
+
+
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    11
+    8
 
     ### Uncovered Branches
-    0
+    2
 
     ### Method
-    Vec3
+    Touch
 
     ### Complexity / LOC
-    2 / 25 lines
+    4 / 28 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Vec3.cs
+//  File:Touch.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -53,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Security;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Systems;
 
-namespace Alis.Extension.Graphic.Sfml.Render
+namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     <see cref="Vec3" /> is a struct represent a glsl vec3 value
+    ///     Give access to the real-time state of the touches
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Vec3
+    public static class Touch
     {
         /// <summary>
-        ///     Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector3F" /> to <see cref="Vec3" />
+        ///     Check if a touch event is currently down
         /// </summary>
-        public static implicit operator Vec3(Vector3F vec) => new Vec3(vec);
+        /// <param name="finger">Finger index</param>
+        /// <returns>True if the finger is currently touching the screen, false otherwise</returns>
+        public static bool IsDown(uint finger) => sfTouch_isDown(finger);
 
 
         /// <summary>
-        ///     Construct the <see cref="Vec3" /> from its coordinates
+        ///     This function returns the current touch position
         /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
-        public Vec3(float x, float y, float z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
+        /// <param name="finger">Finger index</param>
+        /// <returns>Current position of the finger</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2F GetPosition(uint finger) => GetPosition(finger, null);
 
-
+        ////////////////////////////////////////////////////////////
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec3Tests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/TouchTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vec3.cs
+    Commit format: test: coverage Touch.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
