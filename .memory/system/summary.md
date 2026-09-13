@@ -121,3 +121,10 @@ CoverageAfter: existing coverage
 TestsAdded: 0 (13 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (21 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
