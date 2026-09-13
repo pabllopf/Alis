@@ -225,6 +225,45 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
 
         /// <summary>
+        /// Tests that build open file script with null title uses default title
+        /// </summary>
+        [Fact]
+        public void BuildOpenFileScript_WithNullTitle_UsesDefaultTitle()
+        {
+            FilePickerOptions options = new FilePickerOptions { Title = null };
+
+            string script = WindowsFilePicker.BuildOpenFileScript(options);
+
+            Assert.Contains("$dialog.Title = 'Select a file'", script);
+        }
+
+        /// <summary>
+        /// Tests that build open file script with null filters omits filter
+        /// </summary>
+        [Fact]
+        public void BuildOpenFileScript_WithNullFilters_OmitsFilter()
+        {
+            FilePickerOptions options = new FilePickerOptions("Open File") { Filters = null };
+
+            string script = WindowsFilePicker.BuildOpenFileScript(options);
+
+            Assert.DoesNotContain("$dialog.Filter", script);
+        }
+
+        /// <summary>
+        /// Tests that build folder select script with null title uses default description
+        /// </summary>
+        [Fact]
+        public void BuildFolderSelectScript_WithNullTitle_UsesDefaultDescription()
+        {
+            FilePickerOptions options = new FilePickerOptions { Title = null };
+
+            string script = WindowsFilePicker.BuildFolderSelectScript(options);
+
+            Assert.Contains("$dialog.Description = 'Select a folder'", script);
+        }
+
+        /// <summary>
         /// Tests that parse result null returns cancelled
         /// </summary>
         [Fact]

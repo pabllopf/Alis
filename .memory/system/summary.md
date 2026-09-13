@@ -281,3 +281,11 @@ CoverageAfter: 98.5% (no test seam; InitializeAsync success path requires real D
 TestsAdded: 0
 Commit: (this commit)
 Status: BLOCKED_BY_PRODUCTION_CODE
+| 1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs | 98.1% | 100% branch coverage locally (3 conditions: null Title x2, null Filters) | 3 | test: WindowsFilePicker.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs
+CoverageBefore: 98.1%
+CoverageAfter: 100% (all 40 branch outcomes hit locally)
+TestsAdded: 3
+Commit: test: WindowsFilePicker.cs
+Status: COMPLETED
