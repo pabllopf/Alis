@@ -129,3 +129,10 @@ TestsAdded: 0 (21 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs | 0.0% | 6 new Vec2CoverageTests pass (ctors + conversion + X/Y) | 6 | test: Vec2.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiWindowClass.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (21 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
