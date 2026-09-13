@@ -161,3 +161,10 @@ Status: OK
 
 Scope: 1_Presentation/Extension/Graphic/Sdl2/src
 Result: NO_REMAINING_COVERAGE_TASKS (all uncovered files in scope processed)
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (TouchTest: 4 tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
