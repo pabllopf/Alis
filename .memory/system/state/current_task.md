@@ -2,7 +2,7 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
 
     ### Language
     cs
@@ -11,16 +11,16 @@
     0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    12
+    11
 
     ### Uncovered Branches
     0
 
     ### Method
-    Vec4
+    Vec3
 
     ### Complexity / LOC
-    2 / 26 lines
+    2 / 25 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Vec4.cs
+//  File:Vec3.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -54,50 +54,50 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     <see cref="Vec4" /> is a struct represent a glsl vec4 value
+    ///     <see cref="Vec3" /> is a struct represent a glsl vec3 value
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vec4
+    public struct Vec3
     {
         /// <summary>
-        ///     Construct the <see cref="Vec4" /> from its coordinates
+        ///     Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector3F" /> to <see cref="Vec3" />
+        /// </summary>
+        public static implicit operator Vec3(Vector3F vec) => new Vec3(vec);
+
+
+        /// <summary>
+        ///     Construct the <see cref="Vec3" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
-        /// <param name="w">W coordinate</param>
-        public Vec4(float x, float y, float z, float w)
+        public Vec3(float x, float y, float z)
         {
             X = x;
             Y = y;
             Z = z;
-            W = w;
         }
 
-        /// <summary>
-        ///     Construct the <see cref="Vec4" /> from a <see cref="Color" />
-        /// </summary>
-        /// <remarks>
-        ///     The <see cref="Color" />'s values will be normalized from 0..255 to 0..1
-        /// </remarks>
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec4Tests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec3Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Vec4.cs
+    Commit format: test: coverage Vec3.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
