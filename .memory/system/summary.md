@@ -305,3 +305,11 @@ CoverageAfter: 98.3%
 TestsAdded: 0
 Commit: test: FilePickerResult.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+| 1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs | 99.0% | 99.0% (2 defensive null branches unreachable) | 0 | test: FilePickerValidator.cs | BLOCKED_BY_PRODUCTION_CODE |
+
+File: 1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs
+CoverageBefore: 99.0%
+CoverageAfter: 99.0%
+TestsAdded: 0
+Commit: test: FilePickerValidator.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
