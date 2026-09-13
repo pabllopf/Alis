@@ -59,3 +59,4 @@ CoverageAfter: 100.0% (estimated, all members exercised)
 TestsAdded: 7
 Commit: test: Surface.cs
 Status: OK
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs | 0.0% | 13/13 Vec4CoverageTests pass (both ctors + X/Y/Z/W) | 5 | test: Vec4.cs | COMPLETED |
