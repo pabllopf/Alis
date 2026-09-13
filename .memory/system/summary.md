@@ -114,3 +114,10 @@ TestsAdded: 0 (11 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Ivec2.cs | 0.0% | 4/4 Ivec2CoverageTests pass (ctors + X/Y) | 4 | test: Ivec2.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec2.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (13 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
