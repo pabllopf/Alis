@@ -182,3 +182,10 @@ CoverageAfter: existing coverage
 TestsAdded: 0 (33 existing Sensor tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
+
+File: 6_Ideation/Math/src/Util/Constant.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (40 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
