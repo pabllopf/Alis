@@ -220,3 +220,4 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 17
 Commit: (this commit)
 Status: SUCCESS
+| 4_Operation/Physic/src/Common/Constant.cs | 0.0% | 4/4 ConstantCoverageTests pass (all constants asserted) | 4 | test: Constant.cs | COMPLETED |
