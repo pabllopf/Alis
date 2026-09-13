@@ -200,6 +200,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The all category
         /// </summary>
-        All = int.MaxValue
+        All = 0x7FFFFFFF
     }
 }
