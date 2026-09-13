@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.6] - 2026-09-12
+### :bug: Bug Fixes
+- [`61fc392`](https://github.com/pabllopf/Alis/commit/61fc39267562551451b8636e6f12714112a40c14) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5908a1c`](https://github.com/pabllopf/Alis/commit/5908a1ce83530c7b5b9e2a583b2a0233cfa2b0c3) - covert unit tetss *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`a919e15`](https://github.com/pabllopf/Alis/commit/a919e151e4934f06cea0441fb4f26002d2795d73) - record 100% line and branch coverage of SfmlTime.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d94a5b5`](https://github.com/pabllopf/Alis/commit/d94a5b5a09839ec1cae1b645f088c11d1990dbeb) - cover null-contact and multicore gate paths of ContactManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a3eb193`](https://github.com/pabllopf/Alis/commit/a3eb19394b53eafa05d3cdd02ab1bfe51b789ef6) - verify SonarCloud-flagged SfmlTime, SizeEventArgs and Sensor files are fully covered *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16041a8`](https://github.com/pabllopf/Alis/commit/16041a843fdbcd82bfb2c1508e80f5ab46e066bc) - cover combine merge pipeline of MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3613840`](https://github.com/pabllopf/Alis/commit/3613840b92f1c59b5c7db8f8b7797ca5d41dc222) - verify repeat key state coverage and validate NativeWindow.cs blockers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e47d29d`](https://github.com/pabllopf/Alis/commit/e47d29d71229dc19ddd4f016f0016f22a61f06eb) - record NativeWindow.cs coverage state in index *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.5] - 2026-09-12
 ### :bug: Bug Fixes
 - [`5b48a53`](https://github.com/pabllopf/Alis/commit/5b48a5325076914320aa7ae054447b5e7f08ca01) - version code *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11264,3 +11278,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.3]: https://github.com/pabllopf/Alis/compare/v1.4.2...v1.4.3
 [v1.4.4]: https://github.com/pabllopf/Alis/compare/v1.4.3...v1.4.4
 [v1.4.5]: https://github.com/pabllopf/Alis/compare/v1.4.4...v1.4.5
+[v1.4.6]: https://github.com/pabllopf/Alis/compare/v1.4.5...v1.4.6
