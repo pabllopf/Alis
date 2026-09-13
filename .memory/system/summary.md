@@ -289,3 +289,11 @@ CoverageAfter: 100% (all 40 branch outcomes hit locally)
 TestsAdded: 3
 Commit: test: WindowsFilePicker.cs
 Status: COMPLETED
+| 1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs | 97.0% | 97.0% (3 Windows platform ternaries in CommandExists unreachable on macOS) | 0 | test: FilePickerExecutor.cs | BLOCKED_BY_PRODUCTION_CODE |
+
+File: 1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs
+CoverageBefore: 97.0%
+CoverageAfter: 97.0%
+TestsAdded: 0
+Commit: test: FilePickerExecutor.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
