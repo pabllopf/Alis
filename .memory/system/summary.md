@@ -224,3 +224,11 @@ Status: SUCCESS
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs | 0.0% | 3/3 ImNodesMiniMapNodeHoveringCallbackCoverageTests pass | 3 | test: ImNodesMiniMapNodeHoveringCallback.cs | COMPLETED |
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs | 0.0% | 3/3 ImNodesMiniMapNodeHoveringCallbackUserDataCoverageTests pass | 3 | test: ImNodesMiniMapNodeHoveringCallbackUserData.cs | COMPLETED |
 | 4_Operation/Physic/src/Dynamics/Categories.cs | 0.0% | 35/35 CategoriesCoverageTests pass (all flags asserted) | 35 | test: Categories.cs | COMPLETED |
+
+## AudioVideoWriter.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs
+CoverageBefore: 49.0%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 5
+Commit: (this commit)
+Status: SUCCESS
