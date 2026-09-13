@@ -67,3 +67,4 @@ CoverageAfter: 100.0% (estimated)
 TestsAdded: 30
 Commit: test: SdlInputConst.cs
 Status: OK
+| 1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs | 0.0% | 5 new Vec3CoverageTests pass (ctors + implicit op + X/Y/Z) | 5 | test: Vec3.cs | COMPLETED |

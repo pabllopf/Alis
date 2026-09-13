@@ -56,6 +56,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Mapping/SdlInputConst.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec3.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs"
   ]
 }
