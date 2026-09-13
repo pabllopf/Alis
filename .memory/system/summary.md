@@ -83,3 +83,10 @@ CoverageAfter: 100% (local run)
 TestsAdded: 4
 Commit: test: MouseMoveEventArgs.cs
 Status: PASSED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100% (local run)
+TestsAdded: 4
+Commit: test: SizeEventArgs.cs
+Status: PASSED
