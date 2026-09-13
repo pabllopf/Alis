@@ -257,3 +257,11 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 9
 Commit: (this commit)
 Status: SUCCESS
+
+## AudioReader.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
+CoverageBefore: 65.9%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 5
+Commit: (this commit)
+Status: SUCCESS
