@@ -212,3 +212,11 @@ TestsAdded: 12
 Commit: (this commit)
 Status: SUCCESS
 | 1_Presentation/Extension/Graphic/Sfml/src/Audios/Listener.cs | 0.0% | 5/5 ListenerCoverageTests pass; 8/8 lines hit locally (RequireCSfmlAudioFact) | 5 | test: Listener.cs | COMPLETED |
+
+## AudioPlayer.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
+CoverageBefore: 38.8%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 17
+Commit: (this commit)
+Status: SUCCESS
