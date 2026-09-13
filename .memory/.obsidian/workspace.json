@@ -203,6 +203,8 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/covertall/locks/CircleShape.cs.lock/info.txt",
+    "system/covertall/locks/CircleShape.cs.lock",
     "system/results/ImGuiIO-src.md",
     "system/cache/sonarcloud_cache_20260901_080755.json",
     "system/cache/sonarcloud_cache_20260901_075832.json",
@@ -231,14 +233,12 @@
     "system/covertall/Alis.Extension.Security/attempts/001.md",
     "system/covertall/Alis.Extension.Security/state.md",
     "system/covertall/locks/Alis.Extension.Security.lock/info.txt",
-    "system/covertall/locks/Alis.Extension.Security.lock",
     "system/results/DynamicTree.md",
     "system/results/GearJoint.md",
     "system/results/CommandBuffer.md",
     "system/results/PolygonShape.md",
     "system/results/BreakableBody.md",
     "system/results/WeldJoint.md",
-    "system/results/GravityController.md",
     "Sin título.canvas"
   ]
 }
