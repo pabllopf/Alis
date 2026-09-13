@@ -189,3 +189,10 @@ CoverageAfter: existing coverage
 TestsAdded: 0 (40 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Keyboard.cs
+CoverageBefore: 0.0%
+CoverageAfter: existing coverage
+TestsAdded: 0 (29 existing tests pass locally)
+Commit: none
+Status: SKIPPED_ALREADY_COVERED
