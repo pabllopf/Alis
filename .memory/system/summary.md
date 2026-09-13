@@ -265,3 +265,11 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 5
 Commit: (this commit)
 Status: SUCCESS
+
+## VideoFrame.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoFrame.cs
+CoverageBefore: 78.3%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 3
+Commit: (this commit)
+Status: SUCCESS
