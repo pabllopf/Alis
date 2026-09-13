@@ -1,29 +1,26 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 13 files) Outputting AI-ready tasks:
-
-
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    82
+    12
 
     ### Uncovered Branches
-    8
+    0
 
     ### Method
-    Music
+    Vec4
 
     ### Complexity / LOC
-    34 / 229 lines
+    2 / 26 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Music.cs
+//  File:Vec4.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +53,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
-using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
 
-namespace Alis.Extension.Graphic.Sfml.Audios
+namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     Streamed music played from an audio file
+    ///     <see cref="Vec4" /> is a struct represent a glsl vec4 value
     /// </summary>
-    public class Music : ObjectBase
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vec4
     {
         /// <summary>
-        ///     Roots the StreamAdaptor to prevent GC collection while referenced by unmanaged SFML code.
+        ///     Construct the <see cref="Vec4" /> from its coordinates
         /// </summary>
-        internal readonly List<object> _pinnedObjects = new(1);
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
+        /// <param name="z">Z coordinate</param>
+        /// <param name="w">W coordinate</param>
+        public Vec4(float x, float y, float z, float w)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+            W = w;
+        }
 
         /// <summary>
-        ///     Constructs a music from an audio file
+        ///     Construct the <see cref="Vec4" /> from a <see cref="Color" />
         /// </summary>
-        /// <param name="filename">Path of the music file to open</param>
-        public Music(string filename) :
-            base(sfMusic_createFromFile(filename))
-        {
-            if (CPointer == IntPtr.Zero)
-            {
+        /// <remarks>
+        ///     The <see cref="Color" />'s values will be normalized from 0..255 to 0..1
+        /// </remarks>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Audios/MusicTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/Vec4Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Vec4.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Music.cs
+    Commit format: test: coverage Vec4.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
