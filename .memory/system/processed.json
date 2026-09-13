@@ -86,6 +86,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Categories.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/ControllerCategories.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs"
   ]
 }

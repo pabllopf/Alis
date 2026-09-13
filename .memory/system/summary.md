@@ -273,3 +273,11 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 3
 Commit: (this commit)
 Status: SUCCESS
+
+## DropBoxCloudManager.cs
+File: 1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
+CoverageBefore: 98.5%
+CoverageAfter: 98.5% (no test seam; InitializeAsync success path requires real Dropbox API)
+TestsAdded: 0
+Commit: (this commit)
+Status: BLOCKED_BY_PRODUCTION_CODE
