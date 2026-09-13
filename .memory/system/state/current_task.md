@@ -1,26 +1,29 @@
 
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 1 files) Outputting AI-ready tasks:
+
+
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.6% (Line: 0.6%, Branch: 0.0%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    486
+    169
 
     ### Uncovered Branches
-    22
+    32
 
     ### Method
-    ImGuiP7
+    Window
 
     ### Complexity / LOC
-    155 / 640 lines
+    68 / 367 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiP7.cs
+//  File:Window.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -54,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Systems;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     The im gui class
+    ///     Window is a rendering window ; it can create a new window
+    ///     or connect to an existing one
     /// </summary>
-    public static partial class ImGui
+    public class Window : ObjectBase
     {
         /// <summary>
-        ///     Describes whether menu item
+        ///     Create the window with default style and creation settings
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="shortcut">The shortcut</param>
-        /// <param name="pSelected">The selected</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The bool</returns>
-        public static bool MenuItem(string label, string shortcut, ref bool pSelected, bool enabled)
+        /// <param name="mode">Video mode to use</param>
+        /// <param name="title">Title of the window</param>
+        public Window(VideoMode mode, string title) :
+            this(mode, title, Styles.Default, new ContextSettings(0, 0))
         {
-            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
-            return ret != 0;
         }
 
+
         /// <summary>
-        ///     News the frame
+        ///     Create the window with default creation settings
         /// </summary>
-        public static void NewFrame()
-        {
-            ImGuiNative.igNewFrame();
+        /// <param name="mode">Video mode to use</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP7Tests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/WindowTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiP7.cs
+    Commit format: test: coverage Window.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

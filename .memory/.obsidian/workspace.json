@@ -203,6 +203,7 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/cache/sonarcloud_cache_20260913_173953.json",
     "system/results/VideoFrame.cs.md",
     "system/results/AudioReader.cs.md",
     "system/results/AudioWriter.cs.md",
@@ -228,7 +229,6 @@
     "system/results/VideoPlayer.cs.md",
     "system/results/1_Presentation_Extension_Graphic_Ui_src_ImGuiWindowClass.md",
     "system/results/Vec2.md",
-    "system/results/1_Presentation_Extension_Graphic_Ui_src_ImFontAtlasCustomRect.md",
     "system/cache/sonarcloud_cache_20260913_105645.json",
     "system/cache/sonarcloud_cache_20260913_105611.json",
     "system/cache/sonarcloud_cache_20260913_105548.json",
