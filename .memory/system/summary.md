@@ -241,3 +241,11 @@ CoverageAfter: local tests added; Sonar refresh pending
 TestsAdded: 6
 Commit: (this commit)
 Status: SUCCESS
+
+## VideoWriter.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs
+CoverageBefore: 55.3%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 12
+Commit: (this commit)
+Status: SUCCESS
