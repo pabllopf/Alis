@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 62 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 5 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    8
+    127
 
     ### Uncovered Branches
-    2
+    18
 
     ### Method
-    Touch
+    Texture
 
     ### Complexity / LOC
-    4 / 28 lines
+    43 / 265 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Touch.cs
+//  File:Texture.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -58,49 +58,49 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Windows;
+using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
 
-namespace Alis.Extension.Graphic.Sfml.Windows
+namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     Give access to the real-time state of the touches
+    ///     Image living on the graphics card that can be used for drawing
     /// </summary>
-    public static class Touch
+    public class Texture : ObjectBase
     {
         /// <summary>
-        ///     Check if a touch event is currently down
+        /// The resource name
         /// </summary>
-        /// <param name="finger">Finger index</param>
-        /// <returns>True if the finger is currently touching the screen, false otherwise</returns>
-        public static bool IsDown(uint finger) => sfTouch_isDown(finger);
-
+        private const string _resourceName = "texture";
 
         /// <summary>
-        ///     This function returns the current touch position
+        ///     The my external
         /// </summary>
-        /// <param name="finger">Finger index</param>
-        /// <returns>Current position of the finger</returns>
-        ////////////////////////////////////////////////////////////
-        public static Vector2F GetPosition(uint finger) => GetPosition(finger, null);
+        internal readonly bool myExternal;
 
-        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Construct the texture
+        /// </summary>
+        /// <param name="width">Texture width</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Windows/TouchTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/TextureTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Touch.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Texture.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Touch.cs
+    Commit format: test: coverage Texture.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

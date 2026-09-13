@@ -158,3 +158,6 @@ CoverageAfter: ~20% (estimated; native-gated P/Invoke paths remain uncovered in 
 TestsAdded: 24
 Commit: test: Sdl.cs
 Status: OK
+
+Scope: 1_Presentation/Extension/Graphic/Sdl2/src
+Result: NO_REMAINING_COVERAGE_TASKS (all uncovered files in scope processed)
