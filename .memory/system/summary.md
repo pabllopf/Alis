@@ -76,3 +76,10 @@ TestsAdded: 4
 Commit: test: JoystickButtonEventArgs.cs
 Status: PASSED
 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs | 0.0% | 7/7 MouseMoveEventArgsCoverageTests pass (ctor variants + properties) | 7 | test: MouseMoveEventArgs.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs
+CoverageBefore: 0.0%
+CoverageAfter: 100% (local run)
+TestsAdded: 4
+Commit: test: MouseMoveEventArgs.cs
+Status: PASSED
