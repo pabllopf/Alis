@@ -143,3 +143,11 @@ CoverageAfter: existing coverage
 TestsAdded: 0 (8 existing tests pass locally)
 Commit: none
 Status: SKIPPED_ALREADY_COVERED
+
+## VideoPlayer.cs
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoPlayer.cs
+CoverageBefore: 38.2%
+CoverageAfter: local tests added; Sonar refresh pending
+TestsAdded: 18
+Commit: (this commit)
+Status: SUCCESS
