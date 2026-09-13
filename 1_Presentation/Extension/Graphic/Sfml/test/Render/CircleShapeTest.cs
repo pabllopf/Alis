@@ -524,7 +524,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // Act
             Vector2F point = shape.GetPoint(lastIndex);
 
-            // Assert
+            // Assert - the point must lie inside the local bounding box [0 .. 2*radius]
+            Assert.InRange(point.X, -2f, 102f);
+            Assert.InRange(point.Y, -2f, 102f);
 
             // Cleanup
             shape.Destroy(true);
@@ -539,10 +541,16 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // Arrange
             CircleShape shape = new CircleShape(50f, 3u);
 
-            // Act & Assert - all 3 points should be valid
+            // Act & Assert - all 3 points must lie on the circle boundary
+            const float centerX = 50f;
+            const float centerY = 50f;
             for (uint i = 0; i < shape.GetPointCount(); i++)
             {
                 Vector2F point = shape.GetPoint(i);
+                float dx = point.X - centerX;
+                float dy = point.Y - centerY;
+                float distance = MathF.Sqrt((dx * dx) + (dy * dy));
+                Assert.InRange(distance, 45f, 55f);
             }
 
             // Cleanup
