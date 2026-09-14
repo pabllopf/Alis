@@ -5,6 +5,65 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.7] - 2026-09-14
+### :bug: Bug Fixes
+- [`21d8940`](https://github.com/pabllopf/Alis/commit/21d89404b36c2cfd92320c293daf9e42788a1a9e) - All = 0x7FFFFFFF *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0057793`](https://github.com/pabllopf/Alis/commit/0057793bae404d4b31ec9a2d4bda5ecb88505084) - all unit test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d56386c`](https://github.com/pabllopf/Alis/commit/d56386cddb706ed92d9a17bd602eb27e1381bbda) - uni tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9727cec`](https://github.com/pabllopf/Alis/commit/9727cec4624974b3d05a38aa2d8e19643e71744f) - versions *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`b393f59`](https://github.com/pabllopf/Alis/commit/b393f59a63f66098e7fbc960ca77d63a256556d1) - record 100% line and branch coverage of Transform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7305d20`](https://github.com/pabllopf/Alis/commit/7305d20caf9ea54a86dfe87c51ba814b0ef8e8c1) - strengthen boundary assertions of CircleShape.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e42474`](https://github.com/pabllopf/Alis/commit/5e4247437cc2949ffd7e411c3421534f79041869) - Ivec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d69359`](https://github.com/pabllopf/Alis/commit/8d69359d8cc5312a1f0a6097afa08b1169154451) - Surface.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`75a0618`](https://github.com/pabllopf/Alis/commit/75a0618a9c4a499d0775a384065f9b035a2129af) - Vec4.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76e7c9c`](https://github.com/pabllopf/Alis/commit/76e7c9ca6b0e882dd0088a1c04030b3bfe4626ed) - SdlInputConst.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8acf1fb`](https://github.com/pabllopf/Alis/commit/8acf1fb33366250611ad871939e4219cae34903f) - Vec3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`590a29d`](https://github.com/pabllopf/Alis/commit/590a29df133fed0e2ccf7cd6e4f6bef2f2129b36) - JoystickButtonEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6688baa`](https://github.com/pabllopf/Alis/commit/6688baad8bce3dd1b47e8dd48b7e223c9e959cbf) - MouseMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c8c9eb2`](https://github.com/pabllopf/Alis/commit/c8c9eb2e7365b7446700e8c86351a8aa838c38b0) - MouseMoveEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`042f171`](https://github.com/pabllopf/Alis/commit/042f171f2d74887d0ce19a0758bd8813f249c4f8) - SizeEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`203648d`](https://github.com/pabllopf/Alis/commit/203648d9b96aabd2922ac153ac4b92595b67a925) - FFMpegWrapper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0167d95`](https://github.com/pabllopf/Alis/commit/0167d95297ffb5f019749ffe46984ba61abbe71e) - SizeEventArgs.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ff4dc0`](https://github.com/pabllopf/Alis/commit/6ff4dc0d998eed6756eb68498cc1112da382e509) - Clock.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`145f679`](https://github.com/pabllopf/Alis/commit/145f67998ca4abe61aae2c0807e3483d09d35690) - Ivec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`750c133`](https://github.com/pabllopf/Alis/commit/750c133c6dae4a9356a1a29f17652ea5486b4712) - Ivec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61aa219`](https://github.com/pabllopf/Alis/commit/61aa2195404a806fec6593e9582f3f445980d4fc) - Vec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf52fbb`](https://github.com/pabllopf/Alis/commit/bf52fbb3cd33cfa6bcdb88355f9dece6debfe5f5) - ImFontAtlasCustomRect.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec2d206`](https://github.com/pabllopf/Alis/commit/ec2d206f2c4459b875124843650905a5d5df3a2b) - Vec2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`86678dc`](https://github.com/pabllopf/Alis/commit/86678dcd85a7f99277b44365f51f8cb6848b8b42) - ImGuiWindowClass.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9e5df0`](https://github.com/pabllopf/Alis/commit/c9e5df0d8fe6785faefc31ca7a8b6166f9b71b53) - Listener.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20bcae3`](https://github.com/pabllopf/Alis/commit/20bcae3ca36be2de2d1fb3019db53c0c944c7e03) - VideoPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`530a625`](https://github.com/pabllopf/Alis/commit/530a625aff75ab44cc2e68af571ee5d1c74f1122) - Sdl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e74bda`](https://github.com/pabllopf/Alis/commit/5e74bda7add220680c737f44e0de9488d3516fa8) - Sdl2 scope queue drained *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8aeda87`](https://github.com/pabllopf/Alis/commit/8aeda874b4b27177619a59a96883e2e2507ecc90) - Touch.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b6cbea`](https://github.com/pabllopf/Alis/commit/5b6cbea3bd5852d3a0432e2d3641b3f7796f82a1) - Surface.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02aa4cc`](https://github.com/pabllopf/Alis/commit/02aa4cc4ed6d0e74c04131a4025bc1a279716350) - Sensor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3dc54c6`](https://github.com/pabllopf/Alis/commit/3dc54c63b175709d00f462e287bd476fd2701e05) - Constant.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bbee65d`](https://github.com/pabllopf/Alis/commit/bbee65d7b018392a8ec980e044792b477dce433a) - Keyboard.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eb9f62f`](https://github.com/pabllopf/Alis/commit/eb9f62fd721ae2f0a586a660880b0bb531a495d7) - ImColor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0aec763`](https://github.com/pabllopf/Alis/commit/0aec763508026edadef51c303acc4451360763e3) - VideoReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a592e8c`](https://github.com/pabllopf/Alis/commit/a592e8c81f358fd5c9759db16e553868413d929c) - Listener.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a3337a`](https://github.com/pabllopf/Alis/commit/3a3337ac511b460cdbc8c9bd47bf049a2a39e2ef) - AudioPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e9413ca`](https://github.com/pabllopf/Alis/commit/e9413ca5f16f17fdc4eb4c80d639803aecbead90) - Constant.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a098106`](https://github.com/pabllopf/Alis/commit/a0981063f3dee033cd830f1cbc3d51939106a8f2) - ImNodesMiniMapNodeHoveringCallback.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55ac114`](https://github.com/pabllopf/Alis/commit/55ac11423bc7c7384e49293fdda9add16ded7bd1) - ImNodesMiniMapNodeHoveringCallbackUserData.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`13569fb`](https://github.com/pabllopf/Alis/commit/13569fb29023b80dfbddb74481d58b9ce837173e) - Categories.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b1d98d`](https://github.com/pabllopf/Alis/commit/6b1d98d0a16c294067ea519e1556fcc8b424f5db) - AudioVideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58929c6`](https://github.com/pabllopf/Alis/commit/58929c610a2bb3a5b7307d6ca23cb6bb71a0206e) - ControllerCategories.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7ec72b`](https://github.com/pabllopf/Alis/commit/c7ec72bca513db538562dba1aeb1f8ae2241fd9a) - MediaReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c4b668c`](https://github.com/pabllopf/Alis/commit/c4b668ca3a03e845c0ee2b3d5972324b97e4388a) - VideoWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76d1f88`](https://github.com/pabllopf/Alis/commit/76d1f88c7bfac90efdd2ead8a8fe23d8c8373de5) - AudioWriter.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7da146`](https://github.com/pabllopf/Alis/commit/c7da1466f55f8e659f29c299ba082c18b2a2cff1) - AudioReader.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a5a0b78`](https://github.com/pabllopf/Alis/commit/a5a0b78e0ef7457e5c2573c52d97cfb61946ec72) - VideoFrame.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb8484c`](https://github.com/pabllopf/Alis/commit/fb8484c02d794a5b8587f1b327d34e36390148e5) - coverage DropBoxCloudManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45af699`](https://github.com/pabllopf/Alis/commit/45af699ac12aaa38cceec20663ab8c31ce48a4fc) - WindowsFilePicker.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8f4f02`](https://github.com/pabllopf/Alis/commit/a8f4f0278a6af57a380f13fdd7cbe6b3779c1085) - FilePickerExecutor.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f2545a9`](https://github.com/pabllopf/Alis/commit/f2545a9e5499f1c2c895838bd682334cb3fcd502) - FilePickerResult.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bdd1fc7`](https://github.com/pabllopf/Alis/commit/bdd1fc744d1ba6c9eb724dfd988f14da76f09585) - FilePickerValidator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.6] - 2026-09-12
 ### :bug: Bug Fixes
 - [`61fc392`](https://github.com/pabllopf/Alis/commit/61fc39267562551451b8636e6f12714112a40c14) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11279,3 +11338,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.4]: https://github.com/pabllopf/Alis/compare/v1.4.3...v1.4.4
 [v1.4.5]: https://github.com/pabllopf/Alis/compare/v1.4.4...v1.4.5
 [v1.4.6]: https://github.com/pabllopf/Alis/compare/v1.4.5...v1.4.6
+[v1.4.7]: https://github.com/pabllopf/Alis/compare/v1.4.6...v1.4.7
