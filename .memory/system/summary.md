@@ -307,6 +307,14 @@ Commit: test: FilePickerResult.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
 | 1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs | 99.0% | 99.0% (2 defensive null branches unreachable) | 0 | test: FilePickerValidator.cs | BLOCKED_BY_PRODUCTION_CODE |
 | 1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs | 1.6% | 46.7% | 24 | test: coverage ImFontPtr.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs | 1.9% | 1.9% (all 137 uncovered lines P/Invoke native glfw, absent on CI) | 0 | test: coverage GlfwNative.cs | BLOCKED_BY_PRODUCTION_CODE |
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs
+CoverageBefore: 1.9%
+CoverageAfter: 1.9%
+TestsAdded: 0
+Commit: test: coverage GlfwNative.cs
+Status: BLOCKED_BY_PRODUCTION_CODE
 
 File: 1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs
 CoverageBefore: 99.0%
