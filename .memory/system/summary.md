@@ -370,3 +370,10 @@ CoverageAfter: 95.4% (436/457 instrumented lines hit; 21 lines remain uncovered)
 TestsAdded: 46
 Commit: test: coverage ImPlot.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs
+CoverageBefore: 8.4%
+CoverageAfter: 100% (local coverlet, 835/835 lines hit)
+TestsAdded: 7
+Commit: test: Sdl.cs
+Status: COMPLETED
