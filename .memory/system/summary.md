@@ -346,6 +346,14 @@ TestsAdded: 33
 Commit: test: coverage ImFontConfigPtr.cs
 Status: COMPLETED
 | 1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs | 7.0% | 7.0% (local coverlet, 21/21 pass) | 21 | test: coverage ImDrawListPtr.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/ImGuiP3.cs | 11.7% | 98.0% (local coverlet 436/445; residual EndTabItem/EndDragDrop*/EndDragDropTarget abort native host) | 36 | test: coverage ImGuiP3.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImGuiP3.cs
+CoverageBefore: 11.7%
+CoverageAfter: 98.0%
+TestsAdded: 36
+Commit: test: coverage ImGuiP3.cs
+Status: COMPLETED
 
 File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs
 CoverageBefore: 7.0%
