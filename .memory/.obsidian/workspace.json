@@ -203,6 +203,15 @@
   },
   "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "system/results/ImPlot.md",
+    "system/results/ImPlotP2.md",
+    "system/results/ImGuiP3.md",
+    "system/results/ImDrawListPtr.md",
+    "system/results/ImFontConfigPtr.md",
+    "system/results/NativeWindow.md",
+    "system/results/ImNodes.md",
+    "system/results/GlfwNative.md",
+    "system/results/ImFontPtr.md",
     "system/cache/sonarcloud_cache_20260914_065618.json",
     "system/cache/sonarcloud_cache_20260913_173953.json",
     "system/results/VideoFrame.cs.md",
@@ -222,14 +231,6 @@
     "system/results/1_Presentation_Extension_Graphic_Ui_src_ImColor.md",
     "system/results/1_Presentation_Extension_Graphic_Sfml_src_Windows_Keyboard.md",
     "system/results/6_Ideation_Math_src_Util_Constant.md",
-    "system/results/1_Presentation_Extension_Graphic_Sfml_src_Windows_Sensor.md",
-    "system/results/1_Presentation_Extension_Graphic_Sdl2_src_Structs_Surface.md",
-    "system/results/1_Presentation_Extension_Graphic_Sfml_src_Windows_Touch.md",
-    "system/results/Sdl.cs.md",
-    "system/results/1_Presentation_Extension_Graphic_Sfml_src_Audios_Listener.md",
-    "system/results/VideoPlayer.cs.md",
-    "system/results/1_Presentation_Extension_Graphic_Ui_src_ImGuiWindowClass.md",
-    "system/results/Vec2.md",
     "system/cache/sonarcloud_cache_20260913_105645.json",
     "system/cache/sonarcloud_cache_20260913_105611.json",
     "system/cache/sonarcloud_cache_20260913_105548.json",
@@ -238,7 +239,6 @@
     "system/covertall/locks/CircleShape.cs.lock",
     "system/cache/sonarcloud_cache_20260901_080755.json",
     "system/cache/sonarcloud_cache_20260901_075832.json",
-    "system/cache/sonarcloud_cache_20260831_200149.json",
     "Sin título.canvas"
   ]
 }
