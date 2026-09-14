@@ -330,3 +330,10 @@ CoverageAfter: 19.5%
 TestsAdded: 24
 Commit: test: coverage ImNodes.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+CoverageBefore: 3.5%
+CoverageAfter: 98.1% (with hooks; no CI fix possible)
+TestsAdded: 0
+Commit: test: coverage NativeWindow.cs
+Status: BLOCKED_BY_PRODUCTION_CODE

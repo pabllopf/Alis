@@ -95,6 +95,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodes.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs"
   ]
 }
