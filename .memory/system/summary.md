@@ -337,3 +337,11 @@ CoverageAfter: 98.1% (with hooks; no CI fix possible)
 TestsAdded: 0
 Commit: test: coverage NativeWindow.cs
 Status: BLOCKED_BY_PRODUCTION_CODE
+| 1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs | 4.3% | 100% (local coverlet, 33/33 pass) | 33 | test: coverage ImFontConfigPtr.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs
+CoverageBefore: 4.3%
+CoverageAfter: 100% (local coverlet line-rate 1, branch-rate 1)
+TestsAdded: 33
+Commit: test: coverage ImFontConfigPtr.cs
+Status: COMPLETED
