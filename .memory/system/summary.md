@@ -345,3 +345,11 @@ CoverageAfter: 100% (local coverlet line-rate 1, branch-rate 1)
 TestsAdded: 33
 Commit: test: coverage ImFontConfigPtr.cs
 Status: COMPLETED
+| 1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs | 7.0% | 7.0% (local coverlet, 21/21 pass) | 21 | test: coverage ImDrawListPtr.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Ui/src/ImDrawListPtr.cs
+CoverageBefore: 7.0%
+CoverageAfter: 7.0% (local coverlet line-rate 0.0701, branch-rate 0)
+TestsAdded: 21
+Commit: test: coverage ImDrawListPtr.cs
+Status: COMPLETED
