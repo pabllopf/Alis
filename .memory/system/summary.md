@@ -362,3 +362,11 @@ TestsAdded: 21
 Commit: test: coverage ImDrawListPtr.cs
 Status: COMPLETED
 | 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs | 13.5% | 84.1% | 30 | test: coverage ImPlotP2.cs | COMPLETED |
+| 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs | 16.6% | 95.4% | 46 | test: coverage ImPlot.cs | COMPLETED |
+
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs
+CoverageBefore: 16.6% (381 uncovered lines, 8 uncovered branches)
+CoverageAfter: 95.4% (436/457 instrumented lines hit; 21 lines remain uncovered)
+TestsAdded: 46
+Commit: test: coverage ImPlot.cs
+Status: COMPLETED
