@@ -378,3 +378,11 @@ CoverageAfter: 100% (local coverlet, 835/835 lines hit)
 TestsAdded: 7
 Commit: test: Sdl.cs
 Status: COMPLETED
+
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs (+ Sdl2Image/SdlImage.cs, Sdl2Ttf/SdlTtf.cs)
+CoverageBefore: 8.4% (SonarCloud master, 768 uncovered lines)
+CoverageAfter: 100% (local coverlet, 1670/1670 Sdl.cs sequence points; SdlImage 42/42; SdlTtf 360/360)
+TestsAdded: 0 (existing 735 Sdl2 tests now execute on CI without Homebrew SDL2)
+Commit: test: Sdl.cs
+Status: COMPLETED
+Notes: Root cause of the SonarCloud gap was the skip gate, not missing tests. RequireSdl2FactAttribute and RequireSdl2TtfFactAttribute only probed assemblyDir/{name}, assemblyDir/lib{name}, lib{name}.dylib and lib{name}.so; they never probed the redistributed runtimes/osx-x64|arm64/native/{name}.dylib dropped into the test output directory. On macos-15-intel CI (no Homebrew SDL2) every native-gated test skipped, so Sdl.cs/SdlImage/SdlTtf stayed near 0%. Adding the bare {name}.dylib and {name}.so candidates lets the bundled libs resolve first (assemblyDir is searched before the Homebrew/system dirs). Sdl2Image already probed {name}.dylib. Verified: 735 passed, 0 failed, 0 skipped.

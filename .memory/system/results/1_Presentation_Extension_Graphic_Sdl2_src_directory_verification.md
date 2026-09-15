@@ -50,9 +50,18 @@ Sdl.cs (native), Sdl2Image/SdlImage.cs, and Sdl2Ttf/SdlTtf.cs regardless of test
 ## Status
 
 Local coverage of coverable code: **100% line, 100% branch except 4 unreachable big-endian conditions.**
-SonarCloud reflection of 100% is blocked by:
-1. Stale analysis (needs a `scan:`-triggered CI run).
-2. CI runner lacks SDL2 native libs (`.github/workflows` shared resource — would need
-   `brew install sdl2 sdl2_image sdl2_ttf`, not performed per shared-file protection).
-3. 4 hardware-bound big-endian branches in Sdl.cs .cctor.
-4. Enum/const declaration lines (Mapping) that coverlet cannot emit hits for.
+
+Update 2026-09-15: the SonarCloud gap was re-investigated against the fresh master analysis
+(revision dba921aa2fe7, 2026-09-15T07:13Z). The numbers are NOT stale — the native-gated tests
+skip on the macos-15-intel runner because it has no Homebrew SDL2. The skip gate itself was the
+bug: `RequireSdl2FactAttribute` and `RequireSdl2TtfFactAttribute` never probed the bare
+`{name}.dylib` / `{name}.so` candidates, so the redistributed `runtimes/<rid>/native/*` copies
+dropped into the test output directory were ignored. Fixed in `test/**` (no production change):
+added the bare-name candidates, assemblyDir is searched before Homebrew/system dirs. Re-verified
+735 passed / 0 failed / 0 skipped; coverlet Sdl.cs 1670/1670, SdlImage 42/42, SdlTtf 360/360.
+
+Remaining SonarCloud reflection limits:
+1. CI runner lacks SDL2_image/SDL2_ttf transitive deps, so those two files may stay skipped until
+   the shared workflow installs `sdl2_image`/`sdl2_ttf` (out of scope, shared-file protection).
+2. 4 hardware-bound big-endian branches in Sdl.cs .cctor.
+3. Enum/const declaration lines (Mapping) that coverlet cannot emit hits for.
