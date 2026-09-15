@@ -43,3 +43,18 @@ Local coverlet uncovered: 132-169 (OnInit), 197-255 (OnDraw/RenderPreview),
 - 2_Application ContextHandler / GraphicManager (above).
 - Extension native gates (Sfml `RequireCSfml*FactAttribute`, Ui, Glfw) — mirror the
   Sdl2 `{name}.dylib` fix so existing tests stop skipping on CI.
+
+## Session 2026-09-15 (continued) findings
+
+- 4_Operation/Ecs is now saturated for deterministic coverage. Remaining uncovered lines are:
+  - Arity-8 range Run(Scene, Archetype, start, length) in Update.cs — needs a 9-component entity
+    created as ONE deferred call; Scene.Create maxes at 8 and buffered Adds play back after the
+    deferred subset update => BLOCKED_BY_PRODUCTION_API.
+  - ComponentRegistry internal registration edge branches, Archetype.SameComponents mismatch,
+    GameObjectExtensions.GetComp, Scene deferred-recursion-limit throws — no InternalsVisibleTo in
+    Ecs src, so unreachable from tests; only reachable through deep public-API scenarios.
+  - EnumerableHelpers/FastestStack/CommandBuffer "uncovered" lines are coverlet sequence-point
+    artifacts (clamps/braces) or require >1B-element inputs.
+- 4_Operation/Graphic (MacNativePlatform, GLShaderProgram, WebAssembly*) — 613 tests legitimately
+  skip (WebOnly/WindowsOnly/LinuxOnly); the macOS/GL paths need a live GL context / main-thread
+  window and are not testable off the main thread (same class of limitation as Glfw).
