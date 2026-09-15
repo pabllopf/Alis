@@ -24,3 +24,9 @@ CoverageAfter: 92.8% (local coverlet; residual lines platform/heavy/unreachable)
 TestsAdded: 1 (zip compression-ratio rejection)
 Commit: test: UpdateManager.cs
 Status: COMPLETED
+File: 4_Operation/Ecs/src/Updating/Runners/Update.cs
+CoverageBefore: 95.1%
+CoverageAfter: 95.1% (arity-8 full Run already covered; range Run BLOCKED_BY_PRODUCTION_API)
+TestsAdded: 1 (UpdateAllClassesTest arity-8 full run)
+Commit: test: Update.cs
+Status: COMPLETED (behavioral) / BLOCKED (arity-8 range Run)

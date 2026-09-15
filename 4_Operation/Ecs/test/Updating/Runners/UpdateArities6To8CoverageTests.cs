@@ -176,9 +176,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
         #endregion
 
-        #region Full Run for arity 8
-
-       
+        #region Range-based Run for arity 8
 
         #endregion
     }
