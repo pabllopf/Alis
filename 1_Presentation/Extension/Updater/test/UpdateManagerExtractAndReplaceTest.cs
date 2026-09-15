@@ -173,6 +173,28 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
+        ///     Tests that a zip entry with an extreme compression ratio is rejected.
+        /// </summary>
+        [Fact]
+        public void ExtractAndReplace_WithHighCompressionRatio_Throws()
+        {
+            using TempFolder temp = TempFolder.Create();
+            string programFolder = Path.Combine(temp.Path, "program");
+            string zipPath = Path.Combine(temp.Path, "ratio.zip");
+            using (ZipArchive zip = ZipFile.Open(zipPath, ZipArchiveMode.Create))
+            {
+                ZipArchiveEntry entry = zip.CreateEntry("data.bin", CompressionLevel.Fastest);
+                using StreamWriter writer = new StreamWriter(entry.Open());
+                writer.Write(new string('A', 100000));
+            }
+
+            UpdateManager sut = CreateManagerFast(programFolder: programFolder);
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => sut.ExtractAndReplace(zipPath));
+            Assert.Contains("compression ratio", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
         ///     Tests that extract and replace throws for invalid extensions
         /// </summary>
         /// <param name="caseId">The case id</param>

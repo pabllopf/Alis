@@ -18,3 +18,9 @@ CoverageAfter: unchanged on CI (main-thread bootstrap blocked); gate fix applied
 TestsAdded: 0
 Commit: test: GlfwNative.cs
 Status: COMPLETED (gate fix) / BLOCKED_BY_CI_BOOTSTRAP (full CI coverage)
+File: 1_Presentation/Extension/Updater/src/UpdateManager.cs
+CoverageBefore: 89.8%
+CoverageAfter: 92.8% (local coverlet; residual lines platform/heavy/unreachable)
+TestsAdded: 1 (zip compression-ratio rejection)
+Commit: test: UpdateManager.cs
+Status: COMPLETED
