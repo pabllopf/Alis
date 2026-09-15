@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.8] - 2026-09-15
+### :bug: Bug Fixes
+- [`a421cb6`](https://github.com/pabllopf/Alis/commit/a421cb631d8df56b15ae8c5c32e3604b1779e46d) - version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dba921a`](https://github.com/pabllopf/Alis/commit/dba921aa2fe782d3b602a53d9df27f3db919df6f) - spam code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c850125`](https://github.com/pabllopf/Alis/commit/c85012542f307ea9d4f4378bdf9730423fa758ec) - sonar run *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`94c123d`](https://github.com/pabllopf/Alis/commit/94c123db04f7c67e93d63f61c2d2e80f0d120d71) - coverage ImFontPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df4b96b`](https://github.com/pabllopf/Alis/commit/df4b96bee7a01beb8054c951f3de5012135c0830) - coverage GlfwNative.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed6ea93`](https://github.com/pabllopf/Alis/commit/ed6ea93b32bda82a582f9ae1bc5efc7bf54166fd) - coverage ImNodes.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f47724c`](https://github.com/pabllopf/Alis/commit/f47724c8f5f5883e523d87a86de5d4240d8fcc9b) - coverage NativeWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a56825`](https://github.com/pabllopf/Alis/commit/3a568258bfc916ed298e0f78386362503cac37b2) - coverage ImFontConfigPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f438aaf`](https://github.com/pabllopf/Alis/commit/f438aaf6cf210a2508b4a5f700bfefaddf9e5f96) - coverage ImDrawListPtr.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35f57e1`](https://github.com/pabllopf/Alis/commit/35f57e1e9a63bac288919a992dacc8fc750cdae0) - coverage ImGuiP3.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14cd2cb`](https://github.com/pabllopf/Alis/commit/14cd2cb7069be41eaebcecae8261eaa3b0243fcb) - coverage ImPlotP2.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`50ee376`](https://github.com/pabllopf/Alis/commit/50ee376611aae0c83b72cfbcf7a006edd45060cd) - coverage ImPlot.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9d7f98`](https://github.com/pabllopf/Alis/commit/d9d7f98f032c850d13ec74730b95d9eac1dd0b41) - Sdl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`baef8f3`](https://github.com/pabllopf/Alis/commit/baef8f3a6c25256a50b69acb895d82946f867a13) - Sdl.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b420ae`](https://github.com/pabllopf/Alis/commit/2b420aee043dbcec91b5ba38594ec62c1a7b9d49) - GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09a746a`](https://github.com/pabllopf/Alis/commit/09a746a3fb3f02f145e9819c342395da5dbd3901) - BitOperations.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`215a0e0`](https://github.com/pabllopf/Alis/commit/215a0e01bf1b786b48bc078746f64f0d53de75ec) - GlfwNative.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a318f29`](https://github.com/pabllopf/Alis/commit/a318f29cc090ecfbbd5f7601d10ab2004e5be8be) - UpdateManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4facf9a`](https://github.com/pabllopf/Alis/commit/4facf9abce6eeb2caefb8f3fd1d4683704f180ff) - Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`8d1eb7e`](https://github.com/pabllopf/Alis/commit/8d1eb7ef10c5f03d9b4b8e4795c78e9b8a74433a) - coverage backlog analysis *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.7] - 2026-09-14
 ### :bug: Bug Fixes
 - [`21d8940`](https://github.com/pabllopf/Alis/commit/21d89404b36c2cfd92320c293daf9e42788a1a9e) - All = 0x7FFFFFFF *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11339,3 +11367,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.5]: https://github.com/pabllopf/Alis/compare/v1.4.4...v1.4.5
 [v1.4.6]: https://github.com/pabllopf/Alis/compare/v1.4.5...v1.4.6
 [v1.4.7]: https://github.com/pabllopf/Alis/compare/v1.4.6...v1.4.7
+[v1.4.8]: https://github.com/pabllopf/Alis/compare/v1.4.7...v1.4.8
