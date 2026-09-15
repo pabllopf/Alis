@@ -41,8 +41,74 @@ namespace Alis.Core.Ecs.Test.Redifinition
     /// </summary>
     public class BitOperationsRemainingCoverageTests
     {
+        /// <summary>
+        ///     The custom System.Numerics.BitOperations type shipped by the Alis.Core.Ecs assembly
+        /// </summary>
+        private static readonly Type EcsBitOperationsType = typeof(GameObject).Assembly.GetType("System.Numerics.BitOperations");
 
+        /// <summary>
+        ///     Gets the custom BitOperations static method by name
+        /// </summary>
+        private static MethodInfo GetEcsMethod(string name, params Type[] parameters) => EcsBitOperationsType.GetMethod(name, parameters);
 
-    
+        /// <summary>
+        ///     Tests that Log2 returns the zero-based position of the highest set bit
+        /// </summary>
+        [Fact]
+        public void Log2_ReturnsHighestSetBitPosition()
+        {
+            MethodInfo log2 = GetEcsMethod("Log2", typeof(uint));
+
+            Assert.Equal(0, (int)log2.Invoke(null, new object[] {1u}));
+            Assert.Equal(1, (int)log2.Invoke(null, new object[] {2u}));
+            Assert.Equal(1, (int)log2.Invoke(null, new object[] {3u}));
+            Assert.Equal(2, (int)log2.Invoke(null, new object[] {4u}));
+            Assert.Equal(2, (int)log2.Invoke(null, new object[] {7u}));
+            Assert.Equal(3, (int)log2.Invoke(null, new object[] {8u}));
+            Assert.Equal(4, (int)log2.Invoke(null, new object[] {16u}));
+            Assert.Equal(7, (int)log2.Invoke(null, new object[] {255u}));
+            Assert.Equal(8, (int)log2.Invoke(null, new object[] {256u}));
+            Assert.Equal(10, (int)log2.Invoke(null, new object[] {1024u}));
+            Assert.Equal(31, (int)log2.Invoke(null, new object[] {2147483648u}));
+            Assert.Equal(31, (int)log2.Invoke(null, new object[] {uint.MaxValue}));
+        }
+
+        /// <summary>
+        ///     Tests that RoundUpToPowerOf2 returns the next highest power of two
+        /// </summary>
+        [Fact]
+        public void RoundUpToPowerOf2_ReturnsNextHighestPowerOfTwo()
+        {
+            MethodInfo roundUp = GetEcsMethod("RoundUpToPowerOf2", typeof(uint));
+
+            Assert.Equal(0u, (uint)roundUp.Invoke(null, new object[] {0u}));
+            Assert.Equal(1u, (uint)roundUp.Invoke(null, new object[] {1u}));
+            Assert.Equal(2u, (uint)roundUp.Invoke(null, new object[] {2u}));
+            Assert.Equal(4u, (uint)roundUp.Invoke(null, new object[] {3u}));
+            Assert.Equal(8u, (uint)roundUp.Invoke(null, new object[] {5u}));
+            Assert.Equal(8u, (uint)roundUp.Invoke(null, new object[] {7u}));
+            Assert.Equal(8u, (uint)roundUp.Invoke(null, new object[] {8u}));
+            Assert.Equal(16u, (uint)roundUp.Invoke(null, new object[] {9u}));
+            Assert.Equal(32u, (uint)roundUp.Invoke(null, new object[] {31u}));
+            Assert.Equal(128u, (uint)roundUp.Invoke(null, new object[] {100u}));
+            Assert.Equal(1024u, (uint)roundUp.Invoke(null, new object[] {1024u}));
+            Assert.Equal(0u, (uint)roundUp.Invoke(null, new object[] {uint.MaxValue}));
+        }
+
+        /// <summary>
+        ///     Tests that RotateLeft rotates the bits left by the specified offset
+        /// </summary>
+        [Fact]
+        public void RotateLeft_RotatesBitsLeft()
+        {
+            MethodInfo rotateLeft = GetEcsMethod("RotateLeft", typeof(uint), typeof(int));
+
+            Assert.Equal(2u, (uint)rotateLeft.Invoke(null, new object[] {1u, 1}));
+            Assert.Equal(1u, (uint)rotateLeft.Invoke(null, new object[] {2147483648u, 1}));
+            Assert.Equal(591751041u, (uint)rotateLeft.Invoke(null, new object[] {305419896u, 4}));
+            Assert.Equal(3454992811u, (uint)rotateLeft.Invoke(null, new object[] {2882400001u, 8}));
+            Assert.Equal(1u, (uint)rotateLeft.Invoke(null, new object[] {1u, 32}));
+            Assert.Equal(1u, (uint)rotateLeft.Invoke(null, new object[] {1u, 0}));
+        }
     }
 }

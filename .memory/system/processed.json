@@ -1,5 +1,6 @@
 {
   "processed": [
-    "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs"
+    "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs"
   ]
 }
