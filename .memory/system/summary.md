@@ -12,3 +12,9 @@ CoverageAfter: 100.0% (local coverlet 58/58)
 TestsAdded: 3
 Commit: test: BitOperations.cs
 Status: COMPLETED
+File: 1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs (+ NativeWindow.cs)
+CoverageBefore: 1.9% / 3.5%
+CoverageAfter: unchanged on CI (main-thread bootstrap blocked); gate fix applied
+TestsAdded: 0
+Commit: test: GlfwNative.cs
+Status: COMPLETED (gate fix) / BLOCKED_BY_CI_BOOTSTRAP (full CI coverage)

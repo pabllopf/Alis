@@ -79,7 +79,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Attributes
                 {
                     Path.Combine(dir, name),
                     Path.Combine(dir, "lib" + name),
+                    Path.Combine(dir, name + ".dylib"),
                     Path.Combine(dir, "lib" + name + ".dylib"),
+                    Path.Combine(dir, name + ".so"),
                     Path.Combine(dir, "lib" + name + ".so"),
                     Path.Combine(dir, "lib" + name + ".so.3")
                 };
