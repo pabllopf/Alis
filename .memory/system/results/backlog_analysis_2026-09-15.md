@@ -78,3 +78,16 @@ Conclusion: deterministic, CI-runnable coverage is saturated across the pure-man
 Every remaining gap requires one of: (a) InternalsVisibleTo / visibility changes in src,
 (b) CI workflow changes (native libs / startup hooks), or (c) algorithm-specific edge geometry
 with <3-line payoff.
+
+## 2026-09-16 — Ui gate fix (largest unlock of the effort)
+
+Fix: RequireCImguiSystemFactAttribute + RequireImNodesSystemFactAttribute now probe the bare
+`cimgui.dylib` (self-contained universal binary). Result: Ui test project 10358 passed /
+14 legitimate skips; Ui/src total 95.8% (22144/23118) local coverlet. Committed 8ab33a4de.
+
+Residual Ui gaps verified BLOCKED (crash the native cimgui lib when called):
+- ImPlotP8 PlotShaded S16/U16/S32/U32/S64/U64 ref overloads (24 lines) — native access violation.
+- ImGuiP8 SliderFloat4 (both overloads) — native crash (SliderFloat/2/3 are safe and covered).
+- ImGuiIOPtr KeysData/MouseClickedPos/MouseDragMaxDistanceAbs getters — Marshal.OffsetOf<ImGuiIo>
+  reads with a zeroed block; struct exposes KeysData0..9 not "KeysData", so the getter throws; not
+  worth covering. AddInputCharacter/AddKeyEvent/... native IO_* methods are context-dependent.
