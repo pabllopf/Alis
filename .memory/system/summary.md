@@ -30,3 +30,9 @@ CoverageAfter: 95.1% (arity-8 full Run already covered; range Run BLOCKED_BY_PRO
 TestsAdded: 1 (UpdateAllClassesTest arity-8 full run)
 Commit: test: Update.cs
 Status: COMPLETED (behavioral) / BLOCKED (arity-8 range Run)
+File: 1_Presentation/Extension/Graphic/Ui/src/** (ImGuiP7, ImPlot, ImNodes, ImDrawListPtr, ImGuiP3, ...)
+CoverageBefore: ~0-25% per file (native-gated, all tests skipped)
+CoverageAfter: 95.8% total (22144/23118, local coverlet)
+TestsAdded: 0 (existing 10,358 tests now run instead of skipping)
+Commit: test: ImGuiP7.cs
+Status: COMPLETED

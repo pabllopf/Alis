@@ -97,6 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
             {
                 Path.Combine(assemblyDir, "cimgui"),
                 Path.Combine(assemblyDir, "libcimgui"),
+                Path.Combine(assemblyDir, "cimgui.dylib"),
                 Path.Combine(assemblyDir, "libcimgui.dylib")
             };
 

@@ -69,6 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
             {
                 Path.Combine(assemblyDir, name),
                 Path.Combine(assemblyDir, "lib" + name),
+                Path.Combine(assemblyDir, name + ".dylib"),
                 Path.Combine(assemblyDir, "lib" + name + ".dylib")
             };
 
