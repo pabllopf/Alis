@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.9] - 2026-09-16
+### :bug: Bug Fixes
+- [`f60162a`](https://github.com/pabllopf/Alis/commit/f60162af530383fdf5682af67644d0ec49bcf95a) - normal tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`67302c7`](https://github.com/pabllopf/Alis/commit/67302c7b53b6cb31d78b672ed008658935f591a6) - TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8ab33a4`](https://github.com/pabllopf/Alis/commit/8ab33a4de68736e3e6c89923d44170356eeb50e2) - ImGuiP7.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`dc1717a`](https://github.com/pabllopf/Alis/commit/dc1717aefe9f34f410cc43d01231d46b7fcd4217) - coverage backlog analysis (final) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f51cbf7`](https://github.com/pabllopf/Alis/commit/f51cbf760e8fb0d08daab0a226b6c64507be14ff) - coverage backlog analysis (Ui residual) *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.4.8] - 2026-09-15
 ### :bug: Bug Fixes
 - [`a421cb6`](https://github.com/pabllopf/Alis/commit/a421cb631d8df56b15ae8c5c32e3604b1779e46d) - version *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11368,3 +11381,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.6]: https://github.com/pabllopf/Alis/compare/v1.4.5...v1.4.6
 [v1.4.7]: https://github.com/pabllopf/Alis/compare/v1.4.6...v1.4.7
 [v1.4.8]: https://github.com/pabllopf/Alis/compare/v1.4.7...v1.4.8
+[v1.4.9]: https://github.com/pabllopf/Alis/compare/v1.4.8...v1.4.9
