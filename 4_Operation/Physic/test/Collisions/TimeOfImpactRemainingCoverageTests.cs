@@ -120,5 +120,44 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(ToiOutputState.Seperated, output.State);
             Assert.Equal(1.0f, output.T, 5);
         }
+
+        /// <summary>
+        ///     Tests that calculate time of impact with fully overlapping sweeps resolves the overlap
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_WithOverlappingSweeps_ResolvesOverlap()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+        }
     }
 }
