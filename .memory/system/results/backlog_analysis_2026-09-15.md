@@ -91,3 +91,13 @@ Residual Ui gaps verified BLOCKED (crash the native cimgui lib when called):
 - ImGuiIOPtr KeysData/MouseClickedPos/MouseDragMaxDistanceAbs getters — Marshal.OffsetOf<ImGuiIo>
   reads with a zeroed block; struct exposes KeysData0..9 not "KeysData", so the getter throws; not
   worth covering. AddInputCharacter/AddKeyEvent/... native IO_* methods are context-dependent.
+
+## 2026-09-16 (cont.) — verified crash-gated residuals
+
+- SDL2 extension: 100.0% (2274/2274) local coverlet; Sdl.cs (1670 lines) now runs on CI via the
+  gate fix; SdlImage/SdlTtf remain CI-blocked by framework/homebrew native deps.
+- ImNodes EditorContextFree: crashes the test host (native access violation) when called with a
+  real editor context -> residual ImNodes lines are crash-gated, matching the ImPlotP8 integer
+  PlotShaded and ImGuiP8 SliderFloat4 findings.
+- Conclusion re-confirmed: Ui is at its safe ceiling (95.8%); remaining ~4% crashes the bundled
+  cimgui when the wrapper's struct/pointer marshalling mismatches the native ABI.
