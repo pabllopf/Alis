@@ -58,3 +58,23 @@ Local coverlet uncovered: 132-169 (OnInit), 197-255 (OnDraw/RenderPreview),
 - 4_Operation/Graphic (MacNativePlatform, GLShaderProgram, WebAssembly*) — 613 tests legitimately
   skip (WebOnly/WindowsOnly/LinuxOnly); the macOS/GL paths need a live GL context / main-thread
   window and are not testable off the main thread (same class of limitation as Glfw).
+
+## Session 2026-09-15 (final) — Physic/Ecs definitive findings
+
+- TimeOfImpact (public, 89.7%): the 14 remaining lines (164-167 max-iteration Failed,
+  239-242 pushback Failed, 256-258 pushback cap, 299-306 root-find exit) are CCD bisection
+  edge states that require precisely tuned sweeps; existing 280/294 coverage is the practical
+  ceiling without deep per-shape tuning.
+- SimpleCombiner 97-99 ("Skipping corrupt poly"): UNREACHABLE. SimplifyTools.MergeParallelEdges
+  only merges while newNVertices > 3 (SimplifyTools.cs:216/228), so a merged polygon can never
+  drop below 3 vertices -> the Count < 3 else branch is dead code.
+- Island/WorldPhysic/ContactSolver/Collision remaining lines: internal methods (no
+  InternalsVisibleTo) or contact/TOI simulation states (disabled contacts, ToiFlag) that need
+  multi-body dynamic simulation setup.
+- MarchingSquares/EarclipDecomposer/YuPengClipper remaining lines: specific marching/clipping
+  edge geometry.
+
+Conclusion: deterministic, CI-runnable coverage is saturated across the pure-managed codebase.
+Every remaining gap requires one of: (a) InternalsVisibleTo / visibility changes in src,
+(b) CI workflow changes (native libs / startup hooks), or (c) algorithm-specific edge geometry
+with <3-line payoff.
