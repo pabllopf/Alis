@@ -1348,7 +1348,36 @@
         <Platform Name="x64" />
         <Platform Name="x86" />
     </Configurations>
+    <Folder Name="/.config/">
+        <File Path=".config\Config.props" />
+        <File Path=".config\coverlet.runsettings" />
+        <File Path=".config\default.sln" />
+        <File Path=".config\SonarQube.Analysis.xml" />
+        <File Path=".config\xunit.runner.json" />
+    </Folder>
+    <Folder Name="/.config/default/">
+        <File Path=".config\default\default_app_csproj.props" />
+        <File Path=".config\default\default_benchmark_csproj.props" />
+        <File Path=".config\default\default_csproj.props" />
+        <File Path=".config\default\default_generator_csproj.props" />
+        <File Path=".config\default\default_sample_android_csproj.props" />
+        <File Path=".config\default\default_sample_csproj.props" />
+        <File Path=".config\default\default_sample_ios_csproj.props" />
+        <File Path=".config\default\default_sample_web_csproj.props" />
+        <File Path=".config\default\default_test_csproj.props" />
+    </Folder>
+    <Folder Name="/.config/target/">
+        <File Path=".config\target\alis.targets" />
+    </Folder>
     <Folder Name="/.scripts/" />
+    <Folder Name="/.scripts/linux/">
+        <File Path="docs\scripts\linux\generate_comments.sh" />
+        <File Path="docs\scripts\linux\install_env.sh" />
+        <File Path="docs\scripts\linux\restart_nuget.sh" />
+        <File Path="docs\scripts\linux\restart_permissions.sh" />
+        <File Path="docs\scripts\linux\restart_sln.sh" />
+        <File Path="docs\scripts\linux\run_tests.sh" />
+    </Folder>
     <Folder Name="/.scripts/osx/">
         <File Path="docs\scripts\macos\build_all.sh" />
         <File Path="docs\scripts\macos\clean_sln.sh" />
@@ -1370,6 +1399,16 @@
         <File Path="docs\scripts\macos\run_tests.sh" />
         <File Path="docs\scripts\macos\test_modules_size.sh" />
         <File Path="docs\scripts\macos\test_repository_size.sh" />
+    </Folder>
+    <Folder Name="/.scripts/windows/">
+        <File Path="docs\scripts\windows\create_dashboard.bat" />
+        <File Path="docs\scripts\windows\generate_comments.bat" />
+        <File Path="docs\scripts\windows\install_env.bat" />
+        <File Path="docs\scripts\windows\restart_nuget.bat" />
+        <File Path="docs\scripts\windows\restart_permissions.bat" />
+        <File Path="docs\scripts\windows\restart_sln.bat" />
+        <File Path="docs\scripts\windows\run_pack_all.bat" />
+        <File Path="docs\scripts\windows\run_tests.bat" />
     </Folder>
 
     <!-- ===================== -->
