@@ -23,7 +23,7 @@ jobs:
       repository-projects: write
       security-events: write
       statuses: write
-    if: contains(github.event.head_commit.message, 'scan:')
+    if: contains(github.event.head_commit.message, 'scan:core')
     runs-on: macos-15-intel
 
     steps:
@@ -45,4 +45,7 @@ jobs:
           dotnet sonarscanner begin /k:"pabllopf-official_alis-core" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./3_Structuration/Core/src/Alis.Core.csproj
           dotnet test -f net8.0 -c Debug ./3_Structuration/Core/test/Alis.Core.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./4_Operation/Physic/src/Alis.Core.Physic.csproj
+          dotnet test -f net8.0 -c Debug ./4_Operation/Physic/test/Alis.Core.Physic.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}"
