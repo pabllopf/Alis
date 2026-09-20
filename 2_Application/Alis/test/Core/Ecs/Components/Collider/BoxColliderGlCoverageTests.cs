@@ -52,30 +52,68 @@ namespace Alis.Test.Core.Ecs.Components.Collider
     /// <seealso cref="IDisposable"/>
     public class BoxColliderGlCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo GlField = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly MethodInfo InitializeShadersMethod = typeof(BoxCollider).GetMethod("InitializeShaders", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly MethodInfo OnCollisionMethod = typeof(BoxCollider).GetMethod("OnCollision", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly MethodInfo OnSeparationMethod = typeof(BoxCollider).GetMethod("OnSeparation", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly FieldInfo FixtureListField = typeof(Alis.Core.Physic.Dynamics.Body).GetField("FixtureList", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The on collision enter calls
+        /// </summary>
         private static int OnCollisionEnterCalls;
 
+        /// <summary>
+        /// The on collision exit calls
+        /// </summary>
         private static int OnCollisionExitCalls;
 
+        /// <summary>
+        /// The collision enter spy
+        /// </summary>
         private struct CollisionEnterSpy : IOnCollisionEnter
         {
+            /// <summary>
+            /// Ons the collision enter using the specified other
+            /// </summary>
+            /// <param name="other">The other</param>
             public void OnCollisionEnter(IGameObject other) => OnCollisionEnterCalls++;
         }
 
+        /// <summary>
+        /// The collision exit spy
+        /// </summary>
         private struct CollisionExitSpy : IOnCollisionExit
         {
+            /// <summary>
+            /// Ons the collision exit using the specified other
+            /// </summary>
+            /// <param name="other">The other</param>
             public void OnCollisionExit(IGameObject other) => OnCollisionExitCalls++;
         }
 
+        /// <summary>
+        /// The saved gl
+        /// </summary>
         private readonly object _savedGl;
 
         /// <summary>
@@ -88,36 +126,85 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         /// </summary>
         public void Dispose() => GlField?.SetValue(null, _savedGl);
 
+        /// <summary>
+        /// The fake create program
+        /// </summary>
         private static readonly CreateProgram FakeCreateProgram = () => 1;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly CreateShader FakeCreateShader = _ => 1;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly ShaderSourceDel FakeShaderSource = (_, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly CompileShader FakeCompileShader = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly AttachShader FakeAttachShader = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly LinkProgram FakeLinkProgram = _ => { };
 
+        /// <summary>
+        /// The arrays
+        /// </summary>
         private static readonly GenVertexArrays FakeGenVertexArrays = (_, arrays) => arrays[0] = 2;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BindVertexArray FakeBindVertexArray = _ => { };
 
+        /// <summary>
+        /// The buffers
+        /// </summary>
         private static readonly GenBuffers FakeGenBuffers = (_, buffers) => buffers[0] = 3;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BindBuffer FakeBindBuffer = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BufferData FakeBufferData = (_, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly EnableVertexAttribArrayDel FakeEnableVertexAttribArray = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly VertexAttribPointerDel FakeVertexAttribPointer = (_, _, _, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly UseProgram FakeUseProgram = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly DrawArrays FakeDrawArrays = (_, _, _) => { };
 
+        /// <summary>
+        /// Resolvers
+        /// </summary>
+        /// <returns>The gl get proc address delegate</returns>
         private static Gl.GetProcAddressDelegate Resolver() => name => name switch
         {
             "glCreateProgram" => Marshal.GetFunctionPointerForDelegate(FakeCreateProgram),
@@ -138,6 +225,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             _ => IntPtr.Zero
         };
 
+        /// <summary>
+        /// Builds the context using the specified preview mode
+        /// </summary>
+        /// <param name="previewMode">The preview mode</param>
+        /// <returns>The context</returns>
         private static Context BuildContext(bool previewMode)
         {
             Context context = new Context();
@@ -149,8 +241,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             return context;
         }
 
+        /// <summary>
+        /// Builds the entity
+        /// </summary>
+        /// <returns>The game object</returns>
         private static GameObject BuildEntity() => new Scene().CreateFromObjects(new object[] { new Transform(new Vector2F(0f, 0f), 0f) });
 
+        /// <summary>
+        /// Builds the collider using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The collider</returns>
         private static BoxCollider BuildCollider(Context context)
         {
             BoxCollider collider = new BoxCollider

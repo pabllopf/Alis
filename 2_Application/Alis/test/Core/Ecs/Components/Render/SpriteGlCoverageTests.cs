@@ -51,18 +51,39 @@ namespace Alis.Test.Core.Ecs.Components.Render
     /// <seealso cref="IDisposable"/>
     public class SpriteGlCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo GlField = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo SharedInitializedField = typeof(Sprite).GetField("SharedInitialized", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo LastBoundTextureField = typeof(Sprite).GetField("LastBoundTexture", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly FieldInfo TextureField = typeof(Sprite).GetField("<Texture>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly FieldInfo SizeField = typeof(Sprite).GetField("<Size>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly FieldInfo FlipField = typeof(Sprite).GetField("<Flip>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The saved gl
+        /// </summary>
         private readonly object _savedGl;
 
         /// <summary>
@@ -75,86 +96,198 @@ namespace Alis.Test.Core.Ecs.Components.Render
         /// </summary>
         public void Dispose() => GlField?.SetValue(null, _savedGl);
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Gl.ActiveTexture FakeActiveTexture = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BindTexture FakeBindTexture = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly CreateShader FakeCreateShader = _ => 1;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly ShaderSourceDel FakeShaderSource = (_, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly CompileShader FakeCompileShader = _ => { };
 
+        /// <summary>
+        /// The fake create program
+        /// </summary>
         private static readonly CreateProgram FakeCreateProgram = () => 1;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly AttachShader FakeAttachShader = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly LinkProgram FakeLinkProgram = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly DeleteShader FakeDeleteShader = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly GetUniformLocation FakeGetUniformLocation = (_, _) => 0;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Uniform1I FakeUniform1I = (_, _) => { };
 
+        /// <summary>
+        /// The arrays
+        /// </summary>
         private static readonly GenVertexArrays FakeGenVertexArrays = (_, arrays) => arrays[0] = 1;
 
+        /// <summary>
+        /// The buffers
+        /// </summary>
         private static readonly GenBuffers FakeGenBuffers = (_, buffers) => buffers[0] = 2;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BindVertexArray FakeBindVertexArray = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BindBuffer FakeBindBuffer = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BufferData FakeBufferData = (_, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly VertexAttribPointerDel FakeVertexAttribPointer = (_, _, _, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly EnableVertexAttribArrayDel FakeEnableVertexAttribArray = _ => { };
 
+        /// <summary>
+        /// The textures
+        /// </summary>
         private static readonly GenTextures FakeGenTextures = (_, textures) => textures[0] = 3;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly TexParameteri FakeTexParameteri = (_, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly TexImage2D FakeTexImage2D = (_, _, _, _, _, _, _, _, _) => { };
 
+        /// <summary>
+        /// The zero
+        /// </summary>
         private static readonly GetString FakeMipMap = _ => IntPtr.Zero;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly UseProgram FakeUseProgram = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Uniform2F FakeUniform2F = (_, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Uniform1F FakeUniform1F = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Enable FakeEnable = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly BlendFunc FakeBlendFunc = (_, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly DrawElements FakeDrawElements = (_, _, _, _) => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly Disable FakeDisable = _ => { };
 
+        /// <summary>
+        /// The 
+        /// </summary>
         private static readonly DeleteTextures FakeDeleteTextures = (_, _) => { };
 
+        /// <summary>
+        /// The compile status
+        /// </summary>
         private static readonly GetShaderiv OkShaderiv = (_, pname, p) => p[0] = pname == ShaderParameter.CompileStatus ? 1 : 0;
 
+        /// <summary>
+        /// The link status
+        /// </summary>
         private static readonly GetProgramiv OkProgramiv = (_, pname, p) => p[0] = pname == ProgramParameter.LinkStatus ? 1 : 0;
 
+        /// <summary>
+        /// The compile status
+        /// </summary>
         private static readonly GetShaderiv FailCompileShaderiv = (_, pname, p) => p[0] = pname == ShaderParameter.CompileStatus ? 0 : 12;
 
+        /// <summary>
+        /// The append
+        /// </summary>
         private static readonly GetShaderInfoLogDel FakeReadShaderLog = (_, _, length, sb) =>
         {
             length[0] = 4;
             sb.Append("fail");
         };
 
+        /// <summary>
+        /// The link status
+        /// </summary>
         private static readonly GetProgramiv FailLinkProgramiv = (_, pname, p) => p[0] = pname == ProgramParameter.LinkStatus ? 0 : 9;
 
+        /// <summary>
+        /// The append
+        /// </summary>
         private static readonly GetProgramInfoLogDel FakeReadProgramLog = (_, _, length, sb) =>
         {
             length[0] = 4;
             sb.Append("link");
         };
 
+        /// <summary>
+        /// Successes the resolver
+        /// </summary>
+        /// <returns>The gl get proc address delegate</returns>
         private static Gl.GetProcAddressDelegate SuccessResolver() => name => name switch
         {
             "glActiveTexture" => Marshal.GetFunctionPointerForDelegate(FakeActiveTexture),
@@ -192,6 +325,10 @@ namespace Alis.Test.Core.Ecs.Components.Render
             _ => IntPtr.Zero
         };
 
+        /// <summary>
+        /// Compiles the fail resolver
+        /// </summary>
+        /// <returns>The gl get proc address delegate</returns>
         private static Gl.GetProcAddressDelegate CompileFailResolver() => name => name switch
         {
             "glGetShaderiv" => Marshal.GetFunctionPointerForDelegate(FailCompileShaderiv),
@@ -199,6 +336,10 @@ namespace Alis.Test.Core.Ecs.Components.Render
             _ => SuccessResolver()(name)
         };
 
+        /// <summary>
+        /// Links the fail resolver
+        /// </summary>
+        /// <returns>The gl get proc address delegate</returns>
         private static Gl.GetProcAddressDelegate LinkFailResolver() => name => name switch
         {
             "glGetProgramiv" => Marshal.GetFunctionPointerForDelegate(FailLinkProgramiv),
@@ -206,6 +347,10 @@ namespace Alis.Test.Core.Ecs.Components.Render
             _ => SuccessResolver()(name)
         };
 
+        /// <summary>
+        /// Fragments the fail resolver
+        /// </summary>
+        /// <returns>The gl get proc address delegate</returns>
         private static Gl.GetProcAddressDelegate FragmentFailResolver()
         {
             int counter = 0;
@@ -218,12 +363,19 @@ namespace Alis.Test.Core.Ecs.Components.Render
             };
         }
 
+        /// <summary>
+        /// Resets the sprite statics
+        /// </summary>
         private static void ResetSpriteStatics()
         {
             SharedInitializedField?.SetValue(null, false);
             LastBoundTextureField?.SetValue(null, 0u);
         }
 
+        /// <summary>
+        /// Invokes the initialize shared resources using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         private static void InvokeInitializeSharedResources(Context context)
         {
             try
@@ -236,6 +388,10 @@ namespace Alis.Test.Core.Ecs.Components.Render
             }
         }
 
+        /// <summary>
+        /// Builds the sprite
+        /// </summary>
+        /// <returns>The sprite</returns>
         private static Sprite BuildSprite()
         {
             Sprite sprite = new Sprite(new Context(), string.Empty, 0);
@@ -448,6 +604,11 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(3u, TextureField?.GetValue(boxed));
         }
 
+        /// <summary>
+        /// Boxes the sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        /// <returns>The boxed</returns>
         private static object Box(Sprite sprite)
         {
             object boxed = sprite;

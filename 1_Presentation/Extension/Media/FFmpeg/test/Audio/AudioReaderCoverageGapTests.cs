@@ -40,12 +40,24 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// </summary>
     public class AudioReaderCoverageGapTests : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
 
+        /// <summary>
+        /// The no audio stream json
+        /// </summary>
         private const string NoAudioStreamJson = "{\"streams\":[{\"index\":0,\"codec_type\":\"video\",\"codec_name\":\"h264\"}],\"format\":{\"duration\":\"1.000000\"}}";
 
+        /// <summary>
+        /// The empty object json
+        /// </summary>
         private const string EmptyObjectJson = "{}";
 
+        /// <summary>
+        /// The corrupt json
+        /// </summary>
         private const string CorruptJson = "not a json payload";
 
         /// <summary>

@@ -45,10 +45,19 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         /// </summary>
         private sealed class TestableGoogleDriveCloudManager : GoogleDriveCloudManager
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestableGoogleDriveCloudManager"/> class
+            /// </summary>
+            /// <param name="context">The context</param>
+            /// <param name="driveService">The drive service</param>
             public TestableGoogleDriveCloudManager(Context context, DriveService driveService) : base(context, driveService)
             {
             }
 
+            /// <summary>
+            /// Invokes the dispose using the specified disposing
+            /// </summary>
+            /// <param name="disposing">The disposing</param>
             public void InvokeDispose(bool disposing) => Dispose(disposing);
         }
 
