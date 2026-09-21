@@ -1,5 +1,6 @@
 name: '[ALIS][NEW][CONTRIBUTORS]'
 
+
 on:
   issues:
     types: [ opened ]
