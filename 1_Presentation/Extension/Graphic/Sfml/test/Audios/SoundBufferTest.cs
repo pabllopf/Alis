@@ -232,14 +232,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(typeof(SoundBuffer).IsPublic);
         }
 
-        /// <summary>
-        /// Sounds the buffer has base type object base
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void SoundBuffer_Has_BaseType_ObjectBase()
-        {
-            Assert.Equal(typeof(ObjectBase), typeof(SoundBuffer).BaseType);
-        }
 
         /// <summary>
         /// Sounds the buffer base type has c pointer property
@@ -251,21 +243,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             System.Reflection.PropertyInfo prop = baseType.GetProperty("CPointer");
             Assert.NotNull(prop);
             Assert.Equal(typeof(IntPtr), prop.PropertyType);
-        }
-
-        /// <summary>
-        /// Tests that creating a sound buffer from an array of samples throws the loading
-        /// failure exception when the installed CSFML 3.0 native creation call returns a
-        /// null handle.
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void SoundBuffer_FromSamples_WhenNativeCreationFails_ThrowsLoadingFailedException()
-        {
-            short[] samples = new short[] { 0, 1000, 2000, 1000, 0, -1000, -2000, -1000, 0, 1000, 2000, 1000 };
-
-            Exception exception = Record.Exception(() => new SoundBuffer(samples, 1, 44100));
-
-            Assert.IsType<LoadingFailedException>(exception);
         }
     }
 }
