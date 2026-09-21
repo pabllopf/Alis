@@ -55,8 +55,8 @@ jobs:
             /d:sonar.exclusions="**/runtimes/**,**/obj/**,**/sample/**,**/test/**,**/docs/**,**/*.generated.cs,**/*.jpg,**/*.md,**/*.jpeg,**/*.png,**/*.gif,**/*.pdf,**/*.docx,**/*.xlsx,**/*.zip,**/*.ico" \
             /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
 
-          dotnet build -c Debug --verbosity quiet -f net8.0 ./alis_design.slnx
-          dotnet test --no-build -m:1 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test --diag:logs/log.txt
+          dotnet build -c Debug --verbosity quiet -f net8.0 ./alis.slnx
+          dotnet test --no-build -m:1 --verbosity quiet -f net8.0 -c Debug ./alis.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test --diag:logs/log.txt
       
           dotnet sonarscanner end \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

@@ -43,6 +43,50 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
 
           dotnet sonarscanner begin /k:"pabllopf-official_alis-extension-payment-stripe" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_PAYMENT_STRIPE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          
           dotnet build -c Debug -f net8.0 ./1_Presentation/Extension/Payment/Stripe/src/Alis.Extension.Payment.Stripe.csproj
           dotnet test -f net8.0 -c Debug ./1_Presentation/Extension/Payment/Stripe/test/Alis.Extension.Payment.Stripe.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          
+          dotnet build -c Debug -f net8.0 ./2_Application/Alis/src/Alis.csproj
+          dotnet test -f net8.0 -c Debug ./2_Application/Alis/src/Alis.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./3_Structuration/Core/src/Alis.Core.csproj
+          dotnet test -f net8.0 -c Debug ./3_Structuration/Core/test/Alis.Core.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./4_Operation/Physic/src/Alis.Core.Physic.csproj
+          dotnet test -f net8.0 -c Debug ./4_Operation/Physic/test/Alis.Core.Physic.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj
+          dotnet test -f net8.0 -c Debug ./4_Operation/Graphic/test/Alis.Core.Graphic.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./4_Operation/Ecs/src/Alis.Core.Ecs.csproj
+          dotnet test -f net8.0 -c Debug ./4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./4_Operation/Audio/src/Alis.Core.Audio.csproj
+          dotnet test -f net8.0 -c Debug ./4_Operation/Audio/test/Alis.Core.Audio.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./5_Declaration/Aspect/src/Alis.Core.Aspect.csproj
+          dotnet test -f net8.0 -c Debug ./5_Declaration/Aspect/test/Alis.Core.Aspect.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Math/test/Alis.Core.Aspect.Math.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Logging/test/Alis.Core.Aspect.Logging.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet build -c Debug -f net8.0 ./6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          
+          
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_PAYMENT_STRIPE }}"
