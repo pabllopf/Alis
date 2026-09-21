@@ -23,7 +23,7 @@ jobs:
       repository-projects: write
       security-events: write
       statuses: write
-    if: contains(github.event.head_commit.message, 'scan:')
+    if: contains(github.event.head_commit.message, 'scan:all') || contains(github.event.head_commit.message, 'scan:core')
     runs-on: macos-15-intel
 
     steps:
@@ -48,4 +48,7 @@ jobs:
           
           dotnet build -c Debug -f net8.0 ./4_Operation/Physic/src/Alis.Core.Physic.csproj
           dotnet test -f net8.0 -c Debug ./4_Operation/Physic/test/Alis.Core.Physic.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          
+          
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}"
