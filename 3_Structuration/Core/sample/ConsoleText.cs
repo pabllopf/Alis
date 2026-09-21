@@ -31,7 +31,6 @@ using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 
-
 namespace Alis.Core.Sample
 {
     /// <summary>
