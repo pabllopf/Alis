@@ -93,3 +93,4 @@ Debug/
 *.txt
 /coverlet-results
 *.trx
+/.memory
