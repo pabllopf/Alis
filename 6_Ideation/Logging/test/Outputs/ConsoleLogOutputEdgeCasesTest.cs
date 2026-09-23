@@ -183,10 +183,10 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        ///     Tests that write does not throw when Console.WriteLine throws
+        ///     Tests that write propagates when Console.WriteLine throws
         /// </summary>
         [Fact]
-        public void Write_WhenConsoleThrows_DoesNotThrow()
+        public void Write_WhenConsoleThrows_PropagatesException()
         {
             TextWriter originalOut = Console.Out;
             try
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
                 ConsoleLogOutput output = new ConsoleLogOutput();
                 LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
-                output.Write(entry);
+                Assert.Throws<IOException>(() => output.Write(entry));
             }
             finally
             {

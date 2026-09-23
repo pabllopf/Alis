@@ -12,10 +12,10 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggerFactoryCoverageTest
     {
         /// <summary>
-        /// Tests that should swallow exception during dispose
+        /// Tests that dispose propagates exception from output dispose
         /// </summary>
         [Fact]
-        public void ShouldSwallowExceptionDuringDispose()
+        public void ShouldPropagateExceptionDuringDispose()
         {
             ThrowingOutput throwOnDispose = new ThrowingOutput(throwOnDispose: true);
             LoggerFactory factory = new LoggerFactory();
@@ -23,15 +23,15 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => factory.Dispose());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
             Assert.True(throwOnDispose.DisposeCalled);
         }
 
         /// <summary>
-        /// Tests that should swallow exception during flush
+        /// Tests that flush propagates exception from output flush
         /// </summary>
         [Fact]
-        public void ShouldSwallowExceptionDuringFlush()
+        public void ShouldPropagateExceptionDuringFlush()
         {
             ThrowingOutput throwOnFlush = new ThrowingOutput(throwOnFlush: true);
             LoggerFactory factory = new LoggerFactory();
@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => factory.Flush());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
         }
 
         /// <summary>
@@ -57,10 +57,10 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that should dispose multiple outputs swallowing exceptions
+        /// Tests that dispose multiple outputs propagates exceptions
         /// </summary>
         [Fact]
-        public void ShouldDisposeMultipleOutputsSwallowingExceptions()
+        public void ShouldDisposeMultipleOutputsPropagatingExceptions()
         {
             ThrowingOutput throwOnDispose = new ThrowingOutput(throwOnDispose: true);
             MemoryLogOutput memory = new MemoryLogOutput();
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => factory.Dispose());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
         }
 
         /// <summary>
@@ -134,10 +134,10 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that should flush all outputs with throwing one
+        /// Tests that flush all outputs propagates exceptions from throwing output
         /// </summary>
         [Fact]
-        public void ShouldFlushAllOutputsWithThrowingOne()
+        public void ShouldFlushAllOutputsWithThrowingOnePropagate()
         {
             ThrowingOutput throwOnFlush = new ThrowingOutput(throwOnFlush: true);
             MemoryLogOutput memory = new MemoryLogOutput();
@@ -149,14 +149,14 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => factory.Flush());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
         }
 
         /// <summary>
-        /// Tests that should swallow exception during write in core logger
+        /// Tests that write propagates exception from throwing output in core logger
         /// </summary>
         [Fact]
-        public void ShouldSwallowExceptionDuringWriteInCoreLogger()
+        public void ShouldPropagateExceptionDuringWriteInCoreLogger()
         {
             ThrowingOutput throwOnWrite = new ThrowingOutput(throwOnWrite: true);
             MemoryLogOutput memory = new MemoryLogOutput();
@@ -167,15 +167,15 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => logger.LogInfo("msg"));
 
-            Assert.Null(ex);
-            Assert.Single(memory.GetEntries());
+            Assert.NotNull(ex);
+            Assert.Empty(memory.GetEntries());
         }
 
         /// <summary>
-        /// Tests that should swallow exception from throwing filter
+        /// Tests that write propagates exception from throwing filter
         /// </summary>
         [Fact]
-        public void ShouldSwallowExceptionFromThrowingFilter()
+        public void ShouldPropagateExceptionFromThrowingFilter()
         {
             MemoryLogOutput memory = new MemoryLogOutput();
             LoggerFactory factory = new LoggerFactory();
@@ -185,7 +185,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             Exception ex = Record.Exception(() => logger.LogInfo("msg"));
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
             Assert.Empty(memory.GetEntries());
         }
 

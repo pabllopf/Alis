@@ -110,7 +110,6 @@ namespace Alis.Extension.Language.Translator.Test
         {
             TranslationManager mgr = new TranslationManager();
             Lang lang = new Lang("en", "English");
-            mgr.AddLanguage(lang);
             mgr.SetLanguage(lang);
 
             mgr.AddTranslation(lang, "key", "value");

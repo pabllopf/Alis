@@ -86,16 +86,9 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 else
                 {
-                    try
+                    if ((ffplayp != null) && !ffplayp.HasExited)
                     {
-                        if ((ffplayp != null) && !ffplayp.HasExited)
-                        {
-                            ffplayp.Kill();
-                        }
-                    }
-                    catch
-                    {
-                        // Ignore exception during cleanup
+                        ffplayp.Kill();
                     }
                 }
             }
@@ -162,16 +155,9 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 throw new InvalidOperationException("Player is already opened for writing frames!");
             }
 
-            try
+            if ((ffplayp != null) && !ffplayp.HasExited)
             {
-                if ((ffplayp != null) && !ffplayp.HasExited)
-                {
-                    ffplayp.Kill();
-                }
-            }
-            catch
-            {
-                // Swallow exception; Kill() may throw if process already exited.
+                ffplayp.Kill();
             }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"-f rawvideo -video_size {width}:{height} -framerate {framerateFrequency} -pixel_format rgb24 -i -",
@@ -192,16 +178,9 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
             try
             {
-                try
+                if (ffplayp != null && !ffplayp.HasExited)
                 {
-                    if (ffplayp != null && !ffplayp.HasExited)
-                    {
-                        ffplayp.Kill();
-                    }
-                }
-                catch
-                {
-                    // Ignore exception during close
+                    ffplayp.Kill();
                 }
 
                 ffplayp?.WaitForExit();

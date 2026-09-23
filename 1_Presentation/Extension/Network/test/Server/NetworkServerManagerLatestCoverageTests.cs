@@ -44,10 +44,10 @@ namespace Alis.Extension.Network.Test.Server
     public class NetworkServerManagerLatestCoverageTests
     {
         /// <summary>
-        ///     Tests that dispose swallows exception thrown by error handler during stop
+        ///     Tests that dispose propagates exception thrown by error handler during stop
         /// </summary>
         [Fact]
-        public async Task Dispose_ErrorHandlerThrowsDuringStop_SwallowsException()
+        public async Task Dispose_ErrorHandlerThrowsDuringStop_PropagatesException()
         {
             NetworkServerManager manager = new NetworkServerManager();
             Mock<INetworkTransport> mockTransport = new Mock<INetworkTransport>();
@@ -68,15 +68,15 @@ namespace Alis.Extension.Network.Test.Server
 
             Exception ex = Record.Exception(() => manager.Dispose());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
             Assert.True(errorHandlerInvoked);
         }
 
         /// <summary>
-        ///     Tests that dispose swallows exception thrown by disconnected handler during stop
+        ///     Tests that dispose routes exception thrown by disconnected handler to the error event
         /// </summary>
         [Fact]
-        public async Task Dispose_DisconnectedHandlerThrowsDuringStop_SwallowsException()
+        public async Task Dispose_DisconnectedHandlerThrowsDuringStop_RoutesError()
         {
             NetworkServerManager manager = new NetworkServerManager();
             Mock<INetworkTransport> mockTransport = new Mock<INetworkTransport>();
@@ -89,16 +89,19 @@ namespace Alis.Extension.Network.Test.Server
             await manager.InitializeAsync(new NetworkConfig());
 
             bool disconnectedHandlerInvoked = false;
+            Exception routedException = null;
             manager.Disconnected += (sender, args) =>
             {
                 disconnectedHandlerInvoked = true;
                 throw new InvalidOperationException("disconnected handler failure");
             };
+            manager.Error += (sender, args) => routedException = args.Exception;
 
             Exception ex = Record.Exception(() => manager.Dispose());
 
             Assert.Null(ex);
             Assert.True(disconnectedHandlerInvoked);
+            Assert.IsType<InvalidOperationException>(routedException);
         }
 
         /// <summary>

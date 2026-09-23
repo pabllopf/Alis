@@ -127,16 +127,16 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that conditional log filter predicate throws exception should return true
+        ///     Tests that conditional log filter predicate throwing exception propagates
         /// </summary>
         /// <exception cref="InvalidOperationException">Test error</exception>
         [Fact]
-        public void ConditionalLogFilter_PredicateThrowsException_ShouldReturnTrue()
+        public void ConditionalLogFilter_PredicateThrowsException_ShouldPropagate()
         {
             ConditionalLogFilter filter = new ConditionalLogFilter(e => throw new InvalidOperationException("Test error"));
 
             ILogEntry entry = CreateEntry(LogLevel.Info);
-            Assert.True(filter.ShouldLog(entry));
+            Assert.Throws<InvalidOperationException>(() => filter.ShouldLog(entry));
         }
 
         /// <summary>

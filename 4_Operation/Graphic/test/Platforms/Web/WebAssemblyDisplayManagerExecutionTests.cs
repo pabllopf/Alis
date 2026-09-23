@@ -180,23 +180,21 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that get device pixel ratio returns one on desktop
+        ///     Tests that get device pixel ratio propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void GetDevicePixelRatio_ReturnsOneOnDesktop()
+        public void GetDevicePixelRatio_PropagatesOnDesktop()
         {
-            float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
-
-            Assert.Equal(1.0f, ratio, 5);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetDevicePixelRatio());
         }
 
         /// <summary>
-        ///     Tests that is fullscreen returns false on desktop
+        ///     Tests that is fullscreen propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void IsFullscreen_ReturnsFalseOnDesktop()
+        public void IsFullscreen_PropagatesOnDesktop()
         {
-            Assert.False(WebAssemblyDisplayManager.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsFullscreen());
         }
 
         /// <summary>
@@ -348,25 +346,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that set resolution returns true and updates the dimensions
+        ///     Tests that set resolution routes the native failure to false and keeps
+        ///     the stored dimensions on desktop
         /// </summary>
         [Fact]
-        public void SetResolution_ValidSize_ReturnsTrueAndUpdatesDimensions()
+        public void SetResolution_RoutesNativeFailureToFalse()
         {
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(new WebAssemblyPlatform());
 
             bool result = manager.SetResolution(1024, 768);
 
-            Assert.True(result);
-            Assert.Equal(1024, manager.GetWidth());
-            Assert.Equal(768, manager.GetHeight());
+            Assert.False(result);
+            Assert.Equal(800, manager.GetWidth());
+            Assert.Equal(600, manager.GetHeight());
         }
 
         /// <summary>
-        ///     Tests that set resolution fires the display resized event
+        ///     Tests that set resolution routes the native failure to false and does
+        ///     not fire the display resized event
         /// </summary>
         [Fact]
-        public void SetResolution_FiresDisplayResizedEvent()
+        public void SetResolution_DoesNotFireDisplayResizedEventOnNativeFailure()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
@@ -375,18 +375,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
             bool result = manager.SetResolution(1280, 720);
 
-            Assert.True(result);
-            Assert.NotNull(captured);
-            Assert.Equal(1280, captured.Width);
-            Assert.Equal(720, captured.Height);
+            Assert.False(result);
+            Assert.Null(captured);
         }
 
         /// <summary>
-        ///     Tests that set resolution fires the orientation changed event
-        ///     when the orientation changes
+        ///     Tests that set resolution routes the native failure to false and does
+        ///     not fire the orientation changed event
         /// </summary>
         [Fact]
-        public void SetResolution_OrientationChange_FiresOrientationChangedEvent()
+        public void SetResolution_DoesNotFireOrientationChangedEventOnNativeFailure()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
@@ -395,18 +393,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
             bool result = manager.SetResolution(500, 500);
 
-            Assert.True(result);
-            Assert.NotNull(captured);
-            Assert.Equal(ScreenOrientation.Square, captured.Orientation);
-            Assert.Equal(ScreenOrientation.Square, manager.GetOrientation());
+            Assert.False(result);
+            Assert.Null(captured);
         }
 
         /// <summary>
-        ///     Tests that set resolution without orientation change does not
-        ///     fire the orientation changed event
+        ///     Tests that set resolution without orientation change does not fire the
+        ///     orientation changed event when the native call fails
         /// </summary>
         [Fact]
-        public void SetResolution_SameOrientation_DoesNotFireOrientationChangedEvent()
+        public void SetResolution_DoesNotFireOrientationChangedEventWithoutOrientationChange()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
@@ -415,81 +411,77 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
             bool result = manager.SetResolution(1024, 768);
 
-            Assert.True(result);
+            Assert.False(result);
             Assert.Equal(0, orientationCount);
         }
 
         /// <summary>
-        ///     Tests that enter fullscreen returns false on desktop
+        ///     Tests that enter fullscreen propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void EnterFullscreen_ReturnsFalseOnDesktop()
+        public void EnterFullscreen_PropagatesOnDesktop()
         {
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(new WebAssemblyPlatform());
 
-            Assert.False(manager.EnterFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.EnterFullscreen());
         }
 
         /// <summary>
-        ///     Tests that exit fullscreen returns false on desktop
+        ///     Tests that exit fullscreen propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void ExitFullscreen_ReturnsFalseOnDesktop()
+        public void ExitFullscreen_PropagatesOnDesktop()
         {
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(new WebAssemblyPlatform());
 
-            Assert.False(manager.ExitFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.ExitFullscreen());
         }
 
         /// <summary>
-        ///     Tests that toggle fullscreen returns false when not fullscreen
+        ///     Tests that toggle fullscreen propagates the native failure when not fullscreen
         /// </summary>
         [Fact]
-        public void ToggleFullscreen_NotFullscreen_ReturnsFalse()
+        public void ToggleFullscreen_NotFullscreen_Propagates()
         {
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(new WebAssemblyPlatform());
 
-            Assert.False(manager.ToggleFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.ToggleFullscreen());
         }
 
         /// <summary>
-        ///     Tests that get system language returns english on desktop
+        ///     Tests that get system language propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void GetSystemLanguage_ReturnsEnglishOnDesktop()
+        public void GetSystemLanguage_PropagatesOnDesktop()
         {
-            string language = WebAssemblyDisplayManager.GetSystemLanguage();
-
-            Assert.Equal("en", language);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetSystemLanguage());
         }
 
         /// <summary>
-        ///     Tests that is online returns false on desktop
+        ///     Tests that is online propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void IsOnline_ReturnsFalseOnDesktop()
+        public void IsOnline_PropagatesOnDesktop()
         {
-            Assert.False(WebAssemblyDisplayManager.IsOnline());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsOnline());
         }
 
         /// <summary>
-        ///     Tests that get battery level returns minus one on desktop
+        ///     Tests that get battery level propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void GetBatteryLevel_ReturnsMinusOneOnDesktop()
+        public void GetBatteryLevel_PropagatesOnDesktop()
         {
-            float level = WebAssemblyDisplayManager.GetBatteryLevel();
-
-            Assert.Equal(-1.0f, level, 5);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetBatteryLevel());
         }
 
         /// <summary>
-        ///     Tests that is charging returns false on desktop
+        ///     Tests that is charging propagates the native failure on desktop
         /// </summary>
         [Fact]
-        public void IsCharging_ReturnsFalseOnDesktop()
+        public void IsCharging_PropagatesOnDesktop()
         {
-            Assert.False(WebAssemblyDisplayManager.IsCharging());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsCharging());
         }
 
         /// <summary>
@@ -513,10 +505,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that update without changes does not fire any event
+        ///     Tests that update without changes fires no events then propagates the
+        ///     native fullscreen failure
         /// </summary>
         [Fact]
-        public void Update_NoChanges_FiresNoEvents()
+        public void Update_NoChanges_FiresNoEventsThenPropagates()
         {
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(new WebAssemblyPlatform());
             int resizeCount = 0;
@@ -526,7 +519,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.OnOrientationChanged += (sender, args) => orientationCount++;
             manager.OnFullscreenChanged += (sender, args) => fullscreenCount++;
 
-            manager.Update();
+            Assert.ThrowsAny<Exception>(() => manager.Update());
 
             Assert.Equal(0, resizeCount);
             Assert.Equal(0, orientationCount);
@@ -535,9 +528,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         /// <summary>
         ///     Tests that update with a size change fires the display resized event
+        ///     then propagates the native fullscreen failure
         /// </summary>
         [Fact]
-        public void Update_SizeChange_FiresDisplayResizedEvent()
+        public void Update_SizeChange_FiresDisplayResizedEventThenPropagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
@@ -545,7 +539,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.OnDisplayResized += (sender, args) => captured = args;
             platform.OnWindowResize(1000, 800);
 
-            manager.Update();
+            Assert.ThrowsAny<Exception>(() => manager.Update());
 
             Assert.NotNull(captured);
             Assert.Equal(1000, captured.Width);
@@ -556,10 +550,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         /// <summary>
         ///     Tests that update with a size change fires the orientation changed
-        ///     event when the orientation changes
+        ///     event when the orientation changes then propagates
         /// </summary>
         [Fact]
-        public void Update_SizeChange_FiresOrientationChangedEvent()
+        public void Update_SizeChange_FiresOrientationChangedEventThenPropagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
@@ -567,7 +561,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.OnOrientationChanged += (sender, args) => captured = args;
             platform.OnWindowResize(500, 500);
 
-            manager.Update();
+            Assert.ThrowsAny<Exception>(() => manager.Update());
 
             Assert.NotNull(captured);
             Assert.Equal(ScreenOrientation.Square, captured.Orientation);

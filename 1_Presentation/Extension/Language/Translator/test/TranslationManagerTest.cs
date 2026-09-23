@@ -512,18 +512,17 @@ namespace Alis.Extension.Language.Translator.Test
         }
 
         /// <summary>
-        ///     Tests SetLanguage with duplicate add catches InvalidOperationException
+        ///     Tests SetLanguage with duplicate add propagates the InvalidOperationException
         /// </summary>
         [Fact]
-        public void SetLanguage_WithDuplicateAdd_ShouldNotThrow()
+        public void SetLanguage_WithDuplicateAdd_ShouldThrowInvalidOperationException()
         {
             TranslationManager translationManager = new TranslationManager();
             Lang lang = new Lang("en", "English");
 
             translationManager.SetLanguage(lang);
-            translationManager.SetLanguage(lang);
 
-            Assert.Equal(lang, translationManager.Lang);
+            Assert.Throws<InvalidOperationException>(() => translationManager.SetLanguage(lang));
         }
 
         /// <summary>

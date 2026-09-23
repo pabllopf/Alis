@@ -36,497 +36,473 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// <summary>
     ///     Execution tests for EmscriptenWeb JavaScript interop static class.
     ///     On non-WebAssembly runtimes all P/Invoke calls to "emscripten"
-    ///     throw DllNotFoundException, which the wrappers swallow, so these
-    ///     tests verify the catch/fallback paths of every public wrapper method.
+    ///     throw DllNotFoundException. The wrappers no longer swallow the
+    ///     exception, so every public wrapper method propagates the native
+    ///     failure to the caller.
     /// </summary>
     public class EmscriptenWebExecutionTests
     {
         /// <summary>
-        /// Tests that register keyboard callbacks does not throw
+        /// Tests that register keyboard callbacks propagates the native failure
         /// </summary>
         [Fact]
-        public void RegisterKeyboardCallbacks_DoesNotThrow()
+        public void RegisterKeyboardCallbacks_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 EmscriptenWeb.RegisterKeyboardCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
-            Assert.Null(ex);
         }
 
         /// <summary>
-        /// Tests that register mouse callbacks does not throw
+        /// Tests that register mouse callbacks propagates the native failure
         /// </summary>
         [Fact]
-        public void RegisterMouseCallbacks_DoesNotThrow()
+        public void RegisterMouseCallbacks_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 EmscriptenWeb.RegisterMouseCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
-            Assert.Null(ex);
         }
 
         /// <summary>
-        /// Tests that register gamepad callbacks does not throw
+        /// Tests that register gamepad callbacks propagates the native failure
         /// </summary>
         [Fact]
-        public void RegisterGamepadCallbacks_DoesNotThrow()
+        public void RegisterGamepadCallbacks_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 EmscriptenWeb.RegisterGamepadCallbacks(IntPtr.Zero, IntPtr.Zero));
-            Assert.Null(ex);
         }
 
         /// <summary>
-        /// Tests that register window callbacks does not throw
+        /// Tests that register window callbacks propagates the native failure
         /// </summary>
         [Fact]
-        public void RegisterWindowCallbacks_DoesNotThrow()
+        public void RegisterWindowCallbacks_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 EmscriptenWeb.RegisterWindowCallbacks(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
-            Assert.Null(ex);
         }
 
         /// <summary>
-        /// Tests that get connected gamepads returns empty on native failure
+        /// Tests that get connected gamepads propagates the native failure
         /// </summary>
         [Fact]
-        public void GetConnectedGamepads_ReturnsEmptyOnNativeFailure()
+        public void GetConnectedGamepads_PropagatesOnNonWeb()
         {
-            int[] result = EmscriptenWeb.GetConnectedGamepads();
-            Assert.NotNull(result);
-            Assert.Empty(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetConnectedGamepads());
         }
 
         /// <summary>
-        /// Tests that get gamepad axes returns empty on native failure
+        /// Tests that get gamepad axes propagates the native failure
         /// </summary>
         [Fact]
-        public void GetGamepadAxes_ReturnsEmptyOnNativeFailure()
+        public void GetGamepadAxes_PropagatesOnNonWeb()
         {
-            float[] result = EmscriptenWeb.GetGamepadAxes(0);
-            Assert.NotNull(result);
-            Assert.Empty(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetGamepadAxes(0));
         }
 
         /// <summary>
-        /// Tests that get gamepad buttons returns empty on native failure
+        /// Tests that get gamepad buttons propagates the native failure
         /// </summary>
         [Fact]
-        public void GetGamepadButtons_ReturnsEmptyOnNativeFailure()
+        public void GetGamepadButtons_PropagatesOnNonWeb()
         {
-            bool[] result = EmscriptenWeb.GetGamepadButtons(0);
-            Assert.NotNull(result);
-            Assert.Empty(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetGamepadButtons(0));
         }
 
         /// <summary>
-        /// Tests that show canvas does not throw
+        /// Tests that show canvas propagates the native failure
         /// </summary>
         [Fact]
-        public void ShowCanvas_DoesNotThrow()
+        public void ShowCanvas_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ShowCanvas());
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ShowCanvas());
         }
 
         /// <summary>
-        /// Tests that hide canvas does not throw
+        /// Tests that hide canvas propagates the native failure
         /// </summary>
         [Fact]
-        public void HideCanvas_DoesNotThrow()
+        public void HideCanvas_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.HideCanvas());
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.HideCanvas());
         }
 
         /// <summary>
-        /// Tests that set window title does not throw
+        /// Tests that set window title propagates the native failure
         /// </summary>
         [Fact]
-        public void SetWindowTitle_DoesNotThrow()
+        public void SetWindowTitle_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle("Test Title"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SetWindowTitle("Test Title"));
         }
 
         /// <summary>
-        /// Tests that set window title null does not throw
+        /// Tests that set window title null propagates the native failure
         /// </summary>
         [Fact]
-        public void SetWindowTitle_Null_DoesNotThrow()
+        public void SetWindowTitle_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SetWindowTitle(null));
         }
 
         /// <summary>
-        /// Tests that set canvas size does not throw
+        /// Tests that set canvas size propagates the native failure
         /// </summary>
         [Fact]
-        public void SetCanvasSize_DoesNotThrow()
+        public void SetCanvasSize_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.SetCanvasSize(800, 600));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SetCanvasSize(800, 600));
         }
 
         /// <summary>
-        /// Tests that set window icon does not throw
+        /// Tests that set window icon propagates the native failure
         /// </summary>
         [Fact]
-        public void SetWindowIcon_DoesNotThrow()
+        public void SetWindowIcon_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon("/icon.png"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SetWindowIcon("/icon.png"));
         }
 
         /// <summary>
-        /// Tests that set window icon null does not throw
+        /// Tests that set window icon null propagates the native failure
         /// </summary>
         [Fact]
-        public void SetWindowIcon_Null_DoesNotThrow()
+        public void SetWindowIcon_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SetWindowIcon(null));
         }
 
         /// <summary>
-        /// Tests that get window position x returns default
+        /// Tests that get window position x propagates the native failure
         /// </summary>
         [Fact]
-        public void GetWindowPositionX_ReturnsDefault()
+        public void GetWindowPositionX_PropagatesOnNonWeb()
         {
-            Assert.Equal(0, EmscriptenWeb.GetWindowPositionX());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetWindowPositionX());
         }
 
         /// <summary>
-        /// Tests that get window position y returns default
+        /// Tests that get window position y propagates the native failure
         /// </summary>
         [Fact]
-        public void GetWindowPositionY_ReturnsDefault()
+        public void GetWindowPositionY_PropagatesOnNonWeb()
         {
-            Assert.Equal(0, EmscriptenWeb.GetWindowPositionY());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetWindowPositionY());
         }
 
         /// <summary>
-        /// Tests that get device pixel ratio returns default
+        /// Tests that get device pixel ratio propagates the native failure
         /// </summary>
         [Fact]
-        public void GetDevicePixelRatio_ReturnsDefault()
+        public void GetDevicePixelRatio_PropagatesOnNonWeb()
         {
-            Assert.Equal(1.0f, EmscriptenWeb.GetDevicePixelRatio());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetDevicePixelRatio());
         }
 
         /// <summary>
-        /// Tests that request fullscreen returns false
+        /// Tests that request fullscreen propagates the native failure
         /// </summary>
         [Fact]
-        public void RequestFullscreen_ReturnsFalse()
+        public void RequestFullscreen_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.RequestFullscreen());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.RequestFullscreen());
         }
 
         /// <summary>
-        /// Tests that exit fullscreen returns false
+        /// Tests that exit fullscreen propagates the native failure
         /// </summary>
         [Fact]
-        public void ExitFullscreen_ReturnsFalse()
+        public void ExitFullscreen_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.ExitFullscreen());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ExitFullscreen());
         }
 
         /// <summary>
-        /// Tests that is fullscreen enabled returns false
+        /// Tests that is fullscreen enabled propagates the native failure
         /// </summary>
         [Fact]
-        public void IsFullscreenEnabled_ReturnsFalse()
+        public void IsFullscreenEnabled_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.IsFullscreenEnabled());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.IsFullscreenEnabled());
         }
 
         /// <summary>
-        /// Tests that lock pointer returns false
+        /// Tests that lock pointer propagates the native failure
         /// </summary>
         [Fact]
-        public void LockPointer_ReturnsFalse()
+        public void LockPointer_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.LockPointer());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.LockPointer());
         }
 
         /// <summary>
-        /// Tests that unlock pointer returns false
+        /// Tests that unlock pointer propagates the native failure
         /// </summary>
         [Fact]
-        public void UnlockPointer_ReturnsFalse()
+        public void UnlockPointer_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.UnlockPointer());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.UnlockPointer());
         }
 
         /// <summary>
-        /// Tests that is pointer locked returns false
+        /// Tests that is pointer locked propagates the native failure
         /// </summary>
         [Fact]
-        public void IsPointerLocked_ReturnsFalse()
+        public void IsPointerLocked_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.IsPointerLocked());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.IsPointerLocked());
         }
 
         /// <summary>
-        /// Tests that vibrate gamepad returns false
+        /// Tests that vibrate gamepad propagates the native failure
         /// </summary>
         [Fact]
-        public void VibrateGamepad_ReturnsFalse()
+        public void VibrateGamepad_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.VibrateGamepad(0, 0.5f, 0.5f, 100.0f));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.VibrateGamepad(0, 0.5f, 0.5f, 100.0f));
         }
 
         /// <summary>
-        /// Tests that get system time ms returns default
+        /// Tests that get system time ms propagates the native failure
         /// </summary>
         [Fact]
-        public void GetSystemTimeMs_ReturnsDefault()
+        public void GetSystemTimeMs_PropagatesOnNonWeb()
         {
-            Assert.Equal(0.0, EmscriptenWeb.GetSystemTimeMs());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetSystemTimeMs());
         }
 
         /// <summary>
-        /// Tests that open file dialog returns null
+        /// Tests that open file dialog propagates the native failure
         /// </summary>
         [Fact]
-        public void OpenFileDialog_ReturnsNull()
+        public void OpenFileDialog_PropagatesOnNonWeb()
         {
-            Assert.Null(EmscriptenWeb.OpenFileDialog());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.OpenFileDialog());
         }
 
         /// <summary>
-        /// Tests that open file dialog custom mime returns null
+        /// Tests that open file dialog custom mime propagates the native failure
         /// </summary>
         [Fact]
-        public void OpenFileDialog_CustomMime_ReturnsNull()
+        public void OpenFileDialog_CustomMime_PropagatesOnNonWeb()
         {
-            Assert.Null(EmscriptenWeb.OpenFileDialog("image/png"));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.OpenFileDialog("image/png"));
         }
 
         /// <summary>
-        /// Tests that open file dialog null mime returns null
+        /// Tests that open file dialog null mime propagates the native failure
         /// </summary>
         [Fact]
-        public void OpenFileDialog_NullMime_ReturnsNull()
+        public void OpenFileDialog_NullMime_PropagatesOnNonWeb()
         {
-            Assert.Null(EmscriptenWeb.OpenFileDialog(null));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.OpenFileDialog(null));
         }
 
         /// <summary>
-        /// Tests that save file returns false
+        /// Tests that save file propagates the native failure
         /// </summary>
         [Fact]
-        public void SaveFile_ReturnsFalse()
+        public void SaveFile_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.SaveFile("test.txt", Array.Empty<byte>(), 0));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SaveFile("test.txt", Array.Empty<byte>(), 0));
         }
 
         /// <summary>
-        /// Tests that save file with data returns false
+        /// Tests that save file with data propagates the native failure
         /// </summary>
         [Fact]
-        public void SaveFile_WithData_ReturnsFalse()
+        public void SaveFile_WithData_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.SaveFile("test.bin", new byte[] { 1, 2, 3 }, 3));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SaveFile("test.bin", new byte[] { 1, 2, 3 }, 3));
         }
 
         /// <summary>
-        /// Tests that save file null data returns false
+        /// Tests that save file null data propagates the native failure
         /// </summary>
         [Fact]
-        public void SaveFile_NullData_ReturnsFalse()
+        public void SaveFile_NullData_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.SaveFile("file.dat", null, 0));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.SaveFile("file.dat", null, 0));
         }
 
         /// <summary>
-        /// Tests that copy to clipboard returns false
+        /// Tests that copy to clipboard propagates the native failure
         /// </summary>
         [Fact]
-        public void CopyToClipboard_ReturnsFalse()
+        public void CopyToClipboard_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.CopyToClipboard("test"));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.CopyToClipboard("test"));
         }
 
         /// <summary>
-        /// Tests that copy to clipboard null returns false
+        /// Tests that copy to clipboard null propagates the native failure
         /// </summary>
         [Fact]
-        public void CopyToClipboard_Null_ReturnsFalse()
+        public void CopyToClipboard_Null_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.CopyToClipboard(null));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.CopyToClipboard(null));
         }
 
         /// <summary>
-        /// Tests that paste from clipboard returns null
+        /// Tests that paste from clipboard propagates the native failure
         /// </summary>
         [Fact]
-        public void PasteFromClipboard_ReturnsNull()
+        public void PasteFromClipboard_PropagatesOnNonWeb()
         {
-            Assert.Null(EmscriptenWeb.PasteFromClipboard());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.PasteFromClipboard());
         }
 
         /// <summary>
-        /// Tests that show alert does not throw
+        /// Tests that show alert propagates the native failure
         /// </summary>
         [Fact]
-        public void ShowAlert_DoesNotThrow()
+        public void ShowAlert_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert("Alert message"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ShowAlert("Alert message"));
         }
 
         /// <summary>
-        /// Tests that show alert null does not throw
+        /// Tests that show alert null propagates the native failure
         /// </summary>
         [Fact]
-        public void ShowAlert_Null_DoesNotThrow()
+        public void ShowAlert_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ShowAlert(null));
         }
 
         /// <summary>
-        /// Tests that show confirm returns false
+        /// Tests that show confirm propagates the native failure
         /// </summary>
         [Fact]
-        public void ShowConfirm_ReturnsFalse()
+        public void ShowConfirm_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.ShowConfirm("Confirm?"));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ShowConfirm("Confirm?"));
         }
 
         /// <summary>
-        /// Tests that show confirm null returns false
+        /// Tests that show confirm null propagates the native failure
         /// </summary>
         [Fact]
-        public void ShowConfirm_Null_ReturnsFalse()
+        public void ShowConfirm_Null_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.ShowConfirm(null));
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ShowConfirm(null));
         }
 
         /// <summary>
-        /// Tests that get language returns default
+        /// Tests that get language propagates the native failure
         /// </summary>
         [Fact]
-        public void GetLanguage_ReturnsDefault()
+        public void GetLanguage_PropagatesOnNonWeb()
         {
-            Assert.Equal("en", EmscriptenWeb.GetLanguage());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetLanguage());
         }
 
         /// <summary>
-        /// Tests that is online returns false
+        /// Tests that is online propagates the native failure
         /// </summary>
         [Fact]
-        public void IsOnline_ReturnsFalse()
+        public void IsOnline_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.IsOnline());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.IsOnline());
         }
 
         /// <summary>
-        /// Tests that get battery level returns default
+        /// Tests that get battery level propagates the native failure
         /// </summary>
         [Fact]
-        public void GetBatteryLevel_ReturnsDefault()
+        public void GetBatteryLevel_PropagatesOnNonWeb()
         {
-            Assert.Equal(-1.0f, EmscriptenWeb.GetBatteryLevel());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetBatteryLevel());
         }
 
         /// <summary>
-        /// Tests that is charging returns false
+        /// Tests that is charging propagates the native failure
         /// </summary>
         [Fact]
-        public void IsCharging_ReturnsFalse()
+        public void IsCharging_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.IsCharging());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.IsCharging());
         }
 
         /// <summary>
-        /// Tests that get orientation returns default
+        /// Tests that get orientation propagates the native failure
         /// </summary>
         [Fact]
-        public void GetOrientation_ReturnsDefault()
+        public void GetOrientation_PropagatesOnNonWeb()
         {
-            Assert.Equal(1, EmscriptenWeb.GetOrientation());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetOrientation());
         }
 
         /// <summary>
-        /// Tests that request camera permission returns false
+        /// Tests that request camera permission propagates the native failure
         /// </summary>
         [Fact]
-        public void RequestCameraPermission_ReturnsFalse()
+        public void RequestCameraPermission_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.RequestCameraPermission());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.RequestCameraPermission());
         }
 
         /// <summary>
-        /// Tests that request microphone permission returns false
+        /// Tests that request microphone permission propagates the native failure
         /// </summary>
         [Fact]
-        public void RequestMicrophonePermission_ReturnsFalse()
+        public void RequestMicrophonePermission_PropagatesOnNonWeb()
         {
-            Assert.False(EmscriptenWeb.RequestMicrophonePermission());
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.RequestMicrophonePermission());
         }
 
         /// <summary>
-        /// Tests that console log does not throw
+        /// Tests that console log propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleLog_DoesNotThrow()
+        public void ConsoleLog_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog("log message"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleLog("log message"));
         }
 
         /// <summary>
-        /// Tests that console log null does not throw
+        /// Tests that console log null propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleLog_Null_DoesNotThrow()
+        public void ConsoleLog_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleLog(null));
         }
 
         /// <summary>
-        /// Tests that console warn does not throw
+        /// Tests that console warn propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleWarn_DoesNotThrow()
+        public void ConsoleWarn_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn("warn message"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleWarn("warn message"));
         }
 
         /// <summary>
-        /// Tests that console warn null does not throw
+        /// Tests that console warn null propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleWarn_Null_DoesNotThrow()
+        public void ConsoleWarn_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleWarn(null));
         }
 
         /// <summary>
-        /// Tests that console error does not throw
+        /// Tests that console error propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleError_DoesNotThrow()
+        public void ConsoleError_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError("error message"));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleError("error message"));
         }
 
         /// <summary>
-        /// Tests that console error null does not throw
+        /// Tests that console error null propagates the native failure
         /// </summary>
         [Fact]
-        public void ConsoleError_Null_DoesNotThrow()
+        public void ConsoleError_Null_PropagatesOnNonWeb()
         {
-            Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError(null));
-            Assert.Null(ex);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.ConsoleError(null));
         }
     }
 }

@@ -295,18 +295,18 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that write with simulated debugger handles a formatter that throws
-        ///     by swallowing the exception (catch block coverage).
+        ///     Tests that write with simulated debugger propagates exceptions
+        ///     from a throwing formatter.
         /// </summary>
         [Fact]
-        public void DebugLogOutput_WriteWithSimulatedDebuggerAndThrowingFormatter_ShouldNotThrow()
+        public void DebugLogOutput_WriteWithSimulatedDebuggerAndThrowingFormatter_ShouldPropagate()
         {
             DebugLogOutput output = new DebugLogOutput(new ThrowingFormatter());
             output.SimulateDebuggerAttached = true;
 
             LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
-            output.Write(entry);
+            Assert.Throws<InvalidOperationException>(() => output.Write(entry));
         }
 
         /// <summary>

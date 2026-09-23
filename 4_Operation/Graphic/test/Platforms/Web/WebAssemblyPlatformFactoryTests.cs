@@ -68,14 +68,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that create with configuration throws when platform cannot initialize
+        ///     Tests that create with configuration propagates when platform cannot initialize
         /// </summary>
         [Fact]
-        public void Create_WithConfiguration_ThrowsWhenPlatformCannotInitialize()
+        public void Create_WithConfiguration_PropagatesWhenPlatformCannotInitialize()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration();
 
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.Create(config));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformFactory.Create(config));
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             bool configured = false;
 
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.Create(builder =>
+            Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformFactory.Create(builder =>
             {
                 builder.WithSize(1024, 768).WithTitle("Configured");
                 configured = true;
@@ -96,30 +96,30 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that create for game development throws when platform cannot initialize
+        ///     Tests that create for game development propagates when platform cannot initialize
         /// </summary>
         [Fact]
-        public void CreateForGameDevelopment_ThrowsWhenPlatformCannotInitialize()
+        public void CreateForGameDevelopment_PropagatesWhenPlatformCannotInitialize()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForGameDevelopment());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformFactory.CreateForGameDevelopment());
         }
 
         /// <summary>
-        ///     Tests that create for low end device throws when platform cannot initialize
+        ///     Tests that create for low end device propagates when platform cannot initialize
         /// </summary>
         [Fact]
-        public void CreateForLowEndDevice_ThrowsWhenPlatformCannotInitialize()
+        public void CreateForLowEndDevice_PropagatesWhenPlatformCannotInitialize()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForLowEndDevice());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformFactory.CreateForLowEndDevice());
         }
 
         /// <summary>
-        ///     Tests that create for high end device throws when platform cannot initialize
+        ///     Tests that create for high end device propagates when platform cannot initialize
         /// </summary>
         [Fact]
-        public void CreateForHighEndDevice_ThrowsWhenPlatformCannotInitialize()
+        public void CreateForHighEndDevice_PropagatesWhenPlatformCannotInitialize()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyPlatformFactory.CreateForHighEndDevice());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformFactory.CreateForHighEndDevice());
         }
     }
 }

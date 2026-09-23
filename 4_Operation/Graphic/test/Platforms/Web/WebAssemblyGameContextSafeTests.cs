@@ -131,27 +131,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that show confirm returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void ShowConfirm_ReturnsFalse_OnNonWebAssembly()
+        public void ShowConfirm_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ShowConfirm("test"));
         }
 
         /// <summary>
         /// Tests that is fullscreen returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void IsFullscreen_ReturnsFalse_OnNonWebAssembly()
+        public void IsFullscreen_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsFullscreen());
         }
 
         /// <summary>
         /// Tests that vibrate gamepad returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void VibrateGamepad_ReturnsFalse_OnNonWebAssembly()
+        public void VibrateGamepad_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.VibrateGamepad(0));
         }
     }
 }

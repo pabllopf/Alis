@@ -492,17 +492,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onKeyUpCallback,
             IntPtr onCharInputCallback)
         {
-            try
-            {
-                RegisterKeyboardCallbacksNative(onKeyDownCallback, onKeyUpCallback, onCharInputCallback);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            RegisterKeyboardCallbacksNative(onKeyDownCallback, onKeyUpCallback, onCharInputCallback);
         }
 
         /// <summary>
@@ -514,17 +504,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onMouseUpCallback,
             IntPtr onMouseWheelCallback)
         {
-            try
-            {
-                RegisterMouseCallbacksNative(onMouseMoveCallback, onMouseDownCallback, onMouseUpCallback, onMouseWheelCallback);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            RegisterMouseCallbacksNative(onMouseMoveCallback, onMouseDownCallback, onMouseUpCallback, onMouseWheelCallback);
         }
 
         /// <summary>
@@ -534,17 +514,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onGamepadConnectCallback,
             IntPtr onGamepadDisconnectCallback)
         {
-            try
-            {
-                RegisterGamepadCallbacksNative(onGamepadConnectCallback, onGamepadDisconnectCallback);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            RegisterGamepadCallbacksNative(onGamepadConnectCallback, onGamepadDisconnectCallback);
         }
 
         /// <summary>
@@ -555,17 +525,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onWindowCloseCallback,
             IntPtr onWindowFocusCallback)
         {
-            try
-            {
-                RegisterWindowCallbacksNative(onWindowResizeCallback, onWindowCloseCallback, onWindowFocusCallback);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            RegisterWindowCallbacksNative(onWindowResizeCallback, onWindowCloseCallback, onWindowFocusCallback);
         }
 
         /// <summary>
@@ -573,29 +533,22 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static int[] GetConnectedGamepads()
         {
-            try
-            {
-                IntPtr nativeArray = GetConnectedGamepadsNative();
-                if (nativeArray == IntPtr.Zero)
-                {
-                    return Array.Empty<int>();
-                }
-
-                int length = GetArrayLength(nativeArray);
-                int[] result = new int[length];
-
-                for (int i = 0; i < length; i++)
-                {
-                    result[i] = GetArrayIntElement(nativeArray, i);
-                }
-
-                FreeArray(nativeArray);
-                return result;
-            }
-            catch
+            IntPtr nativeArray = GetConnectedGamepadsNative();
+            if (nativeArray == IntPtr.Zero)
             {
                 return Array.Empty<int>();
             }
+
+            int length = GetArrayLength(nativeArray);
+            int[] result = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = GetArrayIntElement(nativeArray, i);
+            }
+
+            FreeArray(nativeArray);
+            return result;
         }
 
         /// <summary>
@@ -603,29 +556,22 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static float[] GetGamepadAxes(int gamepadIndex)
         {
-            try
-            {
-                IntPtr nativeArray = GetGamepadAxesNative(gamepadIndex);
-                if (nativeArray == IntPtr.Zero)
-                {
-                    return Array.Empty<float>();
-                }
-
-                int length = GetArrayLength(nativeArray);
-                float[] result = new float[length];
-
-                for (int i = 0; i < length; i++)
-                {
-                    result[i] = GetArrayFloatElement(nativeArray, i);
-                }
-
-                FreeArray(nativeArray);
-                return result;
-            }
-            catch
+            IntPtr nativeArray = GetGamepadAxesNative(gamepadIndex);
+            if (nativeArray == IntPtr.Zero)
             {
                 return Array.Empty<float>();
             }
+
+            int length = GetArrayLength(nativeArray);
+            float[] result = new float[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = GetArrayFloatElement(nativeArray, i);
+            }
+
+            FreeArray(nativeArray);
+            return result;
         }
 
         /// <summary>
@@ -633,29 +579,22 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool[] GetGamepadButtons(int gamepadIndex)
         {
-            try
-            {
-                IntPtr nativeArray = GetGamepadButtonsNative(gamepadIndex);
-                if (nativeArray == IntPtr.Zero)
-                {
-                    return Array.Empty<bool>();
-                }
-
-                int length = GetArrayLength(nativeArray);
-                bool[] result = new bool[length];
-
-                for (int i = 0; i < length; i++)
-                {
-                    result[i] = GetArrayBoolElement(nativeArray, i);
-                }
-
-                FreeArray(nativeArray);
-                return result;
-            }
-            catch
+            IntPtr nativeArray = GetGamepadButtonsNative(gamepadIndex);
+            if (nativeArray == IntPtr.Zero)
             {
                 return Array.Empty<bool>();
             }
+
+            int length = GetArrayLength(nativeArray);
+            bool[] result = new bool[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = GetArrayBoolElement(nativeArray, i);
+            }
+
+            FreeArray(nativeArray);
+            return result;
         }
 
         /// <summary>
@@ -663,17 +602,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ShowCanvas()
         {
-            try
-            {
-                ShowCanvasNative();
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            ShowCanvasNative();
         }
 
         /// <summary>
@@ -681,17 +610,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void HideCanvas()
         {
-            try
-            {
-                HideCanvasNative();
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            HideCanvasNative();
         }
 
         /// <summary>
@@ -699,17 +618,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void SetWindowTitle(string title)
         {
-            try
-            {
-                SetWindowTitleNative(title);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            SetWindowTitleNative(title);
         }
 
         /// <summary>
@@ -717,17 +626,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void SetCanvasSize(int width, int height)
         {
-            try
-            {
-                SetCanvasSizeNative(width, height);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            SetCanvasSizeNative(width, height);
         }
 
         /// <summary>
@@ -735,17 +634,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void SetWindowIcon(string iconPath)
         {
-            try
-            {
-                SetWindowIconNative(iconPath);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            SetWindowIconNative(iconPath);
         }
 
         /// <summary>
@@ -753,14 +642,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static int GetWindowPositionX()
         {
-            try
-            {
-                return GetWindowPositionXNative();
-            }
-            catch
-            {
-                return 0;
-            }
+            return GetWindowPositionXNative();
         }
 
         /// <summary>
@@ -768,14 +650,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static int GetWindowPositionY()
         {
-            try
-            {
-                return GetWindowPositionYNative();
-            }
-            catch
-            {
-                return 0;
-            }
+            return GetWindowPositionYNative();
         }
 
         /// <summary>
@@ -783,14 +658,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static float GetDevicePixelRatio()
         {
-            try
-            {
-                return GetDevicePixelRatioNative();
-            }
-            catch
-            {
-                return 1.0f;
-            }
+            return GetDevicePixelRatioNative();
         }
 
         /// <summary>
@@ -798,14 +666,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool RequestFullscreen()
         {
-            try
-            {
-                return RequestFullscreenNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return RequestFullscreenNative();
         }
 
         /// <summary>
@@ -813,14 +674,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool ExitFullscreen()
         {
-            try
-            {
-                return ExitFullscreenNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return ExitFullscreenNative();
         }
 
         /// <summary>
@@ -828,14 +682,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool IsFullscreenEnabled()
         {
-            try
-            {
-                return IsFullscreenEnabledNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return IsFullscreenEnabledNative();
         }
 
         /// <summary>
@@ -843,14 +690,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool LockPointer()
         {
-            try
-            {
-                return LockPointerNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return LockPointerNative();
         }
 
         /// <summary>
@@ -858,14 +698,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool UnlockPointer()
         {
-            try
-            {
-                return UnlockPointerNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return UnlockPointerNative();
         }
 
         /// <summary>
@@ -873,14 +706,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool IsPointerLocked()
         {
-            try
-            {
-                return IsPointerLockedNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return IsPointerLockedNative();
         }
 
         /// <summary>
@@ -888,14 +714,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration)
         {
-            try
-            {
-                return VibrateGamepadNative(gamepadIndex, leftMotor, rightMotor, duration);
-            }
-            catch
-            {
-                return false;
-            }
+            return VibrateGamepadNative(gamepadIndex, leftMotor, rightMotor, duration);
         }
 
         /// <summary>
@@ -903,14 +722,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static double GetSystemTimeMs()
         {
-            try
-            {
-                return GetSystemTimeMsNative();
-            }
-            catch
-            {
-                return 0.0;
-            }
+            return GetSystemTimeMsNative();
         }
 
         /// <summary>
@@ -918,20 +730,13 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static string OpenFileDialog(string mimeTypes = "*/*")
         {
-            try
-            {
-                IntPtr resultPtr = OpenFileDialogNative(mimeTypes ?? "*/*");
-                if (resultPtr == IntPtr.Zero)
-                {
-                    return null;
-                }
-
-                return Marshal.PtrToStringAnsi(resultPtr);
-            }
-            catch
+            IntPtr resultPtr = OpenFileDialogNative(mimeTypes ?? "*/*");
+            if (resultPtr == IntPtr.Zero)
             {
                 return null;
             }
+
+            return Marshal.PtrToStringAnsi(resultPtr);
         }
 
         /// <summary>
@@ -939,14 +744,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool SaveFile(string filename, byte[] data, int dataLength)
         {
-            try
-            {
-                return SaveFileNative(filename, data, dataLength);
-            }
-            catch
-            {
-                return false;
-            }
+            return SaveFileNative(filename, data, dataLength);
         }
 
         /// <summary>
@@ -954,14 +752,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool CopyToClipboard(string text)
         {
-            try
-            {
-                return CopyToClipboardNative(text);
-            }
-            catch
-            {
-                return false;
-            }
+            return CopyToClipboardNative(text);
         }
 
         /// <summary>
@@ -969,20 +760,13 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static string PasteFromClipboard()
         {
-            try
-            {
-                IntPtr resultPtr = PasteFromClipboardNative();
-                if (resultPtr == IntPtr.Zero)
-                {
-                    return null;
-                }
-
-                return Marshal.PtrToStringAnsi(resultPtr);
-            }
-            catch
+            IntPtr resultPtr = PasteFromClipboardNative();
+            if (resultPtr == IntPtr.Zero)
             {
                 return null;
             }
+
+            return Marshal.PtrToStringAnsi(resultPtr);
         }
 
         /// <summary>
@@ -990,17 +774,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ShowAlert(string message)
         {
-            try
-            {
-                ShowAlertNative(message);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            ShowAlertNative(message);
         }
 
         /// <summary>
@@ -1008,14 +782,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool ShowConfirm(string message)
         {
-            try
-            {
-                return ShowConfirmNative(message);
-            }
-            catch
-            {
-                return false;
-            }
+            return ShowConfirmNative(message);
         }
 
         /// <summary>
@@ -1023,21 +790,14 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static string GetLanguage()
         {
-            try
-            {
-                IntPtr resultPtr = GetLanguageNative();
-                if (resultPtr == IntPtr.Zero)
-                {
-                    return "en";
-                }
-
-                string result = Marshal.PtrToStringAnsi(resultPtr);
-                return result ?? "en";
-            }
-            catch
+            IntPtr resultPtr = GetLanguageNative();
+            if (resultPtr == IntPtr.Zero)
             {
                 return "en";
             }
+
+            string result = Marshal.PtrToStringAnsi(resultPtr);
+            return result ?? "en";
         }
 
         /// <summary>
@@ -1045,14 +805,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool IsOnline()
         {
-            try
-            {
-                return IsOnlineNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return IsOnlineNative();
         }
 
         /// <summary>
@@ -1060,14 +813,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static float GetBatteryLevel()
         {
-            try
-            {
-                return GetBatteryLevelNative();
-            }
-            catch
-            {
-                return -1.0f;
-            }
+            return GetBatteryLevelNative();
         }
 
         /// <summary>
@@ -1075,14 +821,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool IsCharging()
         {
-            try
-            {
-                return IsChargingNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return IsChargingNative();
         }
 
         /// <summary>
@@ -1090,14 +829,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static int GetOrientation()
         {
-            try
-            {
-                return GetOrientationNative();
-            }
-            catch
-            {
-                return 1; // Default to landscape
-            }
+            return GetOrientationNative();
         }
 
         /// <summary>
@@ -1105,14 +837,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool RequestCameraPermission()
         {
-            try
-            {
-                return RequestCameraPermissionNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return RequestCameraPermissionNative();
         }
 
         /// <summary>
@@ -1120,14 +845,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static bool RequestMicrophonePermission()
         {
-            try
-            {
-                return RequestMicrophonePermissionNative();
-            }
-            catch
-            {
-                return false;
-            }
+            return RequestMicrophonePermissionNative();
         }
 
         /// <summary>
@@ -1135,17 +853,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ConsoleLog(string message)
         {
-            try
-            {
-                ConsoleLogNative(message);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            ConsoleLogNative(message);
         }
 
         /// <summary>
@@ -1153,17 +861,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ConsoleWarn(string message)
         {
-            try
-            {
-                ConsoleWarnNative(message);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            ConsoleWarnNative(message);
         }
 
         /// <summary>
@@ -1171,17 +869,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ConsoleError(string message)
         {
-            try
-            {
-                ConsoleErrorNative(message);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            ConsoleErrorNative(message);
         }
     }
 }

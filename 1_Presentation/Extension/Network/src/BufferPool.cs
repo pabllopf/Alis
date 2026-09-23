@@ -101,13 +101,7 @@ namespace Alis.Extension.Network
         /// </summary>
         ~BufferPool()
         {
-            try
-            {
-                Dispose(false);
-            }
-            catch
-            {
-            }
+            Dispose(false);
         }
 
         /// <summary>

@@ -280,12 +280,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that vibrate gamepad returns false on non browser
+        ///     Tests that vibrate gamepad propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void VibrateGamepad_ReturnsFalseOnNonBrowser()
+        public void VibrateGamepad_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
         }
 
         /// <summary>
@@ -452,57 +452,57 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that input context lock pointer returns false on non browser
+        ///     Tests that input context lock pointer propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_LockPointer_ReturnsFalseOnNonBrowser()
+        public void InputContext_LockPointer_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.LockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.LockPointer());
         }
 
         /// <summary>
-        ///     Tests that input context unlock pointer returns false on non browser
+        ///     Tests that input context unlock pointer propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_UnlockPointer_ReturnsFalseOnNonBrowser()
+        public void InputContext_UnlockPointer_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.UnlockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.UnlockPointer());
         }
 
         /// <summary>
-        ///     Tests that input context is pointer locked returns false on non browser
+        ///     Tests that input context is pointer locked propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
+        public void InputContext_IsPointerLocked_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.IsPointerLocked());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.IsPointerLocked());
         }
 
         /// <summary>
-        ///     Tests that input context request fullscreen returns false on non browser
+        ///     Tests that input context request fullscreen propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_RequestFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_RequestFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.RequestFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.RequestFullscreen());
         }
 
         /// <summary>
-        ///     Tests that input context exit fullscreen returns false on non browser
+        ///     Tests that input context exit fullscreen propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_ExitFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.ExitFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.ExitFullscreen());
         }
 
         /// <summary>
-        ///     Tests that input context is fullscreen returns false on non browser
+        ///     Tests that input context is fullscreen propagates the native failure on non browser
         /// </summary>
         [Fact]
-        public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_IsFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.IsFullscreen());
         }
     }
 }

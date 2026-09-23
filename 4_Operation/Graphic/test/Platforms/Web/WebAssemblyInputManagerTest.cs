@@ -415,10 +415,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that input manager vibrate gamepad returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
+        public void InputManager_VibrateGamepad_PropagatesOnNonBrowser()
         {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            Assert.False(WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
         }
 
         // =====================================================================
@@ -588,54 +587,54 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that input context lock pointer returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_LockPointer_ReturnsFalseOnNonBrowser()
+        public void InputContext_LockPointer_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.LockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.LockPointer());
         }
 
         /// <summary>
         /// Tests that input context unlock pointer returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_UnlockPointer_ReturnsFalseOnNonBrowser()
+        public void InputContext_UnlockPointer_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.UnlockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.UnlockPointer());
         }
 
         /// <summary>
         /// Tests that input context is pointer locked returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
+        public void InputContext_IsPointerLocked_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.IsPointerLocked());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.IsPointerLocked());
         }
 
         /// <summary>
         /// Tests that input context request fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_RequestFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_RequestFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.RequestFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.RequestFullscreen());
         }
 
         /// <summary>
         /// Tests that input context exit fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_ExitFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.ExitFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.ExitFullscreen());
         }
 
         /// <summary>
         /// Tests that input context is fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
+        public void InputContext_IsFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyInputContext.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyInputContext.IsFullscreen());
         }
 
         // =====================================================================

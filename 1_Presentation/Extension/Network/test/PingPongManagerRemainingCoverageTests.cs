@@ -116,10 +116,10 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
-        /// Tests that ping forever with cancelled token swallows cancellation
+        /// Tests that ping forever with cancelled token completes without exception
         /// </summary>
         [Fact]
-        public async Task PingForever_WithCancelledToken_SwallowsCancellation()
+        public async Task PingForever_WithCancelledToken_CompletesWithoutException()
         {
             Guid guid = Guid.NewGuid();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
@@ -129,7 +129,9 @@ namespace Alis.Extension.Network.Test
 
             cts.Cancel();
 
-            await manager.PingForever();
+            Exception ex = await Record.ExceptionAsync(() => manager.PingForever());
+
+            Assert.Null(ex);
         }
     }
 }

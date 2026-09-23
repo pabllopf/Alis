@@ -105,14 +105,7 @@ namespace Alis.App.Hub.Utils
             {
                 if (texture != 0)
                 {
-                    try
-                    {
-                        Gl.DeleteTexture(texture);
-                    }
-                    catch
-                    {
-                        /* ignore */
-                    }
+                    Gl.DeleteTexture(texture);
                 }
 
                 throw;
@@ -138,14 +131,7 @@ namespace Alis.App.Hub.Utils
             {
                 if (s_cache.TryGetValue(key, out CachedTexture existing))
                 {
-                    try
-                    {
-                        Gl.DeleteTexture(texture);
-                    }
-                    catch
-                    {
-                        /* ignore */
-                    }
+                    Gl.DeleteTexture(texture);
 
                     existing.RefCount++;
                     existing.LastAccessUtc = DateTime.UtcNow;
@@ -180,12 +166,10 @@ namespace Alis.App.Hub.Utils
                     {
                         Gl.DeleteTexture(cached.TextureId);
                     }
-                    catch
+                    finally
                     {
-                        /* ignore */
+                        s_cache.Remove(key);
                     }
-
-                    s_cache.Remove(key);
                 }
                 else
                 {
@@ -223,12 +207,10 @@ namespace Alis.App.Hub.Utils
                         {
                             Gl.DeleteTexture(cached.TextureId);
                         }
-                        catch
+                        finally
                         {
-                            /* ignore */
+                            s_cache.Remove(key);
                         }
-
-                        s_cache.Remove(key);
                     }
                 }
             }

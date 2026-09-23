@@ -246,11 +246,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that display manager get device pixel ratio returns default on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
+        public void DisplayManager_GetDevicePixelRatio_PropagatesOnNonBrowser()
         {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
-            Assert.Equal(1.0f, ratio, 5);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetDevicePixelRatio());
         }
 
         /// <summary>
@@ -268,42 +266,42 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that display manager toggle fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_ToggleFullscreen_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_ToggleFullscreen_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
-            Assert.False(manager.ToggleFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.ToggleFullscreen());
         }
 
         /// <summary>
         /// Tests that display manager enter fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_EnterFullscreen_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_EnterFullscreen_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
-            Assert.False(manager.EnterFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.EnterFullscreen());
         }
 
         /// <summary>
         /// Tests that display manager exit fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_ExitFullscreen_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_ExitFullscreen_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
-            Assert.False(manager.ExitFullscreen());
+            Assert.ThrowsAny<Exception>(() => manager.ExitFullscreen());
         }
 
         /// <summary>
         /// Tests that display manager is fullscreen returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_IsFullscreen_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_IsFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyDisplayManager.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsFullscreen());
         }
 
         // =====================================================================
@@ -438,38 +436,36 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that display manager get system language returns default on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_GetSystemLanguage_ReturnsDefaultOnNonBrowser()
+        public void DisplayManager_GetSystemLanguage_PropagatesOnNonBrowser()
         {
-            string lang = WebAssemblyDisplayManager.GetSystemLanguage();
-            Assert.Equal("en", lang);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetSystemLanguage());
         }
 
         /// <summary>
         /// Tests that display manager is online returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_IsOnline_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_IsOnline_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyDisplayManager.IsOnline());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsOnline());
         }
 
         /// <summary>
         /// Tests that display manager get battery level returns default on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
+        public void DisplayManager_GetBatteryLevel_PropagatesOnNonBrowser()
         {
-            float level = WebAssemblyDisplayManager.GetBatteryLevel();
-            Assert.Equal(-1.0f, level, 5);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.GetBatteryLevel());
         }
 
         /// <summary>
         /// Tests that display manager is charging returns false on non browser
         /// </summary>
         [WebOnly]
-        public void DisplayManager_IsCharging_ReturnsFalseOnNonBrowser()
+        public void DisplayManager_IsCharging_PropagatesOnNonBrowser()
         {
-            Assert.False(WebAssemblyDisplayManager.IsCharging());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyDisplayManager.IsCharging());
         }
 
         /// <summary>

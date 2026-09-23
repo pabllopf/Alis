@@ -44,13 +44,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyGameContextExecutionTests
     {
         /// <summary>
-        /// Tests that constructor with configuration throws on non web assembly
+        /// Tests that constructor with configuration propagates on non web assembly
         /// </summary>
         [Fact]
-        public void Constructor_WithConfiguration_ThrowsOnNonWebAssembly()
+        public void Constructor_WithConfiguration_PropagatesOnNonWebAssembly()
         {
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => new WebAssemblyGameContext(new WebAssemblyConfiguration()));
-            Assert.Equal("Failed to initialize WebAssembly platform", ex.Message);
+            Assert.ThrowsAny<Exception>(() => new WebAssemblyGameContext(new WebAssemblyConfiguration()));
         }
 
         /// <summary>
@@ -63,22 +62,21 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that default constructor throws on non web assembly
+        /// Tests that default constructor propagates on non web assembly
         /// </summary>
         [Fact]
-        public void DefaultConstructor_ThrowsOnNonWebAssembly()
+        public void DefaultConstructor_PropagatesOnNonWebAssembly()
         {
-            Assert.Throws<InvalidOperationException>(() => new WebAssemblyGameContext());
+            Assert.ThrowsAny<Exception>(() => new WebAssemblyGameContext());
         }
 
         /// <summary>
-        /// Tests that create with width height and title throws on non web assembly
+        /// Tests that create with width height and title propagates on non web assembly
         /// </summary>
         [Fact]
-        public void Create_WithWidthHeightTitle_ThrowsOnNonWebAssembly()
+        public void Create_WithWidthHeightTitle_PropagatesOnNonWebAssembly()
         {
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => WebAssemblyGameContext.Create(800, 600, "Test"));
-            Assert.Equal("Failed to initialize WebAssembly platform", ex.Message);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.Create(800, 600, "Test"));
         }
 
         /// <summary>
@@ -91,126 +89,114 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that create with configure throws on non web assembly
+        /// Tests that create with configure propagates on non web assembly
         /// </summary>
         [Fact]
-        public void Create_WithConfigure_ThrowsOnNonWebAssembly()
+        public void Create_WithConfigure_PropagatesOnNonWebAssembly()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameContext.Create(builder => builder.WithTitle("Test")));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.Create(builder => builder.WithTitle("Test")));
         }
 
         /// <summary>
-        /// Tests that console log does not throw with various inputs
+        /// Tests that console log propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void ConsoleLog_DoesNotThrow()
+        public void ConsoleLog_PropagatesOnNonWebAssembly()
         {
-            WebAssemblyGameContext.ConsoleLog("test log");
-            WebAssemblyGameContext.ConsoleLog(null);
-            WebAssemblyGameContext.ConsoleLog(string.Empty);
-            WebAssemblyGameContext.ConsoleLog("special chars: !@#$%");
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ConsoleLog("test log"));
         }
 
         /// <summary>
-        /// Tests that console warn does not throw with various inputs
+        /// Tests that console warn propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void ConsoleWarn_DoesNotThrow()
+        public void ConsoleWarn_PropagatesOnNonWebAssembly()
         {
-            WebAssemblyGameContext.ConsoleWarn("test warn");
-            WebAssemblyGameContext.ConsoleWarn(null);
-            WebAssemblyGameContext.ConsoleWarn(string.Empty);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ConsoleWarn("test warn"));
         }
 
         /// <summary>
-        /// Tests that console error does not throw with various inputs
+        /// Tests that console error propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void ConsoleError_DoesNotThrow()
+        public void ConsoleError_PropagatesOnNonWebAssembly()
         {
-            WebAssemblyGameContext.ConsoleError("test error");
-            WebAssemblyGameContext.ConsoleError(null);
-            WebAssemblyGameContext.ConsoleError(string.Empty);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ConsoleError("test error"));
         }
 
         /// <summary>
-        /// Tests that show alert does not throw with various inputs
+        /// Tests that show alert propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void ShowAlert_DoesNotThrow()
+        public void ShowAlert_PropagatesOnNonWebAssembly()
         {
-            WebAssemblyGameContext.ShowAlert("test alert");
-            WebAssemblyGameContext.ShowAlert(null);
-            WebAssemblyGameContext.ShowAlert(string.Empty);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ShowAlert("test alert"));
         }
 
         /// <summary>
-        /// Tests that show confirm returns false on non web assembly
+        /// Tests that show confirm propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void ShowConfirm_ReturnsFalse_OnNonWebAssembly()
+        public void ShowConfirm_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
-            Assert.False(WebAssemblyGameContext.ShowConfirm(null));
-            Assert.False(WebAssemblyGameContext.ShowConfirm(string.Empty));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ShowConfirm("test"));
         }
 
         /// <summary>
-        /// Tests that is fullscreen returns false on non web assembly
+        /// Tests that is fullscreen propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void IsFullscreen_ReturnsFalse_OnNonWebAssembly()
+        public void IsFullscreen_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsFullscreen());
         }
 
         /// <summary>
-        /// Tests that lock pointer unlock pointer and is pointer locked return false on non web assembly
+        /// Tests that lock pointer unlock pointer and is pointer locked propagate the
+        /// native failure on non web assembly
         /// </summary>
         [Fact]
-        public void LockPointer_UnlockPointer_IsPointerLocked_ReturnFalse_OnNonWebAssembly()
+        public void LockPointer_UnlockPointer_IsPointerLocked_PropagateOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.LockPointer());
-            Assert.False(WebAssemblyGameContext.UnlockPointer());
-            Assert.False(WebAssemblyGameContext.IsPointerLocked());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.LockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.UnlockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsPointerLocked());
         }
 
         /// <summary>
-        /// Tests that get device language returns a non null value
+        /// Tests that get device language propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void GetDeviceLanguage_ReturnsNonNull()
+        public void GetDeviceLanguage_PropagatesOnNonWebAssembly()
         {
-            string language = WebAssemblyGameContext.GetDeviceLanguage();
-            Assert.NotNull(language);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.GetDeviceLanguage());
         }
 
         /// <summary>
-        /// Tests that get battery level returns a non negative value
+        /// Tests that get battery level propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void GetBatteryLevel_ReturnsNonNegative()
+        public void GetBatteryLevel_PropagatesOnNonWebAssembly()
         {
-            float level = WebAssemblyGameContext.GetBatteryLevel();
-            Assert.True(level >= -1.0f);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.GetBatteryLevel());
         }
 
         /// <summary>
-        /// Tests that is charging returns false on non web assembly
+        /// Tests that is charging propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void IsCharging_ReturnsFalse_OnNonWebAssembly()
+        public void IsCharging_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsCharging());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsCharging());
         }
 
         /// <summary>
-        /// Tests that is online returns false on non web assembly
+        /// Tests that is online propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void IsOnline_ReturnsFalse_OnNonWebAssembly()
+        public void IsOnline_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsOnline());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsOnline());
         }
 
         /// <summary>
@@ -223,13 +209,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that vibrate gamepad returns false on non web assembly
+        /// Tests that vibrate gamepad propagates the native failure on non web assembly
         /// </summary>
         [Fact]
-        public void VibrateGamepad_ReturnsFalse_OnNonWebAssembly()
+        public void VibrateGamepad_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
-            Assert.False(WebAssemblyGameContext.VibrateGamepad(1, 0.5f, 0.5f, 0.2f));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.VibrateGamepad(0));
         }
 
         /// <summary>

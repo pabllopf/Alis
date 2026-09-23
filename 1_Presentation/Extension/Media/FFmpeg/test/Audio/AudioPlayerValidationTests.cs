@@ -361,9 +361,9 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
             {
                 if (player != null)
                 {
-                    FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    FieldInfo ffplaypField = typeof(AudioPlayer).GetField("ffplayp",
                         BindingFlags.NonPublic | BindingFlags.Instance);
-                    openedField.SetValue(player, false);
+                    ffplaypField.SetValue(player, null);
                     player.Dispose();
                 }
             }

@@ -551,13 +551,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that web assembly platform on char input invalid char code does not throw
+        /// Tests that web assembly platform on char input invalid char code propagates the
+        /// conversion failure
         /// </summary>
         [WebOnly]
-        public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_DoesNotThrow()
+        public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            InvokePrivate(platform, "OnCharInput", (uint)0x110000);
+            Assert.ThrowsAny<Exception>(() => InvokePrivate(platform, "OnCharInput", (uint)0x110000));
         }
 
         /// <summary>
@@ -801,17 +802,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that web assembly platform get window metrics returns default values on non browser
+        /// Tests that web assembly platform get window metrics propagates the native failure
+        /// on non browser
         /// </summary>
         [WebOnly]
-        public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowMetrics_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int _, out int _);
-            Assert.Equal(0, winX);
-            Assert.Equal(0, winY);
-            Assert.Equal(800, winW);
-            Assert.Equal(600, winH);
+            Assert.ThrowsAny<Exception>(() => platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int _, out int _));
         }
         
         /// <summary>
@@ -893,25 +891,25 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        /// Tests that web assembly platform get window position x returns default on non browser
+        /// Tests that web assembly platform get window position x propagates the native
+        /// failure on non browser
         /// </summary>
         [WebOnly]
-        public void WebAssemblyPlatform_GetWindowPositionX_ReturnsDefaultOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowPositionX_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            int x = platform.GetWindowPositionX();
-            Assert.Equal(0, x);
+            Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionX());
         }
 
         /// <summary>
-        /// Tests that web assembly platform get window position y returns default on non browser
+        /// Tests that web assembly platform get window position y propagates the native
+        /// failure on non browser
         /// </summary>
         [WebOnly]
-        public void WebAssemblyPlatform_GetWindowPositionY_ReturnsDefaultOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowPositionY_PropagatesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            int y = platform.GetWindowPositionY();
-            Assert.Equal(0, y);
+            Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionY());
         }
 
         /// <summary>

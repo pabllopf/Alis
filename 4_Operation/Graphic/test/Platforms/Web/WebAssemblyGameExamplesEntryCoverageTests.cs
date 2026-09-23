@@ -44,9 +44,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     cannot be initialized.
         /// </summary>
         [Fact]
-        public void BasicGameLoopExample_OnDesktop_ThrowsInvalidOperationException()
+        public void BasicGameLoopExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.BasicGameLoopExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.BasicGameLoopExample());
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     cannot be initialized.
         /// </summary>
         [Fact]
-        public void GamepadInputExample_OnDesktop_ThrowsInvalidOperationException()
+        public void GamepadInputExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.GamepadInputExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.GamepadInputExample());
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     cannot be initialized.
         /// </summary>
         [Fact]
-        public void DisplayManagementExample_OnDesktop_ThrowsInvalidOperationException()
+        public void DisplayManagementExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.DisplayManagementExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DisplayManagementExample());
         }
 
         /// <summary>
@@ -74,9 +74,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     be initialized.
         /// </summary>
         [Fact]
-        public void FpsGameExample_OnDesktop_ThrowsInvalidOperationException()
+        public void FpsGameExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.FpsGameExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.FpsGameExample());
         }
 
         /// <summary>
@@ -84,9 +84,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     be initialized.
         /// </summary>
         [Fact]
-        public void SystemInfoExample_OnDesktop_ThrowsInvalidOperationException()
+        public void SystemInfoExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.SystemInfoExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.SystemInfoExample());
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     platform cannot be initialized.
         /// </summary>
         [Fact]
-        public void ConfigurationPresetsExample_OnDesktop_ThrowsInvalidOperationException()
+        public void ConfigurationPresetsExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.ConfigurationPresetsExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.ConfigurationPresetsExample());
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     be initialized.
         /// </summary>
         [Fact]
-        public void TextInputExample_OnDesktop_ThrowsInvalidOperationException()
+        public void TextInputExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.TextInputExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.TextInputExample());
         }
 
         /// <summary>
@@ -114,9 +114,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     platform cannot be initialized.
         /// </summary>
         [Fact]
-        public void PerformanceMonitoringExample_OnDesktop_ThrowsInvalidOperationException()
+        public void PerformanceMonitoringExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.PerformanceMonitoringExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.PerformanceMonitoringExample());
         }
 
         /// <summary>
@@ -124,9 +124,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     be initialized.
         /// </summary>
         [Fact]
-        public void DialogBoxExample_OnDesktop_ThrowsInvalidOperationException()
+        public void DialogBoxExample_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.DialogBoxExample());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DialogBoxExample());
         }
 
         /// <summary>
@@ -134,9 +134,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         ///     cannot be initialized.
         /// </summary>
         [Fact]
-        public void CompleteGameTemplate_OnDesktop_ThrowsInvalidOperationException()
+        public void CompleteGameTemplate_OnDesktop_Propagates()
         {
-            Assert.Throws<InvalidOperationException>(() => WebAssemblyGameExamples.CompleteGameTemplate());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.CompleteGameTemplate());
         }
 
         /// <summary>

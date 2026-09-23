@@ -636,10 +636,10 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that core logger output exception should not propagate
+        ///     Tests that core logger output exception propagates
         /// </summary>
         [Fact]
-        public void CoreLogger_OutputException_ShouldNotPropagate()
+        public void CoreLogger_OutputException_ShouldPropagate()
         {
             FaultyLogOutput faultyOutput = new FaultyLogOutput();
             List<ILogOutput> outputs = new List<ILogOutput> {faultyOutput};
@@ -647,7 +647,7 @@ namespace Alis.Core.Aspect.Logging.Test
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
-            logger.LogInfo("Message");
+            Assert.Throws<InvalidOperationException>(() => logger.LogInfo("Message"));
         }
 
         /// <summary>

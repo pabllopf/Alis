@@ -78,19 +78,18 @@ namespace Alis.Core.Audio.Players
         {
             if (disposing)
             {
-                if (_fileName != null)
+                try
                 {
-                    try
+                    if (_fileName != null)
                     {
                         ExecuteMsiCommand($"Stop {_fileName}");
                     }
-                    catch (InvalidOperationException)
-                    {
-                    }
                 }
-
-                _playbackTimer?.Dispose();
-                _playbackTimer = null;
+                finally
+                {
+                    _playbackTimer?.Dispose();
+                    _playbackTimer = null;
+                }
             }
         }
 

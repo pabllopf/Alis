@@ -249,16 +249,9 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
                 if (Ffmpegp != null && !Ffmpegp.WaitForExit(5000))
                 {
-                    try
+                    if (!Ffmpegp.HasExited)
                     {
-                        if (!Ffmpegp.HasExited)
-                        {
-                            Ffmpegp.Kill();
-                        }
-                    }
-                    catch
-                    {
-                        // Ignore exception during dispose
+                        Ffmpegp.Kill();
                     }
 
                     Ffmpegp.WaitForExit();

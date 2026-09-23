@@ -170,9 +170,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that display manager is fullscreen returns default
         /// </summary>
         [WebOnly]
-        public void DisplayManager_IsFullscreen_ReturnsDefault()
+        public void DisplayManager_IsFullscreen_PropagatesOnNonBrowser()
         {
-            Assert.False(DisplayManager.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => DisplayManager.IsFullscreen());
         }
 
         // =====================================================================

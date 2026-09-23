@@ -121,10 +121,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        ///     Tests that Dispose swallows exceptions when ffplayp is disposed
+        ///     Tests that Dispose propagates the exception thrown by a disposed ffplayp
         /// </summary>
         [RequireFfmpegFact]
-        public void Dispose_WithDisposedFfplayp_ShouldNotThrow()
+        public void Dispose_WithDisposedFfplayp_ShouldPropagateException()
         {
             TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
             int pid = -1;
@@ -137,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 p.Dispose();
 
                 Exception ex = Record.Exception(() => player.Dispose());
-                Assert.Null(ex);
+                Assert.NotNull(ex);
             }
             finally
             {
@@ -146,10 +146,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        ///     Tests that OpenWrite swallows exceptions when killing a disposed ffplayp
+        ///     Tests that OpenWrite propagates the exception thrown when killing a disposed ffplayp
         /// </summary>
         [RequireFfmpegFact]
-        public void OpenWrite_WithDisposedFfplayp_ShouldReopen()
+        public void OpenWrite_WithDisposedFfplayp_ShouldPropagateException()
         {
             TestableVideoPlayer player = new TestableVideoPlayer(null, _fakeFfplayPath);
             int pid = -1;
@@ -163,18 +163,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
                 Exception ex = Record.Exception(() => player.OpenWrite(8, 8, "15"));
 
-                Assert.Null(ex);
-                Assert.True(player.OpenedForWriting);
+                Assert.NotNull(ex);
+                Assert.False(player.OpenedForWriting);
             }
             finally
             {
                 KillPid(pid);
-                player.Dispose();
             }
         }
 
         /// <summary>
-        ///     Tests that CloseWrite swallows the kill exception but rethrows on WaitForExit
+        ///     Tests that CloseWrite propagates the exception thrown by the disposed ffplayp
         /// </summary>
         [RequireFfmpegFact]
         public void CloseWrite_WithDisposedFfplayp_ShouldThrowInvalidOperation()
@@ -195,7 +194,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             finally
             {
                 KillPid(pid);
-                player.Dispose();
             }
         }
 

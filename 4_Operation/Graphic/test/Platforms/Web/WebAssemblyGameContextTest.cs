@@ -140,30 +140,29 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that show confirm returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void ShowConfirm_ReturnsFalse_OnNonWebAssembly()
+        public void ShowConfirm_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
-            Assert.False(WebAssemblyGameContext.ShowConfirm(null));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ShowConfirm("test"));
         }
 
         /// <summary>
         /// Tests that is fullscreen returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void IsFullscreen_ReturnsFalse_OnNonWebAssembly()
+        public void IsFullscreen_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsFullscreen());
         }
 
         /// <summary>
         /// Tests that lock pointer unlock pointer is pointer locked return false on non web assembly
         /// </summary>
         [WebOnly]
-        public void LockPointer_UnlockPointer_IsPointerLocked_ReturnFalse_OnNonWebAssembly()
+        public void LockPointer_UnlockPointer_IsPointerLocked_PropagateOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.LockPointer());
-            Assert.False(WebAssemblyGameContext.UnlockPointer());
-            Assert.False(WebAssemblyGameContext.IsPointerLocked());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.LockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.UnlockPointer());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsPointerLocked());
         }
 
         /// <summary>
@@ -190,18 +189,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that is charging returns false
         /// </summary>
         [WebOnly]
-        public void IsCharging_ReturnsFalse()
+        public void IsCharging_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsCharging());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsCharging());
         }
 
         /// <summary>
         /// Tests that is online returns false
         /// </summary>
         [WebOnly]
-        public void IsOnline_ReturnsFalse()
+        public void IsOnline_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.IsOnline());
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.IsOnline());
         }
 
         /// <summary>
@@ -217,10 +216,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that vibrate gamepad returns false on non web assembly
         /// </summary>
         [WebOnly]
-        public void VibrateGamepad_ReturnsFalse_OnNonWebAssembly()
+        public void VibrateGamepad_PropagatesOnNonWebAssembly()
         {
-            Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
-            Assert.False(WebAssemblyGameContext.VibrateGamepad(1, 0.5f, 0.5f, 0.2f));
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.VibrateGamepad(0));
         }
 
         /// <summary>

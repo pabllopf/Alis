@@ -385,14 +385,7 @@ namespace Alis.Core.Aspect.Memory
                     }
                 }
 
-                try
-                {
-                    File.SetLastWriteTimeUtc(tempFilePath, entryInfo.LastWriteTimeUtc.UtcDateTime);
-                }
-                catch
-                {
-                    // File metadata setting is non-critical; ignore failures
-                }
+                File.SetLastWriteTimeUtc(tempFilePath, entryInfo.LastWriteTimeUtc.UtcDateTime);
 
                 return tempFilePath;
             }

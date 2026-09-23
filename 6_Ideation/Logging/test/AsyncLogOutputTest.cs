@@ -232,16 +232,16 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that async log output inner output exception should not propagate
+        ///     Tests that async log output inner output exception propagates
         /// </summary>
         [Fact]
-        public void AsyncLogOutput_InnerOutputException_ShouldNotPropagate()
+        public void AsyncLogOutput_InnerOutputException_ShouldPropagate()
         {
             FaultyLogOutput faultyOutput = new FaultyLogOutput();
             AsyncLogOutput asyncOutput = new AsyncLogOutput(faultyOutput);
 
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
-            asyncOutput.Flush();
+            Assert.Throws<InvalidOperationException>(() => asyncOutput.Flush());
         }
 
         /// <summary>

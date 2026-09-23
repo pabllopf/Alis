@@ -151,10 +151,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         }
 
         /// <summary>
-        ///     Tests that OpenWrite swallows exceptions when killing a disposed ffplayp
+        ///     Tests that OpenWrite propagates the exception thrown when killing a disposed ffplayp
         /// </summary>
         [RequireFfmpegFact]
-        public void OpenWrite_WithDisposedFfplayp_ShouldReopen()
+        public void OpenWrite_WithDisposedFfplayp_ShouldPropagateException()
         {
             TestableAudioPlayer player = new TestableAudioPlayer(null, _fakeFfplayPath);
             int pid = -1;
@@ -166,20 +166,18 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 p.Dispose();
                 player.SetOpenedForWriting(false);
 
-                Exception ex = Record.Exception(() => player.OpenWrite(48000, 2, 16));
-
-                Assert.Null(ex);
-                Assert.True(player.OpenedForWriting);
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(48000, 2, 16));
+                Assert.NotNull(ex);
+                Assert.False(player.OpenedForWriting);
             }
             finally
             {
                 KillPid(pid);
-                player.Dispose();
             }
         }
 
         /// <summary>
-        ///     Tests that CloseWrite swallows the kill exception but rethrows on WaitForExit
+        ///     Tests that CloseWrite propagates the exception thrown by the disposed ffplayp
         /// </summary>
         [RequireFfmpegFact]
         public void CloseWrite_WithDisposedFfplayp_ShouldThrowInvalidOperation()
@@ -200,7 +198,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             finally
             {
                 KillPid(pid);
-                player.Dispose();
             }
         }
     }

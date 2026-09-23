@@ -140,14 +140,7 @@ namespace Alis.Extension.Language.Translator
 
             lock (syncLock)
             {
-                try
-                {
-                    languageProvider.AddLanguage(language);
-                }
-                catch (InvalidOperationException)
-                {
-                    // Language already added
-                }
+                languageProvider.AddLanguage(language);
 
                 currentLanguage = language;
                 NotifyLanguageChanged(language);

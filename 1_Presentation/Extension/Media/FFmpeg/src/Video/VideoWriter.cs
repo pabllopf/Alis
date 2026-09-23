@@ -250,16 +250,9 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
                 if (Ffmpegp != null && !Ffmpegp.WaitForExit(5000))
                 {
-                    try
+                    if (!Ffmpegp.HasExited)
                     {
-                        if (!Ffmpegp.HasExited)
-                        {
-                            Ffmpegp.Kill();
-                        }
-                    }
-                    catch
-                    {
-                        // Swallow exception
+                        Ffmpegp.Kill();
                     }
 
                     Ffmpegp.WaitForExit();

@@ -48,17 +48,16 @@ namespace Alis.Core.Aspect.Logging.Test
         private readonly TextWriter _originalOut = Console.Out;
 
         /// <summary>
-        ///     Tests that write with throwing console output swallows exception
+        ///     Tests that write with throwing console output propagates exception
         /// </summary>
         [Fact]
-        public void Write_WithThrowingConsoleOutput_SwallowsException()
+        public void Write_WithThrowingConsoleOutput_PropagatesException()
         {
             Console.SetOut(new ThrowingTextWriter());
             ConsoleLogOutput output = new ConsoleLogOutput();
 
-            output.Write(new LogEntry(LogLevel.Info, "message", "logger"));
-            output.Write(new LogEntry(LogLevel.Debug, "debug message", "logger"));
-                    }
+            Assert.Throws<IOException>(() => output.Write(new LogEntry(LogLevel.Info, "message", "logger")));
+        }
 
         /// <summary>
         ///     The throwing text writer class

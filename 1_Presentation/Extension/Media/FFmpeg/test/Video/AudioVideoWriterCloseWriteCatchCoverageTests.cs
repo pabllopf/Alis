@@ -102,14 +102,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        ///     Tests that CloseWrite swallows the error thrown when the FFmpeg process
+        ///     Tests that CloseWrite propagates the error thrown when the FFmpeg process
         ///     handle is disposed while the five second exit wait is in progress. The
-        ///     wait still reports that the process is running, the subsequent
-        ///     <c>HasExited</c> check throws and is swallowed by the inner catch block,
-        ///     and the final <c>WaitForExit()</c> propagates the disposed-handle error.
+        ///     wait still reports that the process is running, and the subsequent
+        ///     <c>HasExited</c> check throws and is no longer swallowed, so the error
+        ///     propagates to the caller.
         /// </summary>
         [RequireFfmpegFact]
-        public void CloseWrite_WhenProcessHandleDisposedDuringWait_ThrowsAfterSwallowingKillError()
+        public void CloseWrite_WhenProcessHandleDisposedDuringWait_PropagatesKillError()
         {
             string outFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp4");
             using AudioVideoWriter writer = new(outFile, 16, 16, 30.0, 2, 44100, 16,

@@ -163,19 +163,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             _windowWidth = width;
             _windowHeight = height;
 
-            try
-            {
-                InitializeEglContext();
-                RegisterInputEvents();
-                _isInitialized = true;
-                return true;
-            }
-            catch
-            {
-                // Swallow exception during gamepad state update
-            }
-
-            return false;
+            InitializeEglContext();
+            RegisterInputEvents();
+            _isInitialized = true;
+            return true;
         }
 
         /// <summary>
@@ -261,18 +252,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void RegisterKeyboardEvents()
         {
-            try
-            {
-                EmscriptenWeb.RegisterKeyboardCallbacks(
-                    Marshal.GetFunctionPointerForDelegate((KeyEventDelegate)OnKeyDown),
-                    Marshal.GetFunctionPointerForDelegate((KeyEventDelegate)OnKeyUp),
-                    Marshal.GetFunctionPointerForDelegate((KeyCharDelegate)OnCharInput)
-                );
-            }
-            catch
-            {
-                // Swallow exception during gamepad state update
-            }
+            EmscriptenWeb.RegisterKeyboardCallbacks(
+                Marshal.GetFunctionPointerForDelegate((KeyEventDelegate)OnKeyDown),
+                Marshal.GetFunctionPointerForDelegate((KeyEventDelegate)OnKeyUp),
+                Marshal.GetFunctionPointerForDelegate((KeyCharDelegate)OnCharInput)
+            );
         }
 
         /// <summary>
@@ -280,19 +264,12 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void RegisterMouseEvents()
         {
-            try
-            {
-                EmscriptenWeb.RegisterMouseCallbacks(
-                    Marshal.GetFunctionPointerForDelegate((MouseMoveDelegate)OnMouseMove),
-                    Marshal.GetFunctionPointerForDelegate((MouseButtonDelegate)OnMouseDown),
-                    Marshal.GetFunctionPointerForDelegate((MouseButtonDelegate)OnMouseUp),
-                    Marshal.GetFunctionPointerForDelegate((MouseWheelDelegate)OnMouseWheel)
-                );
-            }
-            catch
-            {
-                // Swallow exception during gamepad state update
-            }
+            EmscriptenWeb.RegisterMouseCallbacks(
+                Marshal.GetFunctionPointerForDelegate((MouseMoveDelegate)OnMouseMove),
+                Marshal.GetFunctionPointerForDelegate((MouseButtonDelegate)OnMouseDown),
+                Marshal.GetFunctionPointerForDelegate((MouseButtonDelegate)OnMouseUp),
+                Marshal.GetFunctionPointerForDelegate((MouseWheelDelegate)OnMouseWheel)
+            );
         }
 
         /// <summary>
@@ -300,20 +277,10 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void RegisterGamepadEvents()
         {
-            try
-            {
-                EmscriptenWeb.RegisterGamepadCallbacks(
-                    Marshal.GetFunctionPointerForDelegate((GamepadConnectDelegate)OnGamepadConnect),
-                    Marshal.GetFunctionPointerForDelegate((GamepadDisconnectDelegate)OnGamepadDisconnect)
-                );
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            EmscriptenWeb.RegisterGamepadCallbacks(
+                Marshal.GetFunctionPointerForDelegate((GamepadConnectDelegate)OnGamepadConnect),
+                Marshal.GetFunctionPointerForDelegate((GamepadDisconnectDelegate)OnGamepadDisconnect)
+            );
         }
 
         /// <summary>
@@ -321,21 +288,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void RegisterWindowEvents()
         {
-            try
-            {
-                EmscriptenWeb.RegisterWindowCallbacks(
-                    Marshal.GetFunctionPointerForDelegate((WindowResizeDelegate)OnWindowResize),
-                    Marshal.GetFunctionPointerForDelegate((WindowCloseDelegate)OnWindowClose),
-                    Marshal.GetFunctionPointerForDelegate((WindowFocusDelegate)OnWindowFocus)
-                );
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            EmscriptenWeb.RegisterWindowCallbacks(
+                Marshal.GetFunctionPointerForDelegate((WindowResizeDelegate)OnWindowResize),
+                Marshal.GetFunctionPointerForDelegate((WindowCloseDelegate)OnWindowClose),
+                Marshal.GetFunctionPointerForDelegate((WindowFocusDelegate)OnWindowFocus)
+            );
         }
 
         /// <summary>
@@ -368,17 +325,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void OnCharInput(uint charCode)
         {
-            try
-            {
-                _inputCharacterBuilder.Append(char.ConvertFromUtf32((int)charCode));
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            _inputCharacterBuilder.Append(char.ConvertFromUtf32((int)charCode));
         }
 
         /// <summary>
@@ -521,25 +468,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         internal void UpdateGamepadStates()
         {
-            try
+            int[] gamepadIndices = EmscriptenWeb.GetConnectedGamepads();
+            if (gamepadIndices.Length == 0)
             {
-                int[] gamepadIndices = EmscriptenWeb.GetConnectedGamepads();
-                if (gamepadIndices.Length == 0)
-                {
-                    return;
-                }
-
-                foreach (int index in gamepadIndices)
-                {
-                    UpdateSingleGamepadState(index);
-                }
+                return;
             }
-            catch
 
+            foreach (int index in gamepadIndices)
             {
-
-                // Swallow exception
-
+                UpdateSingleGamepadState(index);
             }
         }
 
@@ -748,17 +685,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="iconPath">The icon path</param>
         public void SetWindowIcon(string iconPath)
         {
-            try
-            {
-                EmscriptenWeb.SetWindowIcon(iconPath);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            EmscriptenWeb.SetWindowIcon(iconPath);
         }
 
         /// <summary>

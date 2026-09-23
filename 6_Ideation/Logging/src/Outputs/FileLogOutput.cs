@@ -132,18 +132,8 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
             lock (_writeLock)
             {
-                try
-                {
-                    string formatted = _formatter.Format(entry);
-                    _writer.WriteLine(formatted);
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                string formatted = _formatter.Format(entry);
+                _writer.WriteLine(formatted);
             }
         }
 
@@ -161,17 +151,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
             lock (_writeLock)
             {
-                try
-                {
-                    _writer.Flush();
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                _writer.Flush();
             }
         }
 
@@ -191,19 +171,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
             lock (_writeLock)
             {
-                try
-                {
-                    _writer?.Flush();
-                    _writer?.Dispose();
-                    _writer = null;
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                _writer?.Flush();
+                _writer?.Dispose();
+                _writer = null;
             }
         }
     }

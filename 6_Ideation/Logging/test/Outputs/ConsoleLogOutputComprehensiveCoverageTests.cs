@@ -255,14 +255,10 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        ///     Tests that Write catches exceptions from Console.ForegroundColor and
-        ///     Console.WriteLine, covering both try-catch blocks (outer and inner).
-        ///     Uses a ThrowingTextWriter that fails on Write and WriteLine, and
-        ///     attempts to trigger the inner catch by creating a console environment
-        ///     where ForegroundColor restore also fails.
+        ///     Tests that Write propagates when Console.WriteLine throws.
         /// </summary>
         [Fact]
-        public void Write_WhenBothForegroundColorAndWriteLineThrow_DoesNotThrow()
+        public void Write_WhenBothForegroundColorAndWriteLineThrow_PropagatesException()
         {
             TextWriter originalOut = Console.Out;
             ConsoleColor originalColor = Console.ForegroundColor;
@@ -272,7 +268,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
                 ConsoleLogOutput output = new ConsoleLogOutput();
                 LogEntry entry = new LogEntry(LogLevel.Info, "Double throw test", "Logger");
 
-                output.Write(entry);
+                Assert.Throws<IOException>(() => output.Write(entry));
             }
             finally
             {
@@ -282,12 +278,10 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        ///     Tests that Write with a disposed stream writer causes both
-        ///     Console.WriteLine and possibly ForegroundColor restore to fail,
-        ///     exercising the inner catch block.
+        ///     Tests that Write with a disposed stream writer propagates the failure.
         /// </summary>
         [Fact]
-        public void Write_WithDisposedStream_DoesNotThrow()
+        public void Write_WithDisposedStream_PropagatesException()
         {
             TextWriter originalOut = Console.Out;
             ConsoleColor originalColor = Console.ForegroundColor;
@@ -302,7 +296,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
                 ConsoleLogOutput output = new ConsoleLogOutput();
                 LogEntry entry = new LogEntry(LogLevel.Info, "Disposed stream", "Logger");
 
-                output.Write(entry);
+                Assert.Throws<ObjectDisposedException>(() => output.Write(entry));
             }
             finally
             {

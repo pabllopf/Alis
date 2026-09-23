@@ -86,16 +86,9 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 else
                 {
-                    try
+                    if ((ffplayp != null) && !ffplayp.HasExited)
                     {
-                        if ((ffplayp != null) && !ffplayp.HasExited)
-                        {
-                            ffplayp.Kill();
-                        }
-                    }
-                    catch
-                    {
-                        // Swallow exception during cleanup; Kill() may throw if process already exited.
+                        ffplayp.Kill();
                     }
                 }
             }
@@ -170,17 +163,10 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 throw new InvalidOperationException("Player is already opened for writing samples!");
             }
 
-            try
+            if ((ffplayp != null) && !ffplayp.HasExited)
             {
-                if ((ffplayp != null) && !ffplayp.HasExited)
-                {
-                    ffplayp.Kill();
-                }
+                ffplayp.Kill();
             }
-                catch
-                {
-                    // Ignore exception during cleanup
-                }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"{extraInputParameters} -f s{bitDepth}le -channels {channels} -sample_rate {sampleRate} -i -"
                                                               + (showWindow ? "" : " -nodisp"),
@@ -201,16 +187,9 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
             try
             {
-                try
+                if (ffplayp != null && !ffplayp.HasExited)
                 {
-                    if (ffplayp != null && !ffplayp.HasExited)
-                    {
-                        ffplayp.Kill();
-                    }
-                }
-                catch
-                {
-                    // Ignore exception during close
+                    ffplayp.Kill();
                 }
 
                 ffplayp?.WaitForExit();

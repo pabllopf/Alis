@@ -652,14 +652,12 @@ namespace Alis.Extension.Network.Server
             {
                 StopListeningAsync().Wait(TimeSpan.FromSeconds(5));
             }
-            catch (Exception)
+            finally
             {
-                // Swallow exception during dispose
+                _cancellationTokenSource?.Dispose();
+                _transport?.Dispose();
+                GC.SuppressFinalize(this);
             }
-
-            _cancellationTokenSource?.Dispose();
-            _transport?.Dispose();
-            GC.SuppressFinalize(this);
         }
 
 

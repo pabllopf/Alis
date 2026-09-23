@@ -74,10 +74,10 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
-        /// Tests that ping forever with cancelled token does not throw
+        /// Tests that ping forever with cancelled token completes without exception
         /// </summary>
         [Fact]
-        public async Task PingForever_WithCancelledToken_DoesNotThrow()
+        public async Task PingForever_WithCancelledToken_CompletesWithoutException()
         {
             Guid guid = Guid.NewGuid();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
@@ -91,10 +91,10 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
-        /// Tests that ping forever with cancelled token invokes log end
+        /// Tests that ping forever with cancelled token completes without exception
         /// </summary>
         [Fact]
-        public async Task PingForever_WithCancelledToken_InvokesLogEnd()
+        public async Task PingForever_WithCancelledToken_CompletesWithoutExceptionOnInvoke()
         {
             Guid guid = Guid.NewGuid();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
@@ -103,8 +103,9 @@ namespace Alis.Extension.Network.Test
             cts.Cancel();
             PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.FromSeconds(30), cts.Token);
 
-            await manager.PingForever();
+            Exception ex = await Record.ExceptionAsync(() => manager.PingForever());
 
+            Assert.Null(ex);
             Assert.NotNull(manager);
         }
 
@@ -140,10 +141,10 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
-        /// Tests that ping forever catches operation canceled exception when token cancelled during delay
+        /// Tests that ping forever propagates cancellation when token cancelled during delay
         /// </summary>
         [Fact]
-        public async Task PingForever_WhenCancelledDuringDelay_CatchesOperationCanceledException()
+        public async Task PingForever_WhenCancelledDuringDelay_PropagatesCancellation()
         {
             Guid guid = Guid.NewGuid();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
@@ -157,9 +158,7 @@ namespace Alis.Extension.Network.Test
 
             cts.Cancel();
 
-            Exception ex = await Record.ExceptionAsync(() => pingForeverTask);
-
-            Assert.Null(ex);
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => pingForeverTask);
         }
     }
 }

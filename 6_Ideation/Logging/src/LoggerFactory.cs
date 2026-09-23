@@ -94,18 +94,8 @@ namespace Alis.Core.Aspect.Logging
 
             foreach (ILogOutput output in _outputs)
             {
-                try
-                {
-                    output.Flush();
-                    output.Dispose();
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                output.Flush();
+                output.Dispose();
             }
 
             _outputs.Clear();
@@ -197,17 +187,7 @@ namespace Alis.Core.Aspect.Logging
 
             foreach (ILogOutput output in _outputs)
             {
-                try
-                {
-                    output.Flush();
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                output.Flush();
             }
         }
     }

@@ -119,68 +119,63 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that system info is online returns false on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_IsOnline_ReturnsFalseOnNonBrowser()
+        public void SystemInfo_IsOnline_PropagatesOnNonBrowser()
         {
-            Assert.False(SystemInfo.IsOnline());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsOnline());
         }
 
         /// <summary>
         /// Tests that system info get language returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetLanguage_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetLanguage_PropagatesOnNonBrowser()
         {
-            string lang = SystemInfo.GetLanguage();
-            Assert.Equal("en", lang);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetLanguage());
         }
 
         /// <summary>
         /// Tests that system info get device pixel ratio returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetDevicePixelRatio_PropagatesOnNonBrowser()
         {
-            float ratio = SystemInfo.GetDevicePixelRatio();
-            Assert.Equal(1.0f, ratio, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetDevicePixelRatio());
         }
 
         /// <summary>
         /// Tests that system info get battery level returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetBatteryLevel_PropagatesOnNonBrowser()
         {
-            float level = SystemInfo.GetBatteryLevel();
-            Assert.Equal(-1.0f, level, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetBatteryLevel());
         }
 
         /// <summary>
         /// Tests that system info is charging returns false on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_IsCharging_ReturnsFalseOnNonBrowser()
+        public void SystemInfo_IsCharging_PropagatesOnNonBrowser()
         {
-            Assert.False(SystemInfo.IsCharging());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsCharging());
         }
 
         /// <summary>
         /// Tests that system info get screen orientation returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetScreenOrientation_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetScreenOrientation_PropagatesOnNonBrowser()
         {
-            int orientation = SystemInfo.GetScreenOrientation();
-            Assert.Equal(1, orientation);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetScreenOrientation());
         }
 
         /// <summary>
         /// Tests that system info get system time ms returns zero on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
+        public void SystemInfo_GetSystemTimeMs_PropagatesOnNonBrowser()
         {
-            double time = SystemInfo.GetSystemTimeMs();
-            Assert.Equal(0.0, time, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetSystemTimeMs());
         }
 
         /// <summary>

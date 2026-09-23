@@ -42,11 +42,11 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
     public class ConditionalLogFilterEdgeCasesTest
     {
         /// <summary>
-        ///     Tests that conditional log filter predicate throwing multiple times should always return true
+        ///     Tests that conditional log filter predicate throwing multiple times always propagates
         /// </summary>
         /// <exception cref="InvalidOperationException">Always fails</exception>
         [Fact]
-        public void ConditionalLogFilter_PredicateThrowingMultipleTimes_ShouldAlwaysReturnTrue()
+        public void ConditionalLogFilter_PredicateThrowingMultipleTimes_ShouldPropagate()
         {
             int callCount = 0;
             ConditionalLogFilter filter = new ConditionalLogFilter(e =>
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
 
             for (int i = 0; i < 5; i++)
             {
-                Assert.True(filter.ShouldLog(entry));
+                Assert.Throws<InvalidOperationException>(() => filter.ShouldLog(entry));
                 Assert.Equal(i + 1, callCount);
             }
         }

@@ -154,9 +154,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 BindingFlags.NonPublic | BindingFlags.Instance);
             Assert.NotNull(ffplaypField.GetValue(player));
 
-            result.Kill();
-            result.Dispose();
             player.Dispose();
+            result.Dispose();
         }
 
         /// <summary>
@@ -171,9 +170,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.NotNull(result);
 
-            result.Kill();
-            result.Dispose();
             player.Dispose();
+            result.Dispose();
         }
 
         /// <summary>
@@ -188,9 +186,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.NotNull(result);
 
-            result.Kill();
-            result.Dispose();
             player.Dispose();
+            result.Dispose();
         }
 
         /// <summary>

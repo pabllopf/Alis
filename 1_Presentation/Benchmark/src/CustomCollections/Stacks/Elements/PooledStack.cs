@@ -750,14 +750,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         {
             if (_array?.Length > 0)
             {
-                try
-                {
-                    _pool.Return(_array, _clearOnFree);
-                }
-                catch (ArgumentException)
-                {
-                    // oh well, the array pool didn't like our array
-                }
+                _pool.Return(_array, _clearOnFree);
             }
 
             if (!(replaceWith is null))

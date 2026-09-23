@@ -119,10 +119,10 @@ namespace Alis.Extension.Network.Test.Core
         }
 
         /// <summary>
-        ///     Tests that dispose swallows a failing stop and disposes the client sockets.
+        ///     Tests that dispose propagates a failing stop and still disposes the client sockets.
         /// </summary>
         [Fact]
-        public void Dispose_WithFailingStop_SwallowsAndDisposesSockets()
+        public void Dispose_WithFailingStop_PropagatesAndDisposesSockets()
         {
             WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18902"));
             transport.StartAsync().Wait();
@@ -131,7 +131,7 @@ namespace Alis.Extension.Network.Test.Core
 
             Exception ex = Record.Exception(() => transport.Dispose());
 
-            Assert.Null(ex);
+            Assert.NotNull(ex);
             Assert.True(socket.Disposed);
         }
         

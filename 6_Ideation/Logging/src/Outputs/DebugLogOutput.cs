@@ -90,18 +90,8 @@ namespace Alis.Core.Aspect.Logging.Outputs
                 return;
             }
 
-            try
-            {
-                string formatted = _formatter.Format(entry);
-                Debug.WriteLine(formatted);
-            }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
+            string formatted = _formatter.Format(entry);
+            Debug.WriteLine(formatted);
         }
 
 

@@ -103,26 +103,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
                 Console.WriteLine(formatted);
             }
-            catch
-
-            {
-
-                // Swallow exception
-
-            }
             finally
             {
-                try
-                {
-                    Console.ForegroundColor = originalColor;
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                Console.ForegroundColor = originalColor;
             }
         }
 

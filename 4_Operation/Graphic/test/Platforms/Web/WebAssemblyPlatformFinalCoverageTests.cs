@@ -839,11 +839,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that initialize short overload returns false when egl fails
         /// </summary>
         [WebOnly]
-        public void Initialize_ShortOverload_ReturnsFalse_WhenEglFails()
+        public void Initialize_ShortOverload_PropagatesWhenEglFails()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            bool result = platform.Initialize(800, 600, "Test");
-            Assert.False(result);
+            Assert.ThrowsAny<Exception>(() => platform.Initialize(800, 600, "Test"));
         }
 
         /// <summary>

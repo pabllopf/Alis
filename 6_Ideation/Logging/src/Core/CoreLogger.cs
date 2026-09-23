@@ -323,37 +323,17 @@ namespace Alis.Core.Aspect.Logging.Core
         
         internal void ProcessEntry(ILogEntry entry)
         {
-            try
+            if (_filters.Any(filter => !filter.ShouldLog(entry)))
             {
-                if (_filters.Any(filter => !filter.ShouldLog(entry)))
-                {
-                    return;
-                }
-
-                foreach (ILogOutput output in _outputs)
-                {
-                    if (output.IsEnabled)
-                    {
-                        try
-                        {
-                            output.Write(entry);
-                        }
-                        catch
-
-                        {
-
-                            // Swallow exception
-
-                        }
-                    }
-                }
+                return;
             }
-            catch
 
+            foreach (ILogOutput output in _outputs)
             {
-
-                // Swallow exception
-
+                if (output.IsEnabled)
+                {
+                    output.Write(entry);
+                }
             }
         }
     }

@@ -41,56 +41,50 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyPlatformTests
     {
         /// <summary>
-        ///     Verifies that the four argument initialize falls back to the icon path overload
-        ///     and reports failure when the EGL native library is unavailable.
+        ///     Verifies that the four argument initialize propagates the EGL failure
+        ///     when the native library is unavailable.
         /// </summary>
         [Fact]
-        public void Initialize_WithNullIconPath_ReturnsFalse()
+        public void Initialize_WithNullIconPath_PropagatesWithoutNativeLibrary()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            bool result = platform.Initialize(640, 480, "title", null);
-            Assert.False(result);
+            Assert.ThrowsAny<Exception>(() => platform.Initialize(640, 480, "title", null));
         }
 
         /// <summary>
-        ///     Verifies that the three argument initialize forwards to the icon path overload
-        ///     and reports failure when the EGL native library is unavailable.
+        ///     Verifies that the three argument initialize propagates the EGL failure
+        ///     when the native library is unavailable.
         /// </summary>
         [Fact]
-        public void Initialize_ThreeArguments_ReturnsFalse()
+        public void Initialize_ThreeArguments_PropagatesWithoutNativeLibrary()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            bool result = platform.Initialize(640, 480, "title");
-            Assert.False(result);
+            Assert.ThrowsAny<Exception>(() => platform.Initialize(640, 480, "title"));
         }
 
         /// <summary>
         ///     Verifies that a failed initialize attempt does not permanently disable retries
-        ///     and that repeated attempts keep reporting failure on desktop.
+        ///     and that repeated attempts keep propagating the failure on desktop.
         /// </summary>
         [Fact]
-        public void Initialize_RepeatedAttempts_KeepReportingFalse()
+        public void Initialize_RepeatedAttempts_KeepPropagating()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            Assert.False(platform.Initialize(800, 600, "a"));
-            Assert.False(platform.Initialize(800, 600, "b"));
+            Assert.ThrowsAny<Exception>(() => platform.Initialize(800, 600, "a"));
+            Assert.ThrowsAny<Exception>(() => platform.Initialize(800, 600, "b"));
             Assert.Equal(800, platform.GetWindowWidth());
             Assert.Equal(600, platform.GetWindowHeight());
         }
 
         /// <summary>
-        ///     Verifies that the input event registration pipeline executes without throwing
-        ///     when the emscripten native library is unavailable.
+        ///     Verifies that the input event registration pipeline propagates the native
+        ///     failure when the emscripten native library is unavailable.
         /// </summary>
         [Fact]
-        public void RegisterInputEvents_WithoutNativeLibrary_DoesNotThrow()
+        public void RegisterInputEvents_WithoutNativeLibrary_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.RegisterInputEvents();
-            platform.RegisterKeyboardEvents();
-            platform.RegisterMouseEvents();
-            platform.RegisterGamepadEvents();
-            platform.RegisterWindowEvents();
+            Assert.ThrowsAny<Exception>(() => platform.RegisterInputEvents());
         }
 
         /// <summary>
@@ -291,14 +285,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Verifies that invalid unicode code points are swallowed by the character input
-        ///     handler.
+        ///     Verifies that invalid unicode code points propagate the conversion
+        ///     failure from the character input handler.
         /// </summary>
         [Fact]
-        public void OnCharInput_WithInvalidCodePoint_DoesNotThrow()
+        public void OnCharInput_WithInvalidCodePoint_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.OnCharInput(0xD800);
+            Assert.ThrowsAny<Exception>(() => platform.OnCharInput(0xD800));
             Assert.False(platform.TryGetLastInputCharacters(out _));
         }
 
@@ -418,28 +412,29 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Verifies that the gamepad state update handles a missing native library without
-        ///     throwing and returns no indices.
+        ///     Verifies that the gamepad state update propagates the native failure
+        ///     when the library is missing.
         /// </summary>
         [Fact]
-        public void UpdateGamepadStates_WithoutNativeLibrary_DoesNotThrow()
+        public void UpdateGamepadStates_WithoutNativeLibrary_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.OnGamepadConnect(0);
-            platform.UpdateGamepadStates();
+            Assert.ThrowsAny<Exception>(() => platform.UpdateGamepadStates());
             Assert.True(platform.TryGetGamepadState(0, out GamepadState state));
             Assert.True(state.Connected);
         }
 
         /// <summary>
-        ///     Verifies that updating a single gamepad state creates the entry and keeps the
-        ///     default axes and buttons when the native library is unavailable.
+        ///     Verifies that updating a single gamepad state creates the entry and
+        ///     propagates the native failure while the axes and buttons stay at
+        ///     their defaults.
         /// </summary>
         [Fact]
-        public void UpdateSingleGamepadState_CreatesEntryWithDefaults()
+        public void UpdateSingleGamepadState_CreatesEntryAndPropagatesWithoutNativeLibrary()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.UpdateSingleGamepadState(3);
+            Assert.ThrowsAny<Exception>(() => platform.UpdateSingleGamepadState(3));
             Assert.True(platform.TryGetGamepadState(3, out GamepadState state));
             Assert.Equal(0.0f, state.LeftStickX);
             Assert.Equal(0.0f, state.LeftStickY);
@@ -462,38 +457,34 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(0));
             Assert.False(state.GetButton(20));
             Assert.False(state.GetButton(-1));
-            platform.UpdateSingleGamepadState(3);
         }
 
         /// <summary>
-        ///     Verifies that the window visibility is toggled by the show and hide operations
-        ///     when the native library is unavailable.
+        ///     Verifies that the show and hide operations set the visibility flag before
+        ///     propagating the native canvas failure.
         /// </summary>
         [Fact]
-        public void ShowAndHideWindow_ToggleVisibility()
+        public void ShowAndHideWindow_PropagateWithoutNativeLibrary()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            Assert.False(platform.IsWindowVisible());
-            platform.ShowWindow();
+            Assert.ThrowsAny<Exception>(() => platform.ShowWindow());
             Assert.True(platform.IsWindowVisible());
-            platform.HideWindow();
-            Assert.False(platform.IsWindowVisible());
         }
 
         /// <summary>
-        ///     Verifies that the title, size and icon operations execute without throwing when
-        ///     the native library is unavailable.
+        ///     Verifies that the title, size and icon operations propagate the native
+        ///     failure when the library is unavailable.
         /// </summary>
         [Fact]
-        public void WindowManagement_WithoutNativeLibrary_DoesNotThrow()
+        public void WindowManagement_WithoutNativeLibrary_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.SetTitle("New Title");
-            platform.SetSize(1024, 768);
+            Assert.ThrowsAny<Exception>(() => platform.SetTitle("New Title"));
+            Assert.ThrowsAny<Exception>(() => platform.SetSize(1024, 768));
             Assert.Equal(1024, platform.GetWindowWidth());
             Assert.Equal(768, platform.GetWindowHeight());
-            platform.SetWindowIcon("/icon.png");
-            platform.SetWindowIcon(null);
+            Assert.ThrowsAny<Exception>(() => platform.SetWindowIcon("/icon.png"));
+            Assert.ThrowsAny<Exception>(() => platform.SetWindowIcon(null));
         }
 
         /// <summary>
@@ -508,47 +499,39 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Verifies that the window position queries fall back to zero when the native
-        ///     library is unavailable and that the window metrics are computed from them.
+        ///     Verifies that the window position queries propagate the native failure
+        ///     when the library is unavailable.
         /// </summary>
         [Fact]
-        public void WindowMetrics_WithoutNativeLibrary_ReturnsZeroBasedValues()
+        public void WindowMetrics_WithoutNativeLibrary_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            Assert.Equal(0, platform.GetWindowPositionX());
-            Assert.Equal(0, platform.GetWindowPositionY());
-            platform.OnWindowResize(320, 240);
-            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
-            Assert.Equal(0, winX);
-            Assert.Equal(0, winY);
-            Assert.Equal(320, winW);
-            Assert.Equal(240, winH);
-            Assert.Equal(320, fbW);
-            Assert.Equal(240, fbH);
+            Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionX());
+            Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionY());
         }
 
         /// <summary>
-        ///     Verifies that polling events resets the wheel delta and reports true while the
-        ///     window is not closing.
+        ///     Verifies that polling events propagates the native gamepad failure
+        ///     while the window is not closing.
         /// </summary>
         [Fact]
-        public void PollEvents_ResetsWheelDeltaAndReportsOpen()
+        public void PollEvents_WithoutNativeLibrary_Propagates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.OnMouseWheel(0, 5);
-            Assert.True(platform.PollEvents());
-            Assert.Equal(0.0f, platform.GetMouseWheel());
+            Assert.ThrowsAny<Exception>(() => platform.PollEvents());
         }
 
         /// <summary>
-        ///     Verifies that polling events reports false once the window close callback ran.
+        ///     Verifies that polling events propagates the native gamepad failure even
+        ///     after the window close callback ran.
         /// </summary>
         [Fact]
-        public void PollEvents_ReportsFalseAfterWindowClose()
+        public void PollEvents_ReportsCloseAfterNativeFailure()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.OnWindowClose();
-            Assert.False(platform.PollEvents());
+            Assert.ThrowsAny<Exception>(() => platform.PollEvents());
         }
 
         /// <summary>

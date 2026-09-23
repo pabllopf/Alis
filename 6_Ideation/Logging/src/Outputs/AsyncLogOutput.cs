@@ -130,17 +130,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
                 while (_queue.Count > 0)
                 {
                     ILogEntry entry = _queue.Dequeue();
-                    try
-                    {
-                        _innerOutput.Write(entry);
-                    }
-                    catch
-
-                    {
-
-                        // Swallow exception
-
-                    }
+                    _innerOutput.Write(entry);
                 }
             }
 

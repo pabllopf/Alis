@@ -61,16 +61,16 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that write with throwing formatter swallows exception
+        ///     Tests that write with throwing formatter propagates exception
         /// </summary>
         [Fact]
-        public void Write_WithThrowingFormatter_SwallowsException()
+        public void Write_WithThrowingFormatter_PropagatesException()
         {
             string path = Path.Combine(Path.GetTempPath(), $"flog_{Guid.NewGuid():N}.log");
             FileLogOutput output = new FileLogOutput(path, new ThrowingFormatter());
             try
             {
-                output.Write(new LogEntry(LogLevel.Info, "test", "logger"));
+                Assert.Throws<InvalidOperationException>(() => output.Write(new LogEntry(LogLevel.Info, "test", "logger")));
 
                 Assert.True(output.IsEnabled);
             }

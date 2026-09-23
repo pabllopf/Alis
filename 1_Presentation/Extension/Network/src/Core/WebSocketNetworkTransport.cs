@@ -265,23 +265,18 @@ namespace Alis.Extension.Network.Core
             {
                 StopAsync().Wait(TimeSpan.FromSeconds(5));
             }
-            catch(Exception)
-
+            finally
             {
+                _tcpListener?.Stop();
 
-                // Swallow exception
+                foreach (WebSocket socket in _clientSockets.Values)
+                {
+                    socket?.Dispose();
+                }
 
+                _clientSockets.Clear();
+                GC.SuppressFinalize(this);
             }
-
-            _tcpListener?.Stop();
-
-            foreach (WebSocket socket in _clientSockets.Values)
-            {
-                socket?.Dispose();
-            }
-
-            _clientSockets.Clear();
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -351,13 +346,6 @@ namespace Alis.Extension.Network.Core
                     NetworkMessageEnvelope envelope = _serializer.DeserializeEnvelope(json);
                     _messageQueue.Enqueue((clientId, envelope));
                 }
-            }
-            catch(Exception)
-
-            {
-
-                // Swallow exception
-
             }
             finally
             {

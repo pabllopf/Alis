@@ -117,24 +117,24 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that CreateGameContext throws InvalidOperationException on
+        ///     Tests that CreateGameContext propagates the initialization failure on
         ///     desktop because the WebAssembly platform cannot be initialized
         /// </summary>
         [Fact]
-        public void CreateGameContext_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateGameContext_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateGameContext("TestGame"));
         }
 
         /// <summary>
-        ///     Tests that CreateGameContext with a custom size throws
-        ///     InvalidOperationException on desktop
+        ///     Tests that CreateGameContext with a custom size propagates the
+        ///     initialization failure on desktop
         /// </summary>
         [Fact]
-        public void CreateGameContext_CustomSize_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateGameContext_CustomSize_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateGameContext("TestGame", 800, 600));
         }
 
@@ -165,62 +165,62 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that CreateOptimizedPlatform with the Game2D profile throws
-        ///     InvalidOperationException on desktop because the platform cannot be
+        ///     Tests that CreateOptimizedPlatform with the Game2D profile propagates
+        ///     the initialization failure on desktop because the platform cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void CreateOptimizedPlatform_Game2D_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateOptimizedPlatform_Game2D_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
         }
 
         /// <summary>
-        ///     Tests that CreateOptimizedPlatform with the Game3D profile throws
-        ///     InvalidOperationException on desktop because the platform cannot be
+        ///     Tests that CreateOptimizedPlatform with the Game3D profile propagates
+        ///     the initialization failure on desktop because the platform cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void CreateOptimizedPlatform_Game3D_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateOptimizedPlatform_Game3D_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game3D));
         }
 
         /// <summary>
-        ///     Tests that CreateOptimizedPlatform with the LowEnd profile throws
-        ///     InvalidOperationException on desktop because the platform cannot be
+        ///     Tests that CreateOptimizedPlatform with the LowEnd profile propagates
+        ///     the initialization failure on desktop because the platform cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void CreateOptimizedPlatform_LowEnd_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateOptimizedPlatform_LowEnd_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.LowEnd));
         }
 
         /// <summary>
-        ///     Tests that CreateOptimizedPlatform with the HighEnd profile throws
-        ///     InvalidOperationException on desktop because the platform cannot be
+        ///     Tests that CreateOptimizedPlatform with the HighEnd profile propagates
+        ///     the initialization failure on desktop because the platform cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void CreateOptimizedPlatform_HighEnd_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateOptimizedPlatform_HighEnd_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
         }
 
         /// <summary>
-        ///     Tests that CreateOptimizedPlatform with the Mobile profile throws
-        ///     InvalidOperationException on desktop because the platform cannot be
+        ///     Tests that CreateOptimizedPlatform with the Mobile profile propagates
+        ///     the initialization failure on desktop because the platform cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void CreateOptimizedPlatform_Mobile_ThrowsInvalidOperationExceptionOnDesktop()
+        public void CreateOptimizedPlatform_Mobile_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
         }
 
@@ -229,14 +229,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         /// <summary>
-        ///     Tests that the MultiplatformGameEngine constructor throws
-        ///     InvalidOperationException on desktop because the
-        ///     WebAssemblyGameContext it creates cannot be initialized
+        ///     Tests that the MultiplatformGameEngine constructor propagates the
+        ///     initialization failure on desktop because the WebAssemblyGameContext
+        ///     it creates cannot be initialized
         /// </summary>
         [Fact]
-        public void MultiplatformGameEngine_Constructor_ThrowsInvalidOperationExceptionOnDesktop()
+        public void MultiplatformGameEngine_Constructor_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 new MultiplatformGameEngine(800, 600, "TestGame"));
         }
 
@@ -364,13 +364,13 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that IsFullscreen returns false on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that IsFullscreen propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void DisplayManager_IsFullscreen_ReturnsFalseOnDesktop()
+        public void DisplayManager_IsFullscreen_PropagatesOnDesktop()
         {
-            Assert.False(DisplayManager.IsFullscreen());
+            Assert.ThrowsAny<Exception>(() => DisplayManager.IsFullscreen());
         }
 
         /// <summary>
@@ -452,115 +452,103 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         /// <summary>
-        ///     Tests that IsOnline returns false on desktop because the Emscripten
-        ///     wrapper swallows the DllNotFoundException
+        ///     Tests that IsOnline propagates the native failure on desktop because
+        ///     the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_IsOnline_ReturnsFalseOnDesktop()
+        public void SystemInfo_IsOnline_PropagatesOnDesktop()
         {
-            Assert.False(SystemInfo.IsOnline());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsOnline());
         }
 
         /// <summary>
-        ///     Tests that GetLanguage returns the default english fallback on
-        ///     desktop because the Emscripten wrapper swallows the
-        ///     DllNotFoundException
+        ///     Tests that GetLanguage propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_GetLanguage_ReturnsEnglishFallbackOnDesktop()
+        public void SystemInfo_GetLanguage_PropagatesOnDesktop()
         {
-            string language = SystemInfo.GetLanguage();
-
-            Assert.Equal("en", language);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetLanguage());
         }
 
         /// <summary>
-        ///     Tests that GetDevicePixelRatio returns one on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that GetDevicePixelRatio propagates the native failure on
+        ///     desktop because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_GetDevicePixelRatio_ReturnsOneOnDesktop()
+        public void SystemInfo_GetDevicePixelRatio_PropagatesOnDesktop()
         {
-            float ratio = SystemInfo.GetDevicePixelRatio();
-
-            Assert.Equal(1.0f, ratio, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetDevicePixelRatio());
         }
 
         /// <summary>
-        ///     Tests that GetBatteryLevel returns minus one on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that GetBatteryLevel propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_GetBatteryLevel_ReturnsMinusOneOnDesktop()
+        public void SystemInfo_GetBatteryLevel_PropagatesOnDesktop()
         {
-            float level = SystemInfo.GetBatteryLevel();
-
-            Assert.Equal(-1.0f, level, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetBatteryLevel());
         }
 
         /// <summary>
-        ///     Tests that IsCharging returns false on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that IsCharging propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_IsCharging_ReturnsFalseOnDesktop()
+        public void SystemInfo_IsCharging_PropagatesOnDesktop()
         {
-            Assert.False(SystemInfo.IsCharging());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsCharging());
         }
 
         /// <summary>
-        ///     Tests that GetScreenOrientation returns the landscape fallback on
-        ///     desktop because the Emscripten wrapper swallows the
-        ///     DllNotFoundException
+        ///     Tests that GetScreenOrientation propagates the native failure on
+        ///     desktop because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_GetScreenOrientation_ReturnsLandscapeFallbackOnDesktop()
+        public void SystemInfo_GetScreenOrientation_PropagatesOnDesktop()
         {
-            int orientation = SystemInfo.GetScreenOrientation();
-
-            Assert.Equal(1, orientation);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetScreenOrientation());
         }
 
         /// <summary>
-        ///     Tests that GetSystemTimeMs returns zero on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that GetSystemTimeMs propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnDesktop()
+        public void SystemInfo_GetSystemTimeMs_PropagatesOnDesktop()
         {
-            double time = SystemInfo.GetSystemTimeMs();
-
-            Assert.Equal(0.0, time, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetSystemTimeMs());
         }
 
         /// <summary>
-        ///     Tests that LogToConsole does not throw on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that LogToConsole propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_LogToConsole_DoesNotThrowOnDesktop()
+        public void SystemInfo_LogToConsole_PropagatesOnDesktop()
         {
-            SystemInfo.LogToConsole("test message");
+            Assert.ThrowsAny<Exception>(() => SystemInfo.LogToConsole("test message"));
         }
 
         /// <summary>
-        ///     Tests that WarnToConsole does not throw on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that WarnToConsole propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_WarnToConsole_DoesNotThrowOnDesktop()
+        public void SystemInfo_WarnToConsole_PropagatesOnDesktop()
         {
-            SystemInfo.WarnToConsole("test warning");
+            Assert.ThrowsAny<Exception>(() => SystemInfo.WarnToConsole("test warning"));
         }
 
         /// <summary>
-        ///     Tests that ErrorToConsole does not throw on desktop because the
-        ///     Emscripten wrapper swallows the DllNotFoundException
+        ///     Tests that ErrorToConsole propagates the native failure on desktop
+        ///     because the Emscripten wrapper no longer swallows it
         /// </summary>
         [Fact]
-        public void SystemInfo_ErrorToConsole_DoesNotThrowOnDesktop()
+        public void SystemInfo_ErrorToConsole_PropagatesOnDesktop()
         {
-            SystemInfo.ErrorToConsole("test error");
+            Assert.ThrowsAny<Exception>(() => SystemInfo.ErrorToConsole("test error"));
         }
 
         // =====================================================================
@@ -568,25 +556,25 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         /// <summary>
-        ///     Tests that RunMinimalGame throws InvalidOperationException on
+        ///     Tests that RunMinimalGame propagates the initialization failure on
         ///     desktop because the WebAssemblyGameContext it creates cannot be
         ///     initialized
         /// </summary>
         [Fact]
-        public void QuickStart_RunMinimalGame_ThrowsInvalidOperationExceptionOnDesktop()
+        public void QuickStart_RunMinimalGame_PropagatesOnDesktop()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 QuickStart.RunMinimalGame((int width, int height) => { }));
         }
 
         /// <summary>
-        ///     Tests that LogPlatformInfo does not throw on desktop because every
-        ///     Emscripten wrapper it reaches swallows the DllNotFoundException
+        ///     Tests that LogPlatformInfo propagates the native failure on desktop
+        ///     because the Emscripten wrappers it reaches no longer swallow it
         /// </summary>
         [Fact]
-        public void QuickStart_LogPlatformInfo_DoesNotThrowOnDesktop()
+        public void QuickStart_LogPlatformInfo_PropagatesOnDesktop()
         {
-            QuickStart.LogPlatformInfo();
+            Assert.ThrowsAny<Exception>(() => QuickStart.LogPlatformInfo());
         }
     }
 }

@@ -89,10 +89,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that game context show confirm returns false on non browser
         /// </summary>
         [WebOnly]
-        public void GameContext_ShowConfirm_ReturnsFalseOnNonBrowser()
+        public void GameContext_ShowConfirm_PropagatesOnNonBrowser()
         {
-            bool result = WebAssemblyGameContext.ShowConfirm("test");
-            Assert.False(result);
+            Assert.ThrowsAny<Exception>(() => WebAssemblyGameContext.ShowConfirm("test"));
         }
 
         // =====================================================================
@@ -375,68 +374,63 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that system info is online returns false on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_IsOnline_ReturnsFalseOnNonBrowser()
+        public void SystemInfo_IsOnline_PropagatesOnNonBrowser()
         {
-            Assert.False(SystemInfo.IsOnline());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsOnline());
         }
 
         /// <summary>
         /// Tests that system info get language returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetLanguage_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetLanguage_PropagatesOnNonBrowser()
         {
-            string lang = SystemInfo.GetLanguage();
-            Assert.Equal("en", lang);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetLanguage());
         }
 
         /// <summary>
         /// Tests that system info get device pixel ratio returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetDevicePixelRatio_PropagatesOnNonBrowser()
         {
-            float ratio = SystemInfo.GetDevicePixelRatio();
-            Assert.Equal(1.0f, ratio, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetDevicePixelRatio());
         }
 
         /// <summary>
         /// Tests that system info get battery level returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetBatteryLevel_PropagatesOnNonBrowser()
         {
-            float level = SystemInfo.GetBatteryLevel();
-            Assert.Equal(-1.0f, level, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetBatteryLevel());
         }
 
         /// <summary>
         /// Tests that system info is charging returns false on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_IsCharging_ReturnsFalseOnNonBrowser()
+        public void SystemInfo_IsCharging_PropagatesOnNonBrowser()
         {
-            Assert.False(SystemInfo.IsCharging());
+            Assert.ThrowsAny<Exception>(() => SystemInfo.IsCharging());
         }
 
         /// <summary>
         /// Tests that system info get screen orientation returns default on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetScreenOrientation_ReturnsDefaultOnNonBrowser()
+        public void SystemInfo_GetScreenOrientation_PropagatesOnNonBrowser()
         {
-            int orientation = SystemInfo.GetScreenOrientation();
-            Assert.Equal(1, orientation); // landscape
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetScreenOrientation());
         }
 
         /// <summary>
         /// Tests that system info get system time ms returns zero on non browser
         /// </summary>
         [WebOnly]
-        public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
+        public void SystemInfo_GetSystemTimeMs_PropagatesOnNonBrowser()
         {
-            double time = SystemInfo.GetSystemTimeMs();
-            Assert.Equal(0.0, time, 5);
+            Assert.ThrowsAny<Exception>(() => SystemInfo.GetSystemTimeMs());
         }
 
         /// <summary>
@@ -558,73 +552,63 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that emscripten web get connected gamepads returns empty on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_GetConnectedGamepads_ReturnsEmptyOnNonBrowser()
+        public void EmscriptenWeb_GetConnectedGamepads_PropagatesOnNonBrowser()
         {
-            int[] gamepads = EmscriptenWeb.GetConnectedGamepads();
-            Assert.NotNull(gamepads);
-            Assert.Empty(gamepads);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetConnectedGamepads());
         }
 
         /// <summary>
         /// Tests that emscripten web get gamepad axes returns empty on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_GetGamepadAxes_ReturnsEmptyOnNonBrowser()
+        public void EmscriptenWeb_GetGamepadAxes_PropagatesOnNonBrowser()
         {
-            float[] axes = EmscriptenWeb.GetGamepadAxes(0);
-            Assert.NotNull(axes);
-            Assert.Empty(axes);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetGamepadAxes(0));
         }
 
         /// <summary>
         /// Tests that emscripten web get gamepad buttons returns empty on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_GetGamepadButtons_ReturnsEmptyOnNonBrowser()
+        public void EmscriptenWeb_GetGamepadButtons_PropagatesOnNonBrowser()
         {
-            bool[] buttons = EmscriptenWeb.GetGamepadButtons(0);
-            Assert.NotNull(buttons);
-            Assert.Empty(buttons);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetGamepadButtons(0));
         }
 
         /// <summary>
         /// Tests that emscripten web open file dialog returns null on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_OpenFileDialog_ReturnsNullOnNonBrowser()
+        public void EmscriptenWeb_OpenFileDialog_PropagatesOnNonBrowser()
         {
-            string result = EmscriptenWeb.OpenFileDialog();
-            Assert.Null(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.OpenFileDialog());
         }
 
         /// <summary>
         /// Tests that emscripten web open file dialog with mime types returns null on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_OpenFileDialog_WithMimeTypes_ReturnsNullOnNonBrowser()
+        public void EmscriptenWeb_OpenFileDialog_WithMimeTypes_PropagatesOnNonBrowser()
         {
-            string result = EmscriptenWeb.OpenFileDialog("image/*");
-            Assert.Null(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.OpenFileDialog("image/*"));
         }
 
         /// <summary>
         /// Tests that emscripten web paste from clipboard returns null on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_PasteFromClipboard_ReturnsNullOnNonBrowser()
+        public void EmscriptenWeb_PasteFromClipboard_PropagatesOnNonBrowser()
         {
-            string result = EmscriptenWeb.PasteFromClipboard();
-            Assert.Null(result);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.PasteFromClipboard());
         }
 
         /// <summary>
         /// Tests that emscripten web get language returns default on non browser
         /// </summary>
         [WebOnly]
-        public void EmscriptenWeb_GetLanguage_ReturnsDefaultOnNonBrowser()
+        public void EmscriptenWeb_GetLanguage_PropagatesOnNonBrowser()
         {
-            string lang = EmscriptenWeb.GetLanguage();
-            Assert.Equal("en", lang);
+            Assert.ThrowsAny<Exception>(() => EmscriptenWeb.GetLanguage());
         }
 
         // =====================================================================

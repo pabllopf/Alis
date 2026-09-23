@@ -442,17 +442,12 @@ namespace Alis.Extension.Network.Client
             {
                 DisconnectAsync().Wait(TimeSpan.FromSeconds(5));
             }
-            catch(Exception)
-
+            finally
             {
-
-                // Swallow exception
-
+                _cancellationTokenSource?.Dispose();
+                _serverSocket?.Dispose();
+                GC.SuppressFinalize(this);
             }
-
-            _cancellationTokenSource?.Dispose();
-            _serverSocket?.Dispose();
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>

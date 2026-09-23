@@ -67,16 +67,6 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// </summary>
         /// <param name="entry">The log entry to evaluate.</param>
         /// <returns>True if the entry passes the predicate; false otherwise.</returns>
-        public bool ShouldLog(ILogEntry entry)
-        {
-            try
-            {
-                return _predicate(entry);
-            }
-            catch
-            {
-                return true;
-            }
-        }
+        public bool ShouldLog(ILogEntry entry) => _predicate(entry);
     }
 }
