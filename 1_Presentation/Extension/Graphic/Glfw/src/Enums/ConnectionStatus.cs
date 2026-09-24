@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 namespace Alis.Extension.Graphic.Glfw.Enums
 {
     /// <summary>
