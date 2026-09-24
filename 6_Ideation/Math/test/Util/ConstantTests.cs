@@ -126,5 +126,267 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Assert.Equal(Constant.TwoPi, Constant.Tau, 5);
         }
+        
+        [Fact]
+        public void Epsilon_ShouldHaveExpectedValue()
+        {
+            Assert.Equal(1.192092896e-07f, Constant.Epsilon);
+        }
+
+        [Fact]
+        public void Euler_ShouldHaveExpectedValue()
+        {
+            Assert.Equal(2.7182818284590452354f, Constant.Euler);
+        }
+
+        [Fact]
+        public void E_ShouldBeEqualToSystemMathE()
+        {
+            Assert.Equal((float)System.Math.E, Constant.E);
+        }
+
+        [Fact]
+        public void E_ShouldBeEqualToEulerWithinFloatPrecision()
+        {
+            Assert.Equal(Constant.Euler, Constant.E, 5);
+        }
+
+        [Fact]
+        public void Log10E_ShouldHaveExpectedValue()
+        {
+            Assert.Equal(0.4342945f, Constant.Log10E);
+        }
+
+        [Fact]
+        public void Log2E_ShouldHaveExpectedValue()
+        {
+            Assert.Equal(1.442695f, Constant.Log2E);
+        }
+
+        [Fact]
+        public void Pi_ShouldBeEqualToSystemMathPi()
+        {
+            Assert.Equal((float)System.Math.PI, Constant.Pi);
+        }
+
+        [Fact]
+        public void PiOver2_ShouldBeEqualToPiDividedByTwo()
+        {
+            Assert.Equal(
+                (float)(System.Math.PI / 2.0),
+                Constant.PiOver2);
+        }
+
+        [Fact]
+        public void PiOver4_ShouldBeEqualToPiDividedByFour()
+        {
+            Assert.Equal(
+                (float)(System.Math.PI / 4.0),
+                Constant.PiOver4);
+        }
+
+        [Fact]
+        public void TwoPi_ShouldBeEqualToPiTimesTwo()
+        {
+            Assert.Equal(
+                (float)(System.Math.PI * 2.0),
+                Constant.TwoPi);
+        }
+
+        [Fact]
+        public void Tau_ShouldBeEqualToTwoPi()
+        {
+            Assert.Equal(Constant.TwoPi, Constant.Tau);
+        }
+
+        [Fact]
+        public void PiOver2_ShouldBeHalfOfPi()
+        {
+            Assert.Equal(Constant.Pi / 2.0f, Constant.PiOver2);
+        }
+
+        [Fact]
+        public void PiOver4_ShouldBeQuarterOfPi()
+        {
+            Assert.Equal(Constant.Pi / 4.0f, Constant.PiOver4);
+        }
+
+        [Fact]
+        public void TwoPi_ShouldBeTwicePi()
+        {
+            Assert.Equal(Constant.Pi * 2.0f, Constant.TwoPi);
+        }
+
+        [Fact]
+        public void TwoPi_ShouldBeFourTimesPiOver2()
+        {
+            Assert.Equal(Constant.PiOver2 * 4.0f, Constant.TwoPi);
+        }
+
+        [Fact]
+        public void TwoPi_ShouldBeEightTimesPiOver4()
+        {
+            Assert.Equal(Constant.PiOver4 * 8.0f, Constant.TwoPi);
+        }
+
+        [Fact]
+        public void Pi_ShouldBeTwicePiOver2()
+        {
+            Assert.Equal(Constant.PiOver2 * 2.0f, Constant.Pi);
+        }
+
+        [Fact]
+        public void Pi_ShouldBeFourTimesPiOver4()
+        {
+            Assert.Equal(Constant.PiOver4 * 4.0f, Constant.Pi);
+        }
+
+        [Fact]
+        public void PiOver2_ShouldBeTwicePiOver4()
+        {
+            Assert.Equal(Constant.PiOver4 * 2.0f, Constant.PiOver2);
+        }
+        
+        [Fact]
+        public void Euler_ShouldBeGreaterThanTwo()
+        {
+            Assert.True(Constant.Euler > 2.0f);
+        }
+
+        [Fact]
+        public void Euler_ShouldBeLessThanThree()
+        {
+            Assert.True(Constant.Euler < 3.0f);
+        }
+
+        [Fact]
+        public void Epsilon_ShouldBePositive()
+        {
+            Assert.True(Constant.Epsilon > 0.0f);
+        }
+
+        [Fact]
+        public void Epsilon_ShouldBeLessThanOne()
+        {
+            Assert.True(Constant.Epsilon < 1.0f);
+        }
+
+        [Fact]
+        public void Pi_ShouldBePositive()
+        {
+            Assert.True(Constant.Pi > 0.0f);
+        }
+
+        [Fact]
+        public void Pi_ShouldBeBetweenThreeAndFour()
+        {
+            Assert.InRange(Constant.Pi, 3.0f, 4.0f);
+        }
+
+        [Fact]
+        public void PiOver2_ShouldBeBetweenOneAndTwo()
+        {
+            Assert.InRange(Constant.PiOver2, 1.0f, 2.0f);
+        }
+
+        [Fact]
+        public void PiOver4_ShouldBeBetweenZeroAndOne()
+        {
+            Assert.InRange(Constant.PiOver4, 0.0f, 1.0f);
+        }
+
+        [Fact]
+        public void TwoPi_ShouldBeBetweenSixAndSeven()
+        {
+            Assert.InRange(Constant.TwoPi, 6.0f, 7.0f);
+        }
+
+        [Fact]
+        public void Tau_ShouldBePositive()
+        {
+            Assert.True(Constant.Tau > 0.0f);
+        }
+
+        [Fact]
+        public void Tau_ShouldBeBetweenSixAndSeven()
+        {
+            Assert.InRange(Constant.Tau, 6.0f, 7.0f);
+        }
+
+        [Fact]
+        public void Log10E_ShouldBePositive()
+        {
+            Assert.True(Constant.Log10E > 0.0f);
+        }
+
+        [Fact]
+        public void Log2E_ShouldBePositive()
+        {
+            Assert.True(Constant.Log2E > 0.0f);
+        }
+
+        [Fact]
+        public void Log2E_ShouldBeGreaterThanLog10E()
+        {
+            Assert.True(Constant.Log2E > Constant.Log10E);
+        }
+
+        [Fact]
+        public void E_ShouldBePositive()
+        {
+            Assert.True(Constant.E > 0.0f);
+        }
+
+        [Fact]
+        public void E_ShouldBeBetweenTwoAndThree()
+        {
+            Assert.InRange(Constant.E, 2.0f, 3.0f);
+        }
+
+        [Fact]
+        public void EulerAndE_ShouldHaveSameFloatValue()
+        {
+            Assert.Equal(Constant.Euler, Constant.E);
+        }
+
+        [Fact]
+        public void TauAndTwoPi_ShouldHaveSameFloatValue()
+        {
+            Assert.Equal(Constant.TwoPi, Constant.Tau);
+        }
+
+        [Fact]
+        public void AllConstants_ShouldBeFinite()
+        {
+            Assert.True(float.IsNaN(Constant.Epsilon) == false);
+            Assert.True(float.IsInfinity(Constant.Epsilon) == false);
+
+            Assert.True(float.IsNaN(Constant.Euler) == false);
+            Assert.True(float.IsInfinity(Constant.Euler) == false);
+
+            Assert.True(float.IsNaN(Constant.E) == false);
+            Assert.True(float.IsInfinity(Constant.E) == false);
+
+            Assert.True(float.IsNaN(Constant.Log10E) == false);
+            Assert.True(float.IsInfinity(Constant.Log10E) == false);
+
+            Assert.True(float.IsNaN(Constant.Log2E) == false);
+            Assert.True(float.IsInfinity(Constant.Log2E) == false);
+
+            Assert.True(float.IsNaN(Constant.Pi) == false);
+            Assert.True(float.IsInfinity(Constant.Pi) == false);
+
+            Assert.True(float.IsNaN(Constant.PiOver2) == false);
+            Assert.True(float.IsInfinity(Constant.PiOver2) == false);
+
+            Assert.True(float.IsNaN(Constant.PiOver4) == false);
+            Assert.True(float.IsInfinity(Constant.PiOver4) == false);
+
+            Assert.True(float.IsNaN(Constant.TwoPi) == false);
+            Assert.True(float.IsInfinity(Constant.TwoPi) == false);
+
+            Assert.True(float.IsNaN(Constant.Tau) == false);
+            Assert.True(float.IsInfinity(Constant.Tau) == false);
+        }
     }
 }
