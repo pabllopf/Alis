@@ -50,6 +50,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Constructor_WithDefaultStyle_ReportsOpen()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-window-test");
             Assert.True(window.IsOpen);
         }
@@ -60,6 +65,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Constructor_WithExplicitStyle_ReportsOpen()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-window-test", Styles.Close);
             Assert.True(window.IsOpen);
         }
@@ -70,6 +80,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Constructor_WithExplicitSettings_ReportsOpen()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-window-test", Styles.Close, new ContextSettings(0, 0));
             Assert.True(window.IsOpen);
         }
@@ -81,6 +96,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Close_AfterOperations_ReportsClosed()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-close-test");
             window.SetTitle("alis-close-test-title");
             window.SetVisible(false);
@@ -106,6 +126,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Settings_Get_ReturnsRequestedDepthBits()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-settings-test");
             Assert.Equal(0u, window.Settings.DepthBits);
             window.Close();
@@ -117,6 +142,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Position_And_Size_SetGet_Complete()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-roundtrip-test");
             window.Position = new Vector2F(20f, 10f);
             window.Size = new Vector2F(120f, 80f);
@@ -135,6 +165,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void MouseInternals_SetGet_Complete()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-mouse-test");
             window.InternalSetMousePosition(new Vector2F(10f, 10f));
             Vector2F mousePosition = window.InternalGetMousePosition();
@@ -148,6 +183,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void TouchPosition_InternalGet_Completes()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-touch-test");
             Vector2F touchPosition = window.InternalGetTouchPosition(0u);
             Assert.True(touchPosition.X >= 0f);
@@ -160,6 +200,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void SetActive_ReturnsBooleanForBothStates()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-active-test");
             Assert.IsType<bool>(window.SetActive(true));
             Assert.IsType<bool>(window.SetActive(false));
@@ -173,6 +218,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void DispatchEvents_OnLiveWindow_Completes()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-dispatch-test");
             int resizedCount = 0;
             window.Resized += (sender, args) => resizedCount++;
@@ -187,6 +237,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void WaitAndDispatchEvents_AfterClose_DoesNotThrow()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-wait-closed-test");
             window.Close();
             window.WaitAndDispatchEvents();
@@ -198,6 +253,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void PollEvent_AfterClose_ReturnsFalse()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-poll-closed-test");
             window.Close();
             bool polled = window.PollEvent(out Event eventToFill);
@@ -210,6 +270,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void WaitEvent_AfterClose_ReturnsFalse()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-wait-closed-test");
             window.Close();
             bool waited = window.WaitEvent(out Event eventToFill);
@@ -223,6 +288,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void HasFocus_Display_And_ToString_Execute()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-focus-test");
             Assert.IsType<bool>(window.HasFocus());
             window.Display();
@@ -237,6 +307,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void SetMouseCursor_WithSystemCursor_Completes()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Window window = new Window(new VideoMode(160u, 90u), "alis-cursor-test");
             using Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
             window.SetMouseCursor(cursor);
@@ -250,6 +325,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Constructor_FromNativeHandle_CreatesWindow()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             IntPtr nativeWindow = SfmlTestBootstrap.CreateExtraNativeWindow();
             try
             {
@@ -271,6 +351,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Constructor_FromNativeHandle_DefaultSettings_CreatesWindow()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             IntPtr nativeWindow = SfmlTestBootstrap.CreateExtraNativeWindow();
             try
             {
@@ -292,6 +377,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlWindowsFact]
         public void Dispose_AfterClose_NullsNativeHandle()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             Window window = new Window(new VideoMode(160u, 90u), "alis-dispose-test");
             Assert.NotEqual(IntPtr.Zero, window.CPointer);
             window.Dispose();

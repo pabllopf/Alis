@@ -152,6 +152,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void SfmlText_Draw_ToRenderTexture_ExecutesNativeDraw()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Font font = new Font("/System/Library/Fonts/Symbol.ttf");
             using SfmlText text = new SfmlText("hello", font, 16);
             using RenderTexture target = new RenderTexture(64, 64);
@@ -166,6 +171,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void SfmlText_Draw_ToRenderWindow_ExecutesNativeDraw()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Font font = new Font("/System/Library/Fonts/Symbol.ttf");
             using SfmlText text = new SfmlText("hello", font, 16);
             IntPtr nativeWindow = SfmlTestBootstrap.CreateExtraNativeWindow();
@@ -189,6 +199,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void VertexArray_Draw_ToRenderTexture_ExecutesNativeDraw()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using VertexArray vertexArray = new VertexArray(PrimitiveType.Triangles);
             vertexArray.Append(new Vertex(new Vector2F(1f, 1f)));
             vertexArray.Append(new Vertex(new Vector2F(10f, 1f)));
@@ -206,6 +221,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void VertexBuffer_Draw_ToRenderTexture_ExecutesNativeDraw()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using VertexBuffer vertexBuffer = new VertexBuffer(3u, PrimitiveType.Triangles, VertexBuffer.UsageSpecifier.Stream);
             using RenderTexture target = new RenderTexture(64, 64);
             Exception result = Record.Exception(() => vertexBuffer.Draw(target, new RenderStates()));

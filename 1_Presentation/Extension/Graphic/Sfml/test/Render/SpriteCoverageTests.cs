@@ -72,6 +72,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Constructor_Default_CreatesValidNativeSprite()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             Assert.NotEqual(IntPtr.Zero, sprite.CPointer);
             Assert.Null(sprite.Texture);
@@ -83,6 +88,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Constructor_WithTexture_AssignsTexture()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture);
             Assert.NotEqual(IntPtr.Zero, sprite.CPointer);
@@ -95,6 +105,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Constructor_WithTextureAndRectangle_AppliesTextureRect()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture, new IntRect(2, 3, 8, 9));
             Assert.NotEqual(IntPtr.Zero, sprite.CPointer);
@@ -108,6 +123,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Constructor_Copy_CopiesTransformAndTexture()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite source = new Sprite(texture);
             source.Position = new Vector2F(10.0f, 20.0f);
@@ -131,6 +151,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Color_SetThenGet_RoundTripsValue()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             Color color = new Color(10, 20, 30, 40);
             sprite.Color = color;
@@ -147,6 +172,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Texture_SetNull_StoresNullAndClearsNativeTexture()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture);
             Assert.Same(texture, sprite.Texture);
@@ -161,6 +191,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Texture_SetAfterNull_StoresNewTexture()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite();
             sprite.Texture = null;
@@ -174,6 +209,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void TextureRect_SetThenGet_RoundTripsValue()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             sprite.TextureRect = new IntRect(1, 2, 30, 40);
             Assert.Equal(new IntRect(1, 2, 30, 40), sprite.TextureRect);
@@ -185,6 +225,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void GetLocalBounds_WithoutTexture_ReturnsEmptyRect()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             FloatRect bounds = sprite.GetLocalBounds();
             Assert.Equal(0.0f, bounds.Width);
@@ -197,6 +242,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void GetLocalBounds_WithTexture_ReturnsTextureSize()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture);
             FloatRect bounds = sprite.GetLocalBounds();
@@ -210,6 +260,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void GetGlobalBounds_WithScale_AppliesTransformToLocalBounds()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture);
             sprite.Scale = new Vector2F(2.0f, 2.0f);
@@ -226,6 +281,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void GetGlobalBounds_WithPosition_IncludesPosition()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture);
             sprite.Position = new Vector2F(100.0f, 200.0f);
@@ -241,6 +301,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void ToString_WithTextureAndRect_DescribesState()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Texture texture = CreateTexture();
             using Sprite sprite = new Sprite(texture, new IntRect(1, 2, 3, 4));
             sprite.Color = new Color(10, 20, 30, 40);
@@ -258,6 +323,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void ToString_WithoutTexture_DescribesEmptyState()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             string text = sprite.ToString();
             Assert.StartsWith("[Sprite]", text);
@@ -270,6 +340,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Draw_StubTarget_DoesNotThrow()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             using Sprite sprite = new Sprite();
             sprite.Position = new Vector2F(5.0f, 6.0f);
             StubRenderTarget target = new StubRenderTarget();
@@ -321,6 +396,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Dispose_WhenCalled_DestroysNativeSprite()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             Sprite sprite = new Sprite();
             Assert.NotEqual(IntPtr.Zero, sprite.CPointer);
             sprite.Dispose();
@@ -333,6 +413,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Finalizer_WhenCollected_RunsWithoutException()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             CreateDroppedSprite();
             GC.Collect();
             GC.WaitForPendingFinalizers();

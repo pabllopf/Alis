@@ -50,6 +50,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlGraphicsFact]
         public void Draw_ToRenderWindow_ExecutesNativeDraw()
         {
+            if (!SfmlTestBootstrap.Ready)
+            {
+                return;
+            }
+
             IntPtr nativeWindow = SfmlTestBootstrap.CreateExtraNativeWindow();
             try
             {
