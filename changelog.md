@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.1] - 2026-09-27
+### :bug: Bug Fixes
+- [`9e0be76`](https://github.com/pabllopf/Alis/commit/9e0be76bbd22f8aa4b2d24e19c64cdce0686bc9c) - if: contains(github.event.head_commit.message, 'scan:all') *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e97a21d`](https://github.com/pabllopf/Alis/commit/e97a21d3b9fd0f4971baff7fa28476578b7c81e8) - if: startsWith(github.event.head_commit.message, 'scan:all') *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7ba55bb`](https://github.com/pabllopf/Alis/commit/7ba55bbbb90e41f556359d5e2be2491920684eb6) - worflows of unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d42bf89`](https://github.com/pabllopf/Alis/commit/d42bf89332689af015265ca24c38219a8ec1ed4a) - delete unless SoundSoundBufferManagedSurfaceCoverageTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02cc6b2`](https://github.com/pabllopf/Alis/commit/02cc6b25bc6833e5b9c7b33caafcc33c304db71a) - sampels deploy *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97163db`](https://github.com/pabllopf/Alis/commit/97163db30afe2d769c12f4a144f8e9b0307bd0d9) - memory folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0144e25`](https://github.com/pabllopf/Alis/commit/0144e258bf8d95d4620bdab3fda8336d7b7fdb98) - public void E_ShouldBeEqualToSystemMathE *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f72dda6`](https://github.com/pabllopf/Alis/commit/f72dda656b36ffb53e2108a74b4cac7be9e21b0c) - ThrowsAsync *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`0a8a6c3`](https://github.com/pabllopf/Alis/commit/0a8a6c3b33b54c8b42006acba9aa11c1c80feae9) - WindowsPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5612024`](https://github.com/pabllopf/Alis/commit/56120249b74f15465ba9ca8213f285d92402a583) - MacNativePlatform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`421cdfc`](https://github.com/pabllopf/Alis/commit/421cdfc732e6da7bbbbfe907a52760ff54dfca1e) - BrowserPlayer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c4d0f30`](https://github.com/pabllopf/Alis/commit/c4d0f30435d45fcc029f32f53415976848c2c5fa) - WebAssemblyPlatform.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`add9741`](https://github.com/pabllopf/Alis/commit/add9741676428fff233427579fac056012383c30) - GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`752bab4`](https://github.com/pabllopf/Alis/commit/752bab4e4bbcc584d698a21f60f64de6c01125c0) - BayazitDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77bc26e`](https://github.com/pabllopf/Alis/commit/77bc26e1243dee6336366f25812d3471b3cc28f5) - ContactSolver.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.5.0] - 2026-09-20
 ### :bug: Bug Fixes
 - [`9c171df`](https://github.com/pabllopf/Alis/commit/9c171dfeadad3c48780a2ee6f39410c3ca754954) - delete unless files *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11389,3 +11410,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.8]: https://github.com/pabllopf/Alis/compare/v1.4.7...v1.4.8
 [v1.4.9]: https://github.com/pabllopf/Alis/compare/v1.4.8...v1.4.9
 [v1.5.0]: https://github.com/pabllopf/Alis/compare/v1.4.9...v1.5.0
+[v1.5.1]: https://github.com/pabllopf/Alis/compare/v1.5.0...v1.5.1
