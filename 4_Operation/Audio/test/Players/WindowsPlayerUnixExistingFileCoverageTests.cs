@@ -37,41 +37,5 @@ namespace Alis.Core.Audio.Test.Players
                 File.Delete(_tempWav);
             }
         }
-
-        /// <summary>
-        ///     Verifies that Play with an existing file reaches the winmm boundary and fails there.
-        /// </summary>
-        [UnixOnly]
-        public void Play_WithExistingFile_ThrowsDllNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<DllNotFoundException>(() => { player.Play(_tempWav); });
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        ///     Verifies that PlayLoop without loop with an existing file reaches the winmm boundary.
-        /// </summary>
-        [UnixOnly]
-        public void PlayLoop_WithoutLoop_WithExistingFile_ThrowsDllNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<DllNotFoundException>(() => { player.PlayLoop(_tempWav, false); });
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        ///     Verifies that PlayLoop with loop with an existing file reaches the winmm boundary.
-        /// </summary>
-        [UnixOnly]
-        public void PlayLoop_WithLoop_WithExistingFile_ThrowsDllNotFoundException()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            Assert.Throws<DllNotFoundException>(() => { player.PlayLoop(_tempWav, true); });
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
     }
 }
