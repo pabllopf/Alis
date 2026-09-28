@@ -38,6 +38,7 @@ using Alis.Core.Aspect.Logging.Filters;
 using Alis.Core.Aspect.Logging.Formatters;
 using Alis.Core.Aspect.Logging.Outputs;
 
+
 namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
