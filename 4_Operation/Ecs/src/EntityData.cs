@@ -29,7 +29,6 @@
 
 using System.Runtime.InteropServices;
 
-
 namespace Alis.Core.Ecs
 {
     /// <summary>
