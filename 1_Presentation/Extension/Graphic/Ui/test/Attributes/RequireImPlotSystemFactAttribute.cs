@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RequireImNodesSystemFactAttribute.cs
+//  File:RequireImPlotSystemFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,42 +36,42 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
 {
 
     /// <summary>
-    ///     The require im nodes system fact attribute class
+    ///     The require im plot system fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    public class RequireImNodesSystemFactAttribute : FactAttribute
+    public class RequireImPlotSystemFactAttribute : FactAttribute
     {
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RequireImNodesSystemFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="RequireImPlotSystemFactAttribute"/> class
         /// </summary>
-        /// <param name="requiresImNodes">if set to <c>true</c> skips when ImNodes exports are unavailable</param>
-        public RequireImNodesSystemFactAttribute(bool requiresImNodes = true)
+        /// <param name="requiresImPlot">if set to <c>true</c> skips when ImPlot exports are unavailable</param>
+        public RequireImPlotSystemFactAttribute(bool requiresImPlot = true)
         {
-            bool available = IsImNodesAvailable();
-            if (requiresImNodes && !available)
+            bool available = IsImPlotAvailable();
+            if (requiresImPlot && !available)
             {
-                Skip = "Test skipped because ImNodes is not available on this platform";
+                Skip = "Test skipped because ImPlot is not available on this platform";
             }
-            else if (!requiresImNodes && available)
+            else if (!requiresImPlot && available)
             {
-                Skip = "Test skipped because ImNodes is available on this platform";
+                Skip = "Test skipped because ImPlot is available on this platform";
             }
         }
 
         /// <summary>
-        ///     Describes whether im nodes is available by loading the cimgui library and probing
-        ///     the ImNodes_CreateContext export.
+        ///     Describes whether im plot is available by loading the cimgui library and probing
+        ///     the ImPlot_CreateContext export.
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsImNodesAvailable()
+        private static bool IsImPlotAvailable()
         {
             if (!TryLoadCimgui(out IntPtr handle))
             {
                 return false;
             }
 
-            return NativeLibrary.TryGetExport(handle, "ImNodes_CreateContext", out _);
+            return NativeLibrary.TryGetExport(handle, "ImPlot_CreateContext", out _);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
                 return true;
             }
 
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireImNodesSystemFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireImPlotSystemFactAttribute).Assembly.Location);
             if (assemblyDir == null)
             {
                 return false;

@@ -1077,7 +1077,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="windowClass">The window class</param>
         public static void SetNextWindowClass(ImGuiWindowClass windowClass)
         {
-            ImGuiNative.igSetNextWindowClass(windowClass);
+            ImGuiNative.igSetNextWindowClass(ref windowClass);
         }
 
         /// <summary>
@@ -1347,7 +1347,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="storage">The storage</param>
         public static void SetStateStorage(ImGuiStorage storage)
         {
-            ImGuiNative.igSetStateStorage(storage);
+            ImGuiNative.igSetStateStorage(ref storage);
         }
 
         /// <summary>

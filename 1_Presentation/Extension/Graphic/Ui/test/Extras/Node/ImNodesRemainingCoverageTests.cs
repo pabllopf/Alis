@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies the default panning of a freshly created editor context is zero.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextGetPanning_ReturnsDefaultZero()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies EditorContextResetPanning is reflected by EditorContextGetPanning.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextResetPanning_AppliesValue()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies EditorContextMoveToNode pans the editor to the negative origin of the node.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextMoveToNode_PansToNegativeOrigin()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies SetNodeGridSpacePos is reflected by GetNodeGridSpacePos.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetAndGetNodeGridSpacePos_RoundTrip()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies SetNodeScreenSpacePos is reflected by GetNodeScreenSpacePos while the
         ///     canvas origin and panning remain zero.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetAndGetNodeScreenSpacePos_RoundTrip()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies SetNodeEditorSpacePos is reflected by GetNodeEditorSpacePos while the
         ///     panning remains zero.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetAndGetNodeEditorSpacePos_RoundTrip()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies GetNodeDimensions reports the default zero rect size for a node that has
         ///     not been laid out.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void GetNodeDimensions_ReturnsDefaultRectSize()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies SnapNodeToGrid leaves the origin untouched while grid snapping is not
         ///     enabled.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SnapNodeToGrid_KeepsOriginWhenSnappingDisabled()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies SetNodeDraggable executes for both flag values.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetNodeDraggable_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies SelectNode, IsNodeSelected, NumSelectedNodes and the id based
         ///     ClearNodeSelection round trip.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SelectNode_IsSelectedAndCountable()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies ClearNodeSelection without arguments clears every selected node.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void ClearNodeSelection_WithoutArgument_ClearsAll()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies PushStyleVar with a float value and the matching PopStyleVar overloads
         ///     execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void PushPopStyleVar_Float_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies PushStyleVar with a vector value and the matching PopStyleVar execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void PushPopStyleVar_Vector2_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies PushColorStyle and PopColorStyle execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void PushPopColorStyle_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies PushAttributeFlag and PopAttributeFlag execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void PushPopAttributeFlag_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies both IsAnyAttributeActive overloads report false while no attribute is
         ///     active.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsAnyAttributeActive_WithoutActiveAttribute_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsLinkDestroyed reports false while no link was destroyed.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsLinkDestroyed_WithoutLinkEvent_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -589,7 +589,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies every IsLinkDropped overload reports false while no link was dropped.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsLinkDropped_WithoutDropEvent_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     the native null pointer assertions while the result stays false because no link
         ///     creation state is recorded.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsLinkCreated_WithoutLinkEvent_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsLinkHovered reports false while no link is hovered.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsLinkHovered_WithoutHover_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -663,7 +663,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsLinkStarted reports false while no link interaction started.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsLinkStarted_WithoutLinkEvent_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -683,7 +683,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsNodeHovered reports false while no node is hovered.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsNodeHovered_WithoutHover_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -703,7 +703,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsPinHovered reports false while no pin is hovered.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsPinHovered_WithoutHover_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -723,7 +723,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies IsEditorHovered reports false while no canvas window is hovered.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void IsEditorHovered_WithoutWindow_ReturnsFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -743,7 +743,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies IsNodeSelected and IsLinkSelected report false for unknown ids and leave
         ///     the id based getters without side effects while nothing is selected.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SelectionQueries_ForUnknownIds_ReturnFalse()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -770,7 +770,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies LoadCurrentEditorStateFromIniString parses the panning line into the
         ///     current editor context.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void LoadCurrentEditorStateFromIniString_ParsesPanning()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies LoadCurrentEditorStateFromIniFile executes without errors when the file
         ///     does not exist.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void LoadCurrentEditorStateFromIniFile_WithMissingFile_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -813,7 +813,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies EditorContextSet executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextSet_Executes()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     the backing style struct contains an array field that cannot cross the interop
         ///     boundary by value.
         /// </summary>
-         [RequireCImguiSystemFact]
+         [RequireImNodesSystemFact]
         public void StyleColorsDark_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsDark());
@@ -846,7 +846,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     because the backing style struct contains an array field that cannot cross the
         ///     interop boundary by value.
         /// </summary>
-         [RequireCImguiSystemFact]
+         [RequireImNodesSystemFact]
         public void StyleColorsClassic_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsClassic());
@@ -858,7 +858,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     because the backing style struct contains an array field that cannot cross the
         ///     interop boundary by value.
         /// </summary>
-         [RequireCImguiSystemFact]
+         [RequireImNodesSystemFact]
         public void StyleColorsLight_Overloads_ThrowTypeLoadException()
         {
             Assert.ThrowsAny<TypeLoadException>(() => ImNodes.StyleColorsLight());
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies every MiniMap overload throws a MarshalDirectiveException because the
         ///     node hovering callback delegate cannot be marshaled to unmanaged code.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void MiniMap_AllOverloads_ThrowMarshalDirectiveException()
         {
             IntPtr imgui = CreateImGuiContext();
@@ -894,7 +894,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     static attributes, link creation, selection queries and the MiniMap scope entry
         ///     points execute against the native library.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void NodeEditorFrame_WithNodeAttributesAndLink_Executes()
         {
             IntPtr imgui = CreateFramedImGuiContext();
@@ -941,7 +941,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies ShowDemoWindow drives the whole node editor demo flow inside a real
         ///     ImGui frame.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void ShowDemoWindow_ExecutesInsideFrame()
         {
             IntPtr imgui = CreateFramedImGuiContext();
@@ -963,7 +963,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies the non-null current-context ini file save reaches the native call against
         ///     the default context.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void CurrentContextSaveFile_Executes()
         {
             IntPtr imgui = CreateImGuiContext();

@@ -241,14 +241,22 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyph FindGlyph(ushort c) => ImGuiNative.ImFont_FindGlyph(NativePtr, c);
+        public ImFontGlyph FindGlyph(ushort c)
+        {
+            IntPtr glyphPtr = ImGuiNative.ImFont_FindGlyph(NativePtr, c);
+            return glyphPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImFontGlyph>(glyphPtr);
+        }
 
         /// <summary>
         ///     Finds the glyph no fallback using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyph FindGlyphNoFallback(ushort c) => ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
+        public ImFontGlyph FindGlyphNoFallback(ushort c)
+        {
+            IntPtr glyphPtr = ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
+            return glyphPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImFontGlyph>(glyphPtr);
+        }
 
         /// <summary>
         ///     Gets the char advance using the specified c

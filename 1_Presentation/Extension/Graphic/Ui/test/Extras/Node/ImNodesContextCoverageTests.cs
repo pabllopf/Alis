@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies CreateContext executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void CreateContext_Executes()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies SetCurrentContext and GetCurrentContext execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void SetCurrentContext_And_GetCurrentContext_Execute()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies DestroyContext with an explicit context executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void DestroyContext_WithExplicitContext_Executes()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies DestroyContext without arguments executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void DestroyContext_WithoutArguments_Executes()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies EditorContextCreate executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void EditorContextCreate_Executes()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies GetIo throws because the generated wrapper cannot marshal the
         ///     backing struct fields.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void GetIo_ThrowsTypeLoadException()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         ///     Verifies GetStyle throws because the generated wrapper cannot marshal
         ///     the backing struct fields.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImNodesSystemFact]
         public void GetStyle_ThrowsTypeLoadException()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);

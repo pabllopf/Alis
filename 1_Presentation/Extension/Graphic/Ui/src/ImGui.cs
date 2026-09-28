@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -499,7 +500,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Tables the get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs ptr</returns>
-        public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
+        public static ImGuiTableSortSpecs TableGetSortSpecs()
+        {
+            IntPtr sortSpecsPtr = ImGuiNative.igTableGetSortSpecs();
+            return sortSpecsPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImGuiTableSortSpecs>(sortSpecsPtr);
+        }
 
         /// <summary>
         ///     Tables the header using the specified label

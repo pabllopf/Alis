@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies CreateContext returns a non-zero context pointer.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void CreateContext_ReturnsValidPointer()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies SetCurrentContext and GetCurrentContext round trip.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void SetCurrentContext_And_GetCurrentContext_RoundTrip()
         {
             IntPtr imgui = CreateContexts();
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies SetImGuiContext executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void SetImGuiContext_Executes()
         {
             IntPtr imgui = CreateContexts();
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies DestroyContext without arguments executes without crashing.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void DestroyContext_WithoutArguments_Executes()
         {
             IntPtr imgui = ImGuiNative.igCreateContext(IntPtr.Zero);
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies GetColormapCount returns the built-in colormap count.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetColormapCount_ReturnsPositiveCount()
         {
             IntPtr imgui = CreateContexts();
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies GetColormapIndex resolves a known colormap name.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetColormapIndex_ResolvesKnownName()
         {
             IntPtr imgui = CreateContexts();
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies GetColormapSize overloads return sizes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetColormapSize_AllOverloads_ReturnSizes()
         {
             IntPtr imgui = CreateContexts();
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies GetColormapColor overloads return colors.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetColormapColor_AllOverloads_ReturnColors()
         {
             IntPtr imgui = CreateContexts();
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     Verifies GetColormapName throws because the generated wrapper cannot
         ///     marshal the native const char return value.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetColormapName_ThrowsMarshalDirectiveException()
         {
             IntPtr imgui = CreateContexts();
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     Verifies GetMarkerName throws because the generated wrapper cannot
         ///     marshal the native const char return value.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetMarkerName_ThrowsMarshalDirectiveException()
         {
             IntPtr imgui = CreateContexts();
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         ///     Verifies GetStyleColorName throws because the generated wrapper cannot
         ///     marshal the native const char return value.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetStyleColorName_ThrowsMarshalDirectiveException()
         {
             IntPtr imgui = CreateContexts();
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies GetInputMap and GetStyle return structs by value.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void GetInputMap_And_GetStyle_ReturnStructs()
         {
             IntPtr imgui = CreateContexts();
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies PushStyleColor and PopStyleColor overloads execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void PushStyleColor_And_PopStyleColor_Execute()
         {
             IntPtr imgui = CreateContexts();

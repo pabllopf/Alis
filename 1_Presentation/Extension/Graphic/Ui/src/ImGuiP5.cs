@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -43,7 +44,11 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayload AcceptDragDropPayload(string type) => ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), ImGuiDragDropFlags.None);
+        public static ImGuiPayload AcceptDragDropPayload(string type)
+        {
+            IntPtr payloadPtr = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), ImGuiDragDropFlags.None);
+            return payloadPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImGuiPayload>(payloadPtr);
+        }
 
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
@@ -53,8 +58,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
         {
-            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), flags);
-            return ret;
+            IntPtr payloadPtr = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), flags);
+            return payloadPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImGuiPayload>(payloadPtr);
         }
 
         /// <summary>

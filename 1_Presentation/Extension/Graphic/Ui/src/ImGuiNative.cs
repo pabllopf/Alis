@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im gui payload</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
-        public static extern ImGuiPayload igAcceptDragDropPayload(byte[] type, ImGuiDragDropFlags flags);
+        public static extern IntPtr igAcceptDragDropPayload(byte[] type, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the align text to frame padding
@@ -597,7 +597,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The uint</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpace")]
-        public static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
+        public static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ref ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The uint</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpaceOverViewport")]
-        public static extern uint igDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
+        public static extern uint igDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, ref ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the drag float using the specified label
@@ -1116,7 +1116,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im gui payload</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDragDropPayload")]
-        public static extern ImGuiPayload igGetDragDropPayload();
+        public static extern IntPtr igGetDragDropPayload();
 
         /// <summary>
         ///     Igs the get draw data
@@ -1385,7 +1385,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im gui storage</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStateStorage")]
-        public static extern ImGuiStorage igGetStateStorage();
+        public static extern IntPtr igGetStateStorage();
 
         /// <summary>
         ///     Igs the get style
@@ -2721,7 +2721,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="windowClass">The window class</param>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowClass")]
-        public static extern void igSetNextWindowClass(ImGuiWindowClass windowClass);
+        public static extern void igSetNextWindowClass(ref ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the set next window collapsed using the specified collapsed
@@ -2858,7 +2858,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="storage">The storage</param>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetStateStorage")]
-        public static extern void igSetStateStorage(ImGuiStorage storage);
+        public static extern void igSetStateStorage(ref ImGuiStorage storage);
 
         /// <summary>
         ///     Igs the set tab item closed using the specified tab or docked window label
@@ -3283,7 +3283,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im gui table sort specs</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetSortSpecs")]
-        public static extern ImGuiTableSortSpecs igTableGetSortSpecs();
+        public static extern IntPtr igTableGetSortSpecs();
 
         /// <summary>
         ///     Igs the table header using the specified label
@@ -4080,7 +4080,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddText_FontPtr")]
-        public static extern void ImDrawList_AddText_FontPtr(IntPtr self, IntPtr font, float fontSize, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, Vector4F cpuFineClipRect);
+        public static extern void ImDrawList_AddText_FontPtr(IntPtr self, IntPtr font, float fontSize, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, IntPtr cpuFineClipRect);
 
         /// <summary>
         ///     Ims the draw list add triangle using the specified self
@@ -4546,7 +4546,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im font glyph</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyph")]
-        public static extern ImFontGlyph ImFont_FindGlyph(IntPtr self, ushort c);
+        public static extern IntPtr ImFont_FindGlyph(IntPtr self, ushort c);
 
         /// <summary>
         ///     Ims the font find glyph no fallback using the specified self
@@ -4556,7 +4556,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im font glyph</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyphNoFallback")]
-        public static extern ImFontGlyph ImFont_FindGlyphNoFallback(IntPtr self, ushort c);
+        public static extern IntPtr ImFont_FindGlyphNoFallback(IntPtr self, ushort c);
 
         /// <summary>
         ///     Ims the font get char advance using the specified self
@@ -4772,7 +4772,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outUvMax">The out uv max</param>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_CalcCustomRectUV")]
-        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax);
+        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ref ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax);
 
         /// <summary>
         ///     Ims the font atlas clear using the specified self
@@ -4814,7 +4814,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im font atlas custom rect</returns>
         [ExcludeFromCodeCoverage]
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetCustomRectByIndex")]
-        public static extern ImFontAtlasCustomRect ImFontAtlas_GetCustomRectByIndex(IntPtr self, int index);
+        public static extern IntPtr ImFontAtlas_GetCustomRectByIndex(IntPtr self, int index);
 
         /// <summary>
         ///     Ims the font atlas get glyph ranges chinese full using the specified self

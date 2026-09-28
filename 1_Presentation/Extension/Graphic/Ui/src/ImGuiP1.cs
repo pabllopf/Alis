@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.Ui
             Vector2F size = new Vector2F();
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpace(id, size, flags, ref windowClass);
             return ret;
         }
 
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui
         {
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpace(id, size, flags, ref windowClass);
             return ret;
         }
 
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui
         public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags)
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpace(id, size, flags, ref windowClass);
             return ret;
         }
 
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The ret</returns>
         public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
-            uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpace(id, size, flags, ref windowClass);
             return ret;
         }
 
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui
         {
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(new IntPtr(), flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(new IntPtr(), flags, ref windowClass);
             return ret;
         }
 
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui
         {
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, ref windowClass);
             return ret;
         }
 
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags)
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, ref windowClass);
             return ret;
         }
 
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The ret</returns>
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, ref windowClass);
             return ret;
         }
 

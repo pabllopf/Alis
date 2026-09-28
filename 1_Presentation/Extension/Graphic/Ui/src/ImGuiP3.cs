@@ -490,7 +490,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayload GetDragDropPayload() => ImGuiNative.igGetDragDropPayload();
+        public static ImGuiPayload GetDragDropPayload()
+        {
+            IntPtr payloadPtr = ImGuiNative.igGetDragDropPayload();
+            return payloadPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImGuiPayload>(payloadPtr);
+        }
 
         /// <summary>
         ///     Gets the draw data
@@ -808,7 +812,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the state storage
         /// </summary>
         /// <returns>The im gui storage ptr</returns>
-        public static ImGuiStorage GetStateStorage() => ImGuiNative.igGetStateStorage();
+        public static ImGuiStorage GetStateStorage()
+        {
+            IntPtr storagePtr = ImGuiNative.igGetStateStorage();
+            return storagePtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImGuiStorage>(storagePtr);
+        }
 
         /// <summary>
         ///     Gets the style

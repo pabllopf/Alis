@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outUvMax">The out uv max</param>
         public void CalcCustomRectUv(ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax)
         {
-            ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, rect, out outUvMin, out outUvMax);
+            ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, ref rect, out outUvMin, out outUvMax);
         }
 
         /// <summary>
@@ -480,7 +480,11 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect ptr</returns>
-        public ImFontAtlasCustomRect GetCustomRectByIndex(int index) => ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
+        public ImFontAtlasCustomRect GetCustomRectByIndex(int index)
+        {
+            IntPtr rectPtr = ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
+            return rectPtr == IntPtr.Zero ? default : Marshal.PtrToStructure<ImFontAtlasCustomRect>(rectPtr);
+        }
 
         /// <summary>
         ///     Gets the glyph ranges chinese full

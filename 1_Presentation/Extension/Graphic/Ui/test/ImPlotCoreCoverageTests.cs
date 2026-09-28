@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the style color, style var, colormap and next style wrapper overloads.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void Style_And_NextStyle_Functions_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the next axes and next axis limit wrapper overloads.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void SetNextAxes_And_Axis_Limits_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -687,7 +687,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the plot frame setup, axis, tag, draw and selector wrappers inside an active plot.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void PlotFrame_Setup_And_Draw_Functions_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -759,7 +759,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the PlotToPixels wrapper overloads inside an active plot.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void PlotToPixels_AllOverloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -788,7 +788,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the SetupAxisFormat and SetupAxisScale callback overloads inside an active plot.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void SetupAxisFormat_And_Scale_Callback_Overloads_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         /// <summary>
         ///     Executes the next axis links wrapper inside an active plot.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void NextAxisLinks_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -835,7 +835,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         ///     throws a deterministic MarshalDirectiveException because the native signature declares
         ///     nested byte arrays, which the marshaller rejects before entering the native library.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void AxisTicks_Array_Execute()
         {
             IntPtr imgui = CreateContexts();
@@ -863,7 +863,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot.Test
         ///     throws a deterministic MarshalDirectiveException because the native signature declares
         ///     nested byte arrays, which the marshaller rejects before entering the native library.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImPlotSystemFact]
         public void AxisTicks_Range_Execute()
         {
             IntPtr imgui = CreateContexts();

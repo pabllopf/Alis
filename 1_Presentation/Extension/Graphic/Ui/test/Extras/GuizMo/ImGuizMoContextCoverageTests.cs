@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies SetImGuiContext binds the ImGui context.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void SetImGuiContext_Executes()
         {
             IntPtr imgui = CreateContext();
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies Enable and AllowAxisFlip execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void Enable_And_AllowAxisFlip_Execute()
         {
             IntPtr imgui = CreateContext();
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies SetRect and SetOrthographic execute.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void SetRect_And_SetOrthographic_Execute()
         {
             IntPtr imgui = CreateContext();
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies SetGizmoSizeClipSpace executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void SetGizmoSizeClipSpace_Executes()
         {
             IntPtr imgui = CreateContext();
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies IsOver and IsUsing report idle state.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void IsOver_And_IsUsing_ReportIdle()
         {
             IntPtr imgui = CreateContext();
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         ///     Verifies the Operations overload of IsOver throws because the generated
         ///     entry point name does not match the native symbol.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void IsOver_WithOperation_ThrowsEntryPointNotFound()
         {
             IntPtr imgui = CreateContext();
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies DecomposeMatrixToComponents executes on a unit matrix.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void DecomposeMatrixToComponents_Executes()
         {
             IntPtr imgui = CreateContext();
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies RecomposeMatrixFromComponents executes.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void RecomposeMatrixFromComponents_Executes()
         {
             IntPtr imgui = CreateContext();
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         ///     Verifies BeginFrame, SetId, SetDrawList and SetGizmoSizeClipSpace execute against
         ///     the native library inside a live frame without throwing.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void BeginFrame_And_DrawList_And_Id_Execute()
         {
             IntPtr imgui = CreateFramedContext();
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         ///     Verifies DrawGrid and ViewManipulate execute against the native library using
         ///     unit matrices inside a live frame without throwing.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void DrawGrid_And_ViewManipulate_Execute()
         {
             IntPtr imgui = CreateFramedContext();
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         ///     Verifies Manipulate executes against the native library using unit view and
         ///     projection matrices inside a live frame and returns a byte result.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void Manipulate_Executes_ReturnsByte()
         {
             IntPtr imgui = CreateFramedContext();
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         ///     Verifies ShowDemoWindow executes its demo body against the native library inside a
         ///     live frame and closes the window it opened.
         /// </summary>
-        [RequireCImguiSystemFact]
+        [RequireImGuizmoSystemFact]
         public void ShowDemoWindow_Executes_InsideFrame()
         {
             IntPtr imgui = CreateFramedContext();

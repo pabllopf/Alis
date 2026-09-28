@@ -1218,7 +1218,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="textBegin">The text begin</param>
         public void AddText(ImFontPtr font, float fontSize, Vector2F pos, uint col, string textBegin)
         {
-            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, font.NativePtr, fontSize, pos, col, Encoding.UTF8.GetBytes(textBegin), null, 0.0f, new Vector4F());
+            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, font.NativePtr, fontSize, pos, col, Encoding.UTF8.GetBytes(textBegin), null, 0.0f, IntPtr.Zero);
         }
     }
 }

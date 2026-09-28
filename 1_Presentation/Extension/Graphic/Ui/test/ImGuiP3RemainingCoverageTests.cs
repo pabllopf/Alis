@@ -1698,7 +1698,8 @@ namespace Alis.Extension.Graphic.Ui.Test
             {
                 System.IO.Path.Combine(assemblyDir, "cimgui"),
                 System.IO.Path.Combine(assemblyDir, "libcimgui"),
-                System.IO.Path.Combine(assemblyDir, "libcimgui.dylib")
+                System.IO.Path.Combine(assemblyDir, "libcimgui.dylib"),
+                System.IO.Path.Combine(assemblyDir, "cimgui.dylib")
             };
 
             foreach (string candidate in candidates)
