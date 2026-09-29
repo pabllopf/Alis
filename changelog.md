@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.2] - 2026-09-29
+### :bug: Bug Fixes
+- [`37eb7fc`](https://github.com/pabllopf/Alis/commit/37eb7fc058150cb8eeb4a19d4851e36c770b1300) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`344b0ad`](https://github.com/pabllopf/Alis/commit/344b0ad40954c80b417a22e2e253d38d39e6b900) - ui tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.5.1] - 2026-09-27
 ### :bug: Bug Fixes
 - [`9e0be76`](https://github.com/pabllopf/Alis/commit/9e0be76bbd22f8aa4b2d24e19c64cdce0686bc9c) - if: contains(github.event.head_commit.message, 'scan:all') *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11411,3 +11417,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.4.9]: https://github.com/pabllopf/Alis/compare/v1.4.8...v1.4.9
 [v1.5.0]: https://github.com/pabllopf/Alis/compare/v1.4.9...v1.5.0
 [v1.5.1]: https://github.com/pabllopf/Alis/compare/v1.5.0...v1.5.1
+[v1.5.2]: https://github.com/pabllopf/Alis/compare/v1.5.1...v1.5.2
