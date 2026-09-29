@@ -93,6 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
                 return false;
             }
 
+            
             string[] candidates = new[]
             {
                 Path.Combine(assemblyDir, "cimgui"),
