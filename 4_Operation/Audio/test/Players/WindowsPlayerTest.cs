@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -42,6 +43,10 @@ namespace Alis.Core.Audio.Test.Players
     /// <seealso cref="WindowsPlayer" />
     public class WindowsPlayerTest
     {
+        /// <summary>
+        ///     Whether the current host is Windows (winmm is available).
+        /// </summary>
+        private static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         /// <summary>
         ///     Tests that windows player constructor should initialize properly
         /// </summary>
@@ -141,11 +146,16 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_ShouldAcceptByteParameter()
         {
             WindowsPlayer player = new WindowsPlayer();
-            byte volume = 50;
 
-            await player.SetVolume(volume);
-
-            Assert.NotNull(player);
+            if (IsWindows)
+            {
+                await player.SetVolume(50);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(50));
+            }
         }
 
         /// <summary>
@@ -155,11 +165,16 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_WithZero_ShouldWork()
         {
             WindowsPlayer player = new WindowsPlayer();
-            byte volume = 0;
 
-            await player.SetVolume(volume);
-
-            Assert.NotNull(player);
+            if (IsWindows)
+            {
+                await player.SetVolume(0);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(0));
+            }
         }
 
         /// <summary>
@@ -169,11 +184,16 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_WithMaxValue_ShouldWork()
         {
             WindowsPlayer player = new WindowsPlayer();
-            byte volume = 100;
 
-            await player.SetVolume(volume);
-
-            Assert.NotNull(player);
+            if (IsWindows)
+            {
+                await player.SetVolume(100);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(100));
+            }
         }
 
         /// <summary>
@@ -257,11 +277,18 @@ namespace Alis.Core.Audio.Test.Players
         {
             WindowsPlayer player = new WindowsPlayer();
 
-            await player.SetVolume(25);
-            await player.SetVolume(50);
-            await player.SetVolume(75);
+            if (IsWindows)
+            {
+                await player.SetVolume(25);
+                await player.SetVolume(50);
+                await player.SetVolume(75);
 
-            Assert.NotNull(player);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(25));
+            }
         }
 
         /// <summary>
@@ -307,11 +334,16 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_Over100_ShouldStillWork()
         {
             WindowsPlayer player = new WindowsPlayer();
-            byte volume = 255; // Max byte value
 
-            await player.SetVolume(volume);
-
-            Assert.NotNull(player);
+            if (IsWindows)
+            {
+                await player.SetVolume(255); // Max byte value
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(255));
+            }
         }
 
         /// <summary>
@@ -384,9 +416,15 @@ namespace Alis.Core.Audio.Test.Players
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
-            await player.SetVolume(50);
-
-            Assert.NotNull(player);
+            if (IsWindows)
+            {
+                await player.SetVolume(50);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(50));
+            }
         }
 
         /// <summary>
@@ -471,12 +509,19 @@ namespace Alis.Core.Audio.Test.Players
         {
             WindowsPlayer player = new WindowsPlayer();
 
-            for (byte i = 0; i <= 100; i += 10)
+            if (IsWindows)
             {
-                await player.SetVolume(i);
-            }
+                for (byte i = 0; i <= 100; i += 10)
+                {
+                    await player.SetVolume(i);
+                }
 
-            Assert.NotNull(player);
+                Assert.NotNull(player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(0));
+            }
         }
 
         /// <summary>

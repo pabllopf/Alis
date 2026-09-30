@@ -30,8 +30,6 @@
 using System;
 using System.IO;
 using System.IO.Compression;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
@@ -46,41 +44,6 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class BrowserPlayerOpenAlFrameworkTests
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BrowserPlayerOpenAlFrameworkTests"/> class
-        /// </summary>
-        static BrowserPlayerOpenAlFrameworkTests()
-        {
-            NativeLibrary.SetDllImportResolver(typeof(BrowserPlayer).Assembly, ResolveOpenAlLibrary);
-        }
-
-        /// <summary>
-        ///     Resolves the open al library to the platform OpenAL framework when available.
-        /// </summary>
-        /// <param name="libraryName">The library name</param>
-        /// <param name="assembly">The assembly</param>
-        /// <param name="searchPath">The search path</param>
-        /// <returns>The native handle</returns>
-        private static IntPtr ResolveOpenAlLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
-        {
-            if (libraryName != "openal32")
-            {
-                return IntPtr.Zero;
-            }
-
-            if (NativeLibrary.TryLoad("/System/Library/Frameworks/OpenAL.framework/OpenAL", out IntPtr frameworkHandle))
-            {
-                return frameworkHandle;
-            }
-
-            if (NativeLibrary.TryLoad("libopenal.1.dylib", out IntPtr brewHandle))
-            {
-                return brewHandle;
-            }
-
-            return IntPtr.Zero;
-        }
-
         /// <summary>
         ///     Tests that the constructor initializes the player successfully when OpenAL is available.
         /// </summary>

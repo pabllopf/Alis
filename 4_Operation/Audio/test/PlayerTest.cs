@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -100,7 +101,14 @@ namespace Alis.Core.Audio.Test
         {
             IPlayer player = Player.CheckOs();
 
-            Assert.IsType<WindowsPlayer>(player);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.IsType<WindowsPlayer>(player);
+            }
+            else
+            {
+                Assert.IsNotType<WindowsPlayer>(player);
+            }
         }
 
         /// <summary>
@@ -111,7 +119,14 @@ namespace Alis.Core.Audio.Test
         {
             IPlayer player = Player.CheckOs();
 
-            Assert.IsType<LinuxPlayer>(player);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Assert.IsType<LinuxPlayer>(player);
+            }
+            else
+            {
+                Assert.IsNotType<LinuxPlayer>(player);
+            }
         }
 
         /// <summary>
@@ -133,7 +148,15 @@ namespace Alis.Core.Audio.Test
         {
             IPlayer player = Player.CheckOs();
 
-            Assert.IsType<BrowserPlayer>(player);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
+            {
+                Assert.IsType<BrowserPlayer>(player);
+            }
+            else
+            {
+                Assert.IsNotType<BrowserPlayer>(player);
+            }
         }
 
         /// <summary>
@@ -144,7 +167,15 @@ namespace Alis.Core.Audio.Test
         {
             IPlayer player = Player.CheckOs();
 
-            Assert.IsType<BrowserPlayer>(player);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
+            {
+                Assert.IsType<BrowserPlayer>(player);
+            }
+            else
+            {
+                Assert.IsNotType<BrowserPlayer>(player);
+            }
         }
 
         /// <summary>

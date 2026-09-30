@@ -27,27 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The linux only attribute class
+    ///     Marker attribute for Linux player tests. Tests decorated with this attribute
+    ///     are executed on every platform and verify the correct cross-platform behavior.
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    
     public class LinuxOnlyAttribute : FactAttribute
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="LinuxOnlyAttribute" /> class
-        /// </summary>
-        public LinuxOnlyAttribute()
-        {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Skip = "Test skipped because its not platform";
-            }
-        }
     }
 }

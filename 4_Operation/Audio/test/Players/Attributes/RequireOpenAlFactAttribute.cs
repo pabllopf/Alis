@@ -27,74 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.IO;
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The require open al fact attribute class
+    ///     Marker attribute for OpenAL interop tests. Tests decorated with this attribute
+    ///     are executed on every platform; OpenAL may be provided through the system
+    ///     framework, Homebrew, or the DllImport resolver registered by the test module.
     /// </summary>
     /// <seealso cref="FactAttribute"/>
     public class RequireOpenAlFactAttribute : FactAttribute
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RequireOpenAlFactAttribute"/> class
-        /// </summary>
-        public RequireOpenAlFactAttribute()
-        {
-            if (!TryLoadOpenAlLibrary("openal32"))
-            {
-                Skip = "Test skipped because its not platform";
-            }
-        }
-
-        /// <summary>
-        ///     Attempts to load the specified OpenAL library by name, falling back to
-        ///     absolute path resolution from the test assembly output directory.
-        /// </summary>
-        private static bool TryLoadOpenAlLibrary(string name)
-        {
-            if (NativeLibrary.TryLoad(name, out _))
-                return true;
-
-            string assemblyDir = Path.GetDirectoryName(typeof(RequireOpenAlFactAttribute).Assembly.Location);
-            if (assemblyDir == null)
-                return false;
-
-            string[] searchDirs = new[]
-            {
-                assemblyDir,
-                "/opt/homebrew/lib",
-                "/usr/local/lib",
-                "/usr/lib",
-                "/usr/lib/x86_64-linux-gnu",
-                "/usr/lib/aarch64-linux-gnu"
-            };
-
-            foreach (string dir in searchDirs)
-            {
-                string[] candidates = new[]
-                {
-                    Path.Combine(dir, name),
-                    Path.Combine(dir, "lib" + name),
-                    Path.Combine(dir, "lib" + name + ".dylib"),
-                    Path.Combine(dir, "lib" + name + ".so"),
-                    Path.Combine(dir, "lib" + name + ".so.1"),
-                    Path.Combine(dir, "libopenal.dylib"),
-                    Path.Combine(dir, "libopenal.so"),
-                    Path.Combine(dir, "soft_oal")
-                };
-
-                foreach (string candidate in candidates)
-                {
-                    if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
-                        return true;
-                }
-            }
-
-            return false;
-        }
     }
 }

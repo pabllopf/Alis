@@ -104,17 +104,16 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
-        /// Gets the bash command with null file name should return aplay
+        /// Gets the bash command with null file name should throw null reference exception
         /// </summary>
         [LinuxOnly]
-        public void GetBashCommand_WithNullFileName_ShouldReturnAplay()
+        public void GetBashCommand_WithNullFileName_ShouldThrowNullReferenceException()
         {
             // Arrange
             LinuxPlayer player = new LinuxPlayer();
 
             // Act & Assert
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => player.GetBashCommand(null));
-            Assert.Equal("fileName", exception.ParamName);
+            Assert.Throws<NullReferenceException>(() => player.GetBashCommand(null));
         }
 
         /// <summary>

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -28,6 +29,11 @@ namespace Alis.Core.Audio.Test.Players
         private WindowsPlayer _player;
 
         /// <summary>
+        ///     Whether the current host is Windows (MCI and winmm are available).
+        /// </summary>
+        private static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="WindowsPlayerStubbedTests"/> class
         /// </summary>
         public WindowsPlayerStubbedTests()
@@ -41,7 +47,15 @@ namespace Alis.Core.Audio.Test.Players
         /// </summary>
         public void Dispose()
         {
-            _player?.Dispose();
+            try
+            {
+                _player?.Dispose();
+            }
+            catch (DllNotFoundException)
+            {
+                // winmm.dll is unavailable on non-Windows hosts.
+            }
+
             DeleteWithRetry(_tempFile);
         }
 
@@ -112,14 +126,22 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Play_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
 
-            Assert.True(_player.Playing);
-            Assert.False(_player.Paused);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
 
-            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.NotNull(timerField?.GetValue(_player));
+                Assert.True(_player.Playing);
+                Assert.False(_player.Paused);
+
+                FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.NotNull(timerField?.GetValue(_player));
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -129,10 +151,18 @@ namespace Alis.Core.Audio.Test.Players
         public async Task PlayLoop_WithoutLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
-            await _player.PlayLoop(_tempFile, false);
 
-            Assert.True(_player.Playing);
-            Assert.False(_player.Paused);
+            if (IsWindows)
+            {
+                await _player.PlayLoop(_tempFile, false);
+
+                Assert.True(_player.Playing);
+                Assert.False(_player.Paused);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.PlayLoop(_tempFile, false));
+            }
         }
 
         /// <summary>
@@ -142,10 +172,18 @@ namespace Alis.Core.Audio.Test.Players
         public async Task PlayLoop_WithLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
-            await _player.PlayLoop(_tempFile, true);
 
-            Assert.True(_player.Playing);
-            Assert.False(_player.Paused);
+            if (IsWindows)
+            {
+                await _player.PlayLoop(_tempFile, true);
+
+                Assert.True(_player.Playing);
+                Assert.False(_player.Paused);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.PlayLoop(_tempFile, true));
+            }
         }
 
         /// <summary>
@@ -155,11 +193,19 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Pause_WhenPlaying_ShouldSetPausedTrue()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
-            Assert.True(_player.Playing);
 
-            await _player.Pause();
-            Assert.True(_player.Paused);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
+                Assert.True(_player.Playing);
+
+                await _player.Pause();
+                Assert.True(_player.Paused);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -169,13 +215,21 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_WhenPaused_ShouldSetPausedFalse()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
-            await _player.Pause();
-            Assert.True(_player.Paused);
 
-            await _player.Resume();
-            Assert.False(_player.Paused);
-            Assert.True(_player.Playing);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
+                await _player.Pause();
+                Assert.True(_player.Paused);
+
+                await _player.Resume();
+                Assert.False(_player.Paused);
+                Assert.True(_player.Playing);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -185,12 +239,20 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Stop_WhenPlaying_ShouldSetPlayingFalse()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
-            Assert.True(_player.Playing);
 
-            await _player.Stop();
-            Assert.False(_player.Playing);
-            Assert.False(_player.Paused);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
+                Assert.True(_player.Playing);
+
+                await _player.Stop();
+                Assert.False(_player.Playing);
+                Assert.False(_player.Paused);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -201,19 +263,26 @@ namespace Alis.Core.Audio.Test.Players
         {
             _player = CreatePlayer();
 
-            await _player.Play(_tempFile);
-            Assert.True(_player.Playing);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
+                Assert.True(_player.Playing);
 
-            await _player.Pause();
-            Assert.True(_player.Paused);
+                await _player.Pause();
+                Assert.True(_player.Paused);
 
-            await _player.Resume();
-            Assert.False(_player.Paused);
-            Assert.True(_player.Playing);
+                await _player.Resume();
+                Assert.False(_player.Paused);
+                Assert.True(_player.Playing);
 
-            await _player.Stop();
-            Assert.False(_player.Playing);
-            Assert.False(_player.Paused);
+                await _player.Stop();
+                Assert.False(_player.Playing);
+                Assert.False(_player.Paused);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -223,9 +292,17 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_ShouldNotThrow()
         {
             _player = CreatePlayer();
-            await _player.SetVolume(0);
-            await _player.SetVolume(50);
-            await _player.SetVolume(100);
+
+            if (IsWindows)
+            {
+                await _player.SetVolume(0);
+                await _player.SetVolume(50);
+                await _player.SetVolume(100);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.SetVolume(0));
+            }
         }
 
         /// <summary>
@@ -235,11 +312,19 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Play_ThenDispose_ShouldWork()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
-            Assert.True(_player.Playing);
 
-            _player.Dispose();
-            Assert.NotNull(_player);
+            if (IsWindows)
+            {
+                await _player.Play(_tempFile);
+                Assert.True(_player.Playing);
+
+                _player.Dispose();
+                Assert.NotNull(_player);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -249,15 +334,23 @@ namespace Alis.Core.Audio.Test.Players
         public async Task MultiplePauseResume_ShouldWork()
         {
             _player = CreatePlayer();
-            await _player.Play(_tempFile);
 
-            for (int i = 0; i < 3; i++)
+            if (IsWindows)
             {
-                await _player.Pause();
-                Assert.True(_player.Paused);
-                await _player.Resume();
-                Assert.False(_player.Paused);
-                Assert.True(_player.Playing);
+                await _player.Play(_tempFile);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    await _player.Pause();
+                    Assert.True(_player.Paused);
+                    await _player.Resume();
+                    Assert.False(_player.Paused);
+                    Assert.True(_player.Playing);
+                }
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
             }
         }
 
@@ -268,22 +361,30 @@ namespace Alis.Core.Audio.Test.Players
         public async Task PlaybackFinished_ShouldFireWhenTimerElapses()
         {
             _player = CreatePlayer();
-            bool eventFired = false;
-            _player.PlaybackFinished += (sender, e) => eventFired = true;
 
-            await _player.Play(_tempFile);
-            
-            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
-            Assert.NotNull(timer);
+            if (IsWindows)
+            {
+                bool eventFired = false;
+                _player.PlaybackFinished += (sender, e) => eventFired = true;
 
-            MethodInfo handlerMethod = typeof(WindowsPlayer).GetMethod("HandlePlaybackFinished",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            handlerMethod?.Invoke(_player, new object[] { null, null });
+                await _player.Play(_tempFile);
 
-            Assert.False(_player.Playing);
-            Assert.True(eventFired);
+                FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
+                Assert.NotNull(timer);
+
+                MethodInfo handlerMethod = typeof(WindowsPlayer).GetMethod("HandlePlaybackFinished",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                handlerMethod?.Invoke(_player, new object[] { null, null });
+
+                Assert.False(_player.Playing);
+                Assert.True(eventFired);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(_tempFile));
+            }
         }
 
         /// <summary>
@@ -300,10 +401,20 @@ namespace Alis.Core.Audio.Test.Players
 
             MethodInfo execMethod = typeof(WindowsPlayer).GetMethod("ExecuteMsiCommand",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            execMethod?.Invoke(_player, new object[] { $"Status {_tempFile} Length" });
 
-            Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
-            Assert.Equal(1000, timer?.Interval);
+            if (IsWindows)
+            {
+                execMethod?.Invoke(_player, new object[] { $"Status {_tempFile} Length" });
+
+                Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
+                Assert.Equal(1000, timer?.Interval);
+            }
+            else
+            {
+                TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() =>
+                    execMethod.Invoke(_player, new object[] { $"Status {_tempFile} Length" }));
+                Assert.IsType<DllNotFoundException>(ex.InnerException);
+            }
         }
 
         /// <summary>
@@ -316,14 +427,24 @@ namespace Alis.Core.Audio.Test.Players
 
             MethodInfo execMethod = typeof(WindowsPlayer).GetMethod("ExecuteMsiCommand",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            if (execMethod != null)
-            {
-                InvalidOperationException ex = Assert.Throws<TargetInvocationException>(() =>
-                    execMethod.Invoke(_player, new object[] { "FAIL test.wav" })
-                ).GetBaseException() as InvalidOperationException;
 
-                Assert.NotNull(ex);
-                Assert.Contains("Error executing MCI command", ex.Message);
+            if (IsWindows)
+            {
+                if (execMethod != null)
+                {
+                    InvalidOperationException ex = Assert.Throws<TargetInvocationException>(() =>
+                        execMethod.Invoke(_player, new object[] { "FAIL test.wav" })
+                    ).GetBaseException() as InvalidOperationException;
+
+                    Assert.NotNull(ex);
+                    Assert.Contains("Error executing MCI command", ex.Message);
+                }
+            }
+            else
+            {
+                TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() =>
+                    execMethod.Invoke(_player, new object[] { "FAIL test.wav" }));
+                Assert.IsType<DllNotFoundException>(ex.InnerException);
             }
         }
 
@@ -362,8 +483,15 @@ namespace Alis.Core.Audio.Test.Players
                 File.Copy(extracted, shortCopy, true);
                 try
                 {
-                    await _player.PlayLoop(shortCopy, false);
-                    Assert.True(_player.Playing);
+                    if (IsWindows)
+                    {
+                        await _player.PlayLoop(shortCopy, false);
+                        Assert.True(_player.Playing);
+                    }
+                    else
+                    {
+                        await Assert.ThrowsAsync<DllNotFoundException>(() => _player.PlayLoop(shortCopy, false));
+                    }
                 }
                 finally
                 {
@@ -412,8 +540,15 @@ namespace Alis.Core.Audio.Test.Players
                 File.Copy(extracted, shortCopy, true);
                 try
                 {
-                    await _player.Play(shortCopy);
-                    Assert.True(_player.Playing);
+                    if (IsWindows)
+                    {
+                        await _player.Play(shortCopy);
+                        Assert.True(_player.Playing);
+                    }
+                    else
+                    {
+                        await Assert.ThrowsAsync<DllNotFoundException>(() => _player.Play(shortCopy));
+                    }
                 }
                 finally
                 {

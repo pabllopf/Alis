@@ -27,27 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The mac os only attribute class
+    ///     Marker attribute for macOS player tests. Tests decorated with this attribute
+    ///     are executed on every platform and verify the correct cross-platform behavior.
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    
     public class MacOsOnlyAttribute : FactAttribute
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MacOsOnlyAttribute" /> class
-        /// </summary>
-        public MacOsOnlyAttribute()
-        {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Skip = "Test skipped because its not platform";
-            }
-        }
     }
 }

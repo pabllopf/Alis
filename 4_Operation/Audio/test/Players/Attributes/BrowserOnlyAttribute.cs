@@ -27,28 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The browser only attribute class
+    ///     Marker attribute for Browser player tests. Tests decorated with this attribute
+    ///     are executed on every platform and verify the correct cross-platform behavior.
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    
     public class BrowserOnlyAttribute : FactAttribute
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BrowserOnlyAttribute" /> class
-        /// </summary>
-        public BrowserOnlyAttribute()
-        {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) &&
-                !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
-            {
-                Skip = "Test skipped because its not platform";
-            }
-        }
     }
 }

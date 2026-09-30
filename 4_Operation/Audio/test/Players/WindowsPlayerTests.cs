@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -44,6 +45,10 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class WindowsPlayerTests
     {
+        /// <summary>
+        ///     Whether the current host is Windows (winmm is available).
+        /// </summary>
+        private static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         /// <summary>
         ///     Tests that constructor initializes Playing and Paused to false.
         /// </summary>
@@ -354,9 +359,17 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_OnWindows_ShouldNotThrow()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.SetVolume(50);
-            await player.SetVolume(0);
-            await player.SetVolume(100);
+
+            if (IsWindows)
+            {
+                await player.SetVolume(50);
+                await player.SetVolume(0);
+                await player.SetVolume(100);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(50));
+            }
         }
 
         /// <summary>
@@ -366,8 +379,16 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_EdgeValues_OnWindows()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.SetVolume(byte.MinValue);
-            await player.SetVolume(byte.MaxValue);
+
+            if (IsWindows)
+            {
+                await player.SetVolume(byte.MinValue);
+                await player.SetVolume(byte.MaxValue);
+            }
+            else
+            {
+                await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(byte.MinValue));
+            }
         }
 
         /// <summary>
@@ -433,10 +454,25 @@ namespace Alis.Core.Audio.Test.Players
             string tempFile = CreateTempWavFile();
             try
             {
-                using WindowsPlayer player = new WindowsPlayer();
-                await player.Play(tempFile);
-                Assert.True(player.Playing);
-                Assert.False(player.Paused);
+                try
+                {
+                    using WindowsPlayer player = new WindowsPlayer();
+
+                    if (IsWindows)
+                    {
+                        await player.Play(tempFile);
+                        Assert.True(player.Playing);
+                        Assert.False(player.Paused);
+                    }
+                    else
+                    {
+                        await Assert.ThrowsAsync<DllNotFoundException>(() => player.Play(tempFile));
+                    }
+                }
+                catch (DllNotFoundException)
+                {
+                    // Dispose() issues an MCI Stop command that fails on non-Windows hosts.
+                }
             }
             finally
             {
@@ -453,10 +489,25 @@ namespace Alis.Core.Audio.Test.Players
             string tempFile = CreateTempWavFile();
             try
             {
-                using WindowsPlayer player = new WindowsPlayer();
-                await player.PlayLoop(tempFile, false);
-                Assert.True(player.Playing);
-                Assert.False(player.Paused);
+                try
+                {
+                    using WindowsPlayer player = new WindowsPlayer();
+
+                    if (IsWindows)
+                    {
+                        await player.PlayLoop(tempFile, false);
+                        Assert.True(player.Playing);
+                        Assert.False(player.Paused);
+                    }
+                    else
+                    {
+                        await Assert.ThrowsAsync<DllNotFoundException>(() => player.PlayLoop(tempFile, false));
+                    }
+                }
+                catch (DllNotFoundException)
+                {
+                    // Dispose() issues an MCI Stop command that fails on non-Windows hosts.
+                }
             }
             finally
             {

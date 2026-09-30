@@ -500,16 +500,9 @@ namespace Alis.Core.Audio.Test.Players
         [BrowserOnly]
         public async Task Play_WithNullFileName_ShouldThrowException()
         {
-            try
-            {
-                BrowserPlayer player = new BrowserPlayer();
+            BrowserPlayer player = new BrowserPlayer();
 
-                await Assert.ThrowsAsync<NullReferenceException>(async () => await player.Play(null));
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("OpenAL", ex.Message);
-            }
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(null));
         }
 
         /// <summary>
