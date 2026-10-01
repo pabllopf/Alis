@@ -195,6 +195,49 @@ namespace Alis.Core.Aspect.Memory.Test
     private delegate string ToLowerHexSpanDelegate(ReadOnlySpan<byte> bytes);
 
         /// <summary>
+        ///     Tests that ToLowerHex(ReadOnlySpan&lt;byte&gt;) returns an empty string
+        ///     when invoked with an empty span, covering the guard branch.
+        /// </summary>
+        [Fact]
+        public void ToLowerHex_EmptySpan_ReturnsEmptyString()
+        {
+            MethodInfo method = typeof(AssetRegistry).GetMethod("ToLowerHex",
+                BindingFlags.NonPublic | BindingFlags.Static,
+                null,
+                new[] {typeof(ReadOnlySpan<byte>)},
+                null);
+
+            Assert.NotNull(method);
+
+            ToLowerHexSpanDelegate convert =
+                (ToLowerHexSpanDelegate) method.CreateDelegate(typeof(ToLowerHexSpanDelegate));
+
+            Assert.Equal(string.Empty, convert(ReadOnlySpan<byte>.Empty));
+        }
+
+        /// <summary>
+        ///     Tests that EnsureZipCachedForActiveAssembly throws InvalidOperationException
+        ///     when the active assembly has no registered loader, covering lines 534-535.
+        /// </summary>
+        [Fact]
+        public void EnsureZipCached_UnregisteredActiveAssembly_ThrowsInvalidOperation()
+        {
+            string missingName = "Unregistered_" + Guid.NewGuid();
+            ActiveAssemblyProp.SetValue(null, missingName);
+            GetLoaders().Clear();
+            GetZipCache().Clear();
+            GetPathCache().Clear();
+
+            MethodInfo ensureMethod = typeof(AssetRegistry).GetMethod("EnsureZipCachedForActiveAssembly",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.NotNull(ensureMethod);
+
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() => ensureMethod.Invoke(null, null));
+            Assert.IsType<InvalidOperationException>(ex.InnerException);
+        }
+
+        /// <summary>
         ///     Tests that FindZipEntryInfo resolves by unique file name when
         ///     the full path does not match, covering lines 613-614.
         /// </summary>
