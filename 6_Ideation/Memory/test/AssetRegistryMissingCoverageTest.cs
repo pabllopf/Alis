@@ -238,6 +238,51 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
+        ///     Tests that ExtractResourceToTemp with a temp path lacking a directory
+        ///     component exercises the Path.GetTempPath() fallback of
+        ///     Directory.CreateDirectory, covering the second branch of line 377.
+        /// </summary>
+        [Fact]
+        public void ExtractResourceToTemp_TempPathWithoutDirectory_CoversFallbackBranch()
+        {
+            string assemblyName = "RootTemp_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourcePathByName("file.txt");
+
+            ZipCacheEntry cacheEntry = (ZipCacheEntry) GetZipCache()[assemblyName];
+            ZipEntryInfo entryInfo = cacheEntry.EntriesByFullNameLower["file.txt"];
+
+            MethodInfo extractMethod = typeof(AssetRegistry).GetMethod("ExtractResourceToTemp",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.NotNull(extractMethod);
+
+            object[] args = {cacheEntry, entryInfo, string.Empty};
+
+            Assert.ThrowsAny<Exception>(() => extractMethod.Invoke(null, args));
+        }
+
+        /// <summary>
+        ///     Tests that MakeSafeTempName with a null resource key makes
+        ///     Path.GetExtension return null, exercising the ?? string.Empty
+        ///     fallback of line 427 before failing during hashing.
+        /// </summary>
+        [Fact]
+        public void MakeSafeTempName_NullResourceKey_CoversFallbackBranch()
+        {
+            MethodInfo method = typeof(AssetRegistry).GetMethod("MakeSafeTempName",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.NotNull(method);
+
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() =>
+                method.Invoke(null, new object[] {"SomeAssembly", null}));
+            Assert.IsType<NullReferenceException>(ex.InnerException);
+        }
+
+        /// <summary>
         ///     Tests that FindZipEntryInfo resolves by unique file name when
         ///     the full path does not match, covering lines 613-614.
         /// </summary>
