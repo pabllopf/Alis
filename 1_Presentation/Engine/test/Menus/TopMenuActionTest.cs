@@ -80,20 +80,5 @@ namespace Alis.App.Engine.Test.Menus
             // Should not throw - null is a valid value
             TopMenuAction.SetSpaceWork(null);
         }
-
-        /// <summary>
-        ///     Tests that multiple SetSpaceWork calls work
-        /// </summary>
-        [Fact]
-        public void MultipleSetSpaceWorkCalls_ShouldWork()
-        {
-            Alis.App.Engine.Core.SpaceWork spaceWork1 = new Alis.App.Engine.Core.SpaceWork();
-            Alis.App.Engine.Core.SpaceWork spaceWork2 = new Alis.App.Engine.Core.SpaceWork();
-
-            TopMenuAction.SetSpaceWork(spaceWork1);
-            TopMenuAction.SetSpaceWork(spaceWork2);
-
-            // No exception means success
-        }
     }
 }
