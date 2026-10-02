@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.3] - 2026-10-02
+### :bug: Bug Fixes
+- [`f2e7ee3`](https://github.com/pabllopf/Alis/commit/f2e7ee3b9eb2076cd8c38ca864e374bd4961beca) - the music tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2189815`](https://github.com/pabllopf/Alis/commit/2189815b49fdb14d4137ac86a80667d64aa26363) - delete MultipleSetSpaceWorkCalls_ShouldWork() *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c767539`](https://github.com/pabllopf/Alis/commit/c767539b8d9a040245ee5e454878fb9d13f0c631) - delete unless constans *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d414c78`](https://github.com/pabllopf/Alis/commit/d414c784fce67ceba877c21da14e50fb7e5e4750) - ControllerCategories *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`d65b4df`](https://github.com/pabllopf/Alis/commit/d65b4dfb004baae826b4fe8d681ed0ee8041259b) - cover basin fill and convex hull finalization of DTSweep.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e73b641`](https://github.com/pabllopf/Alis/commit/e73b6413d631177ad90f0d781204ee0ef87c2e3f) - cover wrap angle paths of Helper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.5.2] - 2026-09-29
 ### :bug: Bug Fixes
 - [`37eb7fc`](https://github.com/pabllopf/Alis/commit/37eb7fc058150cb8eeb4a19d4851e36c770b1300) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11418,3 +11430,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.5.0]: https://github.com/pabllopf/Alis/compare/v1.4.9...v1.5.0
 [v1.5.1]: https://github.com/pabllopf/Alis/compare/v1.5.0...v1.5.1
 [v1.5.2]: https://github.com/pabllopf/Alis/compare/v1.5.1...v1.5.2
+[v1.5.3]: https://github.com/pabllopf/Alis/compare/v1.5.2...v1.5.3
