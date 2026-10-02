@@ -47,5 +47,6 @@ namespace Alis.Core.Sample
             Console.ForegroundColor = Color;
             Logger.Info(str);
         }
+        
     }
 }
