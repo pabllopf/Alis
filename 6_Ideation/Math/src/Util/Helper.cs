@@ -161,20 +161,20 @@ namespace Alis.Core.Aspect.Math.Util
         
         public static float WrapAngle(float angle)
         {
-            if ((angle > -Constant.Pi) && (angle <= Constant.Pi))
+            if ((angle > - System.Math.PI) && (angle <= System.Math.PI))
             {
                 return angle;
             }
 
-            angle %= Constant.TwoPi;
-            if (angle <= -Constant.Pi)
+            angle %= (float)(System.Math.PI * 2);
+            if (angle <= -System.Math.PI)
             {
-                return angle + Constant.TwoPi;
+                return angle + (float)(System.Math.PI * 2);
             }
 
-            if (angle > Constant.Pi)
+            if (angle > System.Math.PI)
             {
-                return angle - Constant.TwoPi;
+                return angle - (float)(System.Math.PI * 2);
             }
 
             return angle;

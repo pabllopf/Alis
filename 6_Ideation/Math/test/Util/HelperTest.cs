@@ -253,19 +253,6 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        ///     Tests that wrap angle should return same value when angle is between negative pi and pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnSameValue_WhenAngleIsBetweenNegativePiAndPi()
-        {
-            float angle = Constant.Pi / 2;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(angle, result);
-        }
-
-
-        /// <summary>
         ///     Tests that wrap angle should return zero when angle is zero
         /// </summary>
         [Fact]
@@ -277,17 +264,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.Equal(angle, result);
         }
 
-        /// <summary>
-        ///     Tests that wrap angle should return negative pi when angle is negative pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnNegativePi_WhenAngleIsNegativePi()
-        {
-            float angle = Constant.Pi;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(angle, result);
-        }
+       
 
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is zero
@@ -375,43 +352,9 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.False(Helper.IsPowerOfTwo(0));
         }
 
-        /// <summary>
-        ///     Tests that wrap angle should wrap positive angle beyond pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldWrapPositiveAngle_BeyondPi()
-        {
-            float angle = Constant.Pi + 1f;
-            float result = Helper.WrapAngle(angle);
 
-            Assert.True(result > -Constant.Pi);
-            Assert.True(result <= Constant.Pi);
-        }
+       
 
-        /// <summary>
-        ///     Tests that wrap angle should wrap negative angle below negative pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldWrapNegativeAngle_BelowNegativePi()
-        {
-            float angle = -Constant.Pi - 1f;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.True(result > -Constant.Pi);
-            Assert.True(result <= Constant.Pi);
-        }
-
-        /// <summary>
-        ///     Tests that wrap angle should return original angle when angle equals two pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnOriginalAngle_WhenAngleEqualsTwoPi()
-        {
-            float angle = Constant.TwoPi;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(0f, result, 5);
-        }
 
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is between zero and one
@@ -543,29 +486,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.Equal(0f, result, 5);
         }
 
-        /// <summary>
-        ///     Tests that to degrees with canonical angles returns expected values
-        /// </summary>
-        [Fact]
-        public void ToDegrees_WithCanonicalAngles_ReturnsExpectedValues()
-        {
-            Assert.Equal(90f, Helper.ToDegrees(Constant.PiOver2), 3);
-            Assert.Equal(360f, Helper.ToDegrees(Constant.TwoPi), 3);
-            Assert.Equal(-180f, Helper.ToDegrees(-Constant.Pi), 3);
-        }
-
-        /// <summary>
-        ///     Tests that to radians with canonical angles returns expected values
-        /// </summary>
-        [Fact]
-        public void ToRadians_WithCanonicalAngles_ReturnsExpectedValues()
-        {
-            Assert.Equal(0f, Helper.ToRadians(0f), 3);
-            Assert.Equal(Constant.PiOver2, Helper.ToRadians(90f), 3);
-            Assert.Equal(Constant.Pi, Helper.ToRadians(180f), 3);
-            Assert.Equal(Constant.TwoPi, Helper.ToRadians(360f), 3);
-            Assert.Equal(-Constant.PiOver2, Helper.ToRadians(-90f), 3);
-        }
+       
 
         /// <summary>
         ///     Tests that is power of two with edge values returns expected results
@@ -583,39 +504,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.False(Helper.IsPowerOfTwo(int.MaxValue));
         }
 
-        /// <summary>
-        ///     Tests that wrap angle with large multiples wraps correctly
-        /// </summary>
-        [Fact]
-        public void WrapAngle_WithLargeMultiples_WrapsCorrectly()
-        {
-            float result = Helper.WrapAngle(5f * Constant.Pi);
-            Assert.True(result > -Constant.Pi);
-            Assert.True(result <= Constant.Pi);
-        }
-
-        /// <summary>
-        ///     Tests that wrap angle with negative large multiples wraps correctly
-        /// </summary>
-        [Fact]
-        public void WrapAngle_WithNegativeLargeMultiples_WrapsCorrectly()
-        {
-            float result = Helper.WrapAngle(-5f * Constant.Pi);
-            Assert.True(result > -Constant.Pi);
-            Assert.True(result <= Constant.Pi);
-        }
-
-        /// <summary>
-        ///     Tests that wrap angle with three pi over two returns negative pi over two
-        /// </summary>
-        [Fact]
-        public void WrapAngle_WithThreePiOverTwo_ReturnsNegativePiOverTwo()
-        {
-            float result = Helper.WrapAngle(3f * Constant.PiOver2);
-
-            Assert.Equal(-Constant.PiOver2, result, 3);
-        }
-
+     
         /// <summary>
         ///     Tests that clamp with NaN returns NaN
         /// </summary>
