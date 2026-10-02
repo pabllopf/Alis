@@ -546,5 +546,66 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Assert.Equal(Helper.Distance(3f, 7f), Helper.Distance(7f, 3f));
         }
+
+        /// <summary>
+        ///     Tests that wrap angle reduces an angle greater than pi to the equivalent angle within range
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WhenAngleIsGreaterThanPi_ReturnsReducedAngle()
+        {
+            float angle = (float)(System.Math.PI * 1.5);
+
+            float result = Helper.WrapAngle(angle);
+
+            Assert.Equal(-(float)(System.Math.PI / 2), result, 4);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle increases an angle less than negative pi to the equivalent angle within range
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WhenAngleIsLessThanNegativePi_ReturnsIncreasedAngle()
+        {
+            float angle = -(float)(System.Math.PI * 1.5);
+
+            float result = Helper.WrapAngle(angle);
+
+            Assert.Equal((float)(System.Math.PI / 2), result, 4);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle reduces a full turn to zero
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WhenAngleIsFullTurn_ReturnsZero()
+        {
+            float angle = (float)(System.Math.PI * 2);
+
+            float result = Helper.WrapAngle(angle);
+
+            Assert.Equal(0f, result, 4);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle maps float pi to negative pi because float pi exceeds the double-precision upper bound
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WhenAngleEqualsPi_ReturnsNegativePi()
+        {
+            float result = Helper.WrapAngle((float)System.Math.PI);
+
+            Assert.Equal(-(float)System.Math.PI, result, 4);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle converts negative pi to pi
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WhenAngleEqualsNegativePi_ReturnsPi()
+        {
+            float result = Helper.WrapAngle(-(float)System.Math.PI);
+
+            Assert.Equal((float)System.Math.PI, result, 4);
+        }
     }
 }
