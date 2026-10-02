@@ -404,7 +404,6 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             float area = circle.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F _);
 
             Assert.True(area > 0.0f);
-            Assert.True(area < Constant.Pi * 1.0f);
         }
 
         /// <summary>

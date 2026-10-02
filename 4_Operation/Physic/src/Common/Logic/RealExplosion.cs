@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Two degrees: maximum angle from edges to first ray tested
         /// </summary>
-        internal const float MaxEdgeOffset = Constant.Pi / 90;
+        internal const float MaxEdgeOffset = (float)System.Math.PI / 90;
 
         /// <summary>
         ///     The shape data
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Max angle between rays (used when segment is large).
         ///     Defaults to 15 degrees
         /// </summary>
-        public readonly float MaxAngle = Constant.Pi / 15;
+        public readonly float MaxAngle = (float)System.Math.PI / 15;
 
         /// <summary>
         ///     Maximum number of shapes involved in the explosion.
@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Common.Logic
                 float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
                 float diff = NormalizeAngleDifference(newAngle - angleToCentroid);
 
-                if (Math.Abs(diff) > Constant.Pi) continue;
+                if (Math.Abs(diff) > (float)System.Math.PI) continue;
 
                 if (diff > max) { max = diff; maxAbsolute = newAngle; }
                 if (diff < min) { min = diff; minAbsolute = newAngle; }
@@ -257,9 +257,9 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>The diff</returns>
         private static float NormalizeAngleDifference(float diff)
         {
-            diff = (diff - Constant.Pi) % (2 * Constant.Pi);
-            if (diff < 0.0f) diff += 2 * Constant.Pi;
-            diff -= Constant.Pi;
+            diff = (diff - (float)System.Math.PI) % (2 * (float)System.Math.PI);
+            if (diff < 0.0f) diff += 2 * (float)System.Math.PI;
+            diff -= (float)System.Math.PI;
             return diff;
         }
 
@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Common.Logic
         private static float ComputeMidpoint(float[] vals, int i, int valIndex)
         {
             float midpt = i == valIndex - 1
-                ? vals[0] + Constant.Pi * 2 + vals[i]
+                ? vals[0] + (float)System.Math.PI * 2 + vals[i]
                 : vals[i + 1] + vals[i];
             return midpt / 2;
         }
@@ -391,7 +391,7 @@ namespace Alis.Core.Physic.Common.Logic
 
             while (ListFirst(_data).Min >= ListFirst(_data).Max)
             {
-                fi.Min -= Constant.Pi * 2;
+                fi.Min -= (float)System.Math.PI * 2;
                 _data[0] = fi;
             }
         }
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Common.Logic
             ShapeData last = _data[lastPos];
             while (ListLast(_data).Min >= ListLast(_data).Max)
             {
-                last.Min = ListLast(_data).Min - 2 * Constant.Pi;
+                last.Min = ListLast(_data).Min - 2 * (float)System.Math.PI;
                 _data[lastPos] = last;
             }
         }
@@ -532,7 +532,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>The vector</returns>
         private static Vector2F ComputeImpulseVector(float angle, float minlambda, float arclen, int insertedRays, float maxForce, RayCastOutput ro, int minRays)
         {
-            float impulse = arclen / (minRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
+            float impulse = arclen / (minRays + insertedRays) * maxForce * 180.0f / (float)System.Math.PI * (1.0f - Math.Min(1.0f, minlambda));
             Vector2F dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
             return Vector2F.Dot(impulse * dir, -ro.Normal) * dir;
         }
@@ -565,7 +565,7 @@ namespace Alis.Core.Physic.Common.Logic
                     continue;
                 }
 
-                float impulse = MinRays * maxForce * 180.0f / Constant.Pi;
+                float impulse = MinRays * maxForce * 180.0f / (float)System.Math.PI;
                 Vector2F hitPoint;
 
                 if (fix.GetShape is CircleShape circShape)

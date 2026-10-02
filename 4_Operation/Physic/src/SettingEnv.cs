@@ -93,7 +93,7 @@ namespace Alis.Core.Physic
         ///     A small angle used as a collision and constraint tolerance. Usually it is
         ///     chosen to be numerically significant, but visually insignificant.
         /// </summary>
-        public const float AngularSlop = 2.0f / 180.0f * Constant.Pi;
+        public const float AngularSlop = 2.0f / 180.0f * (float)System.Math.PI;
 
         /// <summary>
         ///     The radius of the polygon/edge shape skin. This should not be modified. Making
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic
         ///     The maximum angular position correction used when solving constraints. This helps to
         ///     prevent overshoot.
         /// </summary>
-        public const float MaxAngularCorrection = 8.0f / 180.0f * Constant.Pi;
+        public const float MaxAngularCorrection = 8.0f / 180.0f * (float)System.Math.PI;
 
         /// <summary>
         ///     This scale factor controls how fast overlap is resolved. Ideally this would be 1 so
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     A body cannot sleep if its angular velocity is above this tolerance.
         /// </summary>
-        public const float AngularSleepTolerance = 2.0f / 180.0f * Constant.Pi;
+        public const float AngularSleepTolerance = 2.0f / 180.0f * (float)System.Math.PI;
 
         /// <summary>
         ///     The maximum linear velocity of a body. This limit is very large and is used
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic
         ///     The maximum angular velocity of a body. This limit is very large and is used
         ///     to prevent numerical problems. You shouldn't need to adjust this.
         /// </summary>
-        public const float MaxRotation = 0.5f * Constant.Pi;
+        public const float MaxRotation = 0.5f * (float)System.Math.PI;
 
         /// <summary>
         ///     The max rotation

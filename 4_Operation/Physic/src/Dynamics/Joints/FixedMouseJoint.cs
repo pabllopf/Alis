@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mass = BodyA.Mass;
 
             // Frequency
-            float omega = Constant.Tau * Frequency;
+            float omega = (float)(System.Math.PI * 2) * Frequency;
 
             // Damping coefficient
             float d = 2.0f * mass * DampingRatio * omega;

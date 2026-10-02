@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Common
         /// </remarks>
         public void Normalize()
         {
-            float d = Constant.Tau * (float) Math.Floor(A0 / Constant.Tau);
+            float d = (float)(System.Math.PI * 2) * (float) Math.Floor(A0 / (float)(System.Math.PI * 2));
             A0 -= d;
             A -= d;
         }

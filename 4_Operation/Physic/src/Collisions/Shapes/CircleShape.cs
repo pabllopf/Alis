@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         protected sealed override void ComputeProperties()
         {
-            float area = Constant.Pi * _2radius;
+            float area = (float)System.Math.PI * _2radius;
             MassData.Area = area;
             MassData.Mass = GetDensity * area;
             MassData.Centroid = Position;
@@ -194,11 +194,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
             if (l > GetRadius)
             {
                 sc = p;
-                return Constant.Pi * _2radius;
+                return (float)System.Math.PI * _2radius;
             }
 
             float l2 = l * l;
-            float area = _2radius * (float) (Math.Asin(l / GetRadius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
+            float area = _2radius * (float) (Math.Asin(l / GetRadius) + (float)System.Math.PI / 2 + l * Math.Sqrt(_2radius - l2));
             float com = -2.0f / 3.0f * (float) Math.Pow(_2radius - l2, 1.5f) / area;
 
             sc.X = p.X + normal.X * com;

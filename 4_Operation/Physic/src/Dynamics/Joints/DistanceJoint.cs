@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 float c = length - Length;
 
-                float omega = Constant.Tau * Frequency;
+                float omega = (float)(System.Math.PI * 2) * Frequency;
 
                 float d = 2.0f * _mass * DampingRatio * omega;
 

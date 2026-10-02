@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 float c = aB - aA - ReferenceAngle;
 
-                float omega = Constant.Tau * FrequencyHz;
+                float omega = (float)(System.Math.PI * 2) * FrequencyHz;
 
                 float d = 2.0f * m * DampingRatio * omega;
 

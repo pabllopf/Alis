@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
@@ -300,7 +301,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body();
 
-            Fixture fixture = body.CreateLineArc(Constant.Pi, 8, 5f, false);
+            Fixture fixture = body.CreateLineArc((float)System.Math.PI, 8, 5f, false);
 
             Assert.NotNull(fixture);
         }
@@ -313,7 +314,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body();
 
-            Fixture fixture = body.CreateLineArc(Constant.Pi, 8, 5f, true);
+            Fixture fixture = body.CreateLineArc((float)System.Math.PI, 8, 5f, true);
 
             Assert.NotNull(fixture);
         }
@@ -326,7 +327,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body();
 
-            List<Fixture> fixtures = body.CreateSolidArc(1f, Constant.Pi, 8, 5f);
+            List<Fixture> fixtures = body.CreateSolidArc(1f, (float)System.Math.PI, 8, 5f);
 
             Assert.NotEmpty(fixtures);
         }

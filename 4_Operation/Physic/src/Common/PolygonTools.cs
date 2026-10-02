@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Common
             {
                 int numberOfEdges = segments * 4 + 8;
 
-                float stepSize = Constant.Tau / (numberOfEdges - 4);
+                float stepSize = (float)(System.Math.PI * 2) / (numberOfEdges - 4);
                 int perPhase = numberOfEdges / 4;
 
                 Vector2F posOffset = new Vector2F(width / 2 - xRadius, height / 2 - yRadius);
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Common
         {
             Vertices vertices = new Vertices();
 
-            float stepSize = Constant.Tau / numberOfEdges;
+            float stepSize = (float)(System.Math.PI * 2) / numberOfEdges;
 
             vertices.Add(new Vector2F(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
@@ -298,7 +298,7 @@ namespace Alis.Core.Physic.Common
 
             vertices.Add(new Vector2F(topRadius, newHeight));
 
-            float stepSize = Constant.Pi / topEdges;
+            float stepSize = (float)System.Math.PI / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
                 vertices.Add(new Vector2F(topRadius * (float) Math.Cos(stepSize * i),
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Common
 
             vertices.Add(new Vector2F(-bottomRadius, -newHeight));
 
-            stepSize = Constant.Pi / bottomEdges;
+            stepSize = (float)System.Math.PI / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
                 vertices.Add(new Vector2F(-bottomRadius * (float) Math.Cos(stepSize * i),
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Common
         {
             Vertices vertices = new Vertices();
 
-            float stepSize = Constant.Tau / numberOfTeeth;
+            float stepSize = (float)(System.Math.PI * 2) / numberOfTeeth;
             tipPercentage /= 100f;
             MathUtils.Clamp(tipPercentage, 0f, 1f);
             float toothTipStepSize = stepSize / 2f * tipPercentage;

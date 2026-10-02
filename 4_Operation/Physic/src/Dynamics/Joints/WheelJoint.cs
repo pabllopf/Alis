@@ -476,7 +476,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     _springMass = 1.0f / invMass;
 
                     float c = Vector2F.Dot(d1, _ax);
-                    float omega = Constant.Tau * Frequency;
+                    float omega = (float)(System.Math.PI * 2) * Frequency;
                     float d = 2.0f * _springMass * DampingRatio * omega;
                     float k = _springMass * omega * omega;
                     float h = data.Step.Dt;

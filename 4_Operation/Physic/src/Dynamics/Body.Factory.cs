@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture CreateLineArc(float radians, int sides, float radius, bool closed)
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);
-            arc.Rotate((Constant.Pi - radians) / 2);
+            arc.Rotate(((float)System.Math.PI - radians) / 2);
             return closed ? CreateLoopShape(arc) : CreateChainShape(arc);
         }
 
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics
         public List<Fixture> CreateSolidArc(float density, float radians, int sides, float radius)
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);
-            arc.Rotate((Constant.Pi - radians) / 2);
+            arc.Rotate(((float)System.Math.PI - radians) / 2);
 
             arc.Add(arc[0]);
 
