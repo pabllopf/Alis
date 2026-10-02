@@ -200,6 +200,6 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     The all controller category
         /// </summary>
-        All = int.MaxValue
+        All = 0x7FFFFFFF
     }
 }
