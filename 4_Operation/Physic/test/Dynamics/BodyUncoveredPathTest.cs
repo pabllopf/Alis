@@ -626,6 +626,28 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(originalFixtureCount, clone.FixtureList.Count);
         }
 
+        /// <summary>
+        ///     Tests that DeepClone without an explicit world falls back to the body's
+        ///     own WorldPhysic. Covers the null-coalescing right-hand path in DeepClone.
+        /// </summary>
+        [Fact]
+        public void DeepClone_WithoutWorldArgument_UsesOwnWorldPhysic()
+        {
+            // Arrange: Create a body with a fixture inside a world
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(1.0f, 2.0f), 0.5f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            int originalFixtureCount = body.FixtureList.Count;
+
+            // Act: Deep clone using the body's own world (null argument)
+            Body clone = body.DeepClone();
+
+            // Assert: Clone should be created with the same fixtures
+            Assert.NotSame(body, clone);
+            Assert.Equal(originalFixtureCount, clone.FixtureList.Count);
+            Assert.Same(world, clone.GetWorldPhysic);
+        }
+
         #endregion
 
         #region Set Fixture Properties

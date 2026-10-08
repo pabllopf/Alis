@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -292,6 +293,69 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(1, removedCount);
             Assert.Null(fixture.GetBody);
+        }
+
+        /// <summary>
+        ///     Tests that removing a fixture that is the second fixture (FixtureB) of an
+        ///     existing contact destroys that contact. This covers the right-hand side of
+        ///     the "fixture == fixtureA || fixture == fixtureB" branch in Body.Remove.
+        /// </summary>
+        [Fact]
+        public void Remove_WhenRemovedFixtureIsFixtureBOfContact_DestroysContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int removedCount = 0;
+            world.FixtureRemoved += (sender, body, fixture) => removedCount++;
+
+            // The first body created owns the fixture with the lowest broad-phase proxy id,
+            // so the contact is created with this body's fixture as FixtureA.
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(bodyA.ContactList);
+            Contact contact = bodyA.ContactList.Contact;
+            Fixture fixture = bodyA.FixtureList[0];
+
+            Assert.Same(fixture, contact.FixtureB);
+            Assert.NotSame(fixture, contact.FixtureA);
+
+            bodyA.Remove(fixture);
+
+            Assert.Equal(1, removedCount);
+            Assert.Null(fixture.GetBody);
+            Assert.Null(bodyA.ContactList);
+            Assert.Null(bodyB.ContactList);
+        }
+
+        /// <summary>
+        ///     Tests that removing a fixture that is not part of any of the body's contacts
+        ///     leaves those contacts intact. This covers the "false || false" path of the
+        ///     "fixture == fixtureA || fixture == fixtureB" branch in Body.Remove.
+        /// </summary>
+        [Fact]
+        public void Remove_WhenFixtureDoesNotBelongToAnyContact_KeepsContactsIntact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(bodyA.ContactList);
+            Fixture touching = bodyA.FixtureList[0];
+            Fixture unrelated = bodyA.CreateCircle(0.25f, 1.0f, new Vector2F(100.0f, 100.0f));
+
+            ContactEdge edge = bodyA.ContactList;
+            Contact contact = edge.Contact;
+            Assert.NotSame(unrelated, contact.FixtureA);
+            Assert.NotSame(unrelated, contact.FixtureB);
+
+            bodyA.Remove(unrelated);
+
+            Assert.Null(unrelated.GetBody);
+            Assert.NotNull(bodyA.ContactList);
+            Assert.Same(touching, bodyA.FixtureList[0]);
         }
 
         /// <summary>
