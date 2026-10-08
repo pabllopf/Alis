@@ -121,5 +121,59 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             Assert.NotNull(PolygonGenerator.Rng);
         }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep with exactly three vertices returns a triangle
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithExactlyThreeVertices_ReturnsPolygonWithThreePoints()
+        {
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep(100.0, 3);
+
+            Assert.Equal(3, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 with exactly three vertices returns a triangle
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_WithExactlyThreeVertices_ReturnsPolygonWithThreePoints()
+        {
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep2(100.0, 3);
+
+            Assert.Equal(3, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep keeps every generated point within the clamped radial bounds
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_AllPoints_AreWithinScaledRadialBounds()
+        {
+            double scale = 100.0;
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep(scale, 64);
+
+            foreach (Physic.Common.Decomposition.CDT.TriangulationPoint point in polygon.GetPoints)
+            {
+                double distance = Math.Sqrt(point.X * point.X + point.Y * point.Y);
+                Assert.InRange(distance, scale / 10 - 1e-9, scale / 2 + 1e-9);
+            }
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 keeps every generated point within the clamped radial bounds
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_AllPoints_AreWithinScaledRadialBounds()
+        {
+            double scale = 100.0;
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep2(scale, 64);
+
+            foreach (Physic.Common.Decomposition.CDT.TriangulationPoint point in polygon.GetPoints)
+            {
+                double distance = Math.Sqrt(point.X * point.X + point.Y * point.Y);
+                Assert.InRange(distance, scale / 10 - 1e-9, scale / 2 + 1e-9);
+            }
+        }
     }
 }
