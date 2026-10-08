@@ -260,5 +260,95 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 
             Assert.Equal(2, result.Count);
         }
+
+        /// <summary>
+        ///     Tests that the growing triangle is rotated so its tip is the first vertex (D,B,C)
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_NeighborWithTipFirst_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, 1), new Vector2F(1, 0), new Vector2F(0, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        /// <summary>
+        ///     Tests that the growing triangle places its tip in the middle of the shared edge (B,D,C)
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_NeighborWithTipMiddle_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, 0), new Vector2F(1, 1), new Vector2F(0, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        /// <summary>
+        ///     Tests that a reversed shared edge (D,C,B) still combines the growing triangle
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_NeighborWithReversedSharedEdge_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, 1), new Vector2F(0, 1), new Vector2F(1, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        /// <summary>
+        ///     Tests that a neighbor whose first shared vertex comes from the base second vertex (C,D,B) combines
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_NeighborWithBaseSecondFirst_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(0, 1), new Vector2F(1, 1), new Vector2F(1, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        /// <summary>
+        ///     Tests that a neighbor ordering its shared vertices backwards (C,B,D) combines
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_NeighborWithBackwardsSharedVertices_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(0, 1), new Vector2F(1, 0), new Vector2F(1, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
     }
 }
