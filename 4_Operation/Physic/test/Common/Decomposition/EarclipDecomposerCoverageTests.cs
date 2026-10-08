@@ -121,5 +121,57 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.False(result);
         }
+
+        /// <summary>
+        ///     Tests that is inside returns false when the query y is not greater than the first vertex y
+        /// </summary>
+        [Fact]
+        public void IsInside_WhenYIsNotGreaterThanFirstVertexY_ReturnsFalse()
+        {
+            EarclipDecomposer.Triangle triangle = new EarclipDecomposer.Triangle(0f, 0f, 4f, 2f, 2f, 4f);
+
+            bool result = triangle.IsInside(2f, 0f);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is inside returns false when the query y sits between the first and second vertex y
+        /// </summary>
+        [Fact]
+        public void IsInside_WhenYIsBetweenFirstAndSecondVertexY_ReturnsFalse()
+        {
+            EarclipDecomposer.Triangle triangle = new EarclipDecomposer.Triangle(0f, 0f, 4f, 2f, 2f, 4f);
+
+            bool result = triangle.IsInside(2f, 1f);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is inside returns false when the v barycentric weight is not positive
+        /// </summary>
+        [Fact]
+        public void IsInside_WhenBarycentricWeightVIsNotPositive_ReturnsFalse()
+        {
+            EarclipDecomposer.Triangle triangle = new EarclipDecomposer.Triangle(0f, 0f, 4f, 2f, 2f, 4f);
+
+            bool result = triangle.IsInside(1f, 3f);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is inside returns true when the point lies inside the triangle
+        /// </summary>
+        [Fact]
+        public void IsInside_WhenPointIsInsideTriangle_ReturnsTrue()
+        {
+            EarclipDecomposer.Triangle triangle = new EarclipDecomposer.Triangle(0f, 0f, 4f, 2f, 2f, 4f);
+
+            bool result = triangle.IsInside(2f, 2f);
+
+            Assert.True(result);
+        }
     }
 }

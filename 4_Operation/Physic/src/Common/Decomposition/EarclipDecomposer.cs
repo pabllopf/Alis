@@ -316,11 +316,6 @@ namespace Alis.Core.Physic.Common.Decomposition
             poutB = new Vertices();
 
             int sizeA = pinchIndexB - pinchIndexA;
-            if (sizeA == pin.Count)
-            {
-                return; //has dupe points at wraparound, not a problem here
-            }
-
             for (int i = 0; i < sizeA; ++i)
             {
                 poutA.Add(pin[Remainder(pinchIndexA + i, pin.Count)]);
