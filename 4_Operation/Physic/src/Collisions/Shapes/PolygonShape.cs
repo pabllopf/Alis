@@ -467,8 +467,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
             Vector2F p2 = Vertices[intoIndex2];
             const float kInv3 = 1.0f / 3.0f;
 
-            for (int i = intoIndex2; i != outoIndex2; i = (i + 1) % Vertices.Count)
+            //An awkward loop from intoIndex2+1 to outoIndex2
+            for (int i = intoIndex2; i != outoIndex2;)
             {
+                i = (i + 1) % Vertices.Count;
                 Vector2F p3 = i == outoIndex2 ? outoVec : Vertices[i];
                 AddTriangle(ref area, ref center, intoVec, p2, p3, kInv3);
                 p2 = p3;

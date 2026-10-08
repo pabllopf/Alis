@@ -435,6 +435,22 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         }
 
         /// <summary>
+        ///     Tests that compute submerged area returns the exact trapezoid area when the water line cuts the triangle.
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_PartiallySubmerged_ReturnsExactArea()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F _);
+
+            Assert.True(Math.Abs(area - 0.875f) < 1e-4f, $"Expected 0.875 but got {area}");
+        }
+
+        /// <summary>
         ///     Tests that compute submerged area returns non negative when partially submerged with inverted normal
         /// </summary>
         [Fact]
