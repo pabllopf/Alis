@@ -185,5 +185,24 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(polygonB, swapped.FixtureA);
             Assert.Equal(circleA, swapped.FixtureB);
         }
+
+        /// <summary>
+        ///     Tests that create with a polygon first and an edge second swaps the fixtures to keep the edge first
+        /// </summary>
+        [Fact]
+        public void Create_WithPolygonAndEdgeShapes_SwapsFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture polygonA = bodyA.CreateFixture(new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f));
+            Fixture edgeB = bodyB.CreateFixture(new EdgeShape(new Vector2F(-1.0f, 0.0f), new Vector2F(1.0f, 0.0f)));
+
+            Contact contact = Contact.Create(world.ContactManager, polygonA, 0, edgeB, 0);
+
+            Assert.NotNull(contact);
+            Assert.Equal(edgeB, contact.FixtureA);
+            Assert.Equal(polygonA, contact.FixtureB);
+        }
     }
 }

@@ -145,6 +145,29 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
+        ///     Tests that report collision disables the contact when the first fixture handler returns false.
+        /// </summary>
+        [Fact]
+        public void ReportCollision_WhenFixtureAHandlerReturnsFalse_DisablesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+
+            contact.FixtureA.OnCollision += (sender, other, c) => false;
+            contact.IsTouching = true;
+
+            contact.ReportCollision(bodyA, bodyB, world.ContactManager);
+
+            Assert.False(contact.Enabled);
+            Assert.False(contact.IsTouching);
+        }
+
+        /// <summary>
         ///     Tests that report separation invokes the end contact callback.
         /// </summary>
         [Fact]
