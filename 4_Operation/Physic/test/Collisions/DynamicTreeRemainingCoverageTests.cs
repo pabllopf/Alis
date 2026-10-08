@@ -452,6 +452,22 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
+        /// Tests that Balance returns the same index when the node is a leaf,
+        /// covering the IsLeaf() short-circuit branch of the balance guard.
+        /// </summary>
+        [Fact]
+        public void Balance_WhenNodeIsLeaf_ReturnsSameIndex()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int leaf = tree.AddProxy(ref aabb);
+
+            int balanced = tree.Balance(leaf);
+
+            Assert.Equal(leaf, balanced);
+        }
+
+        /// <summary>
         /// Tests that UpdateParentPointer sets root when parent is NullNode.
         /// </summary>
         [Fact]
