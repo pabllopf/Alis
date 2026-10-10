@@ -127,13 +127,6 @@ namespace Alis.Core.Physic.Dynamics
         private Body[] _stack = ArrayPool<Body>.Shared.Rent(64);
 
         /// <summary>
-        ///     The step complete
-        /// </summary>
-        private bool _stepComplete = true;
-
-
-
-        /// <summary>
         ///     Fires whenever a body has been added
         /// </summary>
         public BodyDelegate BodyAdded;
@@ -558,7 +551,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (minContact == null || 1.0f - 10.0f * SettingEnv.Epsilon < minAlpha)
                 {
-                    _stepComplete = true;
                     break;
                 }
 
@@ -642,11 +634,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void ResetToiState()
         {
-            if (!_stepComplete)
-            {
-                return;
-            }
-
             for (int i = 0; i < BodyList.List.Count; i++)
             {
                 BodyList.List[i].Island = false;
@@ -1956,7 +1943,7 @@ namespace Alis.Core.Physic.Dynamics
                 ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
             }
 
-            if (_stepComplete && (step.Dt > 0.0f))
+            if (step.Dt > 0.0f)
             {
                 Solve(ref step);
             }
