@@ -200,5 +200,19 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.NotNull(body);
         }
+
+        /// <summary>
+        ///     Tests that a segment count whose vertex computation overflows the 32-bit
+        ///     edge count collapses the rounded rectangle to a single vertex, which drops
+        ///     below the polygon threshold and is rejected by the single-polygon path.
+        /// </summary>
+        [Fact]
+        public void CreateRoundedRectangle_WhenSegmentCountOverflowsEdgeCount_ThrowsArgumentOutOfRangeException()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                world.CreateRoundedRectangle(2.0f, 1.0f, 0.3f, 0.3f, 1073741822, 1.0f, Vector2F.Zero, 0, BodyType.Dynamic));
+        }
     }
 }
