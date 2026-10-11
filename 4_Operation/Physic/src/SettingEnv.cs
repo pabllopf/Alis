@@ -199,7 +199,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Enable/Disable Continuous Collision Detection (CCD)
         /// </summary>
-        public static readonly bool ContinuousPhysics = true;
+        public static bool ContinuousPhysics { get; set; } = true;
 
         /// <summary>
         ///     If true, it will run a GiftWrap convex hull on all polygon inputs.
