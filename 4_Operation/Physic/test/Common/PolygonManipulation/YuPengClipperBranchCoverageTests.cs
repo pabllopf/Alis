@@ -67,8 +67,12 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             List<Vertices> result = YuPengClipper.Union(subject, clip, out PolyClipError error);
 
             // Assert
+            // The skipped insertion (alpha == 0) must not corrupt the clipped result:
+            // the operation still succeeds and yields well formed contours.
             Assert.NotNull(result);
             Assert.Equal(PolyClipError.None, error);
+            Assert.Equal(2, result.Count);
+            Assert.All(result, polygon => Assert.True(polygon.Count >= 3));
         }
     }
 }
