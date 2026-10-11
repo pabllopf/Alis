@@ -222,7 +222,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Enable/Disable sleeping
         /// </summary>
-        public static readonly bool AllowSleep = true;
+        public static bool AllowSleep { get; set; } = true;
 
         /// <summary>
         ///     The maximum number of vertices on a convex polygon.

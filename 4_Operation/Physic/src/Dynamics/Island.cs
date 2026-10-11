@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Dynamics
                 ReturnBodyArrays();
                 ReturnContactsArray();
                 ReturnJointsArray();
-                _contactSolver?.Dispose();
+                _contactSolver.Dispose();
             }
         }
 
