@@ -262,6 +262,32 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
 
         /// <summary>
+        ///     Tests that post solve when state is already broken short circuits and keeps state broken
+        /// </summary>
+        [Fact]
+        public void PostSolve_WhenStateIsBroken_KeepsStateBroken()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            List<Vertices> parts = new List<Vertices>
+            {
+                CreateSquare(0)
+            };
+            BreakableBody body = new BreakableBody(world, parts, 1.0f);
+            Body other = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            Fixture otherFixture = other.CreateFixture(new CircleShape(0.5f, 1.0f));
+
+            Contact contact = new Contact(body.Parts[0], 0, otherFixture, 0);
+            contact.Manifold.PointCount = 1;
+            ContactVelocityConstraint impulse = new ContactVelocityConstraint();
+            impulse.Points[0].NormalImpulse = 600.0f;
+
+            body.State = BreakableBodyState.Broken;
+            world.ContactManager.PostSolve(contact, impulse);
+
+            Assert.Equal(BreakableBodyState.Broken, body.State);
+        }
+
+        /// <summary>
         ///     Tests that update in unbroken state caches velocities
         /// </summary>
         [Fact]
