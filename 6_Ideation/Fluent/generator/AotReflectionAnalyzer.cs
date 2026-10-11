@@ -39,6 +39,7 @@ using Microsoft.CodeAnalysis.Operations;
 
 [assembly: InternalsVisibleTo("Alis.Core.Aspect.Fluent.Test")]
 
+
 namespace Alis.Core.Aspect.Fluent.Generator
 {
     /// <summary>
