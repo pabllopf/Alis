@@ -359,12 +359,6 @@ namespace Alis.Core.Ecs.Kernel
         {
             if (LastCreateEntityComponentsBufferIndex < 0)
             {
-                Throw();
-            }
-
-            [MethodImpl(MethodImplOptions.NoInlining)]
-            static void Throw()
-            {
                 throw new InvalidOperationException("Use CommandBuffer.GameObject() to begin creating an gameObject!");
             }
         }
