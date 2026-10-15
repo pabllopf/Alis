@@ -526,18 +526,28 @@ namespace Alis.Core.Graphic.Platforms.Osx
             NsRect frame = ObjectiveCInterop.GetWindowFrame(window.Handle);
             winX = (int) frame.x;
             winY = (int) frame.y;
-            winW = (int) frame.width;
-            winH = (int) frame.height;
 
             IntPtr contentView = ObjectiveCInterop.objc_msgSend(window.Handle, ObjectiveCInterop.Sel("contentView"));
             if (contentView != IntPtr.Zero)
             {
                 NsRect viewFrame = ObjectiveCInterop.NSViewGetFrame(contentView);
-                fbW = (int) viewFrame.width;
-                fbH = (int) viewFrame.height;
+                winW = (int) viewFrame.width;
+                winH = (int) viewFrame.height;
+                double backingScale = ObjectiveCInterop.objc_msgSend_double(
+                    window.Handle,
+                    ObjectiveCInterop.Sel("backingScaleFactor"));
+                if (backingScale <= 0.0)
+                {
+                    backingScale = 1.0;
+                }
+
+                fbW = Math.Max(1, (int) Math.Round(viewFrame.width * backingScale));
+                fbH = Math.Max(1, (int) Math.Round(viewFrame.height * backingScale));
             }
             else
             {
+                winW = (int) frame.width;
+                winH = (int) frame.height;
                 fbW = winW;
                 fbH = winH;
             }

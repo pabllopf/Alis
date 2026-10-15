@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.App.Hub;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows;
 using Alis.App.Hub.Windows.Sections;
@@ -93,6 +94,51 @@ namespace Alis.App.Hub.Test
     /// </summary>
     public class HubSectionAndCoreTests
     {
+        /// <summary>
+        ///     Verifies normalized mouse coordinates are scaled to the logical window and vertically flipped.
+        /// </summary>
+        [Fact]
+        public void HubEngine_ScaleMousePosition_ScalesNormalizedCoordinates()
+        {
+            float x = 0.5f;
+            float y = 0.25f;
+
+            HubEngine.ScaleMousePosition(ref x, ref y, 1025, 575, true, true);
+
+            Assert.Equal(512.5f, x);
+            Assert.Equal(431.25f, y);
+        }
+
+        /// <summary>
+        ///     Verifies pixel mouse coordinates are preserved while converting the origin.
+        /// </summary>
+        [Fact]
+        public void HubEngine_ScaleMousePosition_ConvertsPixelCoordinates()
+        {
+            float x = 200;
+            float y = 100;
+
+            HubEngine.ScaleMousePosition(ref x, ref y, 800, 600, true, false);
+
+            Assert.Equal(200, x);
+            Assert.Equal(500, y);
+        }
+
+        /// <summary>
+        ///     Verifies client coordinates are not inverted when the platform already uses a top-left origin.
+        /// </summary>
+        [Fact]
+        public void HubEngine_ScaleMousePosition_PreservesTopLeftOrigin()
+        {
+            float x = 200;
+            float y = 100;
+
+            HubEngine.ScaleMousePosition(ref x, ref y, 800, 600, false, false);
+
+            Assert.Equal(200, x);
+            Assert.Equal(100, y);
+        }
+
         #region AWindow Tests
 
         /// <summary>

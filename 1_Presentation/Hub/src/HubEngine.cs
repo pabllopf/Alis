@@ -56,11 +56,6 @@ namespace Alis.App.Hub
     public class HubEngine
     {
         /// <summary>
-        /// The viewport buffer
-        /// </summary>
-        private static readonly int[] ViewportBuffer = new int[4];
-
-        /// <summary>
         ///     The vector
         /// </summary>
         internal readonly Vector2F[] _lastClickPos = new Vector2F[5];
@@ -106,14 +101,39 @@ namespace Alis.App.Hub
         internal readonly SpaceWork _spaceWork = new SpaceWork();
 
         /// <summary>
-        ///     The resolution program
+        ///     The design width used to calculate the user interface scale.
         /// </summary>
-        internal readonly float resolutionProgramX = 1025;
+        private const float DesignWidth = 1025;
 
         /// <summary>
-        ///     The resolution program
+        ///     The design height used to calculate the user interface scale.
         /// </summary>
-        internal readonly float resolutionProgramY = 575;
+        private const float DesignHeight = 575;
+
+        /// <summary>
+        ///     The last logical window width.
+        /// </summary>
+        private int lastWindowWidth;
+
+        /// <summary>
+        ///     The last logical window height.
+        /// </summary>
+        private int lastWindowHeight;
+
+        /// <summary>
+        ///     The last framebuffer width.
+        /// </summary>
+        private int lastFramebufferWidth;
+
+        /// <summary>
+        ///     The last framebuffer height.
+        /// </summary>
+        private int lastFramebufferHeight;
+
+        /// <summary>
+        ///     The style scale currently applied to ImGui.
+        /// </summary>
+        private float appliedStyleScale = 1.0f;
 
         /// <summary>
         ///     The ebo
@@ -161,7 +181,7 @@ namespace Alis.App.Hub
 
 
             platform = GetPlatform();
-if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
+            if (!InitializePlatform(platform, _spaceWork.WidthMainWindow, _spaceWork.HeightMainWindow, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform.Cleanup();
@@ -170,13 +190,12 @@ if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProg
 
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
 
-platform.MakeContextCurrent();
+            platform.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
@@ -187,10 +206,8 @@ platform.MakeContextCurrent();
             ImGui.SetCurrentContext(currentCtx);
 
             _spaceWork.io = ImGui.GetIo();
-// Backend capabilities
 
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
-                                          ImGuiBackendFlags.PlatformHasViewports |
                                           ImGuiBackendFlags.HasGamepad |
                                           ImGuiBackendFlags.HasMouseHoveredViewport |
                                           ImGuiBackendFlags.HasMouseCursors;
@@ -199,8 +216,7 @@ platform.MakeContextCurrent();
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                          ImGuiConfigFlags.NavEnableGamepad;
 
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
-                                         ImGuiConfigFlags.ViewportsEnable;
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 
 
             _spaceWork.io = ImGui.GetIo();
@@ -269,24 +285,20 @@ platform.MakeContextCurrent();
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
             Gl.GlBindVertexArray(0);
 
-platform.ShowWindow();
+            platform.ShowWindow();
             platform.SetTitle("Alis Hub - by @pabllopf");
 
             _spaceWork.io = ImGui.GetIo();
-            _spaceWork.io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
-
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                                          | ImGuiBackendFlags.PlatformHasViewports
                                           | ImGuiBackendFlags.HasGamepad
                                           | ImGuiBackendFlags.HasMouseHoveredViewport
                                           | ImGuiBackendFlags.HasMouseCursors;
 
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
                                          | ImGuiConfigFlags.NavEnableGamepad
-                                         | ImGuiConfigFlags.DockingEnable
-                                         | ImGuiConfigFlags.ViewportsEnable;
+                                         | ImGuiConfigFlags.DockingEnable;
 
             ImNodes.CreateContext();
             ImPlot.CreateContext();
@@ -296,6 +308,11 @@ platform.ShowWindow();
             LoadFonts();
 
             SetStyle();
+            lastWindowWidth = 0;
+            lastWindowHeight = 0;
+            lastFramebufferWidth = 0;
+            lastFramebufferHeight = 0;
+            UpdateWindowMetrics();
 
             _spaceWork.OnInit();
             _spaceWork.OnStart();
@@ -357,6 +374,16 @@ platform.ShowWindow();
                 io.DeltaTime = (float) delta;
 
                 _spaceWork.IsRunning = platform.PollEvents();
+                if (!_spaceWork.IsRunning)
+                {
+                    break;
+                }
+
+                if (!UpdateWindowMetrics())
+                {
+                    Thread.Sleep(16);
+                    continue;
+                }
 
                 ProcessKeyWithImgui();
                 UpdateMousePosAndButtons();
@@ -443,26 +470,15 @@ platform.ShowWindow();
         internal void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-platform.GetMouseState(out _, out _, out bool[] mouseButtons);
-platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
-
+            platform.GetMouseState(out _, out _, out bool[] mouseButtons);
             platform.GetMousePositionInView(out float mx, out float my);
-
-
-            //my = fbH - my; // Invertir coordenada Y para ImGui
-
-            Gl.GlGetIntegerv(0x0BA2, ViewportBuffer);
-            int glViewportWidth = ViewportBuffer[2];
-            int glViewportHeight = ViewportBuffer[3];
-
-            float scaleX = glViewportWidth / resolutionProgramX;
-            float scaleY = glViewportHeight / resolutionProgramY;
-
-            my = fbH - my;
-
-            mx *= scaleX;
-            my *= scaleY;
-
+            ScaleMousePosition(
+                ref mx,
+                ref my,
+                lastWindowWidth,
+                lastWindowHeight,
+                platform is MacNativePlatform,
+                platform is not MacNativePlatform);
             io.AddMousePosEvent(mx, my);
 
             for (int i = 0; i < 5; i++)
@@ -487,6 +503,106 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             {
                 Logger.Trace("Algún botón de ratón está presionado.");
             }
+        }
+
+        /// <summary>
+        ///     Updates the logical display size, framebuffer scale and OpenGL viewport.
+        /// </summary>
+        /// <returns><see langword="true"/> when the window has a drawable framebuffer.</returns>
+        internal bool UpdateWindowMetrics()
+        {
+            platform.GetWindowMetrics(out _, out _, out int windowWidth, out int windowHeight, out int framebufferWidth, out int framebufferHeight);
+            if (windowWidth <= 0 || windowHeight <= 0 || framebufferWidth <= 0 || framebufferHeight <= 0)
+            {
+                return false;
+            }
+
+            if (windowWidth != lastWindowWidth || windowHeight != lastWindowHeight ||
+                framebufferWidth != lastFramebufferWidth || framebufferHeight != lastFramebufferHeight)
+            {
+                lastWindowWidth = windowWidth;
+                lastWindowHeight = windowHeight;
+                lastFramebufferWidth = framebufferWidth;
+                lastFramebufferHeight = framebufferHeight;
+                _spaceWork.WidthMainWindow = windowWidth;
+                _spaceWork.HeightMainWindow = windowHeight;
+
+                ImGuiIoPtr io = ImGui.GetIo();
+                io.DisplaySize = new Vector2F(windowWidth, windowHeight);
+                io.DisplayFramebufferScale = new Vector2F(
+                    (float) framebufferWidth / windowWidth,
+                    (float) framebufferHeight / windowHeight);
+                Gl.GlViewport(0, 0, framebufferWidth, framebufferHeight);
+
+                float nextScale = Math.Min(windowWidth / DesignWidth, windowHeight / DesignHeight);
+                if (nextScale <= 0)
+                {
+                    nextScale = 1.0f;
+                }
+
+                if (Math.Abs(nextScale - appliedStyleScale) > 0.001f)
+                {
+                    SetStyle();
+                    _spaceWork.Style.ScaleAllSizes(nextScale);
+                    _spaceWork.io.FontGlobalScale = nextScale;
+                    appliedStyleScale = nextScale;
+                }
+
+                scaleFactor = nextScale;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Converts platform mouse coordinates to ImGui logical coordinates.
+        /// </summary>
+        /// <param name="x">The mouse x coordinate.</param>
+        /// <param name="y">The mouse y coordinate.</param>
+        /// <param name="windowWidth">The logical window width.</param>
+        /// <param name="windowHeight">The logical window height.</param>
+        public static void ScaleMousePosition(ref float x, ref float y, int windowWidth, int windowHeight)
+        {
+            ScaleMousePosition(ref x, ref y, windowWidth, windowHeight, true, true);
+        }
+
+        /// <summary>
+        ///     Converts platform mouse coordinates to ImGui logical coordinates.
+        /// </summary>
+        /// <param name="x">The mouse x coordinate.</param>
+        /// <param name="y">The mouse y coordinate.</param>
+        /// <param name="windowWidth">The logical window width.</param>
+        /// <param name="windowHeight">The logical window height.</param>
+        /// <param name="invertY">Whether the platform uses a bottom-left origin.</param>
+        /// <param name="normalized">Whether the platform reports coordinates normalized to the window size.</param>
+        public static void ScaleMousePosition(
+            ref float x,
+            ref float y,
+            int windowWidth,
+            int windowHeight,
+            bool invertY,
+            bool normalized)
+        {
+            if (windowWidth <= 0 || windowHeight <= 0)
+            {
+                x = -1;
+                y = -1;
+                return;
+            }
+
+            if (normalized)
+            {
+                x *= windowWidth;
+                y *= windowHeight;
+            }
+
+            if (invertY)
+            {
+                y = windowHeight - y;
+            }
+
+            x = Math.Clamp(x, 0, windowWidth);
+            y = Math.Clamp(y, 0, windowHeight);
         }
 
         /// <summary>
@@ -585,7 +701,6 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
         {
             io.AddKeyEvent(imguiKey, platform.IsKeyDown(consoleKey));
         }
-
 
 
         /// <summary>
@@ -975,16 +1090,12 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 ImGui.DockSpaceOverViewport();
             }
 
-            // Show all render:
-
-
             _spaceWork.OnRender(scaleFactor);
 
 
             ImGui.Render();
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
-
         }
 
         /// <summary>
@@ -998,6 +1109,16 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
+            ImGuiIoPtr io = ImGui.GetIo();
+            float framebufferScaleX = io.DisplayFramebufferScale.X;
+            float framebufferScaleY = io.DisplayFramebufferScale.Y;
+            int fbWidth = (int) (drawData.DisplaySize.X * framebufferScaleX);
+            int fbHeight = (int) (drawData.DisplaySize.Y * framebufferScaleY);
+            if (fbWidth <= 0 || fbHeight <= 0)
+            {
+                return;
+            }
+
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -1005,30 +1126,11 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            Gl.GlGetIntegerv(0x0BA2, ViewportBuffer); // 0x0BA2 = GL_VIEWPORT
-            int fbWidth = ViewportBuffer[2];
-            int fbHeight = ViewportBuffer[3];
-            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
-
-
-            float scaleX = fbWidth / resolutionProgramX;
-            float scaleY = fbHeight / resolutionProgramY;
-            scaleFactor = Math.Min(scaleX, scaleY);
-
-            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
-
-            _spaceWork.Style.ScaleAllSizes(scaleFactor);
-            _spaceWork.io.FontGlobalScale = scaleFactor;
-
-
-            Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
-
-
+            Gl.GlViewport(0, 0, fbWidth, fbHeight);
             float l = 0.0f;
-            float r = ImGui.GetIo().DisplaySize.X;
+            float r = drawData.DisplaySize.X;
             float t = 0.0f;
-            float b = ImGui.GetIo().DisplaySize.Y;
+            float b = drawData.DisplaySize.Y;
 
             Matrix4X4 ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
@@ -1069,10 +1171,24 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int) pcmd.ClipRect.X;
-                        int y = (int) (ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        float clipMinX = (pcmd.ClipRect.X - drawData.DisplayPos.X) * framebufferScaleX;
+                        float clipMinY = (pcmd.ClipRect.Y - drawData.DisplayPos.Y) * framebufferScaleY;
+                        float clipMaxX = (pcmd.ClipRect.Z - drawData.DisplayPos.X) * framebufferScaleX;
+                        float clipMaxY = (pcmd.ClipRect.W - drawData.DisplayPos.Y) * framebufferScaleY;
+                        int x = (int) clipMinX;
+                        int y = (int) (fbHeight - clipMaxY);
+                        int width = (int) (clipMaxX - clipMinX);
+                        int height = (int) (clipMaxY - clipMinY);
+                        x = Math.Clamp(x, 0, fbWidth);
+                        y = Math.Clamp(y, 0, fbHeight);
+                        width = Math.Clamp(width, 0, fbWidth - x);
+                        height = Math.Clamp(height, 0, fbHeight - y);
+                        if (width == 0 || height == 0)
+                        {
+                            idxOffset += pcmd.ElemCount;
+                            continue;
+                        }
+
                         Gl.GlScissor(x, y, width, height);
 
                         Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));

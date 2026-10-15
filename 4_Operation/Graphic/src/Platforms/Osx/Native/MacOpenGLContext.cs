@@ -88,9 +88,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             }
 
             View = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSOpenGLView"), ObjectiveCInterop.Sel("alloc"));
-            NsRect frame = window.GetFrame();
             View = ObjectiveCInterop.objc_msgSend_NSRect_IntPtr(View, ObjectiveCInterop.Sel("initWithFrame:pixelFormat:"),
-                frame.x, frame.y, frame.width, frame.height, PixelFormat);
+                0.0, 0.0, window.Width, window.Height, PixelFormat);
+            ObjectiveCInterop.objc_msgSend_void_Bool(
+                View,
+                ObjectiveCInterop.Sel("setWantsBestResolutionOpenGLSurface:"),
+                true);
             ObjectiveCInterop.objc_msgSend_void_IntPtr(window.Handle, ObjectiveCInterop.Sel("setContentView:"), View);
             Context = ObjectiveCInterop.objc_msgSend(View, ObjectiveCInterop.Sel("openGLContext"));
         }

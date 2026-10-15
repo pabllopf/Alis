@@ -85,6 +85,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
 
         [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern NsRect objc_msgSend_NSRect(IntPtr receiver, IntPtr selector);
+
         /// <summary>
         ///     objc_msgSend_stret
         /// </summary>
