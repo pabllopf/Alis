@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Engine.cs
+//  File:HubEngine.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,7 +26,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
 
 using System;
 using System.Diagnostics;
@@ -60,34 +59,14 @@ namespace Alis.App.Engine
     public class Engine
     {
         /// <summary>
-        /// The viewport buffer
-        /// </summary>
-        private static readonly int[] ViewportBuffer = new int[4];
-
-        /// <summary>
-        ///     The show project
-        /// </summary>
-        private bool showProject;
-
-        /// <summary>
-        ///     The show inspector
-        /// </summary>
-        private bool showInspector;
-
-        /// <summary>
-        ///     The show console
-        /// </summary>
-        private bool showConsole;
-
-        /// <summary>
-        /// The imgui context
-        /// </summary>
-        private IntPtr imguiContext;
-        
-        /// <summary>
         ///     The vector
         /// </summary>
         internal readonly Vector2F[] _lastClickPos = new Vector2F[5];
+
+        /// <summary>
+        /// The hub jet brains mono bold ttf
+        /// </summary>
+        private const string HubJetBrainsMonoBoldTtf = "Engine_JetBrainsMono-Bold.ttf";
 
         /// <summary>
         ///     The last click time
@@ -125,14 +104,39 @@ namespace Alis.App.Engine
         internal readonly SpaceWork _spaceWork = new SpaceWork();
 
         /// <summary>
-        ///     The resolution program
+        ///     The design width used to calculate the user interface scale.
         /// </summary>
-        internal readonly float resolutionProgramX = 1920;
+        private const float DesignWidth = 1025;
 
         /// <summary>
-        ///     The resolution program
+        ///     The design height used to calculate the user interface scale.
         /// </summary>
-        internal readonly float resolutionProgramY = 1080;
+        private const float DesignHeight = 575;
+
+        /// <summary>
+        ///     The last logical window width.
+        /// </summary>
+        private int lastWindowWidth;
+
+        /// <summary>
+        ///     The last logical window height.
+        /// </summary>
+        private int lastWindowHeight;
+
+        /// <summary>
+        ///     The last framebuffer width.
+        /// </summary>
+        private int lastFramebufferWidth;
+
+        /// <summary>
+        ///     The last framebuffer height.
+        /// </summary>
+        private int lastFramebufferHeight;
+
+        /// <summary>
+        ///     The style scale currently applied to ImGui.
+        /// </summary>
+        private float appliedStyleScale = 1.0f;
 
         /// <summary>
         ///     The ebo
@@ -142,7 +146,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The font texture
         /// </summary>
-        private uint _fontTexture;
+        internal readonly uint _fontTexture = 0;
 
         /// <summary>
         ///     The shader program
@@ -160,36 +164,6 @@ namespace Alis.App.Engine
         private uint _vbo;
 
         /// <summary>
-        ///     The dockspaceflags
-        /// </summary>
-        private ImGuiWindowFlags dockspaceflags;
-
-        /// <summary>
-        ///     The first time scale
-        /// </summary>
-        private bool firstTimeScale = true;
-
-        /// <summary>
-        ///     The frame counter
-        /// </summary>
-        internal int FrameCounter;
-
-        /// <summary>
-        ///     The is first time
-        /// </summary>
-        private bool isFirstTime = true;
-
-        /// <summary>
-        ///     The is init
-        /// </summary>
-        private bool IsInit;
-
-        /// <summary>
-        ///     The JetBrains Mono font resource name
-        /// </summary>
-        private const string JetBrainsMonoFontName = "Engine_JetBrainsMono-Bold";
-
-        /// <summary>
         ///     The platform
         /// </summary>
         private INativePlatform platform;
@@ -197,7 +171,8 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The scale factor
         /// </summary>
-        internal float scaleFactor = 1.0f;
+        internal float scaleFactor;
+        
 
         /// <summary>
         ///     Application entry point.
@@ -208,25 +183,159 @@ namespace Alis.App.Engine
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
+
             platform = GetPlatform();
-InitializeEngine();
+            if (!InitializePlatform(platform, _spaceWork.WidthMainWindow, _spaceWork.HeightMainWindow, "Alis Hub - by @pabllopf"))
+            {
+                Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
+                platform.Cleanup();
+                return;
+            }
 
-            RunGameLoop(frameTimer, ref lastTime, targetFrameTime);
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlEnable(EnableCap.DepthTest);
 
-            CleanupGraphicsResources();
+            IntPtr imguiContext = ImGui.CreateContext();
+            ImGui.SetCurrentContext(imguiContext);
 
-            ImGui.SetCurrentContext(new IntPtr());
+            platform.MakeContextCurrent();
 
-            CleanupEngine();
+            IntPtr currentCtx = ImGui.GetCurrentContext();
+            if (currentCtx == IntPtr.Zero)
+            {
+                currentCtx = ImGui.CreateContext();
+            }
 
-            platform.Cleanup();
-        }
+            ImGui.SetCurrentContext(currentCtx);
 
-        /// <summary>
-        /// Cleanups the graphics resources
-        /// </summary>
-        internal void CleanupGraphicsResources()
-        {
+            _spaceWork.io = ImGui.GetIo();
+
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+                                          ImGuiBackendFlags.HasGamepad |
+                                          ImGuiBackendFlags.HasMouseHoveredViewport |
+                                          ImGuiBackendFlags.HasMouseCursors;
+
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+                                         ImGuiConfigFlags.NavEnableGamepad;
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+
+
+            _spaceWork.io = ImGui.GetIo();
+            _spaceWork.io.WantSaveIniSettings = false;
+
+            const string vertexShaderSource = "#version 330 core\n" +
+                                              "layout (location = 0) in vec2 Position;\n" +
+                                              "layout (location = 1) in vec2 UV;\n" +
+                                              "layout (location = 2) in vec4 Color;\n" +
+                                              "out vec2 Frag_UV;\n" +
+                                              "out vec4 Frag_Color;\n" +
+                                              "uniform mat4 ProjMtx;\n" +
+                                              "void main() { Frag_UV = UV; Frag_Color = Color; gl_Position = ProjMtx * vec4(Position.xy, 0, 1); }\n";
+
+            const string fragmentShaderSource = "#version 330 core\n" +
+                                                "in vec2 Frag_UV;\n" +
+                                                "in vec4 Frag_Color;\n" +
+                                                "uniform sampler2D Texture;\n" +
+                                                "out vec4 Out_Color;\n" +
+                                                "void main() { Out_Color = Frag_Color * texture(Texture, Frag_UV.st); }\n";
+
+            uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vert, vertexShaderSource);
+            Gl.GlCompileShader(vert);
+            if (!Gl.GetShaderCompileStatus(vert))
+            {
+                Logger.Info("Vertex shader compile error: " + Gl.GetShaderInfoLog(vert));
+            }
+
+            uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(frag, fragmentShaderSource);
+            Gl.GlCompileShader(frag);
+            if (!Gl.GetShaderCompileStatus(frag))
+            {
+                Logger.Info("Fragment shader compile error: " + Gl.GetShaderInfoLog(frag));
+            }
+
+            _shaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(_shaderProgram, vert);
+            Gl.GlAttachShader(_shaderProgram, frag);
+            Gl.GlLinkProgram(_shaderProgram);
+            if (!Gl.GetProgramLinkStatus(_shaderProgram))
+            {
+                Logger.Info("Shader link error: " + Gl.GetProgramInfoLog(_shaderProgram));
+            }
+
+            Gl.GlDeleteShader(vert);
+            Gl.GlDeleteShader(frag);
+
+            _vao = Gl.GenVertexArray();
+            _vbo = Gl.GenBuffer();
+            _ebo = Gl.GenBuffer();
+
+            Gl.GlBindVertexArray(_vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
+
+            int stride = Marshal.SizeOf<ImDrawVert>();
+            Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, stride, IntPtr.Zero);
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, stride, new IntPtr(8));
+            Gl.EnableVertexAttribArray(1);
+            Gl.VertexAttribPointer(2, 4, VertexAttribPointerType.UnsignedByte, true, stride, new IntPtr(16));
+            Gl.EnableVertexAttribArray(2);
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
+            Gl.GlBindVertexArray(0);
+
+            platform.ShowWindow();
+            platform.SetTitle("Alis Hub - by @pabllopf");
+
+            _spaceWork.io = ImGui.GetIo();
+            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
+
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
+                                          | ImGuiBackendFlags.HasGamepad
+                                          | ImGuiBackendFlags.HasMouseHoveredViewport
+                                          | ImGuiBackendFlags.HasMouseCursors;
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
+                                         | ImGuiConfigFlags.NavEnableGamepad
+                                         | ImGuiConfigFlags.DockingEnable;
+
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizMo.SetImGuiContext(imguiContext);
+            ImGui.SetCurrentContext(imguiContext);
+
+            LoadFonts();
+
+            SetStyle();
+            lastWindowWidth = 0;
+            lastWindowHeight = 0;
+            lastFramebufferWidth = 0;
+            lastFramebufferHeight = 0;
+            UpdateWindowMetrics();
+
+            _spaceWork.OnInit();
+            _spaceWork.OnStart();
+
+            for (int i = 0; i < 5; i++)
+            {
+                _mouseClicked[i] = false;
+                _mouseDoubleClicked[i] = false;
+                _mouseClickedCount[i] = 0;
+                _mouseClickedTime[i] = 1e6; // valor grande = "no activo"
+                _prevMouseDown[i] = false;
+                _lastClickTime[i] = 0.0;
+                _lastClickPos[i] = new Vector2F(0, 0);
+            }
+
+            ImGuiIoPtr io = ImGui.GetIo();
+
+            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io);
+
             if (_vbo != 0)
             {
                 Gl.DeleteBuffer(_vbo);
@@ -251,32 +360,41 @@ InitializeEngine();
             {
                 Gl.DeleteTexture(_fontTexture);
             }
+
+            ImGui.SetCurrentContext(new IntPtr());
+
+            platform.Cleanup();
         }
 
         /// <summary>
         ///     Runs the game loop
         /// </summary>
-        internal void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime)
+        internal void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io)
         {
             while (_spaceWork.IsRunning)
             {
                 double now = frameTimer.Elapsed.TotalSeconds;
                 double delta = CalculateDeltaTime(ref lastTime, now, targetFrameTime);
-                _spaceWork.io.DeltaTime = (float) delta;
+                io.DeltaTime = (float) delta;
 
                 _spaceWork.IsRunning = platform.PollEvents();
+                if (!_spaceWork.IsRunning)
+                {
+                    break;
+                }
+
+                if (!UpdateWindowMetrics())
+                {
+                    Thread.Sleep(16);
+                    continue;
+                }
 
                 ProcessKeyWithImgui();
                 UpdateMousePosAndButtons();
-
                 ProcessPendingInput();
-
                 Draw();
-
                 platform.SwapBuffers();
-
                 CheckGlError();
-
                 ApplyFrameTiming(frameTimer, now, targetFrameTime);
             }
         }
@@ -351,279 +469,25 @@ InitializeEngine();
         }
 
         /// <summary>
-        /// Initializes the engine
-        /// </summary>
-        internal void InitializeEngine()
-        {
-            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
-            {
-                Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
-                platform?.Cleanup();
-                return;
-            }
-
-            SetupOpenGLContext();
-            SetupImGuiBackend();
-            SetupShaders();
-            SetupBuffers();
-            SetupWindow();
-            SetupImGuiContext();
-            LoadFonts();
-            SetStyle();
-            _spaceWork.OnInit();
-            _spaceWork.OnStart();
-
-            for (int i = 0; i < 5; i++)
-            {
-                _mouseClicked[i] = false;
-                _mouseDoubleClicked[i] = false;
-                _mouseClickedCount[i] = 0;
-                _mouseClickedTime[i] = 1e6;
-                _prevMouseDown[i] = false;
-                _lastClickTime[i] = 0.0;
-                _lastClickPos[i] = new Vector2F(0, 0);
-            }
-
-            dockspaceflags |= ImGuiWindowFlags.MenuBar;
-            dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
-            dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
-        }
-
-        /// <summary>
-        /// Setup the open gl context
-        /// </summary>
-        internal void SetupOpenGLContext()
-        {
-            platform.MakeContextCurrent();
-            Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            Gl.GlEnable(EnableCap.DepthTest);
-        }
-
-        /// <summary>
-        /// Setup the im gui backend
-        /// </summary>
-        internal void SetupImGuiBackend()
-        {
-            imguiContext= ImGui.CreateContext();
-            ImGui.SetCurrentContext(imguiContext);
-
-platform.MakeContextCurrent();
-
-            IntPtr currentCtx = ImGui.GetCurrentContext();
-            IntPtr context;
-            if (currentCtx == IntPtr.Zero)
-            {
-                context = ImGui.CreateContext();
-                ImGui.SetCurrentContext(context);
-            }
-            else
-            {
-                context = currentCtx;
-                ImGui.SetCurrentContext(context);
-            }
-
-            _spaceWork.io = ImGui.GetIo();
-_spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
-                                          ImGuiBackendFlags.PlatformHasViewports |
-                                          ImGuiBackendFlags.HasGamepad |
-                                          ImGuiBackendFlags.HasMouseHoveredViewport |
-                                          ImGuiBackendFlags.HasMouseCursors;
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
-                                         ImGuiConfigFlags.NavEnableGamepad;
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
-                                         ImGuiConfigFlags.ViewportsEnable;
-
-            _spaceWork.io = ImGui.GetIo();
-            _spaceWork.io.WantSaveIniSettings = false;
-        }
-
-        /// <summary>
-        /// Setup the shaders
-        /// </summary>
-        internal void SetupShaders()
-        {
-            const string vertexShaderSource = "#version 330 core\n" +
-                                              "layout (location = 0) in vec2 Position;\n" +
-                                              "layout (location = 1) in vec2 UV;\n" +
-                                              "layout (location = 2) in vec4 Color;\n" +
-                                              "out vec2 Frag_UV;\n" +
-                                              "out vec4 Frag_Color;\n" +
-                                              "uniform mat4 ProjMtx;\n" +
-                                              "void main() { Frag_UV = UV; Frag_Color = Color; gl_Position = ProjMtx * vec4(Position.xy, 0, 1); }\n";
-
-            const string fragmentShaderSource = "#version 330 core\n" +
-                                                "in vec2 Frag_UV;\n" +
-                                                "in vec4 Frag_Color;\n" +
-                                                "uniform sampler2D Texture;\n" +
-                                                "out vec4 Out_Color;\n" +
-                                                "void main() { Out_Color = Frag_Color * texture(Texture, Frag_UV.st); }\n";
-
-            uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
-            Gl.ShaderSource(vert, vertexShaderSource);
-            Gl.GlCompileShader(vert);
-            if (!Gl.GetShaderCompileStatus(vert))
-            {
-                Logger.Info("Vertex shader compile error: " + Gl.GetShaderInfoLog(vert));
-            }
-
-            uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
-            Gl.ShaderSource(frag, fragmentShaderSource);
-            Gl.GlCompileShader(frag);
-            if (!Gl.GetShaderCompileStatus(frag))
-            {
-                Logger.Info("Fragment shader compile error: " + Gl.GetShaderInfoLog(frag));
-            }
-
-            _shaderProgram = Gl.GlCreateProgram();
-            Gl.GlAttachShader(_shaderProgram, vert);
-            Gl.GlAttachShader(_shaderProgram, frag);
-            Gl.GlLinkProgram(_shaderProgram);
-            if (!Gl.GetProgramLinkStatus(_shaderProgram))
-            {
-                Logger.Info("Shader link error: " + Gl.GetProgramInfoLog(_shaderProgram));
-            }
-
-            Gl.GlDeleteShader(vert);
-            Gl.GlDeleteShader(frag);
-        }
-
-        /// <summary>
-        /// Setup the buffers
-        /// </summary>
-        internal void SetupBuffers()
-        {
-            _vao = Gl.GenVertexArray();
-            _vbo = Gl.GenBuffer();
-            _ebo = Gl.GenBuffer();
-
-            Gl.GlBindVertexArray(_vao);
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
-
-            int stride = Marshal.SizeOf<ImDrawVert>();
-            Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, stride, IntPtr.Zero);
-            Gl.EnableVertexAttribArray(0);
-            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, stride, new IntPtr(8));
-            Gl.EnableVertexAttribArray(1);
-            Gl.VertexAttribPointer(2, 4, VertexAttribPointerType.UnsignedByte, true, stride, new IntPtr(16));
-            Gl.EnableVertexAttribArray(2);
-
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
-            Gl.GlBindVertexArray(0);
-        }
-
-        /// <summary>
-        /// Setup the window
-        /// </summary>
-        internal void SetupWindow()
-        {
-platform.ShowWindow();
-            platform.SetTitle("Alis Hub - by @pabllopf");
-
-            _spaceWork.io = ImGui.GetIo();
-            _spaceWork.io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
-
-            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
-
-            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                                          | ImGuiBackendFlags.PlatformHasViewports
-                                          | ImGuiBackendFlags.HasGamepad
-                                          | ImGuiBackendFlags.HasMouseHoveredViewport
-                                          | ImGuiBackendFlags.HasMouseCursors;
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
-                                         | ImGuiConfigFlags.NavEnableGamepad
-                                         | ImGuiConfigFlags.DockingEnable
-                                         | ImGuiConfigFlags.ViewportsEnable;
-
-            ImNodes.CreateContext();
-            ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(imguiContext);
-            ImGui.SetCurrentContext(imguiContext);
-
-            _spaceWork.Viewport = ImGui.GetMainViewport();
-        }
-
-        /// <summary>
-        /// Setup the im gui context
-        /// </summary>
-        internal void SetupImGuiContext()
-        {
-            imguiContext = ImGui.CreateContext();
-            ImGui.SetCurrentContext(imguiContext);
-        }
-
-        /// <summary>
-        /// Cleanups the engine
-        /// </summary>
-        internal void CleanupEngine()
-        {
-            if (_vbo != 0)
-            {
-                Gl.DeleteBuffer(_vbo);
-            }
-
-            if (_ebo != 0)
-            {
-                Gl.DeleteBuffer(_ebo);
-            }
-
-            if (_vao != 0)
-            {
-                Gl.DeleteVertexArray(_vao);
-            }
-
-            if (_shaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(_shaderProgram);
-            }
-
-            if (_fontTexture != 0)
-            {
-                Gl.DeleteTexture(_fontTexture);
-            }
-
-            ImGui.SetCurrentContext(new IntPtr());
-        }
-
-        /// <summary>
         ///     Updates the mouse pos and buttons
         /// </summary>
         internal void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-platform.GetMouseState(out _, out _, out bool[] mouseButtons);
-platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
-
+            platform.GetMouseState(out _, out _, out bool[] mouseButtons);
             platform.GetMousePositionInView(out float mx, out float my);
-
-
-            my = fbH - my; // Invertir coordenada Y para ImGui
-
-            if (isFirstTime)
-            {
-                Gl.GlGetIntegerv(0x0BA2, ViewportBuffer);
-                int glViewportWidth = ViewportBuffer[2];
-                int glViewportHeight = ViewportBuffer[3];
-
-                float scaleX = glViewportWidth / resolutionProgramX;
-                float scaleY = glViewportHeight / resolutionProgramY;
-                scaleFactor = Math.Min(scaleX, scaleY);
-                isFirstTime = false;
-            }
-
-
-            mx *= scaleFactor;
-            my *= scaleFactor;
-
+            ScaleMousePosition(
+                ref mx,
+                ref my,
+                lastWindowWidth,
+                lastWindowHeight,
+                platform is MacNativePlatform,
+                platform is not MacNativePlatform);
             io.AddMousePosEvent(mx, my);
 
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = (i < mouseButtons.Length) && mouseButtons[i];
+                bool isDown = i < mouseButtons.Length ? mouseButtons[i] : default;
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)
@@ -646,227 +510,285 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
         }
 
         /// <summary>
-        ///     Renders the project
+        ///     Updates the logical display size, framebuffer scale and OpenGL viewport.
         /// </summary>
-        public void RenderProject()
+        /// <returns><see langword="true"/> when the window has a drawable framebuffer.</returns>
+        internal bool UpdateWindowMetrics()
         {
-            DrawLeftSidebar();
-            DrawRightSidebar();
-        }
-
-
-        /// <summary>
-        ///     Draws the left sidebar
-        /// </summary>
-        internal void DrawLeftSidebar()
-        {
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-
-            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-
-            if (SpaceWork.IsMacOs)
+            platform.GetWindowMetrics(out _, out _, out int windowWidth, out int windowHeight, out int framebufferWidth, out int framebufferHeight);
+            if (windowWidth <= 0 || windowHeight <= 0 || framebufferWidth <= 0 || framebufferHeight <= 0)
             {
-                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
+                return false;
             }
 
-            ImGui.Begin("Sidebar1", ImGuiWindowFlags.NoTitleBar |
-                                    ImGuiWindowFlags.NoResize |
-                                    ImGuiWindowFlags.NoMove |
-                                    ImGuiWindowFlags.NoScrollbar |
-                                    ImGuiWindowFlags.NoScrollWithMouse);
-
-            if (SpaceWork.IsMacOs)
+            if (windowWidth != lastWindowWidth || windowHeight != lastWindowHeight ||
+                framebufferWidth != lastFramebufferWidth || framebufferHeight != lastFramebufferHeight)
             {
-                ImGui.SetWindowPos(new Vector2F(0, 30));
-                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+                lastWindowWidth = windowWidth;
+                lastWindowHeight = windowHeight;
+                lastFramebufferWidth = framebufferWidth;
+                lastFramebufferHeight = framebufferHeight;
+                _spaceWork.WidthMainWindow = windowWidth;
+                _spaceWork.HeightMainWindow = windowHeight;
+
+                ImGuiIoPtr io = ImGui.GetIo();
+                io.DisplaySize = new Vector2F(windowWidth, windowHeight);
+                io.DisplayFramebufferScale = new Vector2F(
+                    (float) framebufferWidth / windowWidth,
+                    (float) framebufferHeight / windowHeight);
+                Gl.GlViewport(0, 0, framebufferWidth, framebufferHeight);
+
+                float nextScale = Math.Min(windowWidth / DesignWidth, windowHeight / DesignHeight);
+                if (nextScale <= 0)
+                {
+                    nextScale = 1.0f;
+                }
+
+                if (Math.Abs(nextScale - appliedStyleScale) > 0.001f)
+                {
+                    SetStyle();
+                    _spaceWork.Style.ScaleAllSizes(nextScale);
+                    _spaceWork.io.FontGlobalScale = nextScale;
+                    appliedStyleScale = nextScale;
+                }
+
+                scaleFactor = nextScale;
             }
-            else
-            {
-                ImGui.SetWindowPos(new Vector2F(0, 56));
-                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
-            }
 
-            ImGui.PushFont(_spaceWork.FontLoaded16Solid);
-
-            if (ImGui.Button($"{FontAwesome5.Folder}"))
-            {
-                showProject = !showProject;
-            }
-
-            if (ImGui.Button($"{FontAwesome5.Tools}"))
-            {
-                showInspector = !showInspector;
-            }
-
-            if (ImGui.Button($"{FontAwesome5.Terminal}"))
-            {
-                showConsole = !showConsole;
-            }
-
-            ImGui.PopFont();
-
-            ImGui.End();
-
-            ImGui.PopStyleVar();
-            ImGui.PopStyleColor();
+            return true;
         }
 
         /// <summary>
-        ///     Draws the right sidebar
+        ///     Converts platform mouse coordinates to ImGui logical coordinates.
         /// </summary>
-        internal void DrawRightSidebar()
+        /// <param name="x">The mouse x coordinate.</param>
+        /// <param name="y">The mouse y coordinate.</param>
+        /// <param name="windowWidth">The logical window width.</param>
+        /// <param name="windowHeight">The logical window height.</param>
+        public static void ScaleMousePosition(ref float x, ref float y, int windowWidth, int windowHeight)
         {
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-
-            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-
-            if (SpaceWork.IsMacOs)
-            {
-                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
-            }
-
-            ImGui.Begin("Sidebar2", ImGuiWindowFlags.NoTitleBar |
-                                    ImGuiWindowFlags.NoResize |
-                                    ImGuiWindowFlags.NoMove |
-                                    ImGuiWindowFlags.NoScrollbar |
-                                    ImGuiWindowFlags.NoScrollWithMouse);
-
-            if (SpaceWork.IsMacOs)
-            {
-                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 30));
-                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
-            }
-            else
-            {
-                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 56));
-                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
-            }
-
-            ImGui.PushFont(_spaceWork.FontLoaded16Solid);
-
-            if (ImGui.Button($"{FontAwesome5.Folder}"))
-            {
-                showProject = !showProject;
-            }
-
-            if (ImGui.Button($"{FontAwesome5.Tools}"))
-            {
-                showInspector = !showInspector;
-            }
-
-            if (ImGui.Button($"{FontAwesome5.Terminal}"))
-            {
-                showConsole = !showConsole;
-            }
-
-            ImGui.PopFont();
-
-            ImGui.End();
-
-            ImGui.PopStyleVar();
-            ImGui.PopStyleColor();
+            ScaleMousePosition(ref x, ref y, windowWidth, windowHeight, true, true);
         }
 
-      /// <summary>
+        /// <summary>
+        ///     Converts platform mouse coordinates to ImGui logical coordinates.
+        /// </summary>
+        /// <param name="x">The mouse x coordinate.</param>
+        /// <param name="y">The mouse y coordinate.</param>
+        /// <param name="windowWidth">The logical window width.</param>
+        /// <param name="windowHeight">The logical window height.</param>
+        /// <param name="invertY">Whether the platform uses a bottom-left origin.</param>
+        /// <param name="normalized">Whether the platform reports coordinates normalized to the window size.</param>
+        public static void ScaleMousePosition(
+            ref float x,
+            ref float y,
+            int windowWidth,
+            int windowHeight,
+            bool invertY,
+            bool normalized)
+        {
+            if (windowWidth <= 0 || windowHeight <= 0)
+            {
+                x = -1;
+                y = -1;
+                return;
+            }
+
+            if (normalized)
+            {
+                x *= windowWidth;
+                y *= windowHeight;
+            }
+
+            if (invertY)
+            {
+                y = windowHeight - y;
+            }
+
+            x = Math.Clamp(x, 0, windowWidth);
+            y = Math.Clamp(y, 0, windowHeight);
+        }
+
+        /// <summary>
         ///     Processes the key with imgui
         /// </summary>
         internal void ProcessKeyWithImgui()
         {
-            ImGuiIoPtr io = ImGui.GetIo();
-
-            ProcessKey(io, ConsoleKey.Backspace, ImGuiKey.Backspace);
-            ProcessKey(io, ConsoleKey.Tab, ImGuiKey.Tab);
-            ProcessKey(io, ConsoleKey.Enter, ImGuiKey.Enter);
-            ProcessKey(io, ConsoleKey.Pause, ImGuiKey.Pause);
-            ProcessKey(io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen);
-            ProcessKey(io, ConsoleKey.Escape, ImGuiKey.Escape);
-            ProcessKey(io, ConsoleKey.Spacebar, ImGuiKey.Space);
-            ProcessKey(io, ConsoleKey.PageUp, ImGuiKey.PageUp);
-            ProcessKey(io, ConsoleKey.PageDown, ImGuiKey.PageDown);
-            ProcessKey(io, ConsoleKey.End, ImGuiKey.End);
-            ProcessKey(io, ConsoleKey.Home, ImGuiKey.Home);
-            ProcessKey(io, ConsoleKey.Insert, ImGuiKey.Insert);
-            ProcessKey(io, ConsoleKey.Delete, ImGuiKey.Delete);
-            ProcessKey(io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow);
-            ProcessKey(io, ConsoleKey.UpArrow, ImGuiKey.UpArrow);
-            ProcessKey(io, ConsoleKey.RightArrow, ImGuiKey.RightArrow);
-            ProcessKey(io, ConsoleKey.DownArrow, ImGuiKey.DownArrow);
-            ProcessKey(io, ConsoleKey.D0, ImGuiKey._0);
-            ProcessKey(io, ConsoleKey.D1, ImGuiKey._1);
-            ProcessKey(io, ConsoleKey.D2, ImGuiKey._2);
-            ProcessKey(io, ConsoleKey.D3, ImGuiKey._3);
-            ProcessKey(io, ConsoleKey.D4, ImGuiKey._4);
-            ProcessKey(io, ConsoleKey.D5, ImGuiKey._5);
-            ProcessKey(io, ConsoleKey.D6, ImGuiKey._6);
-            ProcessKey(io, ConsoleKey.D7, ImGuiKey._7);
-            ProcessKey(io, ConsoleKey.D8, ImGuiKey._8);
-            ProcessKey(io, ConsoleKey.D9, ImGuiKey._9);
-            ProcessKey(io, ConsoleKey.A, ImGuiKey.A);
-            ProcessKey(io, ConsoleKey.B, ImGuiKey.B);
-            ProcessKey(io, ConsoleKey.C, ImGuiKey.C);
-            ProcessKey(io, ConsoleKey.D, ImGuiKey.D);
-            ProcessKey(io, ConsoleKey.E, ImGuiKey.E);
-            ProcessKey(io, ConsoleKey.F, ImGuiKey.F);
-            ProcessKey(io, ConsoleKey.G, ImGuiKey.G);
-            ProcessKey(io, ConsoleKey.H, ImGuiKey.H);
-            ProcessKey(io, ConsoleKey.I, ImGuiKey.I);
-            ProcessKey(io, ConsoleKey.J, ImGuiKey.J);
-            ProcessKey(io, ConsoleKey.K, ImGuiKey.K);
-            ProcessKey(io, ConsoleKey.L, ImGuiKey.L);
-            ProcessKey(io, ConsoleKey.M, ImGuiKey.M);
-            ProcessKey(io, ConsoleKey.N, ImGuiKey.N);
-            ProcessKey(io, ConsoleKey.O, ImGuiKey.O);
-            ProcessKey(io, ConsoleKey.P, ImGuiKey.P);
-            ProcessKey(io, ConsoleKey.Q, ImGuiKey.Q);
-            ProcessKey(io, ConsoleKey.R, ImGuiKey.R);
-            ProcessKey(io, ConsoleKey.S, ImGuiKey.S);
-            ProcessKey(io, ConsoleKey.T, ImGuiKey.T);
-            ProcessKey(io, ConsoleKey.U, ImGuiKey.U);
-            ProcessKey(io, ConsoleKey.V, ImGuiKey.V);
-            ProcessKey(io, ConsoleKey.W, ImGuiKey.W);
-            ProcessKey(io, ConsoleKey.X, ImGuiKey.X);
-            ProcessKey(io, ConsoleKey.Y, ImGuiKey.Y);
-            ProcessKey(io, ConsoleKey.Z, ImGuiKey.Z);
-            ProcessKey(io, ConsoleKey.F1, ImGuiKey.F1);
-            ProcessKey(io, ConsoleKey.F2, ImGuiKey.F2);
-            ProcessKey(io, ConsoleKey.F3, ImGuiKey.F3);
-            ProcessKey(io, ConsoleKey.F4, ImGuiKey.F4);
-            ProcessKey(io, ConsoleKey.F5, ImGuiKey.F5);
-            ProcessKey(io, ConsoleKey.F6, ImGuiKey.F6);
-            ProcessKey(io, ConsoleKey.F7, ImGuiKey.F7);
-            ProcessKey(io, ConsoleKey.F8, ImGuiKey.F8);
-            ProcessKey(io, ConsoleKey.F9, ImGuiKey.F9);
-            ProcessKey(io, ConsoleKey.F10, ImGuiKey.F10);
-            ProcessKey(io, ConsoleKey.F11, ImGuiKey.F11);
-            ProcessKey(io, ConsoleKey.F12, ImGuiKey.F12);
-            ProcessKey(io, ConsoleKey.NumPad0, ImGuiKey.Keypad0);
-            ProcessKey(io, ConsoleKey.NumPad1, ImGuiKey.Keypad1);
-            ProcessKey(io, ConsoleKey.NumPad2, ImGuiKey.Keypad2);
-            ProcessKey(io, ConsoleKey.NumPad3, ImGuiKey.Keypad3);
-            ProcessKey(io, ConsoleKey.NumPad4, ImGuiKey.Keypad4);
-            ProcessKey(io, ConsoleKey.NumPad5, ImGuiKey.Keypad5);
-            ProcessKey(io, ConsoleKey.NumPad6, ImGuiKey.Keypad6);
-            ProcessKey(io, ConsoleKey.NumPad7, ImGuiKey.Keypad7);
-            ProcessKey(io, ConsoleKey.NumPad8, ImGuiKey.Keypad8);
-            ProcessKey(io, ConsoleKey.NumPad9, ImGuiKey.Keypad9);
-            ProcessKey(io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply);
-            ProcessKey(io, ConsoleKey.Add, ImGuiKey.KeypadAdd);
-            ProcessKey(io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract);
-            ProcessKey(io, ConsoleKey.Divide, ImGuiKey.KeypadDecimal);
-            ProcessKey(io, ConsoleKey.Decimal, ImGuiKey.Period);
-            ProcessKey(io, ConsoleKey.OemPeriod, ImGuiKey.Period);
-            ProcessKey(io, ConsoleKey.OemPlus, ImGuiKey.Equal);
+            ProcessKey(_spaceWork.io, ConsoleKey.Backspace, ImGuiKey.Backspace);
+            ProcessKey(_spaceWork.io, ConsoleKey.Tab, ImGuiKey.Tab);
+            ProcessKey(_spaceWork.io, ConsoleKey.Enter, ImGuiKey.Enter);
+            ProcessKey(_spaceWork.io, ConsoleKey.Pause, ImGuiKey.Pause);
+            ProcessKey(_spaceWork.io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen);
+            ProcessKey(_spaceWork.io, ConsoleKey.Escape, ImGuiKey.Escape);
+            ProcessKey(_spaceWork.io, ConsoleKey.Spacebar, ImGuiKey.Space);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageUp, ImGuiKey.PageUp);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageDown, ImGuiKey.PageDown);
+            ProcessKey(_spaceWork.io, ConsoleKey.End, ImGuiKey.End);
+            ProcessKey(_spaceWork.io, ConsoleKey.Home, ImGuiKey.Home);
+            ProcessKey(_spaceWork.io, ConsoleKey.Insert, ImGuiKey.Insert);
+            ProcessKey(_spaceWork.io, ConsoleKey.Delete, ImGuiKey.Delete);
+            ProcessKey(_spaceWork.io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.UpArrow, ImGuiKey.UpArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.RightArrow, ImGuiKey.RightArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.DownArrow, ImGuiKey.DownArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.D0, ImGuiKey._0);
+            ProcessKey(_spaceWork.io, ConsoleKey.D1, ImGuiKey._1);
+            ProcessKey(_spaceWork.io, ConsoleKey.D2, ImGuiKey._2);
+            ProcessKey(_spaceWork.io, ConsoleKey.D3, ImGuiKey._3);
+            ProcessKey(_spaceWork.io, ConsoleKey.D4, ImGuiKey._4);
+            ProcessKey(_spaceWork.io, ConsoleKey.D5, ImGuiKey._5);
+            ProcessKey(_spaceWork.io, ConsoleKey.D6, ImGuiKey._6);
+            ProcessKey(_spaceWork.io, ConsoleKey.D7, ImGuiKey._7);
+            ProcessKey(_spaceWork.io, ConsoleKey.D8, ImGuiKey._8);
+            ProcessKey(_spaceWork.io, ConsoleKey.D9, ImGuiKey._9);
+            ProcessKey(_spaceWork.io, ConsoleKey.A, ImGuiKey.A);
+            ProcessKey(_spaceWork.io, ConsoleKey.B, ImGuiKey.B);
+            ProcessKey(_spaceWork.io, ConsoleKey.C, ImGuiKey.C);
+            ProcessKey(_spaceWork.io, ConsoleKey.D, ImGuiKey.D);
+            ProcessKey(_spaceWork.io, ConsoleKey.E, ImGuiKey.E);
+            ProcessKey(_spaceWork.io, ConsoleKey.F, ImGuiKey.F);
+            ProcessKey(_spaceWork.io, ConsoleKey.G, ImGuiKey.G);
+            ProcessKey(_spaceWork.io, ConsoleKey.H, ImGuiKey.H);
+            ProcessKey(_spaceWork.io, ConsoleKey.I, ImGuiKey.I);
+            ProcessKey(_spaceWork.io, ConsoleKey.J, ImGuiKey.J);
+            ProcessKey(_spaceWork.io, ConsoleKey.K, ImGuiKey.K);
+            ProcessKey(_spaceWork.io, ConsoleKey.L, ImGuiKey.L);
+            ProcessKey(_spaceWork.io, ConsoleKey.M, ImGuiKey.M);
+            ProcessKey(_spaceWork.io, ConsoleKey.N, ImGuiKey.N);
+            ProcessKey(_spaceWork.io, ConsoleKey.O, ImGuiKey.O);
+            ProcessKey(_spaceWork.io, ConsoleKey.P, ImGuiKey.P);
+            ProcessKey(_spaceWork.io, ConsoleKey.Q, ImGuiKey.Q);
+            ProcessKey(_spaceWork.io, ConsoleKey.R, ImGuiKey.R);
+            ProcessKey(_spaceWork.io, ConsoleKey.S, ImGuiKey.S);
+            ProcessKey(_spaceWork.io, ConsoleKey.T, ImGuiKey.T);
+            ProcessKey(_spaceWork.io, ConsoleKey.U, ImGuiKey.U);
+            ProcessKey(_spaceWork.io, ConsoleKey.V, ImGuiKey.V);
+            ProcessKey(_spaceWork.io, ConsoleKey.W, ImGuiKey.W);
+            ProcessKey(_spaceWork.io, ConsoleKey.X, ImGuiKey.X);
+            ProcessKey(_spaceWork.io, ConsoleKey.Y, ImGuiKey.Y);
+            ProcessKey(_spaceWork.io, ConsoleKey.Z, ImGuiKey.Z);
+            ProcessKey(_spaceWork.io, ConsoleKey.F1, ImGuiKey.F1);
+            ProcessKey(_spaceWork.io, ConsoleKey.F2, ImGuiKey.F2);
+            ProcessKey(_spaceWork.io, ConsoleKey.F3, ImGuiKey.F3);
+            ProcessKey(_spaceWork.io, ConsoleKey.F4, ImGuiKey.F4);
+            ProcessKey(_spaceWork.io, ConsoleKey.F5, ImGuiKey.F5);
+            ProcessKey(_spaceWork.io, ConsoleKey.F6, ImGuiKey.F6);
+            ProcessKey(_spaceWork.io, ConsoleKey.F7, ImGuiKey.F7);
+            ProcessKey(_spaceWork.io, ConsoleKey.F8, ImGuiKey.F8);
+            ProcessKey(_spaceWork.io, ConsoleKey.F9, ImGuiKey.F9);
+            ProcessKey(_spaceWork.io, ConsoleKey.F10, ImGuiKey.F10);
+            ProcessKey(_spaceWork.io, ConsoleKey.F11, ImGuiKey.F11);
+            ProcessKey(_spaceWork.io, ConsoleKey.F12, ImGuiKey.F12);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad0, ImGuiKey.Keypad0);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad1, ImGuiKey.Keypad1);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad2, ImGuiKey.Keypad2);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad3, ImGuiKey.Keypad3);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad4, ImGuiKey.Keypad4);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad5, ImGuiKey.Keypad5);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad6, ImGuiKey.Keypad6);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad7, ImGuiKey.Keypad7);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad8, ImGuiKey.Keypad8);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad9, ImGuiKey.Keypad9);
+            ProcessKey(_spaceWork.io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply);
+            ProcessKey(_spaceWork.io, ConsoleKey.Add, ImGuiKey.KeypadAdd);
+            ProcessKey(_spaceWork.io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract);
+            ProcessKey(_spaceWork.io, ConsoleKey.Divide, ImGuiKey.KeypadDecimal);
+            ProcessKey(_spaceWork.io, ConsoleKey.Decimal, ImGuiKey.Period);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPeriod, ImGuiKey.Period);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPlus, ImGuiKey.Equal);
+            
+            ProcessKey(_spaceWork.io, ConsoleKey.Backspace, ImGuiKey.Backspace);
+            ProcessKey(_spaceWork.io, ConsoleKey.Tab, ImGuiKey.Tab);
+            ProcessKey(_spaceWork.io, ConsoleKey.Enter, ImGuiKey.Enter);
+            ProcessKey(_spaceWork.io, ConsoleKey.Pause, ImGuiKey.Pause);
+            ProcessKey(_spaceWork.io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen);
+            ProcessKey(_spaceWork.io, ConsoleKey.Escape, ImGuiKey.Escape);
+            ProcessKey(_spaceWork.io, ConsoleKey.Spacebar, ImGuiKey.Space);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageUp, ImGuiKey.PageUp);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageDown, ImGuiKey.PageDown);
+            ProcessKey(_spaceWork.io, ConsoleKey.End, ImGuiKey.End);
+            ProcessKey(_spaceWork.io, ConsoleKey.Home, ImGuiKey.Home);
+            ProcessKey(_spaceWork.io, ConsoleKey.Insert, ImGuiKey.Insert);
+            ProcessKey(_spaceWork.io, ConsoleKey.Delete, ImGuiKey.Delete);
+            ProcessKey(_spaceWork.io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.UpArrow, ImGuiKey.UpArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.RightArrow, ImGuiKey.RightArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.DownArrow, ImGuiKey.DownArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.D0, ImGuiKey._0);
+            ProcessKey(_spaceWork.io, ConsoleKey.D1, ImGuiKey._1);
+            ProcessKey(_spaceWork.io, ConsoleKey.D2, ImGuiKey._2);
+            ProcessKey(_spaceWork.io, ConsoleKey.D3, ImGuiKey._3);
+            ProcessKey(_spaceWork.io, ConsoleKey.D4, ImGuiKey._4);
+            ProcessKey(_spaceWork.io, ConsoleKey.D5, ImGuiKey._5);
+            ProcessKey(_spaceWork.io, ConsoleKey.D6, ImGuiKey._6);
+            ProcessKey(_spaceWork.io, ConsoleKey.D7, ImGuiKey._7);
+            ProcessKey(_spaceWork.io, ConsoleKey.D8, ImGuiKey._8);
+            ProcessKey(_spaceWork.io, ConsoleKey.D9, ImGuiKey._9);
+            ProcessKey(_spaceWork.io, ConsoleKey.A, ImGuiKey.A);
+            ProcessKey(_spaceWork.io, ConsoleKey.B, ImGuiKey.B);
+            ProcessKey(_spaceWork.io, ConsoleKey.C, ImGuiKey.C);
+            ProcessKey(_spaceWork.io, ConsoleKey.D, ImGuiKey.D);
+            ProcessKey(_spaceWork.io, ConsoleKey.E, ImGuiKey.E);
+            ProcessKey(_spaceWork.io, ConsoleKey.F, ImGuiKey.F);
+            ProcessKey(_spaceWork.io, ConsoleKey.G, ImGuiKey.G);
+            ProcessKey(_spaceWork.io, ConsoleKey.H, ImGuiKey.H);
+            ProcessKey(_spaceWork.io, ConsoleKey.I, ImGuiKey.I);
+            ProcessKey(_spaceWork.io, ConsoleKey.J, ImGuiKey.J);
+            ProcessKey(_spaceWork.io, ConsoleKey.K, ImGuiKey.K);
+            ProcessKey(_spaceWork.io, ConsoleKey.L, ImGuiKey.L);
+            ProcessKey(_spaceWork.io, ConsoleKey.M, ImGuiKey.M);
+            ProcessKey(_spaceWork.io, ConsoleKey.N, ImGuiKey.N);
+            ProcessKey(_spaceWork.io, ConsoleKey.O, ImGuiKey.O);
+            ProcessKey(_spaceWork.io, ConsoleKey.P, ImGuiKey.P);
+            ProcessKey(_spaceWork.io, ConsoleKey.Q, ImGuiKey.Q);
+            ProcessKey(_spaceWork.io, ConsoleKey.R, ImGuiKey.R);
+            ProcessKey(_spaceWork.io, ConsoleKey.S, ImGuiKey.S);
+            ProcessKey(_spaceWork.io, ConsoleKey.T, ImGuiKey.T);
+            ProcessKey(_spaceWork.io, ConsoleKey.U, ImGuiKey.U);
+            ProcessKey(_spaceWork.io, ConsoleKey.V, ImGuiKey.V);
+            ProcessKey(_spaceWork.io, ConsoleKey.W, ImGuiKey.W);
+            ProcessKey(_spaceWork.io, ConsoleKey.X, ImGuiKey.X);
+            ProcessKey(_spaceWork.io, ConsoleKey.Y, ImGuiKey.Y);
+            ProcessKey(_spaceWork.io, ConsoleKey.Z, ImGuiKey.Z);
+            ProcessKey(_spaceWork.io, ConsoleKey.F1, ImGuiKey.F1);
+            ProcessKey(_spaceWork.io, ConsoleKey.F2, ImGuiKey.F2);
+            ProcessKey(_spaceWork.io, ConsoleKey.F3, ImGuiKey.F3);
+            ProcessKey(_spaceWork.io, ConsoleKey.F4, ImGuiKey.F4);
+            ProcessKey(_spaceWork.io, ConsoleKey.F5, ImGuiKey.F5);
+            ProcessKey(_spaceWork.io, ConsoleKey.F6, ImGuiKey.F6);
+            ProcessKey(_spaceWork.io, ConsoleKey.F7, ImGuiKey.F7);
+            ProcessKey(_spaceWork.io, ConsoleKey.F8, ImGuiKey.F8);
+            ProcessKey(_spaceWork.io, ConsoleKey.F9, ImGuiKey.F9);
+            ProcessKey(_spaceWork.io, ConsoleKey.F10, ImGuiKey.F10);
+            ProcessKey(_spaceWork.io, ConsoleKey.F11, ImGuiKey.F11);
+            ProcessKey(_spaceWork.io, ConsoleKey.F12, ImGuiKey.F12);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad0, ImGuiKey.Keypad0);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad1, ImGuiKey.Keypad1);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad2, ImGuiKey.Keypad2);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad3, ImGuiKey.Keypad3);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad4, ImGuiKey.Keypad4);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad5, ImGuiKey.Keypad5);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad6, ImGuiKey.Keypad6);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad7, ImGuiKey.Keypad7);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad8, ImGuiKey.Keypad8);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad9, ImGuiKey.Keypad9);
+            ProcessKey(_spaceWork.io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply);
+            ProcessKey(_spaceWork.io, ConsoleKey.Add, ImGuiKey.KeypadAdd);
+            ProcessKey(_spaceWork.io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract);
+            ProcessKey(_spaceWork.io, ConsoleKey.Divide, ImGuiKey.KeypadDivide);
+            ProcessKey(_spaceWork.io, ConsoleKey.Decimal, ImGuiKey.KeypadDecimal);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPeriod, ImGuiKey.Period);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPlus, ImGuiKey.Equal);
         }
 
         /// <summary>
         ///     Processes a single key mapping
         /// </summary>
-    internal void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
+        internal void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
         {
             io.AddKeyEvent(imguiKey, platform.IsKeyDown(consoleKey));
         }
+
 
         /// <summary>
         ///     Loads the fonts
@@ -878,7 +800,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             int fontSize = 14;
             int fontSizeIcon = 13;
 
-            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
+            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData = Marshal.AllocHGlobal((int) fontFileSolid.Length);
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
@@ -915,7 +837,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
-            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
+            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
@@ -951,7 +873,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
-            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
+            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
@@ -987,7 +909,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
-            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
+            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData28 = Marshal.AllocHGlobal((int) fontFileSolid28.Length);
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
@@ -1022,7 +944,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
-            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
+            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
@@ -1060,8 +982,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             }
 
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
-            _fontTexture = LoadTexture(pixelData, texWidth, texHeight);
-            _spaceWork.FontTextureId = _fontTexture;
+            _spaceWork.FontTextureId = LoadTexture(pixelData, texWidth, texHeight);
             fonts.TexId = (IntPtr) _spaceWork.FontTextureId;
             fonts.ClearTexData();
         }
@@ -1247,112 +1168,20 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
         public void Draw()
         {
             _spaceWork.io = ImGui.GetIo();
-
+            
             ImGui.NewFrame();
 
-            ImGui.SetNextWindowPos(_spaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(_spaceWork.Viewport.Size);
-            ImGui.Begin("DockSpace Demo", dockspaceflags);
-
-            _spaceWork.DockSpaceMenu.Update();
-
-            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-
-            if (SpaceWork.IsMacOs)
+            if ((_spaceWork.io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
             {
-                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 60);
+                ImGui.DockSpaceOverViewport();
             }
 
-            dockSize = dockSize - new Vector2F(80, 0);
+            _spaceWork.OnRender(scaleFactor);
 
-            if (SpaceWork.IsMacOs)
-            {
-                ImGui.SetWindowPos(new Vector2F(40, 0));
-            }
-            else
-            {
-                ImGui.SetWindowPos(new Vector2F(40, 25));
-            }
-
-            uint dockSpaceId = ImGui.GetId("MyDockSpace");
-            ImGui.DockSpace(dockSpaceId, dockSize);
-
-
-            _spaceWork.OnRender();
-            RenderProject();
-
-            if (!IsInit && (FrameCounter >= 2))
-            {
-                BuildDefaultLayout();
-                IsInit = true;
-            }
-
-            ImGui.End();
 
             ImGui.Render();
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
-
-            FrameCounter++;
-        }
-
-        /// <summary>
-        ///     Builds the default layout
-        /// </summary>
-        private static void BuildDefaultLayout()
-        {
-            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-            uint dockspaceId = ImGui.GetId("MyDockSpace");
-
-            Vector2F fullSize = viewport.Size;
-
-            ImGui.DockBuilderRemoveNode(dockspaceId);
-            ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
-
-            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
-
-            float leftRatio = 0.20f; // ancho de la columna izquierda (20%)
-            float rightRatio = 0.25f; // ancho de la columna derecha (20%)
-            float bottomRatio = 0.30f; // altura común para todas las zonas inferiores (20%)
-
-            uint dockMainId = dockspaceId;
-
-            uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, leftRatio, null, out uint dockRemaining);
-
-            uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdLeftBottom);
-
-            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
-
-            uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdRightBottom);
-
-            uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdCenterBottom);
-
-            ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomLeft);
-
-            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeftTop);
-            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeftTop);
-            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeftTop);
-
-            ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdLeftBottom);
-
-            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRightTop);
-
-            ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdRightBottom);
-
-            ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
-            ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
-
-            ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
-            ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
-            ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
-            ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
-            ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
-
-            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
-            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
-
-
-            ImGui.DockBuilderFinish(dockspaceId);
         }
 
         /// <summary>
@@ -1366,6 +1195,16 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                 return;
             }
 
+            ImGuiIoPtr io = ImGui.GetIo();
+            float framebufferScaleX = io.DisplayFramebufferScale.X;
+            float framebufferScaleY = io.DisplayFramebufferScale.Y;
+            int fbWidth = (int) (drawData.DisplaySize.X * framebufferScaleX);
+            int fbHeight = (int) (drawData.DisplaySize.Y * framebufferScaleY);
+            if (fbWidth <= 0 || fbHeight <= 0)
+            {
+                return;
+            }
+
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -1373,35 +1212,12 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            if (firstTimeScale)
-            {
-                Gl.GlGetIntegerv(0x0BA2, ViewportBuffer); // 0x0BA2 = GL_VIEWPORT
-                int fbWidth = ViewportBuffer[2];
-                int fbHeight = ViewportBuffer[3];
-                ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-                imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
-
-
-                float scaleX = fbWidth / resolutionProgramX;
-                float scaleY = fbHeight / resolutionProgramY;
-                scaleFactor = Math.Min(scaleX, scaleY);
-
-                Console.WriteLine($"Setting style scale factor: {scaleFactor}");
-
-                _spaceWork.Style.ScaleAllSizes(scaleFactor);
-                _spaceWork.io.FontGlobalScale = scaleFactor;
-
-
-                Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
-
-                firstTimeScale = false;
-            }
-
-
+            
+            Gl.GlViewport(0, 0, fbWidth, fbHeight);
             float l = 0.0f;
-            float r = ImGui.GetIo().DisplaySize.X;
+            float r = drawData.DisplaySize.X;
             float t = 0.0f;
-            float b = ImGui.GetIo().DisplaySize.Y;
+            float b = drawData.DisplaySize.Y;
 
             Matrix4X4 ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
@@ -1442,10 +1258,24 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int) pcmd.ClipRect.X;
-                        int y = (int) (ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        float clipMinX = (pcmd.ClipRect.X - drawData.DisplayPos.X) * framebufferScaleX;
+                        float clipMinY = (pcmd.ClipRect.Y - drawData.DisplayPos.Y) * framebufferScaleY;
+                        float clipMaxX = (pcmd.ClipRect.Z - drawData.DisplayPos.X) * framebufferScaleX;
+                        float clipMaxY = (pcmd.ClipRect.W - drawData.DisplayPos.Y) * framebufferScaleY;
+                        int x = (int) clipMinX;
+                        int y = (int) (fbHeight - clipMaxY);
+                        int width = (int) (clipMaxX - clipMinX);
+                        int height = (int) (clipMaxY - clipMinY);
+                        x = Math.Clamp(x, 0, fbWidth);
+                        y = Math.Clamp(y, 0, fbHeight);
+                        width = Math.Clamp(width, 0, fbWidth - x);
+                        height = Math.Clamp(height, 0, fbHeight - y);
+                        if (width == 0 || height == 0)
+                        {
+                            idxOffset += pcmd.ElemCount;
+                            continue;
+                        }
+
                         Gl.GlScissor(x, y, width, height);
 
                         Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
@@ -1504,7 +1334,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             return true;
         }
 
-       /// <summary>
+        /// <summary>
         ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
@@ -1524,5 +1354,67 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
             return textureId;
         }
+        
+        
+        /// <summary>
+        ///     Builds the default layout
+        /// </summary>
+        private static void BuildDefaultLayout()
+        {
+            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+            uint dockspaceId = ImGui.GetId("MyDockSpace");
+
+            Vector2F fullSize = viewport.Size;
+
+            ImGui.DockBuilderRemoveNode(dockspaceId);
+            ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
+
+            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
+
+            float leftRatio = 0.20f; // ancho de la columna izquierda (20%)
+            float rightRatio = 0.25f; // ancho de la columna derecha (20%)
+            float bottomRatio = 0.30f; // altura común para todas las zonas inferiores (20%)
+
+            uint dockMainId = dockspaceId;
+
+            uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, leftRatio, null, out uint dockRemaining);
+
+            uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdLeftBottom);
+
+            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
+
+            uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdRightBottom);
+
+            uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdCenterBottom);
+
+            ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomLeft);
+
+            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeftTop);
+            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeftTop);
+            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeftTop);
+
+            ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdLeftBottom);
+
+            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRightTop);
+
+            ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdRightBottom);
+
+            ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
+            ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
+
+            ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
+
+            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
+            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
+
+
+            ImGui.DockBuilderFinish(dockspaceId);
+        }
+        
+        
     }
 }
