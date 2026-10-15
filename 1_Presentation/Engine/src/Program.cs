@@ -38,6 +38,7 @@ namespace Alis.App.Engine
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Engine().Run();
+        public static void Main(string[] args) =>
+            new Engine(args.Length > 0 ? args[0] : null).Run();
     }
 }
