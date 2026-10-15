@@ -238,6 +238,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public uint FontTextureId { get; set; }
 
+        public int WidthMainWindow { get; set; } = 1025; 
+        public int HeightMainWindow { get; set; } = 575;
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
@@ -249,7 +252,7 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Initialize();
             IconDemo.Initialize();
 
-
+/*
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
@@ -259,8 +262,9 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
-            SettingsWindow.Initialize();
+            SettingsWindow.Initialize();*/
         }
+        
 
         /// <summary>
         ///     Starts this instance
@@ -273,6 +277,7 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Start();
             IconDemo.Start();
 
+            /*
             BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
@@ -282,13 +287,14 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
-            SettingsWindow.Start();
+            SettingsWindow.Start();*/
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void OnRender()
+        /// <param name="scaleFactor"></param>
+        public void OnRender(float scaleFactor)
         {
             ImGuiDemo.Run();
             ImPlotDemo.Run();
@@ -296,7 +302,7 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Run();
             IconDemo.Run();
 
-            SettingsWindow.Render();
+            /*SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
@@ -305,7 +311,7 @@ namespace Alis.App.Engine.Core
             SceneWindow.Render();
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
-            AssetsWindow.Render();
+            AssetsWindow.Render();*/
         }
     }
 }
