@@ -66,7 +66,6 @@ namespace Alis.App.Engine.Windows.Settings
         /// </summary>
         public void Initialize()
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -74,7 +73,6 @@ namespace Alis.App.Engine.Windows.Settings
         /// </summary>
         public void Start()
         {
-            throw new NotImplementedException();
         }
 
 
