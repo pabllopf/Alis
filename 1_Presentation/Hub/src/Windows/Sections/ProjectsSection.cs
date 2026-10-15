@@ -61,16 +61,28 @@ namespace Alis.App.Hub.Windows.Sections
         /// Gets the sample path
         /// </summary>
         /// <returns>The string</returns>
-        private static string GetSamplePath() =>
-            Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
-                "..", "..", "..", "..", "..",
-                "1_Presentation", "Engine", "sample", "alis.app.engine.sample"));
+        private static string GetSamplePath()
+        {
+            DirectoryInfo directory = new DirectoryInfo(AppContext.BaseDirectory);
+            while (directory != null)
+            {
+                string samplePath = Path.Combine(directory.FullName, "Engine", "sample", "alis.app.engine.sample");
+                if (Directory.Exists(samplePath))
+                {
+                    return samplePath;
+                }
+
+                directory = directory.Parent;
+            }
+
+            throw new DirectoryNotFoundException("Engine sample project could not be located.");
+        }
 
 #if DEBUG
         private List<Project> projects = new List<Project>
         {
             new Project("MacOS Project", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.5.0"),
-            new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.0.5")
+            new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.5.3")
         };
 #else
         /// <summary>
