@@ -187,7 +187,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The JetBrains Mono font resource name
         /// </summary>
-        private const string JetBrainsMonoFontName = "JetBrainsMonoFontName";
+        private const string JetBrainsMonoFontName = "Engine_JetBrainsMono-Bold";
 
         /// <summary>
         ///     The platform
