@@ -43,6 +43,9 @@ Debug/
 /**/**/.[Bb]uild/**
 /**/.[Bb]uild/**
 
+*coverage.opencover.xml
+/**/coverage.opencover.xml
+
 /**/_/**
 
 /**/**/_/**
@@ -53,6 +56,7 @@ Debug/
 
 /**/._*
 ._*
+
 
 *.log
 *.html

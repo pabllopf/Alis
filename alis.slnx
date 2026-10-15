@@ -1369,7 +1369,9 @@
     <Folder Name="/.config/target/">
         <File Path=".config\target\alis.targets" />
     </Folder>
-    <Folder Name="/.github/" />
+    <Folder Name="/.github/">
+        <File Path=".gitignore" />
+    </Folder>
     <Folder Name="/.github/workflows/">
         <File Path=".github\workflows\[ALIS][BENCHMARK].yml" />
         <File Path=".github\workflows\[ALIS][CHECK][ISSUES].yml" />
