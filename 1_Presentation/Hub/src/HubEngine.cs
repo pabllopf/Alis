@@ -1126,6 +1126,7 @@ namespace Alis.App.Hub
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
+            
             Gl.GlViewport(0, 0, fbWidth, fbHeight);
             float l = 0.0f;
             float r = drawData.DisplaySize.X;
