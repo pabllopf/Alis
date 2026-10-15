@@ -133,36 +133,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             // replicate intersection mids (not important for detection)
             return new Vector2F(At(i, vertices).X, At(i, vertices).Y);
         }
-
-        [Fact]
-        public void FindScore3Polygon()
-        {
-            string found = null;
-            int[] seeds = { 12345, 999, 4242, 7, 31337 };
-            foreach (int seed in seeds)
-            {
-                if (found != null) break;
-                Random rnd = new Random(seed);
-                for (int trial = 0; trial < 5000000 && found == null; trial++)
-                {
-                    int n = 6 + rnd.Next(4); // 6..9
-                    Vertices v = new Vertices(n);
-                    for (int k = 0; k < n; k++)
-                    {
-                        v.Add(new Vector2F(rnd.Next(0, 9), rnd.Next(0, 9)));
-                    }
-                    Hit = false;
-                    try { Triangulate(v, 0); } catch { }
-                    if (Hit)
-                    {
-                        var sb = new System.Text.StringBuilder();
-                        for (int k = 0; k < v.Count; k++) sb.Append($"new Vector2F({v[k].X}f, {v[k].Y}f),");
-                        found = sb.ToString();
-                    }
-                }
-            }
-            File.WriteAllText("/tmp/bayazit_score3_found.txt", found ?? "NONE");
-            Assert.NotNull(found);
-        }
+        
     }
 }
