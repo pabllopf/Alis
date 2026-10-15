@@ -63,26 +63,23 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 
                 for (int i = 0; i < vertexCount; i++)
                 {
-                    do
+                    rng.GetBytes(buffer);
+                    double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
+
+                    if (i % 250 == 0)
                     {
-                        rng.GetBytes(buffer);
-                        double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
+                        radius += scale / 2 * randomValue;
+                    }
+                    else if (i % 50 == 0)
+                    {
+                        radius += scale / 5 * randomValue;
+                    }
+                    else
+                    {
+                        radius += 25 * scale / vertexCount * randomValue;
+                    }
 
-                        if (i % 250 == 0)
-                        {
-                            radius += scale / 2 * randomValue;
-                        }
-                        else if (i % 50 == 0)
-                        {
-                            radius += scale / 5 * randomValue;
-                        }
-                        else
-                        {
-                            radius += 25 * scale / vertexCount * randomValue;
-                        }
-
-                        radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
-                    } while (radius < scale / 10 || radius > scale / 2);
+                    radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
 
                     point = new PolygonPoint(radius * Math.Cos(Math.PI * 2 * i / vertexCount),
                         radius * Math.Sin(Math.PI * 2 * i / vertexCount));
@@ -113,15 +110,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 
                 for (int i = 0; i < vertexCount; i++)
                 {
-                    do
-                    {
-                        rng.GetBytes(buffer);
-                        double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
+                    rng.GetBytes(buffer);
+                    double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
 
-                        radius += scale / 5 * randomValue;
+                    radius += scale / 5 * randomValue;
 
-                        radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
-                    } while (radius < scale / 10 || radius > scale / 2);
+                    radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
 
                     point = new PolygonPoint(radius * Math.Cos(Math.PI * 2 * i / vertexCount),
                         radius * Math.Sin(Math.PI * 2 * i / vertexCount));
