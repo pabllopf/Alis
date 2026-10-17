@@ -1187,9 +1187,9 @@ namespace Alis.App.Engine
             //ImGui.DockSpaceOverViewport();
             ImGui.SetNextWindowPos(_spaceWork.Viewport.WorkPos);
             ImGui.SetNextWindowSize(_spaceWork.Viewport.Size);
-            ImGui.Begin("DockSpace Demo", dockspaceflags);
+            ImGui.Begin("MyDockSpace", dockspaceflags);
                 
-            //_spaceWork.DockSpaceMenu.Update();
+            _spaceWork.DockSpaceMenu.Update();
                
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
 
@@ -1553,12 +1553,11 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Builds the default layout
         /// </summary>
-        private static void BuildDefaultLayout()
+        private void BuildDefaultLayout()
         {
-            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             uint dockspaceId = ImGui.GetId("MyDockSpace");
 
-            Vector2F fullSize = viewport.Size;
+            Vector2F fullSize = _spaceWork.Viewport.Size;
 
             ImGui.DockBuilderRemoveNode(dockspaceId);
             ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
