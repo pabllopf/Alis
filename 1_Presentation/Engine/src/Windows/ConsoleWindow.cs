@@ -152,11 +152,10 @@ namespace Alis.App.Engine.Windows
                 return;
             }
 
-            if (ImGui.Begin(NameWindow, ref isOpen, flags))
-            {
-                RenderConsoleToolbar();
-                RenderConsoleOutput();
-            }
+            ImGui.Begin(NameWindow, ref isOpen, flags);
+            
+            RenderConsoleToolbar();
+            RenderConsoleOutput();
 
             ImGui.End();
         }

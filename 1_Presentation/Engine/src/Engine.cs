@@ -1183,11 +1183,10 @@ namespace Alis.App.Engine
             _spaceWork.io = ImGui.GetIo();
             
             ImGui.NewFrame();
-
-            //ImGui.DockSpaceOverViewport();
+            
             ImGui.SetNextWindowPos(_spaceWork.Viewport.WorkPos);
             ImGui.SetNextWindowSize(_spaceWork.Viewport.Size);
-            ImGui.Begin("MyDockSpace", dockspaceflags);
+            ImGui.Begin("DockSpace Demo", dockspaceflags);
                 
             _spaceWork.DockSpaceMenu.Update();
                
@@ -1217,7 +1216,7 @@ namespace Alis.App.Engine
 
             if (!IsInit && (FrameCounter >= 2))
             {
-                //BuildDefaultLayout();
+                BuildDefaultLayout();
                 IsInit = true;
             }
                 
@@ -1595,6 +1594,7 @@ namespace Alis.App.Engine
             ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
             ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
 
+            
             ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);

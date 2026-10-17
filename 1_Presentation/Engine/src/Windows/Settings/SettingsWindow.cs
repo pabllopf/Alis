@@ -86,11 +86,7 @@ namespace Alis.App.Engine.Windows.Settings
                 return;
             }
 
-            if (!ImGui.Begin(WindowName, ref isOpen))
-            {
-                ImGui.End();
-                return;
-            }
+            ImGui.Begin(WindowName, ref isOpen);
 
             ImGui.End();
         }

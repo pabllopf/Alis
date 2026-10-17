@@ -121,19 +121,18 @@ namespace Alis.App.Engine.Windows
                 return;
             }
 
-            if (ImGui.Begin(WindowName, ref isOpen, flags))
+            ImGui.Begin(WindowName, ref isOpen, flags);
+            
+            if (ImGui.Button($"{FontAwesome5.Play}"))
             {
-                if (ImGui.Button($"{FontAwesome5.Play}"))
-                {
-                    isPlaying = true;
-                }
+                isPlaying = true;
+            }
 
-                ImGui.SameLine();
+            ImGui.SameLine();
 
-                if (isPlaying)
-                {
-                    ImGui.ProgressBar(progress, new Vector2F(-10, 0), $"{currentTime} / {totalTime} ");
-                }
+            if (isPlaying)
+            {
+                ImGui.ProgressBar(progress, new Vector2F(-10, 0), $"{currentTime} / {totalTime} ");
             }
 
             ImGui.End();
