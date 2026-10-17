@@ -51,7 +51,6 @@ namespace Alis.App.Engine.Test.Windows
 
             Assert.Equal(spaceWork, window.SpaceWork);
         }
-
         
         /// <summary>
         ///     Tests that SpaceWork property is readable
