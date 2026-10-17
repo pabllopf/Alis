@@ -106,12 +106,12 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The design width used to calculate the user interface scale.
         /// </summary>
-        private const float DesignWidth = 1025;
+        private const float DesignWidth = 1920;
 
         /// <summary>
         ///     The design height used to calculate the user interface scale.
         /// </summary>
-        private const float DesignHeight = 575;
+        private const float DesignHeight = 1080;
 
         /// <summary>
         ///     The last logical window width.

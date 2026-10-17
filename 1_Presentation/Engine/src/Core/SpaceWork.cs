@@ -238,8 +238,8 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public uint FontTextureId { get; set; }
 
-        public int WidthMainWindow { get; set; } = 1025; 
-        public int HeightMainWindow { get; set; } = 575;
+        public int WidthMainWindow { get; set; } = 1920; 
+        public int HeightMainWindow { get; set; } = 1080;
         
         /// <summary>
         ///     Initializes this instance
@@ -252,8 +252,8 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Initialize();
             IconDemo.Initialize();
 
-/*
-            BottomMenu.Initialize();
+
+            //BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
@@ -262,7 +262,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
-            SettingsWindow.Initialize();*/
+            SettingsWindow.Initialize();
         }
         
 
@@ -277,8 +277,8 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Start();
             IconDemo.Start();
 
-            /*
-            BottomMenu.Start();
+            
+            //BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
@@ -287,7 +287,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
-            SettingsWindow.Start();*/
+            SettingsWindow.Start();
         }
 
         /// <summary>
@@ -302,8 +302,8 @@ namespace Alis.App.Engine.Core
             ImNodeDemo.Run();
             IconDemo.Run();
 
-            /*SettingsWindow.Render();
-            BottomMenu.Render();
+            SettingsWindow.Render();
+            //BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
             InspectorWindow.Render();
@@ -311,7 +311,7 @@ namespace Alis.App.Engine.Core
             SceneWindow.Render();
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
-            AssetsWindow.Render();*/
+            AssetsWindow.Render();
         }
     }
 }
