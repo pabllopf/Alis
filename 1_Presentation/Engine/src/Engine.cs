@@ -172,7 +172,9 @@ namespace Alis.App.Engine
         ///     The scale factor
         /// </summary>
         internal float scaleFactor;
-        
+
+        private ImGuiWindowFlags dockspaceflags;
+
 
         /// <summary>
         ///     Application entry point.
@@ -220,11 +222,16 @@ namespace Alis.App.Engine
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                          ImGuiConfigFlags.NavEnableGamepad;
 
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable  |
+                                         ImGuiConfigFlags.ViewportsEnable;
 
 
             _spaceWork.io = ImGui.GetIo();
             _spaceWork.io.WantSaveIniSettings = false;
+            
+            
+            _spaceWork.Viewport = ImGui.GetMainViewport();
+            
 
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
@@ -290,7 +297,7 @@ namespace Alis.App.Engine
             Gl.GlBindVertexArray(0);
 
             platform.ShowWindow();
-            platform.SetTitle("Alis Hub - by @pabllopf");
+            platform.SetTitle("Alis Engine - by @pabllopf");
 
             _spaceWork.io = ImGui.GetIo();
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
@@ -304,6 +311,8 @@ namespace Alis.App.Engine
                                          | ImGuiConfigFlags.NavEnableGamepad
                                          | ImGuiConfigFlags.DockingEnable;
 
+            
+            
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
@@ -331,6 +340,10 @@ namespace Alis.App.Engine
                 _lastClickTime[i] = 0.0;
                 _lastClickPos[i] = new Vector2F(0, 0);
             }
+            
+            dockspaceflags |= ImGuiWindowFlags.MenuBar;
+            dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
+            dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
 
             ImGuiIoPtr io = ImGui.GetIo();
 
@@ -1171,18 +1184,199 @@ namespace Alis.App.Engine
             
             ImGui.NewFrame();
 
-            if ((_spaceWork.io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
+            //ImGui.DockSpaceOverViewport();
+            ImGui.SetNextWindowPos(_spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(_spaceWork.Viewport.Size);
+            ImGui.Begin("DockSpace Demo", dockspaceflags);
+                
+            //_spaceWork.DockSpaceMenu.Update();
+               
+            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
+
+            if (SpaceWork.IsMacOs)
             {
-                ImGui.DockSpaceOverViewport();
+                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
 
-            _spaceWork.OnRender(scaleFactor);
+            dockSize = dockSize - new Vector2F(80, 0);
 
+            if (SpaceWork.IsMacOs)
+            {
+                ImGui.SetWindowPos(new Vector2F(40, 0));
+            }
+            else
+            {
+                ImGui.SetWindowPos(new Vector2F(40, 25));
+            }
+
+            uint dockSpaceId = ImGui.GetId("MyDockSpace");
+            ImGui.DockSpace(dockSpaceId, dockSize);
+
+            _spaceWork.OnRender(scaleFactor);
+            RenderProject();
+
+            if (!IsInit && (FrameCounter >= 2))
+            {
+                //BuildDefaultLayout();
+                IsInit = true;
+            }
+                
+            ImGui.End();
 
             ImGui.Render();
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
+
+            if (!IsInit)
+            {
+                FrameCounter++;  
+            }
         }
+        
+       /// <summary>
+        ///     Renders the project
+        /// </summary>
+        public void RenderProject()
+        {
+            DrawLeftSidebar();
+            DrawRightSidebar();
+        }
+
+        /// <summary>
+        ///     The show project
+        /// </summary>
+        private bool showProject;
+
+        /// <summary>
+        ///     The show inspector
+        /// </summary>
+        private bool showInspector;
+
+        /// <summary>
+        ///     The show console
+        /// </summary>
+        private bool showConsole;
+
+
+        /// <summary>
+        ///     Draws the left sidebar
+        /// </summary>
+        internal void DrawLeftSidebar()
+        {
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
+
+            if (SpaceWork.IsMacOs)
+            {
+                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
+            }
+
+            ImGui.Begin("Sidebar1", ImGuiWindowFlags.NoTitleBar |
+                                    ImGuiWindowFlags.NoResize |
+                                    ImGuiWindowFlags.NoMove |
+                                    ImGuiWindowFlags.NoScrollbar |
+                                    ImGuiWindowFlags.NoScrollWithMouse);
+
+            if (SpaceWork.IsMacOs)
+            {
+                ImGui.SetWindowPos(new Vector2F(0, 30));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+            else
+            {
+                ImGui.SetWindowPos(new Vector2F(0, 56));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+
+            ImGui.PushFont(_spaceWork.FontLoaded16Solid);
+
+            if (ImGui.Button($"{FontAwesome5.Folder}"))
+            {
+                showProject = !showProject;
+            }
+
+            if (ImGui.Button($"{FontAwesome5.Tools}"))
+            {
+                showInspector = !showInspector;
+            }
+
+            if (ImGui.Button($"{FontAwesome5.Terminal}"))
+            {
+                showConsole = !showConsole;
+            }
+
+            ImGui.PopFont();
+
+            ImGui.End();
+
+            ImGui.PopStyleVar();
+            ImGui.PopStyleColor();
+        }
+
+        /// <summary>
+        ///     Draws the right sidebar
+        /// </summary>
+        internal void DrawRightSidebar()
+        {
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
+
+            if (SpaceWork.IsMacOs)
+            {
+                dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
+            }
+
+            ImGui.Begin("Sidebar2", ImGuiWindowFlags.NoTitleBar |
+                                    ImGuiWindowFlags.NoResize |
+                                    ImGuiWindowFlags.NoMove |
+                                    ImGuiWindowFlags.NoScrollbar |
+                                    ImGuiWindowFlags.NoScrollWithMouse);
+
+            if (SpaceWork.IsMacOs)
+            {
+                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 30));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+            else
+            {
+                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 56));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+
+            ImGui.PushFont(_spaceWork.FontLoaded16Solid);
+
+            if (ImGui.Button($"{FontAwesome5.Folder}"))
+            {
+                showProject = !showProject;
+            }
+
+            if (ImGui.Button($"{FontAwesome5.Tools}"))
+            {
+                showInspector = !showInspector;
+            }
+
+            if (ImGui.Button($"{FontAwesome5.Terminal}"))
+            {
+                showConsole = !showConsole;
+            }
+
+            ImGui.PopFont();
+
+            ImGui.End();
+
+            ImGui.PopStyleVar();
+            ImGui.PopStyleColor();
+        }
+
+
+        public bool IsInit { get; set; } = false;
+
+        public int FrameCounter { get; set; } = 0;
+
 
         /// <summary>
         ///     Renders the draw data using the specified draw data
