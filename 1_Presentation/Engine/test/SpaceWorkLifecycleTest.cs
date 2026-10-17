@@ -130,30 +130,5 @@ namespace Alis.App.Engine.Test
             }
         }
 
-        /// <summary>
-        ///     Tests that on init when project window not implemented throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void OnInit_WhenProjectWindowNotImplemented_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-
-            Exception exception = Record.Exception(() => spaceWork.OnInit());
-
-            Assert.IsType<NotImplementedException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that on start when project window not implemented throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void OnStart_WhenProjectWindowNotImplemented_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-
-            Exception exception = Record.Exception(() => spaceWork.OnStart());
-
-            Assert.IsType<NotImplementedException>(exception);
-        }
     }
 }

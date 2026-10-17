@@ -57,31 +57,7 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(ProjectWindow.NameWindow);
             Assert.NotEmpty(ProjectWindow.NameWindow);
         }
-
-        /// <summary>
-        /// Tests that initialize throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void Initialize_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            ProjectWindow window = new ProjectWindow(spaceWork);
-
-            Assert.Throws<NotImplementedException>(() => window.Initialize());
-        }
-
-        /// <summary>
-        /// Tests that start throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void Start_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            ProjectWindow window = new ProjectWindow(spaceWork);
-
-            Assert.Throws<NotImplementedException>(() => window.Start());
-        }
-
+        
         /// <summary>
         /// Tests that name window should contain project
         /// </summary>

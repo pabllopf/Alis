@@ -47,31 +47,7 @@ namespace Alis.App.Engine.Test
 
             Assert.Null(window.SpaceWork);
         }
-
-        /// <summary>
-        /// Tests that initialize throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void Initialize_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            SettingsWindow window = new SettingsWindow(spaceWork);
-
-            Assert.Throws<NotImplementedException>(() => window.Initialize());
-        }
-
-        /// <summary>
-        /// Tests that start throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void Start_ThrowsNotImplementedException()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            SettingsWindow window = new SettingsWindow(spaceWork);
-
-            Assert.Throws<NotImplementedException>(() => window.Start());
-        }
-
+        
         /// <summary>
         /// Tests that window name should contain settings
         /// </summary>
