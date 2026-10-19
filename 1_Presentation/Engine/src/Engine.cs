@@ -489,13 +489,22 @@ namespace Alis.App.Engine
             ImGuiIoPtr io = ImGui.GetIo();
             platform.GetMouseState(out _, out _, out bool[] mouseButtons);
             platform.GetMousePositionInView(out float mx, out float my);
+            
+            bool especialInv = false;
+            
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                especialInv = true;
+            }
+            
             ScaleMousePosition(
                 ref mx,
                 ref my,
                 lastWindowWidth,
                 lastWindowHeight,
-                platform is MacNativePlatform,
-                platform is not MacNativePlatform);
+                especialInv,
+                !especialInv);
+            
             io.AddMousePosEvent(mx, my);
 
             for (int i = 0; i < 5; i++)
