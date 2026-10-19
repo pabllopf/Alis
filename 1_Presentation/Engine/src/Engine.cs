@@ -497,6 +497,7 @@ namespace Alis.App.Engine
                 especialInv = true;
             }
             
+            
             ScaleMousePosition(
                 ref mx,
                 ref my,
