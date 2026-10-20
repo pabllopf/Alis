@@ -5,6 +5,48 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.4] - 2026-10-20
+### :bug: Bug Fixes
+- [`22a2cb6`](https://github.com/pabllopf/Alis/commit/22a2cb68f58740b4e945e3bd209323ef8e754434) - workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a2b1d4`](https://github.com/pabllopf/Alis/commit/2a2b1d4356f2eb88f05b64f0879ddaf79db3987e) - unit tets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5cb958b`](https://github.com/pabllopf/Alis/commit/5cb958bcf6f65c53d3d8128b195e787523181112) - uni tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c42cae2`](https://github.com/pabllopf/Alis/commit/c42cae22a56af79d0b14b8ab2c646399eb811c99) - /**/coverage.opencover.xml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f5b844`](https://github.com/pabllopf/Alis/commit/7f5b8441534b2dbf856d03da5caa0bd2a58043c0) - render and mouse interactions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fa6edf8`](https://github.com/pabllopf/Alis/commit/fa6edf8476869f4cd57f2ae3184cb917ef032c06) - resolution engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a710e3b`](https://github.com/pabllopf/Alis/commit/a710e3b42ea9626a343d79a8dc4d8a04f60477cc) - add menus laterals *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9acf83f`](https://github.com/pabllopf/Alis/commit/9acf83f83ddcee703b7594227efb3f8cbce878ab) - top menu *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`367810c`](https://github.com/pabllopf/Alis/commit/367810c4648976f7bd638d29869fbc92ce63d2eb) - implementation imgui of events windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c94657b`](https://github.com/pabllopf/Alis/commit/c94657b08dac7e3cb1746727f2634dcb7a2b2267) - unit test that fail on engine module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`121d430`](https://github.com/pabllopf/Alis/commit/121d430bb2d518426dd73f0f674e05986946e0f7) - especialInv *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04b9e3e`](https://github.com/pabllopf/Alis/commit/04b9e3e8eeb283adb39753ab45df0982dffd7ab0) - ScaleMousePosition *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :recycle: Refactors
+- [`4bf29a0`](https://github.com/pabllopf/Alis/commit/4bf29a049db737664cd1b401957b1d6920c32aff) - remove dead _stepComplete guard of WorldPhysic.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6a4a90`](https://github.com/pabllopf/Alis/commit/f6a4a906632f3c2768a77d691bbc11bb80c6115d) - remove unreachable retry loop of PolygonGenerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`80565e0`](https://github.com/pabllopf/Alis/commit/80565e0f5090cd1cd58c53514faa273aa60bc914) - cover leaf guard branch of DynamicTree.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9794793`](https://github.com/pabllopf/Alis/commit/97947932e1655cfe0fca37dd77ab0d66e8adb2ba) - cover outoVec branch of PolygonShape.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a9d0aae`](https://github.com/pabllopf/Alis/commit/a9d0aae70962ce6fbbd33d9182a3115f13e54e7a) - cover fixture contact branches of Body.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fa4588e`](https://github.com/pabllopf/Alis/commit/fa4588ec91b15c9167472fddf2ce5dad7370441e) - cover ReportCollision and Create branches of Contact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0855800`](https://github.com/pabllopf/Alis/commit/08558008d2728ab1c2b62c7cf5ff546fd1970487) - cover pinch guard removal and IsInside branches of EarclipDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a44476`](https://github.com/pabllopf/Alis/commit/0a44476191ce0eeb63fa924f4ed3f83de819d4d0) - cover max iteration and pushback failure of TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7edc338`](https://github.com/pabllopf/Alis/commit/7edc338fa94402e0e823624c806db6f9e673b685) - cover sub-step velocity clamping of Island.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`88655f6`](https://github.com/pabllopf/Alis/commit/88655f6ee9a4e2a5451aa6ce17b55fdf67cc85d5) - cover radial bounds and triangle cases of PolygonGenerator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bdc6f8`](https://github.com/pabllopf/Alis/commit/5bdc6f8eacdd256796e0197edafb173eaaee4220) - cover non-finite iteration guards of TimeOfImpact.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`38176bc`](https://github.com/pabllopf/Alis/commit/38176bcd92149dd1da39535bc52d2b8cf18fbbd4) - cover static-pair and unsupported gravity branches of GravityController.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`784a85d`](https://github.com/pabllopf/Alis/commit/784a85d30b3996192ad392df8135d53c982ba4c7) - cover tip index branch conditions of SimpleCombiner.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43036ca`](https://github.com/pabllopf/Alis/commit/43036cafe02f447ec603d1e48c830b0d5c63f4ac) - cover TOI branches and step contracts of WorldPhysic.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`340bbeb`](https://github.com/pabllopf/Alis/commit/340bbeb4b0da12d289658477416b580724735e19) - cover alpha-equals-zero branch of YuPengClipper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9b1d147`](https://github.com/pabllopf/Alis/commit/9b1d14773da5db1ac46cac3bbd0cbdfdd7e0a151) - verify alpha-equals-zero branch of YuPengClipper.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1683f3`](https://github.com/pabllopf/Alis/commit/f1683f36283621b526a8936f1ca07bd286dff2ef) - cover overflow polygon path of WorldPhysic.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e4816d4`](https://github.com/pabllopf/Alis/commit/e4816d457063d32e44782a4a70f9b16b53f747bc) - cover AllowSleep early-return branch of Island.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed4ed0f`](https://github.com/pabllopf/Alis/commit/ed4ed0f123c7ae26955431e5a770d9436a7dd3ce) - cover broken state short-circuit branch of BreakableBody.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bbe5207`](https://github.com/pabllopf/Alis/commit/bbe520782653c300647761fabc67cd7a78ff1733) - cover SameComponents collision paths in Archetype.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b745389`](https://github.com/pabllopf/Alis/commit/b74538985c23c41db01dc7e88d0c647b43c717ba) - cover branch conditions of WeldJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ccc482`](https://github.com/pabllopf/Alis/commit/6ccc48204e78defe9a8072bce0ecebf307bc9384) - cover two-point fallback and lock contention branches of ContactSolver.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.5.3] - 2026-10-02
 ### :bug: Bug Fixes
 - [`f2e7ee3`](https://github.com/pabllopf/Alis/commit/f2e7ee3b9eb2076cd8c38ca864e374bd4961beca) - the music tests *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11431,3 +11473,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.5.1]: https://github.com/pabllopf/Alis/compare/v1.5.0...v1.5.1
 [v1.5.2]: https://github.com/pabllopf/Alis/compare/v1.5.1...v1.5.2
 [v1.5.3]: https://github.com/pabllopf/Alis/compare/v1.5.2...v1.5.3
+[v1.5.4]: https://github.com/pabllopf/Alis/compare/v1.5.3...v1.5.4
