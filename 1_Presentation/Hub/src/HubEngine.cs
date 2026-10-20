@@ -479,7 +479,6 @@ namespace Alis.App.Hub
             {
                 especialInv = true;
             }
-            
             ScaleMousePosition(
                 ref mx,
                 ref my,
