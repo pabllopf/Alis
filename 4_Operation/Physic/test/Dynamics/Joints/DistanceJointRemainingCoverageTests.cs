@@ -161,6 +161,97 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
+        ///     Tests that init velocity constraints with a soft frequency and no effective
+        ///     inverse mass guards both the gamma and the mass against a division by zero
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WhenBodiesHaveNoInverseMassAndFrequencyIsPositive_GuardsMassAndGamma()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, new Vector2F(0.5f, 0.5f), new Vector2F(-0.5f, 0.5f))
+            {
+                Frequency = 5.0f,
+                DampingRatio = 0.5f
+            };
+            bodyA.GetIslandIndex = 0;
+            bodyB.GetIslandIndex = 1;
+            bodyA.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyB.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyA.InvMass = 0.0f;
+            bodyB.InvMass = 0.0f;
+            bodyA.InvI = 0.0f;
+            bodyB.InvI = 0.0f;
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 1.0f / 60.0f, DtRatio = 1.0f, InvDt = 60.0f, WarmStarting = false },
+                Positions = new SolverPosition[2]
+                {
+                    new SolverPosition { C = Vector2F.Zero, A = 0.0f },
+                    new SolverPosition { C = new Vector2F(2.0f, 0.0f), A = 0.0f }
+                },
+                Velocities = new SolverVelocity[2]
+                {
+                    new SolverVelocity { V = Vector2F.Zero, W = 0.0f },
+                    new SolverVelocity { V = Vector2F.Zero, W = 0.0f }
+                }
+            };
+
+            joint.InitVelocityConstraints(ref data);
+
+            Assert.Equal(0.0f, joint._gamma);
+            Assert.Equal(0.0f, joint._mass);
+            Assert.Equal(0.0f, joint._bias);
+            Assert.Equal(Vector2F.Zero, joint.GetReactionForce(60.0f));
+        }
+
+        /// <summary>
+        ///     Tests that init velocity constraints with a zero time step collapse the gamma
+        ///     to zero while the effective mass remains positive
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WhenTimeStepIsZero_GuardsGamma()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f))
+            {
+                Frequency = 5.0f,
+                DampingRatio = 0.5f
+            };
+            bodyA.GetIslandIndex = 0;
+            bodyB.GetIslandIndex = 1;
+            bodyA.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyB.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyA.InvMass = 1.0f;
+            bodyB.InvMass = 1.0f;
+            bodyA.InvI = 1.0f;
+            bodyB.InvI = 1.0f;
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.0f, DtRatio = 0.0f, InvDt = 0.0f, WarmStarting = false },
+                Positions = new SolverPosition[2]
+                {
+                    new SolverPosition { C = Vector2F.Zero, A = 0.0f },
+                    new SolverPosition { C = new Vector2F(1.0f, 0.0f), A = 0.0f }
+                },
+                Velocities = new SolverVelocity[2]
+                {
+                    new SolverVelocity { V = Vector2F.Zero, W = 0.0f },
+                    new SolverVelocity { V = Vector2F.Zero, W = 0.0f }
+                }
+            };
+
+            joint.InitVelocityConstraints(ref data);
+
+            Assert.Equal(0.0f, joint._gamma);
+            Assert.Equal(0.0f, joint._bias);
+            Assert.True(joint._mass > 0.0f);
+        }
+
+        /// <summary>
         ///     Tests that init velocity constraints with warm starting scales impulse
         /// </summary>
         [Fact]
