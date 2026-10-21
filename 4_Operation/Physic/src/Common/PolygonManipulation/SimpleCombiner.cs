@@ -144,6 +144,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < triangles.Count; ++i)
             {
                 Vertices triangle = triangles[i];
+                if (triangle.Count < 3)
+                {
+                    // A malformed entry is not a triangle, so it cannot be evaluated for degeneracy.
+                    // It is left uncovered and reported later on as a corrupt polygon.
+                    continue;
+                }
+
                 Vector2F a = triangle[0];
                 Vector2F b = triangle[1];
                 Vector2F c = triangle[2];
@@ -212,10 +219,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <returns>The poly</returns>
         private static Vertices BuildInitialPoly(int currTri, List<Vertices> triangles, bool[] covered)
         {
+            Vertices triangle = triangles[currTri];
             Vertices poly = new Vertices(3);
-            for (int i = 0; i < 3; i++)
+            int vertexCount = Math.Min(3, triangle.Count);
+            for (int i = 0; i < vertexCount; i++)
             {
-                poly.Add(triangles[currTri][i]);
+                poly.Add(triangle[i]);
             }
 
             covered[currTri] = true;
@@ -243,7 +252,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     continue;
                 }
 
-                Vertices newP = AddTriangle(triangles[index], poly);
+                Vertices candidate = triangles[index];
+                if (candidate.Count < 3)
+                {
+                    // A malformed entry is not a triangle, so it cannot be merged into the polygon.
+                    // It stays uncovered and it is processed later on as a corrupt polygon.
+                    continue;
+                }
+
+                Vertices newP = AddTriangle(candidate, poly);
                 if (newP.Count == 0)
                 {
                     continue;
