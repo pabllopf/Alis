@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     PositionConstraints = null;
                 }
 
-                solveVelocityConstraintsWaitLock?.Dispose();
+                solveVelocityConstraintsWaitLock.Dispose();
             }
         }
 
