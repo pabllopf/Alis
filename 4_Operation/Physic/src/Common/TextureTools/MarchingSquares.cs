@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The bool</returns>
-        private static bool CanCombine(GeomPolyVal[,] ps, int x, int y)
+        internal static bool CanCombine(GeomPolyVal[,] ps, int x, int y)
         {
             GeomPolyVal p = ps[x, y];
             if (p == null || (p.Key & 12) == 0)
