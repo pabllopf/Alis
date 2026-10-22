@@ -38,6 +38,7 @@ namespace Alis.Core.Graphic.Generator
     [Generator]
     public class GitattributesGenerator : ISourceGenerator
     {
+        
         /// <summary>
         ///     Initializes the context
         /// </summary>
