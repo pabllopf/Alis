@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Tries to find a valid split line from a reflex vertex
         /// </summary>
-        private static bool TryFindSplit(int i, Vertices vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex)
+        internal static bool TryFindSplit(int i, Vertices vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex)
         {
             float upperDist;
             float lowerDist = upperDist = float.MaxValue;
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Finds the lower intersection point for a reflex vertex
         /// </summary>
-        private static void FindLowerIntersection(int i, int j, Vertices vertices, ref float lowerDist, ref Vector2F lowerInt, ref int lowerIndex)
+        internal static void FindLowerIntersection(int i, int j, Vertices vertices, ref float lowerDist, ref Vector2F lowerInt, ref int lowerIndex)
         {
             if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
             {
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Finds the upper intersection point for a reflex vertex
         /// </summary>
-        private static void FindUpperIntersection(int i, int j, Vertices vertices, ref float upperDist, ref Vector2F upperInt, ref int upperIndex)
+        internal static void FindUpperIntersection(int i, int j, Vertices vertices, ref float upperDist, ref Vector2F upperInt, ref int upperIndex)
         {
             if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
             {
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Finds the best index to split the polygon
         /// </summary>
-        private static int FindBestSplitIndex(int reflexVertex, int lowerIndex, int upperIndex, Vertices vertices)
+        internal static int FindBestSplitIndex(int reflexVertex, int lowerIndex, int upperIndex, Vertices vertices)
         {
             while (upperIndex < lowerIndex)
             {
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Calculates the score for a potential split vertex
         /// </summary>
-        private static double CalculateVertexScore(int reflexVertex, int candidate, Vertices vertices)
+        internal static double CalculateVertexScore(int reflexVertex, int candidate, Vertices vertices)
         {
             double score = 1 / (SquareDist(At(reflexVertex, vertices), At(candidate, vertices)) + 1);
 
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Checks if a vertex can see another vertex based on its orientation
         /// </summary>
-        private static bool CanVertexSee(int vertex, int target, Vertices vertices)
+        internal static bool CanVertexSee(int vertex, int target, Vertices vertices)
         {
             if (Reflex(vertex, vertices))
             {
@@ -298,7 +298,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Checks if the line segment between two vertices intersects any edge
         /// </summary>
-        private static bool LineIntersectsAnyEdge(int i, int j, Vertices vertices)
+        internal static bool LineIntersectsAnyEdge(int i, int j, Vertices vertices)
         {
             for (int k = 0; k < vertices.Count; ++k)
             {
