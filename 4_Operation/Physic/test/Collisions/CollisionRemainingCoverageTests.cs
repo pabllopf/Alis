@@ -621,15 +621,17 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         // ========================================================================
-        // Try to trigger EpCollider catch block (L1098-1101) with zero-length edge
+        // Degenerate edges cannot produce a valid normal, so they never collide
         // ========================================================================
 
         /// <summary>
-        /// Tests that EpCollider catch block is triggered by zero-length edge
+        /// Tests that a zero-length edge cannot produce a valid separation normal,
+        /// therefore no contact point is generated and the manifold is left untouched.
         /// </summary>
         [Fact]
-        public void CollideEdgeAndPolygon_ZeroLengthEdge_TriggersCatch()
+        public void CollideEdgeAndPolygon_ZeroLengthEdge_ReturnsEmptyManifold()
         {
+            // Arrange
             EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(0.0f, 0.0f));
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
@@ -637,9 +639,14 @@ namespace Alis.Core.Physic.Test.Collisions
             ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.5f), 0.0f);
             Manifold manifold = new Manifold();
 
+            // Act
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
 
-            Assert.True(manifold.PointCount >= 0);
+            // Assert
+            Assert.Equal(0, manifold.PointCount);
+            Assert.Equal(Vector2F.Zero, manifold.LocalNormal);
+            Assert.Equal(Vector2F.Zero, manifold.LocalPoint);
+            Assert.Equal(ManifoldType.Circles, manifold.Type);
         }
 
         // ========================================================================

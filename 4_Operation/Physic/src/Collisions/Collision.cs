@@ -1152,13 +1152,25 @@ namespace Alis.Core.Physic.Collisions
                 axis.Index = front ? 0 : 1;
                 axis.Separation = SettingEnv.MaxFloat;
 
+                bool separated = false;
+
                 for (int i = 0; i < polygonB.Count; ++i)
                 {
                     float s = Vector2F.Dot(normal, polygonB.Vertices[i] - v1);
                     if (s < axis.Separation)
                     {
                         axis.Separation = s;
+                        separated = true;
                     }
+                }
+
+                //No separation could be measured against the edge, so no valid normal can be
+                //found and the axis stays unknown. This happens when the polygon has no
+                //vertices expressed in frame A or when the edge normal is degenerate.
+                if (!separated)
+                {
+                    axis.Type = EpAxisType.Unknown;
+                    axis.Index = -1;
                 }
 
                 return axis;
