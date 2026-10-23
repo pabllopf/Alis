@@ -182,16 +182,7 @@ namespace Alis.Core.Ecs.Test
                 buffer.Playback();
             }
         }
-
-        /// <summary>
-        /// Tests that gen 2 gc callback register can be called
-        /// </summary>
-        [Fact] public void Gen2GcCallback_Register_CanBeCalled()
-        {
-            bool called = false;
-            Gen2GcCallback.Register(() => { called = true; return false; });
-        }
-
+        
         /// <summary>
         /// Tests that component runner factory create strongly typed works
         /// </summary>

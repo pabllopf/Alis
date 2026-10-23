@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Test.Collections
             FastestArrayPool<int> pool = new FastestArrayPool<int>();
             int[] arr = pool.Rent(16);
             pool.Return(arr);
-            Gen2GcCallback.Gen2CollectionOccured?.Invoke();
+           
             int[] newArr = pool.Rent(16);
             Assert.NotSame(arr, newArr);
         }

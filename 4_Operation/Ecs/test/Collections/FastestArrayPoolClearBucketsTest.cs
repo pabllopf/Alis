@@ -21,7 +21,7 @@ namespace Alis.Core.Ecs.Test.Collections
             pool.Return(arr16);
             pool.Return(arr32);
 
-            Gen2GcCallback.Gen2CollectionOccured?.Invoke();
+        
 
             int[] newArr = pool.Rent(16);
             Assert.NotNull(newArr);
@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             FastestArrayPool<int> pool = new FastestArrayPool<int>();
 
-            Gen2GcCallback.Gen2CollectionOccured?.Invoke();
+          
 
             int[] arr = pool.Rent(100);
             Assert.NotNull(arr);
@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Test.Collections
             int[] arr = pool.Rent(64);
             pool.Return(arr);
 
-            Gen2GcCallback.Gen2CollectionOccured?.Invoke();
+           
 
             int[] newArr = pool.Rent(64);
             Assert.NotNull(newArr);

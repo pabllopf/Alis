@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastestArrayPool{T}" /> class
         /// </summary>
-        public FastestArrayPool() => Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
+        public FastestArrayPool() {}
 
         /// <summary>
         ///     Gets the value of the instance
@@ -195,18 +195,6 @@ namespace Alis.Core.Ecs.Collections
             return (index >= 0) && (index < BucketCount) ? index : -1;
         }
 
-        /// <summary>
-        ///     Clears the buckets
-        /// </summary>
-        internal void ClearBuckets()
-        {
-            lock (_bucketsLock)
-            {
-                for (int i = 0; i < BucketCount; i++)
-                {
-                    _buckets[i] = null;
-                }
-            }
-        }
+       
     }
 }
