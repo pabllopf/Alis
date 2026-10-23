@@ -85,17 +85,17 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that clear buckets after return empties buckets
+        /// Tests that renting after returning reuses the pooled array
         /// </summary>
         [Fact]
-        public void ClearBuckets_AfterReturn_EmptiesBuckets()
+        public void Rent_AfterReturn_ReusesPooledArray()
         {
             FastestArrayPool<int> pool = new FastestArrayPool<int>();
             int[] arr = pool.Rent(16);
             pool.Return(arr);
-           
+
             int[] newArr = pool.Rent(16);
-            Assert.NotSame(arr, newArr);
+            Assert.Same(arr, newArr);
         }
 
         /// <summary>
