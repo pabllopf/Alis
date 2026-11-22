@@ -18,6 +18,7 @@ using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
@@ -62,6 +63,33 @@ namespace Alis.Core.Ecs.Test.Kernel
             ///     The value
             /// </summary>
             public int Value;
+        }
+
+        /// <summary>
+        ///     Plain type that is never pre-registered through RegisterComponent, so
+        ///     GetComponentId(Type) must create its entry and store null delegates.
+        /// </summary>
+        private struct DirectPlainProbe
+        {
+            /// <summary>
+            ///     The value
+            /// </summary>
+            public int Value;
+        }
+
+        /// <summary>
+        ///     Type with a registered init delegate but no component registration, so
+        ///     GetComponentId(Type) stores the delegate through its non-null branch.
+        /// </summary>
+        private partial struct InitOnlyProbe : IOnInit
+        {
+            /// <summary>
+            ///     Ons the init
+            /// </summary>
+            /// <param name="self">The owning game object</param>
+            public void OnInit(IGameObject self)
+            {
+            }
         }
 
         /// <summary>
@@ -139,6 +167,39 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
             Assert.NotNull(Component.GetComponentFactoryFromType(typeof(PlainRegisteredProbe)));
             Assert.Null(Component.ComponentTable[id.RawIndex].Initer);
+            Assert.Null(Component.ComponentTable[id.RawIndex].Destroyer);
+        }
+
+        /// <summary>
+        ///     Verifies that GetComponentId(Type) creates an entry for a type that was not
+        ///     pre-registered and stores null initer/destroyer delegates for it.
+        /// </summary>
+        [Fact]
+        public void GetComponentId_UnregisteredPlainType_StoresNullDelegates()
+        {
+            GenerationServices.RegisterType(typeof(DirectPlainProbe), new NoneUpdateRunnerFactory<DirectPlainProbe>());
+
+            ComponentId id = Component.GetComponentId(typeof(DirectPlainProbe));
+
+            Assert.True(id.RawIndex >= 0);
+            Assert.NotNull(Component.GetComponentFactoryFromType(typeof(DirectPlainProbe)));
+            Assert.Null(Component.ComponentTable[id.RawIndex].Initer);
+            Assert.Null(Component.ComponentTable[id.RawIndex].Destroyer);
+        }
+
+        /// <summary>
+        ///     Verifies that GetComponentId(Type) stores a registered init delegate when
+        ///     the type has not been registered as a component yet.
+        /// </summary>
+        [Fact]
+        public void GetComponentId_TypeWithInitDelegate_StoresInitDelegate()
+        {
+            GenerationServices.RegisterInit<InitOnlyProbe>();
+            GenerationServices.RegisterType(typeof(InitOnlyProbe), new NoneUpdateRunnerFactory<InitOnlyProbe>());
+
+            ComponentId id = Component.GetComponentId(typeof(InitOnlyProbe));
+
+            Assert.NotNull(Component.ComponentTable[id.RawIndex].Initer);
             Assert.Null(Component.ComponentTable[id.RawIndex].Destroyer);
         }
 
