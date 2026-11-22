@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Test.Models;
+using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners
@@ -38,6 +42,51 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateArity9CoverageTests
     {
+        /// <summary>
+        ///     Tests the arity-9 range Run overload directly with the registered runner
+        ///     of a real archetype. The deferred-creation path cannot supply the ninth
+        ///     component at creation time (Scene.Create supports at most eight components).
+        /// </summary>
+        [Fact]
+        public void Update_Arity9_RangeRun_UpdatesOnlyTheRequestedEntity()
+        {
+            using (Scene scene = new Scene())
+            {
+                GameObject entity = scene.Create(
+                    new Update8Component {CallCount = 0},
+                    new Position {X = 1, Y = 2},
+                    new Velocity {X = 10, Y = 20},
+                    new Health {Value = 100},
+                    new Armor {Value = 50},
+                    new Damage {Value = 5},
+                    new Transform {X = 0, Y = 0, Rotation = 0},
+                    new TestComponent {Value = 42}
+                );
+                entity.Add(new AnotherComponent {Data = 7, Y = 3});
+
+                ref GameObjectLocation location = ref entity.AssertIsAlive(out _);
+                Archetype archetype = location.Archetype;
+                Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent> runner = null;
+                foreach (ComponentStorageBase storage in archetype.Components)
+                {
+                    if (storage is Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent> arity9)
+                    {
+                        runner = arity9;
+                        break;
+                    }
+                }
+
+                Assert.NotNull(runner);
+                runner.Run(scene, archetype, location.Index, 1);
+
+                Assert.Equal(1, entity.Get<Update8Component>().CallCount);
+                Assert.Equal(11, entity.Get<Position>().X);
+                Assert.Equal(22, entity.Get<Position>().Y);
+                Assert.Equal(8, entity.Get<AnotherComponent>().Data);
+                Assert.Equal(4, entity.Get<AnotherComponent>().Y);
+            }
+        }
+
         /// <summary>
         ///     Tests that the arity-9 non-range Run method processes all entities
         ///     via scene.Update and invokes the component update.
