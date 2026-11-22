@@ -244,7 +244,7 @@ namespace Alis.Core.Ecs
         /// <param name="index">The entity index within the archetype</param>
         /// <returns>A reference to the component of type <typeparamref name="TC" /></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
+        internal static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
         {
             int compIndex = Unsafe.Add(ref archetypeTable[0], Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
             return new Ref<TC>(Unsafe.As<ComponentStorage<TC>>(Unsafe.Add(ref comps[0], compIndex)), index);

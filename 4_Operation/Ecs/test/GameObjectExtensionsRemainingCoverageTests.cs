@@ -39,6 +39,27 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectExtensionsRemainingCoverageTests
     {
         /// <summary>
+        ///     Verifies the array-based component lookup overload. Existing Deconstruct
+        ///     call sites use the span-based overload, so the array overload is invoked
+        ///     directly with a real archetype's tag table and storage array.
+        /// </summary>
+        [Fact]
+        public void GetComp_FromArrays_ReturnsReferenceToStoredComponent()
+        {
+            using (Scene scene = new Scene())
+            {
+                GameObject gameObject = scene.Create(new Position {X = 42, Y = 7});
+
+                ref GameObjectLocation location = ref gameObject.AssertIsAlive(out _);
+                Ref<Position> comp = GameObjectExtensions.GetComp<Position>(
+                    location.Archetype.ComponentTagTable, location.Archetype.Components, location.Index);
+
+                Assert.Equal(42, comp.Value.X);
+                Assert.Equal(7, comp.Value.Y);
+            }
+        }
+
+        /// <summary>
         ///     Tests that deconstruct single component returns ref
         /// </summary>
         [Fact]
