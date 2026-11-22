@@ -62,6 +62,17 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         private static int _nextComponentId = -1;
 
+        /// <summary>
+        ///     Gets or sets the next component id. Test-only seam for the 65535-id
+        ///     exhaustion guard: allocating that many distinct component types in a
+        ///     unit test is not feasible.
+        /// </summary>
+        internal static int NextComponentIdForTests
+        {
+            get => _nextComponentId;
+            set => _nextComponentId = value;
+        }
+
         //initalize default(ComponentID) to point to void
         /// <summary>
         ///     Initializes a new instance of the <see cref="Component" /> class
