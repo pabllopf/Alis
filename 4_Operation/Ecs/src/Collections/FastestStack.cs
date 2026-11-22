@@ -457,13 +457,20 @@ namespace Alis.Core.Ecs.Collections
         ///     Grows the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
-        internal void Grow(int capacity)
+        internal void Grow(int capacity) => Grow(capacity, MaxArrayLength);
+
+        /// <summary>
+        ///     Grows the capacity, honouring the supplied maximum array length.
+        /// </summary>
+        /// <param name="capacity">The requested capacity</param>
+        /// <param name="maxArrayLength">The maximum capacity to allocate</param>
+        internal void Grow(int capacity, int maxArrayLength)
         {
             int newcapacity = _array.Length == 0 ? DefaultCapacity : 2 * _array.Length;
 
-            if ((uint) newcapacity > MaxArrayLength)
+            if ((uint) newcapacity > maxArrayLength)
             {
-                newcapacity = MaxArrayLength;
+                newcapacity = maxArrayLength;
             }
 
             if (newcapacity < capacity)

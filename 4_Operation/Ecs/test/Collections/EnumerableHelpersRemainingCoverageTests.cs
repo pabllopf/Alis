@@ -55,6 +55,37 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
+        ///     Verifies the array-length guard of the enumerator conversion. The public
+        ///     ToArray API uses an effectively unbounded limit, so the internal helper is
+        ///     called directly with a small limit to exercise both clamp outcomes.
+        /// </summary>
+        [Fact]
+        public void ToArrayFromEnumerator_WhenDoubledLengthExceedsMaximum_ClampsAndGrows()
+        {
+            using IEnumerator<int> enumerator = YieldSixElements().GetEnumerator();
+            enumerator.MoveNext();
+
+            int[] result = EnumerableHelpers.ToArrayFromEnumerator(enumerator, 5, out int length);
+
+            Assert.Equal(6, length);
+            Assert.Equal(new[] {1, 2, 3, 4, 5, 6}, result);
+        }
+
+        /// <summary>
+        ///     Yields the six elements
+        /// </summary>
+        /// <returns>The enumerable</returns>
+        private static IEnumerable<int> YieldSixElements()
+        {
+            yield return 1;
+            yield return 2;
+            yield return 3;
+            yield return 4;
+            yield return 5;
+            yield return 6;
+        }
+
+        /// <summary>
         ///     Yields the five elements
         /// </summary>
         /// <returns>The enumerable</returns>

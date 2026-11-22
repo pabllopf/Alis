@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="arrayMaxLength">The array max length</param>
         /// <param name="length">The length</param>
         /// <returns>The arr</returns>
-        private static T[] ToArrayFromEnumerator<T>(IEnumerator<T> enumerator, int arrayMaxLength, out int length)
+        internal static T[] ToArrayFromEnumerator<T>(IEnumerator<T> enumerator, int arrayMaxLength, out int length)
         {
             const int defaultCapacity = 4;
             T[] arr = new T[defaultCapacity];
