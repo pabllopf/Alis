@@ -29,6 +29,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Updater.Services.Api;
@@ -99,6 +103,103 @@ namespace Alis.Extension.Updater.Test
             }
 
             Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that start with latest version and no matching arm64 asset returns false.
+        /// </summary>
+        [Fact]
+        public async Task Start_WithLatestVersionAndNoMatchingAsset_ReturnsFalse()
+        {
+            using LoopbackHttpServer server = LoopbackHttpServer.Start();
+            Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
+            api.SetupGet(x => x.ApiUrl).Returns(server.Uri);
+
+            UpdateManager manager = new UpdateManager(api.Object, "latest", Mock.Of<IFileService>(),
+                System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-test", Guid.NewGuid().ToString("N")))
+            {
+                ContinueDelayMilliseconds = 0
+            };
+
+            bool result = await manager.Start(CancellationToken.None);
+
+            Assert.False(result);
+            Assert.Equal(0, manager.Progress);
+        }
+
+        /// <summary>
+        ///     Minimal loopback HTTP server used to satisfy the update manager release fetch.
+        /// </summary>
+        private sealed class LoopbackHttpServer : IDisposable
+        {
+            private readonly TcpListener _listener;
+            private readonly CancellationTokenSource _cancellation;
+            private readonly Task _worker;
+
+            private LoopbackHttpServer(TcpListener listener, Uri uri)
+            {
+                _listener = listener;
+                Uri = uri;
+                _cancellation = new CancellationTokenSource();
+                _worker = Task.Run(() => WorkerLoop(_cancellation.Token));
+            }
+
+            public Uri Uri { get; }
+
+            public static LoopbackHttpServer Start()
+            {
+                TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
+                listener.Start();
+                int port = ((IPEndPoint) listener.LocalEndpoint).Port;
+                return new LoopbackHttpServer(listener, new Uri($"http://127.0.0.1:{port}/"));
+            }
+
+            private void WorkerLoop(CancellationToken token)
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    TcpClient client;
+                    try
+                    {
+                        client = _listener.AcceptTcpClient();
+                    }
+                    catch
+                    {
+                        break;
+                    }
+
+                    using (client)
+                    using (NetworkStream stream = client.GetStream())
+                    {
+                        byte[] buffer = new byte[4096];
+                        stream.Read(buffer, 0, buffer.Length);
+                        const string body = "ok";
+                        string response = "HTTP/1.1 200 OK\r\n" +
+                                          "Content-Type: application/octet-stream\r\n" +
+                                          "Content-Length: " + body.Length + "\r\n" +
+                                          "Connection: close\r\n" +
+                                          "\r\n" +
+                                          body;
+                        byte[] responseBytes = Encoding.ASCII.GetBytes(response);
+                        stream.Write(responseBytes, 0, responseBytes.Length);
+                    }
+                }
+            }
+
+            public void Dispose()
+            {
+                _cancellation.Cancel();
+                _listener.Stop();
+                try
+                {
+                    _worker.GetAwaiter().GetResult();
+                }
+                catch
+                {
+                }
+
+                _cancellation.Dispose();
+            }
         }
     }
 }

@@ -283,5 +283,98 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(thread.Join(TimeSpan.FromSeconds(10)));
             Assert.False(result);
         }
+
+        /// <summary>
+        /// Tests that try get priority of a null item that is present returns its priority
+        /// </summary>
+        [Fact]
+        public void TryGetPriority_NullItemInCache_ReturnsPriority()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue(null, 7);
+
+            bool found = queue.TryGetPriority(default(string), out int priority);
+
+            Assert.True(found);
+            Assert.Equal(7, priority);
+        }
+
+        /// <summary>
+        /// Tests that remove a missing nullable value item throws
+        /// </summary>
+        [Fact]
+        public void Remove_MissingNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.Remove(1));
+
+            Assert.Contains("Remove()", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that remove a missing null nullable value item throws
+        /// </summary>
+        [Fact]
+        public void Remove_MissingNullNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.Remove((int?)null));
+
+            Assert.Contains("Remove()", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that update priority of a missing nullable value item throws
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_MissingNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.UpdatePriority(1, 2));
+
+            Assert.Contains("UpdatePriority()", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that update priority of a missing null nullable value item throws
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_MissingNullNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.UpdatePriority((int?)null, 2));
+
+            Assert.Contains("UpdatePriority()", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that get priority of a missing nullable value item throws
+        /// </summary>
+        [Fact]
+        public void GetPriority_MissingNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.GetPriority(1));
+
+            Assert.Contains("GetPriority()", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that get priority of a missing null nullable value item throws
+        /// </summary>
+        [Fact]
+        public void GetPriority_MissingNullNullableValueItem_Throws()
+        {
+            SimplePriorityQueue<int?, int> queue = new SimplePriorityQueue<int?, int>();
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => queue.GetPriority((int?)null));
+
+            Assert.Contains("GetPriority()", exception.Message);
+        }
     }
 }

@@ -340,6 +340,41 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         }
 
         /// <summary>
+        ///     Tests that DownloadFileAsync with a destination that has no directory skips directory creation
+        /// </summary>
+        [Fact]
+        public async Task DownloadFileAsync_WithRelativeDestinationPath_DownloadsSuccessfully()
+        {
+            string localFileName = $"alis-gdrive-{Guid.NewGuid():N}.txt";
+            int callCount = 0;
+            using GoogleDriveCloudManager manager = CreateManagerWithMockService(request =>
+            {
+                callCount++;
+                if (callCount == 1)
+                {
+                    return ListResponse("relative-file|relative.txt|text/plain");
+                }
+                return new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent("relative file content", Encoding.UTF8, "text/plain")
+                };
+            });
+
+            try
+            {
+                await manager.DownloadFileAsync("relative.txt", localFileName);
+
+                Assert.True(File.Exists(localFileName));
+                Assert.Equal("relative file content", File.ReadAllText(localFileName));
+                Assert.Equal(2, callCount);
+            }
+            finally
+            {
+                if (File.Exists(localFileName)) File.Delete(localFileName);
+            }
+        }
+
+        /// <summary>
         ///     Tests that DownloadFileAsync when file not found throws
         /// </summary>
         [Fact]

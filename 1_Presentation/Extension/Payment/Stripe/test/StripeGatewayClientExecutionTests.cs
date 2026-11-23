@@ -34,6 +34,11 @@ using System.Threading.Tasks;
 using Stripe;
 using Xunit;
 
+// The Stripe SDK reads its static StripeConfiguration from multiple test classes.
+// Serializing the assembly keeps the in-process HTTP stub from being replaced
+// by another test while a request is in flight.
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace Alis.Extension.Payment.Stripe.Test
 {
     /// <summary>
@@ -148,6 +153,36 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_1", response.Url.ToString());
             Assert.Equal("pi_123", response.PaymentIntentId);
         }
+
+        /// <summary>
+        ///     Tests that create checkout session async with null metadata returns the session response.
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithNullMetadata_ReturnsSessionResponse()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+            InstallStubClient("{ \"id\": \"cs_test_null_metadata\", \"url\": \"https://checkout.stripe.com/c/pay/cs_test_null_metadata\", \"payment_intent\": \"pi_456\" }");
+
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test Product",
+                ProductDescription = "Description",
+                Currency = "usd",
+                UnitAmount = 5000,
+                Quantity = 1,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel"),
+                CustomerEmail = "buyer@example.com",
+                Metadata = null
+            };
+
+            StripeCheckoutSessionResponse response = await gateway.CreateCheckoutSessionAsync(request);
+
+            Assert.Equal("cs_test_null_metadata", response.SessionId);
+            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_null_metadata", response.Url.ToString());
+            Assert.Equal("pi_456", response.PaymentIntentId);
+        }
         
         /// <summary>
         ///     Tests that create payment intent async with valid request returns the payment intent response.
@@ -174,6 +209,23 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("pi_456", response.PaymentIntentId);
             Assert.Equal("pi_456_secret_xyz", response.ClientSecret);
             Assert.Equal("requires_payment_method", response.Status);
+        }
+
+        /// <summary>
+        ///     Tests that get payment intent async with a valid id returns the payment intent response.
+        /// </summary>
+        [Fact]
+        public async Task GetPaymentIntentAsync_WithValidId_ReturnsPaymentIntentResponse()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+            InstallStubClient("{ \"id\": \"pi_lookup_789\", \"client_secret\": \"pi_lookup_789_secret\", \"status\": \"succeeded\" }");
+
+            StripePaymentIntentResponse response = await gateway.GetPaymentIntentAsync("pi_lookup_789");
+
+            Assert.Equal("pi_lookup_789", response.PaymentIntentId);
+            Assert.Equal("pi_lookup_789_secret", response.ClientSecret);
+            Assert.Equal("succeeded", response.Status);
         }
 
         /// <summary>
