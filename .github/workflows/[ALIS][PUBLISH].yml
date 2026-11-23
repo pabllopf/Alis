@@ -412,6 +412,7 @@ jobs:
   
   publish_packages:
     permissions:
+      id-token: write  # enable GitHub OIDC token issuance for this job
       actions: write
       checks: write
       contents: write
@@ -447,6 +448,12 @@ jobs:
         uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '10.x.x'
+
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: contoso-bot # Recommended: use a secret like ${{ secrets.NUGET_USER }} for your nuget.org username (profile name), NOT your email address
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android
@@ -503,10 +510,10 @@ jobs:
           done
 
       - name: Publish to NuGet
-        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
+        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{steps.login.outputs.NUGET_API_KEY}} --skip-duplicate
 
       #- name: Publish to NuGet
-        #run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.snupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
+        #run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.snupkg -s https://api.nuget.org/v3/index.json -k ${{steps.login.outputs.NUGET_API_KEY}} --skip-duplicate
 
       - name: Publish to GitHub NuGet Feed
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --timeout 2000 --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
