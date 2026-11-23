@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Alis.Core.Ecs.Systems.Configuration;
+using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Scope;
 using Scene = Alis.Core.Ecs.Scene;
 using Xunit;
@@ -137,6 +138,47 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
+        ///     Tests that preview advances time for both paced and over-budget frames
+        /// </summary>
+        [Fact]
+        public void Preview_WithFastAndSlowFrames_AdvancesTimeWithoutNativeRendering()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            context.InternalRuntime.runtimes.RemoveAll(x => x is global::Alis.Core.Ecs.Systems.Manager.Graphic.GraphicManager);
+            ContextHandler handler = new ContextHandler(context);
+            handler.InitPreview();
+
+            handler.Preview();
+            float framesAfterFastFrame = context.TimeManager.FrameCount;
+            Thread.Sleep(50);
+            handler.Preview();
+
+            Assert.True(framesAfterFastFrame > 0);
+            Assert.True(context.TimeManager.FrameCount > framesAfterFastFrame);
+            Assert.False(context.TimeManager.InFixedTimeStep);
+        }
+
+        /// <summary>
+        ///     Tests that run executes the full frame path including fixed updates and frame pacing
+        /// </summary>
+        [Fact]
+        public void Run_WithSlowFirstFrame_ExecutesFixedAndPacedFrames()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            context.InternalRuntime.runtimes.RemoveAll(x => x is global::Alis.Core.Ecs.Systems.Manager.Graphic.GraphicManager);
+            context.InternalRuntime.runtimes.Add(new StopAfterSlowFrameManager(context));
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.Run();
+
+            Assert.False(context.IsRunning);
+            Assert.True(context.TimeManager.InFixedTimeStep == false);
+            Assert.True(context.TimeManager.TotalFrames >= 2);
+        }
+
+        /// <summary>
         /// Tests that save with file path does not throw
         /// </summary>
         [Fact]
@@ -158,6 +200,35 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             ContextHandler handler = new ContextHandler(context);
 
             handler.Save("/tmp/test-save-path.dat");
+        }
+
+        /// <summary>
+        ///     Manager that forces one slow frame and then stops the loop.
+        /// </summary>
+        private sealed class StopAfterSlowFrameManager : AManager
+        {
+            private int dispatchCount;
+
+            internal StopAfterSlowFrameManager(Context context) : base(context)
+            {
+            }
+
+            public override void OnDispatchEvents()
+            {
+                dispatchCount++;
+                if (dispatchCount >= 2)
+                {
+                    Context.Exit();
+                }
+            }
+
+            public override void OnBeforeUpdate()
+            {
+                if (dispatchCount == 1)
+                {
+                    Thread.Sleep(1050);
+                }
+            }
         }
     }
 }
