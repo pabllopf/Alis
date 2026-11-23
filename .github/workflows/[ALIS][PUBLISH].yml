@@ -453,7 +453,7 @@ jobs:
         uses: NuGet/login@v1
         id: login
         with:
-          user: contoso-bot # Recommended: use a secret like ${{ secrets.NUGET_USER }} for your nuget.org username (profile name), NOT your email address
+          user: ${{ secrets.NUGET_USER }} 
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android
