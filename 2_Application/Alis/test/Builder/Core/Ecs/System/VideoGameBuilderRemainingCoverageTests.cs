@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs.Systems;
+using Scene = Alis.Core.Ecs.Scene;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System
@@ -75,6 +76,22 @@ namespace Alis.Test.Builder.Core.Ecs.System
             VideoGame game = builder.Build();
 
             Assert.NotNull(game);
+        }
+
+        /// <summary>
+        ///     Tests that run starts the built game and stops when the context is stopped
+        /// </summary>
+        [Fact]
+        public void Run_WhenContextWasStopped_CompletesWithoutRestarting()
+        {
+            VideoGameBuilder builder = new VideoGameBuilder();
+            builder.Context.Setting.Graphic = builder.Context.Setting.Graphic with { PreviewMode = true };
+            builder.Context.SceneManager.AddScene(new Scene());
+            builder.Context.Exit();
+
+            builder.Run();
+
+            Assert.False(builder.Context.IsRunning);
         }
     }
 }
