@@ -29,10 +29,15 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Graphic;
+using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Delegates;
@@ -57,6 +62,36 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         ///     The fake clear delegate reference
         /// </summary>
         private static readonly Clear FakeClearDelegate = FakeClear;
+
+        private static readonly CreateProgram FakeCreateProgramDelegate = () => 1;
+
+        private static readonly CreateShader FakeCreateShaderDelegate = _ => 1;
+
+        private static readonly ShaderSourceDel FakeShaderSourceDelegate = (_, _, _, _) => { };
+
+        private static readonly CompileShader FakeCompileShaderDelegate = _ => { };
+
+        private static readonly AttachShader FakeAttachShaderDelegate = (_, _) => { };
+
+        private static readonly LinkProgram FakeLinkProgramDelegate = _ => { };
+
+        private static readonly GenVertexArrays FakeGenVertexArraysDelegate = (_, arrays) => arrays[0] = 2;
+
+        private static readonly BindVertexArray FakeBindVertexArrayDelegate = _ => { };
+
+        private static readonly GenBuffers FakeGenBuffersDelegate = (_, buffers) => buffers[0] = 3;
+
+        private static readonly BindBuffer FakeBindBufferDelegate = (_, _) => { };
+
+        private static readonly BufferData FakeBufferDataDelegate = (_, _, _, _) => { };
+
+        private static readonly EnableVertexAttribArrayDel FakeEnableVertexAttribArrayDelegate = _ => { };
+
+        private static readonly VertexAttribPointerDel FakeVertexAttribPointerDelegate = (_, _, _, _, _, _) => { };
+
+        private static readonly UseProgram FakeUseProgramDelegate = _ => { };
+
+        private static readonly DrawArrays FakeDrawArraysDelegate = (_, _, _) => { };
 
         /// <summary>
         ///     The fake clear color delegate body
@@ -88,6 +123,21 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             {
                 case "glClearColor": return Marshal.GetFunctionPointerForDelegate(FakeClearColorDelegate);
                 case "glClear": return Marshal.GetFunctionPointerForDelegate(FakeClearDelegate);
+                case "glCreateProgram": return Marshal.GetFunctionPointerForDelegate(FakeCreateProgramDelegate);
+                case "glCreateShader": return Marshal.GetFunctionPointerForDelegate(FakeCreateShaderDelegate);
+                case "glShaderSource": return Marshal.GetFunctionPointerForDelegate(FakeShaderSourceDelegate);
+                case "glCompileShader": return Marshal.GetFunctionPointerForDelegate(FakeCompileShaderDelegate);
+                case "glAttachShader": return Marshal.GetFunctionPointerForDelegate(FakeAttachShaderDelegate);
+                case "glLinkProgram": return Marshal.GetFunctionPointerForDelegate(FakeLinkProgramDelegate);
+                case "glGenVertexArrays": return Marshal.GetFunctionPointerForDelegate(FakeGenVertexArraysDelegate);
+                case "glBindVertexArray": return Marshal.GetFunctionPointerForDelegate(FakeBindVertexArrayDelegate);
+                case "glGenBuffers": return Marshal.GetFunctionPointerForDelegate(FakeGenBuffersDelegate);
+                case "glBindBuffer": return Marshal.GetFunctionPointerForDelegate(FakeBindBufferDelegate);
+                case "glBufferData": return Marshal.GetFunctionPointerForDelegate(FakeBufferDataDelegate);
+                case "glEnableVertexAttribArray": return Marshal.GetFunctionPointerForDelegate(FakeEnableVertexAttribArrayDelegate);
+                case "glVertexAttribPointer": return Marshal.GetFunctionPointerForDelegate(FakeVertexAttribPointerDelegate);
+                case "glUseProgram": return Marshal.GetFunctionPointerForDelegate(FakeUseProgramDelegate);
+                case "glDrawArrays": return Marshal.GetFunctionPointerForDelegate(FakeDrawArraysDelegate);
                 default: return IntPtr.Zero;
             }
         }
@@ -155,6 +205,34 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Context context = CreatePreviewContext(scene);
             GraphicManager manager = new GraphicManager(context);
             manager.RenderPreview();
+        }
+
+        /// <summary>
+        ///     Verifies that preview rendering draws debug box colliders when physics debug is enabled.
+        /// </summary>
+        [Fact]
+        public void RenderPreview_WithPhysicsDebugEnabled_RendersBoxCollider()
+        {
+            Gl.Initialize(FakeProcAddress);
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
+            GameObject camera = scene.Create();
+            camera.Add(new Camera());
+            GameObject colliderObject = scene.Create(new Transform(new Vector2F(0, 0), 0, new Vector2F(1, 1)));
+            Setting setting = new Setting
+            {
+                Graphic = new GraphicSetting { PreviewMode = true },
+                Physic = new PhysicSetting { Debug = true }
+            };
+            Context context = new Context(setting);
+            context.SceneManager.AddScene(scene);
+            context.SceneManager.CurrentWorld = scene;
+            colliderObject.Add(new BoxCollider { Context = context, SizeOfTexture = new Vector2F(16, 16) });
+            GraphicManager manager = new GraphicManager(context);
+
+            manager.RenderPreview();
+
+            Assert.True(context.Setting.Physic.Debug);
+            Assert.True(scene.Query<With<BoxCollider>>().EnumerateWithEntities().GetEnumerator().MoveNext());
         }
 
         /// <summary>
