@@ -38,6 +38,7 @@ namespace Alis.Core.Graphic.Test
     ///     Tests for the GlShader class covering constructor, properties, 
     ///     disposal, and finalizer behavior.
     /// </summary>
+    [Collection("OpenGLFakeState")]
     public class GlShaderTest : IDisposable
     {
         /// <summary>

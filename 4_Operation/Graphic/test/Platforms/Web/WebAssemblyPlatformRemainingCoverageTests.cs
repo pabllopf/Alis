@@ -127,5 +127,17 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             Assert.False(platform.IsKeyDown((ConsoleKey)999));
         }
+
+        /// <summary>
+        ///     Verifies that GetWindowMetrics reaches the emscripten boundary on non-web hosts.
+        /// </summary>
+        [Fact]
+        public void GetWindowMetrics_OnNonWeb_PropagatesDllNotFound()
+        {
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+
+            Assert.Throws<DllNotFoundException>(() =>
+                platform.GetWindowMetrics(out int _, out int _, out int _, out int _, out int _, out int _));
+        }
     }
 }

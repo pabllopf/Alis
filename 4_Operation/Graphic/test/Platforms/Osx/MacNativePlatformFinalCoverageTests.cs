@@ -259,6 +259,35 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
         }
 
         /// <summary>
+        ///     Verifies that a synthesized key up event with a character uses the character fallback.
+        /// </summary>
+        [Fact]
+        public void HandleKeyUpEvent_CharacterKey_RemovesMappedKey()
+        {
+            IntPtr keyUpEvent = CreateKeyboardEvent(AnsiAKeyCode, 'a', false);
+
+            MacNativePlatform platform = new MacNativePlatform();
+            platform.MapCharacterKey('a', true);
+            Assert.True(platform.IsKeyDown(ConsoleKey.A));
+
+            platform.HandleKeyUpEvent(keyUpEvent);
+            Assert.False(platform.IsKeyDown(ConsoleKey.A));
+        }
+
+        /// <summary>
+        ///     Verifies that a nil event is treated as having no characters.
+        /// </summary>
+        [Fact]
+        public void HandleKeyDownEvent_NilEvent_IgnoresMissingCharacters()
+        {
+            MacNativePlatform platform = new MacNativePlatform();
+
+            platform.HandleKeyDownEvent(IntPtr.Zero);
+
+            Assert.False(platform.TryGetLastKeyPressed(out _));
+        }
+
+        /// <summary>
         ///     Creates a native key event without initializing the application
         /// </summary>
         /// <param name="keyCode">The key code</param>
