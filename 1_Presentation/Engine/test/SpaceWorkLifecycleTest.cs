@@ -34,6 +34,11 @@ using Alis.App.Engine.Entity;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
+// SpaceWork reads and writes a single shared temp config file. Several test
+// classes construct it, so parallel execution can delete the file between the
+// existence check and the read in the production constructor.
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace Alis.App.Engine.Test
 {
     /// <summary>
