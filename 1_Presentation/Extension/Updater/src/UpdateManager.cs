@@ -94,6 +94,9 @@ namespace Alis.Extension.Updater
         /// </summary>
         public readonly string VersionToInstall;
 
+        private readonly Func<HttpClient> _httpClientFactory;
+        private readonly Action<string> _shellCommandExecutor;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="UpdateManager" /> class
         /// </summary>
@@ -102,11 +105,33 @@ namespace Alis.Extension.Updater
         /// <param name="fileService">The file service</param>
         /// <param name="programFolder">The program folder</param>
         public UpdateManager(IGitHubApiService gitHubApiService, string versionToInstall, IFileService fileService, string programFolder)
+            : this(gitHubApiService, versionToInstall, fileService, programFolder, () => new HttpClient(), ExecuteShellCommand)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance with injectable side-effect boundaries for tests
+        /// </summary>
+        /// <param name="gitHubApiService">The git hub api service</param>
+        /// <param name="versionToInstall">The version to install</param>
+        /// <param name="fileService">The file service</param>
+        /// <param name="programFolder">The program folder</param>
+        /// <param name="httpClientFactory">Creates the HTTP client used for release and download requests</param>
+        /// <param name="shellCommandExecutor">Executes platform shell commands</param>
+        internal UpdateManager(
+            IGitHubApiService gitHubApiService,
+            string versionToInstall,
+            IFileService fileService,
+            string programFolder,
+            Func<HttpClient> httpClientFactory,
+            Action<string> shellCommandExecutor)
         {
             GitHubApiService = gitHubApiService;
             FileService = fileService;
             ProgramFolder = programFolder;
             VersionToInstall = versionToInstall;
+            _httpClientFactory = httpClientFactory;
+            _shellCommandExecutor = shellCommandExecutor;
         }
 
         /// <summary>
@@ -484,19 +509,32 @@ namespace Alis.Extension.Updater
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
         
-        private static string GetPlatform()
+        private static string GetPlatform() => ResolvePlatform(
+            RuntimeInformation.IsOSPlatform(OSPlatform.Windows),
+            RuntimeInformation.IsOSPlatform(OSPlatform.Linux),
+            RuntimeInformation.IsOSPlatform(OSPlatform.OSX));
+
+        /// <summary>
+        ///     Resolves the release asset platform token from explicit OS flags
+        /// </summary>
+        /// <param name="isWindows">Whether the host is Windows</param>
+        /// <param name="isLinux">Whether the host is Linux</param>
+        /// <param name="isOsx">Whether the host is macOS</param>
+        /// <returns>The platform token</returns>
+        /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
+        internal static string ResolvePlatform(bool isWindows, bool isLinux, bool isOsx)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (isWindows)
             {
                 return "win";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (isLinux)
             {
                 return "linux";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (isOsx)
             {
                 return "osx";
             }
@@ -536,7 +574,7 @@ namespace Alis.Extension.Updater
         /// <returns>A task containing a dictionary of string and object</returns>
         public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
-            using HttpClient httpClient = new HttpClient();
+            using HttpClient httpClient = _httpClientFactory();
 
             httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
             string response = await httpClient.GetStringAsync(GitHubApiService.ApiUrl);
@@ -604,7 +642,7 @@ namespace Alis.Extension.Updater
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             Logger.Info($"Downloading file '{fileName}' to '{filePath}'.");
 
-            using HttpClient client = new HttpClient();
+            using HttpClient client = _httpClientFactory();
             using HttpResponseMessage response = await client.GetAsync(new Uri(url));
             using FileStream fs = new FileStream(filePath, FileMode.CreateNew);
             await response.Content.CopyToAsync(fs);
@@ -737,7 +775,7 @@ namespace Alis.Extension.Updater
         /// <param name="mountPath">The mount path</param>
         internal void MountDmg(string fileAsync, string mountPath)
         {
-            ExecuteShellCommand($"hdiutil attach \"{fileAsync}\" -nobrowse -mountpoint \"{mountPath}\"");
+            _shellCommandExecutor($"hdiutil attach \"{fileAsync}\" -nobrowse -mountpoint \"{mountPath}\"");
             OnUpdateProgressChanged(0.82f, "Mounted .dmg file.");
             Logger.Info("Mounted .dmg file.");
             WaitForContinue();
@@ -765,7 +803,7 @@ namespace Alis.Extension.Updater
         {
             OnUpdateProgressChanged(0.85f, "Copying contents from .dmg to target directory...");
             Logger.Info("Copying contents from .dmg to target directory...");
-            ExecuteShellCommand($"cp -R \"{mountPath}/.\" \"{ProgramFolder}\"");
+            _shellCommandExecutor($"cp -R \"{mountPath}/.\" \"{ProgramFolder}\"");
             WaitForContinue();
         }
 
@@ -777,7 +815,7 @@ namespace Alis.Extension.Updater
         {
             OnUpdateProgressChanged(0.88f, "Unmounting .dmg file...");
             Logger.Info("Unmounting .dmg file...");
-            ExecuteShellCommand($"hdiutil detach \"{mountPath}\"");
+            _shellCommandExecutor($"hdiutil detach \"{mountPath}\"");
         }
 
         /// <summary>

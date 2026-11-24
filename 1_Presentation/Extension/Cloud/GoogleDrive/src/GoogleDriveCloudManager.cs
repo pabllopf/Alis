@@ -115,7 +115,19 @@ namespace Alis.Extension.Cloud.GoogleDrive
         /// </summary>
         /// <param name="accessToken">The Google Drive access token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task InitializeAsync(string accessToken)
+        public Task InitializeAsync(string accessToken) => InitializeAsync(accessToken, token => new DriveService(new BaseClientService.Initializer
+        {
+            HttpClientInitializer = GoogleCredential.FromAccessToken(token),
+            ApplicationName = "Alis-GoogleDrive-Manager"
+        }));
+
+        /// <summary>
+        ///     Initializes the Google Drive service through an injectable factory
+        /// </summary>
+        /// <param name="accessToken">The Google Drive access token</param>
+        /// <param name="serviceFactory">Creates the Drive service for the token</param>
+        /// <returns>A task representing the asynchronous operation</returns>
+        internal Task InitializeAsync(string accessToken, Func<string, DriveService> serviceFactory)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -124,13 +136,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
 
             try
             {
-                GoogleCredential credential = GoogleCredential.FromAccessToken(accessToken);
-
-                _driveService = new DriveService(new BaseClientService.Initializer
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = "Alis-GoogleDrive-Manager"
-                });
+                _driveService = serviceFactory(accessToken);
 
                 Logger.Info("Google Drive initialized successfully");
                 return Task.CompletedTask;

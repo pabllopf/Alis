@@ -168,49 +168,66 @@ namespace Alis.Extension.Media.FFmpeg.Audio
             }
 
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
+            string json = await r.ReadToEndAsync();
+            ApplyAudioMetadataJson(json, ignoreStreamErrors);
+        }
 
+        /// <summary>
+        ///     Applies a serialized ffprobe payload to the reader metadata
+        /// </summary>
+        /// <param name="json">The ffprobe JSON payload</param>
+        /// <param name="ignoreStreamErrors">Whether stream mapping errors should be ignored</param>
+        internal void ApplyAudioMetadataJson(string json, bool ignoreStreamErrors)
+        {
             try
             {
-                string json = await r.ReadToEndAsync();
-                AudioMetadata metadata = JsonNativeAot.Deserialize<AudioMetadata>(json);
-
-                try
-                {
-                    MediaStream audioStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "audio");
-                    if (audioStream != null)
-                    {
-                        metadata.Channels = audioStream.Channels;
-                        metadata.Codec = audioStream.CodecName;
-                        metadata.CodecLongName = audioStream.CodecLongName;
-                        metadata.SampleFormat = audioStream.SampleFmt;
-
-                        metadata.SampleRate = audioStream.SampleRateNumber;
-
-                        metadata.Duration = audioStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "-1", CultureInfo.InvariantCulture) : double.Parse(audioStream.Duration, CultureInfo.InvariantCulture);
-
-                        metadata.BitRate = audioStream.BitRate == null ? -1 : int.Parse(audioStream.BitRate);
-
-                        metadata.BitDepth = audioStream.BitsPerSample;
-                        metadata.PredictedSampleCount = (int) Math.Round(metadata.Duration * metadata.SampleRate);
-
-                        ResolveBitDepth(metadata);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (!ignoreStreamErrors)
-                    {
-                        throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
-                    }
-                }
-
-                MetadataLoaded = true;
-                Metadata = metadata;
+                ApplyAudioMetadata(JsonNativeAot.Deserialize<AudioMetadata>(json), ignoreStreamErrors);
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to interpret ffprobe audio metadata output! " + ex.Message);
             }
+        }
+
+        /// <summary>
+        ///     Applies already deserialized ffprobe metadata to the reader
+        /// </summary>
+        /// <param name="metadata">The deserialized metadata</param>
+        /// <param name="ignoreStreamErrors">Whether stream mapping errors should be ignored</param>
+        internal void ApplyAudioMetadata(AudioMetadata metadata, bool ignoreStreamErrors)
+        {
+            try
+            {
+                MediaStream audioStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "audio");
+                if (audioStream != null)
+                {
+                    metadata.Channels = audioStream.Channels;
+                    metadata.Codec = audioStream.CodecName;
+                    metadata.CodecLongName = audioStream.CodecLongName;
+                    metadata.SampleFormat = audioStream.SampleFmt;
+
+                    metadata.SampleRate = audioStream.SampleRateNumber;
+
+                    metadata.Duration = audioStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "-1", CultureInfo.InvariantCulture) : double.Parse(audioStream.Duration, CultureInfo.InvariantCulture);
+
+                    metadata.BitRate = audioStream.BitRate == null ? -1 : int.Parse(audioStream.BitRate);
+
+                    metadata.BitDepth = audioStream.BitsPerSample;
+                    metadata.PredictedSampleCount = (int) Math.Round(metadata.Duration * metadata.SampleRate);
+
+                    ResolveBitDepth(metadata);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (!ignoreStreamErrors)
+                {
+                    throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
+                }
+            }
+
+            MetadataLoaded = true;
+            Metadata = metadata;
         }
 
         /// <summary>

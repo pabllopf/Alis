@@ -113,7 +113,15 @@ namespace Alis.Extension.Cloud.DropBox
         /// </summary>
         /// <param name="accessToken">The Dropbox access token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public async Task InitializeAsync(string accessToken)
+        public Task InitializeAsync(string accessToken) => InitializeAsync(accessToken, token => new DropboxClient(token));
+
+        /// <summary>
+        ///     Initializes the Dropbox client through an injectable factory
+        /// </summary>
+        /// <param name="accessToken">The Dropbox access token</param>
+        /// <param name="clientFactory">Creates the Dropbox client for the token</param>
+        /// <returns>A task representing the asynchronous operation</returns>
+        internal async Task InitializeAsync(string accessToken, Func<string, DropboxClient> clientFactory)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -123,7 +131,7 @@ namespace Alis.Extension.Cloud.DropBox
             try
             {
                 _accessToken = accessToken;
-                _dropboxClient = new DropboxClient(_accessToken);
+                _dropboxClient = clientFactory(_accessToken);
 
                 FullAccount account = await _dropboxClient.Users.GetCurrentAccountAsync();
                 Logger.Info($"DropBox initialized successfully for user: {account.Name.DisplayName}");

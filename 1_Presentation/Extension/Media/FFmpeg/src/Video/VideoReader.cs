@@ -131,50 +131,67 @@ namespace Alis.Extension.Media.FFmpeg.Video
             }
 
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
+            string metadataJson = await r.ReadToEndAsync();
+            ApplyVideoMetadataJson(metadataJson, ignoreStreamErrors);
+        }
 
+        /// <summary>
+        ///     Applies a serialized ffprobe payload to the reader metadata
+        /// </summary>
+        /// <param name="json">The ffprobe JSON payload</param>
+        /// <param name="ignoreStreamErrors">Whether stream mapping errors should be ignored</param>
+        internal void ApplyVideoMetadataJson(string json, bool ignoreStreamErrors)
+        {
             try
             {
-                string metadataJson = await r.ReadToEndAsync();
-                VideoMetadata metadata = JsonNativeAot.Deserialize<VideoMetadata>(metadataJson);
-
-                try
-                {
-                    MediaStream videoStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "video");
-                    if (videoStream != null)
-                    {
-                        metadata.Width = videoStream.Width;
-                        metadata.Height = videoStream.Height;
-                        metadata.PixelFormat = videoStream.PixFmt;
-                        metadata.Codec = videoStream.CodecName;
-                        metadata.CodecLongName = videoStream.CodecLongName;
-
-                        metadata.BitRate = videoStream.BitRate == null ? -1 : int.Parse(videoStream.BitRate);
-
-                        metadata.BitDepth = videoStream.BitsPerRawSample == null ? TryParseBitDepth(videoStream.PixFmt) : int.Parse(videoStream.BitsPerRawSample);
-
-                        metadata.Duration = videoStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "0", CultureInfo.InvariantCulture) : double.Parse(videoStream.Duration, CultureInfo.InvariantCulture);
-
-                        metadata.SampleAspectRatio = videoStream.SampleAspectRatio;
-                        metadata.AvgFramerate = videoStream.AvgFrameRateNumber;
-
-                        metadata.PredictedFrameCount = (int) (metadata.AvgFramerate * metadata.Duration);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (!ignoreStreamErrors)
-                    {
-                        throw new InvalidDataException("Failed to parse video stream data! " + ex.Message);
-                    }
-                }
-
-                LoadedMetadata = true;
-                Metadata = metadata;
+                ApplyVideoMetadata(JsonNativeAot.Deserialize<VideoMetadata>(json), ignoreStreamErrors);
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to interpret ffprobe video metadata output! " + ex.Message);
             }
+        }
+
+        /// <summary>
+        ///     Applies already deserialized ffprobe metadata to the reader
+        /// </summary>
+        /// <param name="metadata">The deserialized metadata</param>
+        /// <param name="ignoreStreamErrors">Whether stream mapping errors should be ignored</param>
+        internal void ApplyVideoMetadata(VideoMetadata metadata, bool ignoreStreamErrors)
+        {
+            try
+            {
+                MediaStream videoStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "video");
+                if (videoStream != null)
+                {
+                    metadata.Width = videoStream.Width;
+                    metadata.Height = videoStream.Height;
+                    metadata.PixelFormat = videoStream.PixFmt;
+                    metadata.Codec = videoStream.CodecName;
+                    metadata.CodecLongName = videoStream.CodecLongName;
+
+                    metadata.BitRate = videoStream.BitRate == null ? -1 : int.Parse(videoStream.BitRate);
+
+                    metadata.BitDepth = videoStream.BitsPerRawSample == null ? TryParseBitDepth(videoStream.PixFmt) : int.Parse(videoStream.BitsPerRawSample);
+
+                    metadata.Duration = videoStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "0", CultureInfo.InvariantCulture) : double.Parse(videoStream.Duration, CultureInfo.InvariantCulture);
+
+                    metadata.SampleAspectRatio = videoStream.SampleAspectRatio;
+                    metadata.AvgFramerate = videoStream.AvgFrameRateNumber;
+
+                    metadata.PredictedFrameCount = (int) (metadata.AvgFramerate * metadata.Duration);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (!ignoreStreamErrors)
+                {
+                    throw new InvalidDataException("Failed to parse video stream data! " + ex.Message);
+                }
+            }
+
+            LoadedMetadata = true;
+            Metadata = metadata;
         }
 
         /// <summary>
