@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.5] - 2026-11-24
+### :bug: Bug Fixes
+- [`6c68cc1`](https://github.com/pabllopf/Alis/commit/6c68cc1572680a3be266c72f2165a86d3961a69e) - change to internal *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26aae40`](https://github.com/pabllopf/Alis/commit/26aae403f9372fefe7a4af0a85e9851d36d4c757) - move to internal *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d883550`](https://github.com/pabllopf/Alis/commit/d88355038d8199774fc4a3e7ff48fd95bfbab6df) - delete Gen2GcCallback *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`4780014`](https://github.com/pabllopf/Alis/commit/4780014dc1d7c6c34dd185062c3229c0d3f03d4b) - cover combine guard branches of MarchingSquares.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f49f05`](https://github.com/pabllopf/Alis/commit/1f49f0519cce5ee8dbcd7ab37c00b603a5043358) - cover dispose paths of ContactSolver.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`382084c`](https://github.com/pabllopf/Alis/commit/382084c07f8a7ccd92ae78443d8cbff103e06835) - cover branch conditions of DistanceJoint.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f66a14c`](https://github.com/pabllopf/Alis/commit/f66a14cde33802430665f8033164698b564c3ea3) - cover corrupt polygon path of SimpleCombiner.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3813884`](https://github.com/pabllopf/Alis/commit/3813884afba60110f2c88d7391e987802f0d82ef) - cover clip plane failures of Collision.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9e7a36`](https://github.com/pabllopf/Alis/commit/c9e7a366a04f4bf063051e7dd1a958e5885fb1f9) - cover score plus three branch of BayazitDecomposer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5d1c0b`](https://github.com/pabllopf/Alis/commit/f5d1c0bb5b00cfec532e13e3d3150d70256bf78d) - cover unknown edge axis of Collision.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d10ea38`](https://github.com/pabllopf/Alis/commit/d10ea3859a90cd1a7ebb9d29d679ce9ebb0e5039) - cover equality and initializer branches of GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7dfc45`](https://github.com/pabllopf/Alis/commit/c7dfc4509da98230678242c7588c1bb90ea540d0) - fix pooled array reuse expectation of FastestArrayPool.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2da0b3e`](https://github.com/pabllopf/Alis/commit/2da0b3e804f2c6c101e7dd53f09c12566305de6d) - cover growth and enumerator guards of Ecs collections *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`74eab1f`](https://github.com/pabllopf/Alis/commit/74eab1f3461ab7ba00f36a2693211100ed42e59f) - cover array-based component lookup of GameObjectExtensions.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`da1d7d1`](https://github.com/pabllopf/Alis/commit/da1d7d12616032e1bf881ba47dced9b3106c5b34) - cover arity-9 range run of Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f7fa6b`](https://github.com/pabllopf/Alis/commit/2f7fa6ba361ef0e200767fd2598db10fb8bff68e) - cover id exhaustion and delegate fallbacks of ComponentRegistry.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dcc1f22`](https://github.com/pabllopf/Alis/commit/dcc1f22cefa2c8a312e9fdc37d35628201258c9b) - cover deferred recursion guards and delegate branches of Scene.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d0b116`](https://github.com/pabllopf/Alis/commit/9d0b116de8d664ad9689d0a5d59cd5771dbf6586) - cover VideoGameBuilder.Run with stopped preview context *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2439a33`](https://github.com/pabllopf/Alis/commit/2439a33c0604a897ec9f319b4ccaa54ec9f72cd7) - cover frame loop and preview paths of ContextHandler.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebb1b21`](https://github.com/pabllopf/Alis/commit/ebb1b21c1471c1b6f351f60b7fc5ce9e87e6a693) - cover debug rendering branch of GraphicManager.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92311ef`](https://github.com/pabllopf/Alis/commit/92311ef1e224f69678e1372873b8881c63c904bf) - cover Engine menu dispatch and coordinate helpers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0b1cdf2`](https://github.com/pabllopf/Alis/commit/0b1cdf25386e1d38a518662b007ed8569c75950b) - cover Graphic shader and platform boundary paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94ed7f9`](https://github.com/pabllopf/Alis/commit/94ed7f9ca95f0242f754ec1112fdaf846d54350c) - cover remaining small presentation extension paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`108c555`](https://github.com/pabllopf/Alis/commit/108c555bbad4fd1a405cecf9ee5fa3479432c205) - serialize Engine tests sharing SpaceWork temp config *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.5.4] - 2026-10-20
 ### :bug: Bug Fixes
 - [`22a2cb6`](https://github.com/pabllopf/Alis/commit/22a2cb68f58740b4e945e3bd209323ef8e754434) - workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -11474,3 +11504,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.5.2]: https://github.com/pabllopf/Alis/compare/v1.5.1...v1.5.2
 [v1.5.3]: https://github.com/pabllopf/Alis/compare/v1.5.2...v1.5.3
 [v1.5.4]: https://github.com/pabllopf/Alis/compare/v1.5.3...v1.5.4
+[v1.5.5]: https://github.com/pabllopf/Alis/compare/v1.5.4...v1.5.5
