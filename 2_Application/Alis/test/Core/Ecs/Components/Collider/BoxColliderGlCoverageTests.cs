@@ -383,9 +383,12 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             Assert.Equal(1, OnCollisionEnterCalls);
 
+            // The physics engine always invokes Body.OnCollision with the owner's
+            // fixture first. A swapped invocation is outside that contract and must
+            // not dispatch to this collider.
             OnCollisionMethod?.Invoke(colliderA, new object[] { fixtureB, fixtureA, null });
 
-            Assert.Equal(2, OnCollisionEnterCalls);
+            Assert.Equal(1, OnCollisionEnterCalls);
         }
 
         /// <summary>
@@ -414,9 +417,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             Assert.Equal(1, OnCollisionExitCalls);
 
+            // Body.OnCollisionEventHandler always receives the owner's fixture first.
+            // A swapped invocation is outside that contract and must not dispatch.
             OnSeparationMethod?.Invoke(colliderA, new object[] { fixtureB, fixtureA, null });
 
-            Assert.Equal(2, OnCollisionExitCalls);
+            Assert.Equal(1, OnCollisionExitCalls);
         }
     }
 }

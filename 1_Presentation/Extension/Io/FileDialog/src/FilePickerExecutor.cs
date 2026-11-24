@@ -52,6 +52,14 @@ namespace Alis.Extension.Io.FileDialog
         internal static Func<string, string, int, string> ExecuteCommandOverride { get; set; }
 
         /// <summary>
+        /// Gets or sets an override for OS detection, used to exercise platform branches in tests
+        /// </summary>
+        internal static Func<OSPlatform, bool> IsOSPlatformOverride { get; set; }
+
+        private static bool IsWindows() => IsOSPlatformOverride?.Invoke(OSPlatform.Windows)
+                                           ?? RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+        /// <summary>
         ///     Executes a system command and returns its output.
         /// </summary>
         /// <param name="fileName">The name of the executable to run</param>
@@ -151,12 +159,12 @@ namespace Alis.Extension.Io.FileDialog
 
             try
             {
-                string checkCommand = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                string checkCommand = IsWindows()
                     ? $"where {command}"
                     : $"which {command}";
 
-                string fileName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd" : "sh";
-                string arguments = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                string fileName = IsWindows() ? "cmd" : "sh";
+                string arguments = IsWindows()
                     ? $"/c {checkCommand}"
                     : $"-c {checkCommand}";
 

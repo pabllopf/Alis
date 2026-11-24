@@ -322,19 +322,6 @@ namespace Alis.Core.Ecs.Components.Collider
                     }
                 }
             }
-            else if (fixtureBGameObject.Equals(ThisGameObject) && fixtureGameObject.Has<BoxCollider>())
-            {
-                foreach (ComponentId component in fixtureGameObject.ComponentTypes)
-                {
-                    Type componentType = component.Type;
-                    if (typeof(IOnCollisionEnter).IsAssignableFrom(componentType))
-                    {
-                        IOnCollisionEnter onPressKey = (IOnCollisionEnter) fixtureGameObject.Get(componentType);
-                        onPressKey.OnCollisionEnter(ThisGameObject);
-                    }
-                }
-            }
-
             return true;
         }
 
@@ -358,18 +345,6 @@ namespace Alis.Core.Ecs.Components.Collider
                     if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
                     {
                         IOnCollisionExit onPressKey = (IOnCollisionExit) fixtureBGameObject.Get(componentType);
-                        onPressKey.OnCollisionExit(ThisGameObject);
-                    }
-                }
-            }
-            else if (fixtureBGameObject.Equals(ThisGameObject) && fixtureGameObject.Has<BoxCollider>())
-            {
-                foreach (ComponentId component in fixtureGameObject.ComponentTypes)
-                {
-                    Type componentType = component.Type;
-                    if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
-                    {
-                        IOnCollisionExit onPressKey = (IOnCollisionExit) fixtureGameObject.Get(componentType);
                         onPressKey.OnCollisionExit(ThisGameObject);
                     }
                 }

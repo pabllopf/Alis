@@ -182,10 +182,7 @@ namespace Alis.Core.Ecs
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
-            if (lookup.Version != EntityVersion)
-            {
-                Throw_EntityIsDead();
-            }
+            if (lookup.Version != EntityVersion) throw new InvalidOperationException(EntityIsDeadMessage);
 
             return ref lookup;
         }

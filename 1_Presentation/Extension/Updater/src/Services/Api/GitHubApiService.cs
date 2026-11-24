@@ -83,7 +83,7 @@ namespace Alis.Extension.Updater.Services.Api
         {
             if (disposing)
             {
-                _httpClient?.Dispose();
+                _httpClient.Dispose();
             }
         }
 

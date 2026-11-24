@@ -91,8 +91,7 @@ namespace Alis.Core.Ecs.Kernel
         {
             if (t == null || t == typeof(void))
             {
-                Throw_ComponentTypeNotInit(t);
-                return null!;
+                throw CreateComponentTypeNotInit(t);
             }
 
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t,
@@ -106,8 +105,7 @@ namespace Alis.Core.Ecs.Kernel
                 return t1;
             }
 
-            Throw_ComponentTypeNotInit(t);
-            return null!;
+            throw CreateComponentTypeNotInit(t);
         }
 
         /// <summary>
@@ -235,33 +233,28 @@ namespace Alis.Core.Ecs.Kernel
                 return null!;
             }
 
-            Throw_ComponentTypeNotInit(type);
-            return null!;
+            throw CreateComponentTypeNotInit(type);
         }
 
 
         /// <summary>
-        ///     Throws the component type not init using the specified t
+        ///     Creates the exception describing an uninitialized component type
         /// </summary>
-        /// <param name="t">The </param>
-        /// <exception cref="InvalidOperationException">
-        ///     {t.FullName} is not initalized. (Did you initalize T with
-        ///     Component.RegisterComponent&lt;T&gt;()?)
-        /// </exception>
-        /// <exception cref="InvalidOperationException">{t.FullName} is not initalized. (Is the source generator working?)</exception>
-        private static void Throw_ComponentTypeNotInit(Type t)
+        /// <param name="t">The component type</param>
+        /// <returns>The exception to throw</returns>
+        private static InvalidOperationException CreateComponentTypeNotInit(Type t)
         {
             if (t == null)
             {
-                throw new InvalidOperationException("Component type is null or void. (Did you initalize T with Component.RegisterComponent<T>()?)");
+                return new InvalidOperationException("Component type is null or void. (Did you initalize T with Component.RegisterComponent<T>()?)");
             }
 
             if (typeof(IComponentBase).IsAssignableFrom(t))
             {
-                throw new InvalidOperationException($"{t.FullName} is not initalized. (Is the source generator working?)");
+                return new InvalidOperationException($"{t.FullName} is not initalized. (Is the source generator working?)");
             }
 
-            throw new InvalidOperationException(
+            return new InvalidOperationException(
                 $"{t.FullName} is not initalized. (Did you initalize T with Component.RegisterComponent<T>()?)");
         }
 
@@ -282,7 +275,7 @@ namespace Alis.Core.Ecs.Kernel
                         continue;
                     }
 
-                    if (!NoneComponentRunnerTable.ContainsKey(type) && !GenerationServices.UserGeneratedTypeMap.ContainsKey(type))
+                    if (!GenerationServices.UserGeneratedTypeMap.ContainsKey(type))
                     {
                         System.Type factoryType = typeof(NoneUpdateRunnerFactory<>).MakeGenericType(type);
                         NoneComponentRunnerTable[type] = (IComponentStorageBaseFactory)System.Activator.CreateInstance(factoryType);

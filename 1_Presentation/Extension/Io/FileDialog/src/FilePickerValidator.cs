@@ -172,7 +172,7 @@ namespace Alis.Extension.Io.FileDialog
 
             try
             {
-                string extension = Path.GetExtension(filePath)?.TrimStart('.').ToLower();
+                string extension = Path.GetExtension(filePath).TrimStart('.').ToLower();
                 if (string.IsNullOrEmpty(extension))
                 {
                     Logger.Warning($"Cannot determine extension for: {filePath}");
@@ -232,7 +232,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <returns>The bool</returns>
         private static bool HasSelectedPaths(FilePickerResult result)
         {
-            if (result.SelectedPaths == null || result.SelectedPaths.Count == 0)
+            if (result.SelectedPaths.Count == 0)
             {
                 Logger.Warning("Result has no selected paths.");
                 return false;

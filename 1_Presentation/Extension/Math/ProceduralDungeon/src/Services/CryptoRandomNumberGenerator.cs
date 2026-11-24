@@ -124,7 +124,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             {
                 if (disposing)
                 {
-                    _rng?.Dispose();
+                    _rng.Dispose();
                 }
 
                 _disposed = true;

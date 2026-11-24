@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Xunit;
 
@@ -89,6 +90,19 @@ namespace Alis.Core.Graphic.Test.Constructs
             GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "uColor");
 
             param.EnsureType<float>();
+        }
+
+        /// <summary>
+        ///     Tests that ensure type with mismatched type throws
+        /// </summary>
+        [Fact]
+        public void EnsureType_WithMismatchedType_Throws()
+        {
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "uColor");
+
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => param.EnsureType<int>());
+
+            Assert.Contains("Type mismatch for parameter 'uColor'", exception.Message);
         }
     }
 }

@@ -109,7 +109,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Gets the first selected path (for single-file dialogs).
         /// </summary>
-        public string SelectedPath => SelectedPaths?.FirstOrDefault();
+        public string SelectedPath => SelectedPaths.FirstOrDefault();
 
         /// <summary>
         ///     Creates a cancelled result.

@@ -110,12 +110,6 @@ namespace Alis.Core.Graphic.Ui
         private uint Texture { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the flip
-        /// </summary>
-
-        private bool Flip { get; } = false;
-
-        /// <summary>
         ///     Initializes the shaders
         /// </summary>
         internal void InitializeShaders()
@@ -393,7 +387,7 @@ namespace Alis.Core.Graphic.Ui
                 Gl.GlUniform2F(offsetLocation, worldX, worldY);
                 Gl.GlUniform2F(scaleLocation, charScale.X, charScale.Y);
                 Gl.GlUniform1F(rotationLocation, 0.0f);
-                Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
+                Gl.GlUniform1I(flipLocation, 0);
                 float[] vertices =
                 {
                     1, -1, 0.0f, u1, v0,

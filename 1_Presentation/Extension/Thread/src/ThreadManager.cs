@@ -86,7 +86,7 @@ namespace Alis.Extension.Thread
                 return;
             }
 
-            parallelExecutor?.Clear();
+            parallelExecutor.Clear();
             disposed = true;
         }
     }

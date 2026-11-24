@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
@@ -52,6 +53,72 @@ namespace Alis.Extension.Io.FileDialog.Test
             }
             finally
             {
+                FilePickerExecutor.CommandExistsOverride = null;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that command exists uses the Windows command form when the OS override reports Windows
+        /// </summary>
+        [Fact]
+        public void CommandExists_WithWindowsOsOverride_UsesWhereCommand()
+        {
+            string capturedFileName = null;
+            string capturedArguments = null;
+            try
+            {
+                FilePickerExecutor.CommandExistsOverride = null;
+                FilePickerExecutor.IsOSPlatformOverride = platform => platform == OSPlatform.Windows;
+                FilePickerExecutor.ExecuteCommandOverride = (fileName, arguments, timeoutMs) =>
+                {
+                    capturedFileName = fileName;
+                    capturedArguments = arguments;
+                    return "found";
+                };
+
+                bool result = FilePickerExecutor.CommandExists("dotnet");
+
+                Assert.True(result);
+                Assert.Equal("cmd", capturedFileName);
+                Assert.Equal("/c where dotnet", capturedArguments);
+            }
+            finally
+            {
+                FilePickerExecutor.IsOSPlatformOverride = null;
+                FilePickerExecutor.ExecuteCommandOverride = null;
+                FilePickerExecutor.CommandExistsOverride = null;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that command exists uses the Unix command form when the OS override does not report Windows
+        /// </summary>
+        [Fact]
+        public void CommandExists_WithUnixOsOverride_UsesWhichCommand()
+        {
+            string capturedFileName = null;
+            string capturedArguments = null;
+            try
+            {
+                FilePickerExecutor.CommandExistsOverride = null;
+                FilePickerExecutor.IsOSPlatformOverride = platform => platform == OSPlatform.Linux;
+                FilePickerExecutor.ExecuteCommandOverride = (fileName, arguments, timeoutMs) =>
+                {
+                    capturedFileName = fileName;
+                    capturedArguments = arguments;
+                    return "found";
+                };
+
+                bool result = FilePickerExecutor.CommandExists("dotnet");
+
+                Assert.True(result);
+                Assert.Equal("sh", capturedFileName);
+                Assert.Equal("-c which dotnet", capturedArguments);
+            }
+            finally
+            {
+                FilePickerExecutor.IsOSPlatformOverride = null;
+                FilePickerExecutor.ExecuteCommandOverride = null;
                 FilePickerExecutor.CommandExistsOverride = null;
             }
         }
